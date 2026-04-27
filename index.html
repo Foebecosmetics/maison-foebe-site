@@ -611,6 +611,43 @@ footer {
 .manifeste-quote strong { color: var(--text); font-style: normal; }
 .manifeste-quote em { color: var(--warm); }
 
+/* ── FOOTER ── */
+footer{
+  background:var(--bg3);padding:32px 24px;
+  border-top:1px solid var(--border);
+}
+.footer-inner{
+  max-width:720px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:22px;letter-spacing:-0.06em;
+}
+[data-theme="night"] .footer-logo span{color:#F0EAE7;}
+[data-theme="day"] .footer-logo span:nth-child(1){color:#4E291F;}
+[data-theme="day"] .footer-logo span:nth-child(2){color:#BB7E60;}
+[data-theme="day"] .footer-logo span:nth-child(3){color:#C45279;}
+[data-theme="day"] .footer-logo span:nth-child(4){color:#C34234;}
+[data-theme="day"] .footer-logo span:nth-child(5){color:#4E291F;}
+.footer-sub{font-size:11px;color:var(--text-dim);letter-spacing:.6px;}
+.footer-social{display:flex;gap:18px;justify-content:center;}
+.social-icon{color:var(--text-dim);display:inline-flex;transition:color .2s,transform .2s;}
+.social-icon:hover{color:var(--warm);transform:translateY(-1px);}
+[data-theme="night"] .social-icon{color:rgba(240,234,231,.5);}
+[data-theme="night"] .social-icon:hover{color:#EAD7CC;}
+.footer-links{display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:center;}
+.footer-link{
+  font-size:11px;color:var(--text-dim);text-decoration:none;
+  font-weight:500;transition:color .2s;
+}
+.footer-link:hover{color:var(--warm);}
+[data-theme="night"] .footer-sub,
+[data-theme="night"] .footer-link{color:rgba(240,234,231,.45);}
+[data-theme="night"] .footer-link:hover{color:#F0EAE7;}
+.footer-note{font-size:10px;color:var(--text-dim);opacity:.6;}
+
 /* ── RESPONSIVE MOBILE (≤480px) ── */
 @media (max-width: 480px) {
   nav { padding: 0 16px; }
@@ -624,15 +661,13 @@ footer {
   .seo-inner { padding: 32px 0; }
   .recognition-item { font-size: 15px; }
   .manifeste-quote { padding: 22px 18px 22px 20px; border-radius: 0 12px 12px 0; margin: 0 18px 32px; }
-  footer { padding: 48px 18px 32px; }
-  .footer-inner { gap: 14px; }
-  .footer-links { gap: 10px 14px; }
+  footer { padding: 28px 18px; }
+  .footer-inner { gap: 10px; }
+  .footer-links { gap: 8px 14px; }
   .porte-dominant { padding: 36px 22px; margin-bottom: 28px; }
   .porte-dominant .porte-title { font-size: 21px; }
   .phrase-section { padding: 64px 18px; }
 }
-
-/* ── RESPONSIVE TABLETTE (481–767px) ── */
 @media (min-width: 481px) and (max-width: 767px) {
   .hero { padding: 100px 28px 72px; }
   .section { padding: 80px 28px; }
@@ -672,13 +707,13 @@ footer {
 
   <div id="navMenu">
     <a href="index.html">🏠 Accueil</a>
-    <a href="index.html#zones">🌿 Les dimensions</a>
+    <a href="foebe-zones-cadre.html">🧘 Les zones du selfcare</a>
     <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌬️ Respiration</a>
+    <a href="respiration.html">🌊 Respiration</a>
     <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Stories</a>
-    <hr style="margin:10px 0;opacity:0.2;border:0;border-top:1px solid var(--border);">
-    <button id="themeBtn" onclick="toggleTheme()">☀️ Mode jour</button>
+    <a href="stories.html">📖 Lexique Foébé</a>
+    <hr>
+    <button id="themeBtn" type="button" onclick="toggleTheme()">☀️ Mode jour</button>
   </div>
 </nav>
 <div id="menuOverlay" class="menu-overlay"></div>
@@ -765,7 +800,7 @@ Foébé est une maison de self-care structuré. L’Observatoire t’aide à rec
         <span class="section-eyebrow" style="margin-bottom:0;">Aller plus loin</span>
       </div>
 
-      <a href="#zones" class="porte-card reveal reveal-delay-1">
+      <a href="foebe-zones-cadre.html" class="porte-card reveal reveal-delay-1">
         <span class="porte-emoji">🌿</span>
         <h3 class="porte-title">Les 7<br><em>Zones</em></h3>
         <p class="porte-desc">Corps, Mental, Émotions, Énergie, Relations, Environnement, Sens. Explore la zone qui te parle le plus, et découvre ce qu’elle essaie de te dire.</p>
@@ -786,16 +821,23 @@ Foébé est une maison de self-care structuré. L’Observatoire t’aide à rec
         <span class="porte-link">Jouer →</span>
       </a>
 
+      <a href="stories.html" class="porte-card reveal reveal-delay-1">
+        <span class="porte-emoji">📖</span>
+        <h3 class="porte-title">Le Lexique<br><em>Foébé</em></h3>
+        <p class="porte-desc">Burnout fonctionnel, charge mentale, fenêtre de tolérance… Des concepts clés du self-care expliqués simplement, un mot à la fois.</p>
+        <span class="porte-link">Parcourir le lexique →</span>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- 7 ZONES — H2 avec mots-clés naturels -->
+<!-- 7 ZONES -->
 <section class="section zones-section" id="zones">
   <div class="section-inner">
     <div class="reveal">
       <span class="section-eyebrow">L'Observatoire</span>
-      <h2 class="section-title">Les 7 zones du self-care à explorer</em></h2>
+      <h2 class="section-title">Les 7 zones du self-care</h2>
      <p class="section-sub">
   Chaque zone t’aide à décrypter ce qui se joue, reconnaître les signaux faibles et commencer par un geste simple, concret, tenable.
 </p>
@@ -838,6 +880,12 @@ Foébé est une maison de self-care structuré. L’Observatoire t’aide à rec
         <span class="zone-arrow">→</span>
       </a>
     </div>
+
+    <div class="reveal" style="margin-top:32px;text-align:center;">
+      <a href="foebe-zones-cadre.html" style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(187,126,96,0.35);padding-bottom:2px;">
+        Comprendre comment lire les zones →
+      </a>
+    </div>
   </div>
 </section>
 
@@ -870,39 +918,29 @@ Foébé est une maison de self-care structuré. L’Observatoire t’aide à rec
   <p><em>Pas pour les autres. Pour toi.</em></p>
 </section>
 
-<!-- FOOTER UNIFIÉ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none; display:block;">
+    <a href="index.html" style="text-decoration:none;display:block;">
       <div class="footer-logo">
         <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
       </div>
     </a>
-    
     <p class="footer-sub">L'Observatoire · Self-Care Structuré · Maison Foébé 2026</p>
-    
     <div class="footer-social">
-      <a href="https://www.instagram.com/foebe.cosmetics/" target="_blank" class="social-icon" aria-label="Instagram">
-        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <a href="https://www.instagram.com/foebe.cosmetics/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@foebe.cosmetics" target="_blank" class="social-icon" aria-label="TikTok">
-        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
+      <a href="https://www.tiktok.com/@foebe.cosmetics" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok Maison Foébé">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
       </a>
     </div>
-
     <div class="footer-links">
-      <a href="index.html" class="footer-link">🏠 Accueil</a>
-      <a href="test.html" class="footer-link">🌟 Test Self-Care</a>
-      <a href="respiration.html" class="footer-link">🌬️ Respiration</a>
-      <a href="boussole-accueil-foebe.html" class="footer-link">🧭 La Boussole</a>
-      <a href="zone-corps.html" class="footer-link">🌿 Les Zones</a>
-      <a href="mentions.html" class="footer-link">⚖️ Mentions</a>
-      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">✉️ Contact</a>
+      <a href="mentions.html" class="footer-link">Mentions légales</a>
+      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">Contact</a>
     </div>
-    
-   <p class="footer-note">
-  © 2026 Maison Foébé · Tous droits réservés
-</p>
+    <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
+  </div>
 </footer>
 
 <script>
