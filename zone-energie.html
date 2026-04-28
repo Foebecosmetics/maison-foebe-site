@@ -15,8 +15,8 @@
     </script>
     <script id="zoneConfig">
         var ZONE_CONFIG = {
-            name: "Énergie",
-            slug: "energie",
+            name: "énergie",
+            slug: "Énergie",
             number: "01",
             emoji: "⚡",
             title: "Zone Énergie · L'Observatoire Foébé",
@@ -149,7 +149,7 @@ zLiteB: 163
             ],
             vrIcon: "⚡",
             vrTitle: "Résultat : un système qui tourne à vide",
-            vrNote: "Le signe de l'épuisement énergétique n'est pas l'effondrement. C'est plutôt l'effort croissant pour maintenir ce qui semblait aller de soi qui est le réel signe d'une baisse énergétique."
+            vrNote: "Le signe de l'épuisement énergétique n'est pas l'effondrement. C'est plutôt l'effort croissant pour maintenir ce qui semblait aller de soi, qui est le réel signe d'une baisse énergétique."
         };
         var OBS_QUESTIONS = [{
                 q: "Tu te réveilles fatigué·e, même après une nuit correcte. Le repos ne suffit pas à effacer la veille.",
@@ -355,7 +355,7 @@ zLiteB: 163
     <meta property="og:description" id="ogDesc" content="">
     <meta property="og:type" content="website">
     <meta property="og:url" id="ogUrl" content="">
-    <meta property="og:image" content="https://observatoire-foebe.netlify.app/images/zones/og-zone-mental.png">
+    <meta property="og:image" content="https://observatoire-foebe.netlify.app/images/zones/og-zone-energie.png">
     <meta name="twitter:card" content="summary_large_image">
     <script id="jsonLd" type="application/ld+json">
         {}
@@ -3217,7 +3217,7 @@ body.state-active .ici-card {
 
 /* ── FOOTER ── */
 footer{
-  background:var(--bg3);padding:32px 24px;
+  background:var(--bg2);padding:32px 24px;
   border-top:1px solid var(--border);
 }
 .footer-inner{
@@ -3235,22 +3235,22 @@ footer{
 [data-theme="day"] .footer-logo span:nth-child(3){color:#C45279;}
 [data-theme="day"] .footer-logo span:nth-child(4){color:#C34234;}
 [data-theme="day"] .footer-logo span:nth-child(5){color:#4E291F;}
-.footer-sub{font-size:11px;color:var(--text-dim);letter-spacing:.6px;}
+.footer-sub{font-size:11px;color:var(--dim);letter-spacing:.6px;}
 .footer-social{display:flex;gap:18px;justify-content:center;}
-.social-icon{color:var(--text-dim);display:inline-flex;transition:color .2s,transform .2s;}
+.social-icon{color:var(--dim);display:inline-flex;transition:color .2s,transform .2s;}
 .social-icon:hover{color:var(--warm);transform:translateY(-1px);}
 [data-theme="night"] .social-icon{color:rgba(240,234,231,.5);}
 [data-theme="night"] .social-icon:hover{color:#EAD7CC;}
 .footer-links{display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:center;}
 .footer-link{
-  font-size:11px;color:var(--text-dim);text-decoration:none;
+  font-size:11px;color:var(--dim);text-decoration:none;
   font-weight:500;transition:color .2s;
 }
 .footer-link:hover{color:var(--warm);}
 [data-theme="night"] .footer-sub,
 [data-theme="night"] .footer-link{color:rgba(240,234,231,.45);}
 [data-theme="night"] .footer-link:hover{color:#F0EAE7;}
-.footer-note{font-size:10px;color:var(--text-dim);opacity:.6;}
+.footer-note{font-size:10px;color:var(--dim);opacity:.6;}
 
         .zone-intro-block {
             padding: clamp(12px, 4vw, 24px) 0 clamp(28px, 5vw, 36px);
