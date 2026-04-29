@@ -2,8 +2,26 @@
 <html lang="fr" data-theme="night">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Test Self-Care — Maison Foébé</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Explore les 7 dimensions de ton self-care en 21 affirmations. Identifie ta zone prioritaire et reçois des pistes concrètes. Test gratuit · 5 minutes · Maison Foébé.">
+<link rel="canonical" href="https://observatoire-foebe.netlify.app/test.html">
+<meta property="og:title" content="Test Self-Care — Maison Foébé">
+<meta property="og:description" content="21 affirmations pour explorer les 7 dimensions de ton self-care. Identifie ta zone prioritaire et reçois des pistes concrètes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://observatoire-foebe.netlify.app/test.html">
+<meta property="og:image" content="https://observatoire-foebe.netlify.app/images/og-foebe.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maison Foébé">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Test Self-Care — Maison Foébé">
+<meta name="twitter:description" content="21 affirmations pour explorer les 7 dimensions de ton self-care. Gratuit · 5 minutes.">
+<meta name="twitter:image" content="https://observatoire-foebe.netlify.app/images/og-foebe.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Test Self-Care — Maison Foébé","description":"Explore les 7 dimensions de ton self-care en 21 affirmations. Identifie ta zone prioritaire et reçois des pistes concrètes.","url":"https://observatoire-foebe.netlify.app/test.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://observatoire-foebe.netlify.app/#website","name":"Maison Foébé — L'Observatoire"}}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -320,13 +338,42 @@ nav {
 @keyframes fall{from{opacity:1;transform:translateY(-5vh) rotate(0deg);}to{opacity:0;transform:translateY(105vh) rotate(540deg);}}
 
 /* Footer */
-.footer-inner { max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center; }
-.footer-logo { font-family:'Montserrat',sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.06em; }
-.footer-sub { font-size:12px;color:var(--text-sub);letter-spacing:1px; }
-.footer-links { display:flex;gap:24px;flex-wrap:wrap;justify-content:center; }
-.footer-link { font-size:12px;color:var(--text-sub);text-decoration:none;transition:color 0.2s;font-weight:500; }
-.footer-link:hover { color:var(--warm); }
-.footer-copyright { font-size:11px;color:var(--text-dim); }
+  footer{
+  background:var(--bg2);
+  padding:32px 24px;
+  border-top:1px solid var(--border);
+}
+.footer-inner{
+  max-width:720px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:22px;letter-spacing:-0.06em;
+}
+[data-theme="night"] .footer-logo span{color:#F0EAE7;}
+[data-theme="day"] .footer-logo span:nth-child(1){color:#4E291F;}
+[data-theme="day"] .footer-logo span:nth-child(2){color:#BB7E60;}
+[data-theme="day"] .footer-logo span:nth-child(3){color:#C45279;}
+[data-theme="day"] .footer-logo span:nth-child(4){color:#C34234;}
+[data-theme="day"] .footer-logo span:nth-child(5){color:#4E291F;}
+.footer-sub{font-size:11px;color:var(--dim);letter-spacing:.6px;}
+.footer-social{display:flex;gap:18px;justify-content:center;}
+.social-icon{color:var(--dim);display:inline-flex;transition:color .2s,transform .2s;}
+.social-icon:hover{color:var(--warm);transform:translateY(-1px);}
+[data-theme="night"] .social-icon{color:rgba(240,234,231,.5);}
+[data-theme="night"] .social-icon:hover{color:#EAD7CC;}
+.footer-links{display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:center;}
+.footer-link{
+  font-size:11px;color:var(--dim);text-decoration:none;
+  font-weight:500;transition:color .2s;
+}
+.footer-link:hover{color:var(--warm);}
+[data-theme="night"] .footer-sub,
+[data-theme="night"] .footer-link{color:rgba(240,234,231,.45);}
+[data-theme="night"] .footer-link:hover{color:#F0EAE7;}
+.footer-note{font-size:10px;color:var(--dim);opacity:.6;}
 
 /* ── RESPONSIVE ── */
 @media (max-width:380px) {
@@ -627,7 +674,9 @@ nav {
       <a href="zone-corps.html" class="footer-link">🌿 Corps</a>
       <a href="zone-emotions.html" class="footer-link">🌊 Émotions</a>
       <a href="zone-environnement.html" class="footer-link">🌍 Environnement</a>
+      <a href="zone-sens.html" class="footer-link">✨ Sens</a>
     </div>
+   <a href="mentions.html" class="footer-link" style="font-size:11px;opacity:0.6;">Mentions légales</a>
     <p class="footer-copyright">© 2026 Maison Foébé · Tous droits réservés</p>
   </div>
 </footer>
