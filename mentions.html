@@ -348,8 +348,21 @@ ul { margin:6px 0 12px 20px;font-family:'Lora',serif;font-size:15px;color:var(--
     <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
     <div id="navOverlay"></div>
     <div id="stateOverlay"></div>
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo" aria-label="Maison Foébé — accueil">
+    <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+  </a>
 
-    <div id="navMenu">
+  <button
+    id="menuToggle"
+    type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="navMenu">
+    ☰
+  </button>
+
+  <div id="navMenu">
     <a href="index.html">🏠 Accueil</a>
     <a href="foebe-zones-cadre.html">🧘 Les zones du selfcare</a>
     <a href="test.html">✨ Faire le test</a>
@@ -359,13 +372,9 @@ ul { margin:6px 0 12px 20px;font-family:'Lora',serif;font-size:15px;color:var(--
     <hr>
     <button id="themeBtn" type="button" onclick="toggleTheme()">☀️ Mode jour</button>
   </div>
-
-    <nav id="mainNav">
-    <a href="index.html" class="nav-logo">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-    </a>
-    <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </nav>
+
+<div id="menuOverlay" class="menu-overlay"></div>
 
 <div class="container">
   <h1 class="page-title">Informations<br><em>légales</em></h1>
