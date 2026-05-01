@@ -20,27 +20,25 @@
 <meta name="twitter:title" content="Lexique Foébé — Self-Care et Burnout · Maison Foébé">
 <meta name="twitter:description" content="10 définitions du self-care et du burnout fonctionnel. Lexique de l'Observatoire Foébé.">
 <meta name="twitter:image" content="https://observatoire-foebe.netlify.app/images/og-foebe.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Lexique Foébé — Self-Care et Burnout","description":"10 définitions du self-care et du burnout fonctionnel expliquées simplement. Lexique de l'Observatoire Foébé.","url":"https://observatoire-foebe.netlify.app/stories","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://observatoire-foebe.netlify.app/#website","name":"Maison Foébé — L'Observatoire"}}</script>
-<script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
-/* Thème — cohérent avec index et zone-corps */
-(function(){
-  var saved = localStorage.getItem('foebe-theme');
-  if(saved) document.documentElement.setAttribute('data-theme', saved);
-})();
-function toggleTheme(){
-  var h = document.documentElement;
-  var next = h.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-  h.setAttribute('data-theme', next);
-  localStorage.setItem('foebe-theme', next);
-  var btn = document.getElementById('themeBtn');
-  if(btn) btn.textContent = next === 'day' ? '🌙 Mode nuit' : '☀️ Mode jour';
-  /* Recalcule le fond de la story active */
-  renderStoryBg(current);
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Lexique Foébé — Self-Care et Burnout","description":"10 définitions du self-care et du burnout fonctionnel<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Lexique Foébé — Self-Care et Burnout",
+  "description": "10 définitions du self-care et du burnout fonctionnel expliquées simplement. Lexique de l’Observatoire Foébé.",
+  "url": "https://observatoire-foebe.netlify.app/stories",
+  "inLanguage": "fr",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://observatoire-foebe.netlify.app/#website",
+    "name": "Maison Foébé — L’Observatoire"
+  }
 }
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
 
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════════════════════════
    PALETTE FOÉBÉ — cohérente avec index-v2 et zone-corps
@@ -410,7 +408,8 @@ body { background: var(--bg); }
     <a href="respiration.html">🌊 Respiration</a>
     <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
     <a href="stories.html">📖 Lexique Foébé</a>
-    </div>
+    <hr>
+  </div>
 
 <!-- NAV IMMERSIVE — bouton seul, sans logo -->
 <nav id="mainNav">
@@ -479,6 +478,7 @@ body { background: var(--bg); }
 
 <script>
 "use strict";
+document.documentElement.setAttribute('data-theme','night');
 
 /* ══ DONNÉES ════════════════════════════════════════════════ */
 var STORIES = [
@@ -815,12 +815,6 @@ document.addEventListener('keydown', function(e){
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && menuOpen) closeMenu();
   });
-
-  /* Init thème bouton */
-  var btn = document.getElementById('themeBtn');
-  if(btn) btn.textContent =
-    document.documentElement.getAttribute('data-theme') === 'night'
-      ? '☀️ Mode jour' : '🌙 Mode nuit';
 })();
 
 /* ══ DÉMARRAGE ═══════════════════════════════════════════════ */
