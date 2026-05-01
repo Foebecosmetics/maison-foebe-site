@@ -697,13 +697,18 @@ footer{
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="index.html" class="nav-logo">
+  <a href="index.html" class="nav-logo" aria-label="Maison Foébé — accueil">
     <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
   </a>
 
-  <div class="nav-right">
-    <div id="menuToggle">☰</div>
-  </div>
+  <button
+    id="menuToggle"
+    type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="navMenu">
+    ☰
+  </button>
 
   <div id="navMenu">
     <a href="index.html">🏠 Accueil</a>
@@ -716,6 +721,8 @@ footer{
     <button id="themeBtn" type="button" onclick="toggleTheme()">☀️ Mode jour</button>
   </div>
 </nav>
+
+<div id="menuOverlay" class="menu-overlay"></div>
 <div id="menuOverlay" class="menu-overlay"></div>
 <!-- HERO -->
 <section class="hero">
