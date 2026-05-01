@@ -1,0 +1,25 @@
+# Configuration Netlify — Maison Foébé · L'Observatoire
+
+[build]
+  publish = "."
+
+# Pretty URLs : permet d'accéder à /zone-mental sans .html
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# Headers pour la sitemap
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+
+# Headers sécurité globaux
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
