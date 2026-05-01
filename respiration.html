@@ -19,613 +19,135 @@
 <meta name="twitter:title" content="Respiration guidée — Maison Foébé">
 <meta name="twitter:description" content="Trois exercices de respiration pour calmer le système nerveux et revenir dans le corps.">
 <meta name="twitter:image" content="https://observatoire-foebe.netlify.app/images/og-foebe.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Respiration guidée — Maison Foébé","description":"Trois exercices de respiration guidée pour revenir à soi. Apaisement profond, cohérence cardiaque, ancrage mental.","url":"https://observatoire-foebe.netlify.app/respiration.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://observatoire-foebe.netlify.app/#website","name":"Maison Foébé — L'Observatoire"}}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Respiration guidée — Maison Foébé",
+  "description": "Trois exercices de respiration guidée pour revenir à soi. Apaisement profond, cohérence cardiaque, ancrage mental.",
+  "url": "https://observatoire-foebe.netlify.app/respiration.html",
+  "inLanguage": "fr",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://observatoire-foebe.netlify.app/#website",
+    "name": "Maison Foébé — L'Observatoire"
+  }
+}
+</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
 <title>Respiration — Maison Foébé</title>
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-[data-theme="night"] {
-  --bg: #4E291F;
-  --text: #F0EAE7;
-  --text-sub: #D9C8BE;
-  --text-dim: rgba(240,234,231,0.5);
-  --warm: #BB7E60;  /* TOUS les boutons = CET orange */
-  --border: rgba(187,126,96,0.25);
-  --surface: rgba(187,126,96,0.08);
-}
-[data-theme="day"] {
-  --bg: #F0EAE7;
-  --text: #4E291F;
-  --text-sub: #6B4A3A;
-  --text-dim: #8C6A5A;
-  --warm: #BB7E60;  /* TOUS les boutons = CET orange */
-  --border: rgba(78,41,31,0.2);
-  --surface: rgba(78,41,31,0.06);
-}
-html, body {
-  height: 100%; width: 100%;
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg); color: var(--text);
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition: background 0.8s;
-}
-
-.bg-orb {
-  position: fixed; border-radius: 50%;
-  filter: blur(120px); pointer-events: none; z-index: 0;
-}
+[data-theme="night"] { --bg:#4E291F; --text:#F0EAE7; --text-sub:#D9C8BE; --text-dim:rgba(240,234,231,0.5); --warm:#BB7E60; --border:rgba(187,126,96,0.25); --surface:rgba(187,126,96,0.08); }
+html, body { height:100%; width:100%; font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; overflow-y:auto; transition:background 0.8s; }
+.bg-orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; }
 .bg-orb-1 { width:700px; height:700px; background:rgba(187,126,96,0.07); top:-200px; right:-200px; animation:d1 18s ease-in-out infinite; }
 .bg-orb-2 { width:500px; height:500px; background:rgba(195,66,52,0.04); bottom:-150px; left:-150px; animation:d2 22s ease-in-out infinite; }
-[data-theme="day"] .bg-orb { opacity:0; }
 @keyframes d1 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(-20px,20px);} }
 @keyframes d2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(20px,-15px);} }
-
-/* NAV */
-nav {
-  position: fixed; top:0; left:0; right:0; z-index:100;
-  padding: 14px 24px;
-  display: flex; align-items:center; justify-content:space-between;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.8s;
-}
-.nav-logo {
-  font-family: 'Montserrat', sans-serif; font-weight:700;
-  font-size:18px; letter-spacing:-0.06em;
-  color: var(--warm); text-decoration:none;
-}
-[data-theme="night"] .nav-logo {
-  color: #F0EAE7;
-}
-
-[data-theme="day"] .nav-logo {
-  color: #4E291F;
-}
+nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; background:var(--bg); border-bottom:1px solid var(--border); transition:background 0.8s; }
+.nav-logo { font-family:'Montserrat',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.06em; color:var(--warm); text-decoration:none; }
 .nav-right { display:flex; gap:10px; align-items:center; }
-.nav-btn {
-  background: var(--surface); border:1px solid var(--border);
-  border-radius:20px; padding:6px 12px; font-size:11px;
-  cursor:pointer; color:var(--text-dim);
-  font-family:'Poppins',sans-serif; font-weight:500; transition:all 0.3s;
-  text-decoration:none; display:inline-block;
-}
+.nav-btn { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:6px 12px; font-size:11px; cursor:pointer; color:var(--text-dim); font-family:'Poppins',sans-serif; font-weight:500; transition:all 0.3s; text-decoration:none; display:inline-block; }
 .nav-btn:hover { color:var(--warm); border-color:var(--warm); }
-
-/* ÉTATS */
-.state {
-  display: none;
-  flex-direction: column; align-items: center; justify-content: center;
-  min-height: 100vh;
-  padding: 100px 24px 60px;
-}
-.state.active { display:flex; animation: fadeIn 0.9s ease; }
+.state { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:100px 24px 60px; }
+.state.active { display:flex; animation:fadeIn 0.9s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
-
-/* ── INTRO ── */
-.eyebrow {
-  font-size:10px; letter-spacing:4px; text-transform:uppercase;
-  color:var(--warm); font-weight:600; margin-bottom:18px; text-align:center;
-}
-.intro-title {
-  font-family:'Lora',serif;
-  font-size:clamp(22px,5vw,34px); font-weight:400;
-  color:var(--text); text-align:center; line-height:1.3; margin-bottom:6px;
-}
+.eyebrow { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--warm); font-weight:600; margin-bottom:18px; text-align:center; }
+.intro-title { font-family:'Lora',serif; font-size:clamp(22px,5vw,34px); font-weight:400; color:var(--text); text-align:center; line-height:1.3; margin-bottom:6px; }
 .intro-title em { font-style:italic; color:var(--warm); }
 .divider { width:28px; height:1px; background:var(--warm); opacity:0.35; margin:18px auto; }
-.intro-sub {
-  font-family:'Lora',serif;
-  font-size:14px; color:var(--text-sub); font-style:italic;
-  text-align:center; line-height:1.75; margin-bottom:32px; max-width:340px;
-}
-
-/* CARTES TECHNIQUES */
+.intro-sub { font-family:'Lora',serif; font-size:14px; color:var(--text-sub); font-style:italic; text-align:center; line-height:1.75; margin-bottom:32px; max-width:340px; }
 .tech-grid { display:flex; flex-direction:column; gap:12px; width:100%; max-width:420px; }
-.tech-card {
-  padding:20px 22px; background:var(--surface);
-  border:1.5px solid var(--border); border-radius:16px;
-  cursor:pointer; transition:all 0.35s; text-align:left;
-  font-family:'Poppins',sans-serif; width:100%;
-  position:relative; overflow:hidden;
-}
-.tech-card::before {
-  content:''; position:absolute; left:0; top:0; bottom:0;
-  width:3px; background:var(--warm); opacity:0;
-  transition:opacity 0.3s;
-}
+.tech-card { padding:20px 22px; background:var(--surface); border:1.5px solid var(--border); border-radius:16px; cursor:pointer; transition:all 0.35s; text-align:left; font-family:'Poppins',sans-serif; width:100%; position:relative; overflow:hidden; }
+.tech-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--warm); opacity:0; transition:opacity 0.3s; }
 .tech-card:hover { border-color:var(--warm); transform:translateX(3px); }
 .tech-card:hover::before { opacity:1; }
 .tech-card:active { transform:scale(0.98); }
-
 .tc-name { font-size:15px; font-weight:600; color:var(--text); margin-bottom:4px; }
-.tc-rhythm {
-  font-size:12px; color:var(--warm); font-weight:600;
-  letter-spacing:0.5px; margin-bottom:6px;
-}
+.tc-rhythm { font-size:12px; color:var(--warm); font-weight:600; letter-spacing:0.5px; margin-bottom:6px; }
 .tc-desc { font-size:13px; color:var(--text-sub); line-height:1.5; }
-
-/* ── EXERCICE ── */
-#stateExercise {
-  background: var(--bg);
-  transition: background 2s ease;
-}
-
-/* Piste verticale */
-.track-wrap {
-  position: relative;
-  display: flex; flex-direction: column;
-  align-items: center;
-  width: 80px;
-  margin-bottom: 32px;
-}
-
-.track {
-  width: 3px;
-  border-radius: 2px;
-  background: var(--border);
-  position: relative;
-  overflow: visible;
-}
-
-/* La balle */
-.ball {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--warm);
-  box-shadow: 0 0 32px 8px rgba(187,126,96,0.3);
-  position: absolute;
-  left: 50%; transform: translateX(-50%);
-  transition: top 0s linear, background 1.5s ease, box-shadow 1.5s ease;
-  will-change: top;
-}
-
-/* Labels haut/bas */
-.track-label-top {
-  font-size:10px; color:var(--text-dim); letter-spacing:2px;
-  text-transform:uppercase; margin-bottom:12px; font-weight:600;
-}
-.track-label-bottom {
-  font-size:10px; color:var(--text-dim); letter-spacing:2px;
-  text-transform:uppercase; margin-top:12px; font-weight:600;
-}
-
-/* Phase label — seul texte pendant l'exercice */
-.phase-label {
-  font-family:'Lora',serif;
-  font-size:clamp(22px,5vw,28px); font-style:italic;
-  color:var(--text); text-align:center; margin-bottom:8px;
-  min-height:36px;
-  transition:opacity 0.6s ease, color 1s ease;
-}
-.count-label {
-  font-size:14px; color:var(--text-dim); font-weight:500;
-  text-align:center; margin-bottom:28px; min-height:20px;
-  transition:opacity 0.6s ease;
-}
-
-.cycles-label {
-  font-size:10px; color:var(--text-dim); letter-spacing:2px;
-  text-transform:uppercase; font-weight:600; margin-bottom:36px;
-  text-align:center;
-}
-
-.btn-stop {
-  padding:11px 28px; background:transparent;
-  border:1px solid var(--border); border-radius:20px;
-  font-size:12px; color: var(--warm);
-  font-family:'Poppins',sans-serif; font-weight:500;
-  cursor:pointer; transition:all 0.3s;
-}
+#stateExercise { background:var(--bg); transition:background 2s ease; }
+.track-wrap { position:relative; display:flex; flex-direction:column; align-items:center; width:80px; margin-bottom:32px; }
+.track { width:3px; border-radius:2px; background:var(--border); position:relative; overflow:visible; }
+.ball { width:52px; height:52px; border-radius:50%; background:var(--warm); box-shadow:0 0 32px 8px rgba(187,126,96,0.3); position:absolute; left:50%; transform:translateX(-50%); transition:top 0s linear, background 1.5s ease, box-shadow 1.5s ease; will-change:top; }
+.track-label-top, .track-label-bottom { font-size:10px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+.track-label-top { margin-bottom:12px; }
+.track-label-bottom { margin-top:12px; }
+.phase-label { font-family:'Lora',serif; font-size:clamp(22px,5vw,28px); font-style:italic; color:var(--text); text-align:center; margin-bottom:8px; min-height:36px; transition:opacity 0.6s ease, color 1s ease; }
+.count-label { font-size:14px; color:var(--text-dim); font-weight:500; text-align:center; margin-bottom:28px; min-height:20px; transition:opacity 0.6s ease; }
+.cycles-label { font-size:10px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:36px; text-align:center; }
+.btn-stop { padding:11px 28px; background:transparent; border:1px solid var(--border); border-radius:20px; font-size:12px; color:var(--warm); font-family:'Poppins',sans-serif; font-weight:500; cursor:pointer; transition:all 0.3s; }
 .btn-stop:hover { border-color:var(--warm); color:var(--warm); }
-
-/* ── TERMINÉ ── */
-.done-title {
-  font-family:'Lora',serif;
-  font-size:clamp(22px,5vw,34px); font-weight:400;
-  color:var(--text); text-align:center; line-height:1.3; margin-bottom:6px;
-}
+.done-title { font-family:'Lora',serif; font-size:clamp(22px,5vw,34px); font-weight:400; color:var(--text); text-align:center; line-height:1.3; margin-bottom:6px; }
 .done-title em { font-style:italic; color:var(--warm); }
-.done-sub {
-  font-family:'Lora',serif;
-  font-size:14px; color:var(--text-sub); font-style:italic;
-  text-align:center; line-height:1.75; margin-bottom:32px; max-width:320px;
-}
+.done-sub { font-family:'Lora',serif; font-size:14px; color:var(--text-sub); font-style:italic; text-align:center; line-height:1.75; margin-bottom:32px; max-width:320px; }
 .done-actions { display:flex; flex-direction:column; gap:10px; width:100%; max-width:340px; }
-.btn-primary {
-  padding:16px; background:var(--warm); color:#F0EAE7;
-  border:none; border-radius:14px; font-family:'Poppins',sans-serif;
-  font-size:14px; font-weight:600; cursor:pointer; text-align:center;
-  text-decoration:none; display:block; transition:all 0.3s;
-}
+.btn-primary { padding:16px; background:var(--warm); color:#F0EAE7; border:none; border-radius:14px; font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; cursor:pointer; text-align:center; text-decoration:none; display:block; transition:all 0.3s; }
 .btn-primary:hover { background:#a86d50; }
-.btn-secondary {
-  padding:13px; background:var(--surface); border:1px solid var(--border);
-  border-radius:12px; color:var(--text-sub); font-family:'Poppins',sans-serif;
-  font-size:13px; font-weight:500; cursor:pointer; text-align:center;
-  text-decoration:none; display:block; transition:all 0.3s;
-}
+.btn-secondary { padding:13px; background:var(--surface); border:1px solid var(--border); border-radius:12px; color:var(--text-sub); font-family:'Poppins',sans-serif; font-size:13px; font-weight:500; cursor:pointer; text-align:center; text-decoration:none; display:block; transition:all 0.3s; }
 .btn-secondary:hover { border-color:var(--warm); color:var(--warm); }
-/* ── BOUTONS FOÉBÉ (Encerclements + Hover) ── */
-.btn-primary, .btn-secondary {
-  border: 2px solid transparent !important;
-  transition: all 0.3s ease !important;
-}
-[data-theme="night"] .btn-primary,
-[data-theme="night"] .btn-secondary {
-  border-color: #F0EAE7 !important;
-  color: #F0EAE7 !important;
-  text-shadow: 0 0 8px rgba(240,234,231,0.3);
-}
-[data-theme="night"] .btn-primary:hover,
-[data-theme="night"] .btn-secondary:hover {
-  border-color: #BB7E60 !important;
-  box-shadow: 0 0 20px rgba(187,126,96,0.4) !important;
-}
-[data-theme="day"] .btn-primary {
-  background: #BB7E60 !important;
-  color: #F0EAE7 !important;
-  border-color: #BB7E60 !important;
-}
-[data-theme="day"] .btn-primary:hover {
-  background: #a86d50 !important;
-  box-shadow: 0 0 18px rgba(187,126,96,0.4);
-}
-[data-theme="day"] .btn-primary:hover,
-[data-theme="day"] .btn-secondary:hover {
-  border-color: #BB7E60 !important;
-  box-shadow: 0 0 20px rgba(187,126,96,0.3) !important;
-}
-.btn-primary {
-  color: #F0EAE7;
-}
-
-@media (max-width:380px) {
-  .ball { width:42px; height:42px; }
-  .track { width:2px; }
-  .tc-name { font-size:13px; }
-  .tc-desc { font-size:12px; }
-}
-@media (min-width:600px) {
-  .tech-grid { max-width:500px; }
-  .tc-name { font-size:16px; }
-  .tc-desc { font-size:14px; }
-  .ball { width:60px; height:60px; }
-  .intro-title { font-size:42px; }
-}
-@media (min-width:900px) {
-  .state { padding:120px 40px 80px; }
-  .tech-grid { max-width:560px; }
-}
-.nav-btn:hover { 
-  color:var(--warm) !important; 
-  border-color:var(--warm) !important; 
-  transform:translateY(-1px);
-}
-
+@media (max-width:380px) { .ball { width:42px; height:42px; } .track { width:2px; } .tc-name { font-size:13px; } .tc-desc { font-size:12px; } }
+@media (min-width:600px) { .tech-grid { max-width:500px; } .tc-name { font-size:16px; } .tc-desc { font-size:14px; } .ball { width:60px; height:60px; } .intro-title { font-size:42px; } }
+@media (min-width:900px) { .state { padding:120px 40px 80px; } .tech-grid { max-width:560px; } }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <div class="bg-orb bg-orb-1"></div>
 <div class="bg-orb bg-orb-2"></div>
-
 <nav>
   <a href="index.html" class="nav-logo">Foébé</a>
   <div class="nav-right">
-    <button class="nav-btn" id="themeBtn" onclick="toggleTheme()">☀️ Jour</button>
-    <a href="index.html" class="nav-btn">← Accueil</a>
+    <a href="index.html" class="nav-btn">Accueil</a>
   </div>
 </nav>
-
-<!-- INTRO -->
 <div class="state active" id="stateIntro">
   <span class="eyebrow">Maison Foébé · Respiration</span>
   <h1 class="intro-title">Reviens à toi.<br><em>En quelques souffles.</em></h1>
   <div class="divider"></div>
-  <p class="intro-sub">
-    Choisis un exercice. La balle te guide.<br>
-    Suis-la simplement — monte quand elle monte,<br>
-    descends quand elle descend.
-  </p>
-
+  <p class="intro-sub">Choisis un exercice. La balle te guide.<br>Suis-la simplement — monte quand elle monte,<br>descends quand elle descend.</p>
   <div class="tech-grid">
-
-    <button class="tech-card" onclick="begin('apaisement')">
-      <p class="tc-name">Apaisement profond</p>
-      <p class="tc-rhythm">Inspire 4s · Retiens 6s · Expire 8s</p>
-      <p class="tc-desc">À faire avant de dormir ou en pic d'anxiété. L'expiration longue active le frein du système nerveux et calme plus vite que tout le reste.</p>
-    </button>
-
-    <button class="tech-card" onclick="begin('coherence')">
-      <p class="tc-name">Cohérence cardiaque</p>
-      <p class="tc-rhythm">Inspire 5s · Expire 5s</p>
-      <p class="tc-desc">À faire le matin ou après une réunion difficile. Rythme égal, sans rétention — cinq minutes suffisent à stabiliser le cœur et retrouver de la clarté.</p>
-    </button>
-
-    <button class="tech-card" onclick="begin('ancrage')">
-      <p class="tc-name">Ancrage mental</p>
-      <p class="tc-rhythm">Inspire 4s · Retiens 4s · Expire 6s · Pause 2s</p>
-      <p class="tc-desc">À faire avant une décision, un entretien ou quand les pensées s'emballent. Quatre temps distincts pour sortir du mental et revenir dans le corps.</p>
-    </button>
-<footer style="padding:40px 24px 32px;text-align:center;border-top:1px solid rgba(187,126,96,0.15);margin-top:0;">
-  <a href="index.html" style="text-decoration:none;display:inline-block;margin-bottom:12px;">
-    <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;color:var(--warm);">Foébé</div>
-  </a>
-  <p style="font-size:11px;color:var(--text-dim);letter-spacing:0.6px;margin-bottom:16px;">L'Observatoire · Self-Care Structuré · Maison Foébé 2026</p>
-  <div style="display:flex;justify-content:center;gap:20px;margin-bottom:16px;">
-    <a href="https://www.instagram.com/foebe.cosmetics/" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--text-dim);text-decoration:none;">Instagram</a>
-    <a href="https://www.tiktok.com/@foebe.cosmetics" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--text-dim);text-decoration:none;">TikTok</a>
-  </div>
-  <div style="display:flex;justify-content:center;gap:20px;margin-bottom:12px;">
-    <a href="mentions.html" style="font-size:11px;color:var(--text-dim);text-decoration:none;">Mentions légales</a>
-    <a href="mailto:foebecosmetics@gmail.com" style="font-size:11px;color:var(--text-dim);text-decoration:none;">Contact</a>
-  </div>
-  <p style="font-size:10px;color:var(--text-dim);opacity:0.6;">© 2026 Maison Foébé · Tous droits réservés</p>
-</footer>
-</body>
-</html>
+    <button class="tech-card" onclick="begin('apaisement')"><p class="tc-name">Apaisement profond</p><p class="tc-rhythm">Inspire 4s · Retiens 6s · Expire 8s</p><p class="tc-desc">À faire avant de dormir ou en pic d'anxiété. L'expiration longue active le frein du système nerveux et calme plus vite que tout le reste.</p></button>
+    <button class="tech-card" onclick="begin('coherence')"><p class="tc-name">Cohérence cardiaque</p><p class="tc-rhythm">Inspire 5s · Expire 5s</p><p class="tc-desc">À faire le matin ou après une réunion difficile. Rythme égal, sans rétention — cinq minutes suffisent à stabiliser le cœur et retrouver de la clarté.</p></button>
+    <button class="tech-card" onclick="begin('ancrage')"><p class="tc-name">Ancrage mental</p><p class="tc-rhythm">Inspire 4s · Retiens 4s · Expire 6s · Pause 2s</p><p class="tc-desc">À faire avant une décision, un entretien ou quand les pensées s'emballent. Quatre temps distincts pour sortir du mental et revenir dans le corps.</p></button>
   </div>
 </div>
-
-<!-- EXERCICE -->
 <div class="state" id="stateExercise">
   <p class="cycles-label" id="cyclesLabel"></p>
-
   <p class="phase-label" id="phaseLabel"></p>
   <p class="count-label" id="countLabel"></p>
-
   <div class="track-wrap">
     <span class="track-label-top">↑</span>
-    <div class="track" id="track">
-      <div class="ball" id="ball"></div>
-    </div>
+    <div class="track" id="track"><div class="ball" id="ball"></div></div>
     <span class="track-label-bottom">↓</span>
   </div>
-
   <button class="btn-stop" onclick="stop()">Arrêter</button>
 </div>
-
-<!-- TERMINÉ -->
 <div class="state" id="stateDone">
   <span class="eyebrow">Très bien 🪷</span>
   <h2 class="done-title">Ton souffle t'a ramené.<br><em>Tu es à nouveau dans le présent.</em></h2>
   <div class="divider"></div>
-  <p class="done-sub">
-    Quelques souffles suffisent pour changer<br>
-    l'état de ton système nerveux.<br>
-    Continue à ton rythme.
-  </p>
+  <p class="done-sub">Quelques souffles suffisent pour changer<br>l'état de ton système nerveux.<br>Continue à ton rythme.</p>
   <div class="done-actions" id="doneActions">
-<a href="test.html" class="btn-primary">Faire le test self-care →</a>
+    <a href="test.html" class="btn-primary">Faire le test self-care →</a>
     <a href="boussole-accueil-foebe.html" class="btn-secondary">🧭 La Boussole</a>
     <a href="index.html" class="btn-secondary">← Retour à l'Observatoire</a>
     <button class="btn-secondary" onclick="showState('stateIntro')">Choisir un autre exercice</button>
   </div>
 </div>
-
 <script>
-// ── THÈME ─────────────────────────────────────────────────────────────────────
-function toggleTheme(){
-  const html = document.documentElement;
-  const btn = document.getElementById('themeBtn');
-  
-  // ✅ NOUVEAU : Lit l'état APRÈS changement
-  const newTheme = html.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-  html.setAttribute('data-theme', newTheme);
-  
-  // ✅ Texte pour NOUVEAU thème
-  btn.textContent = newTheme === 'night' ? '☀️ Jour' : '🌙 Nuit';
-}
-
-
-
-// ── TECHNIQUES ────────────────────────────────────────────────────────────────
-const TECH = {
-  apaisement: {
-    label: 'Apaisement profond',
-    cycles: 4,
-    phases: [
-      { name:'Inspire',  dur:4,  pos:'top',    color:'#BB7E60' },
-      { name:'Retiens',  dur:6,  pos:'top',    color:'#C45279' },
-      { name:'Expire',   dur:8,  pos:'bottom', color:'#4A7C59' },
-    ]
-  },
-  coherence: {
-    label: 'Cohérence cardiaque',
-    cycles: 6,
-    phases: [
-      { name:'Inspire',  dur:5, pos:'top',    color:'#BB7E60' },
-      { name:'Expire',   dur:5, pos:'bottom', color:'#4A7C59' },
-    ]
-  },
-  ancrage: {
-    label: 'Ancrage mental',
-    cycles: 5,
-    phases: [
-      { name:'Inspire',  dur:4, pos:'top',    color:'#BB7E60' },
-      { name:'Retiens',  dur:4, pos:'top',    color:'#C45279' },
-      { name:'Expire',   dur:6, pos:'bottom', color:'#4A7C59' },
-      { name:'Pause',    dur:2, pos:'bottom', color:'#8C6A5A' },
-    ]
-  }
-};
-
-// ── STATE ─────────────────────────────────────────────────────────────────────
-let running = false;
-let timer = null;
-let currentTech = null;
-let cycle = 0;
-let phaseIdx = 0;
-let trackH = 0;
-const BALL_DIAM = 52;
-
-function showState(id){
-  document.querySelectorAll('.state').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function begin(key){
-  currentTech = TECH[key];
-  cycle = 0; phaseIdx = 0; running = true;
-
-  // Calcule la hauteur de la piste en fonction de l'écran
-  // Piste = 50% de la hauteur viewport moins les éléments autour
-  const vh = window.innerHeight;
-  trackH = Math.min(Math.max(vh * 0.35, 180), 280);
-  document.getElementById('track').style.height = trackH + 'px';
-
-  // Place la balle en bas au départ
-  setBallPos('bottom', 0);
-
-  document.getElementById('phaseLabel').textContent = '';
-  document.getElementById('countLabel').textContent = '';
-  updateCyclesLabel();
-
-  showState('stateExercise');
-
-  // Compte à rebours 3-2-1 avant de commencer
-  const pl = document.getElementById('phaseLabel');
-  const cl = document.getElementById('countLabel');
-  pl.style.opacity = '1';
-  cl.style.opacity = '0';
-  
-
-  let countdown = 3;
-  pl.textContent = countdown;
-  pl.style.fontSize = '52px';
-  pl.style.color = 'var(--text-dim)';
-
-  const cdTimer = setInterval(()=>{
-    countdown--;
-    if(countdown > 0){
-      pl.textContent = countdown;
-    } else {
-      clearInterval(cdTimer);
-      pl.textContent = '';
-      pl.style.fontSize = '';
-      pl.style.color = '';
-      cl.style.opacity = '0.5';
-      setTimeout(()=>runPhase(), 200);
-    }
-  }, 1000);
-}
-
-function setBallPos(pos, duration){
-  const ball = document.getElementById('ball');
-  const topPos = -BALL_DIAM/2;
-  const bottomPos = trackH - BALL_DIAM/2;
-
-  if(duration > 0){
-    ball.style.transition = `top ${duration}s linear`;
-  } else {
-    ball.style.transition = 'none';
-  }
-  ball.style.top = (pos === 'top' ? topPos : bottomPos) + 'px';
-}
-
-function setBallColor(color){
-  const ball = document.getElementById('ball');
-  ball.style.background = color;
-  ball.style.boxShadow = `0 0 32px 8px ${color}44`;
-}
-
-function updateCyclesLabel(){
-  const total = currentTech.cycles;
-  document.getElementById('cyclesLabel').textContent =
-    cycle < total ? `Cycle ${cycle + 1} sur ${total}` : '';
-}
-
-function runPhase(){
-  if(!running) return;
-
-  const tech = currentTech;
-  if(cycle >= tech.cycles){
-    finish(); return;
-  }
-
-  const phase = tech.phases[phaseIdx];
-
-  // Détermine la position précédente pour savoir si on bouge
-  const prevPhase = phaseIdx > 0
-    ? tech.phases[phaseIdx - 1]
-    : tech.phases[tech.phases.length - 1];
-
-  const moving = prevPhase.pos !== phase.pos;
-
-  // Couleur balle
-  setBallColor(phase.color);
-
-  // Phase label — apparaît doucement
-  const pl = document.getElementById('phaseLabel');
-  pl.style.opacity = '0';
-  setTimeout(()=>{
-    pl.textContent = phase.name;
-    pl.style.opacity = '1';
-  }, 200);
-
-  // Mouvement balle
-  if(moving){
-    setBallPos(phase.pos, phase.dur);
-  }
-  // Si pas de mouvement (retiens/pause) — reste en place
-
-  // Compte à rebours
-  let count = phase.dur;
-  const cl = document.getElementById('countLabel');
-  cl.textContent = count;
-  cl.style.opacity = '0.5';
-
-  const start = Date.now();
-  function tick(){
-    if(!running) return;
-    const elapsed = Math.floor((Date.now() - start) / 1000);
-    const remaining = phase.dur - elapsed;
-    if(remaining > 0){
-      cl.textContent = remaining;
-      timer = setTimeout(tick, 1000 - ((Date.now() - start) % 1000));
-    } else {
-      cl.textContent = '';
-      // Phase suivante
-      phaseIdx++;
-      if(phaseIdx >= tech.phases.length){
-        phaseIdx = 0;
-        cycle++;
-        updateCyclesLabel();
-      }
-      setTimeout(()=>runPhase(), 300);
-    }
-  }
-  timer = setTimeout(tick, 1000);
-}
-
-function stop(){
-  running = false;
-  if(timer) clearTimeout(timer);
-  showState('stateIntro');
-}
-
-function finish(){
-  running = false;
-  document.getElementById('phaseLabel').style.opacity = '0';
-  document.getElementById('countLabel').style.opacity = '0';
-  setTimeout(()=>showState('stateDone'), 800);
-}
-
-// Retour personnalisé si vient du test
-window.addEventListener('DOMContentLoaded',()=>{
-  const from = new URLSearchParams(window.location.search).get('from');
-  if(from === 'test'){
-    document.getElementById('doneActions').innerHTML = `
- <a href="test.html" class="btn-primary">Faire le test self-care →</a>
-    <a href="boussole-accueil-foebe.html" class="btn-secondary">🧭 La Boussole</a>
-    <a href="index.html" class="btn-secondary">← Retour à l'Observatoire</a>
-  <button class="btn-secondary" onclick="showState('stateIntro')">Recommencer</button>
-`;
-
-  }
-});
+const TECH={apaisement:{label:'Apaisement profond',cycles:4,phases:[{name:'Inspire',dur:4,pos:'top',color:'#BB7E60'},{name:'Retiens',dur:6,pos:'top',color:'#C45279'},{name:'Expire',dur:8,pos:'bottom',color:'#4A7C59'}]},coherence:{label:'Cohérence cardiaque',cycles:6,phases:[{name:'Inspire',dur:5,pos:'top',color:'#BB7E60'},{name:'Expire',dur:5,pos:'bottom',color:'#4A7C59'}]},ancrage:{label:'Ancrage mental',cycles:5,phases:[{name:'Inspire',dur:4,pos:'top',color:'#BB7E60'},{name:'Retiens',dur:4,pos:'top',color:'#C45279'},{name:'Expire',dur:6,pos:'bottom',color:'#4A7C59'},{name:'Pause',dur:2,pos:'bottom',color:'#8C6A5A'}]}};
+let running=false,timer=null,currentTech=null,cycle=0,phaseIdx=0,trackH=0;const BALL_DIAM=52;
+function showState(id){document.querySelectorAll('.state').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function begin(key){currentTech=TECH[key];cycle=0;phaseIdx=0;running=true;const vh=window.innerHeight;trackH=Math.min(Math.max(vh*0.35,180),280);document.getElementById('track').style.height=trackH+'px';setBallPos('bottom',0);document.getElementById('phaseLabel').textContent='';document.getElementById('countLabel').textContent='';updateCyclesLabel();showState('stateExercise');const pl=document.getElementById('phaseLabel');const cl=document.getElementById('countLabel');pl.style.opacity='1';cl.style.opacity='0';let countdown=3;pl.textContent=countdown;pl.style.fontSize='52px';pl.style.color='var(--text-dim)';const cdTimer=setInterval(()=>{countdown--;if(countdown>0){pl.textContent=countdown;}else{clearInterval(cdTimer);pl.textContent='';pl.style.fontSize='';pl.style.color='';cl.style.opacity='0.5';setTimeout(()=>runPhase(),200);}},1000);}
+function setBallPos(pos,duration){const ball=document.getElementById('ball');const topPos=-BALL_DIAM/2;const bottomPos=trackH-BALL_DIAM/2;ball.style.transition=duration>0?`top ${duration}s linear`:'none';ball.style.top=(pos==='top'?topPos:bottomPos)+'px';}
+function setBallColor(color){const ball=document.getElementById('ball');ball.style.background=color;ball.style.boxShadow=`0 0 32px 8px ${color}44`;}
+function updateCyclesLabel(){const total=currentTech.cycles;document.getElementById('cyclesLabel').textContent=cycle<total?`Cycle ${cycle+1} sur ${total}`:'';}
+function runPhase(){if(!running)return;const tech=currentTech;if(cycle>=tech.cycles){finish();return;}const phase=tech.phases[phaseIdx];const prevPhase=phaseIdx>0?tech.phases[phaseIdx-1]:tech.phases[tech.phases.length-1];const moving=prevPhase.pos!==phase.pos;setBallColor(phase.color);const pl=document.getElementById('phaseLabel');pl.style.opacity='0';setTimeout(()=>{pl.textContent=phase.name;pl.style.opacity='1';},200);if(moving){setBallPos(phase.pos,phase.dur);}let count=phase.dur;const cl=document.getElementById('countLabel');cl.textContent=count;cl.style.opacity='0.5';const start=Date.now();function tick(){if(!running)return;const elapsed=Math.floor((Date.now()-start)/1000);const remaining=phase.dur-elapsed;if(remaining>0){cl.textContent=remaining;timer=setTimeout(tick,1000-((Date.now()-start)%1000));}else{cl.textContent='';phaseIdx++;if(phaseIdx>=tech.phases.length){phaseIdx=0;cycle++;updateCyclesLabel();}setTimeout(()=>runPhase(),300);}}timer=setTimeout(tick,1000);}
+function stop(){running=false;if(timer)clearTimeout(timer);showState('stateIntro');}
+function finish(){running=false;document.getElementById('phaseLabel').style.opacity='0';document.getElementById('countLabel').style.opacity='0';setTimeout(()=>showState('stateDone'),800);}
+window.addEventListener('DOMContentLoaded',()=>{const from=new URLSearchParams(window.location.search).get('from');if(from==='test'){document.getElementById('doneActions').innerHTML=`<a href="test.html" class="btn-primary">Faire le test self-care →</a><a href="boussole-accueil-foebe.html" class="btn-secondary">🧭 La Boussole</a><a href="index.html" class="btn-secondary">← Retour à l'Observatoire</a><button class="btn-secondary" onclick="showState('stateIntro')">Recommencer</button>`;}});
 </script>
 </body>
 </html>
