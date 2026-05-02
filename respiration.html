@@ -30,7 +30,7 @@
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://maisonfoebe.fr/#website",
-    "name": "Maison Foébé — L'Observatoire"
+    "name": "Maison Foébé — l'observatoire"
   }
 }
 </script>
@@ -132,7 +132,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:14px 24px; di
   <div class="done-actions" id="doneActions">
     <a href="test.html" class="btn-primary">Faire le test self-care →</a>
     <a href="boussole-accueil-foebe.html" class="btn-secondary">🧭 La Boussole</a>
-    <a href="index.html" class="btn-secondary">← Retour à l'Observatoire</a>
+    <a href="index.html" class="btn-secondary">← Retour à l'observatoire</a>
     <button class="btn-secondary" onclick="showState('stateIntro')">Choisir un autre exercice</button>
   </div>
 </div>
@@ -147,7 +147,7 @@ function updateCyclesLabel(){const total=currentTech.cycles;document.getElementB
 function runPhase(){if(!running)return;const tech=currentTech;if(cycle>=tech.cycles){finish();return;}const phase=tech.phases[phaseIdx];const prevPhase=phaseIdx>0?tech.phases[phaseIdx-1]:tech.phases[tech.phases.length-1];const moving=prevPhase.pos!==phase.pos;setBallColor(phase.color);const pl=document.getElementById('phaseLabel');pl.style.opacity='0';setTimeout(()=>{pl.textContent=phase.name;pl.style.opacity='1';},200);if(moving){setBallPos(phase.pos,phase.dur);}let count=phase.dur;const cl=document.getElementById('countLabel');cl.textContent=count;cl.style.opacity='0.5';const start=Date.now();function tick(){if(!running)return;const elapsed=Math.floor((Date.now()-start)/1000);const remaining=phase.dur-elapsed;if(remaining>0){cl.textContent=remaining;timer=setTimeout(tick,1000-((Date.now()-start)%1000));}else{cl.textContent='';phaseIdx++;if(phaseIdx>=tech.phases.length){phaseIdx=0;cycle++;updateCyclesLabel();}setTimeout(()=>runPhase(),300);}}timer=setTimeout(tick,1000);}
 function stop(){running=false;if(timer)clearTimeout(timer);showState('stateIntro');}
 function finish(){running=false;document.getElementById('phaseLabel').style.opacity='0';document.getElementById('countLabel').style.opacity='0';setTimeout(()=>showState('stateDone'),800);}
-window.addEventListener('DOMContentLoaded',()=>{const from=new URLSearchParams(window.location.search).get('from');if(from==='test'){document.getElementById('doneActions').innerHTML=`<a href="test.html" class="btn-primary">Faire le test self-care →</a><a href="boussole-accueil-foebe.html" class="btn-secondary">🧭 La Boussole</a><a href="index.html" class="btn-secondary">← Retour à l'Observatoire</a><button class="btn-secondary" onclick="showState('stateIntro')">Recommencer</button>`;}});
+window.addEventListener('DOMContentLoaded',()=>{const from=new URLSearchParams(window.location.search).get('from');if(from==='test'){document.getElementById('doneActions').innerHTML=`<a href="test.html" class="btn-primary">Faire le test self-care →</a><a href="boussole-accueil-foebe.html" class="btn-secondary">🧭 La Boussole</a><a href="index.html" class="btn-secondary">← Retour à l'observatoire</a><button class="btn-secondary" onclick="showState('stateIntro')">Recommencer</button>`;}});
 </script>
 </body>
 </html>
