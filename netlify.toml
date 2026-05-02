@@ -3,20 +3,24 @@
 [build]
   publish = "."
 
-# Pretty URLs : permet d'accéder à /zone-mental sans .html
 [build.processing]
   skip_processing = false
 
 [build.processing.html]
   pretty_urls = true
 
-# Headers pour la sitemap
+# Redirect .com → .fr
+[[redirects]]
+  from = "https://maisonfoebe.com/*"
+  to = "https://maisonfoebe.fr/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
 
-# Headers sécurité globaux
 [[headers]]
   for = "/*"
   [headers.values]

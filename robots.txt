@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://observatoire-foebe.netlify.app/sitemap.xml
+Sitemap: https://maisonfoebe.fr/sitemap.xml
