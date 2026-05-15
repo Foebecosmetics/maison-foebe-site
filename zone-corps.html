@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- Anti-FOUC thème — NE PAS MODIFIER -->
-<script>
-(function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
-</script>
+    <script>
+    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
+    </script>
     <meta name="robots" content="index, follow">
     <script>
         function toggleTheme() {
@@ -24,13 +24,13 @@
             slug: "Corps",
             number: "02",
             emoji: "🧘",
-            title: "Zone Corps · l'observatoire Foébé",
-            metaDesc: "Zone Corps · Observatoire Foébé : comprendre la déconnexion corporelle, les tensions stockées et le sommeil non réparateur, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de reconnexion.",
+            title: "Zone Corps · Maison Foébé",
+            metaDesc: "Zone Corps · Maison Foébé : comprendre la déconnexion corporelle, les tensions stockées et le sommeil non réparateur, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de reconnexion.",
             canonicalUrl: "https://maisonfoebe.fr/zone-corps",
-            ogTitle: "Zone Corps · l'observatoire Foébé",
+            ogTitle: "Zone Corps · Maison Foébé",
             ogDesc: "Zone Corps : comprendre la déconnexion corporelle, faire le mini-test, voir les effets en cascade et choisir un geste de reconnexion. Self-care structuré Foébé",
             keywords: "self-care, zone corps, tensions chroniques, sommeil, déconnexion corporelle, burnout fonctionnel",
-            jsonLdHeadline: "Zone Corps — Self-care et déconnexion corporelle · Observatoire Foébé",
+            jsonLdHeadline: "Zone Corps — Self-care et déconnexion corporelle · Maison Foébé",
             jsonLdDesc: "Comprendre les mécanismes de la zone Corps : tensions stockées, sommeil non réparateur, coupure progressive des sensations. Mini-test en 5 questions et gestes de reconnexion.",
             palette: {
                 z: "#7A4A28",
@@ -353,24 +353,39 @@
             }
         };
     </script>
-    <title id="pageTitle">Zone Corps · l'observatoire Foébé</title>
+    <title id="pageTitle">Zone Corps · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-    <meta name="description" id="metaDesc" content="">
-    <link rel="canonical" id="canonical" href="">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDesc" content="">
+    <meta name="description" id="metaDesc" content="Zone Corps · Comprendre les tensions, le sommeil non réparateur et la déconnexion corporelle dans le self-care Foébé.">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-corps">
+    <meta property="og:title" id="ogTitle" content="Zone Corps · Maison Foébé">
+    <meta property="og:description" id="ogDesc" content="Comprendre la déconnexion corporelle, faire le mini-test et choisir un premier geste de reconnexion.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-corps">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-corps.png">
     <meta property="og:site_name" content="Maison Foébé">
 <meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zone Corps · Maison Foébé">
+    <meta name="twitter:description" content="Comprendre la déconnexion corporelle, les tensions stockées et le sommeil non réparateur.">
+    <meta name="twitter:image" content="https://maisonfoebe.fr/images/zones/og-zone-corps.png">
     <script id="jsonLd" type="application/ld+json">
-        {}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Corps · Maison Foébé",
+      "description": "Comprendre les mécanismes de la zone Corps : tensions stockées, sommeil non réparateur, coupure progressive des sensations.",
+      "url": "https://maisonfoebe.fr/zone-corps",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://maisonfoebe.fr/#website",
+        "name": "Maison Foébé"
+      }
+    }
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -475,7 +490,7 @@
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 180;
+            z-index: 99970;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -611,7 +626,7 @@
         #stateOverlay {
             position: fixed;
             inset: 0;
-            z-index: 300;
+            z-index: 210;
             background: rgba(0, 0, 0, 0);
             backdrop-filter: blur(0px);
             opacity: 0;
@@ -891,7 +906,7 @@
 
 /* Quand l'overlay de l'état est visible, la card passe devant lui */
 body.state-active .ici-card {
-    z-index: 315;              /* > overlay(310) mais < nav(330) */
+    z-index: 220;              /* au-dessus de l’overlay d’état, sous les contrôles fixes */
 }
 
         .ici-card-header {
@@ -922,7 +937,7 @@ body.state-active .ici-card {
 .ici-card {
     overflow: visible !important;  /* ← LIGNE 1 : libère clipping */
     isolation: isolate;           /* ← LIGNE 2 : stacking context propre */
-    z-index: 305;                 /* ← LIGNE 3 : au-dessus overlay */
+    z-index: 2;                   /* stacking local seulement ; ne passe plus au-dessus des contrôles fixes */
 }
         /* ── Boutons flèches ─── CORRECTION 1 ─────────────────────────
    display:none par défaut sur tous devices.
@@ -1686,6 +1701,7 @@ body.state-active .ici-card {
         }
 
         .vr-title {
+            font-family: "Poppins", sans-serif;
             font-size: 15px;
             font-weight: 600;
             color: #F0EAE7;
@@ -3885,6 +3901,231 @@ body.state-active .ici-card {
         }
 
         
+
+
+        /* ═══════════════════════════════════════════════════════════════
+           AUDIT PREMIUM FOÉBÉ — corrections ciblées Zone Corps
+           - lisibilité mobile
+           - eyebrows en pill
+           - états plus éditoriaux
+           - panneau état premium sans couleur de puce dans le titre
+        ═══════════════════════════════════════════════════════════════ */
+
+        .eyebrow,
+        .chapter-eyebrow,
+        .gestes-eyebrow,
+        .section-eyebrow,
+        .hero-eyebrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            width: max-content !important;
+            max-width: 100% !important;
+            padding: 7px 13px !important;
+            border-radius: 999px !important;
+            background: rgba(187, 126, 96, .14) !important;
+            border: 1px solid rgba(187, 126, 96, .34) !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.4px !important;
+            line-height: 1.25 !important;
+            color: var(--warm) !important;
+            text-transform: uppercase !important;
+        }
+
+        [data-theme="night"] .eyebrow,
+        [data-theme="night"] .chapter-eyebrow,
+        [data-theme="night"] .gestes-eyebrow,
+        [data-theme="night"] .section-eyebrow,
+        [data-theme="night"] .hero-eyebrow {
+            color: #F0EAE7 !important;
+            background: rgba(187, 126, 96, .22) !important;
+            border-color: rgba(187, 126, 96, .46) !important;
+        }
+
+        .zone-intro-text,
+        .pitch-val,
+        .ici-states-guide,
+        .state-def-text,
+        .facteur-desc,
+        .vr-note,
+        .obs-question,
+        .obs-sub,
+        .impact-desc,
+        .traj-step-desc,
+        .traj-mirror,
+        .geste-text,
+        .geste-why,
+        .geste-sensoriel,
+        .gestes-intention-text,
+        .accomp-body,
+        .email-note {
+            font-size: clamp(15.5px, 1.18vw, 17px) !important;
+            line-height: 1.78 !important;
+        }
+
+        .ici-state-tag {
+            min-height: 44px !important;
+            height: auto !important;
+            font-size: 13px !important;
+            border-color: rgba(187, 126, 96, .36) !important;
+            box-shadow: none !important;
+        }
+
+        .ici-state-tag.sol,
+        [data-theme="day"] .ici-state-tag.sol {
+            background: #7A4A28 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(222, 176, 138, .40) !important;
+        }
+
+        .ici-state-tag.nour,
+        [data-theme="day"] .ici-state-tag.nour {
+            background: #BB7E60 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .28) !important;
+        }
+
+        .ici-state-tag.frag,
+        [data-theme="day"] .ici-state-tag.frag {
+            background: #8E5B43 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .24) !important;
+        }
+
+        .ici-state-tag.prior,
+        [data-theme="day"] .ici-state-tag.prior {
+            background: #5C2D22 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .22) !important;
+        }
+
+        .ici-state-tag.active-state {
+            box-shadow: 0 0 0 3px rgba(187, 126, 96, .24), 0 10px 24px rgba(0, 0, 0, .12) !important;
+        }
+
+        .state-def-box {
+            background: linear-gradient(135deg, #BB7E60 0%, #9A5C35 100%) !important;
+            border-color: rgba(240, 234, 231, .24) !important;
+        }
+
+        .state-def-box.visible {
+            border-color: rgba(240, 234, 231, .34) !important;
+            box-shadow: 0 0 0 3px rgba(187, 126, 96, .14), 0 14px 34px rgba(0, 0, 0, .18) !important;
+        }
+
+        .state-def-title,
+        #stateDefTitle {
+            color: #F0EAE7 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.4px !important;
+            text-transform: uppercase !important;
+        }
+
+
+        .vr-title,
+        #vrTitle {
+            font-family: "Poppins", sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            letter-spacing: .2px !important;
+        }
+
+        .state-def-text,
+        #stateDefText {
+            color: rgba(240, 234, 231, .92) !important;
+            font-family: "Lora", serif !important;
+        }
+
+        @media(max-width:640px) {
+            .zone-hero {
+                padding-top: 96px !important;
+            }
+
+            .page {
+                padding-left: 18px !important;
+                padding-right: 18px !important;
+            }
+
+            .aller-a-link,
+            .ici-state-tag,
+            .obs-btn,
+            .geste-btn,
+            .btn,
+            button,
+            input[type="submit"] {
+                min-height: 44px;
+            }
+        }
+
+
+        /* ═══════════════════════════════════════════════════════════
+           CORRECTION V3 — hiérarchie overlay / carte / flèche / menu
+           Objectif : le panneau d'état reste visible au-dessus du flou,
+           sans passer au-dessus du menu Foébé Shell.
+        ═══════════════════════════════════════════════════════════ */
+        #stateOverlay {
+            z-index: 99940 !important;
+        }
+
+        body.state-active .ici-card {
+            position: relative !important;
+            z-index: 99950 !important;
+            overflow: visible !important;
+            isolation: auto !important;
+        }
+
+        #backToTop {
+            z-index: 99960 !important;
+        }
+
+        #mainNav,
+        #navMenu,
+        #navOverlay {
+            z-index: auto;
+        }
+
+        /* Le shell injecté ensuite garde la priorité : nav 99990, menu 99989, overlay 99988. */
+
+        /* Trajectoire — lisibilité renforcée pour une cible fatiguée */
+        .traj-note {
+            font-size: clamp(16px, 1.25vw, 18px) !important;
+            line-height: 1.82 !important;
+        }
+
+        .traj-step-title {
+            font-size: clamp(18px, 1.45vw, 20px) !important;
+            line-height: 1.34 !important;
+        }
+
+        .traj-step-desc,
+        .traj-mirror {
+            font-size: clamp(16px, 1.25vw, 18px) !important;
+            line-height: 1.84 !important;
+        }
+
+        @media (max-width: 640px) {
+            .traj-item {
+                gap: 16px !important;
+                padding-bottom: 30px !important;
+            }
+
+            .traj-dot {
+                width: 38px !important;
+                height: 38px !important;
+                font-size: 17px !important;
+            }
+
+            .traj-step-desc,
+            .traj-mirror,
+            .traj-note {
+                font-size: 16px !important;
+                line-height: 1.84 !important;
+            }
+        }
+
     </style>
 </head>
 
@@ -4175,7 +4416,7 @@ body.state-active .ici-card {
         <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
       </div>
     </a>
-    <p class="footer-sub">l'observatoire · Self-Care Structuré · Maison Foébé 2026</p>
+    <p class="footer-sub">Maison Foébé · Self-care structuré · 2026</p>
     <div class="footer-social">
       <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -4233,7 +4474,7 @@ body.state-active .ici-card {
 
         function initHero() {
             var z = ZONE_CONFIG;
-            document.getElementById("heroNum").textContent = "Zone " + z.number + " · l'observatoire Foébé";
+            document.getElementById("heroNum").textContent = "Zone " + z.number + " · Maison Foébé";
             document.getElementById("heroEmoji").textContent = z.emoji;
             document.getElementById("heroTitle").textContent = z.slug;
         }
@@ -4525,20 +4766,16 @@ body.state-active .ici-card {
                 lastStateTag = id;
             }
 
-            var colors = {
-                sol: getComputedStyle(document.documentElement).getPropertyValue("--z-lite").trim(),
-                nour: "#BB7E60",
-                frag: "#C34234",
-                prior: "#C45279"
-            };
             var titleEl = document.getElementById("stateDefTitle");
             titleEl.textContent = def.title;
-            titleEl.style.color = colors[id] || "#F0EAE7";
+            titleEl.style.color = "#F0EAE7";
             document.getElementById("stateDefText").textContent = def.text;
             box.dataset.state = id;
 
             /* Simple toggle .visible — pas de remove/add en cascade */
             box.classList.add("visible");
+
+            document.body.classList.add("state-active");
 
             var so = document.getElementById("stateOverlay");
             if (so) {
@@ -4554,6 +4791,7 @@ body.state-active .ici-card {
                 t.classList.remove("active-state");
             });
             lastStateTag = null;
+            document.body.classList.remove("state-active");
             var so = document.getElementById("stateOverlay");
             if (so) {
                 so.classList.remove("visible");
