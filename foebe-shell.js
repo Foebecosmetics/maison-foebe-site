@@ -1,4 +1,3 @@
-```javascript
 /**
  * foebe-shell.js — Maison Foébé
  * Version premium responsive — nav/footer unifiés sur toutes les pages
