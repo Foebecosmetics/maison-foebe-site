@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Anti-FOUC thème — NE PAS MODIFIER -->
+<script>
+(function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
+</script>
     <meta name="robots" content="index, follow">
     <script>
         function toggleTheme() {
@@ -5028,6 +5032,7 @@ body.state-active .ici-card {
             });
         })();
     </script>
+    <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
