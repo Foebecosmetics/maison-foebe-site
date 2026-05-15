@@ -1,6 +1,3 @@
-Voici **bloc 1**.
-Tu le colles au tout début de ton fichier `foebe-shell.js`.
-
 ```javascript
 /**
  * foebe-shell.js — Maison Foébé
