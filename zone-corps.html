@@ -262,40 +262,6 @@
                 desc: "La connexion au sens passe souvent par le corps : sensation d'être bien à sa place, d'être présent·e. Quand le corps est absent, ce fil se distend."
             }
         ];
-        var TRAJ_INTRO = "Ce schéma est documenté. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
-        var TRAJ_DATA = [{
-                emoji: "🧘",
-                label: "Là où ça commence",
-                title: "Les signaux ignorés qui s'accumulent",
-                badge: null,
-                desc: "Une tension dans les épaules. Un ventre qui se serre. Une fatigue que tu repousses. Tu continues. Jusqu'au moment où les signaux ne peuvent plus être ignorés parce qu'ils sont devenus trop forts.",
-                mirror: "Si tu as remarqué une tension dans le corps en lisant ces lignes, c'est peut-être exactement ce signal. Pas besoin de le forcer à disparaître. Juste de le reconnaître."
-            },
-            {
-                emoji: "🔄",
-                label: "Le déclencheur",
-                title: "Le signal qui s'impose",
-                badge: "Très fréquent",
-                desc: "Une douleur qui s'installe. Un sommeil qui déraille vraiment. Le corps qui force la pause que tu n'avais pas prise.",
-                mirror: null
-            },
-            {
-                emoji: "👁",
-                label: "Le premier geste",
-                title: "Créer un moment de présence corporelle",
-                badge: null,
-                desc: "Pas forcément du sport. Juste un moment où tu remarques ton corps : ta respiration, tes appuis, tes sensations. Sans chercher à les corriger, juste à les sentir.",
-                mirror: null
-            },
-            {
-                emoji: "🧘",
-                label: "Vers où ça peut aller",
-                title: "Habiter son corps plutôt que le porter",
-                badge: null,
-                desc: "Pas la performance physique. Juste la capacité à entendre ce que le corps dit assez tôt pour y répondre, avant qu'il soit obligé de crier.",
-                mirror: null
-            }
-        ];
         var GESTES_META = {
             name: "Pour reconnecter avec le corps",
             sub: "Trois gestes simples pour commencer à entendre ce qui s'y passe",
@@ -341,13 +307,8 @@
                 eyebrow: "Comment ça se propage",
                 title: "Effets en cascade"
             },
-            traj: {
-                num: "04",
-                eyebrow: "Une trajectoire possible",
-                title: "Schéma d'épuisement"
-            },
             gestes: {
-                num: "05",
+                num: "04",
                 eyebrow: "Des gestes pour commencer",
                 title: "Rituels Foébé"
             }
@@ -854,7 +815,7 @@
             border: 1.5px solid var(--border);
             border-radius: 10px;
             font-family: "Lora", serif;
-            font-size: 14.5px;
+            font-size: 15px;
             font-style: normal;
             color: var(--sub);
             line-height: 1.75;
@@ -1940,7 +1901,7 @@ body.state-active .ici-card {
 
 .obs-card-sub{
   grid-area:sub;
-  font-size:clamp(13px, 0.55vw + 11px, 15px);
+  font-size:clamp(15px, 0.45vw + 13px, 16px);
   color:var(--obs-card-sub);
   line-height:1.6;
   margin:0;
@@ -3145,7 +3106,7 @@ body.state-active .ici-card {
 
         .accomp-pitch strong {
             font-style: normal;
-            color: #4E291F;
+            color: #F0EAE7;
             font-weight: 600;
         }
 
@@ -3402,7 +3363,7 @@ body.state-active .ici-card {
             align-items: center;
             justify-content: center;
             gap: 5px;
-            min-height: 42px;
+            min-height: 44px;
             padding: 0 16px;
             border-radius: 999px;
             font-family: "Poppins", sans-serif;
@@ -3639,7 +3600,6 @@ body.state-active .ici-card {
   width: 100%;
   max-width: none;
 }
-        }
 
         @media(min-width:1024px) {
             .page {
@@ -3706,12 +3666,11 @@ body.state-active .ici-card {
 
 
         .obs-card-sub{
-  font-size: clamp(13px, 0.45vw + 11px, 15px);
+  font-size: clamp(15px, 0.45vw + 13px, 16px);
   line-height: 1.6;
   width: 100%;
   max-width: none;
 }
-        }
 
         @media(min-width:768px) {
             .obs-card-q {
@@ -3719,7 +3678,7 @@ body.state-active .ici-card {
             }
 
             .obs-card-sub {
-                font-size: 14px;
+                font-size: 14.5px;
             }
 
             .geste-text {
@@ -3736,7 +3695,6 @@ body.state-active .ici-card {
         }
 
         @media(prefers-reduced-motion:reduce) {
-
             *,
             *::before,
             *::after {
@@ -3761,7 +3719,9 @@ body.state-active .ici-card {
                 opacity: 1 !important;
                 transform: none !important;
             }
-        @media (min-width: 900px){
+        }
+
+@media (min-width: 900px){
   .obs-stack{
     height:230px;
     max-width:860px;
@@ -3787,6 +3747,8 @@ body.state-active .ici-card {
     display:flex;
     align-items:flex-start;
   }
+}
+
 @media (min-width: 1100px){
   .obs-card{
     grid-template-columns:minmax(0, 1.6fr) minmax(260px, 0.85fr);
@@ -3817,41 +3779,36 @@ body.state-active .ici-card {
             outline: none;
         }
 
-        /* ── Mode nuit — blocs de fin : fond sombre, texte et bordures crème ── */
+        /* ── Blocs de fin : lisibles en mode jour et nuit ── */
         [data-theme="day"] .gestes-intention-wrap {
-    padding: 22px 24px;
-    background: #F0EAE7;
-    border: 1.5px solid #4E291F;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-}
+            padding: 22px 24px;
+            background: #F0EAE7;
+            border: 1.5px solid #4E291F;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            color: #4E291F;
+        }
 
-[data-theme="day"] .gestes-intention-text {
-    color: #4E291F;
-}
-
-[data-theme="night"] .gestes-intention-wrap {
-    padding: 22px 24px;
-    background: #4E291F;
-    border: 1.5px solid #F0EAE7;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-}
-
-        [data-theme="night"] .gestes-intention-wrap {
-            background: rgba(240, 234, 231, 0.06);
-            border-color: rgba(240, 234, 231, 0.25);
-            border-color: rgba(255, 255, 255, 1)
+        [data-theme="day"] .gestes-intention-text {
+            color: #4E291F;
         }
 
         [data-theme="night"] .gestes-intention-wrap {
-            background: rgba(78, 41, 31, 1);
-            color: rgba(78, 41, 31, 1);
+            padding: 22px 24px;
+            background: #4E291F;
+            border: 1.5px solid #F0EAE7;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            color: #F0EAE7;
+        }
+
+        [data-theme="night"] .gestes-intention-text {
+            color: #F0EAE7;
         }
 
         [data-theme="night"] .signature-foebe {
             background: rgba(78, 41, 31, 1);
-            border-color: rgba (240, 234, 231, 1);
+            border-color: rgba(240, 234, 231, 1);
         }
 
         [data-theme="night"] .accomp-pitch {
@@ -4062,68 +4019,40 @@ body.state-active .ici-card {
 
 
         /* ═══════════════════════════════════════════════════════════
-           CORRECTION V3 — hiérarchie overlay / carte / flèche / menu
-           Objectif : le panneau d'état reste visible au-dessus du flou,
-           sans passer au-dessus du menu Foébé Shell.
+           CORRECTION V5 — hiérarchie stable des couches
+           Menu Foébé Shell > bouton retour haut > bloc “Pour mieux te situer” > overlay état > page.
         ═══════════════════════════════════════════════════════════ */
         #stateOverlay {
-            z-index: 99940 !important;
+            z-index: 700 !important;
         }
 
         body.state-active .ici-card {
             position: relative !important;
-            z-index: 99950 !important;
+            z-index: 800 !important;
             overflow: visible !important;
             isolation: auto !important;
         }
 
         #backToTop {
-            z-index: 99960 !important;
+            z-index: 900 !important;
         }
 
-        #mainNav,
-        #navMenu,
+        #mainNav {
+            z-index: 100000 !important;
+        }
+
+        #navMenu {
+            z-index: 99999 !important;
+        }
+
         #navOverlay {
-            z-index: auto;
+            z-index: 99998 !important;
         }
+        /* Trajectoire retirée du parcours Zone Corps : section supprimée. */
 
-        /* Le shell injecté ensuite garde la priorité : nav 99990, menu 99989, overlay 99988. */
-
-        /* Trajectoire — lisibilité renforcée pour une cible fatiguée */
-        .traj-note {
-            font-size: clamp(16px, 1.25vw, 18px) !important;
-            line-height: 1.82 !important;
-        }
-
-        .traj-step-title {
-            font-size: clamp(18px, 1.45vw, 20px) !important;
-            line-height: 1.34 !important;
-        }
-
-        .traj-step-desc,
-        .traj-mirror {
-            font-size: clamp(16px, 1.25vw, 18px) !important;
-            line-height: 1.84 !important;
-        }
-
-        @media (max-width: 640px) {
-            .traj-item {
-                gap: 16px !important;
-                padding-bottom: 30px !important;
-            }
-
-            .traj-dot {
-                width: 38px !important;
-                height: 38px !important;
-                font-size: 17px !important;
-            }
-
-            .traj-step-desc,
-            .traj-mirror,
-            .traj-note {
-                font-size: 16px !important;
-                line-height: 1.84 !important;
-            }
+        /* Sécurité : la section trajectoire n'est plus utilisée sur cette page. */
+        #trajectoireSection {
+            display: none !important;
         }
 
     </style>
@@ -4140,12 +4069,12 @@ body.state-active .ici-card {
 
    <div id="navMenu" role="menu">
     <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
+    <a href="foebe-zones-cadre.html" aria-current="page">🧘 Les zones du self-care</a>
     <a href="test.html">✨ Faire le test</a>
     <a href="respiration.html">🌊 Respiration</a>
     <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
     <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire skin·self-care</a>
+    <a href="dictionnaire.html">📚 Dictionnaire skin·self-care</a>
     <hr>
     <button id="themeBtn" type="button">☀️ Mode jour</button>
   </div>
@@ -4296,17 +4225,7 @@ body.state-active .ici-card {
                 <div class="impacts-timeline" id="impactsTimeline"></div>
             </div>
 
-            <div class="traj-section" id="trajectoireSection" style="display:none;" aria-hidden="true">
-                <div class="section-chapter">
-                    <span class="chapter-num" id="trajNum"></span>
-                    <div>
-                        <span class="chapter-eyebrow" id="trajEyebrow"></span>
-                        <h2 class="chapter-title" id="trajTitle"></h2>
-                    </div>
-                </div>
-                <p class="traj-note" id="trajNote"></p>
-                <div class="traj-timeline" id="trajTimeline"></div>
-            </div>
+            <div class="section-break"></div>
 
             <div class="gestes-section" id="gestesSection">
                 <div class="section-chapter">
@@ -4368,16 +4287,16 @@ body.state-active .ici-card {
                     <span class="accomp-badge">🧠 Bientôt disponible</span>
                     <h2 class="accomp-title">Aller plus loin avec <em>Foébé</em></h2>
                     <div class="accomp-pitch">
-                        <p> Foébé a été créé par une docteure en psychologie et ergonomie spécialisée santé au travail. Pour offrir un cadre structuré de compréhension et d'action du self-care, qui se veut précis, concret et actionnable </p>
+                        <p> Foébé a été créé par une docteure en psychologie et ergonomie spécialisée santé au travail. Pour offrir un cadre structuré de compréhension et d'action du self-care, qui se veut précis, concret et actionnable.</p>
                      </div>
                     <ul class="accomp-list">
-                        <li><strong>L'Atelier</strong>Quatre semaines pour apprendre à te voir vraiment. À ton rythme, chez toi.</li>
+                        <li><strong>L'Atelier</strong> Quatre semaines pour apprendre à te voir vraiment. À ton rythme, chez toi.</li>
                         <li><strong>Le Salon</strong> Des séances individuelles, avec des missions précises et un plan d'action co-construit avec toi.</li>
-                        <li><strong>Le Diagnostic professionnel</strong>Pour celles et ceux dont la fatigue vient aussi du travail, et qui ont besoin d'une lecture plus complète de leur situation.</li>
+                        <li><strong>Le Diagnostic professionnel</strong> Pour celles et ceux dont la fatigue vient aussi du travail, et qui ont besoin d'une lecture plus complète de leur situation.</li>
                     </ul>
                     <p class="accomp-note-finale">
   <strong>Foébé</strong> est un espace structuré du self-care.  
-  Pour celles et ceux qui réfléchissent beaucoup <strong>(#overthinker)</strong>, agissent souvent sans filet, souvent en surcharge mentale et veulent se comprendre en profondeur.
+  Pour celles et ceux qui réfléchissent beaucoup, agissent souvent sans filet, vivent en surcharge mentale et veulent se comprendre en profondeur.
 </p>
                 </div>
                 <div class="accomp-email">
@@ -4467,7 +4386,13 @@ body.state-active .ici-card {
                 "@type": "WebPage",
                 "name": z.title,
                 "description": z.metaDesc,
-                "url": z.canonicalUrl
+                "url": z.canonicalUrl,
+                "inLanguage": "fr",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://maisonfoebe.fr/#website",
+                    "name": "Maison Foébé"
+                }
             });
             document.getElementById("formZoneField").value = z.slug;
         }
@@ -4632,24 +4557,6 @@ body.state-active .ici-card {
             });
         }
 
-        function initTraj() {
-            var sm = SECTIONS_META.traj;
-            setText("trajNum", sm.num);
-            setText("trajEyebrow", sm.eyebrow);
-            setText("trajTitle", sm.title);
-            setText("trajNote", TRAJ_INTRO);
-            var tl = document.getElementById("trajTimeline");
-            TRAJ_DATA.forEach(function(item, i) {
-                var badge = item.badge ? '<span class="traj-badge">' + item.badge + '</span>' : '';
-                var mirrorHtml = item.mirror ? '<p class="traj-mirror">' + item.mirror + '</p>' : '';
-                tl.innerHTML += '<div class="traj-item" data-traj="' + i + '">' +
-                    '<div class="traj-left"><div class="traj-dot">' + item.emoji + '</div></div>' +
-                    '<div class="traj-right"><span class="traj-step-label">' + item.label + '</span>' +
-                    '<p class="traj-step-title">' + item.title + badge + '</p>' +
-                    '<p class="traj-step-desc">' + item.desc + '</p>' + mirrorHtml + '</div></div>';
-            });
-        }
-
         function initGestes() {
             var sm = SECTIONS_META.gestes;
             setText("gestesNum", sm.num);
@@ -4702,7 +4609,6 @@ body.state-active .ici-card {
         initComprendre();
         initObs();
         initImpacts();
-        initTraj();
         initGestes();
         initZonesNav();
 
@@ -5071,32 +4977,6 @@ body.state-active .ici-card {
             });
         })();
         (function() {
-            var items = document.querySelectorAll(".traj-item");
-            if (!items.length) return;
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    var idx = parseInt(e.target.getAttribute("data-traj") || "0");
-                    if (e.isIntersecting) {
-                        items.forEach(function(it) {
-                            if (parseInt(it.getAttribute("data-traj") || "0") <= idx) it.classList.add("lit");
-                        });
-                    } else {
-                        var rect = e.boundingClientRect;
-                        if (rect.top > 0) {
-                            items.forEach(function(it) {
-                                if (parseInt(it.getAttribute("data-traj") || "0") >= idx) it.classList.remove("lit");
-                            });
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.35
-            });
-            items.forEach(function(el) {
-                obs.observe(el);
-            });
-        })();
-        (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
             var obs = new IntersectionObserver(function(entries) {
@@ -5193,55 +5073,7 @@ body.state-active .ici-card {
                 if (errEl) errEl.textContent = '';
             });
         })();
-        (function() {
-            var toggle = document.getElementById("menuToggle"),
-                menu = document.getElementById("navMenu"),
-                overlay = document.getElementById("navOverlay"),
-                menuOpen = false,
-                closeTimer = null;
-
-            function openMenu() {
-                if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                }
-                menu.style.display = "block";
-                menu.classList.remove("closing");
-                menu.classList.add("opening");
-                overlay.classList.remove("hiding");
-                overlay.classList.add("visible");
-                menuOpen = true;
-                toggle.textContent = "✕";
-                toggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.remove("opening");
-                menu.classList.add("closing");
-                overlay.classList.remove("visible");
-                overlay.classList.add("hiding");
-                toggle.textContent = "☰";
-                toggle.setAttribute("aria-expanded", "false");
-                closeTimer = setTimeout(function() {
-                    menu.style.display = "none";
-                    menu.classList.remove("closing");
-                    overlay.classList.remove("hiding");
-                    closeTimer = null;
-                }, 210);
-            }
-            toggle.addEventListener("click", function(e) {
-                e.stopPropagation();
-                menuOpen ? closeMenu() : openMenu();
-            });
-            overlay.addEventListener("click", function() {
-                closeMenu();
-            });
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && menuOpen) closeMenu();
-            });
-        })();
+        /* Nav/menu local désactivé : Foébé Shell gère maintenant #mainNav, #navMenu, #navOverlay et #menuToggle. */
         (function() {
             var iciCard = document.querySelector('.ici-card');
             if (iciCard) iciCard.addEventListener('click', function(e) {
