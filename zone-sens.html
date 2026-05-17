@@ -4,29 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="robots" content="index, follow">
+    <!-- Anti-FOUC thème — NE PAS MODIFIER -->
     <script>
-        function toggleTheme() {
-            var h = document.documentElement;
-            var n = h.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-            h.setAttribute('data-theme', n);
-            var b = document.getElementById('themeBtn');
-            if (b) b.textContent = n === 'day' ? '\uD83C\uDF19 Mode nuit' : '\u2600\uFE0F Mode jour';
-        }
+    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
     </script>
+    <meta name="robots" content="index, follow">
     <script id="zoneConfig">
         var ZONE_CONFIG = {
             name: "Sens",
             slug: "Sens",
             number: "07",
             emoji: "✨",
-            title: "Zone Sens · l'observatoire Foébé",
-            metaDesc: "Zone Sens · Observatoire Foébé : comprendre la perte de sens, le décalage entre valeurs et actions, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets pour retrouver un fil directeur.",
+            title: "Zone Sens · Maison Foébé",
+            metaDesc: "Zone Sens · Maison Foébé : comprendre la perte de sens, le décalage entre valeurs et actions, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets pour retrouver un fil directeur.",
             canonicalUrl: "https://maisonfoebe.fr/zone-sens",
-            ogTitle: "Zone Sens · l'observatoire Foébé",
+            ogTitle: "Zone Sens · Maison Foébé",
             ogDesc: "Zone Sens : comprendre la perte de direction, faire le mini-test, voir les effets en cascade et choisir un geste de reconnexion au sens. Self-care structuré Foébé",
             keywords: "self-care, zone sens, perte de sens, fatigue existentielle, burnout fonctionnel, valeurs",
-            jsonLdHeadline: "Zone Sens — Self-care et perte de direction · Observatoire Foébé",
+            jsonLdHeadline: "Zone Sens — Self-care et perte de direction · Maison Foébé",
             jsonLdDesc: "Comprendre les mécanismes de la zone Sens : urgence qui écrase l'essentiel, décalage valeurs-actions, absence de cap. Mini-test en 5 questions et gestes de reconnexion.",
             palette: {
                 z: "#3A2260",
@@ -87,7 +82,7 @@
             }
         ];
         var ZONE_INTRO = {
-            text: "La zone <strong>Sens</strong> dans ton self-care concerne ce qui te donne l'impression que ça vaut en la peine.Lorsque cette zone se déséquilibre, cela ne se manifeste pas toujours de manière spectaculaire. Il s'agit généralement d'une perte de repères graduelle, d'un sentiment de faire les choses sans véritablement être présent·e, ou encore d'une fatigue existentielle. Il ne s'agit ni de philosophie, ni de grandes ambitions. Il s'agit de se connecter à ce qui a véritablement de l'importance pour toi.",
+            text: "La zone <strong>Sens</strong> dans ton self-care concerne ce qui te donne l'impression que ça en vaut la peine. Lorsque cette zone se déséquilibre, cela ne se manifeste pas toujours de manière spectaculaire. Il s'agit généralement d'une perte de repères graduelle, d'un sentiment de faire les choses sans véritablement être présent·e, ou encore d'une fatigue existentielle. Il ne s'agit ni de philosophie, ni de grandes ambitions. Il s'agit de se connecter à ce qui a véritablement de l'importance pour toi.",
             warning: null
         };
         var PITCH_DATA = [{
@@ -151,7 +146,7 @@
             vrTitle: "Résultat : une vie pleine qui semble vide",
             vrNote: "Le paradoxe de la perte de sens, c'est qu'elle arrive souvent quand on est le plus occupé. Une vie remplie d'activités, mais vide de ce qui compte vraiment."
         };
- var OBS_QUESTIONS = [{
+        var OBS_QUESTIONS = [{
     q: "Tu as du mal à répondre à la question : qu'est-ce qui compte vraiment pour moi ? Pas parce que tu n'as rien, mais parce que cela te semble flou ou lointain.",
     sub: "La difficulté à identifier ce qui compte est souvent le premier signal d'une déconnexion au sens."
 },
@@ -170,7 +165,7 @@
 {
     q: "Tu as des envies ou des projets qui te tiennent à cœur, mais qui restent toujours dans la liste 'pour plus tard'. Et le plus tard ne vient pas.",
     sub: "Ce report systématique de ce qui compte est l'un des signaux les plus clairs d'une zone Sens en déficit."
-}]
+}];
         var OBS_DATA = [{
                 cls: "s0",
                 title: "Aucun signal identifié",
@@ -203,7 +198,7 @@
             {
                 cls: "s5",
                 title: "5 signaux sur 5 · priorité immédiate",
-                text: "Tous les signaux sont là. Commence par les gestes de reconnexion maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel sur cette dimension d eton self-care."
+                text: "Tous les signaux sont là. Commence par les gestes de reconnexion maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel sur cette dimension de ton self-care."
             }
         ];
         var IMPACTS_INTRO = "Une déconnexion au sens ne reste pas cantonnée au domaine existentiel. Concrètement, elle finit par peser sur le reste de ton self-care de façon de plus en plus visible.";
@@ -221,7 +216,7 @@
                 tag: "secondary",
                 tagLabel: "Impact direct",
                 url: "zone-emotions.html",
-                desc: "Le sens est un régulateur émotionnel puissant. Quand il manque, même les bonnes choses perdent leur couleur. La platitude  émotionnelle accompagne souvent la perte de sens."
+                desc: "Le sens est un régulateur émotionnel puissant. Quand il manque, même les bonnes choses perdent leur couleur. La platitude émotionnelle accompagne souvent la perte de sens."
             },
             {
                 emoji: "⚡",
@@ -229,7 +224,7 @@
                 tag: "secondary",
                 tagLabel: "Impact direct",
                 url: "zone-energie.html",
-                desc: "Faire des choses qui ont du sens ressource. Faire des choses qui n'en ont pas épuise. Le manque de sens crée une fuite d'énergie chronique, même sans effort physique supplémentaire. "
+                desc: "Faire des choses qui ont du sens ressource. Faire des choses qui n'en ont pas épuise. Le manque de sens crée une fuite d'énergie chronique, même sans effort physique supplémentaire."
             },
             {
                 emoji: "🧠",
@@ -256,40 +251,6 @@
                 desc: "La perte de sens a une traduction physique. Un corps sans direction perd de sa vitalité. Les études sur le sens et la santé montrent des liens clairs avec la longévité, l'immunité et la récupération."
             }
         ];
-        var TRAJ_INTRO = "Ce schéma est documenté. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
-        var TRAJ_DATA = [{
-                emoji: "✨",
-                label: "Là où ça commence",
-                title: "Ce qu'on remet à plus tard jusqu'à l'oublier",
-                badge: null,
-                desc: "Le projet qu'on n'a pas commencé. La valeur qu'on a mise de côté pour faire ce qui était raisonnable. L'envie qu'on a tellement reportée qu'elle semble ne plus nous appartenir. Ça s'accumule. Et un jour, on réalise qu'on ne sait plus trop ce qu'on voulait.",
-                mirror: "Si quelque chose que tu aimais faire te revient en tête en lisant ces lignes, c'est peut-être un premier fil à retrouver."
-            },
-            {
-                emoji: "🔄",
-                label: "Le déclencheur",
-                title: "La question qui s'impose",
-                badge: "Très fréquent",
-                desc: "Pourquoi je fais ça. Pour qui. Est-ce que c'est vraiment ce que je veux. Ces questions ne signalent pas une crise. Elles signalent que quelque chose demande à être réajusté.",
-                mirror: null
-            },
-            {
-                emoji: "👁",
-                label: "Le premier geste",
-                title: "Retrouver un fil, pas réinventer une vie",
-                badge: null,
-                desc: "Pas tout changer. Juste identifier une petite chose qui résonne. Quelque chose qu'on aime, qui correspond à ce qu'on est, qu'on peut faire maintenant, même en petit.",
-                mirror: null
-            },
-            {
-                emoji: "✨",
-                label: "Vers où ça peut aller",
-                title: "Aligner ce qu'on fait avec ce qui compte",
-                badge: null,
-                desc: "Pas la vie parfaite. Juste suffisamment de fil rouge dans le quotidien pour que les efforts aient une direction et que cette direction ressemble à soi.",
-                mirror: null
-            }
-        ];
         var GESTES_META = {
             name: "Pour retrouver un fil directeur",
             sub: "Trois gestes simples pour commencer à se reconnecter à ce qui compte",
@@ -314,7 +275,7 @@
             {
                 type: "🧭 Une valeur, un geste",
                 meta: ["⏱ 5 min", "Effort moyen"],
-                text: "Identifie une valeur qui compte pour toi *(honnêteté, créativité, présence, liberté, connexion, etc.). Identifie un geste concret aujourd’hui qui correspond à cette valeur.",
+                text: "Identifie une valeur qui compte pour toi (honnêteté, créativité, présence, liberté, connexion, etc.). Identifie un geste concret aujourd’hui qui correspond à cette valeur.",
                 why: "Agir en cohérence avec ses valeurs, même ponctuellement, réduit l'écart entre ce qu'on est et ce qu'on fait. Cet écart est la source principale de la fatigue de sens.",
                 sensoriel: null
             }
@@ -335,36 +296,46 @@
                 eyebrow: "Comment ça se propage",
                 title: "Effets en cascade"
             },
-            traj: {
-                num: "04",
-                eyebrow: "Une trajectoire possible",
-                title: "Schéma d'épuisement"
-            },
             gestes: {
-                num: "05",
+                num: "04",
                 eyebrow: "Des gestes pour commencer",
                 title: "Rituels Foébé"
             }
         };
     </script>
-    <title id="pageTitle">Zone Sens · l'observatoire Foébé</title>
+    <title id="pageTitle">Zone Sens · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-    <meta name="description" id="metaDesc" content="">
-    <link rel="canonical" id="canonical" href="">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDesc" content="">
+    <meta name="description" id="metaDesc" content="Zone Sens · Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur avec Maison Foébé.">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-sens">
+    <meta property="og:title" id="ogTitle" content="Zone Sens · Maison Foébé">
+    <meta property="og:description" id="ogDesc" content="Comprendre la perte de sens, faire le mini-test et choisir un premier geste pour retrouver un fil directeur.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-sens">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-sens.png">
     <meta property="og:site_name" content="Maison Foébé">
 <meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zone Sens · Maison Foébé">
+    <meta name="twitter:description" content="Comprendre la perte de sens, le décalage entre valeurs et actions, et retrouver un premier fil directeur.">
+    <meta name="twitter:image" content="https://maisonfoebe.fr/images/zones/og-zone-sens.png">
     <script id="jsonLd" type="application/ld+json">
-        {}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Sens · Maison Foébé",
+      "description": "Comprendre les mécanismes de la zone Sens : urgence qui écrase l'essentiel, décalage valeurs-actions, absence de cap.",
+      "url": "https://maisonfoebe.fr/zone-sens",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://maisonfoebe.fr/#website",
+        "name": "Maison Foébé"
+      }
+    }
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -469,7 +440,7 @@
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 180;
+            z-index: 99970;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -605,7 +576,7 @@
         #stateOverlay {
             position: fixed;
             inset: 0;
-            z-index: 300;
+            z-index: 210;
             background: rgba(0, 0, 0, 0);
             backdrop-filter: blur(0px);
             opacity: 0;
@@ -833,7 +804,7 @@
             border: 1.5px solid var(--border);
             border-radius: 10px;
             font-family: "Lora", serif;
-            font-size: 14.5px;
+            font-size: 15px;
             font-style: normal;
             color: var(--sub);
             line-height: 1.75;
@@ -885,7 +856,7 @@
 
 /* Quand l'overlay de l'état est visible, la card passe devant lui */
 body.state-active .ici-card {
-    z-index: 315;              /* > overlay(310) mais < nav(330) */
+    z-index: 220;              /* au-dessus de l’overlay d’état, sous les contrôles fixes */
 }
 
         .ici-card-header {
@@ -916,7 +887,7 @@ body.state-active .ici-card {
 .ici-card {
     overflow: visible !important;  /* ← LIGNE 1 : libère clipping */
     isolation: isolate;           /* ← LIGNE 2 : stacking context propre */
-    z-index: 305;                 /* ← LIGNE 3 : au-dessus overlay */
+    z-index: 2;                   /* stacking local seulement ; ne passe plus au-dessus des contrôles fixes */
 }
         /* ── Boutons flèches ─── CORRECTION 1 ─────────────────────────
    display:none par défaut sur tous devices.
@@ -1680,6 +1651,7 @@ body.state-active .ici-card {
         }
 
         .vr-title {
+            font-family: "Poppins", sans-serif;
             font-size: 15px;
             font-weight: 600;
             color: #F0EAE7;
@@ -1918,7 +1890,7 @@ body.state-active .ici-card {
 
 .obs-card-sub{
   grid-area:sub;
-  font-size:clamp(13px, 0.55vw + 11px, 15px);
+  font-size:clamp(15px, 0.45vw + 13px, 16px);
   color:var(--obs-card-sub);
   line-height:1.6;
   margin:0;
@@ -2810,7 +2782,6 @@ body.state-active .ici-card {
             text-align: center;
         }
 
-      
 .pour-aller-plus-loin {
     border-radius: 28px;
     overflow: hidden;
@@ -3124,7 +3095,7 @@ body.state-active .ici-card {
 
         .accomp-pitch strong {
             font-style: normal;
-            color: #4E291F;
+            color: #F0EAE7;
             font-weight: 600;
         }
 
@@ -3193,12 +3164,12 @@ body.state-active .ici-card {
 
 /* JOUR */
 [data-theme="day"] .accomp-email {
-    background: #4e291f;
-    border-top-color: #bb7e60;
+    background: #7A4A28;
+    border-top-color: #F0EAE7;
 }
 
 [data-theme="night"] .accomp-email {
-    background: #bb7e60;
+    background: #7A4A28;
     border-top-color: #F0EAE7;
 }
 
@@ -3233,11 +3204,11 @@ body.state-active .ici-card {
 
 /* JOUR */
 [data-theme="day"] .email-privacy-link {
-    color: #bb7e60;
+    color: #F0EAE7;
 }
 
 [data-theme="day"] .email-privacy-link:hover {
-    color: #C34234;
+    color: #c45279;
 }
 
 /* NUIT */
@@ -3246,7 +3217,7 @@ body.state-active .ici-card {
 }
 
 [data-theme="night"] .email-privacy-link:hover {
-    color: #c34234; /* crème un peu plus clair pour le hover nuit */
+    color: #c45279; /* crème un peu plus clair pour le hover nuit */
 }
 
         .email-privacy-link:hover {
@@ -3381,7 +3352,7 @@ body.state-active .ici-card {
             align-items: center;
             justify-content: center;
             gap: 5px;
-            min-height: 42px;
+            min-height: 44px;
             padding: 0 16px;
             border-radius: 999px;
             font-family: "Poppins", sans-serif;
@@ -3618,7 +3589,6 @@ body.state-active .ici-card {
   width: 100%;
   max-width: none;
 }
-        }
 
         @media(min-width:1024px) {
             .page {
@@ -3685,12 +3655,11 @@ body.state-active .ici-card {
 
 
         .obs-card-sub{
-  font-size: clamp(13px, 0.45vw + 11px, 15px);
+  font-size: clamp(15px, 0.45vw + 13px, 16px);
   line-height: 1.6;
   width: 100%;
   max-width: none;
 }
-        }
 
         @media(min-width:768px) {
             .obs-card-q {
@@ -3698,7 +3667,7 @@ body.state-active .ici-card {
             }
 
             .obs-card-sub {
-                font-size: 14px;
+                font-size: 14.5px;
             }
 
             .geste-text {
@@ -3715,7 +3684,6 @@ body.state-active .ici-card {
         }
 
         @media(prefers-reduced-motion:reduce) {
-
             *,
             *::before,
             *::after {
@@ -3740,7 +3708,9 @@ body.state-active .ici-card {
                 opacity: 1 !important;
                 transform: none !important;
             }
-        @media (min-width: 900px){
+        }
+
+@media (min-width: 900px){
   .obs-stack{
     height:230px;
     max-width:860px;
@@ -3766,6 +3736,8 @@ body.state-active .ici-card {
     display:flex;
     align-items:flex-start;
   }
+}
+
 @media (min-width: 1100px){
   .obs-card{
     grid-template-columns:minmax(0, 1.6fr) minmax(260px, 0.85fr);
@@ -3796,41 +3768,36 @@ body.state-active .ici-card {
             outline: none;
         }
 
-        /* ── Mode nuit — blocs de fin : fond sombre, texte et bordures crème ── */
+        /* ── Blocs de fin : lisibles en mode jour et nuit ── */
         [data-theme="day"] .gestes-intention-wrap {
-    padding: 22px 24px;
-    background: #F0EAE7;
-    border: 1.5px solid #4E291F;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-}
+            padding: 22px 24px;
+            background: #F0EAE7;
+            border: 1.5px solid #4E291F;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            color: #4E291F;
+        }
 
-[data-theme="day"] .gestes-intention-text {
-    color: #4E291F;
-}
-
-[data-theme="night"] .gestes-intention-wrap {
-    padding: 22px 24px;
-    background: #4E291F;
-    border: 1.5px solid #F0EAE7;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-}
-
-        [data-theme="night"] .gestes-intention-wrap {
-            background: rgba(240, 234, 231, 0.06);
-            border-color: rgba(240, 234, 231, 0.25);
-            border-color: rgba(255, 255, 255, 1)
+        [data-theme="day"] .gestes-intention-text {
+            color: #4E291F;
         }
 
         [data-theme="night"] .gestes-intention-wrap {
-            background: rgba(78, 41, 31, 1);
-            color: rgba(78, 41, 31, 1);
+            padding: 22px 24px;
+            background: #4E291F;
+            border: 1.5px solid #F0EAE7;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            color: #F0EAE7;
+        }
+
+        [data-theme="night"] .gestes-intention-text {
+            color: #F0EAE7;
         }
 
         [data-theme="night"] .signature-foebe {
             background: rgba(78, 41, 31, 1);
-            border-color: rgba (240, 234, 231, 1);
+            border-color: rgba(240, 234, 231, 1);
         }
 
         [data-theme="night"] .accomp-pitch {
@@ -3880,6 +3847,203 @@ body.state-active .ici-card {
         }
 
         
+
+
+        /* ═══════════════════════════════════════════════════════════════
+           AUDIT PREMIUM FOÉBÉ — corrections ciblées Zone Sens
+           - lisibilité mobile
+           - eyebrows en pill
+           - états plus éditoriaux
+           - panneau état premium sans couleur de puce dans le titre
+        ═══════════════════════════════════════════════════════════════ */
+
+        .eyebrow,
+        .chapter-eyebrow,
+        .gestes-eyebrow,
+        .section-eyebrow,
+        .hero-eyebrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            width: max-content !important;
+            max-width: 100% !important;
+            padding: 7px 13px !important;
+            border-radius: 999px !important;
+            background: rgba(187, 126, 96, .14) !important;
+            border: 1px solid rgba(187, 126, 96, .34) !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.4px !important;
+            line-height: 1.25 !important;
+            color: var(--warm) !important;
+            text-transform: uppercase !important;
+        }
+
+        [data-theme="night"] .eyebrow,
+        [data-theme="night"] .chapter-eyebrow,
+        [data-theme="night"] .gestes-eyebrow,
+        [data-theme="night"] .section-eyebrow,
+        [data-theme="night"] .hero-eyebrow {
+            color: #F0EAE7 !important;
+            background: rgba(187, 126, 96, .22) !important;
+            border-color: rgba(187, 126, 96, .46) !important;
+        }
+
+        .zone-intro-text,
+        .pitch-val,
+        .ici-states-guide,
+        .state-def-text,
+        .facteur-desc,
+        .vr-note,
+        .obs-question,
+        .obs-sub,
+        .impact-desc,
+        .traj-step-desc,
+        .traj-mirror,
+        .geste-text,
+        .geste-why,
+        .geste-sensoriel,
+        .gestes-intention-text,
+        .accomp-body,
+        .email-note {
+            font-size: clamp(15.5px, 1.18vw, 17px) !important;
+            line-height: 1.78 !important;
+        }
+
+        .ici-state-tag {
+            min-height: 44px !important;
+            height: auto !important;
+            font-size: 13px !important;
+            border-color: rgba(187, 126, 96, .36) !important;
+            box-shadow: none !important;
+        }
+
+        .ici-state-tag.sol,
+        [data-theme="day"] .ici-state-tag.sol {
+            background: #7A4A28 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(222, 176, 138, .40) !important;
+        }
+
+        .ici-state-tag.nour,
+        [data-theme="day"] .ici-state-tag.nour {
+            background: #BB7E60 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .28) !important;
+        }
+
+        .ici-state-tag.frag,
+        [data-theme="day"] .ici-state-tag.frag {
+            background: #8E5B43 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .24) !important;
+        }
+
+        .ici-state-tag.prior,
+        [data-theme="day"] .ici-state-tag.prior {
+            background: #5C2D22 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .22) !important;
+        }
+
+        .ici-state-tag.active-state {
+            box-shadow: 0 0 0 3px rgba(187, 126, 96, .24), 0 10px 24px rgba(0, 0, 0, .12) !important;
+        }
+
+        .state-def-box {
+            background: linear-gradient(135deg, #BB7E60 0%, #9A5C35 100%) !important;
+            border-color: rgba(240, 234, 231, .24) !important;
+        }
+
+        .state-def-box.visible {
+            border-color: rgba(240, 234, 231, .34) !important;
+            box-shadow: 0 0 0 3px rgba(187, 126, 96, .14), 0 14px 34px rgba(0, 0, 0, .18) !important;
+        }
+
+        .state-def-title,
+        #stateDefTitle {
+            color: #F0EAE7 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.4px !important;
+            text-transform: uppercase !important;
+        }
+
+
+        .vr-title,
+        #vrTitle {
+            font-family: "Poppins", sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            letter-spacing: .2px !important;
+        }
+
+        .state-def-text,
+        #stateDefText {
+            color: rgba(240, 234, 231, .92) !important;
+            font-family: "Lora", serif !important;
+        }
+
+        @media(max-width:640px) {
+            .zone-hero {
+                padding-top: 96px !important;
+            }
+
+            .page {
+                padding-left: 18px !important;
+                padding-right: 18px !important;
+            }
+
+            .aller-a-link,
+            .ici-state-tag,
+            .obs-btn,
+            .geste-btn,
+            .btn,
+            button,
+            input[type="submit"] {
+                min-height: 44px;
+            }
+        }
+
+
+        /* ═══════════════════════════════════════════════════════════
+           CORRECTION V5 — hiérarchie stable des couches
+           Menu Foébé Shell > bouton retour haut > bloc “Pour mieux te situer” > overlay état > page.
+        ═══════════════════════════════════════════════════════════ */
+        #stateOverlay {
+            z-index: 700 !important;
+        }
+
+        body.state-active .ici-card {
+            position: relative !important;
+            z-index: 800 !important;
+            overflow: visible !important;
+            isolation: auto !important;
+        }
+
+        #backToTop {
+            z-index: 900 !important;
+        }
+
+        #mainNav {
+            z-index: 100000 !important;
+        }
+
+        #navMenu {
+            z-index: 99999 !important;
+        }
+
+        #navOverlay {
+            z-index: 99998 !important;
+        }
+        /* Trajectoire retirée du parcours Zone Sens : section supprimée. */
+
+        /* Sécurité : la section trajectoire n'est plus utilisée sur cette page. */
+        #trajectoireSection {
+            display: none !important;
+        }
+
     </style>
 </head>
 
@@ -3892,14 +4056,14 @@ body.state-active .ici-card {
     <div id="navOverlay"></div>
     <div id="stateOverlay"></div>
 
- <div id="navMenu" role="menu">
+   <div id="navMenu" role="menu">
     <a href="index.html">🏠 Accueil</a>
     <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
     <a href="test.html">✨ Faire le test</a>
     <a href="respiration.html">🌊 Respiration</a>
     <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
     <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire</a>
+    <a href="dictionnaire.html">📚 Dictionnaire skin·self-care</a>
     <hr>
     <button id="themeBtn" type="button">☀️ Mode jour</button>
   </div>
@@ -3990,7 +4154,7 @@ body.state-active .ici-card {
                 </div>
                 <aside class="warning-foebe" style="margin-top:28px;">Ces observations valent dans un contexte de mieux-être ordinaire. Certains symptômes cognitifs persistants méritent une évaluation médicale.</aside>
             </div>
-                       <div class="section-break"></div>
+
             <div class="section-break"></div>
 
             <div class="obs-section" id="miniTestSection">
@@ -4050,17 +4214,7 @@ body.state-active .ici-card {
                 <div class="impacts-timeline" id="impactsTimeline"></div>
             </div>
 
-            <div class="traj-section" id="trajectoireSection" style="display:none;" aria-hidden="true">
-                <div class="section-chapter">
-                    <span class="chapter-num" id="trajNum"></span>
-                    <div>
-                        <span class="chapter-eyebrow" id="trajEyebrow"></span>
-                        <h2 class="chapter-title" id="trajTitle"></h2>
-                    </div>
-                </div>
-                <p class="traj-note" id="trajNote"></p>
-                <div class="traj-timeline" id="trajTimeline"></div>
-            </div>
+            <div class="section-break"></div>
 
             <div class="gestes-section" id="gestesSection">
                 <div class="section-chapter">
@@ -4082,7 +4236,7 @@ body.state-active .ici-card {
                 </div>
             </div>
 
-            <div class="section-break"></div>
+                       <div class="section-break"></div>
 <div class="pour-aller-plus-loin">
   <div class="palp-header">
     <span class="palp-eyebrow">Outils Foébé</span>
@@ -4091,14 +4245,14 @@ body.state-active .ici-card {
   <div class="palp-grid">
     <a href="respiration.html" class="palp-card">
       <p class="palp-label">Outil guidé</p>
-      <p class="palp-name">Sortir du pilote automatique</p>
+      <p class="palp-name">Exercice de respiration</p>
       <p class="palp-desc">Un exercice pour interrompre le mode automatique et toucher quelque chose de présent, ici, maintenant.</p>
       <span class="palp-cta">Ouvrir l'exercice →</span>
     </a>
     <a href="boussole-accueil-foebe.html" class="palp-card palp-card-right">
       <p class="palp-label">Outil d'exploration</p>
       <p class="palp-name">La Boussole Foébé</p>
-      <p class="palp-desc">L’outil le plus adapté à cette zone : explorer les 7 dimensions pour retrouver un fil conducteur global..</p>
+      <p class="palp-desc">L’outil le plus adapté à cette zone : explorer les 7 dimensions pour retrouver un fil conducteur global.</p>
       <span class="palp-cta">Entrer dans la Boussole →</span>
     </a>
   </div>
@@ -4106,6 +4260,8 @@ body.state-active .ici-card {
     <span>Ces ressources sont gratuites et disponibles sans inscription.</span>
   </div>
 </div>
+
+            <div class="section-break"></div>
             <div class="signature-foebe">
                 <div class="sig-line"></div>
                 <p class="sig-text">
@@ -4120,16 +4276,16 @@ body.state-active .ici-card {
                     <span class="accomp-badge">🧠 Bientôt disponible</span>
                     <h2 class="accomp-title">Aller plus loin avec <em>Foébé</em></h2>
                     <div class="accomp-pitch">
-                        <p> Foébé a été créé par une docteure en psychologie et ergonomie spécialisée santé au travail. Pour offrir un cadre structuré de compréhension et d'action du self-care, qui se veut précis, concret et actionnable </p>
+                        <p> Foébé a été créé par une docteure en psychologie et ergonomie spécialisée santé au travail. Pour offrir un cadre structuré de compréhension et d'action du self-care, qui se veut précis, concret et actionnable.</p>
                      </div>
                     <ul class="accomp-list">
-                        <li><strong>L'Atelier</strong>Quatre semaines pour apprendre à te voir vraiment. À ton rythme, chez toi.</li>
+                        <li><strong>L'Atelier</strong> Quatre semaines pour apprendre à te voir vraiment. À ton rythme, chez toi.</li>
                         <li><strong>Le Salon</strong> Des séances individuelles, avec des missions précises et un plan d'action co-construit avec toi.</li>
-                        <li><strong>Le Diagnostic professionnel</strong>Pour celles et ceux dont la fatigue vient aussi du travail, et qui ont besoin d'une lecture plus complète de leur situation.</li>
+                        <li><strong>Le Diagnostic professionnel</strong> Pour celles et ceux dont la fatigue vient aussi du travail, et qui ont besoin d'une lecture plus complète de leur situation.</li>
                     </ul>
                     <p class="accomp-note-finale">
   <strong>Foébé</strong> est un espace structuré du self-care.  
-  Pour celles et ceux qui réfléchissent beaucoup <strong>(#overthinker)</strong>,agissent souvent sans filet, souvent en surcharge mentale et veulent se comprendre en profondeur.
+  Pour celles et ceux qui réfléchissent beaucoup, avancent souvent sans filet, vivent en surcharge intérieure et veulent se comprendre en profondeur.
 </p>
                 </div>
                 <div class="accomp-email">
@@ -4161,14 +4317,14 @@ body.state-active .ici-card {
         </div>
     </main>
 
- <footer>
+     <footer>
   <div class="footer-inner">
     <a href="index.html" style="text-decoration:none;display:block;">
       <div class="footer-logo">
         <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
       </div>
     </a>
-    <p class="footer-sub">l'observatoire · Self-Care Structuré · Maison Foébé 2026</p>
+    <p class="footer-sub">Maison Foébé · Self-care structuré · 2026</p>
     <div class="footer-social">
       <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -4184,7 +4340,6 @@ body.state-active .ici-card {
     <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
   </div>
 </footer>
-
     <script>
         "use strict";
 
@@ -4220,14 +4375,20 @@ body.state-active .ici-card {
                 "@type": "WebPage",
                 "name": z.title,
                 "description": z.metaDesc,
-                "url": z.canonicalUrl
+                "url": z.canonicalUrl,
+                "inLanguage": "fr",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://maisonfoebe.fr/#website",
+                    "name": "Maison Foébé"
+                }
             });
             document.getElementById("formZoneField").value = z.slug;
         }
 
         function initHero() {
             var z = ZONE_CONFIG;
-            document.getElementById("heroNum").textContent = "Zone " + z.number + " · l'observatoire Foébé";
+            document.getElementById("heroNum").textContent = "Zone " + z.number + " · Maison Foébé";
             document.getElementById("heroEmoji").textContent = z.emoji;
             document.getElementById("heroTitle").textContent = z.slug;
         }
@@ -4385,24 +4546,6 @@ body.state-active .ici-card {
             });
         }
 
-        function initTraj() {
-            var sm = SECTIONS_META.traj;
-            setText("trajNum", sm.num);
-            setText("trajEyebrow", sm.eyebrow);
-            setText("trajTitle", sm.title);
-            setText("trajNote", TRAJ_INTRO);
-            var tl = document.getElementById("trajTimeline");
-            TRAJ_DATA.forEach(function(item, i) {
-                var badge = item.badge ? '<span class="traj-badge">' + item.badge + '</span>' : '';
-                var mirrorHtml = item.mirror ? '<p class="traj-mirror">' + item.mirror + '</p>' : '';
-                tl.innerHTML += '<div class="traj-item" data-traj="' + i + '">' +
-                    '<div class="traj-left"><div class="traj-dot">' + item.emoji + '</div></div>' +
-                    '<div class="traj-right"><span class="traj-step-label">' + item.label + '</span>' +
-                    '<p class="traj-step-title">' + item.title + badge + '</p>' +
-                    '<p class="traj-step-desc">' + item.desc + '</p>' + mirrorHtml + '</div></div>';
-            });
-        }
-
         function initGestes() {
             var sm = SECTIONS_META.gestes;
             setText("gestesNum", sm.num);
@@ -4455,7 +4598,6 @@ body.state-active .ici-card {
         initComprendre();
         initObs();
         initImpacts();
-        initTraj();
         initGestes();
         initZonesNav();
 
@@ -4519,20 +4661,16 @@ body.state-active .ici-card {
                 lastStateTag = id;
             }
 
-            var colors = {
-                sol: getComputedStyle(document.documentElement).getPropertyValue("--z-lite").trim(),
-                nour: "#BB7E60",
-                frag: "#C34234",
-                prior: "#C45279"
-            };
             var titleEl = document.getElementById("stateDefTitle");
             titleEl.textContent = def.title;
-            titleEl.style.color = colors[id] || "#F0EAE7";
+            titleEl.style.color = "#F0EAE7";
             document.getElementById("stateDefText").textContent = def.text;
             box.dataset.state = id;
 
             /* Simple toggle .visible — pas de remove/add en cascade */
             box.classList.add("visible");
+
+            document.body.classList.add("state-active");
 
             var so = document.getElementById("stateOverlay");
             if (so) {
@@ -4548,6 +4686,7 @@ body.state-active .ici-card {
                 t.classList.remove("active-state");
             });
             lastStateTag = null;
+            document.body.classList.remove("state-active");
             var so = document.getElementById("stateOverlay");
             if (so) {
                 so.classList.remove("visible");
@@ -4827,32 +4966,6 @@ body.state-active .ici-card {
             });
         })();
         (function() {
-            var items = document.querySelectorAll(".traj-item");
-            if (!items.length) return;
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    var idx = parseInt(e.target.getAttribute("data-traj") || "0");
-                    if (e.isIntersecting) {
-                        items.forEach(function(it) {
-                            if (parseInt(it.getAttribute("data-traj") || "0") <= idx) it.classList.add("lit");
-                        });
-                    } else {
-                        var rect = e.boundingClientRect;
-                        if (rect.top > 0) {
-                            items.forEach(function(it) {
-                                if (parseInt(it.getAttribute("data-traj") || "0") >= idx) it.classList.remove("lit");
-                            });
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.35
-            });
-            items.forEach(function(el) {
-                obs.observe(el);
-            });
-        })();
-        (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
             var obs = new IntersectionObserver(function(entries) {
@@ -4949,55 +5062,7 @@ body.state-active .ici-card {
                 if (errEl) errEl.textContent = '';
             });
         })();
-        (function() {
-            var toggle = document.getElementById("menuToggle"),
-                menu = document.getElementById("navMenu"),
-                overlay = document.getElementById("navOverlay"),
-                menuOpen = false,
-                closeTimer = null;
-
-            function openMenu() {
-                if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                }
-                menu.style.display = "block";
-                menu.classList.remove("closing");
-                menu.classList.add("opening");
-                overlay.classList.remove("hiding");
-                overlay.classList.add("visible");
-                menuOpen = true;
-                toggle.textContent = "✕";
-                toggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.remove("opening");
-                menu.classList.add("closing");
-                overlay.classList.remove("visible");
-                overlay.classList.add("hiding");
-                toggle.textContent = "☰";
-                toggle.setAttribute("aria-expanded", "false");
-                closeTimer = setTimeout(function() {
-                    menu.style.display = "none";
-                    menu.classList.remove("closing");
-                    overlay.classList.remove("hiding");
-                    closeTimer = null;
-                }, 210);
-            }
-            toggle.addEventListener("click", function(e) {
-                e.stopPropagation();
-                menuOpen ? closeMenu() : openMenu();
-            });
-            overlay.addEventListener("click", function() {
-                closeMenu();
-            });
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && menuOpen) closeMenu();
-            });
-        })();
+        /* Nav/menu local désactivé : Foébé Shell gère maintenant #mainNav, #navMenu, #navOverlay et #menuToggle. */
         (function() {
             var iciCard = document.querySelector('.ici-card');
             if (iciCard) iciCard.addEventListener('click', function(e) {
@@ -5026,6 +5091,7 @@ body.state-active .ici-card {
             });
         })();
     </script>
+    <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
