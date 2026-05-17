@@ -154,23 +154,23 @@
         };
         var OBS_QUESTIONS = [{
                 q: "Tu entres chez toi et tu ressens une légère tension plutôt qu'un relâchement. L'espace ne t'accueille pas vraiment.",
-                sub: "L'espace de vie devrait être un lieu de régulation. Quand ce n'est pas le cas, le corps maintient un niveau d'alerte même au repos."
+                sub: "L'espace de vie peut devenir un lieu de régulation. Quand ce n'est pas le cas, le corps peut garder une forme d'alerte même au repos."
             },
             {
                 q: "Tu passes plusieurs heures sans vraie coupure d'écran. Les transitions entre applications, réseaux ou contenus se font sans pause.",
-                sub: "La surexposition numérique maintient le système de traitement en alerte continue, sans jamais lui offrir de vrai repos."
+                sub: "La surexposition numérique peut maintenir le système de traitement en alerte continue, sans lui offrir de vraie coupure."
             },
             {
                 q: "Un désordre ou une tâche visible dans ton environnement continue de peser mentalement même quand tu n'y travailles pas.",
-                sub: "Les tâches incomplètes et visibles consomment de la mémoire de travail. Le désordre n'est pas juste un problème d'organisation."
+                sub: "Les tâches incomplètes et visibles peuvent occuper de la place mentale. Le désordre n'est pas seulement un problème d'organisation."
             },
             {
                 q: "Tu n'as pas de rituel de transition entre les espaces ou les temps de ta journée. Tout se fond dans tout.",
-                sub: "L'absence de transition empêche le système nerveux de passer d'un mode à l'autre. Tout reste dans le même registre."
+                sub: "L'absence de transition peut rendre plus difficile le passage d'un mode à l'autre. Tout reste dans le même registre."
             },
             {
                 q: "Tu as du mal à récupérer dans tes espaces habituels. La détente reste de surface même quand tu t'y accordes du temps.",
-                sub: "Quand l'espace lui-même est drainant, le repos devient difficile même avec du temps disponible."
+                sub: "Quand l'espace lui-même est drainant, le repos peut rester difficile même avec du temps disponible."
             }
         ];
         var OBS_DATA = [{
@@ -231,7 +231,7 @@
                 tag: "secondary",
                 tagLabel: "Impact direct",
                 url: "zone-energie.html",
-                desc: "Traiter en permanence un environnement surchargé consomme de l'énergie. La récupération est moins efficace quand l'espace n'est pas propice au calme."
+                desc: "Composer avec un environnement surchargé peut consommer de l'énergie. La récupération devient souvent moins fluide quand l'espace n'est pas propice au calme."
             },
             {
                 emoji: "🧘",
@@ -239,7 +239,7 @@
                 tag: "secondary",
                 tagLabel: "Impact indirect",
                 url: "zone-corps.html",
-                desc: "L'environnement parle au corps. Un espace en désordre ou bruyant maintient une légère tension musculaire et une respiration moins profonde."
+                desc: "L'environnement parle aussi au corps. Un espace en désordre ou bruyant peut maintenir une légère tension et rendre la respiration moins profonde."
             },
             {
                 emoji: "🌊",
@@ -247,7 +247,7 @@
                 tag: "secondary",
                 tagLabel: "Impact indirect",
                 url: "zone-emotions.html",
-                desc: "L'espace reflète et amplifie l'état émotionnel. Un environnement qu'on ne maîtrise pas donne une sensation de perte de contrôle qui affecte la régulation émotionnelle."
+                desc: "L'espace peut refléter et amplifier l'état émotionnel. Un environnement qu'on ne maîtrise pas peut donner une sensation de perte de contrôle qui affecte la régulation émotionnelle."
             },
             {
                 emoji: "✨",
@@ -255,7 +255,7 @@
                 tag: "deep",
                 tagLabel: "Impact profond",
                 url: "zone-sens.html",
-                desc: "L'espace que tu crées dit quelque chose de ce qui compte pour toi. Quand il est en désaccord avec tes valeurs, un fond de malaise s'installe."
+                desc: "L'espace que tu crées dit quelque chose de ce qui compte pour toi. Quand il est en désaccord avec tes valeurs, un fond de malaise peut s'installer."
             }
         ];
         var TRAJ_INTRO = "Ce schéma est fréquent. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas toujours seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
@@ -304,7 +304,7 @@
                 meta: ["⏱ 15 min", "Effort bas"],
                 text: "Pose ton téléphone dans une autre pièce. Coupe les notifications. Reste dans l'espace physique sans aucun écran pendant quinze minutes.",
                 why: "L’absence de stimulus numérique peut aider le système à changer de registre. Quinze minutes ne règlent pas tout, mais elles peuvent créer une première vraie coupure.",
-                sensoriel: "Les premières minutes peuvent générer un réflexe de vérification. Ce réflexe lui-même est un indicateur de la dépendance aux stimuli."
+                sensoriel: "Les premières minutes peuvent générer un réflexe de vérification. Ce réflexe lui-même peut devenir un indicateur de l'habitude prise avec les stimuli."
             },
             {
                 type: "🧹 Un seul espace dégagé",
@@ -620,7 +620,7 @@
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 180;
+            z-index: 900;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -648,7 +648,7 @@
         }
 
 
-        /* Ancienne navigation locale supprimée : Foébé Shell gère mainNav/navMenu/navOverlay. */
+        /* Navigation principale gérée par Foébé Shell. */
 
 
         .zone-hero {
@@ -779,7 +779,7 @@
             border: 1.5px solid var(--border);
             border-radius: 10px;
             font-family: "Lora", serif;
-            font-size: 14.5px;
+            font-size: 15px;
             font-style: normal;
             color: var(--sub);
             line-height: 1.75;
@@ -1243,7 +1243,7 @@ body.state-active .ici-card {
 }
 
 .state-def-text {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.80;
   color: rgba(240,234,231,0.88);
   font-style: normal;
@@ -1294,7 +1294,7 @@ body.state-active .ici-card {
         }
 
         .state-def-text {
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.80;
             color: rgba(240, 234, 231, 0.88);
             font-style: normal;
@@ -1353,7 +1353,7 @@ body.state-active .ici-card {
         }
 
         .pitch-val {
-            font-size: 14px;
+            font-size: 15px;
             color: #F0EAE7;
             line-height: 1.6;
             font-family: "Lora", serif;
@@ -1474,7 +1474,7 @@ body.state-active .ici-card {
 
         .chapter-title {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             line-height: 1.2;
             font-family: "Lora", serif;
@@ -1565,7 +1565,7 @@ body.state-active .ici-card {
 
         .facteur-desc {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.7;
             font-style: normal;
@@ -1634,9 +1634,9 @@ body.state-active .ici-card {
 
         .vr-note {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             color: rgba(240, 234, 231, 0.82);
-            line-height: 1.55;
+            line-height: 1.65;
             font-style: normal;
         }
 
@@ -1864,7 +1864,7 @@ body.state-active .ici-card {
 
 .obs-card-sub{
   grid-area:sub;
-  font-size:clamp(13px, 0.55vw + 11px, 15px);
+  font-size:clamp(15px, 0.45vw + 13px, 16px);
   color:var(--obs-card-sub);
   line-height:1.6;
   margin:0;
@@ -2086,7 +2086,7 @@ body.state-active .ici-card {
         .obs-result-title {
             font-family: "Lora", serif;
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             margin-bottom: 8px;
             line-height: 1.35;
@@ -2282,7 +2282,7 @@ body.state-active .ici-card {
 
         .impact-desc {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
             color: var(--sub);
             line-height: 1.75;
@@ -2801,6 +2801,7 @@ body.state-active .ici-card {
 .palp-title {
     font-family: "Lora", serif;
     font-size: 20px;
+    font-weight: 400;
     color: #F0EAE7;
     margin: 0;
     line-height: 1.45;
@@ -2935,6 +2936,7 @@ body.state-active .ici-card {
     display: block;
     font-family: "Lora", serif;
     font-size: 20px;
+    font-weight: 400;
     line-height: 1.45;
     color: #F0EAE7;
     margin: 0;
@@ -3630,7 +3632,7 @@ body.state-active .ici-card {
 
 
         .obs-card-sub{
-  font-size: clamp(13px, 0.45vw + 11px, 15px);
+  font-size: clamp(15px, 0.45vw + 13px, 16px);
   line-height: 1.6;
   width: 100%;
   max-width: none;
@@ -3643,7 +3645,7 @@ body.state-active .ici-card {
             }
 
             .obs-card-sub {
-                font-size: 14px;
+                font-size: 15px;
             }
 
             .geste-text {
@@ -3979,13 +3981,6 @@ body.state-active .ici-card {
 
         .js-ready .traj-item { opacity: .4; }
         .js-ready .traj-item.lit { opacity: 1; }
-
-        .chapter-title,
-        .obs-result-title,
-        .palp-title {
-          font-weight: 400 !important;
-        }
-
         .eyebrow,
         .chapter-eyebrow,
         .section-eyebrow,
