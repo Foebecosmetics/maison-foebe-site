@@ -8,6 +8,10 @@
     <script>
     (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
     </script>
+    <!-- JS-ready : active les animations uniquement si JavaScript est disponible -->
+    <script>
+    document.documentElement.classList.add('js-ready');
+    </script>
     <meta name="robots" content="index, follow">
     <script id="zoneConfig">
         var ZONE_CONFIG = {
@@ -248,7 +252,7 @@
                 tag: "deep",
                 tagLabel: "Impact profond",
                 url: "zone-corps.html",
-                desc: "La perte de sens a une traduction physique. Un corps sans direction perd de sa vitalité. Les études sur le sens et la santé montrent des liens clairs avec la longévité, l'immunité et la récupération."
+                desc: "La perte de sens a aussi une traduction physique. Un corps sans direction peut perdre de sa vitalité. La recherche autour du sens, du stress et de la santé suggère des liens avec la vitalité, la récupération et la manière dont le corps traverse la charge."
             }
         ];
         var GESTES_META = {
@@ -440,7 +444,7 @@
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 99970;
+            z-index: 900;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -467,214 +471,8 @@
             transform: translateY(-3px);
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 340;
-            height: 60px;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--nav-bg);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            transition: all .3s;
-        }
+        /* Ancien CSS nav/menu local supprimé : Foébé Shell gère la navigation principale. */
 
-        nav.scrolled {
-            box-shadow: 0 2px 14px var(--shadow);
-        }
-
-        .nav-logo {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.06em;
-        }
-
-        .nav-logo span {
-            font-weight: 700;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(1) {
-            color: #4E291F;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(2) {
-            color: #BB7E60;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(3) {
-            color: #C45279;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(4) {
-            color: #C34234;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(5) {
-            color: #4E291F;
-        }
-
-        [data-theme="night"] .nav-logo span {
-            color: #F0EAE7;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #menuToggle {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text);
-            background: none;
-            border: none;
-            padding: 6px 8px;
-            border-radius: 8px;
-            transition: background .2s;
-            z-index: 331;
-            position: relative;
-        }
-
-        #menuToggle:hover {
-            background: var(--surface);
-        }
-
-        #navOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 320;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease, backdrop-filter .25s ease, background .25s ease;
-        }
-
-        #navOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-        }
-
-        [data-theme="day"] #navOverlay.visible {
-            background: rgba(78, 41, 31, 0.18);
-        }
-
-        #navOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px);
-        }
-        #stateOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 210;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .22s ease, backdrop-filter .22s ease, background .22s ease;
-        }
-
-        #stateOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.28);
-            backdrop-filter: blur(2px);
-        }
-
-        [data-theme="day"] #stateOverlay.visible {
-            background: rgba(78, 41, 31, 0.14);
-        }
-
-        #stateOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #navMenu {
-            display: none;
-            position: fixed;
-            top: 64px;
-            right: 16px;
-            z-index: 340;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 220px;
-            box-shadow: 0 16px 48px var(--shadow-lg);
-        }
-
-        #navMenu.opening {
-            animation: slideDown .30s cubic-bezier(.16, 1, .3, 1) forwards;
-            transform-origin: top right;
-        }
-
-        #navMenu.closing {
-            animation: slideUp .20s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-        }
-
-        #navMenu a,
-        #navMenu button {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all .15s;
-        }
-
-        #navMenu a:hover,
-        #navMenu button:hover {
-            background: var(--surface);
-            transform: translateX(3px);
-        }
-
-        #navMenu hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 6px 0;
-        }
 
         .zone-hero {
             background: var(--z);
@@ -1499,7 +1297,7 @@ body.state-active .ici-card {
 
         .chapter-title {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             line-height: 1.2;
             font-family: "Lora", serif;
@@ -2112,7 +1910,7 @@ body.state-active .ici-card {
         .obs-result-title {
             font-family: "Lora", serif;
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             margin-bottom: 8px;
             line-height: 1.35;
@@ -2221,8 +2019,13 @@ body.state-active .ici-card {
             gap: 20px;
             position: relative;
             padding-bottom: 32px;
-            opacity: 0.35;
+            opacity: 1;
+            visibility: visible;
             transition: opacity .55s ease;
+        }
+
+        .js-ready .impact-item {
+            opacity: 0.35;
         }
 
         .impact-item:last-child {
@@ -2243,6 +2046,7 @@ body.state-active .ici-card {
             display: none;
         }
 
+        .js-ready .impact-item.lit,
         .impact-item.lit {
             opacity: 1;
         }
@@ -2355,172 +2159,7 @@ body.state-active .ici-card {
             border-color: rgba(146, 32, 84, 0.22);
         }
 
-        .traj-section {
-            margin-bottom: 64px;
-        }
-
-        .traj-note {
-            font-family: "Lora", serif;
-            font-size: 15px;
-            font-style: italic;
-            color: var(--sub);
-            line-height: 1.75;
-            margin-bottom: 32px;
-            border-left: 2px solid var(--z-lite);
-            padding-left: 14px;
-        }
-
-        .traj-timeline {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .traj-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            position: relative;
-            padding-bottom: 32px;
-            opacity: .4;
-            transition: opacity .6s ease;
-        }
-
-        .traj-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .traj-item::before {
-            content: "";
-            position: absolute;
-            left: 19px;
-            top: 44px;
-            width: 2px;
-            height: calc(100% - 12px);
-            background: linear-gradient(to bottom, var(--z-lite), rgba(var(--z-lite-r), var(--z-lite-g), var(--z-lite-b), 0.12));
-        }
-
-        .traj-item:last-child::before {
-            display: none;
-        }
-
-        .traj-item.lit {
-            opacity: 1;
-        }
-
-        .traj-left {
-            flex-shrink: 0;
-            padding-top: 4px;
-        }
-
-        .traj-dot {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--card);
-            border: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-            transition: border-color .4s, box-shadow .4s, background .4s;
-        }
-
-        .traj-item.lit .traj-dot {
-            border-color: var(--z-lite);
-            background: rgba(var(--z-mid-r), var(--z-mid-g), var(--z-mid-b), 0.20);
-            box-shadow: 0 0 0 4px rgba(var(--z-lite-r), var(--z-lite-g), var(--z-lite-b), 0.12);
-        }
-
-        .traj-item.lit:last-child .traj-dot {
-            background: var(--z-mid);
-            box-shadow: 0 0 0 5px rgba(var(--z-lite-r), var(--z-lite-g), var(--z-lite-b), 0.15);
-        }
-
-        .traj-right {
-            padding-top: 8px;
-        }
-
-        .traj-step-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--z-lite);
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        [data-theme="day"] .traj-step-label {
-            color: var(--z-mid);
-        }
-
-        .traj-step-title {
-            font-family: "Lora", serif;
-            font-size: 17px;
-            color: var(--text);
-            margin-bottom: 5px;
-            line-height: 1.3;
-        }
-
-        .traj-item.lit:last-child .traj-step-title {
-            color: var(--z-lite);
-        }
-
-        [data-theme="day"] .traj-item.lit:last-child .traj-step-title {
-            color: var(--z-mid);
-        }
-
-        .traj-step-desc {
-            font-size: 14px;
-            color: var(--sub);
-            line-height: 1.7;
-            font-family: "Lora", serif;
-            font-style: normal;
-        }
-
-        .traj-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            vertical-align: middle;
-            margin-left: 8px;
-            font-family: "Poppins", sans-serif;
-        }
-
-        [data-theme="day"] .traj-badge {
-            background: rgba(122, 74, 40, 0.08);
-            color: var(--warm-dark);
-            border: 1px solid rgba(122, 74, 40, 0.25);
-        }
-
-        [data-theme="night"] .traj-badge {
-            background: rgba(187, 126, 96, 0.22);
-            color: #E0C4AA;
-            border: 1px solid rgba(187, 126, 96, 0.40);
-        }
-
-        .traj-item.lit:last-child .traj-right {
-            border: 1.5px solid rgba(187, 126, 96, 0.35);
-            border-radius: 14px;
-            padding: 14px 16px;
-            background: rgba(187, 126, 96, 0.06);
-        }
-
-        .traj-mirror {
-            font-family: "Lora", serif;
-            font-style: italic;
-            font-size: 14px;
-            line-height: 1.72;
-            color: var(--sub);
-            border-left: 3px solid var(--rose);
-            padding-left: 14px;
-            margin-top: 10px;
-        }
+        /* Ancien CSS trajectoire supprimé : section non utilisée sur cette page. */
 
         .gestes-section {
             margin-bottom: 64px;
@@ -2589,15 +2228,22 @@ body.state-active .ici-card {
             padding: 22px 20px;
             border-bottom: 1px solid var(--border);
             background: var(--card);
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+            transition: opacity .5s ease, transform .5s ease, background .2s;
+        }
+
+        .js-ready .geste-card {
             opacity: 0;
             transform: translateY(18px);
-            transition: opacity .5s ease, transform .5s ease, background .2s;
         }
 
         .geste-card:last-child {
             border-bottom: none;
         }
 
+        .js-ready .geste-card.visible,
         .geste-card.visible {
             opacity: 1;
             transform: translateY(0);
@@ -4025,59 +3671,216 @@ body.state-active .ici-card {
         #backToTop {
             z-index: 900 !important;
         }
-
-        #mainNav {
-            z-index: 100000 !important;
-        }
-
-        #navMenu {
-            z-index: 99999 !important;
-        }
-
-        #navOverlay {
-            z-index: 99998 !important;
-        }
-        /* Trajectoire retirée du parcours Zone Sens : section supprimée. */
+/* Trajectoire retirée du parcours Zone Sens : section supprimée. */
 
         /* Sécurité : la section trajectoire n'est plus utilisée sur cette page. */
         #trajectoireSection {
             display: none !important;
         }
 
-    </style>
+    
+
+/* ══ FALLBACK NAV — visible seulement si foebe-shell.js ne charge pas ══ */
+.fallback-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 950 !important;
+  min-height: 60px !important;
+  padding: 0 clamp(14px, 3vw, 28px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  background: rgba(78, 41, 31, .94) !important;
+  border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+[data-theme="day"] .fallback-nav {
+  background: rgba(240, 234, 231, .94) !important;
+  border-bottom-color: rgba(78, 41, 31, .16) !important;
+}
+
+.fallback-logo {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  letter-spacing: -.06em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  flex: 0 0 auto !important;
+}
+
+[data-theme="night"] .fallback-logo span {
+  color: #F0EAE7 !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(1),
+[data-theme="day"] .fallback-logo span:nth-child(5) {
+  color: #4E291F !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(2) {
+  color: #BB7E60 !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(3) {
+  color: #C45279 !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(4) {
+  color: #C34234 !important;
+}
+
+.fallback-links {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 6px !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  scroll-snap-type: x proximity !important;
+  mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%) !important;
+}
+
+.fallback-links::-webkit-scrollbar {
+  display: none !important;
+}
+
+.fallback-links a {
+  min-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 11px !important;
+  border-radius: 999px !important;
+  color: var(--text) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  opacity: .92 !important;
+  scroll-snap-align: start !important;
+}
+
+.fallback-links a:hover,
+.fallback-links a:focus-visible {
+  color: #F0EAE7 !important;
+  background: #BB7E60 !important;
+  border-color: #BB7E60 !important;
+  opacity: 1 !important;
+  outline: none !important;
+}
+
+@media(max-width:720px) {
+  .fallback-nav {
+    min-height: 58px !important;
+    padding: 0 12px !important;
+    gap: 12px !important;
+  }
+
+  .fallback-logo {
+    font-size: 17px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .fallback-links {
+    justify-content: flex-start !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    padding-right: 2px !important;
+  }
+
+  .fallback-links a {
+    flex: 0 0 auto !important;
+    min-height: 38px !important;
+    font-size: 12px !important;
+    padding: 0 10px !important;
+  }
+}
+
+@media(max-width:420px) {
+  .fallback-nav {
+    gap: 10px !important;
+    padding: 0 10px !important;
+  }
+
+  .fallback-logo {
+    font-size: 16px !important;
+  }
+
+  .fallback-links a {
+    font-size: 11.5px !important;
+    padding: 0 9px !important;
+  }
+}
+
+/* ══ CSS FALLBACK RENFORCÉ — sans JS, les contenus animés restent visibles ══ */
+.geste-card,
+.impact-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.js-ready .geste-card {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-ready .geste-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-ready .impact-item {
+  opacity: 0.35;
+}
+
+.js-ready .impact-item.lit {
+  opacity: 1;
+}
+
+</style>
 </head>
 
 <body>
+    <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
+        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+      </a>
+
+      <div class="fallback-links">
+        <a href="/a-propos.html">À propos</a>
+        <a href="/methode.html">Méthode</a>
+        <a href="/test.html">Échelle Foébé</a>
+        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+        <a href="/boussole-accueil-foebe.html">Boussole</a>
+        <a href="mailto:foebecosmetics@gmail.com">Contact</a>
+      </div>
+    </nav>
+
 
     <div id="pageProgress">
         <div id="pageProgressFill"></div>
     </div>
     <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
-    <div id="navOverlay"></div>
     <div id="stateOverlay"></div>
-
-   <div id="navMenu" role="menu">
-    <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
-    <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌊 Respiration</a>
-    <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html">📚 Dictionnaire skin·self-care</a>
-    <hr>
-    <button id="themeBtn" type="button">☀️ Mode jour</button>
-  </div>
-
-
-    <nav id="mainNav">
-        <a href="index.html" class="nav-logo">
-            <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-        </a>
-        <div class="nav-right">
-            <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
-        </div>
-    </nav>
-
     <div class="zone-hero">
         <span class="hero-num" id="heroNum"></span>
         <span class="hero-emoji" id="heroEmoji"></span>
@@ -4316,30 +4119,6 @@ body.state-active .ici-card {
 
         </div>
     </main>
-
-     <footer>
-  <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none;display:block;">
-      <div class="footer-logo">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-      </div>
-    </a>
-    <p class="footer-sub">Maison Foébé · Self-care structuré · 2026</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@maisonfoebe" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
-      </a>
-    </div>
-    <div class="footer-links">
-      <a href="mentions.html" class="footer-link">Mentions légales</a>
-      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">Contact</a>
-    </div>
-    <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
-  </div>
-</footer>
     <script>
         "use strict";
 
@@ -4619,12 +4398,15 @@ body.state-active .ici-card {
             }, {
                 passive: true
             });
-            document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            window.addEventListener("scroll", function() {
-                document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            }, {
-                passive: true
-            });
+            var mainNav = document.getElementById("mainNav");
+            if (mainNav) {
+                mainNav.classList.toggle("scrolled", window.scrollY > 40);
+                window.addEventListener("scroll", function() {
+                    mainNav.classList.toggle("scrolled", window.scrollY > 40);
+                }, {
+                    passive: true
+                });
+            }
         })();
         (function() {
             var btn = document.getElementById('backToTop');
@@ -4968,6 +4750,12 @@ body.state-active .ici-card {
         (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
+            if (!("IntersectionObserver" in window)) {
+                cards.forEach(function(c) {
+                    c.classList.add("visible");
+                });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) e.target.classList.add("visible");
@@ -4982,6 +4770,12 @@ body.state-active .ici-card {
         (function() {
             var items = document.querySelectorAll(".impact-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(it) {
+                    it.classList.add("lit");
+                });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-impact") || "0");
