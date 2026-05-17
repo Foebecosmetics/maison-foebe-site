@@ -378,5 +378,13 @@
       revealObs.observe(el);
     });
   }
+  /* ═══════════════════════════════════════════════════════════════════════════
+     8. FALLBACK NAV — masquer seulement si le Shell a bien chargé
+  ═══════════════════════════════════════════════════════════════════════════ */
+ var fallbackNav = document.getElementById("fallbackNav");
 
+if (fallbackNav) {
+  fallbackNav.setAttribute("aria-hidden", "true");
+  fallbackNav.style.display = "none";
+}
 })();
