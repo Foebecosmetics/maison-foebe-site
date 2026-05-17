@@ -4,31 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-       <meta name="robots" content="index, follow">
-<meta property="og:site_name" content="l'observatoire Foébé">
-<meta property="og:locale" content="fr_FR">
+    <!-- Anti-FOUC thème — NE PAS MODIFIER -->
     <script>
-        function toggleTheme() {
-            var h = document.documentElement;
-            var n = h.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-            h.setAttribute('data-theme', n);
-            var b = document.getElementById('themeBtn');
-            if (b) b.textContent = n === 'day' ? '\uD83C\uDF19 Mode nuit' : '\u2600\uFE0F Mode jour';
-        }
+    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
     </script>
+    <script>
+    document.documentElement.classList.add('js-ready');
+    </script>
+    <meta name="robots" content="index, follow">
+<meta property="og:site_name" content="Maison Foébé">
+<meta property="og:locale" content="fr_FR">
     <script id="zoneConfig">
         var ZONE_CONFIG = {
             name: "Environnement",
             slug: "Environnement",
             number: "05",
             emoji: "🌿",
-            title: "Zone Environnement · l'observatoire Foébé",
-            metaDesc: "Zone Environnement · Observatoire Foébé : comprendre l'impact de l'espace sur l'état intérieur, la surexposition aux stimuli et la charge cognitive du désordre, identifier si cette zone est prioritaire avec un mini-test en 5 questions.",
+            title: "Zone Environnement · Maison Foébé",
+            metaDesc: "Zone Environnement · Maison Foébé : comprendre l’impact de l’espace, du désordre et des stimuli sur ton self-care, faire le mini-test et choisir un premier geste concret.",
             canonicalUrl: "https://maisonfoebe.fr/zone-environnement",
-            ogTitle: "Zone Environnement · l'observatoire Foébé",
+            ogTitle: "Zone Environnement · Maison Foébé",
             ogDesc: "Zone Environnement : comprendre l'impact de l'espace sur l'état intérieur, faire le mini-test, voir les effets en cascade et choisir un geste concret. Self-care structuré Foébé",
             keywords: "self-care, zone environnement, espace de vie, charge cognitive, surexposition numérique, burnout fonctionnel",
-            jsonLdHeadline: "Zone Environnement — Self-care et espace de vie · Observatoire Foébé",
+            jsonLdHeadline: "Zone Environnement — Self-care et espace de vie · Maison Foébé",
             jsonLdDesc: "Comprendre les mécanismes de la zone Environnement : surexposition aux stimuli, désordre comme charge cognitive, absence de calme sensoriel. Mini-test en 5 questions.",
             palette: {
                 z: "#1E4D2B",
@@ -123,7 +121,7 @@
             },
             prior: {
                 title: "Priorité",
-                text: "Ton environnement contribue activement à ton état de surcharge. Il faut créer un premier espace ressourçant dès maintenant, pas à la prochaine période calme."
+                text: "Ton environnement contribue activement à ton état de surcharge. À ce stade, il devient important de recréer un premier espace ressourçant, même petit, sans attendre que tout le reste soit réglé."
             }
         };
         var POSIT_RESULTS = {
@@ -133,11 +131,11 @@
             prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
         };
         var COMPRENDRE = {
-            intro: "L'impact de l'environnement sur l'état intérieur n'est pas symbolique. Il est mesurable, constant et souvent sous-estimé.",
+            intro: "L’environnement n’agit pas seulement comme un décor. Il influence l’attention, la tension, la récupération et la sensation de calme, souvent plus qu’on ne le remarque.",
             facteurs: [{
                     icon: "📱",
                     name: "La surexposition aux stimuli",
-                    desc: "Le cerveau traite en permanence ce qui l'entoure : bruits, lumières, notifications, désordre visuel. Chaque stimulus demande un traitement, même inconscient. Un environnement surchargé maintient le système en vigilance constante, sans que tu t'en rendes compte."
+                    desc: "Le cerveau traite en permanence ce qui l’entoure : bruits, lumières, notifications, désordre visuel. Chaque stimulus peut demander un micro-traitement, même discret, et finir par ajouter du bruit à l’arrière-plan."
                 },
                 {
                     icon: "🗂️",
@@ -147,12 +145,12 @@
                 {
                     icon: "🌳",
                     name: "L'absence de nature et de calme sensoriel",
-                    desc: "Les environnements naturels ou calmes permettent une forme de récupération attentionnelle que les environnements artificiels ne permettent pas. L'absence prolongée de calme sensoriel entretient une forme d'alerte de basse intensité."
+                    desc: "Les environnements naturels ou simplement calmes peuvent aider l’attention à se relâcher. Le but n’est pas la performance : juste offrir au système un autre type de stimulation."
                 }
             ],
             vrIcon: "🌿",
             vrTitle: "Résultat : un espace qui ne ressource plus",
-            vrNote: "L'environnement a un impact réel sur l'état intérieur. Mesurable, constant, et systématiquement sous-estimé, jusqu'à ce que la tension devienne impossible à ignorer."
+            vrNote: "L’environnement influence l’état intérieur plus qu’on ne le remarque : attention, tension, récupération, sensation de calme. Et quand l’espace ne soutient plus, la charge finit par devenir difficile à ignorer."
         };
         var OBS_QUESTIONS = [{
                 q: "Tu entres chez toi et tu ressens une légère tension plutôt qu'un relâchement. L'espace ne t'accueille pas vraiment.",
@@ -202,15 +200,15 @@
             {
                 cls: "s4",
                 title: "4 signaux sur 5 · priorité élevée",
-                text: "Quatre signaux présents. L'environnement draine activement. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut aller plus loin."
+                text: "Quatre signaux présents. L'environnement draine activement. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t’aider à aller plus loin."
             },
             {
                 cls: "s5",
                 title: "5 signaux sur 5 · priorité immédiate",
-                text: "Tous les signaux sont là. Commence par créer un espace ressourçant dès maintenant. Si ce schéma dure, un accompagnement structuré pourra t'aider à mieux gérer cette partie de ton self-care."
+                text: "Tous les signaux sont là. Commence par créer un espace ressourçant dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
             }
         ];
-        var IMPACTS_INTRO = "Un environnement drainant ne reste pas cantonné à l'espace physique. Concrètement, il finit par peser sur le reste de ton self-care de façon  visible.";
+        var IMPACTS_INTRO = "Un environnement drainant ne reste pas cantonné à l'espace physique. Concrètement, il finit par peser sur le reste de ton self-care de façon visible.";
         var IMPACTS_DATA = [{
                 emoji: "🌿",
                 dim: "Environnement",
@@ -260,7 +258,7 @@
                 desc: "L'espace que tu crées dit quelque chose de ce qui compte pour toi. Quand il est en désaccord avec tes valeurs, un fond de malaise s'installe."
             }
         ];
-        var TRAJ_INTRO = "Ce schéma est documenté. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
+        var TRAJ_INTRO = "Ce schéma est fréquent. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas toujours seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
         var TRAJ_DATA = [{
                 emoji: "🌿",
                 label: "Là où ça commence",
@@ -305,21 +303,21 @@
                 type: "📵 Coupure numérique de quinze minutes",
                 meta: ["⏱ 15 min", "Effort bas"],
                 text: "Pose ton téléphone dans une autre pièce. Coupe les notifications. Reste dans l'espace physique sans aucun écran pendant quinze minutes.",
-                why: "L'absence de stimulus numérique permet au système nerveux de passer en mode récupération. Quinze minutes suffisent pour amorcer un vrai changement de registre.",
+                why: "L’absence de stimulus numérique peut aider le système à changer de registre. Quinze minutes ne règlent pas tout, mais elles peuvent créer une première vraie coupure.",
                 sensoriel: "Les premières minutes peuvent générer un réflexe de vérification. Ce réflexe lui-même est un indicateur de la dépendance aux stimuli."
             },
             {
                 type: "🧹 Un seul espace dégagé",
                 meta: ["⏱ 10 min", "Effort bas"],
                 text: "Choisis un endroit précis : ton bureau, ta table de nuit, ton plan de travail. Dégage-le complètement. Un seul espace, pas tout l'appartement.",
-                why: "Un espace dégagé réduit la charge cognitive visuelle. Même un seul endroit propre peut servir d'ancrage au calme dans un contexte plus chargé.",
+                why: "Un espace dégagé peut réduire le bruit visuel et offrir un point d’appui. Même un seul endroit plus clair peut servir d’ancrage au calme dans un contexte chargé.",
                 sensoriel: null
             },
             {
                 type: "🌿 Dix minutes dehors sans objectif",
                 meta: ["⏱ 10 min", "Effort minimal"],
                 text: "Sors. Sans écouteurs, sans liste, sans destination précise. Marche ou reste assis·e dehors. Laisse l'environnement naturel faire son effet.",
-                why: "Les environnements naturels activent un mode d'attention involontaire qui permet à l'attention volontaire de récupérer.",
+                why: "Les environnements naturels ou simplement calmes peuvent aider l’attention à se relâcher. Le but n’est pas la performance : juste offrir au système un autre type de stimulation.",
                 sensoriel: null
             }
         ];
@@ -351,25 +349,176 @@
             }
         };
     </script>
-    <title id="pageTitle">Zone Environnement · l'observatoire Foébé</title>
+    <title id="pageTitle">Zone Environnement · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-    <meta name="description" id="metaDesc" content="">
-    <link rel="canonical" id="canonical" href="">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDesc" content="">
+    <meta name="description" id="metaDesc" content="Zone Environnement · Maison Foébé : comprendre l’impact de l’espace, du désordre et des stimuli sur ton self-care, faire le mini-test et choisir un premier geste concret.">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-environnement">
+    <meta property="og:title" id="ogTitle" content="Zone Environnement · Maison Foébé">
+    <meta property="og:description" id="ogDesc" content="Comprendre l’impact de l’environnement sur l’état intérieur, faire le mini-test et choisir un premier geste pour créer un espace plus ressourçant.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-environnement">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-environnement.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zone Environnement · Maison Foébé">
+    <meta name="twitter:description" content="Comprendre l’impact de l’espace, du désordre et des stimuli sur ton self-care.">
+    <meta name="twitter:image" content="https://maisonfoebe.fr/images/zones/og-zone-environnement.png">
     <script id="jsonLd" type="application/ld+json">
-        {}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Environnement · Maison Foébé",
+      "description": "Comprendre les mécanismes de la zone Environnement : surexposition aux stimuli, désordre comme charge cognitive, absence de calme sensoriel.",
+      "url": "https://maisonfoebe.fr/zone-environnement",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://maisonfoebe.fr/#website",
+        "name": "Maison Foébé"
+      }
+    }
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<style id="fallbackNavCritical">
+      /* FALLBACK NAV CRITIQUE — alignée sur Zone Relations, indépendante du CSS de page */
+      body > nav#fallbackNav.fallback-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 950 !important;
+        min-height: 60px !important;
+        height: 60px !important;
+        padding: 0 clamp(14px, 3vw, 28px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        background: rgba(78, 41, 31, .94) !important;
+        border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        box-shadow: 0 2px 14px rgba(0,0,0,.16) !important;
+        font-family: "Poppins", sans-serif !important;
+        box-sizing: border-box !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav {
+        background: rgba(240, 234, 231, .94) !important;
+        border-bottom-color: rgba(78, 41, 31, .16) !important;
+        box-shadow: 0 2px 14px rgba(78,41,31,.08) !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-logo {
+        font-family: "Montserrat", sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        letter-spacing: -.06em !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        min-height: 44px !important;
+        flex: 0 0 auto !important;
+        max-width: 42vw !important;
+        white-space: nowrap !important;
+      }
+
+      [data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span {
+        color: #F0EAE7 !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5) {
+        color: #4E291F !important;
+      }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2) { color: #BB7E60 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3) { color: #C45279 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4) { color: #C34234 !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        white-space: nowrap !important;
+      }
+      body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar { display: none !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a {
+        min-height: 38px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 11px !important;
+        border-radius: 999px !important;
+        color: var(--text, #F0EAE7) !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        text-decoration: none !important;
+        border: 1px solid transparent !important;
+        opacity: .92 !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #F0EAE7 !important;
+        background: #BB7E60 !important;
+        border-color: #BB7E60 !important;
+        opacity: 1 !important;
+        outline: none !important;
+      }
+
+      @media(max-width:720px) {
+        body > nav#fallbackNav.fallback-nav {
+          padding: 0 12px !important;
+          gap: 12px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 17px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links {
+          justify-content: flex-start !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          font-size: 12px !important;
+          padding: 0 10px !important;
+        }
+      }
+
+      @media(max-width:420px) {
+        body > nav#fallbackNav.fallback-nav {
+          gap: 10px !important;
+          padding: 0 10px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 16px !important;
+          max-width: 36vw !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          min-height: 36px !important;
+          font-size: 11.5px !important;
+          padding: 0 9px !important;
+        }
+      }
+    </style>
 
     <style>
         :root {
@@ -498,214 +647,9 @@
             transform: translateY(-3px);
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 340;
-            height: 60px;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--nav-bg);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            transition: all .3s;
-        }
 
-        nav.scrolled {
-            box-shadow: 0 2px 14px var(--shadow);
-        }
+        /* Ancienne navigation locale supprimée : Foébé Shell gère mainNav/navMenu/navOverlay. */
 
-        .nav-logo {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.06em;
-        }
-
-        .nav-logo span {
-            font-weight: 700;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(1) {
-            color: #4E291F;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(2) {
-            color: #BB7E60;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(3) {
-            color: #C45279;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(4) {
-            color: #C34234;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(5) {
-            color: #4E291F;
-        }
-
-        [data-theme="night"] .nav-logo span {
-            color: #F0EAE7;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #menuToggle {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text);
-            background: none;
-            border: none;
-            padding: 6px 8px;
-            border-radius: 8px;
-            transition: background .2s;
-            z-index: 331;
-            position: relative;
-        }
-
-        #menuToggle:hover {
-            background: var(--surface);
-        }
-
-        #navOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 320;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease, backdrop-filter .25s ease, background .25s ease;
-        }
-
-        #navOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-        }
-
-        [data-theme="day"] #navOverlay.visible {
-            background: rgba(78, 41, 31, 0.18);
-        }
-
-        #navOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px);
-        }
-        #stateOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 300;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .22s ease, backdrop-filter .22s ease, background .22s ease;
-        }
-
-        #stateOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.28);
-            backdrop-filter: blur(2px);
-        }
-
-        [data-theme="day"] #stateOverlay.visible {
-            background: rgba(78, 41, 31, 0.14);
-        }
-
-        #stateOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #navMenu {
-            display: none;
-            position: fixed;
-            top: 64px;
-            right: 16px;
-            z-index: 340;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 220px;
-            box-shadow: 0 16px 48px var(--shadow-lg);
-        }
-
-        #navMenu.opening {
-            animation: slideDown .30s cubic-bezier(.16, 1, .3, 1) forwards;
-            transform-origin: top right;
-        }
-
-        #navMenu.closing {
-            animation: slideUp .20s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-        }
-
-        #navMenu a,
-        #navMenu button {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all .15s;
-        }
-
-        #navMenu a:hover,
-        #navMenu button:hover {
-            background: var(--surface);
-            transform: translateX(3px);
-        }
-
-        #navMenu hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 6px 0;
-        }
 
         .zone-hero {
             background: var(--z);
@@ -3881,38 +3825,228 @@ body.state-active .ici-card {
         }
 
         
+
+        /* ══ FALLBACK NAV — alignée sur les pages zones finalisées ══ */
+        .fallback-nav {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          z-index: 950 !important;
+          min-height: 60px !important;
+          padding: 0 clamp(14px, 3vw, 28px) !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          gap: 18px !important;
+          overflow: hidden !important;
+          white-space: nowrap !important;
+          background: rgba(78, 41, 31, .94) !important;
+          border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+          backdrop-filter: blur(14px) !important;
+          -webkit-backdrop-filter: blur(14px) !important;
+          font-family: "Poppins", sans-serif !important;
+        }
+
+        [data-theme="day"] .fallback-nav {
+          background: rgba(240, 234, 231, .94) !important;
+          border-bottom-color: rgba(78, 41, 31, .16) !important;
+        }
+
+        .fallback-logo {
+          font-family: "Montserrat", sans-serif !important;
+          font-weight: 700 !important;
+          font-size: 18px !important;
+          letter-spacing: -.06em !important;
+          line-height: 1 !important;
+          text-decoration: none !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          min-height: 44px !important;
+          flex: 0 0 auto !important;
+          max-width: 42vw !important;
+        }
+
+        [data-theme="night"] .fallback-logo span { color: #F0EAE7 !important; }
+        [data-theme="day"] .fallback-logo span:nth-child(1),
+        [data-theme="day"] .fallback-logo span:nth-child(5) { color: #4E291F !important; }
+        [data-theme="day"] .fallback-logo span:nth-child(2) { color: #BB7E60 !important; }
+        [data-theme="day"] .fallback-logo span:nth-child(3) { color: #C45279 !important; }
+        [data-theme="day"] .fallback-logo span:nth-child(4) { color: #C34234 !important; }
+
+        .fallback-links {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: flex-end !important;
+          gap: 6px !important;
+          flex: 1 1 auto !important;
+          min-width: 0 !important;
+          overflow-x: auto !important;
+          overflow-y: hidden !important;
+          -webkit-overflow-scrolling: touch !important;
+          scrollbar-width: none !important;
+          scroll-snap-type: x proximity !important;
+          -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 18px), transparent 100%) !important;
+          mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 18px), transparent 100%) !important;
+        }
+
+        .fallback-links::-webkit-scrollbar { display: none !important; }
+
+        .fallback-links a {
+          min-height: 38px !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 0 11px !important;
+          border-radius: 999px !important;
+          color: var(--text) !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          white-space: nowrap !important;
+          text-decoration: none !important;
+          border: 1px solid transparent !important;
+          opacity: .92 !important;
+          flex: 0 0 auto !important;
+          scroll-snap-align: start !important;
+        }
+
+        .fallback-links a:hover,
+        .fallback-links a:focus-visible {
+          color: #F0EAE7 !important;
+          background: #BB7E60 !important;
+          border-color: #BB7E60 !important;
+          opacity: 1 !important;
+          outline: none !important;
+        }
+
+        @media(max-width:720px) {
+          .fallback-nav {
+            min-height: 58px !important;
+            padding: 0 12px !important;
+            gap: 12px !important;
+          }
+          .fallback-logo {
+            font-size: 17px !important;
+            flex: 0 0 auto !important;
+          }
+          .fallback-links {
+            justify-content: flex-start !important;
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
+            padding-right: 2px !important;
+          }
+          .fallback-links a {
+            min-height: 38px !important;
+            font-size: 12px !important;
+            padding: 0 10px !important;
+            flex: 0 0 auto !important;
+          }
+        }
+
+        @media(max-width:420px) {
+          .fallback-nav {
+            gap: 10px !important;
+            padding: 0 10px !important;
+          }
+          .fallback-logo { font-size: 16px !important; }
+          .fallback-links a {
+            font-size: 11.5px !important;
+            padding: 0 9px !important;
+          }
+        }
+
+        /* CSS FALLBACK RENFORCÉ — sans JS, les contenus animés restent visibles */
+        .geste-card,
+        .impact-item,
+        .traj-item {
+          opacity: 1;
+          transform: none;
+          visibility: visible;
+        }
+
+        .js-ready .geste-card {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+
+        .js-ready .geste-card.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .js-ready .impact-item { opacity: 0.35; }
+        .js-ready .impact-item.lit { opacity: 1; }
+
+        .js-ready .traj-item { opacity: .4; }
+        .js-ready .traj-item.lit { opacity: 1; }
+
+        .chapter-title,
+        .obs-result-title,
+        .palp-title {
+          font-weight: 400 !important;
+        }
+
+        .eyebrow,
+        .chapter-eyebrow,
+        .section-eyebrow,
+        .hero-eyebrow {
+          display: inline-flex !important;
+          align-items: center !important;
+          width: max-content !important;
+          max-width: 100% !important;
+          padding: 7px 13px !important;
+          border-radius: 999px !important;
+          background: rgba(187,126,96,.14) !important;
+          border: 1px solid rgba(187,126,96,.34) !important;
+          font-family: "Poppins", sans-serif !important;
+          font-size: 13px !important;
+          font-weight: 700 !important;
+          letter-spacing: 1.4px !important;
+          line-height: 1.25 !important;
+          color: var(--warm) !important;
+          text-transform: uppercase !important;
+          margin-bottom: 20px !important;
+        }
+
+        [data-theme="night"] .eyebrow,
+        [data-theme="night"] .chapter-eyebrow,
+        [data-theme="night"] .section-eyebrow,
+        [data-theme="night"] .hero-eyebrow {
+          color: #F0EAE7 !important;
+          background: rgba(187,126,96,.22) !important;
+          border-color: rgba(187,126,96,.46) !important;
+        }
+
+        #backToTop {
+          z-index: 900 !important;
+        }
+
     </style>
 </head>
 
 <body>
 
+    
+
     <div id="pageProgress">
         <div id="pageProgressFill"></div>
     </div>
     <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
-    <div id="navOverlay"></div>
     <div id="stateOverlay"></div>
 
-   <div id="navMenu" role="menu">
-    <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
-    <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌊 Respiration</a>
-    <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire skin·self-care</a>
-    <hr>
-    <button id="themeBtn" type="button">☀️ Mode jour</button>
-  </div>
+    <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
+        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+      </a>
 
-
-    <nav id="mainNav">
-        <a href="index.html" class="nav-logo">
-            <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-        </a>
-        <div class="nav-right">
-            <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
-        </div>
+      <div class="fallback-links">
+        <a href="/a-propos.html">À propos</a>
+        <a href="/methode.html">Méthode</a>
+        <a href="/test.html">Échelle Foébé</a>
+        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+        <a href="/boussole-accueil-foebe.html">Boussole</a>
+        <a href="mailto:foebecosmetics@gmail.com">Contact</a>
+      </div>
     </nav>
 
     <div class="zone-hero">
@@ -4161,32 +4295,7 @@ body.state-active .ici-card {
 
         </div>
     </main>
-
-   <footer>
-  <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none;display:block;">
-      <div class="footer-logo">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-      </div>
-    </a>
-    <p class="footer-sub">l'observatoire · Self-Care Structuré · Maison Foébé 2026</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@maisonfoebe" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
-      </a>
-    </div>
-    <div class="footer-links">
-      <a href="mentions.html" class="footer-link">Mentions légales</a>
-      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">Contact</a>
-    </div>
-    <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
-  </div>
-</footer>
-
-    <script>
+<script>
         "use strict";
 
         /* ── Init palette ─── */
@@ -4228,7 +4337,7 @@ body.state-active .ici-card {
 
         function initHero() {
             var z = ZONE_CONFIG;
-            document.getElementById("heroNum").textContent = "Zone " + z.number + " · l'observatoire Foébé";
+            document.getElementById("heroNum").textContent = "Zone " + z.number + " · Maison Foébé";
             document.getElementById("heroEmoji").textContent = z.emoji;
             document.getElementById("heroTitle").textContent = z.slug;
         }
@@ -4478,12 +4587,15 @@ body.state-active .ici-card {
             }, {
                 passive: true
             });
-            document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            window.addEventListener("scroll", function() {
-                document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            }, {
-                passive: true
-            });
+            var mainNav = document.getElementById("mainNav");
+            if (mainNav) {
+                mainNav.classList.toggle("scrolled", window.scrollY > 40);
+                window.addEventListener("scroll", function() {
+                    mainNav.classList.toggle("scrolled", window.scrollY > 40);
+                }, {
+                    passive: true
+                });
+            }
         })();
         (function() {
             var btn = document.getElementById('backToTop');
@@ -4830,6 +4942,10 @@ body.state-active .ici-card {
         (function() {
             var items = document.querySelectorAll(".traj-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) { item.classList.add("lit"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-traj") || "0");
@@ -4856,6 +4972,10 @@ body.state-active .ici-card {
         (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
+            if (!("IntersectionObserver" in window)) {
+                cards.forEach(function(card) { card.classList.add("visible"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) e.target.classList.add("visible");
@@ -4870,6 +4990,10 @@ body.state-active .ici-card {
         (function() {
             var items = document.querySelectorAll(".impact-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) { item.classList.add("lit"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-impact") || "0");
@@ -4950,55 +5074,7 @@ body.state-active .ici-card {
                 if (errEl) errEl.textContent = '';
             });
         })();
-        (function() {
-            var toggle = document.getElementById("menuToggle"),
-                menu = document.getElementById("navMenu"),
-                overlay = document.getElementById("navOverlay"),
-                menuOpen = false,
-                closeTimer = null;
 
-            function openMenu() {
-                if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                }
-                menu.style.display = "block";
-                menu.classList.remove("closing");
-                menu.classList.add("opening");
-                overlay.classList.remove("hiding");
-                overlay.classList.add("visible");
-                menuOpen = true;
-                toggle.textContent = "✕";
-                toggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.remove("opening");
-                menu.classList.add("closing");
-                overlay.classList.remove("visible");
-                overlay.classList.add("hiding");
-                toggle.textContent = "☰";
-                toggle.setAttribute("aria-expanded", "false");
-                closeTimer = setTimeout(function() {
-                    menu.style.display = "none";
-                    menu.classList.remove("closing");
-                    overlay.classList.remove("hiding");
-                    closeTimer = null;
-                }, 210);
-            }
-            toggle.addEventListener("click", function(e) {
-                e.stopPropagation();
-                menuOpen ? closeMenu() : openMenu();
-            });
-            overlay.addEventListener("click", function() {
-                closeMenu();
-            });
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && menuOpen) closeMenu();
-            });
-        })();
         (function() {
             var iciCard = document.querySelector('.ici-card');
             if (iciCard) iciCard.addEventListener('click', function(e) {
@@ -5027,6 +5103,7 @@ body.state-active .ici-card {
             });
         })();
     </script>
+    <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
