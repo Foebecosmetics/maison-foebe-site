@@ -4,369 +4,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-       <meta name="robots" content="index, follow">
-<meta property="og:site_name" content="l'observatoire Foébé">
-<meta property="og:locale" content="fr_FR">
+    <!-- Anti-FOUC thème — NE PAS MODIFIER -->
     <script>
-        function toggleTheme() {
-            var h = document.documentElement;
-            var n = h.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-            h.setAttribute('data-theme', n);
-            var b = document.getElementById('themeBtn');
-            if (b) b.textContent = n === 'day' ? '\uD83C\uDF19 Mode nuit' : '\u2600\uFE0F Mode jour';
-        }
+    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
     </script>
+    <script>
+    document.documentElement.classList.add('js-ready');
+    </script>
+    <meta name="robots" content="index, follow">
     <script id="zoneConfig">
         var ZONE_CONFIG = {
-            name: "Relations",
-            slug: "Relations",
-            number: "06",
-            emoji: "🤝",
-            title: "Zone Relations · l'observatoire Foébé",
-            metaDesc: "Zone Relations · Observatoire Foébé : comprendre le déséquilibre relationnel, l'isolement progressif et la difficulté à poser des limites, identifier si cette zone est prioritaire avec un mini-test en 5 questions.",
-            canonicalUrl: "https://maisonfoebe.fr/zone-relations",
-            ogTitle: "Zone Relations · l'observatoire Foébé",
-            ogDesc: "Zone Relations : comprendre le déséquilibre dans les liens, faire le mini-test, voir les effets en cascade et choisir un geste concret. Self-care structuré Foébé",
-            keywords: "self-care, zone relations, isolement, limites, donner recevoir, burnout fonctionnel",
-            jsonLdHeadline: "Zone Relations — Self-care et déséquilibre relationnel · Observatoire Foébé",
-            jsonLdDesc: "Comprendre les mécanismes de la zone Relations : balance donner-recevoir, limites non posées, isolement progressif. Mini-test en 5 questions et gestes de rééquilibrage.",
-            palette: {
-                z: "#5C1A40",
-                zR: 92,
-                zG: 26,
-                zB: 64,
-                zMid: "#9E3565",
-                zMidR: 158,
-                zMidG: 53,
-                zMidB: 101,
-                zLite: "#D478A4",
-                zLiteR: 212,
-                zLiteG: 120,
-                zLiteB: 164
-            }
-        };
+                    name: "Relations",
+                    slug: "Relations",
+                    number: "06",
+                    emoji: "🤝",
+                    title: "Zone Relations · Maison Foébé",
+                    metaDesc: "Zone Relations · Maison Foébé : comprendre le déséquilibre relationnel, l'isolement progressif et la difficulté à poser des limites, identifier si cette zone est prioritaire avec un mini-test en 5 questions.",
+                    canonicalUrl: "https://maisonfoebe.fr/zone-relations",
+                    ogTitle: "Zone Relations · Maison Foébé",
+                    ogDesc: "Zone Relations : comprendre le déséquilibre dans les liens, faire le mini-test, voir les effets en cascade et choisir un geste concret. Self-care structuré Foébé",
+                    keywords: "self-care, zone relations, isolement, limites, donner recevoir, burnout fonctionnel",
+                    jsonLdHeadline: "Zone Relations — Self-care et déséquilibre relationnel · Maison Foébé",
+                    jsonLdDesc: "Comprendre les mécanismes de la zone Relations : balance donner-recevoir, limites non posées, isolement progressif. Mini-test en 5 questions et gestes de rééquilibrage.",
+                    palette: {
+                        z: "#5C1A40",
+                        zR: 92,
+                        zG: 26,
+                        zB: 64,
+                        zMid: "#9E3565",
+                        zMidR: 158,
+                        zMidG: 53,
+                        zMidB: 101,
+                        zLite: "#D478A4",
+                        zLiteR: 212,
+                        zLiteG: 120,
+                        zLiteB: 164
+                    }
+                };
         var ZONES_NAV = [{
-                emoji: "⚡",
-                label: "Énergie",
-                url: "zone-energie.html",
-                active: false
-            },
-            {
-                emoji: "🧘",
-                label: "Corps",
-                url: "zone-corps.html",
-                active: false
-            },
-            {
-                emoji: "🧠",
-                label: "Mental",
-                url: "zone-mental.html",
-                active: false
-            },
-            {
-                emoji: "🌊",
-                label: "Émotions",
-                url: "zone-emotions.html",
-                active: false
-            },
-            {
-                emoji: "🌍",
-                label: "Environnement",
-                url: "zone-environnement.html",
-                active: false
-            },
-            {
-                emoji: "🤝",
-                label: "Relations",
-                url: "zone-relations.html",
-                active: true
-            },
-            {
-                emoji: "✨",
-                label: "Sens",
-                url: "zone-sens.html",
-                active: false
-            }
-        ];
+                        emoji: "⚡",
+                        label: "Énergie",
+                        url: "zone-energie.html",
+                        active: false
+                    },
+                    {
+                        emoji: "🧘",
+                        label: "Corps",
+                        url: "zone-corps.html",
+                        active: false
+                    },
+                    {
+                        emoji: "🧠",
+                        label: "Mental",
+                        url: "zone-mental.html",
+                        active: false
+                    },
+                    {
+                        emoji: "🌊",
+                        label: "Émotions",
+                        url: "zone-emotions.html",
+                        active: false
+                    },
+                    {
+                        emoji: "🌍",
+                        label: "Environnement",
+                        url: "zone-environnement.html",
+                        active: false
+                    },
+                    {
+                        emoji: "🤝",
+                        label: "Relations",
+                        url: "zone-relations.html",
+                        active: true
+                    },
+                    {
+                        emoji: "✨",
+                        label: "Sens",
+                        url: "zone-sens.html",
+                        active: false
+                    }
+                ];
         var ZONE_INTRO = {
-            text: "La zone <strong>Relations</strong> dans ton self-care concerne la qualité de tes liens, pas leur quantité. Quand cette zone se dérègle, on observe souvent un isolement qui s'installe progressivement, des interactions qui drainent plus qu'elles ne ressourcent, ou une tendance à tout donner sans pouvoir recevoir. Ce n'est pas une question de sociabilité ni de générosité. C'est une question d'équilibre.",
-            warning: null
-        };
+                    text: "La zone <strong>Relations</strong> dans ton self-care concerne la qualité de tes liens, pas leur quantité. Quand cette zone se dérègle, on observe souvent un isolement qui s'installe progressivement, des interactions qui drainent plus qu'elles ne ressourcent, ou une tendance à tout donner sans pouvoir recevoir. Ce n'est pas une question de sociabilité ni de générosité. C'est une question d'équilibre.",
+                    warning: null
+                };
         var PITCH_DATA = [{
-                icon: "🔍",
-                label: "Cette zone concerne",
-                val: "Ta capacité à entretenir des liens qui te ressourcent, à poser des limites sans culpabilité et à ne pas t'oublier dans tes relations."
-            },
-            {
-                icon: "⚠️",
-                label: "Prioritaire si tu observes",
-                val: "Des interactions qui drainent plus qu'elles ne ressourcent, un isolement qui s'installe, une tendance à tout donner sans pouvoir recevoir, ou des limites difficiles à poser."
-            },
-            {
-                icon: "🗺️",
-                label: "Sur cette page",
-                val: "Tu vas comprendre comment le déséquilibre relationnel s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret."
-            }
-        ];
+                        icon: "🔍",
+                        label: "Cette zone concerne",
+                        val: "Ta capacité à entretenir des liens qui te ressourcent, à poser des limites sans culpabilité et à ne pas t'oublier dans tes relations."
+                    },
+                    {
+                        icon: "⚠️",
+                        label: "Prioritaire si tu observes",
+                        val: "Des interactions qui drainent plus qu'elles ne ressourcent, un isolement qui s'installe, une tendance à tout donner sans pouvoir recevoir, ou des limites difficiles à poser."
+                    },
+                    {
+                        icon: "🗺️",
+                        label: "Sur cette page",
+                        val: "Tu vas comprendre comment le déséquilibre relationnel s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret."
+                    }
+                ];
         var STATE_DEFS = {
-            sol: {
-                title: "Solide",
-                text: "Globalement, tes relations te ressourcent. Tu arrives à poser des limites sans trop de culpabilité et à demander ce dont tu as besoin. Un équilibre dans les liens, ça se remarque et ça se cultive."
-            },
-            nour: {
-                title: "À nourrir",
-                text: "Quelque chose dans la balance relationnelle est légèrement déséquilibré. Tu donnes plus que tu reçois, ou bien tu observes un isolement qui commence. C'est le moment d'agir avant que la distance s'installe."
-            },
-            frag: {
-                title: "Fragile",
-                text: "Les interactions sont plus souvent drainantes que ressourçantes. Poser des limites est difficile et générateur de culpabilité. Tu gères, mais dans un déséquilibre qui coûte. Les gestes ci-dessous parlent directement à ce stade."
-            },
-            prior: {
-                title: "Priorité",
-                text: "Le déséquilibre relationnel est marqué et répété. L'isolement ou la surcharge relationnelle pèse sur l'ensemble de ton quotidien. Il faut créer un rééquilibrage dès maintenant."
-            }
-        };
+                    sol: {
+                        title: "Solide",
+                        text: "Globalement, tes relations te ressourcent. Tu arrives à poser des limites sans trop de culpabilité et à demander ce dont tu as besoin. Un équilibre dans les liens, ça se remarque et ça se cultive."
+                    },
+                    nour: {
+                        title: "À nourrir",
+                        text: "Quelque chose dans la balance relationnelle est légèrement déséquilibré. Tu donnes plus que tu reçois, ou bien tu observes un isolement qui commence. C'est le moment d'agir avant que la distance s'installe."
+                    },
+                    frag: {
+                        title: "Fragile",
+                        text: "Les interactions sont plus souvent drainantes que ressourçantes. Poser des limites est difficile et générateur de culpabilité. Tu gères, mais dans un déséquilibre qui coûte. Les gestes ci-dessous parlent directement à ce stade."
+                    },
+                    prior: {
+                        title: "Priorité",
+                        text: "Le déséquilibre relationnel est marqué et répété. L'isolement ou la surcharge relationnelle pèse sur l'ensemble de ton quotidien. À ce stade, il devient important de recréer un premier espace de rééquilibrage, même petit, pour que le lien ne repose pas uniquement sur l'effort ou l'isolement."
+                    }
+                };
         var POSIT_RESULTS = {
-            sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
-            nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
-            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
-            prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
-        };
+                    sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+                    nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
+                    frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
+                    prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
+                };
         var COMPRENDRE = {
-            intro: "Le déséquilibre dans les relations ne commence pas par une rupture. Il s'impose peu à peu, souvent par petits compromis accumulés.",
-            facteurs: [{
-                    icon: "⚖️",
-                    name: "La balance donner-recevoir",
-                    desc: "Donner plus que l'on reçoit de façon chronique épuise. Non parce que donner est mauvais, mais parce qu'en l'absence d'alimentation réciproque, la réserve relationnelle s'efface. Et une fois déserte, elle ne peut plus entretenir les liens."
-                },
-                {
-                    icon: "🚧",
-                    name: "Les limites non posées",
-                    desc: "Ne pas fixer de limites n'est pas un acte de générosité. Il s'agit fréquemment d'une tactique pour éviter le conflit ou la culpabilité. Cela finit par créer de la frustration, du ressentiment et des relations qui se chargent."
-                },
-                {
-                    icon: "🏝️",
-                    name: "L'isolement progressif",
-                    desc: "Lorsque les ressources font défaut, ce sont généralement les relations qui en pâtissent en premier lieu. On repousse, on décline, on se ménage. Jusqu'au moment où l'isolement est mis en place et où établir une connexion devient de nouveau un défi."
-                }
-            ],
-            vrIcon: "🤝",
-            vrTitle: "Résultat : des liens qui coûtent plus qu'ils ne nourrissent",
-            vrNote: "Le souci ne réside pas dans le fait d'entretenir des relations compliquées. C'est l'absence d'espace pour cultiver celles qui ont véritablement de l'importance."
-        };
+                    intro: "Le déséquilibre dans les relations ne commence pas par une rupture. Il s'impose peu à peu, souvent par petits compromis accumulés.",
+                    facteurs: [{
+                            icon: "⚖️",
+                            name: "La balance donner-recevoir",
+                            desc: "Donner plus que l'on reçoit de façon chronique épuise. Non parce que donner est mauvais, mais parce qu'en l'absence d'alimentation réciproque, la réserve relationnelle s'efface. Et une fois déserte, elle ne peut plus entretenir les liens."
+                        },
+                        {
+                            icon: "🚧",
+                            name: "Les limites non posées",
+                            desc: "Ne pas fixer de limites n'est pas un acte de générosité. Il s'agit fréquemment d'une tactique pour éviter le conflit ou la culpabilité. Cela finit par créer de la frustration, du ressentiment et des relations qui se chargent."
+                        },
+                        {
+                            icon: "🏝️",
+                            name: "L'isolement progressif",
+                            desc: "Quand les ressources baissent, les liens sont souvent les premiers à se rétrécir : on repousse, on décline, on se protège. Jusqu’au moment où l’isolement s’installe et où retrouver une connexion devient de nouveau un défi."
+                        }
+                    ],
+                    vrIcon: "🤝",
+                    vrTitle: "Résultat : des liens qui coûtent plus qu'ils ne nourrissent",
+                    vrNote: "Le souci ne réside pas dans le fait d'entretenir des relations compliquées. C'est l'absence d'espace pour cultiver celles qui ont véritablement de l'importance."
+                };
         var OBS_QUESTIONS = [{
-                q: "Suite à certaines interactions, tu te sens plus épuisé·e qu'auparavant. La conversation a pris de quelque chose sans vraiment te donner en retour.",
-                sub: "Il n'est pas nécessaire que toutes les relations soient équilibrées. Toutefois, lorsque la plupart des interactions suscitent ce sentiment, c'est un indicateur."
-            },
-            {
-                q: "Tu as du mal à demander de l'aide ou à accepter qu'on te la propose. Tu préfères te débrouiller seul·e.",
-                sub: "La difficulté à recevoir est souvent aussi coûteuse que la surabondance à donner. Elle maintient un déséquilibre dans le lien."
-            },
-            {
-                q: "Tu dis oui à des sollicitations alors que tu aurais voulu dire non. Et tu portes cette frustration seul·e.",
-                sub: "Ce n'est pas de la générosité. C'est souvent de la difficulté à nommer ses besoins ou à accepter la réaction de l'autre."
-            },
-            {
-                q: "Tu remarques un rétrécissement de ton cercle. Les gens que tu vois vraiment, régulièrement, se comptent sur les doigts d'une main.",
-                sub: "Ce n'est pas forcément un problème. Mais si ce rétrécissement n'est pas un choix, c'est souvent un signal d'isolement qui s'installe."
-            },
-            {
-                q: "En présence des autres, tu es là physiquement, mais ailleurs mentalement. Tu n'arrives pas vraiment à te connecter à la conversation.",
-                sub: "Cette absence dans la présence est souvent le signe que les ressources disponibles pour le lien sont basses."
-            }
-        ];
+                        q: "Suite à certaines interactions, tu te sens plus épuisé·e qu'auparavant. La conversation t'a pris quelque chose sans vraiment te donner en retour.",
+                        sub: "Il n'est pas nécessaire que toutes les relations soient équilibrées. Toutefois, lorsque la plupart des interactions suscitent ce sentiment, c'est un indicateur."
+                    },
+                    {
+                        q: "Tu as du mal à demander de l'aide ou à accepter qu'on te la propose. Tu préfères te débrouiller seul·e.",
+                        sub: "La difficulté à recevoir est souvent aussi coûteuse que la surabondance à donner. Elle maintient un déséquilibre dans le lien."
+                    },
+                    {
+                        q: "Tu dis oui à des sollicitations alors que tu aurais voulu dire non. Et tu portes cette frustration seul·e.",
+                        sub: "Ce n'est pas de la générosité. C'est souvent de la difficulté à nommer ses besoins ou à accepter la réaction de l'autre."
+                    },
+                    {
+                        q: "Tu remarques un rétrécissement de ton cercle. Les gens que tu vois vraiment, régulièrement, se comptent sur les doigts d'une main.",
+                        sub: "Ce n'est pas forcément un problème. Mais si ce rétrécissement n'est pas un choix, c'est souvent un signal d'isolement qui s'installe."
+                    },
+                    {
+                        q: "En présence des autres, tu es là physiquement, mais ailleurs mentalement. Tu n'arrives pas vraiment à te connecter à la conversation.",
+                        sub: "Cette absence dans la présence est souvent le signe que les ressources disponibles pour le lien sont basses."
+                    }
+                ];
         var OBS_DATA = [{
-                cls: "s0",
-                title: "Aucun signal identifié",
-                text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vision globale des 7 dimensions de ton self-care.",
-                crossLink: {
-                    label: "Explorer les 7 zones →",
-                    url: "test.html"
-                }
-            },
-            {
-                cls: "s1",
-                title: "1 signal sur 5 · à surveiller",
-                text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
-            },
-            {
-                cls: "s2",
-                title: "2 signaux sur 5 · seuil d'attention",
-                text: "Deux signaux identifiés. C'est le moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour ça."
-            },
-            {
-                cls: "s3",
-                title: "3 signaux sur 5 · zone à prioriser",
-                text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
-            },
-            {
-                cls: "s4",
-                title: "4 signaux sur 5 · priorité élevée",
-                text: "Quatre signaux présents. Le déséquilibre relationnel est actif. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
-            },
-            {
-                cls: "s5",
-                title: "5 signaux sur 5 · priorité immédiate",
-                text: "Tous les signaux sont là. Commence par les gestes de rééquilibrage dès maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel sur cette dimension de ton self-care."
-            }
-        ];
-        var IMPACTS_INTRO = "Un déséquilibre dans les rapports ne se limite pas à la sphère sociale. En pratique, cela finit par avoir un impact de plus en plus évident sur le reste de ton self-care.";
+                        cls: "s0",
+                        title: "Aucun signal identifié",
+                        text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vision globale des 7 dimensions de ton self-care.",
+                        crossLink: {
+                            label: "Explorer les 7 zones →",
+                            url: "test.html"
+                        }
+                    },
+                    {
+                        cls: "s1",
+                        title: "1 signal sur 5 · à surveiller",
+                        text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+                    },
+                    {
+                        cls: "s2",
+                        title: "2 signaux sur 5 · seuil d'attention",
+                        text: "Deux signaux identifiés. C'est le moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour ça."
+                    },
+                    {
+                        cls: "s3",
+                        title: "3 signaux sur 5 · zone à prioriser",
+                        text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+                    },
+                    {
+                        cls: "s4",
+                        title: "4 signaux sur 5 · priorité élevée",
+                        text: "Quatre signaux présents. Le déséquilibre relationnel est actif. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
+                    },
+                    {
+                        cls: "s5",
+                        title: "5 signaux sur 5 · priorité immédiate",
+                        text: "Tous les signaux sont là. Commence par les gestes de rééquilibrage dès maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel sur cette dimension de ton self-care."
+                    }
+                ];
+        var IMPACTS_INTRO = "Un déséquilibre dans les relations ne se limite pas à la sphère sociale. En pratique, cela finit par avoir un impact de plus en plus évident sur le reste de ton self-care.";
         var IMPACTS_DATA = [{
-                emoji: "🤝",
-                dim: "Relations",
-                tag: "primary",
-                tagLabel: "Point de départ",
-                url: null,
-                desc: "La balance donner-recevoir est déséquilibrée. Les liens ressourcent moins, l'isolement ou la surcharge relationnelle s'installe."
-            },
-            {
-                emoji: "🌊",
-                dim: "Émotions",
-                tag: "secondary",
-                tagLabel: "Impact direct",
-                url: "zone-emotions.html",
-                desc: "Les relations sont un régulateur émotionnel majeur. Quand elles manquent ou qu'elles drainent, la régulation émotionnelle perd un appui central."
-            },
-            {
-                emoji: "✨",
-                dim: "Sens",
-                tag: "secondary",
-                tagLabel: "Impact direct",
-                url: "zone-sens.html",
-                desc: "Le sens passe souvent par le lien. Ce qu'on fait pour les autres, avec les autres, grâce aux autres. Quand le lien s'appauvrit, le sens peut se fragiliser avec lui."
-            },
-            {
-                emoji: "🧠",
-                dim: "Mental",
-                tag: "secondary",
-                tagLabel: "Impact indirect",
-                url: "zone-mental.html",
-                desc: "Les conflits relationnels non résolus ou les liens insatisfaisants occupent beaucoup de place dans le mental. La rumination relationnelle est l'une des boucles cognitives les plus fréquentes."
-            },
-            {
-                emoji: "⚡",
-                dim: "Énergie",
-                tag: "secondary",
-                tagLabel: "Impact indirect",
-                url: "zone-energie.html",
-                desc: "Les interactions drainantes consomment des ressources. Un cercle relationnel déséquilibré entame la réserve énergétique régulièrement, sans la reconstituer."
-            },
-            {
-                emoji: "🧘",
-                dim: "Corps",
-                tag: "deep",
-                tagLabel: "Impact profond",
-                url: "zone-corps.html",
-                desc: "L'isolement a des effets physiologiques documentés : sur le sommeil, l'immunité, la régulation du stress. La connexion sociale n'est pas un luxe. C'est un besoin biologique."
-            }
-        ];
-        var TRAJ_INTRO = "Ce schéma est documenté. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
-        var TRAJ_DATA = [{
-                emoji: "🤝",
-                label: "Là où ça commence",
-                title: "Le glissement progressif",
-                badge: null,
-                desc: "On reporte une soirée. Puis une autre. On répond moins vite. On accepte des invitations par devoir plutôt que par envie. Sans s'en rendre compte, les liens qui comptaient se sont distendus.",
-                mirror: "Si tu penses à quelqu'un que tu n'as pas vu depuis longtemps en lisant ces lignes, peut-être que c'est le premier geste : reprendre contact."
-            },
-            {
-                emoji: "🔄",
-                label: "Le déclencheur",
-                title: "L'isolement qui devient visible",
-                badge: "Très fréquent",
-                desc: "Un week-end sans aucune interaction. La réalisation qu'on n'a personne à appeler. La fatigue de toujours être celui ou celle qui donne sans vraiment recevoir.",
-                mirror: null
-            },
-            {
-                emoji: "👁",
-                label: "Le premier geste",
-                title: "Un lien, intentionnellement",
-                badge: null,
-                desc: "Pas reprendre tous les liens à la fois. Juste un : un message, un appel, une proposition. Quelque chose de petit et concret vers une personne qui compte.",
-                mirror: null
-            },
-            {
-                emoji: "🤝",
-                label: "Vers où ça peut aller",
-                title: "Des liens qui nourrissent vraiment",
-                badge: null,
-                desc: "Pas un grand cercle social. Juste quelques liens dans lesquels on peut être soi, recevoir autant que donner, et sortir ressourcé·e plutôt qu'épuisé·e.",
-                mirror: null
-            }
-        ];
+                        emoji: "🤝",
+                        dim: "Relations",
+                        tag: "primary",
+                        tagLabel: "Point de départ",
+                        url: null,
+                        desc: "La balance donner-recevoir est déséquilibrée. Les liens ressourcent moins, l'isolement ou la surcharge relationnelle s'installe."
+                    },
+                    {
+                        emoji: "🌊",
+                        dim: "Émotions",
+                        tag: "secondary",
+                        tagLabel: "Impact direct",
+                        url: "zone-emotions.html",
+                        desc: "Les relations sont un régulateur émotionnel majeur. Quand elles manquent ou qu'elles drainent, la régulation émotionnelle perd un appui central."
+                    },
+                    {
+                        emoji: "✨",
+                        dim: "Sens",
+                        tag: "secondary",
+                        tagLabel: "Impact direct",
+                        url: "zone-sens.html",
+                        desc: "Le sens passe souvent par le lien. Ce qu'on fait pour les autres, avec les autres, grâce aux autres. Quand le lien s'appauvrit, le sens peut se fragiliser avec lui."
+                    },
+                    {
+                        emoji: "🧠",
+                        dim: "Mental",
+                        tag: "secondary",
+                        tagLabel: "Impact indirect",
+                        url: "zone-mental.html",
+                        desc: "Les conflits relationnels non résolus ou les liens insatisfaisants occupent beaucoup de place dans le mental. La rumination relationnelle est l'une des boucles cognitives les plus fréquentes."
+                    },
+                    {
+                        emoji: "⚡",
+                        dim: "Énergie",
+                        tag: "secondary",
+                        tagLabel: "Impact indirect",
+                        url: "zone-energie.html",
+                        desc: "Les interactions drainantes consomment des ressources. Un cercle relationnel déséquilibré entame la réserve énergétique régulièrement, sans la reconstituer."
+                    },
+                    {
+                        emoji: "🧘",
+                        dim: "Corps",
+                        tag: "deep",
+                        tagLabel: "Impact profond",
+                        url: "zone-corps.html",
+                        desc: "L’isolement peut aussi se traduire dans le corps : sommeil plus fragile, stress plus présent, récupération moins fluide. La connexion sociale n’est pas un détail : elle participe à notre régulation."
+                    }
+                ];
         var GESTES_META = {
-            name: "Pour rééquilibrer ce qui se passe dans tes liens",
-            sub: "Trois gestes simples pour commencer à réajuster la balance",
-            freqIcon: "📅",
-            freqText: "Quand faire ces gestes? Une fois aujourd'hui, de préférence en choisissant la personne ou le geste qui te vient naturellement en tête. Pas à planifier : à déclencher.",
-            intention: "Ces trois gestes ne réparent pas des liens complexes. Mais ils remettent quelque chose en mouvement, et souvent c'est le mouvement lui-même qui compte."
-        };
+                    name: "Pour rééquilibrer ce qui se passe dans tes liens",
+                    sub: "Trois gestes simples pour commencer à réajuster la balance",
+                    freqIcon: "📅",
+                    freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence en choisissant la personne ou le geste qui te vient naturellement en tête. Pas à planifier : à déclencher.",
+                    intention: "Ces trois gestes ne réparent pas des liens complexes. Mais ils remettent quelque chose en mouvement, et souvent c'est le mouvement lui-même qui compte."
+                };
         var GESTES_DATA = [{
-                type: "💬 Un message à quelqu'un qui compte",
-                meta: ["⏱ 5 min", "Effort bas"],
-                text: "Pense à une personne que tu apprécies et que tu as peu contactée ces derniers temps. Envoie-lui un message court : pas une excuse, pas une longue explication. Juste un signe de vie.",
-                why: "Reprendre contact est souvent plus simple qu'on ne le craint. Et le lien, même mis en veille, retrouve souvent sa qualité initiale rapidement.",
-                sensoriel: "La résistance à reprendre contact est souvent plus grande que la difficulté réelle de le faire."
-            },
-            {
-                type: "🚧 Un non qui protège quelque chose",
-                meta: ["⏱ Immédiat", "Effort moyen"],
-                text: "Identifie une sollicitation à venir à laquelle tu aurais envie de dire non. Prépare ta réponse, courte et sans justification excessive. Et dis-la.",
-                why: "Poser une limite claire protège la relation à long terme. Ce qu'on ne dit pas finit par creuser un ressentiment qui fragilise le lien davantage qu'un <strong> 'non' </strong> honnête.",
-                sensoriel: "Le malaise lié au 'non' vient souvent de l'anticipation, pas de la réaction réelle de l'autre."
-            },
-            {
-                type: "🫂 Demander quelque chose à quelqu'un",
-                meta: ["⏱ 5 min", "Effort moyen"],
-                text: "Identifie une chose concrète dont tu aurais besoin. Demande-la à quelqu'un de confiance. Sans minimiser, sans sur-justifier.",
-                why: "Demander de l'aide crée du lien. Cela permet à l'autre d'exister dans la relation autrement que comme récepteur de tes ressources.",
-                sensoriel: null
-            }
-        ];
+                        type: "💬 Un message à quelqu'un qui compte",
+                        meta: ["⏱ 5 min", "Effort bas"],
+                        text: "Pense à une personne que tu apprécies et que tu as peu contactée ces derniers temps. Envoie-lui un message court : pas une excuse, pas une longue explication. Juste un signe de vie.",
+                        why: "Reprendre contact est souvent plus simple qu'on ne le craint. Et le lien, même mis en veille, retrouve souvent sa qualité initiale rapidement.",
+                        sensoriel: "La résistance à reprendre contact est souvent plus grande que la difficulté réelle de le faire."
+                    },
+                    {
+                        type: "🚧 Un non qui protège quelque chose",
+                        meta: ["⏱ Immédiat", "Effort moyen"],
+                        text: "Identifie une sollicitation à venir à laquelle tu aurais envie de dire non. Prépare une réponse courte, sans justification excessive. Puis, si la situation se présente, essaie de la poser simplement.",
+                        why: "Poser une limite claire protège la relation à long terme. Ce qu'on ne dit pas finit par creuser un ressentiment qui fragilise le lien davantage qu'un “non” honnête.",
+                        sensoriel: "Le malaise lié au 'non' vient souvent de l'anticipation, pas de la réaction réelle de l'autre."
+                    },
+                    {
+                        type: "🫂 Demander quelque chose à quelqu'un",
+                        meta: ["⏱ 5 min", "Effort moyen"],
+                        text: "Identifie une chose concrète dont tu aurais besoin. Demande-la à quelqu'un de confiance. Sans minimiser, sans sur-justifier.",
+                        why: "Demander de l'aide crée du lien. Cela permet à l'autre d'exister dans la relation autrement que comme récepteur de tes ressources.",
+                        sensoriel: null
+                    }
+                ];
         var SECTIONS_META = {
-            comprendre: {
-                num: "01",
-                eyebrow: "Ce qui se passe vraiment",
-                title: "Comprendre la zone Relations"
-            },
-            minitest: {
-                num: "02",
-                eyebrow: "Auto-observation",
-                title: "Mini-test · 5 questions"
-            },
-            impacts: {
-                num: "03",
-                eyebrow: "Comment ça se propage",
-                title: "Effets en cascade"
-            },
-            traj: {
-                num: "04",
-                eyebrow: "Une trajectoire possible",
-                title: "Schéma d'épuisement"
-            },
-            gestes: {
-                num: "05",
-                eyebrow: "Des gestes pour commencer",
-                title: "Rituels Foébé"
-            }
-        };
+                    comprendre: {
+                        num: "01",
+                        eyebrow: "Ce qui se passe vraiment",
+                        title: "Comprendre la zone Relations"
+                    },
+                    minitest: {
+                        num: "02",
+                        eyebrow: "Auto-observation",
+                        title: "Mini-test · 5 questions"
+                    },
+                    impacts: {
+                        num: "03",
+                        eyebrow: "Comment ça se propage",
+                        title: "Effets en cascade"
+                    },
+                    gestes: {
+                        num: "04",
+                        eyebrow: "Des gestes pour commencer",
+                        title: "Rituels Foébé"
+                    }
+                };
     </script>
-    <title id="pageTitle">Zone Relations · l'observatoire Foébé</title>
+    <title id="pageTitle">Zone Relations · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-    <meta name="description" id="metaDesc" content="">
-    <link rel="canonical" id="canonical" href="">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDesc" content="">
+    <meta name="description" id="metaDesc" content="Zone Relations · Comprendre le déséquilibre dans les liens, l'isolement progressif et poser un premier geste avec Maison Foébé.">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-relations">
+    <meta property="og:title" id="ogTitle" content="Zone Relations · Maison Foébé">
+    <meta property="og:description" id="ogDesc" content="Comprendre le déséquilibre relationnel, faire le mini-test et choisir un premier geste pour rééquilibrer les liens.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-relations">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-relations.png">
+    <meta property="og:site_name" content="Maison Foébé">
+<meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zone Relations · Maison Foébé">
+    <meta name="twitter:description" content="Comprendre les liens qui drainent, les limites difficiles à poser et retrouver un premier équilibre relationnel.">
+    <meta name="twitter:image" content="https://maisonfoebe.fr/images/zones/og-zone-relations.png">
     <script id="jsonLd" type="application/ld+json">
-        {}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Relations · Maison Foébé",
+      "description": "Comprendre les mécanismes de la zone Relations : balance donner-recevoir, limites non posées, isolement progressif.",
+      "url": "https://maisonfoebe.fr/zone-relations",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://maisonfoebe.fr/#website",
+        "name": "Maison Foébé"
+      }
+    }
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -388,7 +362,7 @@
             --z-lite-b: ;
             --bordeaux: #4E291F;
             --warm: #BB7E60;
-            --warm-dark: #7A4A28;
+            --warm-dark: #5C1A40;
             --warm-mid: #9A5C35;
             --cream: #F0EAE7;
             --rose: #C45279;
@@ -471,7 +445,7 @@
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 180;
+            z-index: 900;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -498,214 +472,7 @@
             transform: translateY(-3px);
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 340;
-            height: 60px;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--nav-bg);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            transition: all .3s;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 2px 14px var(--shadow);
-        }
-
-        .nav-logo {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.06em;
-        }
-
-        .nav-logo span {
-            font-weight: 700;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(1) {
-            color: #4E291F;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(2) {
-            color: #BB7E60;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(3) {
-            color: #C45279;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(4) {
-            color: #C34234;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(5) {
-            color: #4E291F;
-        }
-
-        [data-theme="night"] .nav-logo span {
-            color: #F0EAE7;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #menuToggle {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text);
-            background: none;
-            border: none;
-            padding: 6px 8px;
-            border-radius: 8px;
-            transition: background .2s;
-            z-index: 331;
-            position: relative;
-        }
-
-        #menuToggle:hover {
-            background: var(--surface);
-        }
-
-        #navOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 320;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease, backdrop-filter .25s ease, background .25s ease;
-        }
-
-        #navOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-        }
-
-        [data-theme="day"] #navOverlay.visible {
-            background: rgba(78, 41, 31, 0.18);
-        }
-
-        #navOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px);
-        }
-        #stateOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 300;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .22s ease, backdrop-filter .22s ease, background .22s ease;
-        }
-
-        #stateOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.28);
-            backdrop-filter: blur(2px);
-        }
-
-        [data-theme="day"] #stateOverlay.visible {
-            background: rgba(78, 41, 31, 0.14);
-        }
-
-        #stateOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #navMenu {
-            display: none;
-            position: fixed;
-            top: 64px;
-            right: 16px;
-            z-index: 340;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 220px;
-            box-shadow: 0 16px 48px var(--shadow-lg);
-        }
-
-        #navMenu.opening {
-            animation: slideDown .30s cubic-bezier(.16, 1, .3, 1) forwards;
-            transform-origin: top right;
-        }
-
-        #navMenu.closing {
-            animation: slideUp .20s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-        }
-
-        #navMenu a,
-        #navMenu button {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all .15s;
-        }
-
-        #navMenu a:hover,
-        #navMenu button:hover {
-            background: var(--surface);
-            transform: translateX(3px);
-        }
-
-        #navMenu hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 6px 0;
-        }
+        /* Ancienne navigation locale supprimée : Foébé Shell gère mainNav/navMenu/navOverlay. */
 
         .zone-hero {
             background: var(--z);
@@ -835,7 +602,7 @@
             border: 1.5px solid var(--border);
             border-radius: 10px;
             font-family: "Lora", serif;
-            font-size: 14.5px;
+            font-size: 15px;
             font-style: normal;
             color: var(--sub);
             line-height: 1.75;
@@ -887,7 +654,7 @@
 
 /* Quand l'overlay de l'état est visible, la card passe devant lui */
 body.state-active .ici-card {
-    z-index: 315;              /* > overlay(310) mais < nav(330) */
+    z-index: 220;              /* au-dessus de l’overlay d’état, sous les contrôles fixes */
 }
 
         .ici-card-header {
@@ -918,7 +685,7 @@ body.state-active .ici-card {
 .ici-card {
     overflow: visible !important;  /* ← LIGNE 1 : libère clipping */
     isolation: isolate;           /* ← LIGNE 2 : stacking context propre */
-    z-index: 305;                 /* ← LIGNE 3 : au-dessus overlay */
+    z-index: 2;                   /* stacking local seulement ; ne passe plus au-dessus des contrôles fixes */
 }
         /* ── Boutons flèches ─── CORRECTION 1 ─────────────────────────
    display:none par défaut sur tous devices.
@@ -1530,7 +1297,7 @@ body.state-active .ici-card {
 
         .chapter-title {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             line-height: 1.2;
             font-family: "Lora", serif;
@@ -1682,6 +1449,7 @@ body.state-active .ici-card {
         }
 
         .vr-title {
+            font-family: "Poppins", sans-serif;
             font-size: 15px;
             font-weight: 600;
             color: #F0EAE7;
@@ -1920,7 +1688,7 @@ body.state-active .ici-card {
 
 .obs-card-sub{
   grid-area:sub;
-  font-size:clamp(13px, 0.55vw + 11px, 15px);
+  font-size:clamp(15px, 0.45vw + 13px, 16px);
   color:var(--obs-card-sub);
   line-height:1.6;
   margin:0;
@@ -2142,7 +1910,7 @@ body.state-active .ici-card {
         .obs-result-title {
             font-family: "Lora", serif;
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             margin-bottom: 8px;
             line-height: 1.35;
@@ -2251,8 +2019,14 @@ body.state-active .ici-card {
             gap: 20px;
             position: relative;
             padding-bottom: 32px;
-            opacity: 0.35;
+            opacity: 1;
+            transform: none;
+            visibility: visible;
             transition: opacity .55s ease;
+        }
+
+        .js-ready .impact-item {
+            opacity: 0.35;
         }
 
         .impact-item:last-child {
@@ -2273,6 +2047,7 @@ body.state-active .ici-card {
             display: none;
         }
 
+        .js-ready .impact-item.lit,
         .impact-item.lit {
             opacity: 1;
         }
@@ -2385,172 +2160,8 @@ body.state-active .ici-card {
             border-color: rgba(146, 32, 84, 0.22);
         }
 
-        .traj-section {
-            margin-bottom: 64px;
-        }
-
-        .traj-note {
-            font-family: "Lora", serif;
-            font-size: 15px;
-            font-style: italic;
-            color: var(--sub);
-            line-height: 1.75;
-            margin-bottom: 32px;
-            border-left: 2px solid var(--z-lite);
-            padding-left: 14px;
-        }
-
-        .traj-timeline {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .traj-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            position: relative;
-            padding-bottom: 32px;
-            opacity: .4;
-            transition: opacity .6s ease;
-        }
-
-        .traj-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .traj-item::before {
-            content: "";
-            position: absolute;
-            left: 19px;
-            top: 44px;
-            width: 2px;
-            height: calc(100% - 12px);
-            background: linear-gradient(to bottom, var(--z-lite), rgba(var(--z-lite-r), var(--z-lite-g), var(--z-lite-b), 0.12));
-        }
-
-        .traj-item:last-child::before {
-            display: none;
-        }
-
-        .traj-item.lit {
-            opacity: 1;
-        }
-
-        .traj-left {
-            flex-shrink: 0;
-            padding-top: 4px;
-        }
-
-        .traj-dot {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--card);
-            border: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-            transition: border-color .4s, box-shadow .4s, background .4s;
-        }
-
-        .traj-item.lit .traj-dot {
-            border-color: var(--z-lite);
-            background: rgba(var(--z-mid-r), var(--z-mid-g), var(--z-mid-b), 0.20);
-            box-shadow: 0 0 0 4px rgba(var(--z-lite-r), var(--z-lite-g), var(--z-lite-b), 0.12);
-        }
-
-        .traj-item.lit:last-child .traj-dot {
-            background: var(--z-mid);
-            box-shadow: 0 0 0 5px rgba(var(--z-lite-r), var(--z-lite-g), var(--z-lite-b), 0.15);
-        }
-
-        .traj-right {
-            padding-top: 8px;
-        }
-
-        .traj-step-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--z-lite);
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        [data-theme="day"] .traj-step-label {
-            color: var(--z-mid);
-        }
-
-        .traj-step-title {
-            font-family: "Lora", serif;
-            font-size: 17px;
-            color: var(--text);
-            margin-bottom: 5px;
-            line-height: 1.3;
-        }
-
-        .traj-item.lit:last-child .traj-step-title {
-            color: var(--z-lite);
-        }
-
-        [data-theme="day"] .traj-item.lit:last-child .traj-step-title {
-            color: var(--z-mid);
-        }
-
-        .traj-step-desc {
-            font-size: 14px;
-            color: var(--sub);
-            line-height: 1.7;
-            font-family: "Lora", serif;
-            font-style: normal;
-        }
-
-        .traj-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            vertical-align: middle;
-            margin-left: 8px;
-            font-family: "Poppins", sans-serif;
-        }
-
-        [data-theme="day"] .traj-badge {
-            background: rgba(122, 74, 40, 0.08);
-            color: var(--warm-dark);
-            border: 1px solid rgba(122, 74, 40, 0.25);
-        }
-
-        [data-theme="night"] .traj-badge {
-            background: rgba(187, 126, 96, 0.22);
-            color: #E0C4AA;
-            border: 1px solid rgba(187, 126, 96, 0.40);
-        }
-
-        .traj-item.lit:last-child .traj-right {
-            border: 1.5px solid rgba(187, 126, 96, 0.35);
-            border-radius: 14px;
-            padding: 14px 16px;
-            background: rgba(187, 126, 96, 0.06);
-        }
-
-        .traj-mirror {
-            font-family: "Lora", serif;
-            font-style: italic;
-            font-size: 14px;
-            line-height: 1.72;
-            color: var(--sub);
-            border-left: 3px solid var(--rose);
-            padding-left: 14px;
-            margin-top: 10px;
-        }
+        /* Section trajectoire retirée du parcours Zone Relations : CSS legacy supprimé.
+           Les fallbacks renforcés restent gérés sur les éléments réellement présents (.geste-card, .impact-item). */
 
         .gestes-section {
             margin-bottom: 64px;
@@ -2619,15 +2230,22 @@ body.state-active .ici-card {
             padding: 22px 20px;
             border-bottom: 1px solid var(--border);
             background: var(--card);
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+            transition: opacity .5s ease, transform .5s ease, background .2s;
+        }
+
+        .js-ready .geste-card {
             opacity: 0;
             transform: translateY(18px);
-            transition: opacity .5s ease, transform .5s ease, background .2s;
         }
 
         .geste-card:last-child {
             border-bottom: none;
         }
 
+        .js-ready .geste-card.visible,
         .geste-card.visible {
             opacity: 1;
             transform: translateY(0);
@@ -2812,7 +2430,7 @@ body.state-active .ici-card {
             text-align: center;
         }
 
-       .pour-aller-plus-loin {
+.pour-aller-plus-loin {
     border-radius: 28px;
     overflow: hidden;
     margin-bottom: 64px;
@@ -3125,7 +2743,7 @@ body.state-active .ici-card {
 
         .accomp-pitch strong {
             font-style: normal;
-            color: #4E291F;
+            color: #F0EAE7;
             font-weight: 600;
         }
 
@@ -3238,7 +2856,7 @@ body.state-active .ici-card {
 }
 
 [data-theme="day"] .email-privacy-link:hover {
-    color: #C34234;
+    color: #c45279;
 }
 
 /* NUIT */
@@ -3247,7 +2865,7 @@ body.state-active .ici-card {
 }
 
 [data-theme="night"] .email-privacy-link:hover {
-    color: #c34234; /* crème un peu plus clair pour le hover nuit */
+    color: #c45279; /* crème un peu plus clair pour le hover nuit */
 }
 
         .email-privacy-link:hover {
@@ -3382,7 +3000,7 @@ body.state-active .ici-card {
             align-items: center;
             justify-content: center;
             gap: 5px;
-            min-height: 42px;
+            min-height: 44px;
             padding: 0 16px;
             border-radius: 999px;
             font-family: "Poppins", sans-serif;
@@ -3619,7 +3237,6 @@ body.state-active .ici-card {
   width: 100%;
   max-width: none;
 }
-        }
 
         @media(min-width:1024px) {
             .page {
@@ -3686,12 +3303,11 @@ body.state-active .ici-card {
 
 
         .obs-card-sub{
-  font-size: clamp(13px, 0.45vw + 11px, 15px);
+  font-size: clamp(15px, 0.45vw + 13px, 16px);
   line-height: 1.6;
   width: 100%;
   max-width: none;
 }
-        }
 
         @media(min-width:768px) {
             .obs-card-q {
@@ -3699,7 +3315,7 @@ body.state-active .ici-card {
             }
 
             .obs-card-sub {
-                font-size: 14px;
+                font-size: 14.5px;
             }
 
             .geste-text {
@@ -3716,7 +3332,6 @@ body.state-active .ici-card {
         }
 
         @media(prefers-reduced-motion:reduce) {
-
             *,
             *::before,
             *::after {
@@ -3741,7 +3356,9 @@ body.state-active .ici-card {
                 opacity: 1 !important;
                 transform: none !important;
             }
-        @media (min-width: 900px){
+        }
+
+@media (min-width: 900px){
   .obs-stack{
     height:230px;
     max-width:860px;
@@ -3767,6 +3384,8 @@ body.state-active .ici-card {
     display:flex;
     align-items:flex-start;
   }
+}
+
 @media (min-width: 1100px){
   .obs-card{
     grid-template-columns:minmax(0, 1.6fr) minmax(260px, 0.85fr);
@@ -3797,41 +3416,36 @@ body.state-active .ici-card {
             outline: none;
         }
 
-        /* ── Mode nuit — blocs de fin : fond sombre, texte et bordures crème ── */
+        /* ── Blocs de fin : lisibles en mode jour et nuit ── */
         [data-theme="day"] .gestes-intention-wrap {
-    padding: 22px 24px;
-    background: #F0EAE7;
-    border: 1.5px solid #4E291F;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-}
+            padding: 22px 24px;
+            background: #F0EAE7;
+            border: 1.5px solid #4E291F;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            color: #4E291F;
+        }
 
-[data-theme="day"] .gestes-intention-text {
-    color: #4E291F;
-}
-
-[data-theme="night"] .gestes-intention-wrap {
-    padding: 22px 24px;
-    background: #4E291F;
-    border: 1.5px solid #F0EAE7;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-}
-
-        [data-theme="night"] .gestes-intention-wrap {
-            background: rgba(240, 234, 231, 0.06);
-            border-color: rgba(240, 234, 231, 0.25);
-            border-color: rgba(255, 255, 255, 1)
+        [data-theme="day"] .gestes-intention-text {
+            color: #4E291F;
         }
 
         [data-theme="night"] .gestes-intention-wrap {
-            background: rgba(78, 41, 31, 1);
-            color: rgba(78, 41, 31, 1);
+            padding: 22px 24px;
+            background: #4E291F;
+            border: 1.5px solid #F0EAE7;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            color: #F0EAE7;
+        }
+
+        [data-theme="night"] .gestes-intention-text {
+            color: #F0EAE7;
         }
 
         [data-theme="night"] .signature-foebe {
             background: rgba(78, 41, 31, 1);
-            border-color: rgba (240, 234, 231, 1);
+            border-color: rgba(240, 234, 231, 1);
         }
 
         [data-theme="night"] .accomp-pitch {
@@ -3881,39 +3495,408 @@ body.state-active .ici-card {
         }
 
         
+
+
+        /* ═══════════════════════════════════════════════════════════════
+           AUDIT PREMIUM FOÉBÉ — corrections ciblées Zone Relations
+           - lisibilité mobile
+           - eyebrows en pill
+           - états plus éditoriaux
+           - panneau état premium sans couleur de puce dans le titre
+        ═══════════════════════════════════════════════════════════════ */
+
+        .eyebrow,
+        .chapter-eyebrow,
+        .gestes-eyebrow,
+        .section-eyebrow,
+        .hero-eyebrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            width: max-content !important;
+            max-width: 100% !important;
+            padding: 7px 13px !important;
+            border-radius: 999px !important;
+            background: rgba(187, 126, 96, .14) !important;
+            border: 1px solid rgba(187, 126, 96, .34) !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.4px !important;
+            line-height: 1.25 !important;
+            color: var(--warm) !important;
+            text-transform: uppercase !important;
+        }
+
+        [data-theme="night"] .eyebrow,
+        [data-theme="night"] .chapter-eyebrow,
+        [data-theme="night"] .gestes-eyebrow,
+        [data-theme="night"] .section-eyebrow,
+        [data-theme="night"] .hero-eyebrow {
+            color: #F0EAE7 !important;
+            background: rgba(187, 126, 96, .22) !important;
+            border-color: rgba(187, 126, 96, .46) !important;
+        }
+
+        .zone-intro-text,
+        .pitch-val,
+        .ici-states-guide,
+        .state-def-text,
+        .facteur-desc,
+        .vr-note,
+        .obs-question,
+        .obs-sub,
+        .impact-desc,
+        .traj-step-desc,
+        .traj-mirror,
+        .geste-text,
+        .geste-why,
+        .geste-sensoriel,
+        .gestes-intention-text,
+        .accomp-body,
+        .email-note {
+            font-size: clamp(15.5px, 1.18vw, 17px) !important;
+            line-height: 1.78 !important;
+        }
+
+        .ici-state-tag {
+            min-height: 44px !important;
+            height: auto !important;
+            font-size: 13px !important;
+            border-color: rgba(187, 126, 96, .36) !important;
+            box-shadow: none !important;
+        }
+
+        .ici-state-tag.sol,
+        [data-theme="day"] .ici-state-tag.sol {
+            background: #5C1A40 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(222, 176, 138, .40) !important;
+        }
+
+        .ici-state-tag.nour,
+        [data-theme="day"] .ici-state-tag.nour {
+            background: #BB7E60 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .28) !important;
+        }
+
+        .ici-state-tag.frag,
+        [data-theme="day"] .ici-state-tag.frag {
+            background: #8E5B43 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .24) !important;
+        }
+
+        .ici-state-tag.prior,
+        [data-theme="day"] .ici-state-tag.prior {
+            background: #5C2D22 !important;
+            color: #F0EAE7 !important;
+            border-color: rgba(240, 234, 231, .22) !important;
+        }
+
+        .ici-state-tag.active-state {
+            box-shadow: 0 0 0 3px rgba(187, 126, 96, .24), 0 10px 24px rgba(0, 0, 0, .12) !important;
+        }
+
+        .state-def-box {
+            background: linear-gradient(135deg, #BB7E60 0%, #9A5C35 100%) !important;
+            border-color: rgba(240, 234, 231, .24) !important;
+        }
+
+        .state-def-box.visible {
+            border-color: rgba(240, 234, 231, .34) !important;
+            box-shadow: 0 0 0 3px rgba(187, 126, 96, .14), 0 14px 34px rgba(0, 0, 0, .18) !important;
+        }
+
+        .state-def-title,
+        #stateDefTitle {
+            color: #F0EAE7 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.4px !important;
+            text-transform: uppercase !important;
+        }
+
+
+        .vr-title,
+        #vrTitle {
+            font-family: "Poppins", sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            letter-spacing: .2px !important;
+        }
+
+        .state-def-text,
+        #stateDefText {
+            color: rgba(240, 234, 231, .92) !important;
+            font-family: "Lora", serif !important;
+        }
+
+        @media(max-width:640px) {
+            .zone-hero {
+                padding-top: 96px !important;
+            }
+
+            .page {
+                padding-left: 18px !important;
+                padding-right: 18px !important;
+            }
+
+            .aller-a-link,
+            .ici-state-tag,
+            .obs-btn,
+            .geste-btn,
+            .btn,
+            button,
+            input[type="submit"] {
+                min-height: 44px;
+            }
+        }
+
+
+        /* ═══════════════════════════════════════════════════════════
+           CORRECTION V5 — hiérarchie stable des couches
+           Menu Foébé Shell > bouton retour haut > bloc “Pour mieux te situer” > overlay état > page.
+        ═══════════════════════════════════════════════════════════ */
+        #stateOverlay {
+            z-index: 700 !important;
+        }
+
+        body.state-active .ici-card {
+            position: relative !important;
+            z-index: 800 !important;
+            overflow: visible !important;
+            isolation: auto !important;
+        }
+
+        #backToTop {
+            z-index: 900 !important;
+        }
+        /* Trajectoire retirée du parcours Zone Relations : section supprimée. */
+
+        /* Sécurité : la section trajectoire n'est plus utilisée sur cette page. */
+        #trajectoireSection {
+            display: none !important;
+        }
+
+    
+/* ══ FALLBACK NAV — visible seulement si foebe-shell.js ne charge pas ══ */
+.fallback-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 950 !important;
+  min-height: 60px !important;
+  padding: 0 clamp(14px, 3vw, 28px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  background: rgba(78, 41, 31, .94) !important;
+  border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+[data-theme="day"] .fallback-nav {
+  background: rgba(240, 234, 231, .94) !important;
+  border-bottom-color: rgba(78, 41, 31, .16) !important;
+}
+
+.fallback-logo {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  letter-spacing: -.06em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  flex: 0 0 auto !important;
+  max-width: 42vw !important;
+}
+
+[data-theme="night"] .fallback-logo span {
+  color: #F0EAE7 !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(1),
+[data-theme="day"] .fallback-logo span:nth-child(5) {
+  color: #4E291F !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(2) {
+  color: #BB7E60 !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(3) {
+  color: #C45279 !important;
+}
+
+[data-theme="day"] .fallback-logo span:nth-child(4) {
+  color: #C34234 !important;
+}
+
+.fallback-links {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+}
+
+.fallback-links::-webkit-scrollbar {
+  display: none !important;
+}
+
+.fallback-links a {
+  min-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 11px !important;
+  border-radius: 999px !important;
+  color: var(--text) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  opacity: .92 !important;
+}
+
+.fallback-links a:hover,
+.fallback-links a:focus-visible {
+  color: #F0EAE7 !important;
+  background: #BB7E60 !important;
+  border-color: #BB7E60 !important;
+  opacity: 1 !important;
+  outline: none !important;
+}
+
+@media(max-width:720px) {
+  .fallback-nav {
+    padding: 0 12px !important;
+    gap: 12px !important;
+  }
+
+  .fallback-logo {
+    font-size: 17px !important;
+  }
+
+  .fallback-links {
+    justify-content: flex-start !important;
+  }
+
+  .fallback-links a {
+    font-size: 12px !important;
+    padding: 0 10px !important;
+  }
+}
+
+@media(max-width:420px) {
+  .fallback-nav {
+    gap: 10px !important;
+    padding: 0 10px !important;
+  }
+
+  .fallback-logo {
+    font-size: 16px !important;
+    max-width: 36vw !important;
+  }
+
+  .fallback-links a {
+    min-height: 36px !important;
+    font-size: 11.5px !important;
+    padding: 0 9px !important;
+  }
+}
+
+/* ══ CSS FALLBACK RENFORCÉ — sans JS, rien ne reste masqué ══ */
+.geste-card,
+.impact-item,
+.traj-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.js-ready .geste-card {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-ready .geste-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-ready .impact-item {
+  opacity: 0.35;
+}
+
+.js-ready .impact-item.lit {
+  opacity: 1;
+}
+
+.js-ready .traj-item {
+  opacity: .4;
+}
+
+.js-ready .traj-item.lit {
+  opacity: 1;
+}
+
+/* En secours Shell absent, la nav fallback reste au-dessus des contrôles locaux */
+.fallback-nav {
+  z-index: 950 !important;
+}
+
+/* ══ Finitions premium Relations — verrouillage non bloquant ══ */
+#backToTop {
+  z-index: 900 !important;
+}
+
+.chapter-title,
+.obs-result-title,
+.palp-title {
+  font-weight: 400 !important;
+}
+
     </style>
 </head>
 
 <body>
 
+    <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
+        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+      </a>
+
+      <div class="fallback-links">
+        <a href="/a-propos.html">À propos</a>
+        <a href="/methode.html">Méthode</a>
+        <a href="/test.html">Échelle Foébé</a>
+        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+        <a href="/boussole-accueil-foebe.html">Boussole</a>
+        <a href="mailto:foebecosmetics@gmail.com">Contact</a>
+      </div>
+    </nav>
+
     <div id="pageProgress">
         <div id="pageProgressFill"></div>
     </div>
     <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
-    <div id="navOverlay"></div>
     <div id="stateOverlay"></div>
-
- <div id="navMenu" role="menu">
-    <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
-    <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌊 Respiration</a>
-    <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire</a>
-    <hr>
-    <button id="themeBtn" type="button">☀️ Mode jour</button>
-  </div>
-
-    <nav id="mainNav">
-        <a href="index.html" class="nav-logo">
-            <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-        </a>
-        <div class="nav-right">
-            <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
-        </div>
-    </nav>
-
     <div class="zone-hero">
         <span class="hero-num" id="heroNum"></span>
         <span class="hero-emoji" id="heroEmoji"></span>
@@ -4050,17 +4033,7 @@ body.state-active .ici-card {
                 <div class="impacts-timeline" id="impactsTimeline"></div>
             </div>
 
-            <div class="traj-section" id="trajectoireSection" style="display:none;" aria-hidden="true">
-                <div class="section-chapter">
-                    <span class="chapter-num" id="trajNum"></span>
-                    <div>
-                        <span class="chapter-eyebrow" id="trajEyebrow"></span>
-                        <h2 class="chapter-title" id="trajTitle"></h2>
-                    </div>
-                </div>
-                <p class="traj-note" id="trajNote"></p>
-                <div class="traj-timeline" id="trajTimeline"></div>
-            </div>
+            <div class="section-break"></div>
 
             <div class="gestes-section" id="gestesSection">
                 <div class="section-chapter">
@@ -4082,7 +4055,7 @@ body.state-active .ici-card {
                 </div>
             </div>
 
-            <div class="section-break"></div>
+                       <div class="section-break"></div>
 <div class="pour-aller-plus-loin">
   <div class="palp-header">
     <span class="palp-eyebrow">Outils Foébé</span>
@@ -4106,6 +4079,9 @@ body.state-active .ici-card {
     <span>Ces ressources sont gratuites et disponibles sans inscription.</span>
   </div>
 </div>
+            
+
+            <div class="section-break"></div>
             <div class="signature-foebe">
                 <div class="sig-line"></div>
                 <p class="sig-text">
@@ -4120,16 +4096,16 @@ body.state-active .ici-card {
                     <span class="accomp-badge">🧠 Bientôt disponible</span>
                     <h2 class="accomp-title">Aller plus loin avec <em>Foébé</em></h2>
                     <div class="accomp-pitch">
-                        <p> Foébé a été créé par une docteure en psychologie et ergonomie spécialisée santé au travail. Pour offrir un cadre structuré de compréhension et d'action du self-care, qui se veut précis, concret et actionnable </p>
+                        <p> Foébé a été créé par une docteure en psychologie et ergonomie spécialisée santé au travail. Pour offrir un cadre structuré de compréhension et d'action du self-care, qui se veut précis, concret et actionnable.</p>
                      </div>
                     <ul class="accomp-list">
-                        <li><strong>L'Atelier</strong>Quatre semaines pour apprendre à te voir vraiment. À ton rythme, chez toi.</li>
+                        <li><strong>L'Atelier</strong> Quatre semaines pour apprendre à te voir vraiment. À ton rythme, chez toi.</li>
                         <li><strong>Le Salon</strong> Des séances individuelles, avec des missions précises et un plan d'action co-construit avec toi.</li>
-                        <li><strong>Le Diagnostic professionnel</strong>Pour celles et ceux dont la fatigue vient aussi du travail, et qui ont besoin d'une lecture plus complète de leur situation.</li>
+                        <li><strong>Le Diagnostic professionnel</strong> Pour celles et ceux dont la fatigue vient aussi du travail, et qui ont besoin d'une lecture plus complète de leur situation.</li>
                     </ul>
                     <p class="accomp-note-finale">
   <strong>Foébé</strong> est un espace structuré du self-care.  
-  Pour celles et ceux qui réfléchissent beaucoup <strong>(#overthinker)</strong>, agissent seules, souvent en surcharge mentale et veulent se comprendre en profondeur.
+  Pour celles et ceux qui réfléchissent beaucoup, avancent souvent sans filet, vivent en surcharge intérieure et veulent se comprendre en profondeur.
 </p>
                 </div>
                 <div class="accomp-email">
@@ -4160,30 +4136,6 @@ body.state-active .ici-card {
 
         </div>
     </main>
-
-     <footer>
-  <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none;display:block;">
-      <div class="footer-logo">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-      </div>
-    </a>
-    <p class="footer-sub">l'observatoire · Self-Care Structuré · Maison Foébé 2026</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@maisonfoebe" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
-      </a>
-    </div>
-    <div class="footer-links">
-      <a href="mentions.html" class="footer-link">Mentions légales</a>
-      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">Contact</a>
-    </div>
-    <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
-  </div>
-</footer>
     <script>
         "use strict";
 
@@ -4219,14 +4171,20 @@ body.state-active .ici-card {
                 "@type": "WebPage",
                 "name": z.title,
                 "description": z.metaDesc,
-                "url": z.canonicalUrl
+                "url": z.canonicalUrl,
+                "inLanguage": "fr",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://maisonfoebe.fr/#website",
+                    "name": "Maison Foébé"
+                }
             });
             document.getElementById("formZoneField").value = z.slug;
         }
 
         function initHero() {
             var z = ZONE_CONFIG;
-            document.getElementById("heroNum").textContent = "Zone " + z.number + " · l'observatoire Foébé";
+            document.getElementById("heroNum").textContent = "Zone " + z.number + " · Maison Foébé";
             document.getElementById("heroEmoji").textContent = z.emoji;
             document.getElementById("heroTitle").textContent = z.slug;
         }
@@ -4384,24 +4342,6 @@ body.state-active .ici-card {
             });
         }
 
-        function initTraj() {
-            var sm = SECTIONS_META.traj;
-            setText("trajNum", sm.num);
-            setText("trajEyebrow", sm.eyebrow);
-            setText("trajTitle", sm.title);
-            setText("trajNote", TRAJ_INTRO);
-            var tl = document.getElementById("trajTimeline");
-            TRAJ_DATA.forEach(function(item, i) {
-                var badge = item.badge ? '<span class="traj-badge">' + item.badge + '</span>' : '';
-                var mirrorHtml = item.mirror ? '<p class="traj-mirror">' + item.mirror + '</p>' : '';
-                tl.innerHTML += '<div class="traj-item" data-traj="' + i + '">' +
-                    '<div class="traj-left"><div class="traj-dot">' + item.emoji + '</div></div>' +
-                    '<div class="traj-right"><span class="traj-step-label">' + item.label + '</span>' +
-                    '<p class="traj-step-title">' + item.title + badge + '</p>' +
-                    '<p class="traj-step-desc">' + item.desc + '</p>' + mirrorHtml + '</div></div>';
-            });
-        }
-
         function initGestes() {
             var sm = SECTIONS_META.gestes;
             setText("gestesNum", sm.num);
@@ -4454,7 +4394,6 @@ body.state-active .ici-card {
         initComprendre();
         initObs();
         initImpacts();
-        initTraj();
         initGestes();
         initZonesNav();
 
@@ -4476,12 +4415,15 @@ body.state-active .ici-card {
             }, {
                 passive: true
             });
-            document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            window.addEventListener("scroll", function() {
-                document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            }, {
-                passive: true
-            });
+            var mainNav = document.getElementById("mainNav");
+            if (mainNav) {
+                mainNav.classList.toggle("scrolled", window.scrollY > 40);
+                window.addEventListener("scroll", function() {
+                    mainNav.classList.toggle("scrolled", window.scrollY > 40);
+                }, {
+                    passive: true
+                });
+            }
         })();
         (function() {
             var btn = document.getElementById('backToTop');
@@ -4518,20 +4460,16 @@ body.state-active .ici-card {
                 lastStateTag = id;
             }
 
-            var colors = {
-                sol: getComputedStyle(document.documentElement).getPropertyValue("--z-lite").trim(),
-                nour: "#BB7E60",
-                frag: "#C34234",
-                prior: "#C45279"
-            };
             var titleEl = document.getElementById("stateDefTitle");
             titleEl.textContent = def.title;
-            titleEl.style.color = colors[id] || "#F0EAE7";
+            titleEl.style.color = "#F0EAE7";
             document.getElementById("stateDefText").textContent = def.text;
             box.dataset.state = id;
 
             /* Simple toggle .visible — pas de remove/add en cascade */
             box.classList.add("visible");
+
+            document.body.classList.add("state-active");
 
             var so = document.getElementById("stateOverlay");
             if (so) {
@@ -4547,6 +4485,7 @@ body.state-active .ici-card {
                 t.classList.remove("active-state");
             });
             lastStateTag = null;
+            document.body.classList.remove("state-active");
             var so = document.getElementById("stateOverlay");
             if (so) {
                 so.classList.remove("visible");
@@ -4826,34 +4765,16 @@ body.state-active .ici-card {
             });
         })();
         (function() {
-            var items = document.querySelectorAll(".traj-item");
-            if (!items.length) return;
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    var idx = parseInt(e.target.getAttribute("data-traj") || "0");
-                    if (e.isIntersecting) {
-                        items.forEach(function(it) {
-                            if (parseInt(it.getAttribute("data-traj") || "0") <= idx) it.classList.add("lit");
-                        });
-                    } else {
-                        var rect = e.boundingClientRect;
-                        if (rect.top > 0) {
-                            items.forEach(function(it) {
-                                if (parseInt(it.getAttribute("data-traj") || "0") >= idx) it.classList.remove("lit");
-                            });
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.35
-            });
-            items.forEach(function(el) {
-                obs.observe(el);
-            });
-        })();
-        (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
+
+            if (!("IntersectionObserver" in window)) {
+                cards.forEach(function(card) {
+                    card.classList.add("visible");
+                });
+                return;
+            }
+
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) e.target.classList.add("visible");
@@ -4861,13 +4782,21 @@ body.state-active .ici-card {
             }, {
                 threshold: 0.15
             });
-            cards.forEach(function(c) {
-                obs.observe(c);
+            cards.forEach(function(card) {
+                obs.observe(card);
             });
         })();
         (function() {
             var items = document.querySelectorAll(".impact-item");
             if (!items.length) return;
+
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) {
+                    item.classList.add("lit");
+                });
+                return;
+            }
+
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-impact") || "0");
@@ -4948,55 +4877,7 @@ body.state-active .ici-card {
                 if (errEl) errEl.textContent = '';
             });
         })();
-        (function() {
-            var toggle = document.getElementById("menuToggle"),
-                menu = document.getElementById("navMenu"),
-                overlay = document.getElementById("navOverlay"),
-                menuOpen = false,
-                closeTimer = null;
-
-            function openMenu() {
-                if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                }
-                menu.style.display = "block";
-                menu.classList.remove("closing");
-                menu.classList.add("opening");
-                overlay.classList.remove("hiding");
-                overlay.classList.add("visible");
-                menuOpen = true;
-                toggle.textContent = "✕";
-                toggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.remove("opening");
-                menu.classList.add("closing");
-                overlay.classList.remove("visible");
-                overlay.classList.add("hiding");
-                toggle.textContent = "☰";
-                toggle.setAttribute("aria-expanded", "false");
-                closeTimer = setTimeout(function() {
-                    menu.style.display = "none";
-                    menu.classList.remove("closing");
-                    overlay.classList.remove("hiding");
-                    closeTimer = null;
-                }, 210);
-            }
-            toggle.addEventListener("click", function(e) {
-                e.stopPropagation();
-                menuOpen ? closeMenu() : openMenu();
-            });
-            overlay.addEventListener("click", function() {
-                closeMenu();
-            });
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && menuOpen) closeMenu();
-            });
-        })();
+        /* Nav/menu local désactivé : Foébé Shell gère maintenant #mainNav, #navMenu, #navOverlay et #menuToggle. */
         (function() {
             var iciCard = document.querySelector('.ici-card');
             if (iciCard) iciCard.addEventListener('click', function(e) {
@@ -5025,6 +4906,7 @@ body.state-active .ici-card {
             });
         })();
     </script>
+    <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
