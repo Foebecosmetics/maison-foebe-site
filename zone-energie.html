@@ -4,32 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="robots" content="index, follow">
-<meta property="og:site_name" content="l'observatoire Foébé">
-<meta property="og:locale" content="fr_FR">
+    <!-- Anti-FOUC thème — NE PAS MODIFIER -->
     <script>
-        function toggleTheme() {
-            var h = document.documentElement;
-            var n = h.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-            h.setAttribute('data-theme', n);
-            var b = document.getElementById('themeBtn');
-            if (b) b.textContent = n === 'day' ? '\uD83C\uDF19 Mode nuit' : '\u2600\uFE0F Mode jour';
-        }
+    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
     </script>
-    <script id="zoneConfig">
+    <script>
+    document.documentElement.classList.add('js-ready');
+    </script>
+    <meta name="robots" content="index, follow">
+<meta property="og:site_name" content="Maison Foébé">
+<meta property="og:locale" content="fr_FR">
+<script id="zoneConfig">
         var ZONE_CONFIG = {
-            name: "énergie",
+            name: "Énergie",
             slug: "Énergie",
             number: "01",
             emoji: "⚡",
-            title: "Zone énergie · l'observatoire Foébé",
-            metaDesc: "Zone énergie · Observatoire Foébé : comprendre le déficit énergétique, les signaux de fatigue chronique et la récupération insuffisante, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de recharge.",
+            title: "Zone Énergie · Maison Foébé",
+            metaDesc: "Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de recharge.",
             canonicalUrl: "https://maisonfoebe.fr/zone-energie",
-            ogTitle: "Zone Énergie · l'observatoire Foébé",
+            ogTitle: "Zone Énergie · Maison Foébé",
             ogDesc: "Zone Énergie : comprendre le déficit énergétique, faire le mini-test, voir les effets en cascade et choisir un geste de recharge. Self-care structuré Foébé",
             keywords: "self-care, zone énergie, fatigue chronique, récupération, burnout fonctionnel, déficit énergétique",
-            jsonLdHeadline: "Zone Énergie — Self-care et déficit énergétique · Observatoire Foébé",
-            jsonLdDesc: "Comprendre les mécanismes de la zone Énergie : dette énergétique, repos qui ne restaure pas, seuil de récupération. Mini-test en 5 questions et gestes de recharge.",
+            jsonLdHeadline: "Zone Énergie — Self-care et déficit énergétique · Maison Foébé",
+            jsonLdDesc: "Comprendre les mécanismes de la zone Énergie : réserve énergétique, repos qui ne restaure pas, seuil de récupération. Mini-test en 5 questions et gestes de recharge.",
             palette: {
 z: "#8E5B43",
 zR: 142,
@@ -123,31 +121,31 @@ zLiteB: 163
             },
             prior: {
                 title: "Priorité",
-                text: "Ton énergie est en déficit chronique. Les signaux se répètent et se renforcent. Il faut créer des espaces de récupération réels dès maintenant, pas à la prochaine période calme."
+                text: "Ton énergie est en déficit chronique. Les signaux se répètent et se renforcent. À ce stade, il devient important de recréer des espaces de récupération réels, même petits, sans attendre la prochaine période calme."
             }
         };
         var POSIT_RESULTS = {
             sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut le confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
             nour: "Un signal à surveiller. Cette zone mérite de l'attention. Les 5 questions ci-dessous vont préciser où tu en es.",
-            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation. Cela  va confirmer et t'orienter vers les bons gestes.",
+            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation. Cela va confirmer et t'orienter vers les bons gestes.",
             prior: "Ton ressenti est une donnée valide. Les gestes ci-dessous sont là pour commencer à créer de l'espace dès maintenant."
         };
         var COMPRENDRE = {
-            intro: "Le déficit énergétique ne commence pas par un effondrement. Il s'installe par accumulation, souvent sans qu'on uisse le voir venir.",
+            intro: "Le déficit énergétique ne commence pas par un effondrement. Il s'installe par accumulation, souvent sans qu'on puisse le voir venir.",
             facteurs: [{
                     icon: "🔋",
-                    name: "La dette qui s'accumule",
-                    desc: "Chaque effort non récupéré laisse une trace. Le corps compense d'abord, puis compense moins bien, puis ne compense plus. C'est un déficit qui grandit silencieusement tant que le quotidien ne laisse pas de place à la vraie récupération."
+                    name: "La réserve qui s'entame",
+                    desc: "Chaque effort non récupéré laisse une trace. Le corps compense d’abord, puis les marges peuvent se réduire, jusqu’à ce que le quotidien demande beaucoup plus d’effort qu’avant. La réserve s’entame silencieusement quand le quotidien ne laisse pas assez de place à une vraie recharge."
                 },
                 {
                     icon: "⏰",
                     name: "Le repos qui ne restaure pas",
-                    desc: "S'arrêter ne suffit pas si le repos n'est pas de qualité. Une soirée sur écran après une journée chargée n'est pas une récupération. Le système nerveux a besoin d'un calme réel, pas juste d'une absence d'effort visible."
+                    desc: "S'arrêter ne suffit pas si le repos n'est pas de qualité. Une soirée sur écran après une journée chargée n’offre pas toujours une vraie récupération. Le système a souvent besoin d’un calme plus réel, pas seulement d’une absence d’effort visible."
                 },
                 {
                     icon: "📈",
                     name: "Le seuil qui remonte",
-                    desc: "Quand le niveau de base baisse, faire la même chose que d'habitude demande plus. Ce que tu faisais avant  sans avoir à y penser devient maintenant un effort conscient. Ce glissement est subtil mais cumulatif."
+                    desc: "Quand le niveau de base baisse, faire la même chose que d'habitude demande plus. Ce que tu faisais avant sans avoir à y penser devient maintenant un effort conscient. Ce glissement est subtil mais cumulatif."
                 }
             ],
             vrIcon: "⚡",
@@ -207,7 +205,7 @@ zLiteB: 163
             {
                 cls: "s5",
                 title: "5 signaux sur 5 · priorité immédiate",
-                text: "Tous les signaux sont là. Commence par les gestes de récupération dès maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel."
+                text: "Tous les signaux sont là. Commence par les gestes de récupération dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
             }
         ];
         var IMPACTS_INTRO = "Une énergie en déficit ne reste pas cantonnée à la fatigue physique. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.";
@@ -225,7 +223,7 @@ zLiteB: 163
                 tag: "secondary",
                 tagLabel: "Impact direct",
                 url: "zone-mental.html",
-                desc: "Un cerveau sous-alimenté en énergie perd en clarté. Les décisions deviennent plus lourdes, la concentration plus fragile, les erreurs plus fréquentes."
+                desc: "Quand l’énergie est basse, la clarté mentale peut devenir plus fragile. Les décisions deviennent plus lourdes, la concentration plus fragile, les erreurs plus fréquentes."
             },
             {
                 emoji: "🌊",
@@ -241,7 +239,7 @@ zLiteB: 163
                 tag: "secondary",
                 tagLabel: "Impact indirect",
                 url: "zone-corps.html",
-                desc: "La fatigue chronique maintient le corps en état d'alerte. Tensions, troubles du sommeil, immunité fragilisée : le corps paie le coût d'une réserve vide."
+                desc: "Une fatigue qui dure peut fragiliser le corps : tensions, sommeil moins réparateur, récupération plus lente. Le corps finit par porter le coût d’une réserve trop basse."
             },
             {
                 emoji: "🤝",
@@ -260,7 +258,7 @@ zLiteB: 163
                 desc: "Ce qui donne sens demande de la disponibilité. En déficit énergétique, ce qui compte vraiment passe après l'urgence, puis après le repos, puis après demain."
             }
         ];
-        var TRAJ_INTRO = "Ce schéma est documenté. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
+        var TRAJ_INTRO = "Ce schéma est fréquent. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas toujours seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
         var TRAJ_DATA = [{
                 emoji: "⚡",
                 label: "Là où ça commence",
@@ -305,21 +303,21 @@ zLiteB: 163
                 type: "🛑 Poser une vraie limite d'arrêt",
                 meta: ["⏱ À définir maintenant", "Effort minimal"],
                 text: "Décide d'une heure ce soir à laquelle tu arrêtes vraiment. Pas d'exception. Pas de 'encore cinq minutes'. Traite cet arrêt comme un rendez-vous non négociable.",
-                why: "Le corps se prépare à récupérer quand il anticipe un signal clair d'arrêt. L'incertitude de la durée maintient le système en alerte, même quand tu es assis·e.",
+                why: "Un signal d’arrêt clair peut aider le corps à passer plus facilement vers la récupération. Quand la fin reste floue, le système continue souvent à se préparer à tenir.",
                 sensoriel: "Les premières fois, l'arrêt volontaire peut sembler inconfortable. C'est souvent le signe que le système n'est plus habitué à recevoir la permission de s'arrêter."
             },
             {
                 type: "😴 Ajouter dix minutes de sommeil ce soir",
                 meta: ["⏱ Ce soir", "Effort bas"],
                 text: "Couche-toi dix minutes plus tôt que d'habitude. Sans objectif, sans vérification de téléphone avant. Juste dix minutes de marge supplémentaire.",
-                why: "La dette de sommeil se rembourse progressivement. Dix minutes régulières ont plus d'impact cumulé qu'une longue nuit occasionnelle.",
+                why: "La récupération se reconstruit souvent progressivement. Dix minutes régulières peuvent créer un signal plus stable qu’une grande recharge occasionnelle.",
                 sensoriel: null
             },
             {
                 type: "🍃 Pause sans écran de dix minutes",
                 meta: ["⏱ 10 min", "Effort bas"],
                 text: "Lève-toi. Sors dehors ou près d'une fenêtre. Laisse le corps faire ce qu'il veut sans lui imposer de stimulus. Ni podcast, ni musique, ni scroll.",
-                why: "Le système nerveux se régule par expositions sensorielles naturelles. Une pause sans écran réduit la charge sensorielle et permet une micro-récupération réelle.",
+                why: "Une pause sans écran peut réduire la charge sensorielle et offrir au corps un vrai changement de rythme. Même dix minutes peuvent créer une micro-récupération.",
                 sensoriel: null
             }
         ];
@@ -351,25 +349,176 @@ zLiteB: 163
             }
         };
     </script>
-    <title id="pageTitle">Zone Énergie · l'observatoire Foébé</title>
+    <title id="pageTitle">Zone Énergie · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-    <meta name="description" id="metaDesc" content="">
-    <link rel="canonical" id="canonical" href="">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDesc" content="">
+    <meta name="description" id="metaDesc" content="Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, faire le mini-test et choisir un premier geste concret.">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-energie">
+    <meta property="og:title" id="ogTitle" content="Zone Énergie · Maison Foébé">
+    <meta property="og:description" id="ogDesc" content="Comprendre le déficit énergétique, faire le mini-test et choisir un premier geste pour reconstruire une réserve plus stable.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-energie">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-energie.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zone Énergie · Maison Foébé">
+    <meta name="twitter:description" content="Comprendre la fatigue persistante, la récupération insuffisante et poser un premier geste de recharge avec Maison Foébé.">
+    <meta name="twitter:image" content="https://maisonfoebe.fr/images/zones/og-zone-energie.png">
     <script id="jsonLd" type="application/ld+json">
-        {}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Énergie · Maison Foébé",
+      "description": "Comprendre les mécanismes de la zone Énergie : réserve énergétique, repos qui ne restaure pas, seuil de récupération.",
+      "url": "https://maisonfoebe.fr/zone-energie",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://maisonfoebe.fr/#website",
+        "name": "Maison Foébé"
+      }
+    }
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<style id="fallbackNavCritical">
+      /* FALLBACK NAV CRITIQUE — alignée sur Zone Relations, indépendante du CSS de page */
+      body > nav#fallbackNav.fallback-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 950 !important;
+        min-height: 60px !important;
+        height: 60px !important;
+        padding: 0 clamp(14px, 3vw, 28px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        background: rgba(78, 41, 31, .94) !important;
+        border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        box-shadow: 0 2px 14px rgba(0,0,0,.16) !important;
+        font-family: "Poppins", sans-serif !important;
+        box-sizing: border-box !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav {
+        background: rgba(240, 234, 231, .94) !important;
+        border-bottom-color: rgba(78, 41, 31, .16) !important;
+        box-shadow: 0 2px 14px rgba(78,41,31,.08) !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-logo {
+        font-family: "Montserrat", sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        letter-spacing: -.06em !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        min-height: 44px !important;
+        flex: 0 0 auto !important;
+        max-width: 42vw !important;
+        white-space: nowrap !important;
+      }
+
+      [data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span {
+        color: #F0EAE7 !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5) {
+        color: #4E291F !important;
+      }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2) { color: #BB7E60 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3) { color: #C45279 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4) { color: #C34234 !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        white-space: nowrap !important;
+      }
+      body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar { display: none !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a {
+        min-height: 38px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 11px !important;
+        border-radius: 999px !important;
+        color: var(--text, #F0EAE7) !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        text-decoration: none !important;
+        border: 1px solid transparent !important;
+        opacity: .92 !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #F0EAE7 !important;
+        background: #BB7E60 !important;
+        border-color: #BB7E60 !important;
+        opacity: 1 !important;
+        outline: none !important;
+      }
+
+      @media(max-width:720px) {
+        body > nav#fallbackNav.fallback-nav {
+          padding: 0 12px !important;
+          gap: 12px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 17px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links {
+          justify-content: flex-start !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          font-size: 12px !important;
+          padding: 0 10px !important;
+        }
+      }
+
+      @media(max-width:420px) {
+        body > nav#fallbackNav.fallback-nav {
+          gap: 10px !important;
+          padding: 0 10px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 16px !important;
+          max-width: 36vw !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          min-height: 36px !important;
+          font-size: 11.5px !important;
+          padding: 0 9px !important;
+        }
+      }
+    </style>
 
     <style>
         :root {
@@ -471,7 +620,7 @@ zLiteB: 163
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 180;
+            z-index: 900;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -497,215 +646,7 @@ zLiteB: 163
         #backToTop:hover {
             transform: translateY(-3px);
         }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 340;
-            height: 60px;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--nav-bg);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            transition: all .3s;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 2px 14px var(--shadow);
-        }
-
-        .nav-logo {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.06em;
-        }
-
-        .nav-logo span {
-            font-weight: 700;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(1) {
-            color: #4E291F;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(2) {
-            color: #BB7E60;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(3) {
-            color: #C45279;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(4) {
-            color: #C34234;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(5) {
-            color: #4E291F;
-        }
-
-        [data-theme="night"] .nav-logo span {
-            color: #F0EAE7;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #menuToggle {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text);
-            background: none;
-            border: none;
-            padding: 6px 8px;
-            border-radius: 8px;
-            transition: background .2s;
-            z-index: 331;
-            position: relative;
-        }
-
-        #menuToggle:hover {
-            background: var(--surface);
-        }
-
-        #navOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 320;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease, backdrop-filter .25s ease, background .25s ease;
-        }
-
-        #navOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-        }
-
-        [data-theme="day"] #navOverlay.visible {
-            background: rgba(78, 41, 31, 0.18);
-        }
-
-        #navOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px);
-        }
-        #stateOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 300;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .22s ease, backdrop-filter .22s ease, background .22s ease;
-        }
-
-        #stateOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.28);
-            backdrop-filter: blur(2px);
-        }
-
-        [data-theme="day"] #stateOverlay.visible {
-            background: rgba(78, 41, 31, 0.14);
-        }
-
-        #stateOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #navMenu {
-            display: none;
-            position: fixed;
-            top: 64px;
-            right: 16px;
-            z-index: 340;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 220px;
-            box-shadow: 0 16px 48px var(--shadow-lg);
-        }
-
-        #navMenu.opening {
-            animation: slideDown .30s cubic-bezier(.16, 1, .3, 1) forwards;
-            transform-origin: top right;
-        }
-
-        #navMenu.closing {
-            animation: slideUp .20s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-        }
-
-        #navMenu a,
-        #navMenu button {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all .15s;
-        }
-
-        #navMenu a:hover,
-        #navMenu button:hover {
-            background: var(--surface);
-            transform: translateX(3px);
-        }
-
-        #navMenu hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 6px 0;
-        }
+        /* Navigation principale gérée par Foébé Shell. */
 
         .zone-hero {
             background: var(--z);
@@ -835,7 +776,7 @@ zLiteB: 163
             border: 1.5px solid var(--border);
             border-radius: 10px;
             font-family: "Lora", serif;
-            font-size: 14.5px;
+            font-size: 15px;
             font-style: normal;
             color: var(--sub);
             line-height: 1.75;
@@ -1299,7 +1240,7 @@ body.state-active .ici-card {
 }
 
 .state-def-text {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.80;
   color: rgba(240,234,231,0.88);
   font-style: normal;
@@ -1340,7 +1281,6 @@ body.state-active .ici-card {
 }
 
 
-
         .state-def-title {
             font-size: 13px;
             font-weight: 700;
@@ -1350,7 +1290,7 @@ body.state-active .ici-card {
         }
 
         .state-def-text {
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.80;
             color: rgba(240, 234, 231, 0.88);
             font-style: normal;
@@ -1409,7 +1349,7 @@ body.state-active .ici-card {
         }
 
         .pitch-val {
-            font-size: 14px;
+            font-size: 15px;
             color: #F0EAE7;
             line-height: 1.6;
             font-family: "Lora", serif;
@@ -1530,7 +1470,7 @@ body.state-active .ici-card {
 
         .chapter-title {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             line-height: 1.2;
             font-family: "Lora", serif;
@@ -1621,7 +1561,7 @@ body.state-active .ici-card {
 
         .facteur-desc {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.7;
             font-style: normal;
@@ -1690,9 +1630,9 @@ body.state-active .ici-card {
 
         .vr-note {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             color: rgba(240, 234, 231, 0.82);
-            line-height: 1.55;
+            line-height: 1.65;
             font-style: normal;
         }
 
@@ -1920,7 +1860,7 @@ body.state-active .ici-card {
 
 .obs-card-sub{
   grid-area:sub;
-  font-size:clamp(13px, 0.55vw + 11px, 15px);
+  font-size:clamp(15px, 0.45vw + 13px, 16px);
   color:var(--obs-card-sub);
   line-height:1.6;
   margin:0;
@@ -2142,7 +2082,7 @@ body.state-active .ici-card {
         .obs-result-title {
             font-family: "Lora", serif;
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             margin-bottom: 8px;
             line-height: 1.35;
@@ -2338,7 +2278,7 @@ body.state-active .ici-card {
 
         .impact-desc {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
             color: var(--sub);
             line-height: 1.75;
@@ -2502,7 +2442,7 @@ body.state-active .ici-card {
         }
 
         .traj-step-desc {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.7;
             font-family: "Lora", serif;
@@ -2544,7 +2484,7 @@ body.state-active .ici-card {
         .traj-mirror {
             font-family: "Lora", serif;
             font-style: italic;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.72;
             color: var(--sub);
             border-left: 3px solid var(--rose);
@@ -2695,7 +2635,7 @@ body.state-active .ici-card {
         }
 
         .geste-why {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.65;
             padding-top: 12px;
@@ -2723,7 +2663,7 @@ body.state-active .ici-card {
         .geste-sensoriel {
             font-family: "Lora", serif;
             font-style: italic;
-            font-size: 13px;
+            font-size: 15px;
             line-height: 1.68;
             color: #F0EAE7;
             margin-top: 10px;
@@ -2806,7 +2746,7 @@ body.state-active .ici-card {
 
         .gestes-intention-text {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
              line-height: 1.75;
             text-align: center;
@@ -2912,7 +2852,7 @@ body.state-active .ici-card {
 }
 
 .palp-desc {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(240, 234, 231, 0.88);
     margin: 0;
     line-height: 1.75;
@@ -2944,7 +2884,7 @@ body.state-active .ici-card {
 }
 
 .palp-note span {
-    font-size: 12px;
+    font-size: 15px;
     color: rgba(240, 234, 231, 0.76);
     font-style: italic;
     font-family: "Lora", serif;
@@ -3176,7 +3116,7 @@ body.state-active .ici-card {
 
         .accomp-note-finale {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
             color: var(--sub);
             line-height: 1.75;
@@ -3208,7 +3148,7 @@ body.state-active .ici-card {
         }
 
         .accomp-email-sub {
-            font-size: 14px;
+            font-size: 15px;
             color: #F0EAE7;
             margin-bottom: 18px;
             font-family: "Lora", serif;
@@ -3293,7 +3233,7 @@ body.state-active .ici-card {
         }
 
         .email-note {
-            font-size: 13px;
+            font-size: 15px;
             color: #F0EAE7;
             margin-top: 10px;
             font-style: italic;
@@ -3305,7 +3245,7 @@ body.state-active .ici-card {
             border-radius: 12px;
             background: var(--surface);
             border: 1px solid var(--border);
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text);
             font-weight: 500;
         }
@@ -3415,41 +3355,6 @@ body.state-active .ici-card {
         }
 
 /* ── FOOTER ── */
-footer{
-  background:var(--bg2);padding:32px 24px;
-  border-top:1px solid var(--border);
-}
-.footer-inner{
-  max-width:720px;margin:0 auto;
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-  text-align:center;
-}
-.footer-logo{
-  font-family:'Montserrat',sans-serif;font-weight:700;
-  font-size:22px;letter-spacing:-0.06em;
-}
-[data-theme="night"] .footer-logo span{color:#F0EAE7;}
-[data-theme="day"] .footer-logo span:nth-child(1){color:#4E291F;}
-[data-theme="day"] .footer-logo span:nth-child(2){color:#BB7E60;}
-[data-theme="day"] .footer-logo span:nth-child(3){color:#C45279;}
-[data-theme="day"] .footer-logo span:nth-child(4){color:#C34234;}
-[data-theme="day"] .footer-logo span:nth-child(5){color:#4E291F;}
-.footer-sub{font-size:11px;color:var(--dim);letter-spacing:.6px;}
-.footer-social{display:flex;gap:18px;justify-content:center;}
-.social-icon{color:var(--dim);display:inline-flex;transition:color .2s,transform .2s;}
-.social-icon:hover{color:var(--warm);transform:translateY(-1px);}
-[data-theme="night"] .social-icon{color:rgba(240,234,231,.5);}
-[data-theme="night"] .social-icon:hover{color:#EAD7CC;}
-.footer-links{display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:center;}
-.footer-link{
-  font-size:11px;color:var(--dim);text-decoration:none;
-  font-weight:500;transition:color .2s;
-}
-.footer-link:hover{color:var(--warm);}
-[data-theme="night"] .footer-sub,
-[data-theme="night"] .footer-link{color:rgba(240,234,231,.45);}
-[data-theme="night"] .footer-link:hover{color:#F0EAE7;}
-.footer-note{font-size:10px;color:var(--dim);opacity:.6;}
 
         .zone-intro-block {
             padding: clamp(12px, 4vw, 24px) 0 clamp(28px, 5vw, 36px);
@@ -3649,22 +3554,13 @@ footer{
             font-weight: 600;
         }
 
-
-        .obs-card-sub{
-  font-size: clamp(13px, 0.45vw + 11px, 15px);
-  line-height: 1.6;
-  width: 100%;
-  max-width: none;
-}
-        }
-
         @media(min-width:768px) {
             .obs-card-q {
                 font-size: 17px;
             }
 
             .obs-card-sub {
-                font-size: 14px;
+                font-size: 15px;
             }
 
             .geste-text {
@@ -3845,40 +3741,125 @@ footer{
             text-decoration: underline;
         }
 
+/* ══ CSS FALLBACK RENFORCÉ — sans JS, rien ne reste masqué ══ */
+.geste-card,
+.impact-item,
+.traj-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.js-ready .geste-card {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-ready .geste-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-ready .impact-item { opacity: 0.35; }
+.js-ready .impact-item.lit { opacity: 1; }
+.js-ready .traj-item { opacity: .4; }
+.js-ready .traj-item.lit { opacity: 1; }
+
+.eyebrow,
+.chapter-eyebrow,
+.section-eyebrow,
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(187,126,96,.14);
+  border: 1px solid rgba(187,126,96,.34);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  line-height: 1.25;
+  color: var(--warm);
+}
+
+[data-theme="night"] .eyebrow,
+[data-theme="night"] .chapter-eyebrow,
+[data-theme="night"] .section-eyebrow,
+[data-theme="night"] .hero-eyebrow {
+  color: #F0EAE7;
+  background: rgba(187,126,96,.22);
+  border-color: rgba(187,126,96,.46);
+}
+
+    </style>
+
+    <style id="energieFinalPolish">
+      /* Finition ultra-propre Zone Énergie — contenus lisibles et résidus neutralisés */
+      .chapter-title,
+      .obs-result-title,
+      .palp-title {
+        font-weight: 400;
+      }
+
+      .pitch-val,
+      .state-def-text,
+      .facteur-desc,
+      .vr-note,
+      .impact-desc,
+      .geste-text,
+      .geste-why,
+      .geste-sensoriel,
+      .palp-note span,
+      .accomp-email-sub,
+      .email-note,
+      .email-confirm {
+        font-size: 15px;
+      }
+
+      .obs-card-sub {
+        font-size: clamp(15px, 0.45vw + 13px, 16px);
+        line-height: 1.6;
+      }
+
+      .vr-note,
+      .geste-why,
+      .geste-sensoriel,
+      .palp-note span {
+        line-height: 1.65;
+      }
+
+      #backToTop {
+        z-index: 900;
+      }
     </style>
 </head>
 
 <body>
 
+    <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
+        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+      </a>
+
+      <div class="fallback-links">
+        <a href="/a-propos.html">À propos</a>
+        <a href="/methode.html">Méthode</a>
+        <a href="/test.html">Échelle Foébé</a>
+        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+        <a href="/boussole-accueil-foebe.html">Boussole</a>
+        <a href="mailto:foebecosmetics@gmail.com">Contact</a>
+      </div>
+    </nav>
+
     <div id="pageProgress">
         <div id="pageProgressFill"></div>
     </div>
     <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
-    <div id="navOverlay"></div>
-    <div id="stateOverlay"></div>
-
-  <div id="navMenu" role="menu">
-    <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
-    <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌊 Respiration</a>
-    <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire skin·self-care</a>
-    <hr>
-    <button id="themeBtn" type="button">☀️ Mode jour</button>
-  </div>
-
-    <nav id="mainNav">
-        <a href="index.html" class="nav-logo">
-            <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-        </a>
-        <div class="nav-right">
-            <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
-        </div>
-    </nav>
-
-    <div class="zone-hero">
+<div id="stateOverlay"></div>
+<div class="zone-hero">
         <span class="hero-num" id="heroNum"></span>
         <span class="hero-emoji" id="heroEmoji"></span>
         <h1 class="hero-title" id="heroTitle"></h1>
@@ -4130,32 +4111,7 @@ footer{
 
         </div>
     </main>
-
-   <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none;display:block;">
-      <div class="footer-logo">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-      </div>
-    </a>
-    <p class="footer-sub">l'observatoire · Self-Care Structuré · Maison Foébé 2026</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@maisonfoebe" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
-      </a>
-    </div>
-    <div class="footer-links">
-      <a href="mentions.html" class="footer-link">Mentions légales</a>
-      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">Contact</a>
-    </div>
-    <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
-  </div>
-</footer>
-    <script>
+<script>
         "use strict";
 
         /* ── Init palette ─── */
@@ -4197,7 +4153,7 @@ footer{
 
         function initHero() {
             var z = ZONE_CONFIG;
-            document.getElementById("heroNum").textContent = "Zone " + z.number + " · l'observatoire Foébé";
+            document.getElementById("heroNum").textContent = "Zone " + z.number + " · Maison Foébé";
             document.getElementById("heroEmoji").textContent = z.emoji;
             document.getElementById("heroTitle").textContent = "Zone " + z.name;
         }
@@ -4431,10 +4387,6 @@ footer{
 
         /* Composants interactifs */
         (function() {
-            var btn = document.getElementById('themeBtn');
-            if (btn) btn.textContent = document.documentElement.getAttribute('data-theme') === 'night' ? '☀️ Mode jour' : '🌙 Mode nuit';
-        })();
-        (function() {
             var fill = document.getElementById("pageProgressFill"),
                 btn = document.getElementById("backToTop");
             window.addEventListener("scroll", function() {
@@ -4444,12 +4396,6 @@ footer{
                 fill.style.width = p + "%";
                 if (s > 400) btn.classList.add("visible");
                 else btn.classList.remove("visible");
-            }, {
-                passive: true
-            });
-            document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            window.addEventListener("scroll", function() {
-                document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
             }, {
                 passive: true
             });
@@ -4799,6 +4745,10 @@ footer{
         (function() {
             var items = document.querySelectorAll(".traj-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) { item.classList.add("lit"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-traj") || "0");
@@ -4825,6 +4775,10 @@ footer{
         (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
+            if (!("IntersectionObserver" in window)) {
+                cards.forEach(function(card) { card.classList.add("visible"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) e.target.classList.add("visible");
@@ -4839,6 +4793,10 @@ footer{
         (function() {
             var items = document.querySelectorAll(".impact-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) { item.classList.add("lit"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-impact") || "0");
@@ -4919,83 +4877,9 @@ footer{
                 if (errEl) errEl.textContent = '';
             });
         })();
-        (function() {
-            var toggle = document.getElementById("menuToggle"),
-                menu = document.getElementById("navMenu"),
-                overlay = document.getElementById("navOverlay"),
-                menuOpen = false,
-                closeTimer = null;
 
-            function openMenu() {
-                if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                }
-                menu.style.display = "block";
-                menu.classList.remove("closing");
-                menu.classList.add("opening");
-                overlay.classList.remove("hiding");
-                overlay.classList.add("visible");
-                menuOpen = true;
-                toggle.textContent = "✕";
-                toggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.remove("opening");
-                menu.classList.add("closing");
-                overlay.classList.remove("visible");
-                overlay.classList.add("hiding");
-                toggle.textContent = "☰";
-                toggle.setAttribute("aria-expanded", "false");
-                closeTimer = setTimeout(function() {
-                    menu.style.display = "none";
-                    menu.classList.remove("closing");
-                    overlay.classList.remove("hiding");
-                    closeTimer = null;
-                }, 210);
-            }
-            toggle.addEventListener("click", function(e) {
-                e.stopPropagation();
-                menuOpen ? closeMenu() : openMenu();
-            });
-            overlay.addEventListener("click", function() {
-                closeMenu();
-            });
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && menuOpen) closeMenu();
-            });
-        })();
-        (function() {
-            var iciCard = document.querySelector('.ici-card');
-            if (iciCard) iciCard.addEventListener('click', function(e) {
-                var btn = e.target.closest('[data-state]');
-                if (btn) showStateDef(btn.getAttribute('data-state'));
-            });
-            var bar = document.getElementById('obsButtonsBar');
-            if (bar) bar.addEventListener('click', function(e) {
-                var btn = e.target.closest('[data-answer]');
-                if (btn) btnTrigger(btn.getAttribute('data-answer') === 'true');
-            });
-            var stack = document.getElementById('obsStack');
-            if (stack) {
-                var observer = new MutationObserver(function() {
-                    if (stack.classList.contains('done') && bar) bar.style.display = 'none';
-                });
-                observer.observe(stack, {
-                    attributes: true,
-                    attributeFilter: ['class']
-                });
-            }
-            var resetBtn = document.getElementById('obsResetBtn');
-            if (resetBtn) resetBtn.addEventListener('click', function() {
-                if (bar) bar.style.display = '';
-                obsReset();
-            });
-        })();
     </script>
+    <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
