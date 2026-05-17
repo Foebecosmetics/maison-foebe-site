@@ -4,31 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="index, follow">
-<meta property="og:site_name" content="l'observatoire Foébé">
-<meta property="og:locale" content="fr_FR">
+    <!-- Anti-FOUC thème — NE PAS MODIFIER -->
     <script>
-        function toggleTheme() {
-            var h = document.documentElement;
-            var n = h.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-            h.setAttribute('data-theme', n);
-            var b = document.getElementById('themeBtn');
-            if (b) b.textContent = n === 'day' ? '\uD83C\uDF19 Mode nuit' : '\u2600\uFE0F Mode jour';
-        }
+    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
     </script>
-    <script id="zoneConfig">
+    <script>
+    document.documentElement.classList.add('js-ready');
+    </script>
+<meta name="robots" content="index, follow">
+<meta property="og:site_name" content="Maison Foébé">
+<meta property="og:locale" content="fr_FR">
+<script id="zoneConfig">
         var ZONE_CONFIG = {
-            name: "émotion",
+            name: "Émotions",
             slug: "Émotions",
             number: "04",
             emoji: "🌊",
-            title: "Zone émotion · l'observatoire Foébé",
-            metaDesc: "Zone émotions · Observatoire Foébé : comprendre la dérégulation émotionnelle, l'accumulation silencieuse et la flatness persistante, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de régulation.",
+            title: "Zone Émotions · Maison Foébé",
+            metaDesc: "Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l'accumulation silencieuse et la platitude émotionnelle persistante, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de régulation.",
             canonicalUrl: "https://maisonfoebe.fr/zone-emotions",
-            ogTitle: "Zone Émotions · l'observatoire Foébé",
+            ogTitle: "Zone Émotions · Maison Foébé",
             ogDesc: "Zone Émotions : comprendre la dérégulation émotionnelle, faire le mini-test, voir les effets en cascade et choisir un geste de régulation. Self-care structuré Foébé",
-            keywords: "self-care, zone émotions, dérégulation émotionnelle, régulation, burnout fonctionnel, flatness émotionnelle",
-            jsonLdHeadline: "Zone Émotions — Self-care et dérégulation émotionnelle · Observatoire Foébé",
+            keywords: "self-care, zone émotions, dérégulation émotionnelle, régulation, burnout fonctionnel, platitude émotionnelle",
+            jsonLdHeadline: "Zone Émotions — Self-care et dérégulation émotionnelle · Maison Foébé",
             jsonLdDesc: "Comprendre les mécanismes de la zone Émotions : accumulation silencieuse, mise à distance, seuil qui s'abaisse. Mini-test en 5 questions et gestes de régulation émotionnelle.",
             palette: {
                 z: "#1A4060",
@@ -89,7 +87,7 @@
             }
         ];
         var ZONE_INTRO = {
-            text: "La zone <strong>émotion</strong> dans ton self-care concerne ta capacité à reconnaître ce que tu ressens et à ne pas en être débordé·e. Quand cette zone se dérègle, ce n'est pas toujours spectaculaire. Ce sont souvent des réactions que tu n'avais pas prévues, une platitude qui s'installe, ou une intensité émotionnelle qui dépasse ce que tu voulais montrer. Ce n'est pas une question de sensibilité ni de fragilité. C'est une question de régulation.",
+            text: "La zone <strong>Émotions</strong> dans ton self-care concerne ta capacité à reconnaître ce que tu ressens et à ne pas en être débordé·e. Quand cette zone se dérègle, ce n'est pas toujours spectaculaire. Ce sont souvent des réactions que tu n'avais pas prévues, une platitude qui s'installe, ou une intensité émotionnelle qui dépasse ce que tu voulais montrer. Ce n'est pas une question de sensibilité ni de fragilité. C'est une question de régulation.",
             warning: null
         };
         var PITCH_DATA = [{
@@ -123,7 +121,7 @@
             },
             prior: {
                 title: "Priorité",
-                text: "La dérégulation est présente et répétée. Les émotions prennent de la place au-delà de ce que tu peux gérer seul·e. Il faut créer de la ressource dès maintenant, pas à la prochaine période calme."
+                text: "La dérégulation est présente et répétée. Les émotions prennent de la place au-delà de ce que tu peux gérer seul·e. À ce stade, il devient important de recréer de la ressource émotionnelle, même simple, sans attendre la prochaine période calme."
             }
         };
         var POSIT_RESULTS = {
@@ -133,11 +131,11 @@
             prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
         };
         var COMPRENDRE = {
-            intro: "La dérégulation émotionnelle ne commence pas par une crise. Elle s'installe progressivement, souvent à force d'ignorer ou d'étouffer ce qui se passe",
+            intro: "La dérégulation émotionnelle ne commence pas par une crise. Elle s'installe progressivement, souvent à force d'ignorer ou d'étouffer ce qui se passe.",
             facteurs: [{
                     icon: "🫙",
                     name: "L'accumulation silencieuse",
-                    desc: "Les émotions non reconnues ne disparaissent pas. Elles s'accumulent. Ce qui n'a pas été nommé, ressenti ou traité, reste présent en arrière-plan et finit par remonter. Souvent, au mauvais moment et avec plus d'intensité que prévu."
+                    desc: "Les émotions non reconnues ne disparaissent pas toujours. Elles peuvent s’accumuler. Ce qui n'a pas été nommé, ressenti ou traité peut rester présent en arrière-plan et finir par remonter. Parfois, au mauvais moment, avec plus d'intensité que prévu."
                 },
                 {
                     icon: "🔇",
@@ -147,7 +145,7 @@
                 {
                     icon: "⚡",
                     name: "Le seuil qui s'abaisse",
-                    desc: "Quand les ressources générales sont basses pour gérer le quotidien (par ex : énergie, sommeil, concentration), la tolérance aux émotions difficiles diminue. Ce qui était gérable devient soudain trop lourd. Non pas parce que l'émotion a changé, mais parce que les ressources ont diminué."
+                    desc: "Quand les ressources générales sont basses pour gérer le quotidien (par ex : énergie, sommeil, concentration), la tolérance aux émotions difficiles peut diminuer. Ce qui était gérable devient soudain trop lourd. Non pas parce que l'émotion a changé, mais parce que les ressources ont diminué."
                 }
             ],
             vrIcon: "🌊",
@@ -160,15 +158,15 @@
             },
             {
                 q: "Tu as du mal à nommer précisément ce que tu ressens. Tu sais que quelque chose se passe, mais l'émotion reste floue.",
-                sub: "L'identification émotionnelle est une compétence. Quand elle devient difficile, c'est souvent le signe d'une saturation du système."
+                sub: "Mettre un mot sur ce qu’on ressent est une compétence. Quand elle devient difficile, c'est souvent le signe d'une saturation du système."
             },
             {
-                q: "Après une réaction émotionnelle forte, il te faut beaucoup de temps pour revenir à un état stable. Le retour au calme est long et épuisant.",
-                sub: "La vitesse de récupération émotionnelle est un indicateur clair de la capacité de régulation disponible."
+                q: "Après une réaction émotionnelle forte, il te faut beaucoup de temps pour revenir à un état stable. Le retour au calme devient long et épuisant.",
+                sub: "La vitesse de récupération émotionnelle donne souvent un indice sur la capacité de régulation disponible."
             },
             {
                 q: "Tu remarques une platitude : plus grand-chose ne te touche vraiment, ni le positif ni le négatif. Tu te sens comme un peu anesthésié·e.",
-                sub: "La platitude émotionnelle est souvent une réponse de protection. Le système a réduit sa sensibilité pour se préserver."
+                sub: "La platitude émotionnelle peut aussi être une réponse de protection. Le système semble parfois réduire sa sensibilité pour se préserver."
             },
             {
                 q: "Tu anticipes certaines situations ou interactions parce que tu sais qu'elles risquent de te faire réagir fort. Tu gères par évitement.",
@@ -207,7 +205,7 @@
             {
                 cls: "s5",
                 title: "5 signaux sur 5 · priorité immédiate",
-                text: "Tous les signaux sont là. Commence par les gestes de régulation dès maintenant. Si ce schéma dure, un accompagnement structuré te permettra de mieux gérer cette zone de ton self-care."
+                text: "Tous les signaux sont là. Commence par les gestes de régulation dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
             }
         ];
         var IMPACTS_INTRO = "Une dérégulation émotionnelle ne reste pas cantonnée aux moments de réaction. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.";
@@ -233,7 +231,7 @@
                 tag: "secondary",
                 tagLabel: "Impact direct",
                 url: "zone-relations.html",
-                desc: "Ce qu'on ressent colore ce qu'on exprime. Une dérégulation émotionnelle se voit dans les interactions : distance, surréaction, difficulté à écouter sans projeter."
+                desc: "Ce qu'on ressent colore ce qu'on exprime. Une dérégulation émotionnelle peut se voir dans les interactions : distance, surréaction, difficulté à écouter sans projeter."
             },
             {
                 emoji: "🧘",
@@ -241,7 +239,7 @@
                 tag: "secondary",
                 tagLabel: "Impact indirect",
                 url: "zone-corps.html",
-                desc: "Les émotions ont une traduction corporelle : anxiété, tristesse ou colère non traitées s'installent dans le corps, amenant dès lors des tensions, perturbations du sommeil, troubles digestifs, de la concentration, etc."
+                desc: "Les émotions peuvent aussi passer par le corps : tension, sommeil plus fragile, digestion perturbée ou difficulté à se poser. Le corps peut devenir le lieu où ce qui n'a pas été régulé continue de se manifester."
             },
             {
                 emoji: "⚡",
@@ -249,7 +247,7 @@
                 tag: "secondary",
                 tagLabel: "Impact indirect",
                 url: "zone-energie.html",
-                desc: "Réguler des émotions intenses est épuisant. Une journée émotionnellement chargée vide les réserves aussi sûrement qu'un effort physique intense."
+                desc: "Réguler des émotions intenses demande des ressources. Une journée émotionnellement chargée peut laisser une fatigue réelle, même sans effort physique important."
             },
             {
                 emoji: "✨",
@@ -260,7 +258,7 @@
                 desc: "Ce qu'on ressent guide souvent ce qui compte vraiment. Quand les émotions sont brouillées ou inaccessibles, le fil vers ce qui a du sens se distend."
             }
         ];
-        var TRAJ_INTRO = "Ce schéma est documenté. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
+        var TRAJ_INTRO = "Ce schéma est fréquent. Il ne se déclenche pas du jour au lendemain, et il ne se stabilise pas toujours seul. Reconnaître où on en est, c'est déjà créer un premier espace pour agir.";
         var TRAJ_DATA = [{
                 emoji: "🌊",
                 label: "Là où ça commence",
@@ -274,7 +272,7 @@
                 label: "Le déclencheur",
                 title: "Une réaction qui dépasse l'événement",
                 badge: "Très fréquent",
-                desc: "Une irritation disproportionnée. Des larmes qui arrivent sans raison claire. Une fermeture totale face à quelque chose de petit. Le déclencheur était petit. Ce qui s'est exprimé venait de plus loin.",
+                desc: "Une irritation disproportionnée. Des larmes qui arrivent sans raison claire. Une fermeture totale face à quelque chose de petit. Le déclencheur était petit. Ce qui s'est exprimé venait peut-être de plus loin.",
                 mirror: null
             },
             {
@@ -298,28 +296,28 @@
             name: "Pour réguler ce qui déborde",
             sub: "Trois gestes simples pour retrouver un peu d'espace émotionnel",
             freqIcon: "📅",
-            freqText: "Quand faire ces gestes? Une fois aujourd'hui, de préférence quand tu remarques une tension émotionnelle ou une réaction qui t'as surpris·e.",
+            freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques une tension émotionnelle ou une réaction qui t’a surpris·e.",
             intention: "Ces trois gestes ne traitent pas des émotions enfouies depuis longtemps. Mais ils créent un espace où quelque chose peut se poser, au lieu de continuer à tourner en boucle dans ta tête."
         };
         var GESTES_DATA = [{
                 type: "🏷️ Nommer l'émotion précisément",
                 meta: ["⏱ 2 min", "Effort bas"],
                 text: "Arrête-toi. Pose une main sur la poitrine. Demande-toi : qu'est-ce que je ressens là, précisément ? Pas un terme générique (ça va pas, je suis stressé·e, etc.), mais quelque chose de plus précis que tu ressens physiquement, puis essaie de l'analyser : est-ce de la déception? Colère? Inquiétude? Tristesse?",
-                why: "Nommer une émotion réduit son intensité. Ce processus s'appelle <strong> affect labeling </strong> et a un effet direct sur l'activation de l'amygdale (aide à réguler les émotions et encoder les souvenirs).",
+                why: "Mettre une émotion en mots peut aider à la rendre plus lisible et à diminuer l'impression de débordement. Le but n'est pas de l'analyser parfaitement, mais de créer un premier espace entre toi et ce que tu ressens.",
                 sensoriel: "Si tu n'arrives pas à nommer précisément l'émotion, ce n'est pas un problème. Même 'je ne sais pas exactement' est déjà une information valide."
             },
             {
                 type: "✍️ Trois lignes sur ce qui se passe",
                 meta: ["⏱ 3 min", "Effort bas"],
                 text: "Prends un papier ou ton téléphone. Écris en trois phrases ce que tu ressens, sans chercher à l'expliquer ou à le justifier. Juste décrire.",
-                why: "L'écriture externalise ce qui est en boucle interne. Ce qui est posé sur papier n'a plus besoin d'occuper le même espace intérieur.",
+                why: "L'écriture externalise ce qui est en boucle interne. Ce qui est posé sur papier peut prendre un peu moins de place à l’intérieur.",
                 sensoriel: null
             },
             {
                 type: "🌊 Laisser l'émotion être là sans l'éviter",
                 meta: ["⏱ 5 min", "Effort moyen"],
                 text: "Au lieu de changer de sujet, de te distraire ou de relativiser : reste avec ce que tu ressens. Sans y plonger, sans le fuir. Juste le laisser être là quelques minutes.",
-                why: "Les émotions ont une durée naturelle quand on ne les combat pas. L'évitement les maintient. La présence les laisse passer.",
+                why: "Une émotion peut souvent évoluer quand on cesse de la combattre ou de l'éviter immédiatement. La laisser exister quelques minutes peut déjà modifier la place qu'elle prend.",
                 sensoriel: "Ce geste peut sembler contre-intuitif. On est souvent conditionné·e à faire autre chose quand quelque chose est inconfortable."
             }
         ];
@@ -351,25 +349,176 @@
             }
         };
     </script>
-    <title id="pageTitle">Zone Émotions · l'observatoire Foébé</title>
+    <title id="pageTitle">Zone Émotions · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-    <meta name="description" id="metaDesc" content="">
-    <link rel="canonical" id="canonical" href="">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDesc" content="">
+    <meta name="description" id="metaDesc" content="Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l’accumulation silencieuse et la platitude émotionnelle, faire le mini-test et choisir un premier geste concret.">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-emotions">
+    <meta property="og:title" id="ogTitle" content="Zone Émotions · Maison Foébé">
+    <meta property="og:description" id="ogDesc" content="Comprendre la dérégulation émotionnelle, faire le mini-test et choisir un premier geste pour retrouver un peu d’espace émotionnel.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-emotions">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-emotions.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zone Émotions · Maison Foébé">
+    <meta name="twitter:description" content="Comprendre les émotions qui débordent, la platitude émotionnelle et retrouver un premier espace de régulation.">
+    <meta name="twitter:image" content="https://maisonfoebe.fr/images/zones/og-zone-emotions.png">
     <script id="jsonLd" type="application/ld+json">
-        {}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Émotions · Maison Foébé",
+      "description": "Comprendre les mécanismes de la zone Émotions : accumulation silencieuse, mise à distance, seuil émotionnel qui s'abaisse.",
+      "url": "https://maisonfoebe.fr/zone-emotions",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://maisonfoebe.fr/#website",
+        "name": "Maison Foébé"
+      }
+    }
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <style id="fallbackNavCritical">
+      /* FALLBACK NAV CRITIQUE — alignée sur Zone Relations, indépendante du CSS de page */
+      body > nav#fallbackNav.fallback-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 950 !important;
+        min-height: 60px !important;
+        height: 60px !important;
+        padding: 0 clamp(14px, 3vw, 28px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        background: rgba(78, 41, 31, .94) !important;
+        border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        box-shadow: 0 2px 14px rgba(0,0,0,.16) !important;
+        font-family: "Poppins", sans-serif !important;
+        box-sizing: border-box !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav {
+        background: rgba(240, 234, 231, .94) !important;
+        border-bottom-color: rgba(78, 41, 31, .16) !important;
+        box-shadow: 0 2px 14px rgba(78,41,31,.08) !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-logo {
+        font-family: "Montserrat", sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        letter-spacing: -.06em !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        min-height: 44px !important;
+        flex: 0 0 auto !important;
+        max-width: 42vw !important;
+        white-space: nowrap !important;
+      }
+
+      [data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span {
+        color: #F0EAE7 !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5) {
+        color: #4E291F !important;
+      }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2) { color: #BB7E60 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3) { color: #C45279 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4) { color: #C34234 !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        white-space: nowrap !important;
+      }
+      body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar { display: none !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a {
+        min-height: 38px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 11px !important;
+        border-radius: 999px !important;
+        color: var(--text, #F0EAE7) !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        text-decoration: none !important;
+        border: 1px solid transparent !important;
+        opacity: .92 !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #F0EAE7 !important;
+        background: #BB7E60 !important;
+        border-color: #BB7E60 !important;
+        opacity: 1 !important;
+        outline: none !important;
+      }
+
+      @media(max-width:720px) {
+        body > nav#fallbackNav.fallback-nav {
+          padding: 0 12px !important;
+          gap: 12px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 17px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links {
+          justify-content: flex-start !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          font-size: 12px !important;
+          padding: 0 10px !important;
+        }
+      }
+
+      @media(max-width:420px) {
+        body > nav#fallbackNav.fallback-nav {
+          gap: 10px !important;
+          padding: 0 10px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 16px !important;
+          max-width: 36vw !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          min-height: 36px !important;
+          font-size: 11.5px !important;
+          padding: 0 9px !important;
+        }
+      }
+    </style>
 
     <style>
         :root {
@@ -472,7 +621,7 @@
             position: fixed;
             bottom: 24px;
             right: 20px;
-            z-index: 180;
+            z-index: 900;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -498,117 +647,12 @@
         #backToTop:hover {
             transform: translateY(-3px);
         }
+        /* Ancienne navigation locale supprimée : Foébé Shell gère mainNav/navMenu/navOverlay. */
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 340;
-            height: 60px;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--nav-bg);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            transition: all .3s;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 2px 14px var(--shadow);
-        }
-
-        .nav-logo {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.06em;
-        }
-
-        .nav-logo span {
-            font-weight: 700;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(1) {
-            color: #4E291F;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(2) {
-            color: #BB7E60;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(3) {
-            color: #C45279;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(4) {
-            color: #C34234;
-        }
-
-        [data-theme="day"] .nav-logo span:nth-child(5) {
-            color: #4E291F;
-        }
-
-        [data-theme="night"] .nav-logo span {
-            color: #F0EAE7;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #menuToggle {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text);
-            background: none;
-            border: none;
-            padding: 6px 8px;
-            border-radius: 8px;
-            transition: background .2s;
-            z-index: 331;
-            position: relative;
-        }
-
-        #menuToggle:hover {
-            background: var(--surface);
-        }
-
-        #navOverlay {
-            position: fixed;
-            inset: 0;
-            z-index: 320;
-            background: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease, backdrop-filter .25s ease, background .25s ease;
-        }
-
-        #navOverlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-        }
-
-        [data-theme="day"] #navOverlay.visible {
-            background: rgba(78, 41, 31, 0.18);
-        }
-
-        #navOverlay.hiding {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px);
-        }
         #stateOverlay {
             position: fixed;
             inset: 0;
-            z-index: 300;
+            z-index: 210;
             background: rgba(0, 0, 0, 0);
             backdrop-filter: blur(0px);
             opacity: 0;
@@ -630,82 +674,6 @@
         #stateOverlay.hiding {
             opacity: 0;
             pointer-events: none;
-        }
-
-        #navMenu {
-            display: none;
-            position: fixed;
-            top: 64px;
-            right: 16px;
-            z-index: 340;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 220px;
-            box-shadow: 0 16px 48px var(--shadow-lg);
-        }
-
-        #navMenu.opening {
-            animation: slideDown .30s cubic-bezier(.16, 1, .3, 1) forwards;
-            transform-origin: top right;
-        }
-
-        #navMenu.closing {
-            animation: slideUp .20s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: scale(0.97) translateY(-8px);
-            }
-        }
-
-        #navMenu a,
-        #navMenu button {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all .15s;
-        }
-
-        #navMenu a:hover,
-        #navMenu button:hover {
-            background: var(--surface);
-            transform: translateX(3px);
-        }
-
-        #navMenu hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 6px 0;
         }
 
         .zone-hero {
@@ -836,7 +804,7 @@
             border: 1.5px solid var(--border);
             border-radius: 10px;
             font-family: "Lora", serif;
-            font-size: 14.5px;
+            font-size: 15px;
             font-style: normal;
             color: var(--sub);
             line-height: 1.75;
@@ -1300,7 +1268,7 @@ body.state-active .ici-card {
 }
 
 .state-def-text {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.80;
   color: rgba(240,234,231,0.88);
   font-style: normal;
@@ -1351,7 +1319,7 @@ body.state-active .ici-card {
         }
 
         .state-def-text {
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.80;
             color: rgba(240, 234, 231, 0.88);
             font-style: normal;
@@ -1410,7 +1378,7 @@ body.state-active .ici-card {
         }
 
         .pitch-val {
-            font-size: 14px;
+            font-size: 15px;
             color: #F0EAE7;
             line-height: 1.6;
             font-family: "Lora", serif;
@@ -1531,7 +1499,7 @@ body.state-active .ici-card {
 
         .chapter-title {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             line-height: 1.2;
             font-family: "Lora", serif;
@@ -1622,7 +1590,7 @@ body.state-active .ici-card {
 
         .facteur-desc {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.7;
             font-style: normal;
@@ -1691,9 +1659,9 @@ body.state-active .ici-card {
 
         .vr-note {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             color: rgba(240, 234, 231, 0.82);
-            line-height: 1.55;
+            line-height: 1.65;
             font-style: normal;
         }
 
@@ -1921,7 +1889,7 @@ body.state-active .ici-card {
 
 .obs-card-sub{
   grid-area:sub;
-  font-size:clamp(13px, 0.55vw + 11px, 15px);
+  font-size:clamp(15px, 0.45vw + 13px, 16px);
   color:var(--obs-card-sub);
   line-height:1.6;
   margin:0;
@@ -2143,7 +2111,7 @@ body.state-active .ici-card {
         .obs-result-title {
             font-family: "Lora", serif;
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--text);
             margin-bottom: 8px;
             line-height: 1.35;
@@ -2339,7 +2307,7 @@ body.state-active .ici-card {
 
         .impact-desc {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
             color: var(--sub);
             line-height: 1.75;
@@ -2503,7 +2471,7 @@ body.state-active .ici-card {
         }
 
         .traj-step-desc {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.7;
             font-family: "Lora", serif;
@@ -2696,9 +2664,9 @@ body.state-active .ici-card {
         }
 
         .geste-why {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--sub);
-            line-height: 1.65;
+            line-height: 1.7;
             padding-top: 12px;
             border-top: 1px solid var(--border);
         }
@@ -2724,8 +2692,8 @@ body.state-active .ici-card {
         .geste-sensoriel {
             font-family: "Lora", serif;
             font-style: italic;
-            font-size: 13px;
-            line-height: 1.68;
+            font-size: 15px;
+            line-height: 1.7;
             color: #F0EAE7;
             margin-top: 10px;
             opacity: .88;
@@ -2953,11 +2921,11 @@ body.state-active .ici-card {
 }
 
 .palp-note span {
-    font-size: 12px;
+    font-size: 15px;
     color: rgba(240, 234, 231, 0.76);
     font-style: italic;
     font-family: "Lora", serif;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 @media (max-width: 640px) {
@@ -3146,7 +3114,7 @@ body.state-active .ici-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--sub);
             line-height: 1.7;
             transition: border-color .2s;
@@ -3180,7 +3148,7 @@ body.state-active .ici-card {
 
         .accomp-note-finale {
             font-family: "Lora", serif;
-            font-size: 14px;
+            font-size: 15px;
             font-style: italic;
             color: var(--sub);
             line-height: 1.75;
@@ -3297,9 +3265,10 @@ body.state-active .ici-card {
         }
 
         .email-note {
-            font-size: 13px;
+            font-size: 15px;
             color: #F0EAE7;
             margin-top: 10px;
+            line-height: 1.6;
             font-style: italic;
         }
 
@@ -3309,8 +3278,9 @@ body.state-active .ici-card {
             border-radius: 12px;
             background: var(--surface);
             border: 1px solid var(--border);
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text);
+            line-height: 1.6;
             font-weight: 500;
         }
 
@@ -3418,42 +3388,6 @@ body.state-active .ici-card {
             color: #4E291F;
         }
 
-     footer{
-  background:var(--bg2);
-  padding:32px 24px;
-  border-top:1px solid var(--border);
-}
-.footer-inner{
-  max-width:720px;margin:0 auto;
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-  text-align:center;
-}
-.footer-logo{
-  font-family:'Montserrat',sans-serif;font-weight:700;
-  font-size:22px;letter-spacing:-0.06em;
-}
-[data-theme="night"] .footer-logo span{color:#F0EAE7;}
-[data-theme="day"] .footer-logo span:nth-child(1){color:#4E291F;}
-[data-theme="day"] .footer-logo span:nth-child(2){color:#BB7E60;}
-[data-theme="day"] .footer-logo span:nth-child(3){color:#C45279;}
-[data-theme="day"] .footer-logo span:nth-child(4){color:#C34234;}
-[data-theme="day"] .footer-logo span:nth-child(5){color:#4E291F;}
-.footer-sub{font-size:11px;color:var(--dim);letter-spacing:.6px;}
-.footer-social{display:flex;gap:18px;justify-content:center;}
-.social-icon{color:var(--dim);display:inline-flex;transition:color .2s,transform .2s;}
-.social-icon:hover{color:var(--warm);transform:translateY(-1px);}
-[data-theme="night"] .social-icon{color:rgba(240,234,231,.5);}
-[data-theme="night"] .social-icon:hover{color:#EAD7CC;}
-.footer-links{display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:center;}
-.footer-link{
-  font-size:11px;color:var(--dim);text-decoration:none;
-  font-weight:500;transition:color .2s;
-}
-.footer-link:hover{color:var(--warm);}
-[data-theme="night"] .footer-sub,
-[data-theme="night"] .footer-link{color:rgba(240,234,231,.45);}
-[data-theme="night"] .footer-link:hover{color:#F0EAE7;}
-.footer-note{font-size:10px;color:var(--dim);opacity:.6;}
 
 
         .zone-intro-block {
@@ -3850,40 +3784,93 @@ body.state-active .ici-card {
             text-decoration: underline;
         }
 
-        
-    </style>
+
+
+/* ══ CSS FALLBACK RENFORCÉ — sans JS, rien ne reste masqué ══ */
+.geste-card,
+.impact-item,
+.traj-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.js-ready .geste-card {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-ready .geste-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-ready .impact-item { opacity: 0.35; }
+.js-ready .impact-item.lit { opacity: 1; }
+.js-ready .traj-item { opacity: .4; }
+.js-ready .traj-item.lit { opacity: 1; }
+
+#backToTop { z-index: 900 !important; }
+
+.palp-title {
+  font-weight: 400;
+}
+
+.eyebrow,
+.chapter-eyebrow,
+.section-eyebrow,
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(187,126,96,.14);
+  border: 1px solid rgba(187,126,96,.34);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  line-height: 1.25;
+  color: var(--warm);
+}
+
+[data-theme="night"] .eyebrow,
+[data-theme="night"] .chapter-eyebrow,
+[data-theme="night"] .section-eyebrow,
+[data-theme="night"] .hero-eyebrow {
+  color: #F0EAE7;
+  background: rgba(187,126,96,.22);
+  border-color: rgba(187,126,96,.46);
+}
+
+    
+</style>
 </head>
 
 <body>
+
+    <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
+        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+      </a>
+
+      <div class="fallback-links">
+        <a href="/a-propos.html">À propos</a>
+        <a href="/methode.html">Méthode</a>
+        <a href="/test.html">Échelle Foébé</a>
+        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+        <a href="/boussole-accueil-foebe.html">Boussole</a>
+        <a href="mailto:foebecosmetics@gmail.com">Contact</a>
+      </div>
+    </nav>
 
     <div id="pageProgress">
         <div id="pageProgressFill"></div>
     </div>
     <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
-    <div id="navOverlay"></div>
-    <div id="stateOverlay"></div>
-
-  <div id="navMenu" role="menu">
-    <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
-    <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌊 Respiration</a>
-    <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire skin·self-care</a>
-    <hr>
-    <button id="themeBtn" type="button">☀️ Mode jour</button>
-  </div>
-
-    <nav id="mainNav">
-        <a href="index.html" class="nav-logo">
-            <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-        </a>
-        <div class="nav-right">
-            <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
-        </div>
-    </nav>
-
+<div id="stateOverlay"></div>
     <div class="zone-hero">
         <span class="hero-num" id="heroNum"></span>
         <span class="hero-emoji" id="heroEmoji"></span>
@@ -4130,32 +4117,7 @@ body.state-active .ici-card {
 
         </div>
     </main>
-
-           <footer>
-  <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none;display:block;">
-      <div class="footer-logo">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-      </div>
-    </a>
-    <p class="footer-sub">l'observatoire · Self-Care Structuré · Maison Foébé 2026</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/maisonfoebe/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@maisonfoebe" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok Maison Foébé">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.35-3.98-5.6-.46-2.14.24-4.43 1.71-6.04 1.42-1.57 3.59-2.46 5.77-2.35.62.03 1.23.12 1.83.26v4.14c-.67-.31-1.41-.45-2.14-.38-1.01.09-1.95.69-2.47 1.56-.56.93-.68 2.12-.34 3.14.35 1.06 1.19 1.93 2.23 2.34 1.14.45 2.47.35 3.52-.29 1.05-.64 1.74-1.78 1.81-2.99.02-3.08 0-6.16.01-9.24-.06-1.37-.59-2.71-1.56-3.71-.96-1-2.27-1.63-3.65-1.75-.13-.01-.26-.02-.39-.02v-4.05z"/></svg>
-      </a>
-    </div>
-    <div class="footer-links">
-      <a href="mentions.html" class="footer-link">Mentions légales</a>
-      <a href="mailto:foebecosmetics@gmail.com" class="footer-link">Contact</a>
-    </div>
-    <p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>
-  </div>
-</footer>
-   
-    <script>
+<script>
         "use strict";
 
         /* ── Init palette ─── */
@@ -4197,7 +4159,7 @@ body.state-active .ici-card {
 
         function initHero() {
             var z = ZONE_CONFIG;
-            document.getElementById("heroNum").textContent = "Zone " + z.number + " · l'observatoire Foébé";
+            document.getElementById("heroNum").textContent = "Zone " + z.number + " · Maison Foébé";
             document.getElementById("heroEmoji").textContent = z.emoji;
             document.getElementById("heroTitle").textContent = z.slug;
         }
@@ -4428,12 +4390,7 @@ body.state-active .ici-card {
         initTraj();
         initGestes();
         initZonesNav();
-
         /* Composants interactifs */
-        (function() {
-            var btn = document.getElementById('themeBtn');
-            if (btn) btn.textContent = document.documentElement.getAttribute('data-theme') === 'night' ? '☀️ Mode jour' : '🌙 Mode nuit';
-        })();
         (function() {
             var fill = document.getElementById("pageProgressFill"),
                 btn = document.getElementById("backToTop");
@@ -4447,12 +4404,7 @@ body.state-active .ici-card {
             }, {
                 passive: true
             });
-            document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            window.addEventListener("scroll", function() {
-                document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 40);
-            }, {
-                passive: true
-            });
+
         })();
         (function() {
             var btn = document.getElementById('backToTop');
@@ -4799,6 +4751,10 @@ body.state-active .ici-card {
         (function() {
             var items = document.querySelectorAll(".traj-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) { item.classList.add("lit"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-traj") || "0");
@@ -4825,6 +4781,10 @@ body.state-active .ici-card {
         (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
+            if (!("IntersectionObserver" in window)) {
+                cards.forEach(function(card) { card.classList.add("visible"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) e.target.classList.add("visible");
@@ -4839,6 +4799,10 @@ body.state-active .ici-card {
         (function() {
             var items = document.querySelectorAll(".impact-item");
             if (!items.length) return;
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function(item) { item.classList.add("lit"); });
+                return;
+            }
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     var idx = parseInt(e.target.getAttribute("data-impact") || "0");
@@ -4919,55 +4883,7 @@ body.state-active .ici-card {
                 if (errEl) errEl.textContent = '';
             });
         })();
-        (function() {
-            var toggle = document.getElementById("menuToggle"),
-                menu = document.getElementById("navMenu"),
-                overlay = document.getElementById("navOverlay"),
-                menuOpen = false,
-                closeTimer = null;
 
-            function openMenu() {
-                if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                }
-                menu.style.display = "block";
-                menu.classList.remove("closing");
-                menu.classList.add("opening");
-                overlay.classList.remove("hiding");
-                overlay.classList.add("visible");
-                menuOpen = true;
-                toggle.textContent = "✕";
-                toggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.remove("opening");
-                menu.classList.add("closing");
-                overlay.classList.remove("visible");
-                overlay.classList.add("hiding");
-                toggle.textContent = "☰";
-                toggle.setAttribute("aria-expanded", "false");
-                closeTimer = setTimeout(function() {
-                    menu.style.display = "none";
-                    menu.classList.remove("closing");
-                    overlay.classList.remove("hiding");
-                    closeTimer = null;
-                }, 210);
-            }
-            toggle.addEventListener("click", function(e) {
-                e.stopPropagation();
-                menuOpen ? closeMenu() : openMenu();
-            });
-            overlay.addEventListener("click", function() {
-                closeMenu();
-            });
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && menuOpen) closeMenu();
-            });
-        })();
         (function() {
             var iciCard = document.querySelector('.ici-card');
             if (iciCard) iciCard.addEventListener('click', function(e) {
@@ -4996,6 +4912,7 @@ body.state-active .ici-card {
             });
         })();
     </script>
+    <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
