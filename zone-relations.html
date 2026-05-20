@@ -22,7 +22,17 @@
       body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;display:inline-flex!important;align-items:center!important;padding:0 11px!important;border-radius:999px!important;color:var(--text,#F0EAE7)!important;font-family:"Poppins",sans-serif!important;font-size:12.5px!important;font-weight:600!important;white-space:nowrap!important;text-decoration:none!important;}
       @media(max-width:720px){body > nav#fallbackNav.fallback-nav .fallback-links > a{font-size:12px!important;padding:0 9px!important;}}
       @media(max-width:420px){body > nav#fallbackNav.fallback-nav .fallback-links > a{font-size:11.5px!important;padding:0 8px!important;}}
-    </style>
+    
+
+/* PATCH FOÉBÉ v4 — sécurité visibilité encart Relations
+   Le texte est aussi présent en dur dans le HTML : l'encart reste visible même si JS ne s'exécute pas. */
+#impactsIntro[data-foebe-fix="impact-transition-visible"]{
+  display:block !important;
+  min-height:unset !important;
+  opacity:1 !important;
+  visibility:visible !important;
+}
+</style>
 
     <script>
     document.documentElement.classList.add('js-ready');
@@ -363,19 +373,19 @@
 
     <style>
         :root {
-            --z: ;
-            --z-mid: ;
-            --z-lite: ;
-            --z-dim: ;
-            --z-r: ;
-            --z-g: ;
-            --z-b: ;
-            --z-mid-r: ;
-            --z-mid-g: ;
-            --z-mid-b: ;
-            --z-lite-r: ;
-            --z-lite-g: ;
-            --z-lite-b: ;
+            --z: #5C1A40;
+            --z-mid: #9E3565;
+            --z-lite: #D478A4;
+            --z-dim: rgba(158, 53, 101, 0.13);
+            --z-r: 92;
+            --z-g: 26;
+            --z-b: 64;
+            --z-mid-r: 158;
+            --z-mid-g: 53;
+            --z-mid-b: 101;
+            --z-lite-r: 212;
+            --z-lite-g: 120;
+            --z-lite-b: 164;
             --bordeaux: #4E291F;
             --warm: #BB7E60;
             --warm-dark: #5C1A40;
@@ -4099,10 +4109,74 @@ body.state-active .ici-card {
   }
 }
 
-    </style>
+    
+/* ============================================================
+   FOÉBÉ — PATCH ZONE RELATIONS v3
+   Alignement premium zones : encart Effets en cascade sans label ajouté,
+   cohérent avec Zone Sens / Zone Émotions.
+   ============================================================ */
+
+#impactsIntro.impact-transition-box,
+.impacts-section #impactsIntro.impact-transition-box{
+  display:block !important;
+  box-sizing:border-box !important;
+  width:min(100%,760px) !important;
+  max-width:760px !important;
+  margin:0 auto 36px !important;
+  padding:22px 26px !important;
+  border-radius:22px !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(240,234,231,.14), transparent 38%),
+    linear-gradient(135deg, rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.18), rgba(0,0,0,.10)),
+    var(--z) !important;
+  border:1px solid rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.42) !important;
+  box-shadow:0 18px 44px rgba(0,0,0,.14) !important;
+  color:#F0EAE7 !important;
+  font-family:"Lora",serif !important;
+  font-size:clamp(16px,.55vw + 14px,17px) !important;
+  line-height:1.78 !important;
+  text-align:center !important;
+  font-style:normal !important;
+}
+
+#impactsIntro.impact-transition-box *{
+  color:#F0EAE7 !important;
+}
+
+[data-theme="day"] #impactsIntro.impact-transition-box,
+[data-theme="day"] .impacts-section #impactsIntro.impact-transition-box{
+  color:#F0EAE7 !important;
+  box-shadow:0 18px 42px rgba(78,41,31,.14) !important;
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:min(100%,720px) !important;
+    padding:22px 24px !important;
+    margin-bottom:34px !important;
+  }
+}
+
+@media(max-width:767px){
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 0 28px !important;
+    padding:18px 18px !important;
+    border-radius:18px !important;
+    font-size:16px !important;
+    line-height:1.78 !important;
+    text-align:left !important;
+  }
+}
+
+</style>
 </head>
 
 <body>
+
 
     <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
       <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
@@ -4256,7 +4330,9 @@ body.state-active .ici-card {
                         <h2 class="chapter-title" id="impactsTitle"></h2>
                     </div>
                 </div>
-                <p class="impacts-intro" id="impactsIntro"></p>
+                <div class="impacts-intro impact-transition-box" id="impactsIntro" data-foebe-fix="impact-transition-visible" style="display:block !important; visibility:visible !important; opacity:1 !important; box-sizing:border-box !important; width:min(100%,760px) !important; max-width:760px !important; margin:0 auto 36px !important; padding:22px 26px !important; border-radius:22px !important; background:#5C1A40 !important; border:1px solid rgba(212,120,164,.52) !important; box-shadow:0 18px 44px rgba(0,0,0,.14) !important; color:#F0EAE7 !important; font-family:Lora,serif !important; font-size:16.5px !important; line-height:1.78 !important; text-align:center !important; font-style:normal !important;">
+                    Un déséquilibre dans les relations ne se limite pas à la sphère sociale. En pratique, cela finit par avoir un impact de plus en plus évident sur le reste de ton self-care.
+                </div>
                 <div class="impacts-timeline" id="impactsTimeline"></div>
             </div>
 
@@ -4557,6 +4633,28 @@ body.state-active .ici-card {
             setText("impactsEyebrow", sm.eyebrow);
             setText("impactsTitle", sm.title);
             setText("impactsIntro", IMPACTS_INTRO);
+            var impactsIntroBox = document.getElementById("impactsIntro");
+            if (impactsIntroBox) {
+                impactsIntroBox.classList.add("impact-transition-box");
+                impactsIntroBox.setAttribute("data-foebe-fix", "impact-transition-visible");
+                impactsIntroBox.style.setProperty("display", "block", "important");
+                impactsIntroBox.style.setProperty("visibility", "visible", "important");
+                impactsIntroBox.style.setProperty("opacity", "1", "important");
+                impactsIntroBox.style.setProperty("box-sizing", "border-box", "important");
+                impactsIntroBox.style.setProperty("width", "min(100%, 760px)", "important");
+                impactsIntroBox.style.setProperty("max-width", "760px", "important");
+                impactsIntroBox.style.setProperty("margin", "0 auto 36px", "important");
+                impactsIntroBox.style.setProperty("padding", "22px 26px", "important");
+                impactsIntroBox.style.setProperty("border-radius", "22px", "important");
+                impactsIntroBox.style.setProperty("background", "#5C1A40", "important");
+                impactsIntroBox.style.setProperty("border", "1px solid rgba(212,120,164,.52)", "important");
+                impactsIntroBox.style.setProperty("box-shadow", "0 18px 44px rgba(0,0,0,.14)", "important");
+                impactsIntroBox.style.setProperty("color", "#F0EAE7", "important");
+                impactsIntroBox.style.setProperty("font-family", "Lora, serif", "important");
+                impactsIntroBox.style.setProperty("font-size", "16.5px", "important");
+                impactsIntroBox.style.setProperty("line-height", "1.78", "important");
+                impactsIntroBox.style.setProperty("text-align", "center", "important");
+            }
             var tl = document.getElementById("impactsTimeline");
             IMPACTS_DATA.forEach(function(item, i) {
                 var primary = (item.tag === "primary") ? " primary" : "";
