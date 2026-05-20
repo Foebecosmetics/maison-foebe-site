@@ -1,1197 +1,1007 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="day">
 <head>
 <meta charset="UTF-8">
- <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="robots" content="index, follow">
-   <meta property="og:locale" content="fr_FR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Anti-FOUC thème — NE PAS MODIFIER -->
+<script>
+(function(){
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script>
+<script>document.documentElement.classList.add('js-ready');</script>
+
+<title>La Boussole · Lire les situations · Maison Foébé</title>
+<meta name="description" content="La Boussole Foébé aide à lire des scènes du quotidien pour reconnaître les 7 dimensions du self-care avec des repères simples et concrets.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://maisonfoebe.fr/boussole">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La Boussole · Lire les situations · Maison Foébé">
+<meta property="og:description" content="Apprends à lire des scènes du quotidien, à reconnaître les zones Foébé et à distinguer le signal qui organise la situation.">
+<meta property="og:url" content="https://maisonfoebe.fr/boussole">
+<meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maison Foébé — La Boussole">
+<meta property="og:site_name" content="Maison Foébé">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="La Boussole · Maison Foébé">
-<meta name="twitter:description" content="Explore les 7 dimensions du self-care, identifie tes signaux d'épuisement et découvre ton chemin de récupération.">
+<meta name="twitter:description" content="Des scènes fictionnalisées pour apprendre à reconnaître les 7 dimensions du self-care Foébé.">
 <meta name="twitter:image" content="https://maisonfoebe.fr/images/og-boussole.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Boussole — Maison Foébé","description":"Explore les 7 dimensions du self-care et identifie tes signaux d'épuisement. Outil de navigation intérieure Foébé.","url":"https://maisonfoebe.fr/boussole","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé — l'observatoire"}}</script>
+<meta name="apple-mobile-web-app-title" content="Maison Foébé">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Boussole — Maison Foébé","description":"Scénarios de discernement pour apprendre à reconnaître les 7 dimensions du self-care selon Maison Foébé.","url":"https://maisonfoebe.fr/boussole","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-
-<link rel="canonical" href="https://maisonfoebe.fr/boussole" />
-
-<!-- Open Graph -->
-<meta property="og:title" content="La Boussole • Maison Foébé" />
-<meta property="og:description" content="La Boussole intérieure Foébé : explore les 7 dimensions du self-care, identifie tes signaux d'épuisement et découvre ton chemin de récupération personnalisé." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://maisonfoebe.fr/boussole" />
-<meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Logo Foébé — Maison Foébé" />
-<meta property="og:site_name" content="Maison Foébé • Observatoire" />
-
-<!-- Apple / iOS -->
-<meta name="apple-mobile-web-app-title" content="Maison Foébé • Observatoire" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#0B1A2E;--bg2:#0F2340;--ocean:#1A3A5C;
-  --deep:#4E291F;--warm:#BB7E60;--rose:#C45279;--red:#C34234;
-  --cream:#F0EAE7;--sand:#D9C8BE;--text:#F0EAE7;
-  --sub:rgba(240,234,231,0.65);--dim:rgba(240,234,231,0.35);
-  --border:rgba(187,126,96,0.25);--card:rgba(255,255,255,0.04);
-  --green:#4A7C59;--gl:rgba(74,124,89,0.15);--rl:rgba(195,66,52,0.15);
+
+<style id="fallbackNavCritical">
+/* Fallback nav critique : !important volontaire pour garantir la lisibilité avant chargement du Shell. */
+  body > nav#fallbackNav.fallback-nav{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:950!important;min-height:60px!important;height:60px!important;padding:0 clamp(14px,3vw,28px)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;background:rgba(78,41,31,.94)!important;border-bottom:1px solid rgba(187,126,96,.34)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;box-shadow:0 2px 14px rgba(0,0,0,.16)!important;font-family:"Poppins",sans-serif!important;box-sizing:border-box!important;}
+  [data-theme="day"] body > nav#fallbackNav.fallback-nav{background:rgba(240,234,231,.94)!important;border-bottom-color:rgba(78,41,31,.16)!important;box-shadow:0 2px 14px rgba(78,41,31,.08)!important;}
+  [data-theme="night"] body > nav#fallbackNav.fallback-nav{background:rgba(78,41,31,.94)!important;border-bottom-color:rgba(187,126,96,.34)!important;box-shadow:0 2px 14px rgba(0,0,0,.16)!important;}
+  body > nav#fallbackNav.fallback-nav .fallback-logo{font-family:"Montserrat",sans-serif!important;font-weight:700!important;font-size:18px!important;letter-spacing:-.06em!important;line-height:1!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;min-height:44px!important;flex:0 0 auto!important;max-width:42vw!important;white-space:nowrap!important;}
+  [data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{color:#F0EAE7!important;}
+  [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){color:#4E291F!important;}
+  [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2){color:#BB7E60!important;}
+  [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3){color:#C45279!important;}
+  [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4){color:#C34234!important;}
+  body > nav#fallbackNav.fallback-nav .fallback-links{display:flex!important;flex:1 1 auto!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;white-space:nowrap!important;}
+  body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar{display:none!important;}
+  body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0 11px!important;border-radius:999px!important;color:var(--text,#F0EAE7)!important;font-family:"Poppins",sans-serif!important;font-size:12.5px!important;font-weight:600!important;white-space:nowrap!important;flex:0 0 auto!important;text-decoration:none!important;border:1px solid transparent!important;opacity:.92!important;background:transparent!important;box-sizing:border-box!important;}
+  body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible{color:#F0EAE7!important;background:#BB7E60!important;border-color:#BB7E60!important;opacity:1!important;outline:none!important;}
+  @media(max-width:720px){body > nav#fallbackNav.fallback-nav{padding:0 12px!important;gap:12px!important;}body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px!important;}body > nav#fallbackNav.fallback-nav .fallback-links{justify-content:flex-start!important;}body > nav#fallbackNav.fallback-nav .fallback-links > a{font-size:12px!important;padding:0 10px!important;}}
+  @media(max-width:420px){body > nav#fallbackNav.fallback-nav{gap:10px!important;padding:0 10px!important;}body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px!important;max-width:36vw!important;}body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;font-size:11.5px!important;padding:0 9px!important;}}
+
+/* V7 — simplification éditoriale */
+.dimension-chip:empty{display:none;}
+.scenario-tab{grid-template-columns:32px 1fr;}
+.scenario-tab .tab-label{align-self:center;}
+.person{gap:0;}
+.person strong{font-size:15px;}
+@media(max-width:380px){.scenario-tab{grid-template-columns:28px 1fr;}}
+
+
+
+/* Styles page Boussole */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#F0EAE7;--bg2:#E8DDD8;--bg3:#DDD0CB;--text:#4E291F;--muted:rgba(78,41,31,.74);--soft:rgba(78,41,31,.58);--dim:rgba(78,41,31,.42);--warm:#BB7E60;--rose:#C45279;--red:#C34234;--cream:#F0EAE7;--sand:#D9C8BE;--line:rgba(187,126,96,.38);--line2:rgba(78,41,31,.12);--card:rgba(255,255,255,.58);--card2:rgba(187,126,96,.12);--shadow:0 24px 70px rgba(78,41,31,.11);}
+[data-theme="day"]{--bg:#F0EAE7;--bg2:#E8DDD8;--bg3:#DDD0CB;--text:#4E291F;--muted:rgba(78,41,31,.74);--soft:rgba(78,41,31,.58);--dim:rgba(78,41,31,.42);--line:rgba(187,126,96,.38);--line2:rgba(78,41,31,.12);--card:rgba(255,255,255,.50);--card2:rgba(187,126,96,.12);--shadow:0 24px 70px rgba(78,41,31,.11);}
+[data-theme="night"]{--bg:#4E291F;--bg2:#3A1A10;--bg3:#2C1A12;--text:#F0EAE7;--muted:rgba(240,234,231,.74);--soft:rgba(240,234,231,.58);--dim:rgba(240,234,231,.42);--warm:#BB7E60;--rose:#C45279;--red:#C34234;--cream:#F0EAE7;--sand:#D9C8BE;--line:rgba(187,126,96,.32);--line2:rgba(240,234,231,.12);--card:rgba(240,234,231,.055);--card2:rgba(187,126,96,.12);--shadow:0 24px 70px rgba(0,0,0,.28);}
+
+html{scroll-behavior:smooth;background:var(--bg);}
+body{font-family:"Poppins",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 10% 0%,rgba(187,126,96,.13),transparent 35%),linear-gradient(180deg,rgba(255,255,255,.34),transparent 48%);}
+a{color:inherit;}
+button,input,textarea{font:inherit;}
+.site{position:relative;z-index:1;padding:96px 20px 56px;}
+.wrap{width:min(1120px,100%);margin:0 auto;}
+.hero{padding:42px 0 30px;text-align:center;}
+.hero-eyebrow,
+.section-eyebrow,
+.chapter-eyebrow,
+.tag-pill{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  padding:7px 13px;
+  border-radius:999px;
+  background:rgba(187,126,96,.14);
+  border:1px solid rgba(187,126,96,.34);
+  font-family:"Poppins",sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  line-height:1.25;
+  text-transform:uppercase;
+  color:#4E291F;
+  margin-bottom:12px;
 }
-html,body{font-family:"Poppins",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-
-/* OCEAN BG */
-.obg{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,#0B1A2E 0%,#0F2340 40%,#1A3A5C 100%);overflow:hidden;}
-.wave{position:absolute;bottom:0;left:0;right:0;height:160px;opacity:0.06;}
-.wave svg{width:200%;animation:wm 8s linear infinite;}
-.wave:nth-child(2) svg{animation-delay:-3s;animation-duration:11s;opacity:0.04;}
-.wave:nth-child(3) svg{animation-delay:-6s;animation-duration:14s;opacity:0.03;}
-@keyframes wm{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.stars{position:absolute;inset:0;}
-.star{position:absolute;background:#F0EAE7;border-radius:50%;animation:tw var(--d,3s) ease-in-out infinite var(--dl,0s);}
-@keyframes tw{0%,100%{opacity:0.1;}50%{opacity:0.5;}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,26,46,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:"Montserrat",sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.06em;text-decoration:none;color:#F0EAE7;}
-.nav-st{display:flex;align-items:center;gap:14px;}
-.nst{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:var(--warm);}
-.nav-back{font-size:11px;color:rgba(240,234,231,0.65);text-decoration:none;transition:color 0.2s;}
-.nav-back:hover{color:var(--warm);}
-
-/* FOOTER IMMERSIF */
-.boussole-footer{
-  position:relative;z-index:1;
-  padding:24px 20px 32px;
-  text-align:center;
-  border-top:1px solid rgba(240,234,231,0.06);
-  margin-top:8px;
+[data-theme="night"] .hero-eyebrow,
+[data-theme="night"] .section-eyebrow,
+[data-theme="night"] .chapter-eyebrow,
+[data-theme="night"] .tag-pill{
+  color:#F0EAE7;
+  background:rgba(187,126,96,.22);
+  border-color:rgba(187,126,96,.46);
 }
-.boussole-footer p{
-  font-size:11px;color:rgba(240,234,231,0.3);
-  font-family:"Poppins",sans-serif;letter-spacing:0.5px;
+.hero h1{font-family:"Lora",serif;font-weight:400;font-size:clamp(40px,7vw,74px);line-height:1.02;letter-spacing:-.025em;margin:18px auto 16px;max-width:850px;}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--warm);}
+.hero-sub{font-family:"Lora",serif;font-size:clamp(17px,2vw,21px);line-height:1.78;color:var(--text);max-width:790px;margin:0 auto;}
+.hero-note{
+  max-width:760px;
+  margin:18px auto 0;
+  padding:14px 18px;
+  border-radius:18px;
+  border:1px solid rgba(240,234,231,.14);
+  background:rgba(78,41,31,.96);
+  font-size:15px;
+  line-height:1.65;
+  color:#F0EAE7;
 }
-.boussole-footer a{
-  color:rgba(240,234,231,0.4);text-decoration:none;
-  transition:color 0.2s;
+[data-theme="night"] .hero-note{
+  background:rgba(44,26,18,.96);
+  border-color:rgba(187,126,96,.46);
+  color:#F0EAE7;
 }
-.boussole-footer a:hover{color:#F0EAE7;}
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px;}
+.btn{min-height:48px;padding:0 18px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;cursor:pointer;background:rgba(240,234,231,.055);color:var(--text);font-family:"Poppins",sans-serif;font-size:14px;font-weight:700;transition:transform .2s ease,border-color .2s ease,background .2s ease;}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);border-color:var(--warm);background:rgba(187,126,96,.14);outline:none;}
+.btn.primary{background:var(--warm);border-color:var(--warm);color:#F0EAE7;box-shadow:0 16px 32px rgba(0,0,0,.16);}
+.btn.secondary{background:transparent;}
+.grid-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin:18px 0 26px;align-items:stretch;}
+.example-panel{grid-column:1/-1;background:rgba(187,126,96,.075)!important;}
+.example-panel p strong{color:var(--text);font-weight:500;}
+.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(240,234,231,.075),rgba(187,126,96,.07));border-radius:28px;padding:24px;box-shadow:var(--shadow);}
+.panel h2{font-family:"Lora",serif;font-size:clamp(25px,3vw,36px);font-weight:400;line-height:1.18;margin-bottom:12px;}
+.panel p{font-family:"Lora",serif;font-size:16px;line-height:1.78;color:var(--muted);}
+.mini-list{display:grid;gap:10px;margin-top:4px;}
+.mini-item{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:18px;background:rgba(240,234,231,.045);border:1px solid var(--line2);}
+.mini-index{font-size:12px;font-weight:800;color:var(--warm);min-width:30px;}
+.mini-item p{font-family:"Poppins",sans-serif;font-size:14px;line-height:1.58;color:var(--muted);}
+.experience{margin-top:28px;display:grid;grid-template-columns:320px minmax(0,1fr);gap:18px;align-items:start;}
+.sidebar{position:sticky;top:86px;border:1px solid var(--line);border-radius:28px;background:rgba(240,234,231,.052);padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.13);}
+.side-title{font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--warm);margin-bottom:12px;}
+.progress-card{border-radius:20px;background:rgba(187,126,96,.10);border:1px solid rgba(187,126,96,.28);padding:14px;margin-bottom:14px;}
+.progress-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-bottom:8px;}
+.progress-row strong{font-size:18px;color:var(--text);}
+.track{height:8px;border-radius:99px;background:rgba(240,234,231,.12);overflow:hidden;}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--warm),var(--rose));border-radius:99px;transition:width .35s ease;}
+.scenario-list{display:grid;gap:8px;margin-top:12px;}
+.scenario-tab{width:100%;text-align:left;border:1px solid var(--line2);background:rgba(240,234,231,.042);color:var(--muted);border-radius:16px;padding:12px 12px;cursor:pointer;display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;min-height:58px;transition:background .2s ease,border-color .2s ease,transform .2s ease;}
+.scenario-tab:hover,.scenario-tab:focus-visible{border-color:var(--warm);background:rgba(187,126,96,.10);outline:none;}
+.scenario-tab.active{border-color:var(--warm);background:rgba(187,126,96,.16);color:var(--text);}
+.scenario-tab.done{border-color:rgba(74,124,89,.45);}
+.tab-num{height:32px;width:32px;border-radius:50%;display:grid;place-items:center;background:rgba(187,126,96,.14);color:var(--warm);font-weight:800;font-size:12px;}
+.tab-label{font-size:13px;font-weight:700;line-height:1.25;}
+.tab-meta{font-size:11px;color:var(--soft);margin-top:3px;font-weight:500;}
+.tab-status{font-size:13px;color:var(--warm);}
+.main-card{border:1px solid var(--line);border-radius:34px;background:linear-gradient(145deg,rgba(240,234,231,.075),rgba(240,234,231,.035));box-shadow:var(--shadow);overflow:hidden;}
+#experience,#readerCard,#finalCard{scroll-margin-top:92px;}
+@media(max-width:920px){#readerCard{scroll-margin-top:82px;}}
+.reader-top{padding:24px 24px 0;display:flex;justify-content:space-between;gap:14px;align-items:flex-start;}
+.person{display:flex;flex-wrap:wrap;align-items:center;gap:9px 10px;color:var(--soft);font-size:13px;font-weight:700;}
+.person strong{color:var(--text);font-size:15px;}
+.scene-label{font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--soft);width:100%;}
 
-/* SCREENS */
-.screen{display:none;position:relative;z-index:1;min-height:100vh;padding:68px 20px 40px;flex-direction:column;align-items:center;justify-content:center;}
-.screen.active{display:flex;animation:si 0.45s cubic-bezier(0.16,1,0.3,1);}
-@keyframes si{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.dimension-chip{border:1px solid var(--line);background:rgba(187,126,96,.11);border-radius:999px;padding:7px 12px;color:var(--warm);font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;}
+.testimony{padding:20px 24px 24px;}
+.quote{font-family:"Lora",serif;font-size:clamp(19px,2.4vw,27px);line-height:1.58;color:var(--text);font-style:italic;}
+.question-area{border-top:1px solid var(--line2);padding:24px;background:rgba(0,0,0,.045);}
+.question-block{display:none;}
+.question-block.active{display:block;animation:fadeIn .28s ease both;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.question-kicker{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--warm);margin-bottom:8px;}
+.question-title{font-family:"Lora",serif;font-weight:400;font-size:clamp(22px,2.8vw,32px);line-height:1.22;margin-bottom:14px;}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px;}
+.option{min-height:58px;text-align:left;border:1px solid var(--line);background:rgba(240,234,231,.045);color:var(--text);border-radius:18px;padding:14px 15px;cursor:pointer;font-size:15px;font-weight:700;line-height:1.35;transition:transform .18s ease,border-color .18s ease,background .18s ease;}
+.option:hover,.option:focus-visible{transform:translateY(-2px);border-color:var(--warm);background:rgba(187,126,96,.12);outline:none;}
+.option.selected{border-color:var(--warm);background:rgba(187,126,96,.18);}
+.option.correct{border-color:rgba(74,124,89,.65);background:rgba(74,124,89,.16);}
+.option.near{border-color:rgba(187,126,96,.58);background:rgba(187,126,96,.13);}
+.option.missed{border-color:rgba(195,66,52,.46);background:rgba(195,66,52,.10);}
+.reader-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.feedback{display:none;margin-top:18px;border:1px solid var(--line);border-radius:22px;background:rgba(240,234,231,.055);padding:18px;}
+.feedback.show{display:block;animation:fadeIn .28s ease both;}
+.feedback h3{font-family:"Lora",serif;font-weight:400;font-size:24px;line-height:1.25;margin-bottom:10px;}
+.feedback p{font-family:"Lora",serif;font-size:16px;line-height:1.76;color:var(--muted);margin-top:8px;}
+.feedback .skill{margin-top:14px;padding:13px 14px;border-radius:16px;background:rgba(187,126,96,.11);border:1px solid rgba(187,126,96,.28);font-family:"Poppins",sans-serif;font-size:14px;line-height:1.62;color:var(--text);}
+.feedback .skill strong{color:var(--warm);}
+.result-panel{display:none;padding:24px;border-top:1px solid var(--line2);background:rgba(187,126,96,.06);}
+.result-panel.show{display:block;}
+.result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;}
+.result-box{border:1px solid var(--line);border-radius:20px;background:rgba(240,234,231,.052);padding:16px;}
+.result-box span{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--warm);}
+.result-box strong{display:block;margin-top:7px;font-size:18px;line-height:1.25;}
+.reading{font-family:"Lora",serif;font-size:16px;line-height:1.78;color:var(--muted);margin-top:16px;}
+.final-card{display:none;margin-top:22px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(145deg,rgba(187,126,96,.14),rgba(240,234,231,.055));padding:26px;box-shadow:var(--shadow);}
+.final-card.show{display:block;animation:fadeIn .3s ease both;}
+.final-card h2{font-family:"Lora",serif;font-size:clamp(28px,4vw,44px);font-weight:400;line-height:1.12;margin-bottom:12px;}
+.final-card p{font-family:"Lora",serif;font-size:17px;line-height:1.78;color:var(--muted);max-width:820px;}
+.skills-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0;}
+.skill-card{border:1px solid var(--line2);background:rgba(240,234,231,.045);border-radius:20px;padding:15px;}
+.skill-card strong{display:block;color:var(--warm);font-size:15px;margin-bottom:6px;}
+.skill-card span{display:block;font-family:"Lora",serif;font-size:15px;line-height:1.62;color:var(--muted);}
+.cta-strip{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;margin-top:26px;padding:20px;border:1px solid var(--line);border-radius:26px;background:rgba(240,234,231,.052);}
+.cta-strip h2{font-family:"Lora",serif;font-weight:400;font-size:26px;line-height:1.2;margin-bottom:6px;}
+.cta-strip p{font-family:"Lora",serif;font-size:16px;line-height:1.68;color:var(--muted);}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
+@media(max-width:920px){.grid-intro,.experience{grid-template-columns:1fr;}.sidebar{position:relative;top:auto;}.scenario-list{grid-template-columns:repeat(2,minmax(0,1fr));}.reader-top{flex-direction:column;}.result-grid,.skills-list{grid-template-columns:1fr;}.cta-strip{grid-template-columns:1fr;}.cta-strip .btn{width:100%;}}
+@media(max-width:620px){.site{padding:82px 14px 42px;}.hero{padding-top:34px;}.panel,.main-card,.final-card{border-radius:24px;}.panel{padding:20px;}.sidebar{padding:14px;border-radius:24px;}.scenario-list{grid-template-columns:1fr;}.reader-top,.testimony,.question-area,.result-panel{padding-left:18px;padding-right:18px;}.options{grid-template-columns:1fr;}.hero-actions,.reader-actions{flex-direction:column;}.btn{width:100%;}.quote{font-size:20px;}.question-title{font-size:24px;}.hero h1{font-size:40px;}.hero-sub{font-size:17px;}.hero-note{font-size:15px;}.mini-item p{font-size:15px;}.dimension-chip{white-space:normal;}.person{font-size:12.5px;}.person strong{font-size:15px;}}
+@media(max-width:380px){.site{padding-left:12px;padding-right:12px;}.reader-top,.testimony,.question-area,.result-panel{padding-left:15px;padding-right:15px;}.scenario-tab{grid-template-columns:28px 1fr auto;}.tab-num{height:28px;width:28px;}.option{font-size:14px;padding:13px;}.quote{font-size:18px;}}
 
-/* MAP */
-#sMap{justify-content:flex-start;padding-top:76px;}
-.mhdr{text-align:center;margin-bottom:20px;width:100%;}
-.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:10px;display:block;}
-.mttl{font-family:"Lora",serif;font-size:clamp(28px,7vw,40px);font-weight:400;color:var(--text);}
-.mttl em{font-style:italic;color:var(--warm);}
+.question-help{font-family:"Lora",serif;font-size:15px;line-height:1.65;color:var(--soft);margin:-6px 0 14px;}
+.progress-card{background:transparent!important;border-style:dashed!important;box-shadow:none!important;}
+.progress-row strong{font-weight:600!important;color:var(--soft)!important;}
+.result-grid.four{grid-template-columns:repeat(4,minmax(0,1fr));}
+@media(max-width:920px){.result-grid.four{grid-template-columns:1fr 1fr;}}
+@media(max-width:620px){.result-grid.four{grid-template-columns:1fr;}.question-help{font-size:15px;line-height:1.7;}}
 
-.sbar{display:flex;gap:8px;margin-bottom:18px;width:100%;max-width:480px;}
-.spill{flex:1;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;}
-.spv{font-size:20px;font-weight:700;color:var(--warm);display:block;line-height:1;}
-.spl{font-size:10px;color:rgba(240,234,231,0.65);font-weight:600;letter-spacing:0.5px;margin-top:2px;}
 
-.lvlbar{width:100%;max-width:480px;margin-bottom:18px;}
-.lvlhdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
-.lvlname{font-size:13px;font-weight:600;color:var(--warm);}
-.lvlpts{font-size:11px;color:rgba(240,234,231,0.65);}
-.lvltrack{height:7px;background:rgba(187,126,96,0.12);border-radius:4px;overflow:hidden;}
-.lvlfill{height:100%;background:linear-gradient(to right,var(--warm),var(--rose));border-radius:4px;transition:width 1s cubic-bezier(0.16,1,0.3,1);}
+.question-block.answered{display:block;opacity:.74;}
+.question-block.answered .question-title{font-size:20px;}
+.question-block.answered .question-help{display:none;}
+.question-block.answered .options{grid-template-columns:repeat(2,minmax(0,1fr));}
+.question-block.answered .option:not(.selected){display:none;}
+.question-block.answered .option.selected{min-height:44px;padding:10px 12px;border-radius:14px;background:rgba(187,126,96,.13);}
+.result-panel{scroll-margin-top:120px;}
+@media(max-width:620px){.question-block.answered .options{grid-template-columns:1fr;}.example-panel p{font-size:15px;}}
 
-/* MAP OCEAN */
-.omap{width:100%;max-width:480px;background:rgba(26,58,92,0.2);border:1px solid rgba(187,126,96,0.2);border-radius:22px;padding:16px;margin-bottom:18px;position:relative;overflow:hidden;}
-.omap::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.008) 40px,rgba(255,255,255,0.008) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.008) 40px,rgba(255,255,255,0.008) 41px);pointer-events:none;}
-.compass{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:2px solid rgba(187,126,96,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;animation:cs 12s linear infinite;z-index:2;background:rgba(11,26,46,0.9);box-shadow:0 0 20px rgba(187,126,96,0.3);}
-@keyframes cs{from{transform:rotate(0);}to{transform:rotate(360deg);}}
-.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:480px;}
-.itile{border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,0.04);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all 0.25s;text-align:center;position:relative;padding:12px 8px;min-height:80px;}
-.itile:hover:not(.locked){transform:translateY(-3px);border-color:var(--warm);}
-.itile.aisle{border-color:var(--rose);background:rgba(196,82,121,0.15);animation:ip 2s ease-in-out infinite;}
-.itile.done{border-color:var(--warm);background:rgba(187,126,96,0.2);}
-.itile.locked{opacity:0.35;cursor:not-allowed;}
-@keyframes ip{0%,100%{box-shadow:0 0 0 0 rgba(196,82,121,0.4);}50%{box-shadow:0 0 0 5px rgba(196,82,121,0);}}
-.iem{font-size:20px;margin-bottom:2px;}
-.inm{font-size:9px;font-weight:600;color:#F0EAE7;}
-.ipt{font-size:9px;color:rgba(240,234,231,0.65);margin-top:1px;}
-.ichk{position:absolute;top:3px;right:4px;font-size:9px;color:var(--warm);}
-.ilck{position:absolute;top:3px;right:4px;font-size:9px;color:rgba(240,234,231,0.65);}
 
-.twrap{width:100%;max-width:480px;margin-bottom:14px;}
-.tlbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:8px;display:block;}
-.trow{display:flex;gap:7px;flex-wrap:wrap;}
-.tchip{background:rgba(187,126,96,0.1);border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--warm);font-weight:500;}
-.tchip.empty{color:rgba(240,234,231,0.65);border-style:dashed;font-style:italic;}
-
-/* ISLAND INTRO */
-#sIsland{text-align:center;}
-.ibig{font-size:68px;margin-bottom:14px;display:block;animation:fl 3s ease-in-out infinite;}
-@keyframes fl{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-.isub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:10px;display:block;}
-.ittl{font-family:"Lora",serif;font-size:clamp(22px,6vw,34px);font-weight:400;margin-bottom:8px;}
-.ittl em{font-style:italic;color:var(--warm);}
-.idesc{font-family:"Lora",serif;font-size:15px;font-style:italic;color:#F0EAE7;line-height:1.75;max-width:360px;margin-bottom:20px;}
-.ptsreq{background:rgba(187,126,96,0.07);border:1px solid var(--border);border-radius:12px;padding:10px 18px;margin-bottom:18px;font-size:13px;color:var(--text);}
-.ptsreq strong{color:var(--warm);}
-.ptags{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;}
-.ptag{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:11px;color:#F0EAE7;font-weight:500;}
-
-/* GAME */
-#sGame{padding-top:68px;justify-content:flex-start;}
-.gshell{width:100%;max-width:480px;display:flex;flex-direction:column;min-height:calc(100vh - 108px);padding:12px 0 16px;}
-.gpbar{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
-.gptrack{flex:1;height:6px;background:rgba(187,126,96,0.12);border-radius:3px;overflow:hidden;}
-.gpfill{height:100%;background:var(--warm);border-radius:3px;transition:width 0.4s ease;}
-.gppts{font-size:12px;font-weight:700;color:var(--warm);white-space:nowrap;}
-.qhdr{margin-bottom:16px;}
-.qtag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:6px;display:block;}
-.qttl{font-family:"Lora",serif;font-size:19px;color:var(--text);margin-bottom:2px;}
-.qsub{font-size:12px;color:#F0EAE7;}
-.qcard{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:20px 18px;margin-bottom:14px;}
-.qem{font-size:30px;margin-bottom:8px;display:block;}
-.qtxt{font-family:"Lora",serif;font-size:17px;color:var(--text);line-height:1.5;font-style:italic;}
-.opts{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
-.opt{width:100%;padding:15px 16px;background:rgba(255,255,255,0.04);border:1.5px solid var(--border);border-radius:13px;cursor:pointer;transition:all 0.18s;text-align:left;font-family:"Poppins",sans-serif;font-size:14px;font-weight:500;color:#F0EAE7;display:flex;align-items:center;gap:11px;-webkit-tap-highlight-color:transparent;}
-.opt:active{transform:scale(0.98);}
-.opt:hover:not([disabled]){border-color:var(--warm);background:rgba(187,126,96,0.07);}
-.opt.ok{border-color:var(--green)!important;background:var(--gl)!important;color:#a8d4b4;pointer-events:none;}
-.opt.nope{border-color:var(--red)!important;background:var(--rl)!important;color:#e8a0a0;pointer-events:none;animation:shk 0.35s ease;}
-.opt.off{pointer-events:none;opacity:0.38;}
-@keyframes shk{0%,100%{transform:translateX(0);}25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
-.oic{font-size:19px;flex-shrink:0;width:26px;text-align:center;}
-.fb{border-radius:13px;padding:12px 16px;margin-bottom:12px;font-family:"Lora",serif;font-size:13px;font-style:italic;line-height:1.55;display:none;}
-.fb.show{display:block;animation:fbi 0.3s ease;}
-@keyframes fbi{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
-.fb.ok{background:var(--gl);border:1px solid rgba(74,124,89,0.3);color:#a8d4b4;}
-.fb.nope{background:var(--rl);border:1px solid rgba(195,66,52,0.3);color:#e8a0a0;}
-.sbtns{display:flex;gap:9px;margin-bottom:14px;}
-.sbtn{flex:1;padding:14px 8px;border:1.5px solid var(--border);border-radius:12px;cursor:pointer;font-family:"Poppins",sans-serif;font-size:13px;font-weight:600;transition:all 0.18s;background:var(--card);-webkit-tap-highlight-color:transparent;}
-.sbtn:active{transform:scale(0.97);}
-.sbtn.real{color:#a8d4b4;border-color:rgba(74,124,89,0.3);}
-.sbtn.real:hover{background:var(--gl);border-color:var(--green);}
-.sbtn.perf{color:#e8c4a0;border-color:rgba(195,130,66,0.3);}
-.sbtn.perf:hover{background:rgba(195,130,66,0.1);border-color:#C38242;}
-.sbtn.sok{background:var(--gl);border-color:var(--green);pointer-events:none;}
-.sbtn.snope{background:var(--rl);border-color:var(--red);pointer-events:none;}
-.mcols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
-.mcol{display:flex;flex-direction:column;gap:7px;}
-.mi{padding:11px 8px;background:var(--card);border:1.5px solid var(--border);border-radius:11px;cursor:pointer;transition:all 0.2s;font-family:"Poppins",sans-serif;font-size:12px;font-weight:500;color:#F0EAE7;text-align:center;line-height:1.35;min-height:50px;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
-.mi:hover{border-color:var(--warm);}
-.mi.sel{border-color:var(--rose);background:rgba(196,82,121,0.1);transform:scale(1.02);}
-.mi.mok{border-color:var(--green);background:var(--gl);opacity:0.8;pointer-events:none;}
-.mi.mbad{border-color:var(--red);background:var(--rl);animation:shk 0.35s ease;}
-.mst{font-size:11px;color:rgba(240,234,231,0.65);text-align:center;margin-bottom:8px;}
-.btngo{width:100%;padding:16px;background:var(--warm);color:#F0EAE7;border:none;border-radius:13px;font-family:"Poppins",sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.22s;margin-top:auto;-webkit-tap-highlight-color:transparent;}
-.btngo:hover{background:#a86d50;}
-.btngo:active{transform:scale(0.98);}
-.btngo:disabled{opacity:0.35;cursor:not-allowed;}
-.btnghost{width:100%;padding:12px;background:transparent;border:1px solid var(--border);border-radius:12px;font-family:"Poppins",sans-serif;font-size:13px;font-weight:500;color:#F0EAE7;cursor:pointer;transition:all 0.2s;margin-top:9px;}
-.btnghost:hover{border-color:var(--warm);color:var(--warm);}
-
-/* STORM */
-#sStorm{text-align:center;}
-.stbig{font-size:60px;margin-bottom:14px;display:block;animation:sta 0.4s ease-in-out infinite alternate;}
-@keyframes sta{from{transform:rotate(-6deg);}to{transform:rotate(6deg);}}
-.sttl{font-family:"Lora",serif;font-size:22px;margin-bottom:8px;}
-.stbody{font-family:"Lora",serif;font-size:15px;font-style:italic;color:#F0EAE7;line-height:1.7;max-width:340px;margin-bottom:18px;}
-.stq{background:rgba(195,66,52,0.08);border:1px solid rgba(195,66,52,0.22);border-radius:14px;padding:16px 18px;font-family:"Lora",serif;font-size:15px;font-style:italic;color:var(--warm);max-width:380px;margin-bottom:24px;line-height:1.6;}
-
-/* TREASURE */
-#sTreasure{text-align:center;}
-.tglow{background:linear-gradient(135deg,rgba(187,126,96,0.09),rgba(196,82,121,0.06));border:1.5px solid rgba(187,126,96,0.3);border-radius:22px;padding:32px 22px;max-width:420px;width:100%;}
-.tebig{font-size:56px;margin-bottom:14px;display:block;animation:tp 2s ease-in-out infinite;}
-@keyframes tp{0%,100%{filter:drop-shadow(0 0 5px rgba(187,126,96,0.3));}50%{filter:drop-shadow(0 0 16px rgba(187,126,96,0.7));}}
-.tlbl{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:12px;display:block;}
-.tcon{font-family:"Lora",serif;font-size:20px;color:var(--text);margin-bottom:10px;}
-.tbody{font-family:"Lora",serif;font-size:14px;font-style:italic;color:#F0EAE7;line-height:1.75;margin-bottom:16px;}
-.tins{background:rgba(187,126,96,0.08);border-radius:11px;padding:13px 16px;font-size:13px;color:var(--warm);font-style:italic;font-family:"Lora",serif;line-height:1.6;margin-bottom:22px;text-align:left;}
-.tins::before{content:"💡 ";font-style:normal;}
-
-/* RESULTS */
-#sResults{text-align:center;}
-.rwrap{max-width:420px;width:100%;}
-.rbig{font-size:68px;font-weight:700;color:var(--warm);font-family:"Poppins",sans-serif;line-height:1;margin-bottom:4px;animation:rbi 0.6s cubic-bezier(0.16,1,0.3,1);}
-@keyframes rbi{from{transform:scale(0.4);opacity:0;}to{transform:scale(1);opacity:1;}}
-.rsub{font-size:13px;color:rgba(240,234,231,0.65);margin-bottom:16px;}
-.rttl{font-family:"Lora",serif;font-size:22px;color:var(--text);margin-bottom:7px;}
-.rbody{font-family:"Lora",serif;font-size:14px;font-style:italic;color:#F0EAE7;line-height:1.7;margin-bottom:20px;}
-.unlock{background:rgba(74,124,89,0.1);border:1px solid rgba(74,124,89,0.28);border-radius:13px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#a8d4b4;font-family:"Lora",serif;font-style:italic;}
-.bdgrow{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;}
-.bdg{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;text-align:center;min-width:72px;}
-.be{font-size:22px;display:block;margin-bottom:3px;}
-.bn{font-size:11px;color:#F0EAE7;font-weight:600;}
-
-/* CONFETTI */
-.cw{position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden;}
-.cp{position:absolute;animation:cpf var(--d,3s) ease-in var(--dl,0s) forwards;}
-@keyframes cpf{0%{transform:translateY(-10vh) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
-
-@media(max-width:480px){
-  .gshell{padding:10px 0 16px;}
-  .qttl{font-size:17px;}
-  .qtxt{font-size:15px;}
-  .opt{font-size:13px;padding:13px 14px;}
-  .mi{font-size:11px;padding:9px 6px;min-height:46px;}
-  .sbtn{font-size:12px;padding:13px 8px;}
-  .sbar{gap:6px;}
-  .spv{font-size:18px;}
-  .treasure-glow{padding:24px 16px;}
-  .tcon{font-size:18px;}
-  .rbig{font-size:56px;}
-  .bdg{min-width:64px;padding:9px 10px;}
-}
-@media(max-width:320px){.igrid{grid-template-columns:repeat(2,1fr);}.sbar{gap:4px;}.spv{font-size:16px;}}
-@media(max-width:380px){
-  .igrid{grid-template-columns:repeat(3,1fr);gap:7px;}
-  .mi{font-size:11px;padding:8px 5px;}
-  .opt{font-size:13px;}
-  .inm{font-size:10px;}
-  .ipt{font-size:10px;}
-  .mcols{grid-template-columns:1fr;gap:6px;}
-  .itile{width:52px;height:52px;}
+/* Harmonisation premium globale — audit Foébé v3 */
+body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{
+  color:#F0EAE7!important;
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  opacity:1!important;
 }
 
-@keyframes bottleFloat{0%,100%{transform:translateY(0) rotate(-5deg);}50%{transform:translateY(-10px) rotate(5deg);}}
-@keyframes bottleOpen{0%{transform:scale(1);}50%{transform:scale(1.3) rotate(15deg);}100%{transform:scale(0);opacity:0;}}
-#sVictory .btngo{width:100%;}
-
-.lex-card{background:rgba(255,255,255,0.04);border:1px solid rgba(187,126,96,0.2);border-radius:14px;padding:16px;cursor:pointer;transition:all 0.2s;}
-.lex-card:hover{border-color:#BB7E60;}
-.lex-card.open{border-color:#BB7E60;background:rgba(187,126,96,0.06);}
-.lex-term{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:#F0EAE7;display:flex;align-items:center;gap:8px;justify-content:space-between;}
-.lex-short{font-family:'Lora',serif;font-size:13px;font-style:italic;color:rgba(240,234,231,0.7);margin-top:6px;line-height:1.5;}
-.lex-detail{display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(187,126,96,0.15);}
-.lex-card.open .lex-detail{display:block;}
-.lex-long{font-size:13px;color:rgba(240,234,231,0.8);line-height:1.65;margin-bottom:8px;}
-.lex-ex{background:rgba(187,126,96,0.08);border-radius:10px;padding:10px 12px;font-size:12px;font-style:italic;color:#BB7E60;font-family:'Lora',serif;line-height:1.5;}
-.lex-ex::before{content:"Ex. : ";font-style:normal;font-weight:600;}
-
-
-@media(max-width:480px){
-  .igrid{grid-template-columns:repeat(4,1fr);gap:5px;}
-  .itile{padding:4px;}
-  .itile .iem{font-size:16px !important;}
+[data-theme="night"] body::before{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(187,126,96,.16),transparent 35%),
+    linear-gradient(180deg,rgba(44,26,18,.34),transparent 48%);
 }
+
+[data-theme="day"]{
+  --read:rgba(78,41,31,.88);
+  --read-soft:rgba(78,41,31,.80);
+  --read-strong:#4E291F;
+}
+[data-theme="night"]{
+  --read:rgba(240,234,231,.90);
+  --read-soft:rgba(240,234,231,.82);
+  --read-strong:#F0EAE7;
+}
+
+.hero-sub,
+.panel p,
+.question-help,
+.feedback p,
+.reading,
+.final-card p,
+.skill-card span,
+.cta-strip p{
+  color:var(--read);
+}
+
+.mini-item p,
+.result-box strong,
+.feedback .skill{
+  color:var(--read-strong);
+}
+
+.btn:focus-visible,
+.option:focus-visible,
+.scenario-tab:focus-visible,
+body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,
+body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
+  outline:2px solid var(--warm)!important;
+  outline-offset:3px!important;
+}
+
+.noscript-panel{
+  position:relative;
+  z-index:2;
+  width:min(760px,calc(100% - 36px));
+  margin:92px auto 24px;
+  padding:24px;
+  border:1px solid var(--line, rgba(187,126,96,.38));
+  border-radius:24px;
+  background:var(--card, rgba(255,255,255,.58));
+  color:var(--text,#4E291F);
+  box-shadow:var(--shadow,0 24px 70px rgba(78,41,31,.11));
+}
+.noscript-panel h2{
+  font-family:"Lora",serif;
+  font-size:clamp(22px,4vw,34px);
+  font-weight:400;
+  line-height:1.18;
+  margin-bottom:12px;
+}
+.noscript-panel p{
+  font-family:"Lora",serif;
+  font-size:16px;
+  line-height:1.82;
+  color:var(--read,rgba(78,41,31,.88));
+  margin-bottom:10px;
+}
+.noscript-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  .site{padding-left:28px;padding-right:28px;}
+  .wrap{width:min(1040px,100%);}
+  .grid-intro{gap:20px;}
+  .panel{padding:26px;}
+  .experience{grid-template-columns:300px minmax(0,1fr);gap:20px;}
+  .sidebar{padding:18px;}
+  .quote{font-size:clamp(21px,2.2vw,26px);line-height:1.62;}
+  .question-area,.result-panel{padding:26px;}
+  .mini-item p,.question-help,.feedback p,.reading,.cta-strip p{font-size:16px;line-height:1.8;}
+}
+
+@media(max-width:767px){
+  .site{padding-left:20px;padding-right:20px;}
+  .panel p,.mini-item p,.question-help,.feedback p,.reading,.final-card p,.skill-card span,.cta-strip p{font-size:16px;line-height:1.82;}
+  .panel,.main-card,.final-card,.cta-strip{border-radius:24px;}
+  .mini-item{padding:14px 14px;}
+  .result-box{padding:18px;}
+}
+
+@media(max-width:420px){
+  .site{padding-left:16px;padding-right:16px;}
+  .noscript-panel{width:calc(100% - 28px);padding:20px;margin-top:84px;}
+}
+
+.reveal,.impact-item,.geste-card,.traj-item{opacity:1;transform:none;visibility:visible;}
+.js-ready .reveal,.js-ready .impact-item,.js-ready .geste-card,.js-ready .traj-item{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.js-ready .reveal.visible,.js-ready .impact-item.visible,.js-ready .geste-card.visible,.js-ready .traj-item.visible{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
 </head>
 <body>
-<div class="obg" id="obg">
-  <div class="stars" id="stc"></div>
-  <div class="wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#F0EAE7"/></svg></div>
-  <div class="wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,40 C150,15 350,55 600,40 C850,25 1050,50 1200,40 L1200,60 L0,60 Z" fill="#F0EAE7"/></svg></div>
-  <div class="wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,50 C300,25 500,55 800,35 C950,22 1100,45 1200,50 L1200,60 L0,60 Z" fill="#F0EAE7"/></svg></div>
-</div>
-<div class="cw" id="cw"></div>
+<noscript>
+  <section class="noscript-panel" aria-label="Information JavaScript">
+    <h2>La Boussole est interactive</h2>
+    <p>Pour lire les scènes et recevoir les lectures, active JavaScript dans ton navigateur.</p>
+    <p>Tu peux aussi continuer vers l’Échelle Foébé ou découvrir les 7 zones.</p>
+    <div class="noscript-actions">
+      <a class="btn primary" href="/test.html">Faire l’Échelle Foébé</a>
+      <a class="btn secondary" href="/foebe-zones-cadre.html">Voir les 7 zones</a>
+    </div>
+  </section>
+</noscript>
 
-<nav>
-  <a href="boussole-accueil-foebe.html" class="nav-logo">Foébé</a>
-  <div class="nav-st">
-    <div class="nst">🔥<span id="nfl">0</span></div>
-    <div class="nst">⭐<span id="nsc">0</span></div>
+<nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+  <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+  <div class="fallback-links">
+    <a href="/a-propos.html">À propos</a>
+    <a href="/methode.html">Méthode</a>
+    <a href="/test.html">Échelle Foébé</a>
+    <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+    <a href="/boussole-accueil-foebe.html" aria-current="page">Boussole</a>
+    <a href="mailto:foebecosmetics@gmail.com">Contact</a>
   </div>
-  <a href="boussole-accueil-foebe.html" class="nav-back">← Sas</a>
 </nav>
 
-<!-- MAP -->
-<div class="screen active" id="sMap">
-  <div class="mhdr">
-    <span class="eyebrow">Maison Foébé · Exploration </span>
-    <h1 class="mttl">La <em>Boussole</em></h1>
-  </div>
-  <div class="sbar">
-    <div class="spill"><span class="spv" id="sf">0</span><div class="spl">🔥 Sessions</div></div>
-    <div class="spill"><span class="spv" id="ss">0</span><div class="spl">⭐ Points</div></div>
-    <div class="spill"><span class="spv" id="si">0/7</span><div class="spl">🏝 Îles</div></div>
-  </div>
-  <div class="lvlbar">
-    <div class="lvlhdr"><span class="lvlname" id="lname">🌊 Mousse</span><span class="lvlpts" id="lpts">0/100</span></div>
-    <div class="lvltrack"><div class="lvlfill" id="lf" style="width:0%"></div></div>
-  </div>
-  <div class="omap">
-    <div class="igrid" id="igrid"></div>
-  </div>
-  <div class="twrap" id="tw"></div>
-  <div id="blockedSection" style="display:none;width:100%;max-width:480px;margin-bottom:4px;">
-    <div style="background:rgba(255,255,255,0.03);border:1px dashed rgba(187,126,96,0.2);border-radius:14px;padding:14px;text-align:center;">
-      <p style="font-size:13px;color:rgba(240,234,231,0.4);font-family:'Poppins',sans-serif;">🔒 Termine les 7 îles pour débloquer le Vocabulaire et ton tableau de bord</p>
-    </div>
-  </div>
-  <button id="btnLexique" onclick="openLexique()" style="display:none;width:100%;max-width:480px;padding:14px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(187,126,96,0.3);border-radius:14px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#F0EAE7;cursor:pointer;transition:all 0.2s;margin-bottom:4px;align-items:center;justify-content:center;gap:10px;">
-    📚 Le Vocabulaire Foébé <span style="font-size:12px;color:#BB7E60;font-weight:500;">21 termes · Explore & Quiz</span>
-  </button>
-  <button id="btnTableauBord" onclick="showVictory()" style="display:none;width:100%;max-width:480px;padding:14px;background:linear-gradient(135deg,rgba(187,126,96,0.15),rgba(196,82,121,0.1));border:1.5px solid rgba(187,126,96,0.4);border-radius:14px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#F0EAE7;cursor:pointer;transition:all 0.2s;margin-bottom:4px;align-items:center;justify-content:center;gap:10px;">
-    🏴‍☠️ Mon tableau de bord <span style="font-size:12px;color:#BB7E60;font-weight:500;">+ Bouteille à la mer</span>
-  </button>
-</div>
+<main class="site" id="main">
+  <div class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <span class="hero-eyebrow">Boussole Foébé</span>
+      <h1 id="page-title">S’entraîner <em> à lire son self-care.</em></h1>
+      <p class="hero-sub">Lis une scène courte. Choisis ce qui te semble le plus touché, puis l’indice qui t’a aidée. La Boussole t’aide ensuite à mieux comprendre ce qui se joue.</p>
+      <p class="hero-note">Les scènes sont fictives et construites à partir de vécus courants.</p>
+      <div class="hero-actions">
+        <button class="btn primary" type="button" data-start>Commencer une lecture</button>
+        <a class="btn secondary" href="/test.html">Faire l’Échelle Foébé</a>
+      </div>
+    </section>
 
-<!-- ISLAND INTRO -->
-<div class="screen" id="sIsland">
-  <span class="ibig" id="ibig">🧠</span>
-  <span class="isub" id="isub"></span>
-  <h2 class="ittl" id="ittl"></h2>
-  <p class="idesc" id="idesc"></p>
-  <div class="ptsreq" id="ptsreq"></div>
-  <div class="ptags">
-    <span class="ptag">⚡ Reconnaître</span>
-    <span class="ptag">🔀 Trier</span>
-    <span class="ptag">🔗 Associer</span>
-    <span class="ptag">💎 Trésor</span>
-  </div>
-  <button class="btngo" id="btnstart" onclick="startSession()">Naviguer →</button>
-  <button class="btnghost" onclick="showS('sMap');refreshMap();">← Retour à la carte</button>
-</div>
+    <section class="grid-intro" aria-label="Cadre de la Boussole">
+      <article class="panel">
+        <span class="section-eyebrow">Principe</span>
+        <h2>Tu apprends à <em>lire ton self-care.</em></h2>
+        <p>Chaque scène part d’un vécu ordinaire. Ce qui se voit n’est pas toujours ce qui organise vraiment la situation. La Boussole t’aide à le repérer plus simplement.</p>
+      </article>
+      <aside class="panel">
+        <span class="section-eyebrow">À retenir</span>
+        <div class="mini-list">
+          <div class="mini-item"><span class="mini-index">01</span><p>La Boussole t’aide à reconnaître les 7 zones Foébé.</p></div>
+          <div class="mini-item"><span class="mini-index">02</span><p>L’Échelle Foébé te permet ensuite de lire ton propre self-care.</p></div>
+          <div class="mini-item"><span class="mini-index">03</span><p>Plusieurs pistes sont possibles. Commence par celle qui te semble la plus juste.</p></div>
+        </div>
+      </aside>
+      <article class="panel example-panel">
+        <span class="section-eyebrow">Exemple</span>
+        <h2>Comment lire une scène ?</h2>
+        <p>Une personne dit qu’elle se repose en scrollant, mais qu’elle se sent encore plus vidée après. On peut penser à la zone Mental à cause des écrans. Mais l’indice le plus important est ailleurs : ce “repos” ne recharge pas. La lecture peut donc pointer vers Énergie.</p>
+      </article>
+    </section>
 
-<!-- GAME -->
-<div class="screen" id="sGame">
-  <div class="gshell">
-    <div class="gpbar">
-      <div class="gptrack"><div class="gpfill" id="gpf" style="width:0%"></div></div>
-      <span class="gppts" id="gpp">0 pts</span>
-    </div>
-    <div class="qhdr">
-      <span class="qtag" id="qtag"></span>
-      <h2 class="qttl" id="qttl"></h2>
-      <p class="qsub" id="qsub"></p>
-    </div>
-    <div id="qbody"></div>
-    <div class="fb" id="fb"></div>
-    <button class="btngo" id="btnnext" onclick="next()" disabled>Continuer →</button>
-  </div>
-</div>
+    <section class="experience" id="experience" aria-label="Scénarios de discernement">
+      <aside class="sidebar" aria-label="Navigation des scénarios">
+        <div class="side-title">Choisir une scène</div>
+        <div class="progress-card">
+          <div class="progress-row"><span>Scènes parcourues</span><strong id="progressText">0 sur 10</strong></div>
+          <div class="track" aria-hidden="true"><div class="fill" id="progressFill"></div></div>
+        </div>
+        <div class="scenario-list" id="scenarioList"></div>
+      </aside>
 
-<!-- STORM -->
-<div class="screen" id="sStorm">
-  <span class="stbig">⛈️</span>
-  <h2 class="sttl">Tempête !</h2>
-  <p class="stbody">Deux erreurs consécutives. La mer se déchaîne.<br>Prends un instant avant de continuer.</p>
-  <div class="stq" id="stq"></div>
-  <button class="btngo" onclick="resumeStorm()" style="max-width:380px;width:100%;">Je suis prêt·e → continuer</button>
-</div>
+      <article class="main-card" id="readerCard" aria-live="polite">
+        <div class="reader-top">
+          <div class="person" id="personMeta"></div>
+          <div class="dimension-chip" id="levelChip"></div>
+        </div>
+        <div class="testimony">
+          <p class="quote" id="scenarioText"></p>
+        </div>
+        <div class="question-area">
+          <div class="question-block active" id="qZone">
+            <div class="question-kicker">D’abord</div>
+            <h2 class="question-title">Quelle zone semble la plus touchée ?</h2>
+            <p class="question-help">Il peut y avoir plusieurs réponses possibles. Choisis celle qui te paraît la plus forte dans cette scène.</p>
+            <div class="options" id="zoneOptions"></div>
+          </div>
+          <div class="question-block" id="qSignal">
+            <div class="question-kicker">Ensuite</div>
+            <h2 class="question-title">Qu’est-ce qui t’a mise sur cette piste ?</h2>
+            <p class="question-help">Choisis le détail qui t’a le plus aidée à comprendre ce qui se joue.</p>
+            <div class="options" id="signalOptions"></div>
+          </div>
+          <div class="feedback" id="feedback"></div>
+          <div class="reader-actions" id="readerActions"></div>
+        </div>
+        <div class="result-panel" id="resultPanel">
+          <span class="section-eyebrow">Lecture simple</span>
+          <div class="result-grid four">
+            <div class="result-box"><span>Ce qu’on remarque d’abord</span><strong id="visibleZone"></strong></div>
+            <div class="result-box"><span>Ce qui pèse le plus</span><strong id="dominantZone"></strong></div>
+            <div class="result-box"><span>L’indice important</span><strong id="mainSignal"></strong></div>
+            <div class="result-box"><span>Le repère à garder</span><strong id="skillName"></strong></div>
+          </div>
+          <p class="reading" id="foebeReading"></p>
+          <div class="reader-actions">
+            <button class="btn primary" type="button" id="nextScenarioBtn">Lire une autre scène</button>
+            <a class="btn secondary" href="/test.html">Faire l’Échelle Foébé</a>
+          </div>
+        </div>
+      </article>
+    </section>
 
-<!-- TREASURE -->
-<div class="screen" id="sTreasure">
-  <div class="tglow">
-    <span class="tebig">💎</span>
-    <span class="tlbl">Trésor découvert</span>
-    <h2 class="tcon" id="tcon"></h2>
-    <p class="tbody" id="tbody"></p>
-    <div class="tins" id="tins"></div>
-    <button class="btngo" onclick="showRes()">Voir mes résultats →</button>
-  </div>
-</div>
+    <section class="final-card" id="finalCard" aria-labelledby="final-title">
+      <span class="section-eyebrow">Synthèse de parcours</span>
+      <h2 id="final-title">Tu as entraîné ton <em>regard Foébé.</em></h2>
+      <p>Tu viens de lire 10 scènes. Tu as commencé à repérer ce qui se voit d’abord, ce qui pèse vraiment, et les indices qui changent la lecture d’une situation.</p>
+      <div class="skills-list" id="skillsList"></div>
+      <div class="cta-strip">
+        <div>
+          <h2>La suite : appliquer cette lecture à toi.</h2>
+          <p>Si une scène t’a fait réfléchir, l’Échelle Foébé permet d’observer ce qui se joue dans ta propre façon de prendre soin de toi.</p>
+        </div>
+        <a class="btn primary" href="/test.html">Faire l’Échelle Foébé</a>
+      </div>
+    </section>
 
-<!-- RESULTS -->
-<div class="screen" id="sResults">
-  <div class="rwrap">
-    <div class="rbig" id="rbig">0</div>
-    <p class="rsub" id="rsub"></p>
-    <h2 class="rttl" id="rttl"></h2>
-    <p class="rbody" id="rbody"></p>
-    <div class="unlock" id="unl" style="display:none;"></div>
-    <div class="bdgrow" id="bdgrow"></div>
-    <button class="btngo" id="btnnxi" onclick="goNext()">Île suivante →</button>
-    <button class="btnghost" onclick="showS('sMap');refreshMap();">← Retour à la carte</button>
+    <section class="cta-strip" aria-label="Suite du parcours">
+      <div>
+        <h2>Le parcours Foébé avance par étapes.</h2>
+        <p>Le Sas t’aide à te situer. La Boussole t’aide à reconnaître les zones. L’Échelle Foébé t’aide ensuite à appliquer cette lecture à toi.</p>
+      </div>
+      <a class="btn secondary" href="/foebe-zones-cadre.html">Voir les 7 zones</a>
+    </section>
   </div>
-</div>
+</main>
 
 <script>
-const ISL=[
- {id:0,name:"Mental",sub:"Brumes & Tempêtes",emoji:"🧠",
-  tr:{c:"Le Brouillard Mental",b:"Quand tu rumines, ce n'est pas un manque de volonté. C'est ton système nerveux qui a trop absorbé — et qui tourne en boucle parce qu'il cherche à être entendu. Il n'y a pas de solution logique à trouver. Il y a juste à poser.",i:"Cette semaine : quand une pensée revient en boucle, dis-lui simplement « je t'entends » — et passe à autre chose."},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"💭",q:"Tu rumines sans cesse les mêmes pensées",c:0,o:["🧠 Mental","⚡ Énergie","🧡 Émotions"],f:"La rumination est un signal typique de surcharge mentale."},
-     {e:"🌫",q:"Un brouillard mental constant",c:1,o:["🤝 Relations","🧠 Mental","🌱 Sens"],f:"Le brouillard mental est souvent le premier signe de saturation cognitive."},
-     {e:"📉",q:"Tu doutes de toi en permanence",c:0,o:["🧠 Mental","🏡 Environnement","🌿 Corps"],f:"Le doute permanent est un épuisement mental — pas un jugement sur toi."},
-     {e:"🤯",q:"Tu n'arrives plus à prendre de décisions",c:2,o:["⚡ Énergie","🧡 Émotions","🧠 Mental"],f:"La fatigue décisionnelle est réelle. Après un certain seuil, le cerveau refuse de choisir — c'est une protection."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je médite 30 min chaque matin même épuisé·e parce que c'est bon pour moi. »",r:false,f:"Performance déguisée. Se forcer à méditer par obligation, c'est juste une tâche de plus. Le self-care ne se fait pas sous pression."},
-     {q:"« Je pose mon téléphone 10 min et je regarde juste par la fenêtre. »",r:true,f:"Self-care réel. 10 minutes sans téléphone ni objectif — c'est l'un des gestes les plus puissants que tu puisses faire pour ton système nerveux."},
-     {q:"« Je lis 2 livres de dev perso par semaine pour m'améliorer. »",r:false,f:"Performance déguisée. L'obsession de s'améliorer peut être une fuite. Le self-care ne cherche pas à t'optimiser — il cherche à te ressourcer."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son explication",
-    pairs:[
-     {l:"🔁 Ressasser le passé",r:"Le mental cherche à comprendre ce qui ne peut pas être résolu logiquement"},
-     {l:"🧩 Mal à se concentrer",r:"Trop d'onglets ouverts — surcharge de traitement"},
-     {l:"💤 Épuisé·e dès le matin",r:"Le cerveau a travaillé la nuit sans récupérer"},
-    ]},
-  ]},
- {id:1,name:"Énergie",sub:"Le Feu Intérieur",emoji:"⚡",
-  tr:{c:"La Récupération Vraie",b:"Reposer et récupérer, ce n'est pas la même chose. Défiler sur les réseaux, regarder des vidéos, répondre à des messages — tout ça stimule le cerveau. Le vrai repos, c'est l'absence de stimulation. Même 10 minutes de silence font plus que 2 heures de scroll.",i:"Cette semaine : identifie une activité que tu crois être du repos mais qui t'épuise en réalité."},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"🛌",q:"Tu dors mais tu te réveilles toujours fatigué·e",c:1,o:["🧠 Mental","⚡ Énergie","🌿 Corps"],f:"Signal d'énergie — le corps dort mais ne récupère pas vraiment."},
-     {e:"🪫",q:"Ton feu intérieur est presque éteint",c:1,o:["🌱 Sens","⚡ Énergie","🧡 Émotions"],f:"Le signe le plus caractéristique d'un épuisement énergétique profond."},
-     {e:"😶",q:"Tu vis en mode survie, sans vraie présence",c:0,o:["⚡ Énergie","🤝 Relations","🏡 Environnement"],f:"Le mode survie est une économie d'énergie automatique — le corps coupe tout ce qui n'est pas essentiel."},
-     {e:"⏳",q:"Beaucoup de pauses mais tu récupères peu",c:2,o:["🧠 Mental","🌿 Corps","⚡ Énergie"],f:"Les pauses sans déconnexion réelle ne rechargent pas. Le système nerveux a besoin de vrai calme."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je me repose en scrollant Instagram — j'ai besoin de me déconnecter. »",r:false,f:"Performance déguisée. Le scroll stimule le cerveau en permanence — même passivement. Ce n'est pas du repos, c'est de la distraction."},
-     {q:"« Je m'allonge 15 min en silence, sans téléphone ni musique. »",r:true,f:"Self-care réel. 15 minutes allongé·e en silence font plus pour ton système nerveux que 2 heures devant un écran."},
-     {q:"« Je m'entraîne intensément même épuisé·e parce que l'effort paye. »",r:false,f:"Performance déguisée. Forcer un corps déjà épuisé, c'est creuser la dette encore plus profond."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son explication",
-    pairs:[
-     {l:"🐢 Chaque geste demande effort",r:"Le corps rationne ses ressources — signal d'alarme"},
-     {l:"📉 Tout prend 3x plus de temps",r:"Le cerveau ralentit pour protéger ses réserves"},
-     {l:"⏳ Pauses sans récupération",r:"Les pauses sans déconnexion ne rechargent pas le système"},
-    ]},
-  ]},
- {id:2,name:"Corps",sub:"Les Eaux Profondes",emoji:"🌿",
-  tr:{c:"Les Signaux du Corps",b:"Ton corps n'est pas contre toi. Il te parle — chaque tension, chaque douleur floue, chaque envie de rester immobile est un message. Pas une faiblesse. Il attend juste que tu l'écoutes.",i:"Cette semaine : pose ta main sur ton cœur une fois par jour et demande simplement « comment tu vas ? »"},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"😖",q:"Ta peau tiraille, est terne ou inconfortable",c:0,o:["🌿 Corps","🏡 Environnement","🧡 Émotions"],f:"La peau est le premier organe à refléter un état de surcharge ou de négligence de soi."},
-     {e:"🪨",q:"Ton corps te paraît lourd, comme figé",c:1,o:["⚡ Énergie","🌿 Corps","🧠 Mental"],f:"La lourdeur corporelle est distincte de la fatigue — c'est le corps qui s'est mis en protection."},
-     {e:"💧",q:"Tu oublies de boire régulièrement",c:0,o:["🌿 Corps","🧠 Mental","🌱 Sens"],f:"Oublier de boire est un signe de déconnexion du corps — on ne l'écoute plus assez."},
-     {e:"🌀",q:"Des douleurs sans cause apparente",c:1,o:["🧡 Émotions","🌿 Corps","🤝 Relations"],f:"Les douleurs psychosomatiques sont réelles. Le corps traduit en douleur ce que l'esprit ne peut pas exprimer."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je fais un check-up de ma peau chaque matin en 5 min — juste toucher, observer. »",r:true,f:"Self-care réel. Observer son corps sans le juger — juste toucher, noter — c'est déjà un acte de soin."},
-     {q:"« Je saute les repas quand je suis occupé·e — mon corps s'adaptera. »",r:false,f:"Ce n'est pas de l'efficacité — c'est retirer du carburant à quelque chose qui tourne déjà à vide."},
-     {q:"« Je bois uniquement quand j'ai très soif. »",r:false,f:"La soif vive arrive tard. Quand tu as très soif, tu es déjà légèrement déshydraté·e. Le corps signale avant — mais il faut l'écouter assez tôt."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son message",
-    pairs:[
-     {l:"🚿 Repousser les soins basiques",r:"Le corps n'est plus perçu comme méritant d'attention"},
-     {l:"🛁 Manque de contact ou chaleur",r:"Le système nerveux réclame une régulation par le toucher"},
-     {l:"🍽 Manger de façon anarchique",r:"Nourrir le corps n'est plus automatique — lien à soi perturbé"},
-    ]},
-  ]},
- {id:3,name:"Émotions",sub:"La Marée",emoji:"🧡",
-  tr:{c:"L'Anesthésie Émotionnelle",b:"Ne plus rien ressentir, ce n'est pas de la paix. C'est une protection. Quand les émotions ont été trop fortes trop longtemps, le système nerveux coupe le signal pour survivre. Tu n'es pas brisé·e — tu t'es adapté·e.",i:"Cette semaine : nomme une émotion par jour — même vague, même floue. « Je ressens quelque chose de lourd » compte."},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"😤",q:"Tu es irritable, à fleur de peau",c:0,o:["🧡 Émotions","🧠 Mental","🤝 Relations"],f:"L'irritabilité est souvent de la tristesse ou de la peur qui n'a pas trouvé d'autre sortie."},
-     {e:"😶",q:"Tu ne ressens plus rien, comme anesthésié·e",c:1,o:["🌱 Sens","🧡 Émotions","⚡ Énergie"],f:"L'anesthésie émotionnelle est une réponse de protection — le système a coupé le signal pour survivre."},
-     {e:"🪹",q:"Un vide intérieur, une déconnexion de toi",c:0,o:["🧡 Émotions","🏡 Environnement","🌱 Sens"],f:"Le vide intérieur est distinct de la tristesse — c'est une déconnexion de soi après un long oubli de soi."},
-     {e:"💥",q:"Réactions disproportionnées aux petits événements",c:1,o:["🧠 Mental","🧡 Émotions","🤝 Relations"],f:"Des émotions accumulées qui trouvent une sortie au mauvais moment."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je pleure quand j'en ai besoin — sans essayer d'arrêter. »",r:true,f:"Self-care réel. Les larmes ne sont pas une faiblesse — elles régulent activement le système nerveux. Se permettre de pleurer, c'est prendre soin de soi."},
-     {q:"« Je reste positive en toutes circonstances — les pensées négatives attirent le négatif. »",r:false,f:"Performance déguisée. La positivité forcée ne fait pas disparaître ce qu'on ressent — ça le pousse plus profond. Ce qu'on nie s'accumule."},
-     {q:"« Je prends 5 min pour nommer ce que je ressens avant de répondre à un message difficile. »",r:true,f:"Self-care réel. Prendre 5 minutes pour nommer ce qu'on ressent avant de répondre — c'est l'une des pratiques les plus concrètes pour ne pas réagir depuis l'épuisement."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son explication",
-    pairs:[
-     {l:"😢 Envie de pleurer sans raison",r:"Le corps libère une accumulation émotionnelle"},
-     {l:"🫥 Fatigue émotionnelle profonde",r:"Trop donné, pas assez reçu — les réserves sont vides"},
-     {l:"💥 Réactions disproportionnées",r:"Émotions stockées qui trouvent une sortie de secours"},
-    ]},
-  ]},
- {id:4,name:"Environnement",sub:"Le Port",emoji:"🏡",
-  tr:{c:"L'Espace Miroir",b:"Ce qui t'entoure influence directement ton état intérieur. Un espace saturé, une tête saturée. Mais l'inverse est vrai aussi — un seul tiroir rangé, une fenêtre ouverte, peuvent changer l'état d'une journée entière.",i:"Cette semaine : choisis un seul objet, une seule surface à libérer. Pas tout — juste un."},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"📦",q:"Ton espace est en désordre ou ne t'apaise plus",c:0,o:["🏡 Environnement","🌱 Sens","🧠 Mental"],f:"L'espace physique et l'état mental se nourrissent mutuellement."},
-     {e:"📱",q:"Trop de temps sur les écrans sans utilité",c:1,o:["⚡ Énergie","🏡 Environnement","🧡 Émotions"],f:"L'environnement numérique fait partie de ton environnement total."},
-     {e:"🔌",q:"Tu ne déconnectes jamais vraiment",c:0,o:["🏡 Environnement","⚡ Énergie","🧠 Mental"],f:"Pas de frontière entre ton espace de vie et les stimulations extérieures."},
-     {e:"🛑",q:"Tu évites certains lieux ou pièces chez toi",c:1,o:["🧡 Émotions","🏡 Environnement","🤝 Relations"],f:"Ces espaces sont associés à un état émotionnel difficile — le corps les anticipe."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je range tout mon appartement d'un coup le dimanche. »",r:false,f:"Souvent de l'anxiété déguisée en action. Tout ranger d'un coup génère plus de pression que ça n'en libère. Un seul coin suffit."},
-     {q:"« J'ouvre la fenêtre et je m'étire 3 min avant de commencer à travailler. »",r:true,f:"Self-care réel. Ouvrir la fenêtre, s'étirer 3 minutes — c'est créer une vraie transition entre repos et travail. Micro-geste, impact réel."},
-     {q:"« Je consulte mes notifications dès le réveil pour ne rien rater. »",r:false,f:"Le contraire du self-care. Commencer la journée en mode réactif active immédiatement le système de stress — et ça colore toute la suite."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son impact",
-    pairs:[
-     {l:"💡 Environnement bruyant",r:"Surcharge sensorielle — impossible de se réguler"},
-     {l:"🧹 Repousser les tâches",r:"L'énergie disponible est trop basse pour s'en occuper"},
-     {l:"🔌 Ne jamais déconnecter",r:"Pas de frontière entre soi et les stimulations extérieures"},
-    ]},
-  ]},
- {id:5,name:"Relations",sub:"Les Courants",emoji:"🤝",
-  tr:{c:"Le Lien Vrai",b:"On peut être entouré·e et se sentir profondément seul·e. La vraie solitude, ce n'est pas l'absence de gens — c'est l'absence de liens où tu peux être toi sans te justifier. Un seul lien comme ça change tout.",i:"Cette semaine : identifie une personne avec qui tu peux être toi-même sans te justifier."},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"🚪",q:"Tu n'as plus envie de voir personne",c:0,o:["🤝 Relations","🧡 Émotions","⚡ Énergie"],f:"Le retrait social est souvent une protection — le système nerveux évite ce qui demande trop d'énergie."},
-     {e:"🧍",q:"Tu te sens seul·e même entouré·e",c:1,o:["🌱 Sens","🤝 Relations","🧠 Mental"],f:"La solitude dans la foule indique un manque de liens authentiques."},
-     {e:"😵",q:"Épuisé·e après chaque interaction",c:1,o:["⚡ Énergie","🤝 Relations","🧡 Émotions"],f:"Tu donnes plus que tu ne reçois — ou tu joues un rôle dans ces relations."},
-     {e:"💔",q:"Tu portes trop pour les autres sans retour",c:0,o:["🤝 Relations","🧠 Mental","🌿 Corps"],f:"Le surinvestissement relationnel épuise les réserves émotionnelles — même venant d'amour."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je réponds à tous les messages dans l'heure pour ne pas décevoir. »",r:false,f:"Performance relationnelle. La disponibilité permanente ressemble à de l'amour — mais c'est souvent de l'anxiété. Tu n'as pas à être joignable tout le temps."},
-     {q:"« Je prends du temps seul·e après une soirée intense pour me reconnecter à moi. »",r:true,f:"Self-care réel. Se retrouver seul·e après une soirée intense, c'est se recharger pour pouvoir vraiment se connecter — pas s'isoler."},
-     {q:"« Je maintiens des relations difficiles parce que les gens ont besoin de moi. »",r:false,f:"Performance déguisée. Rester dans une relation difficile par sens du devoir ne nourrit personne — pas même les gens pour qui tu le fais."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son explication",
-    pairs:[
-     {l:"😶‍🌫 Faire semblant d'aller bien",r:"Le masque social protège mais isole davantage"},
-     {l:"🤐 Ne pas parler de ce qu'on ressent",r:"Peur d'être un poids — mais ça coupe la vraie connexion"},
-     {l:"😵 Épuisé·e après chaque interaction",r:"On donne de l'énergie qu'on n'a pas encore reconstituée"},
-    ]},
-  ]},
- {id:6,name:"Sens",sub:"L'Horizon",emoji:"🌱",
-  tr:{c:"L'Étincelle",b:"Perdre le sens, c'est souvent le résultat d'avoir trop longtemps mis ses propres besoins de côté. Ce n'est pas une crise — c'est un signal. Le sens ne se trouve pas dans du contenu ou un plan de vie. Il se retrouve, doucement, en revenant à soi.",i:"Cette semaine : rappelle-toi une chose qui t'animait avant. Juste une. Tu n'as pas besoin de la retrouver — juste de te souvenir qu'elle a existé."},
-  steps:[
-   {t:"recognize",title:"Reconnaître",sub:"À quelle dimension appartient ce signal ?",
-    qs:[
-     {e:"🎯",q:"Tu ne sais plus pourquoi tu fais ce que tu fais",c:0,o:["🌱 Sens","🧠 Mental","⚡ Énergie"],f:"La perte de sens est distincte de la fatigue. On peut être reposé·e et vide de sens en même temps."},
-     {e:"😶‍🌫",q:"Tu fais les choses mécaniquement, sans enthousiasme",c:1,o:["🧡 Émotions","🌱 Sens","⚡ Énergie"],f:"L'automatisme mécanique indique que le sens s'est déconnecté de l'action."},
-     {e:"🌌",q:"Tu n'arrives plus à rêver ni te projeter",c:0,o:["🌱 Sens","🧠 Mental","🧡 Émotions"],f:"L'incapacité à se projeter est souvent une protection — pourquoi rêver si le présent est déjà épuisant ?"},
-     {e:"🫙",q:"Une insatisfaction chronique sans raison précise",c:2,o:["🧡 Émotions","⚡ Énergie","🌱 Sens"],f:"L'insatisfaction chronique est un signal de désalignement — entre ce qu'on fait et ce qu'on est."},
-    ]},
-   {t:"sort",title:"Trier",sub:"Self-care réel ou performance déguisée ?",
-    items:[
-     {q:"« Je planifie chaque aspect de ma vie future pour me sentir en contrôle. »",r:false,f:"Performance déguisée. Planifier à l'infini donne l'illusion de contrôle — mais c'est souvent une façon d'éviter le vide et l'incertitude."},
-     {q:"« Je fais quelque chose juste parce que j'aime ça — sans justifier d'être productif·ve. »",r:true,f:"Self-care réel. Faire quelque chose juste parce qu'on aime ça — sans le justifier, sans en faire quelque chose d'utile — c'est l'un des chemins les plus directs vers le sens."},
-     {q:"« Je consomme du contenu inspirant pour trouver ma mission de vie. »",r:false,f:"Performance déguisée. Le sens n'est pas dans le prochain podcast ou la prochaine vidéo. Il émerge dans le silence — quand on arrête de chercher et qu'on commence à écouter."},
-    ]},
-   {t:"match",title:"Associer",sub:"Relie chaque signal à son explication",
-    pairs:[
-     {l:"🧭 Perdu de vue ce qui t'anime",r:"Trop longtemps tourné·e vers les urgences des autres"},
-     {l:"⏸ Tout remettre à plus tard",r:"Peur de commencer ce qui compte vraiment — protection"},
-     {l:"🫙 Insatisfaction chronique",r:"Désalignement entre ce qu'on fait et ce qu'on est"},
-    ]},
-  ]},
+(function(){
+'use strict';
+const scenarios = [
+  {
+    "id": 0,
+    "person": "Maya",
+    "age": "34 ans",
+    "city": "Lyon",
+    "level": "Scène 01",
+    "text": "J’avais prévu un dimanche pour prendre soin de moi. J’ai tout noté : rangement, masque, repas, yoga, lessive. Le soir, tout était fait, mais j’étais quand même tendue et déçue. J’avais l’impression d’avoir encore raté quelque chose.",
+    "dominant": "Mental",
+    "secondary": "Corps",
+    "visible": "Corps",
+    "zones": [
+      "Mental",
+      "Corps",
+      "Énergie",
+      "Sens"
+    ],
+    "signals": [
+      "La pression de réussir le soin",
+      "La fatigue corporelle",
+      "Le manque de plaisir",
+      "Le besoin de mieux s’organiser"
+    ],
+    "correctSignal": "La pression de réussir le soin",
+    "skill": "Reconnaître quand le soin devient une performance.",
+    "reading": "On voit d’abord le corps : masque, yoga, repas, rangement. Mais ce qui pèse le plus, ici, c’est le mental. L’indice principal, c’est la pression de réussir le soin. Maya ne se repose pas vraiment : elle transforme le self-care en chose à réussir.",
+    "good": "Tu as repéré quelque chose d’important : un geste de soin peut devenir une charge quand il faut le réussir.",
+    "refine": "Ton choix se comprend, car plusieurs zones apparaissent. Ici, ce qui organise la scène, c’est surtout la pression autour du soin."
+  },
+  {
+    "id": 1,
+    "person": "Sarah",
+    "age": "29 ans",
+    "city": "Marseille",
+    "level": "Scène 02",
+    "text": "Depuis quelques semaines, je dors plus que d’habitude, mais je me réveille quand même très fatiguée. Je repousse les tâches simples, j’annule des sorties, et je me dis que c’est ma faute, que je manque de discipline. J’arrive même pas à répondre à un message, tellement ça me demande d’effort.",
+    "dominant": "Énergie",
+    "secondary": "Mental",
+    "visible": "Mental",
+    "zones": [
+      "Énergie",
+      "Mental",
+      "Corps",
+      "Sens"
+    ],
+    "signals": [
+      "Les choses simples demandent trop d’effort.",
+      "Le manque de volonté",
+      "Le besoin de dormir davantage",
+      "L’envie d’être seule"
+    ],
+    "correctSignal": "Les choses simples demandent trop d’effort.",
+    "skill": "Différencier motivation et ressources disponibles.",
+    "reading": "Au premier regard, on peut penser au mental, parce que Sarah se juge et parle de discipline. Mais ce qui pèse le plus, ici, c’est l'énergie. Le plus parlant, c’est que répondre, sortir ou commencer une tâche lui demande beaucoup plus qu’avant.",
+    "good": "Tu as repéré quelque chose d’important : ce n’est pas une question de volonté, mais bien de ressources qui ne suivent plus.",
+    "refine": "Ton choix se comprend, mais la scène ne parle pas de volonté ou d’organisation. Elle montre surtout que les choses simples demandent trop d’effort."
+  },
+  {
+    "id": 2,
+    "person": "Noam",
+    "age": "38 ans",
+    "city": "Lille",
+    "level": "Scène 03",
+    "text": "Je sais que quelque chose ne va pas quand je recommence à oublier de boire, que je mange n’importe comment et que je repousse les soins basiques, genre me raser la barbe, me faire couper les cheveux, me brosser les dents. C’est comme si mon corps passait en dernier, même quand je sais qu’il a besoin d’attention.",
+    "dominant": "Corps",
+    "secondary": "Énergie",
+    "visible": "Énergie",
+    "zones": [
+      "Corps",
+      "Énergie",
+      "Mental",
+      "Environnement"
+    ],
+    "signals": [
+      "Les besoins corporels simples passent en dernier",
+      "Le manque de rangement",
+      "Le fait de penser trop souvent",
+      "Le besoin d’être plus productif"
+    ],
+    "correctSignal": "Les besoins corporels simples passent en dernier",
+    "skill": "Reconnaître les signaux corporels ordinaires",
+    "reading": "Ce qui pèse le plus est le Corps. L’indice clé est simple : les besoins corporels de base passent en dernier. C’est un signe concret d’une déconnexion à soi.",
+    "good": "Tu as reconnu que le corps ne parle pas seulement par des signaux forts. Il parle aussi par ce qui est négligé ou repoussé.",
+    "refine": "Ton choix peut avoir du sens, mais ici le cœur de la scène est concret : les besoins de base ne reçoivent plus assez d’attention."
+  },
+  {
+    "id": 3,
+    "person": "Inès",
+    "age": "41 ans",
+    "city": "Nantes",
+    "level": "Scène 04",
+    "text": "Je réponds vite, j’aide beaucoup, j’anticipe les besoins des autres. On me dit souvent que je suis fiable, qu'on peut compter sur moi. Par contre, quand moi j’ai besoin de soutien, eh bien je ne sais pas quoi demander, ni à qui. Du coup, je finis souvent seule avec ce que je traverse.",
+    "dominant": "Relations",
+    "secondary": "Émotions",
+    "visible": "Émotions",
+    "zones": [
+      "Relations",
+      "Émotions",
+      "Énergie",
+      "Mental"
+    ],
+    "signals": [
+      "Le lien circule surtout dans un seul sens",
+      "Elle manque d’organisation",
+      "Elle devrait être plus positive",
+      "Elle a seulement besoin de repos"
+    ],
+    "correctSignal": "Le lien circule surtout dans un seul sens",
+    "skill": "Lire la circulation dans le lien",
+    "reading": "Ce qui pèse le plus est Relations.  L’indice clé, c’est que le lien circule surtout dans un sens : Inès sait donner, anticiper et soutenir, mais elle ne sait pas toujours recevoir ni formuler son besoin.",
+    "good": "Tu as repéré que la qualité d’un lien ne se mesure pas seulement à ce qu’on donne, mais aussi à ce qui peut être reçu.",
+    "refine": "Ton choix peut se comprendre, car cette scène touche aussi l’émotion et l’énergie. Mais ce qui pèse le plus reste la place qu’elle prend dans le lien."
+  },
+  {
+    "id": 4,
+    "person": "Claire",
+    "age": "45 ans",
+    "city": "Bordeaux",
+    "level": "Scène 05",
+    "text": "Je pensais que j’étais juste irritable. Puis j’ai réalisé que je travaillais constamment au milieu du bruit, entre les  notifications, le désordre et des demandes qui arrivent de partout. Même quand je veux me poser, il y a toujours quelque chose qui me sollicite.",
+    "dominant": "Environnement",
+    "secondary": "Mental",
+    "visible": "Mental",
+    "zones": [
+      "Environnement",
+      "Mental",
+      "Émotions",
+      "Énergie"
+    ],
+    "signals": [
+      "Les sollicitations autour d’elle ne s’arrêtent jamais",
+      "Elle ne sait pas gérer ses émotions",
+      "Elle manque de sens",
+      "Elle devrait mieux dormir"
+    ],
+    "correctSignal": "Les sollicitations autour d’elle ne s’arrêtent jamais",
+    "skill": "Repérer l’impact de l'environnement sur l’état intérieur",
+    "reading": "Au premier regard, on peut voir Mental, parce que Claire se sent irritable et dispersée. Mais ce qui pèse le plus est Environnement. L’indice principal c'est l'environnement : bruit, notifications, désordre, demandes visibles.",
+    "good": "Tu as bien vu que l’environnement n’est pas un décor neutre. Il peut soutenir l'attention ou la fragmenter.",
+    "refine": "Ton choix peut se défendre, mais la scène montre d’abord une surcharge venue de l'environnement. Le mental réagit à un environnement trop sollicitant."
+  },
+  {
+    "id": 5,
+    "person": "Abel",
+    "age": "36 ans",
+    "city": "Toulouse",
+    "level": "Scène 06",
+    "text": "Je dis souvent que ça va, parce que je ne sais même plus quoi répondre d’autre. Je ne pleure pas, je ne m’énerve pas vraiment, mais je sens que quelque chose est fermé et bloqué en moi. Comme si je suis spectateur de ma propre vie, avec une certaine distance que je n’arrive pas à expliquer.",
+    "dominant": "Émotions",
+    "secondary": "Sens",
+    "visible": "Sens",
+    "zones": [
+      "Émotions",
+      "Sens",
+      "Mental",
+      "Relations"
+    ],
+    "signals": [
+      "Les ressentis deviennent difficiles à nommer",
+      "Il devrait parler à plus de monde",
+      "Il manque seulement de projet",
+      "Il pense trop"
+    ],
+    "correctSignal": "Les ressentis deviennent difficiles à nommer",
+    "skill": "Reconnaître une émotion peu lisible",
+    "reading": "Ce qui pèse le plus est Émotions. L’indice clé est la difficulté à reconnaître un état émotionnel. La notion de Sens peut aussi devenir floue, car les émotions sont moins accessibles. Abel se sent à distance de ce qui donne du sens à ce qu’il vit.",
+    "good": "Tu as repéré qu’une émotion n’est pas toujours bruyante. Parfois, le signal est justement qu’elle devient difficile à atteindre.",
+    "refine": "Ton choix peut avoir du sens, mais ici le point central est la relation aux ressentis : ils sont présents, mais peu accessibles. Cela peut aussi toucher au Sens, car Abel semble à distance de ce qui donne une direction à sa vie."
+  },
+  {
+    "id": 6,
+    "person": "Tao",
+    "age": "33 ans",
+    "city": "Rennes",
+    "level": "Scène 07",
+    "text": "Je pense sincèrement que je fais ce qu’il faut. Je travaille, je fais du sport, je cuisine, je m'applique, j'ai de la discipline, je réponds aux demandes, je suis à l'écoute,  bref, je coche les cases. De l’extérieur, rien ne semble vraiment aller mal, d'ailleurs mes amis me le disent souvent, je suis : un modèle. Pourtant, j’ai souvent cette impression de traverser mes journées sans direction claire, comme si je m’éloignais doucement de ce qui compte vraiment pour moi.",
+    "dominant": "Sens",
+    "secondary": "Mental",
+    "visible": "Mental",
+    "zones": [
+      "Sens",
+      "Mental",
+      "Énergie",
+      "Relations"
+    ],
+    "signals": [
+      "Il avance sans direction qui lui semble juste",
+      "Il manque uniquement de repos",
+      "Il devrait mieux organiser ses tâches",
+      "Il ne voit pas assez ses proches"
+    ],
+    "correctSignal": "Il avance sans direction qui lui semble juste",
+    "skill": "Distinguer fonctionnement correct et direction vivante",
+    "reading": "Ce qui pèse le plus ici est Sens. Pour Tao, il y a un écart entre ce qu’il fait et ce qui lui donne encore une direction de vie.",
+    "good": "Tu as repéré que tout peut sembler fonctionner en surface, alors que la direction intérieure devient floue.",
+    "refine": "Ton choix peut se comprendre, mais la scène ne parle pas d’abord de fatigue ou d’organisation. Elle parle du lien entre ce que Tao fait et ce qui a du sens pour lui."
+  },
+  {
+    "id": 7,
+    "person": "Léa",
+    "age": "32 ans",
+    "city": "Toulouse",
+    "level": "Scène 08",
+    "text": "Le soir, je me dis que je vais enfin me reposer! Je m’allonge avec mon téléphone et je me dis : “juste dix minutes”, je regarde des réels, des tutos, des vidéos drôles,  je scrolle, je réponds à des  messages, j'écoute de la musique, puis je réalise que deux heures sont déjà passées. Et c'est la panique, je sais que je n’ai rien fait de grave, mais je me sens encore plus vide qu’avant, je sais que je manquerai de sommeil et que demain la journée sera difficile , car j'aurai du mal à me concentrer et à rester éveillée.",
+    "dominant": "Énergie",
+    "secondary": "Environnement",
+    "visible": "Mental",
+    "zones": [
+      "Énergie",
+      "Mental",
+      "Environnement",
+      "Émotions"
+    ],
+    "signals": [
+      "Le repos ne la recharge pas",
+      "Elle devrait mieux contrôler son temps",
+      "Elle manque d’émotions fortes",
+      "Elle a seulement besoin d’un meilleur téléphone"
+    ],
+    "correctSignal": "Le repos ne la recharge pas",
+    "skill": "Distinguer repos réel et distraction qui épuise",
+    "reading": "Au premier regard, on peut voir Mental ou Environnement, parce qu’il y a l’écran, les vidéos et les messages. Toutefois, ce qui pèse le plus est Énergie. L’indice clé, c’est que ce temps de pause ne repose pas vraiment : il occupe l’attention et fatigue au lieu de recharger.",
+    "good": "Tu as repéré une nuance importante : tout ce qui coupe du quotidien ne recharge pas forcément.",
+    "refine": "Ton choix peut se comprendre, car l’écran est très visible. Mais ici, ce qui compte, c’est l’effet produit : après cette pause, Léa a moins de marge pour son self-care et subit les conséquences."
+  },
+  {
+    "id": 8,
+    "person": "Camille",
+    "age": "39 ans",
+    "city": "Pau",
+    "level": "Scène 09",
+    "text": "J’aime mes proches et je veux être là pour eux. Mais avec certains d’entre eux, après certains appels, je me sens lourde, vidée, presque absente. Je ne sais pas vraiment si cette fatigue vient de moi, ni si c’est la conversation qui m’a rendue triste ou agacée. Mais une chose est sûre : mon corps se sent sans ressources. Je veux juste être là pour eux, alors je me dis que je devrais être plus patiente, et je réponds quand même.",
+    "dominant": "Relations",
+    "secondary": "Énergie",
+    "visible": "Énergie",
+    "zones": [
+      "Relations",
+      "Énergie",
+      "Émotions",
+      "Mental"
+    ],
+    "signals": [
+      "Certains liens la vident plus qu’ils ne la nourrissent",
+      "Elle manque uniquement de sommeil",
+      "Elle doit apprendre à mieux argumenter",
+      "Elle n’a pas assez d’activités agréables"
+    ],
+    "correctSignal": "Certains liens la vident plus qu’ils ne la nourrissent",
+    "skill": "Reconnaître quand le lien coûte trop",
+    "reading": "Au premier regard, on peut voir Énergie, parce que Camille se sent vidée. Mais ce qui pèse le plus est Relations. L’indice clé, c’est que certains liens lui coûtent plus qu’ils ne la nourrissent, tout en restant difficiles à refuser.",
+    "good": "Tu as repéré que la fatigue peut parfois venir de la manière dont le lien circule, pas seulement d’un manque de repos.",
+    "refine": "Ton choix peut se comprendre, car la fatigue est visible. Mais ici, la question centrale est relationnelle : pourquoi certaines présences prennent autant de place et d’énergie ?"
+  },
+  {
+    "id": 9,
+    "person": "Sofia",
+    "age": "37 ans",
+    "city": "Strasbourg",
+    "level": "Scène 10",
+    "text": "J’ai acheté des produits cosmétiques ce mois-ci, je suis motivée, j’ai même noté des routines ! J’ai aussi gardé des idées de repas sains et enregistré des exercices fitness et yoga. Mais voilà, ça fait des jours que j’ai fait tout ça et rien, toujours rien. Ma salle de bains, mon téléphone et mon carnet me rappellent sans cesse tout ce que je devrais faire, mais je n’y arrive pas. Je voulais créer un espace pour prendre soin de moi, mais j’ai l’impression d’avoir ajouté une liste de choses à faire en plus.",
+    "dominant": "Environnement",
+    "secondary": "Mental",
+    "visible": "Mental",
+    "zones": [
+      "Environnement",
+      "Mental",
+      "Corps",
+      "Sens"
+    ],
+    "signals": [
+      "Son cadre lui renvoie trop de choses à faire",
+      "Elle n’a pas choisi les bons produits",
+      "Elle manque seulement de motivation",
+      "Elle devrait trouver une mission plus claire"
+    ],
+    "correctSignal": "Son cadre lui renvoie trop de choses à faire",
+    "skill": "Repérer quand le cadre ajoute de la charge",
+    "reading": "Au premier regard, on peut voir Mental, parce que Sofia pense à tout ce qu’elle devrait faire. Mais ce qui pèse le plus est Environnement : les objets, notes et supports autour d’elle renvoient trop de demandes. Le cadre censé aider devient une charge visible.",
+    "good": "Tu as repéré que l’environnement peut aussi saturer le self-care quand il multiplie les rappels et les attentes.",
+    "refine": "Ton choix peut se comprendre si tu as vu la pression mentale. Ici, la nuance est que cette pression vient beaucoup de l’environnement : ce qui l’entoure lui rappelle sans cesse ce qu’elle n’a pas fait."
+  }
 ];
 
-const SQS=["En ce moment, qu'est-ce qui demande le plus de ton énergie ?","Y a-t-il quelque chose que tu fais uniquement pour les autres ?","Qu'est-ce qui te manque le plus — même si tu n'oses pas le dire ?","Si tu pouvais ne faire qu'une seule chose aujourd'hui, ce serait quoi ?","Quel signal de ton corps as-tu ignoré cette semaine ?"];
-const LVLS=[{n:"Mousse",e:"🌊",min:0,max:99},{n:"Matelot·e",e:"⚓",min:100,max:249},{n:"Navigateur·rice",e:"🧭",min:250,max:499},{n:"Capitaine",e:"🏴‍☠️",min:500,max:Infinity}];
+const state = { current: 0, zoneChoice: null, signalChoice: null, completed: new Set() };
+const $ = (id) => document.getElementById(id);
 
-let G={total:0,flame:0,done:[],treasures:[],cur:0,best:{}};
-function lG(){try{
-    const s=localStorage.getItem("fb_b3");
-    if(s){
-      const p=JSON.parse(s);
-      // Merge explicite pour garantir les arrays
-      G.total=p.total||0;
-      G.flame=p.flame||0;
-      G.lastW=p.lastW||null;
-      G.done=Array.isArray(p.done)?p.done:[];
-      G.treasures=Array.isArray(p.treasures)?p.treasures:[];
-      G.cur=p.cur||0;
-      G.best=p.best&&typeof p.best==='object'?p.best:{};
-    };}catch(e){}
-  // Flamme = sessions totales, pas de reset
+function renderTabs(){
+  const list = $('scenarioList');
+  list.innerHTML = '';
+  scenarios.forEach((s, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'scenario-tab' + (index === state.current ? ' active' : '') + (state.completed.has(index) ? ' done' : '');
+    btn.innerHTML = `<span class="tab-num">${String(index + 1).padStart(2,'0')}</span><span class="tab-label">${s.person}, ${s.age}</span>`;
+    btn.addEventListener('click', () => loadScenario(index, { scroll: true }));
+    list.appendChild(btn);
+  });
 }
-function sG(){localStorage.setItem("fb_b3",JSON.stringify(G));}
-function wk(){const n=new Date();return `${n.getFullYear()}-${Math.ceil((((n-new Date(n.getFullYear(),0,1))/86400000)+new Date(n.getFullYear(),0,1).getDay()+1)/7)}`;}
-function wdiff(a,b){const p=(s)=>{const[y,w]=s.split("-").map(Number);return y*52+w;};return Math.abs(p(b)-p(a));}
-function getLvl(pts){return LVLS.find(l=>pts>=l.min&&pts<=l.max)||LVLS[0];}
-function unlocked(i){return i===0||G.total>=i*100;}
 
-function showS(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+function updateProgress(){
+  const done = state.completed.size;
+  $('progressText').textContent = `${done} sur ${scenarios.length}`;
+  $('progressFill').style.width = `${(done / scenarios.length) * 100}%`;
+  if(done === scenarios.length){
+    renderFinal();
+    $('finalCard').classList.add('show');
+  }
+}
 
-function refreshMap(){
-  lG(); // Recharge depuis localStorage
-  // Affiche boutons réservés aux 7 îles complétées
-  const allDone=G.done.length>=ISL.length;
-  const tbBtn=document.getElementById("btnTableauBord");
-  const lexBtn=document.getElementById("btnLexique");
-  const blockedEl=document.getElementById("blockedSection");
-  if(tbBtn) tbBtn.style.display=allDone?"flex":"none";
-  if(lexBtn) lexBtn.style.display=allDone?"flex":"none";
-  if(blockedEl) blockedEl.style.display=allDone?"none":"block";
-  lG();
-  document.getElementById("nfl").textContent=G.flame;
-  document.getElementById("nsc").textContent=G.total;
-  document.getElementById("sf").textContent=G.flame;
-  document.getElementById("ss").textContent=G.total;
-  document.getElementById("si").textContent=G.done.length+"/7";
-  const lv=getLvl(G.total);
-  const ni=LVLS[LVLS.indexOf(lv)+1];
-  document.getElementById("lname").textContent=lv.e+" "+lv.n;
-  if(ni){
-    const p=((G.total-lv.min)/(ni.min-lv.min))*100;
-    document.getElementById("lf").style.width=Math.min(100,p)+"%";
-    document.getElementById("lpts").textContent=G.total+"/"+ni.min+" pts";
+function loadScenario(index, opts = {}){
+  state.current = index;
+  state.zoneChoice = null;
+  state.signalChoice = null;
+  const s = scenarios[index];
+  $('personMeta').innerHTML = `<strong>${s.person}, ${s.age}</strong>`;
+  $('levelChip').textContent = ''; // volontairement vide : aucun indice avant la lecture
+  $('scenarioText').textContent = `“${s.text}”`;
+  $('qZone').className = 'question-block active';
+  $('qSignal').className = 'question-block';
+  $('feedback').className = 'feedback';
+  $('feedback').innerHTML = '';
+  $('resultPanel').classList.remove('show');
+  $('readerActions').innerHTML = '';
+  renderZoneOptions(s);
+  renderSignalOptions(s);
+  renderTabs();
+  updateProgress();
+  if(opts.scroll){
+    scrollToReader();
+  }
+}
+
+function scrollToReader(){
+  const el = $('readerCard') || $('experience');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(el) el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+}
+
+function scrollToQuestion(){
+  const el = $('qSignal') || $('readerCard');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(el && window.innerWidth <= 920) el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+}
+
+function scrollToFeedback(){
+  const el = $('feedback') || $('readerCard');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(el && window.innerWidth <= 920) el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
+}
+
+function scrollToResult(){
+  const el = $('resultPanel') || $('readerCard');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(el) el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+}
+
+function renderZoneOptions(s){
+  const box = $('zoneOptions');
+  box.innerHTML = '';
+  s.zones.forEach(zone => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'option';
+    btn.textContent = zone;
+    btn.addEventListener('click', () => chooseZone(zone));
+    box.appendChild(btn);
+  });
+}
+
+function chooseZone(zone){
+  state.zoneChoice = zone;
+  [...$('zoneOptions').children].forEach(btn => {
+    btn.classList.toggle('selected', btn.textContent === zone);
+  });
+  $('qZone').classList.add('answered');
+  $('qSignal').classList.add('active');
+  $('feedback').className = 'feedback';
+  $('readerActions').innerHTML = '';
+  scrollToQuestion();
+}
+
+function renderSignalOptions(s){
+  const box = $('signalOptions');
+  box.innerHTML = '';
+  s.signals.forEach(signal => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'option';
+    btn.textContent = signal;
+    btn.addEventListener('click', () => chooseSignal(signal));
+    box.appendChild(btn);
+  });
+}
+
+function chooseSignal(signal){
+  state.signalChoice = signal;
+  const s = scenarios[state.current];
+  [...$('signalOptions').children].forEach(btn => {
+    btn.classList.remove('selected','correct','near','missed');
+    if(btn.textContent === signal) btn.classList.add('selected');
+    if(btn.textContent === s.correctSignal) btn.classList.add('correct');
+  });
+  showFeedback();
+}
+
+function showFeedback(){
+  const s = scenarios[state.current];
+  const zoneOk = state.zoneChoice === s.dominant;
+  const signalOk = state.signalChoice === s.correctSignal;
+  const title = zoneOk && signalOk
+    ? 'Ta lecture rejoint la lecture Foébé.'
+    : zoneOk
+      ? 'Tu as choisi la bonne zone. L’indice peut s’affiner.'
+      : 'La scène peut se lire autrement.';
+  const body = zoneOk && signalOk
+    ? `${s.good}`
+    : zoneOk
+      ? `Tu as choisi la zone qui pèse le plus. Le détail à observer maintenant : qu’est-ce qui explique vraiment la scène ? ${s.refine}`
+      : `Ton choix se comprend : plusieurs zones peuvent apparaître dans une même scène. Ici, la Boussole regarde ce qui pèse le plus. ${s.refine}`;
+  $('feedback').innerHTML = `<h3>${title}</h3><p>${body}</p><div class="skill"><strong>Repère travaillé :</strong> ${s.skill}</div>`;
+  $('feedback').className = 'feedback show';
+  $('readerActions').innerHTML = '<button class="btn primary" type="button" id="showReadingBtn">Voir la lecture simple</button>';
+  $('showReadingBtn').addEventListener('click', showReading);
+  scrollToFeedback();
+}
+
+function showReading(){
+  const s = scenarios[state.current];
+  state.completed.add(state.current);
+  $('visibleZone').textContent = s.visible || s.secondary;
+  $('dominantZone').textContent = s.dominant;
+  $('mainSignal').textContent = s.correctSignal;
+  $('skillName').textContent = s.skill;
+  $('foebeReading').textContent = s.reading;
+  $('resultPanel').classList.add('show');
+  $('readerActions').innerHTML = '';
+  $('qZone').classList.add('answered');
+  $('qSignal').classList.add('answered');
+  renderTabs();
+  updateProgress();
+  scrollToResult();
+}
+
+function nextScenario(){
+  const next = scenarios.findIndex((_, idx) => idx > state.current && !state.completed.has(idx));
+  if(next !== -1){
+    loadScenario(next, { scroll: true });
+    return;
+  }
+  const anyLeft = scenarios.findIndex((_, idx) => !state.completed.has(idx));
+  if(anyLeft !== -1){
+    loadScenario(anyLeft, { scroll: true });
+    return;
+  }
+  renderFinal();
+  $('finalCard').classList.add('show');
+  $('finalCard').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+
+const skillDesc = {
+  "Distinguer le soin réel de l’effort de plus": "Voir quand un geste de soin devient lui-même une charge.",
+  "Différencier motivation et marge disponible": "Reconnaître la différence entre ne pas vouloir et ne plus avoir assez.",
+  "Reconnaître les signaux corporels ordinaires": "Entendre le corps avant qu’il parle plus fort.",
+  "Lire la circulation dans le lien": "Voir si le lien nourrit dans les deux sens ou seulement dans un.",
+  "Repérer l’impact du cadre sur l’état intérieur": "Comprendre ce que l’environnement fait à l’attention.",
+  "Reconnaître une émotion peu lisible": "Nommer ce qui est flou avant de chercher à le résoudre.",
+  "Distinguer fonctionnement correct et direction vivante": "Voir la différence entre avancer et avancer dans le bon sens.",
+  "Distinguer repos réel et distraction qui épuise": "Repérer quand une pause occupe l’attention sans rendre d’énergie.",
+  "Reconnaître quand le lien coûte trop": "Voir quand la fatigue vient de la circulation du lien, pas seulement du repos.",
+  "Repérer quand le cadre ajoute de la charge": "Comprendre quand les objets, rappels ou supports censés aider deviennent une demande de plus."
+};
+
+function renderFinal(){
+  const skills = [...new Set(scenarios.map(s => s.skill))];
+  $('skillsList').innerHTML = skills.map(skill =>
+    `<div class="skill-card"><strong>${skill}</strong><span>${skillDesc[skill] || ''}</span></div>`
+  ).join('');
+}
+
+
+function initRevealFallback(){
+  const revealItems = document.querySelectorAll('.reveal, .impact-item, .geste-card, .traj-item');
+  if(!revealItems.length) return;
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item) => observer.observe(item));
   } else {
-    document.getElementById("lf").style.width="100%";
-    document.getElementById("lpts").textContent="Maximum ✨";
-  }
-  const grid=document.getElementById("igrid");
-  grid.innerHTML="";
-  ISL.forEach((isl,i)=>{
-    const done=G.done.includes(i),lck=!unlocked(i),act=!done&&!lck;
-    const d=document.createElement("div");
-    d.className="itile"+(done?" done":lck?" locked":act?" aisle":"");
-    const badge=done?"✓":lck?"🔒":"";
-    const pts=i===0?"":(i*100)+" pts";
-    d.innerHTML=`
-      ${badge?`<span class="${done?"ichk":"ilck"}">${badge}</span>`:""}
-      <span style="font-size:22px;display:block;margin-bottom:3px;">${isl.emoji}</span>
-      <div style="font-size:10px;font-weight:700;color:#F0EAE7;line-height:1.2;">${isl.name}</div>
-      <div style="font-size:8px;color:${done?"#BB7E60":lck?"rgba(240,234,231,0.3)":"#BB7E60"};margin-top:2px;">${done?"✅":lck?pts:"→ jouable"}</div>
-    `;
-    if(!lck)d.onclick=()=>openI(i);
-    grid.appendChild(d);
-  });
-  const tw=document.getElementById("tw");
-  if(G.treasures.length){
-    tw.innerHTML=`<span class="tlbl">Trésors collectés</span><div class="trow">${G.treasures.map(t=>'<div class="tchip">💎 '+ISL[t].tr.c+'</div>').join("")}</div>`;
-  } else {
-    tw.innerHTML=`<span class="tlbl">Trésors collectés</span><div class="trow"><div class="tchip empty">Joue pour débloquer tes premiers trésors</div></div>`;
+    revealItems.forEach((item) => item.classList.add('visible'));
   }
 }
 
-function openI(i){
-  G.cur=i;const isl=ISL[i];
-  document.getElementById("ibig").textContent=isl.emoji;
-  document.getElementById("isub").textContent="Île "+(i+1)+" · "+isl.sub;
-  document.getElementById("ittl").innerHTML="<em>"+isl.name+"</em>";
-  document.getElementById("idesc").textContent=isl.desc||"Explore cette dimension du self-care.";
-  const pr=document.getElementById("ptsreq");
-  const nd=i===0?0:i*100;
-  if(G.done.includes(i))pr.innerHTML="✅ Déjà explorée — rejoue pour t'améliorer !";
-  else if(nd===0)pr.innerHTML="🌊 Île de départ — pas de points requis !";
-  else pr.innerHTML=`🔒 Nécessite <strong>${nd} pts</strong> — tu en as <strong>${G.total}</strong>`;
-  document.getElementById("btnstart").textContent=G.done.includes(i)?"Rejouer →":"Naviguer →";
-  showS("sIsland");
-}
+document.addEventListener('click', (e) => {
+  if(e.target && e.target.id === 'nextScenarioBtn') nextScenario();
+});
 
-// GAME ENGINE
-let pts=0,qi=0,queue=[],errs=0,msel=null,mdone=0,mtot=0;
+document.querySelectorAll('[data-start]').forEach(btn => btn.addEventListener('click', () => {
+  scrollToReader();
+}));
 
-function buildQ(isl){
-  const q=[];
-  isl.steps.forEach(s=>{
-    if(s.t==="recognize")s.qs.forEach((qst,i)=>q.push({type:"rec",step:s,q:qst,qi:i}));
-    else if(s.t==="sort")s.items.forEach((it,i)=>q.push({type:"sort",step:s,item:it,qi:i}));
-    else if(s.t==="match")q.push({type:"match",step:s});
-  });
-  return q;
-}
+initRevealFallback();
+loadScenario(0);
 
-function startSession(){
-  pts=0;qi=0;errs=0;msel=null;mdone=0;
-  const isl=ISL[G.cur];
-  queue=buildQ(isl);
-  document.getElementById("qtag").textContent=isl.emoji+" Île "+(G.cur+1)+" · "+isl.name;
-  updHUD();showS("sGame");renderQ();
-}
-
-function updHUD(){
-  const tot=queue.length;
-  const p=Math.round((qi/tot)*100);
-  document.getElementById("gpf").style.width=p+"%";
-  document.getElementById("gpp").textContent=pts+" pts";
-}
-
-function renderQ(){
-  if(qi>=queue.length){showTreasure();return;}
-  const item=queue[qi];
-  document.getElementById("fb").className="fb";
-  document.getElementById("btnnext").disabled=true;
-  document.getElementById("qbody").innerHTML="";
-  const typeTitles={rec:"Reconnaître 🎯",sort:"Trier ⚡",match:"Associer 🔗"};
-  const typeSubs={
-    rec:"Parmi les 3 options, laquelle correspond à ce signal ?",
-    sort:"Ce comportement est-il du vrai self-care ou de la performance déguisée ?",
-    match:"Clique sur un élément à gauche, puis son explication à droite."
-  };
-  document.getElementById("qttl").textContent=typeTitles[item.type]||item.step.title;
-  document.getElementById("qsub").textContent=typeSubs[item.type]||item.step.sub;
-  if(item.type==="rec")rRec(item);
-  else if(item.type==="sort")rSort(item);
-  else if(item.type==="match")rMatch(item);
-  updHUD();
-}
-
-function rRec(item){
-  const q=item.q,body=document.getElementById("qbody");
-  const card=document.createElement("div");card.className="qcard";
-  card.innerHTML=`<span class="qem">${q.e}</span><p class="qtxt">${q.q}</p>`;
-  body.appendChild(card);
-  const list=document.createElement("div");list.className="opts";
-  q.o.forEach((o,i)=>{
-    const b=document.createElement("button");b.className="opt";
-    b.innerHTML=`<span class="oic">${o.split(" ")[0]}</span><span>${o.split(" ").slice(1).join(" ")}</span>`;
-    b.onclick=()=>ansRec(i,q.c,q.f,list);
-    list.appendChild(b);
-  });
-  body.appendChild(list);
-}
-
-function ansRec(chosen,correct,fb,list){
-  const btns=list.querySelectorAll(".opt");const ok=chosen===correct;
-  btns.forEach((b,i)=>{if(i===correct)b.classList.add("ok");else if(i===chosen&&!ok)b.classList.add("nope");else b.classList.add("off");});
-  showFB(ok,fb);scoreA(ok);document.getElementById("btnnext").disabled=false;
-}
-
-let _curSortItem=null;
-function rSort(item){
-  _curSortItem=item.item;
-  const it=item.item,body=document.getElementById("qbody");
-  const card=document.createElement("div");card.className="qcard";
-  card.innerHTML=`<p class="qtxt" style="font-size:15px;">${it.q}</p>`;
-  body.appendChild(card);
-  const btns=document.createElement("div");btns.className="sbtns";
-  const btnR=document.createElement("button");btnR.className="sbtn real";btnR.textContent="✅ Self-care réel";
-  const btnP=document.createElement("button");btnP.className="sbtn perf";btnP.textContent="⚡ Performance";
-  btnR.onclick=()=>ansSort(true,_curSortItem.r,_curSortItem.f,btns);
-  btnP.onclick=()=>ansSort(false,_curSortItem.r,_curSortItem.f,btns);
-  btns.appendChild(btnR);btns.appendChild(btnP);
-  body.appendChild(btns);
-}
-
-function ansSort(chosen,correct,fb,cont){
-  const ok=chosen===correct;
-  cont.querySelectorAll(".sbtn").forEach(b=>b.disabled=true);
-  const t=chosen?cont.querySelector(".real"):cont.querySelector(".perf");
-  t.classList.add(ok?"sok":"snope");
-  showFB(ok,fb);scoreA(ok);document.getElementById("btnnext").disabled=false;
-}
-
-function rMatch(item){
-  const step=item.step;msel=null;mdone=0;mtot=step.pairs.length;
-  const body=document.getElementById("qbody");
-  const st=document.createElement("p");st.className="mst";st.id="mst";st.textContent="0 / "+mtot+" paires trouvées";
-  body.appendChild(st);
-  const cols=document.createElement("div");cols.className="mcols";
-  const left=document.createElement("div");left.className="mcol";
-  const right=document.createElement("div");right.className="mcol";
-  const ri=[...step.pairs.map((p,i)=>({t:p.r,i}))].sort(()=>Math.random()-0.5);
-  step.pairs.forEach((p,i)=>{
-    const b=document.createElement("button");b.className="mi";b.dataset.side="l";b.dataset.i=i;b.textContent=p.l;
-    b.onclick=()=>clkM(b);left.appendChild(b);
-  });
-  ri.forEach(r=>{
-    const b=document.createElement("button");b.className="mi";b.dataset.side="r";b.dataset.i=r.i;b.textContent=r.t;
-    b.onclick=()=>clkM(b);right.appendChild(b);
-  });
-  cols.appendChild(left);cols.appendChild(right);body.appendChild(cols);
-}
-
-function clkM(btn){
-  if(btn.classList.contains("mok"))return;
-  if(!msel){
-    document.querySelectorAll(".mi.sel").forEach(b=>b.classList.remove("sel"));
-    btn.classList.add("sel");msel=btn;return;
-  }
-  if(msel.dataset.side===btn.dataset.side){msel.classList.remove("sel");btn.classList.add("sel");msel=btn;return;}
-  const ok=msel.dataset.i===btn.dataset.i;
-  if(ok){
-    msel.classList.remove("sel");msel.classList.add("mok");btn.classList.add("mok");
-    mdone++;scoreA(true);
-    const mstEl=document.getElementById("mst");if(mstEl)mstEl.textContent=mdone+" / "+mtot+" paires trouvées";
-    if(mdone>=mtot)setTimeout(()=>{qi++;renderQ();},500);
-  } else {
-    msel.classList.add("mbad");btn.classList.add("mbad");scoreA(false);
-    setTimeout(()=>{btn.classList.remove("mbad","sel");if(msel){msel.classList.remove("mbad","sel");}},380);
-  }
-  msel=null;
-}
-
-function showFB(ok,txt){
-  const f=document.getElementById("fb");
-  f.className="fb show "+(ok?"ok":"nope");f.textContent=txt;
-}
-
-function scoreA(ok){
-  if(ok){pts+=10;errs=0;}
-  else{errs++;if(errs>=2){errs=0;trigStorm();}}
-  updHUD();
-}
-
-function next(){
-  qi++;document.getElementById("fb").className="fb";document.getElementById("btnnext").disabled=true;renderQ();
-}
-
-function trigStorm(){
-  document.getElementById("stq").textContent="« "+SQS[Math.floor(Math.random()*SQS.length)]+" »";
-  showS("sStorm");
-}
-function resumeStorm(){
-  document.getElementById("fb").className="fb";document.getElementById("btnnext").disabled=true;
-  showS("sGame");renderQ();
-}
-
-function showTreasure(){
-  const t=ISL[G.cur].tr;
-  document.getElementById("tcon").textContent=t.c;
-  document.getElementById("tbody").textContent=t.b;
-  document.getElementById("tins").textContent=t.i;
-  if(!G.treasures.includes(G.cur))G.treasures.push(G.cur);
-  sG();showS("sTreasure");
-}
-
-function showRes(){
-  const isl=ISL[G.cur];
-  const prevL=getLvl(G.total);
-  const alreadyDone=G.done.includes(G.cur); // vérifie AVANT de push
-  if(!alreadyDone) G.done.push(G.cur);
-  const prevBest=G.best[G.cur]||0;
-  const bonus=alreadyDone?Math.max(0,pts-prevBest):pts;
-  if(pts>prevBest) G.best[G.cur]=pts;
-  G.flame++; // +1 session à chaque île terminée (rejeu inclus)
-  G.total+=bonus;
-  sG();
-  // Mise à jour nav immédiate
-  document.getElementById("nfl").textContent=G.flame;
-  document.getElementById("nsc").textContent=G.total;
-  const newL=getLvl(G.total);
-  document.getElementById("rbig").textContent=bonus>0?"+"+bonus:pts;
-  const bonusMsg=alreadyDone?(bonus>0?"🆙 +"+bonus+" pts (nouveau record) · Total "+G.total:"Meilleur score non battu · Total "+G.total+" pts"):"🔥 "+G.flame+" sessions · "+G.total+" pts";
-  document.getElementById("rsub").textContent="🔥 "+G.flame+" sessions · "+G.total+" pts"+(alreadyDone?" · "+bonusMsg:"");
-  const maxQ=queue.filter(q=>q.type!=="match").length*10+(queue.find(q=>q.type==="match")?.step.pairs.length||0)*10;
-  const pct=maxQ>0?pts/maxQ:0;
-  let ttl,bod;
-  if(pct>=0.9){ttl="Navigation parfaite !";bod="Tu maîtrises les eaux de l'île "+isl.name+". Cette connaissance te servira longtemps.";}
-  else if(pct>=0.7){ttl="Bon voyage, matelot·e.";bod="Tu avances bien. Quelques zones encore à explorer sur l'île "+isl.name+".";}
-  else{ttl="La mer était agitée.";bod="Tu as rencontré des tempêtes. L'île "+isl.name+" mérite d'être revisitée.";}
-  document.getElementById("rttl").textContent=ttl;
-  document.getElementById("rbody").textContent=bod;
-  const ni=G.cur+1;
-  const ul=document.getElementById("unl");
-  if(ni<ISL.length&&unlocked(ni)&&!G.done.includes(ni)){ul.style.display="block";ul.textContent="🗺️ Nouvelle île débloquée — "+ISL[ni].emoji+" "+ISL[ni].name+" !";}
-  else ul.style.display="none";
-  if(newL.n!==prevL.n)confetti();
-  const bdgs=[];
-  if(G.flame>=3)bdgs.push({e:"🔥",n:"3 sessions"});
-  if(G.flame>=7)bdgs.push({e:"⚡",n:"7 sessions"});
-  if(G.done.length>=1)bdgs.push({e:"🗺️",n:"Exploratrice"});
-  if(G.done.length>=7)bdgs.push({e:"🏴‍☠️",n:"Capitaine"});
-  if(pct>=1)bdgs.push({e:"⭐",n:"Parfait"});
-  if(newL.n!==prevL.n)bdgs.push({e:newL.e,n:newL.n});
-  document.getElementById("bdgrow").innerHTML=bdgs.map(b=>`<div class="bdg"><span class="be">${b.e}</span><span class="bn">${b.n}</span></div>`).join("");
-  const bn=document.getElementById("btnnxi");
-  if(G.done.length>=ISL.length){
-    bn.style.display="block";
-    bn.textContent="🏴‍☠️ Voir mon tableau de bord →";
-    bn.disabled=false;
-    bn.onclick=()=>showVictory();
-  } else if(ni<ISL.length&&unlocked(ni)){
-    bn.style.display="block";bn.textContent=ISL[ni].emoji+" "+ISL[ni].name+" →";bn.disabled=false;
-    bn.onclick=()=>goNext();
-  } else if(ni<ISL.length){
-    bn.style.display="block";bn.textContent="🔒 "+ISL[ni].name+" ("+ni*100+" pts requis)";bn.disabled=true;
-  } else bn.style.display="none";
-  showS("sResults");
-}
-
-function goNext(){
-  const n=G.cur+1;
-  if(n<ISL.length&&unlocked(n)){
-    G.cur=n;
-    sG();
-    openI(n);
-  }
-}
-
-function confetti(){
-  const w=document.getElementById("cw");w.innerHTML="";
-  ["✨","🌟","⭐","🌿","💛","🪷","✦"].forEach(s=>{
-    for(let i=0;i<8;i++){
-      const el=document.createElement("span");el.className="cp";
-      el.textContent=s;el.style.cssText=`left:${Math.random()*100}vw;font-size:${0.8+Math.random()*1.4}em;--d:${2+Math.random()*2}s;--dl:${Math.random()*0.8}s;`;
-      w.appendChild(el);setTimeout(()=>el.remove(),4200);
-    }
-  });
-}
-
-function genStars(){
-  const c=document.getElementById("stc");
-  for(let i=0;i<50;i++){
-    const s=document.createElement("div"),sz=Math.random()*2+1;
-    s.className="star";s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*60}%;--d:${2+Math.random()*4}s;--dl:${Math.random()*4}s;`;
-    c.appendChild(s);
-  }
-}
-
-
-const DEFIS=["Cette semaine : quand une pensée revient en boucle, note-la sur papier et dis-lui « je t'ai vue ».", "Cette semaine : choisis une décision que tu remets depuis longtemps. Prends-la, même imparfaitement.", "Cette semaine : identifie une boucle de pensée récurrente. Nomme-la. « La boucle du travail ». « La boucle de l'argent ».", "Cette semaine : pose ton téléphone 10 minutes par jour. Juste regarder par la fenêtre. Rien d'autre.", "Cette semaine : note 3 choses qui encombrent ton mental. Pas besoin de les résoudre — juste les poser.", "Cette semaine : quand tu te surprends à anticiper le pire, pose-toi une question : est-ce que c'est vrai maintenant ?", "Cette semaine : autorise-toi à ne pas finir quelque chose que tu as commencé.", "Cette semaine : identifie une activité que tu crois reposante mais qui t'épuise. Réduis-la de moitié.", "Cette semaine : ajoute 10 minutes de silence total dans ta journée. Pas de musique, pas d'écran.", "Cette semaine : couche-toi 30 minutes plus tôt que d'habitude, deux soirs de suite.", "Cette semaine : note à quelle heure ton énergie est au plus bas. Ne planifie rien d'important à ce moment-là.", "Cette semaine : dis non à une chose — même petite — pour protéger ton énergie.", "Cette semaine : fais une seule chose à la fois pendant 20 minutes. Pas de multitâche.", "Cette semaine : mange un repas assis·e, sans écran, en prenant le temps de goûter vraiment.", "Cette semaine : pose ta main sur ton ventre une fois par jour. Respire. Demande-lui comment il va.", "Cette semaine : bois un verre d'eau dès le réveil, avant tout le reste.", "Cette semaine : étire-toi 5 minutes avant de dormir. Juste sentir ton corps après la journée.", "Cette semaine : remarque une tension physique que tu portes sans t'en rendre compte. Où est-elle ?", "Cette semaine : applique une crème ou une huile sur tes mains avec intention. Prends 2 minutes.", "Cette semaine : mange un fruit ou un légume que tu aimes vraiment — pas par obligation.", "Cette semaine : marche dehors 10 minutes sans destination précise.", "Cette semaine : nomme une émotion par jour — même vague. « Je ressens quelque chose de pesant. » Ça compte.", "Cette semaine : si tu as envie de pleurer, laisse-toi. Sans chercher à comprendre pourquoi.", "Cette semaine : avant de répondre à un message difficile, attends 10 minutes.", "Cette semaine : écris une phrase sur ce que tu ressens en ce moment. Juste une. Pas besoin de suite.", "Cette semaine : permets-toi d'être de mauvaise humeur sans te juger ni t'expliquer.", "Cette semaine : identifie une émotion que tu évites souvent. Donne-lui un nom, même inventé.", "Cette semaine : fais quelque chose qui te fait rire — un épisode, une vidéo, un souvenir drôle.", "Cette semaine : choisis un seul objet à donner, ranger ou jeter. Juste un.", "Cette semaine : aère ta pièce principale chaque matin, même 2 minutes.", "Cette semaine : pose ton téléphone dans une autre pièce pendant le dîner.", "Cette semaine : crée un « coin de calme » — un endroit dans ton espace juste pour toi.", "Cette semaine : éteins les notifications d'une appli qui t'agite. Juste une.", "Cette semaine : mets une lumière douce le soir au lieu du plafond.", "Cette semaine : ne regarde pas ton téléphone dans les 30 premières minutes après le réveil.", "Cette semaine : envoie un message à une personne avec qui tu te sens vraiment toi-même.", "Cette semaine : dis non à une invitation que tu accepterais par obligation.", "Cette semaine : identifie une relation qui t'épuise. Tu n'as pas à la quitter — juste la nommer.", "Cette semaine : demande de l'aide pour quelque chose que tu fais seul·e depuis trop longtemps.", "Cette semaine : prends 15 minutes seul·e après une interaction intense. Recharge-toi.", "Cette semaine : dis à quelqu'un ce que tu ressens vraiment — une petite vérité, pas une grande.", "Cette semaine : remarque une relation qui te nourrit. Prends le temps d'y être vraiment présent·e.", "Cette semaine : fais une chose juste parce que tu l'aimes. Sans la justifier.", "Cette semaine : rappelle-toi une activité qui t'animait avant. Tu n'as pas à la reprendre — juste te souvenir.", "Cette semaine : écris 3 choses que tu fais bien — pas des performances, des qualités vraies.", "Cette semaine : remarque un moment de la journée où tu es vraiment présent·e. Qu'est-ce qui t'y a amené ?", "Cette semaine : retire une obligation de ton agenda qui n'a pas de sens pour toi.", "Cette semaine : imagine ta vie dans 3 ans si tu prenais vraiment soin de toi. Qu'est-ce qui change ?", "Cette semaine : dis à voix haute une chose qui compte pour toi. Même si personne n'entend.", "Cette semaine : fais quelque chose de nouveau — même minuscule. Un chemin différent, un plat inconnu.", "Cette semaine : identifie une valeur qui guide vraiment tes choix. Est-ce que ta semaine lui ressemble ?", "Cette semaine : permets-toi de ne pas savoir où tu vas. Juste être là où tu es."];
-let lastDefiIdx=-1;
-function openBottle(){
-  const wrap=document.getElementById("bottleWrap");
-  const icon=document.getElementById("bottleIcon");
-  icon.style.animation="bottleOpen 0.5s ease forwards";
-  setTimeout(()=>{
-    wrap.style.display="none";
-    showDefi();
-    document.getElementById("defiBox").style.display="block";
-  },500);
-}
-function showDefi(){
-  let idx;
-  do{ idx=Math.floor(Math.random()*DEFIS.length); }while(idx===lastDefiIdx&&DEFIS.length>1);
-  lastDefiIdx=idx;
-  document.getElementById("defiText").textContent=DEFIS[idx];
-}
-function newDefi(){
-  document.getElementById("defiText").style.opacity=0;
-  setTimeout(()=>{
-    showDefi();
-    document.getElementById("defiText").style.transition="opacity 0.4s";
-    document.getElementById("defiText").style.opacity=1;
-  },200);
-}
-function showVictory(){
-  // Badges victoire
-  const badges=[
-    {e:"🏴‍☠️",n:"Capitaine"},
-    {e:"🗺️",n:"7 îles"},
-    {e:"💎",n:G.treasures.length+" trésors"},
-    {e:"⭐",n:G.total+" pts"},
-    {e:"🔥",n:G.flame+" sessions"},
-  ];
-  document.getElementById("victoryBadges").innerHTML=badges.map(b=>
-    `<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(187,126,96,0.25);border-radius:12px;padding:10px 14px;text-align:center;min-width:70px;">
-      <span style="font-size:22px;display:block;margin-bottom:3px;">${b.e}</span>
-      <span style="font-size:11px;color:#F0EAE7;font-weight:600;">${b.n}</span>
-    </div>`
-  ).join("");
-  confetti();
-  showS("sVictory");
-}
-
-const LEX=[{"t": "Épuisement fonctionnel silencieux", "e": "🌫", "c": "Continuer à fonctionner tout en étant profondément épuisé·e, sans que ça se voie.", "l": "Un état d'épuisement avancé où la personne continue à remplir ses obligations — travail, famille, social — sans en avoir l'air. L'entourage ne voit rien. La personne elle-même minimise souvent.", "ex": "Tu vas au travail, tu réponds aux messages, tu souris — et le soir tu t'effondres sans savoir pourquoi."}, {"t": "Besoin de récupération", "e": "⚡", "c": "Le besoin physiologique de recharger ses ressources après un effort — physique, mental ou émotionnel.", "l": "Le besoin de récupération est une mesure scientifique du niveau de fatigue après l'effort. Un besoin non satisfait mène progressivement à l'épuisement chronique.", "ex": "Après une réunion difficile, tu as besoin de silence. Ce n'est pas de la sensibilité — c'est un besoin physiologique réel."}, {"t": "Performance douce", "e": "🌿", "c": "Avancer à son propre rythme, sans se forcer ni se comparer — tout en progressant vraiment.", "l": "Concept central de Foébé. La performance douce reconnaît que les personnes épuisées avancent mieux par petits gestes réguliers que par grands efforts ponctuels.", "ex": "Faire 10 minutes de marche parce que ça te fait du bien — pas 1 heure parce que tu 'devrais'."}, {"t": "Surcharge cognitive", "e": "🧠", "c": "État où le cerveau a trop d'informations à traiter et ne parvient plus à fonctionner normalement.", "l": "Quand la mémoire de travail est débordée, la concentration chute et les décisions deviennent difficiles. C'est différent d'être fatigué·e — c'est un système de traitement qui est plein.", "ex": "Tu relis la même phrase trois fois sans la comprendre. Tu oublies ce que tu allais dire en milieu de phrase."}, {"t": "Fatigue décisionnelle", "e": "🤯", "c": "La dégradation de la qualité des décisions après en avoir pris trop dans la journée.", "l": "Prendre des décisions consomme de l'énergie mentale. Plus on en prend dans la journée, plus la capacité à bien décider diminue — c'est épuisant même quand les décisions sont petites.", "ex": "Le soir tu es incapable de choisir quoi manger alors que le matin c'était facile."}, {"t": "Anesthésie émotionnelle", "e": "😶", "c": "État où l'on ne ressent plus vraiment ses émotions — ni joie, ni tristesse, ni colère.", "l": "Mécanisme de protection du système nerveux. Quand les émotions ont été trop intenses trop longtemps, le cerveau coupe le signal émotionnel. Ce n'est pas du calme — c'est une adaptation à la surcharge.", "ex": "Tu devrais être heureuse·x d'une bonne nouvelle — et tu ne ressens rien. Pas triste, pas joyeux·se. Plat."}, {"t": "Réponse de protection", "e": "🛡", "c": "Comportement automatique que le corps ou l'esprit adopte pour se protéger d'une surcharge.", "l": "Face à une surcharge, le système nerveux déclenche des réponses automatiques — retrait social, anesthésie, procrastination, irritabilité. Ce ne sont pas des défauts de caractère — ce sont des mécanismes adaptatifs.", "ex": "Tu fuis les gens que tu aimes parce que les interactions te coûtent trop. Ton système te protège."}, {"t": "Système nerveux autonome", "e": "🔄", "c": "Le système qui régule automatiquement les réponses du corps au stress et au calme.", "l": "Il a deux modes principaux : sympathique (alerte, action) et parasympathique (repos, récupération). La plupart des pratiques de self-care agissent directement dessus.", "ex": "La respiration lente active le mode parasympathique — c'est pour ça qu'elle calme vraiment."}, {"t": "Mode survie", "e": "🆘", "c": "État où le cerveau priorise uniquement l'essentiel et coupe tout le reste pour économiser ses ressources.", "l": "Quand les ressources sont trop basses, le cerveau ne traite plus que l'urgent et l'immédiat. Les projets, les relations, la créativité sont mis en veille. Beaucoup le vivent comme leur état normal.", "ex": "Tu ne penses plus à l'avenir, tu ne planifies plus rien. Tu gères juste la journée en cours."}, {"t": "Dette de récupération", "e": "📉", "c": "L'accumulation de fatigue non récupérée qui s'installe progressivement dans le corps.", "l": "Comme une dette financière, elle s'accumule quand on dépense plus d'énergie qu'on n'en recharge. Elle ne disparaît pas avec une nuit de sommeil — elle nécessite des changements de fonctionnement.", "ex": "Tu dors 9 heures et tu te réveilles toujours épuisé·e. La dette est trop importante pour une nuit."}, {"t": "Régulation émotionnelle", "e": "🌊", "c": "La capacité à gérer ses émotions sans être submergé·e ni les couper complètement.", "l": "Ce n'est pas le contrôle des émotions — c'est la capacité à les laisser passer sans qu'elles prennent le contrôle. Elle s'apprend. Les personnes épuisées ont souvent des ressources de régulation réduites.", "ex": "Nommer ce qu'on ressent avant d'agir est un acte de régulation. Ça ne supprime pas l'émotion — ça la régule."}, {"t": "Hygiène de récupération", "e": "🛁", "c": "L'ensemble des pratiques quotidiennes qui permettent au corps et à l'esprit de se régénérer vraiment.", "l": "Comme l'hygiène corporelle, c'est un ensemble de pratiques régulières — sommeil, alimentation, déconnexion, mouvement doux, temps seul·e. Sans elle, les systèmes se dégradent progressivement.", "ex": "Avoir une heure sans écran avant de dormir fait partie de ton hygiène de récupération."}, {"t": "Surcharge sensorielle", "e": "📢", "c": "État où le cerveau reçoit trop de stimulations et ne peut plus les filtrer correctement.", "l": "Bruit, lumière, notifications, conversations, écrans — tout s'additionne. La surcharge sensorielle génère irritabilité, fatigue et besoin de retrait. Les espaces surchargés l'amplifient.", "ex": "Tu es épuisé·e après une journée en open space, un centre commercial ou une fête animée."}, {"t": "Procrastination protectrice", "e": "⏸", "c": "Remettre à plus tard non par paresse, mais parce que le système évite ce qui demande trop.", "l": "La procrastination est souvent une réponse de protection — le cerveau évite une tâche parce qu'elle est associée à de la peur, de la fatigue ou un manque de sens. Comprendre pourquoi est plus utile que se forcer.", "ex": "Tu repousses un email important depuis des jours. Ce n'est pas de la paresse — tu évites quelque chose qui t'angoisse."}, {"t": "Désalignement", "e": "🧭", "c": "État où ce qu'on fait ne correspond plus à ce qu'on est ou à ce qui compte vraiment.", "l": "Le désalignement crée une insatisfaction diffuse — on ne sait pas exactement ce qui ne va pas, mais quelque chose sonne faux. Il peut toucher le travail, les relations ou les valeurs.", "ex": "Tu fais bien ton travail mais tu te sens vide en rentrant. Ce que tu fais ne te ressemble plus."}, {"t": "Solitude relationnelle", "e": "🤝", "c": "Se sentir seul·e même entouré·e — par manque de liens où l'on peut être vraiment soi.", "l": "Distincte de l'isolement social. On peut avoir beaucoup de monde autour de soi et se sentir profondément seul·e si aucun lien ne permet d'être authentique.", "ex": "Tu as des dizaines de contacts, des collègues sympas — et personne à qui dire vraiment comment tu vas."}, {"t": "Suradaptation", "e": "🎭", "c": "S'adapter en permanence aux attentes des autres au détriment de ses propres besoins.", "l": "Un mécanisme appris qui consiste à modifier son comportement pour correspondre à ce qu'on croit attendu. Elle épuise parce qu'elle demande une vigilance constante et coupe du contact avec soi-même.", "ex": "Tu changes d'avis selon les personnes que tu as en face. Tu ne sais plus ce que tu veux vraiment."}, {"t": "Cohérence cardiaque", "e": "💓", "c": "Une technique de respiration qui synchronise le cœur et le cerveau pour réduire le stress.", "l": "Validée scientifiquement. Respirer à 5 secondes inspire / 5 secondes expire crée une oscillation régulière du rythme cardiaque qui active le mode parasympathique. 5 minutes suffisent pour un effet mesurable.", "ex": "Inspire 5 secondes, expire 5 secondes, pendant 5 minutes. Trois fois par jour c'est l'idéal."}, {"t": "Rituel de transition", "e": "🚪", "c": "Un geste court qui marque consciemment le passage d'un état à un autre.", "l": "Les rituels de transition créent des frontières entre les états — travail/repos, stress/calme. Sans eux, les états se contaminent. Un rituel n'a pas besoin d'être long — 3 respirations profondes suffisent.", "ex": "Enlever ses chaussures en rentrant et prendre 2 minutes debout avant d'ouvrir son téléphone."}, {"t": "Pleine conscience", "e": "🌱", "c": "La capacité à être pleinement présent·e à ce qui se passe, sans jugement.", "l": "Ce n'est pas uniquement la méditation assise — c'est une qualité d'attention qu'on peut cultiver dans n'importe quel moment. Manger, marcher, écouter — la pleine conscience est un muscle qui se développe.", "ex": "Sentir l'eau chaude sur ses mains quand on fait la vaisselle — plutôt que penser à demain."}, {"t": "Charge mentale", "e": "⚖️", "c": "Le travail invisible de planification, d'anticipation et de gestion du quotidien.", "l": "La charge mentale ne concerne pas que les tâches visibles — c'est tout le travail cognitif invisible : penser à faire les courses, prévoir les rendez-vous, anticiper les besoins des autres. Elle épuise même sans action visible.", "ex": "Tu n'as 'rien fait' de la journée mais tu es épuisé·e. La charge mentale a tourné en arrière-plan toute la journée."}];
-let lexTab=1, lexQIdx=0, lexScore=0, lexQueue=[], lexAnswered=false;
-
-function setLexTab(t){
-  lexTab=t;
-  document.getElementById("lexExplore").style.display=t===1?"block":"none";
-  document.getElementById("lexQuiz").style.display=t===2?"block":"none";
-  const b1=document.getElementById("lTab1"),b2=document.getElementById("lTab2");
-  b1.style.background=t===1?"#BB7E60":"transparent";b1.style.color=t===1?"#F0EAE7":"rgba(240,234,231,0.5)";
-  b2.style.background=t===2?"#BB7E60":"transparent";b2.style.color=t===2?"#F0EAE7":"rgba(240,234,231,0.5)";
-  if(t===2)startLexQuiz();
-}
-
-function renderLexList(){
-  const el=document.getElementById("lexList");
-  el.innerHTML="";
-  LEX.forEach((item,i)=>{
-    const card=document.createElement("div");
-    card.className="lex-card";card.id="lc"+i;
-    card.innerHTML=`
-      <div class="lex-term" onclick="toggleLex(${i})">
-        <span>${item.e} ${item.t}</span>
-        <span id="larr${i}" style="font-size:14px;color:#BB7E60;transition:transform 0.2s;">▾</span>
-      </div>
-      <p class="lex-short">${item.c}</p>
-      <div class="lex-detail">
-        <p class="lex-long">${item.l}</p>
-        <p class="lex-ex">${item.ex}</p>
-      </div>`;
-    el.appendChild(card);
-  });
-}
-
-function toggleLex(i){
-  const card=document.getElementById("lc"+i);
-  const arr=document.getElementById("larr"+i);
-  const open=card.classList.contains("open");
-  document.querySelectorAll(".lex-card.open").forEach(c=>{c.classList.remove("open");const a=c.querySelector("[id^='larr']");if(a)a.style.transform="";});
-  if(!open){card.classList.add("open");arr.style.transform="rotate(180deg)";}
-}
-
-function startLexQuiz(){
-  lexQIdx=0;lexScore=0;lexAnswered=false;
-  // 10 questions aléatoires + 1 bonus finale
-  const shuffled=[...LEX].sort(()=>Math.random()-0.5);
-  lexQueue=shuffled.slice(0,10);
-  lexQueue.push({...shuffled[10]||shuffled[0], BONUS:true}); // question bonus
-  renderLexQ();
-}
-
-function renderLexQ(){
-  if(lexQIdx>=lexQueue.length){showLexResults();return;}
-  const item=lexQueue[lexQIdx];
-  document.getElementById("lexFb").style.display="none";
-  document.getElementById("lexBtnNext").disabled=true;
-  lexAnswered=false;
-
-  // Alterne entre deux types de questions
-  const type=lexQIdx%2===0?"def":"term";
-
-  const card=document.getElementById("lexQuizCard");
-  if(type==="def"){
-    card.innerHTML=`
-      <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#BB7E60;font-weight:600;margin-bottom:10px;">Quel terme correspond à cette définition ?</p>
-      <p style="font-family:'Lora',serif;font-size:16px;font-style:italic;color:#F0EAE7;line-height:1.6;">${item.c}</p>`;
-  } else {
-    card.innerHTML=`
-      <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#BB7E60;font-weight:600;margin-bottom:10px;">Quelle définition correspond à ce terme ?</p>
-      <p style="font-size:20px;margin-bottom:6px;">${item.e}</p>
-      <p style="font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:#F0EAE7;">${item.t}</p>`;
-  }
-
-  // 3 options : la bonne + 2 distracteurs
-  const others=[...LEX].filter(l=>l.t!==item.t).sort(()=>Math.random()-0.5).slice(0,2);
-  const opts=[item,...others].sort(()=>Math.random()-0.5);
-  const correctIdx=opts.findIndex(o=>o.t===item.t);
-
-  const optsEl=document.getElementById("lexQuizOpts");
-  optsEl.innerHTML="";
-  opts.forEach((opt,i)=>{
-    const btn=document.createElement("button");
-    btn.className="opt";
-    btn.innerHTML=type==="def"
-      ?`<span class="oic">${opt.e}</span><span>${opt.t}</span>`
-      :`<span style="font-size:13px;flex:1;text-align:left;">${opt.c}</span>`;
-    btn.onclick=()=>ansLexQ(i,correctIdx,item,btn,optsEl);
-    optsEl.appendChild(btn);
-  });
-
-  const isBonus=lexQueue[lexQIdx]&&lexQueue[lexQIdx].BONUS;
-  document.getElementById("lexScore").textContent=isBonus
-    ?"⭐ Question BONUS · "+lexScore+" pts"
-    :"Question "+(lexQIdx+1)+" / 10 · "+lexScore+" pts";
-}
-
-function ansLexQ(chosen,correct,item,btn,optsEl){
-  if(lexAnswered)return;lexAnswered=true;
-  const ok=chosen===correct;
-  optsEl.querySelectorAll(".opt").forEach((b,i)=>{
-    if(i===correct)b.classList.add("ok");
-    else if(i===chosen&&!ok)b.classList.add("nope");
-    else b.classList.add("off");
-  });
-  if(ok)lexScore+=10;
-  const fb=document.getElementById("lexFb");
-  fb.style.display="block";
-  fb.style.cssText+= ok
-    ?"background:rgba(74,124,89,0.15);border:1px solid rgba(74,124,89,0.3);color:#a8d4b4;"
-    :"background:rgba(195,66,52,0.15);border:1px solid rgba(195,66,52,0.3);color:#e8a0a0;";
-  fb.innerHTML=ok
-    ?`✓ Exact. ${item.ex}`
-    :`La bonne réponse : <strong>${item.e} ${item.t}</strong>. ${item.ex}`;
-  document.getElementById("lexBtnNext").disabled=false;
-  const isBonus=lexQueue[lexQIdx]&&lexQueue[lexQIdx].BONUS;
-  document.getElementById("lexScore").textContent=isBonus
-    ?"⭐ Question BONUS · "+lexScore+" pts"
-    :"Question "+(lexQIdx+1)+" / 10 · "+lexScore+" pts";
-}
-
-function nextLexQuiz(){
-  lexQIdx++;
-  document.getElementById("lexFb").style.display="none";
-  document.getElementById("lexBtnNext").disabled=true;
-  renderLexQ();
-}
-
-function showLexResults(){
-  const card=document.getElementById("lexQuizCard");
-  const base=100; // score sur 100 (10 questions x 10pts)
-  const bonus=lexScore>100?lexScore-100:0;
-  const pct=Math.min(100,Math.round((lexScore/100)*100));
-  let msg,em;
-  if(pct>=90){msg="Excellent — tu maîtrises le vocabulaire Foébé.";em="🏆";}
-  else if(pct>=70){msg="Bonne connaissance — quelques termes à consolider.";em="⭐";}
-  else if(pct>=50){msg="Tu progresses — rejoue pour ancrer les définitions.";em="🌱";}
-  else{msg="Continue à explorer — l'apprentissage prend du temps.";em="💪";}
-  card.innerHTML=`
-    <div style="text-align:center;">
-      <p style="font-size:48px;margin-bottom:10px;">${em}</p>
-      <p style="font-family:'Lora',serif;font-size:24px;font-weight:700;color:#BB7E60;margin-bottom:4px;">${Math.min(lexScore,100)} / 100 pts</p>
-      ${bonus>0?`<p style="font-size:13px;color:#C45279;margin-bottom:8px;">⭐ +${bonus} pts bonus !</p>`:""}
-      <p style="font-family:'Lora',serif;font-size:14px;font-style:italic;color:rgba(240,234,231,0.7);line-height:1.6;">${msg}</p>
-    </div>`;
-  document.getElementById("lexQuizOpts").innerHTML="";
-  document.getElementById("lexFb").style.display="none";
-  document.getElementById("lexBtnNext").textContent="Recommencer →";
-  document.getElementById("lexBtnNext").disabled=false;
-  document.getElementById("lexBtnNext").onclick=startLexQuiz;
-  document.getElementById("lexScore").textContent="";
-}
-
-function openLexique(){
-  renderLexList();
-  setLexTab(1);
-  showS("sLexique");
-}
-
-window.addEventListener("DOMContentLoaded",()=>{genStars();lG();refreshMap();});
+})();
 </script>
-
-
-<!-- VICTOIRE 7 ÎLES -->
-<div class="screen" id="sVictory">
-  <div style="max-width:440px;width:100%;text-align:center;">
-    <div id="victoryEmoji" style="font-size:64px;margin-bottom:16px;display:block;">🏴‍☠️</div>
-    <span style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#BB7E60;font-weight:600;margin-bottom:12px;display:block;">7 îles explorées</span>
-    <h2 style="font-family:'Lora',serif;font-size:clamp(22px,5vw,30px);color:#F0EAE7;margin-bottom:8px;">Tu es <em style="font-style:italic;color:#BB7E60;">Capitaine</em></h2>
-    <p style="font-family:'Lora',serif;font-size:15px;font-style:italic;color:rgba(240,234,231,0.8);line-height:1.75;margin-bottom:28px;max-width:360px;margin-left:auto;margin-right:auto;">Tu as traversé les 7 dimensions du self-care. Tu connais maintenant tes signaux — il est temps d'en faire quelque chose.</p>
-
-    <div style="background:rgba(26,58,92,0.4);border:1.5px solid rgba(187,126,96,0.35);border-radius:22px;padding:28px 22px;margin-bottom:24px;">
-      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#BB7E60;font-weight:600;margin-bottom:16px;display:block;">Ton défi de la semaine</span>
-      <div id="bottleWrap" style="cursor:pointer;margin-bottom:20px;" onclick="openBottle()">
-        <div id="bottleIcon" style="font-size:52px;display:block;animation:bottleFloat 2.5s ease-in-out infinite;transition:all 0.3s;">🍾</div>
-        <p style="font-size:13px;color:rgba(240,234,231,0.5);margin-top:8px;font-family:'Poppins',sans-serif;">Appuie pour ouvrir la bouteille</p>
-      </div>
-      <div id="defiBox" style="display:none;animation:fadeIn 0.6s ease;">
-        <p id="defiText" style="font-family:'Lora',serif;font-size:16px;font-style:italic;color:#F0EAE7;line-height:1.75;margin-bottom:16px;"></p>
-        <button onclick="newDefi()" style="background:transparent;border:1px solid rgba(187,126,96,0.4);border-radius:20px;padding:7px 16px;font-size:12px;color:#BB7E60;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:500;">↺ Autre défi</button>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:10px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;" id="victoryBadges"></div>
-
-    <button class="btngo" onclick="showS('sMap');refreshMap();" style="margin-bottom:10px;">← Retour à la carte</button>
-    <p style="font-size:12px;color:rgba(240,234,231,0.35);font-family:'Poppins',sans-serif;margin-top:8px;">Les îles restent jouables — améliore tes scores pour gagner plus de points.</p>
-  </div>
-</div>
-
-
-<!-- SECTION LEXIQUE dans la carte -->
-<div id="sLexique" class="screen">
-  <div style="width:100%;max-width:480px;padding-bottom:20px;">
-    <div style="text-align:center;margin-bottom:20px;">
-      <span style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#BB7E60;font-weight:600;margin-bottom:10px;display:block;">Maison Foébé · Lexique</span>
-      <h2 style="font-family:'Lora',serif;font-size:clamp(24px,6vw,32px);color:#F0EAE7;margin-bottom:6px;">Le <em style="font-style:italic;color:#BB7E60;">Vocabulaire</em></h2>
-      <p style="font-family:'Lora',serif;font-size:14px;font-style:italic;color:rgba(240,234,231,0.7);line-height:1.6;max-width:340px;margin:0 auto 20px;">Les mots de Foébé — pour nommer ce que tu vis et comprendre ce qui se passe vraiment.</p>
-    </div>
-
-    <!-- Onglets modes -->
-    <div style="display:flex;gap:8px;margin-bottom:20px;background:rgba(255,255,255,0.04);border-radius:12px;padding:4px;">
-      <button id="lTab1" onclick="setLexTab(1)" style="flex:1;padding:9px 6px;border:none;border-radius:9px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;background:#BB7E60;color:#F0EAE7;">📖 Explorer</button>
-      <button id="lTab2" onclick="setLexTab(2)" style="flex:1;padding:9px 6px;border:none;border-radius:9px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;background:transparent;color:rgba(240,234,231,0.5);">🎯 Quiz</button>
-    </div>
-
-    <!-- Mode Explorer -->
-    <div id="lexExplore">
-      <div style="display:flex;flex-direction:column;gap:10px;" id="lexList"></div>
-    </div>
-
-    <!-- Mode Quiz -->
-    <div id="lexQuiz" style="display:none;">
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(187,126,96,0.25);border-radius:16px;padding:20px;margin-bottom:14px;" id="lexQuizCard"></div>
-      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:14px;" id="lexQuizOpts"></div>
-      <div style="border-radius:13px;padding:12px 16px;margin-bottom:12px;font-family:'Lora',serif;font-size:13px;font-style:italic;line-height:1.55;display:none;" id="lexFb"></div>
-      <button class="btngo" id="lexBtnNext" onclick="nextLexQuiz()" disabled>Continuer →</button>
-      <div style="text-align:center;margin-top:10px;font-size:12px;color:rgba(240,234,231,0.35);font-family:'Poppins',sans-serif;" id="lexScore"></div>
-    </div>
-
-    <button class="btnghost" onclick="showS('sMap');refreshMap();" style="margin-top:16px;">← Retour à la carte</button>
-  </div>
-</div>
-
-<footer class="boussole-footer">
-  <p>
-    <a href="boussole-accueil-foebe.html">← Retour au sas</a>
-    &nbsp;·&nbsp;
-    <a href="test.html">Test Self-Care</a>
-    &nbsp;·&nbsp;
-    <a href="respiration.html">Respiration</a>
-    &nbsp;·&nbsp;
-    <a href="mentions.html">Mentions légales</a>
-  </p>
-  <p style="margin-top:10px;">© 2026 Maison Foébé · Tous droits réservés</p>
-</footer>
+<script src="/foebe-shell.js"></script>
 </body>
 </html>
