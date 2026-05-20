@@ -513,7 +513,7 @@
           max-width: 36vw !important;
         }
         body > nav#fallbackNav.fallback-nav .fallback-links > a {
-          min-height: 36px !important;
+          min-height: 38px !important;
           font-size: 11.5px !important;
           padding: 0 9px !important;
         }
@@ -522,19 +522,19 @@
 
     <style>
         :root {
-            --z: ;
-            --z-mid: ;
-            --z-lite: ;
-            --z-dim: ;
-            --z-r: ;
-            --z-g: ;
-            --z-b: ;
-            --z-mid-r: ;
-            --z-mid-g: ;
-            --z-mid-b: ;
-            --z-lite-r: ;
-            --z-lite-g: ;
-            --z-lite-b: ;
+            --z: #1A4060;
+            --z-mid: #2E7BB5;
+            --z-lite: #6AB4E8;
+            --z-dim: rgba(46, 123, 181, 0.13);
+            --z-r: 26;
+            --z-g: 64;
+            --z-b: 96;
+            --z-mid-r: 46;
+            --z-mid-g: 123;
+            --z-mid-b: 181;
+            --z-lite-r: 106;
+            --z-lite-g: 180;
+            --z-lite-b: 232;
             --bordeaux: #4E291F;
             --warm: #BB7E60;
             --warm-dark: #7A4A28;
@@ -4057,6 +4057,592 @@ body.state-active .ici-card {
   }
 }
 
+
+
+
+/* FOÉBÉ — équilibre lisibilité v4
+   Objectif : garder les paragraphes lisibles sans transformer les rubriques secondaires en gros blocs. */
+.geste-text,
+.facteur-desc,
+.impact-desc,
+.venn-intro,
+.obs-intro,
+.obs-result-text,
+.reading,
+.gestes-intention-text,
+.gestes-freq p,
+.palp-desc,
+.palp-note span,
+.accomp-pitch p,
+.accomp-list li,
+.accomp-note-finale,
+.accomp-email-sub,
+.email-note{
+  font-size:clamp(15.8px,.42vw + 14.4px,16.4px)!important;
+  line-height:1.78!important;
+}
+
+/* Les blocs d'explication internes aux gestes restent lisibles, mais ne doivent pas devenir des titres géants. */
+.geste-why,
+.geste-sensoriel{
+  font-size:clamp(15.3px,.32vw + 14.4px,15.9px)!important;
+  line-height:1.72!important;
+  color:var(--read-soft,var(--sub))!important;
+}
+
+.geste-why strong{
+  display:block!important;
+  margin:0 0 6px!important;
+  font-family:"Poppins",sans-serif!important;
+  font-size:12.5px!important;
+  line-height:1.25!important;
+  letter-spacing:1.25px!important;
+  text-transform:uppercase!important;
+  font-weight:800!important;
+  color:var(--warm)!important;
+}
+
+.geste-type,
+.palp-name,
+.accomp-list li strong{
+  font-size:clamp(15px,.35vw + 14px,16px)!important;
+  line-height:1.35!important;
+}
+
+.vr-note,
+.state-def-text,
+.pitch-val{
+  font-size:clamp(15.6px,.36vw + 14.4px,16.2px)!important;
+  line-height:1.74!important;
+}
+
+/* Sommaire : lisible mais pas dominant. */
+.aller-a-link{
+  min-height:40px!important;
+  padding:0 15px!important;
+  font-size:13.5px!important;
+  font-weight:600!important;
+}
+.aller-a-label{font-size:12px!important;letter-spacing:1.7px!important;}
+
+@media(min-width:768px) and (max-width:1180px){
+  .page{max-width:920px!important;padding-left:34px!important;padding-right:34px!important;}
+  .facteur-item{padding:22px 24px!important;gap:18px!important;}
+  .impact-item{gap:22px!important;padding-bottom:34px!important;}
+  .geste-card{padding:22px 24px!important;}
+  .palp-card{padding:24px 24px 26px!important;}
+  .aller-a-link{min-height:42px!important;font-size:14px!important;padding:0 16px!important;}
+}
+
+@media(max-width:767px){
+  .geste-text,
+  .facteur-desc,
+  .impact-desc,
+  .venn-intro,
+  .obs-intro,
+  .obs-result-text,
+  .reading,
+  .gestes-intention-text,
+  .gestes-freq p,
+  .palp-desc,
+  .palp-note span,
+  .accomp-pitch p,
+  .accomp-list li,
+  .accomp-note-finale,
+  .accomp-email-sub,
+  .email-note{
+    font-size:16px!important;
+    line-height:1.80!important;
+  }
+  .geste-why,
+  .geste-sensoriel{
+    font-size:15.5px!important;
+    line-height:1.74!important;
+  }
+  .geste-why strong{font-size:12.5px!important;}
+}
+
+
+
+.noscript-foebe{display:block;margin:84px auto 0;max-width:860px;padding:16px 20px;border:1px solid var(--line,rgba(187,126,96,.34));border-radius:18px;background:rgba(187,126,96,.12);color:var(--text,#4E291F);font-family:"Lora",serif;font-size:16px;line-height:1.75;}
+
+
+
+/* PATCH FINAL — encart de transition Effets en cascade
+   Cible exacte : le texte injecté dans #impactsIntro.
+   On change le paragraphe nu en box couleur zone pour créer une vraie respiration éditoriale. */
+#impactsIntro.impact-transition-box,
+.impacts-section #impactsIntro.impact-transition-box{
+  display:block !important;
+  box-sizing:border-box !important;
+  width:min(100%, 760px) !important;
+  max-width:760px !important;
+  margin:0 auto 36px !important;
+  padding:22px 26px !important;
+  border-radius:22px !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(240,234,231,.14), transparent 38%),
+    linear-gradient(135deg, rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.18), rgba(0,0,0,.10)),
+    var(--z) !important;
+  border:1px solid rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.42) !important;
+  box-shadow:0 18px 42px rgba(0,0,0,.14) !important;
+  color:#F0EAE7 !important;
+  font-family:"Lora",serif !important;
+  font-size:clamp(16px, .55vw + 14px, 17px) !important;
+  line-height:1.78 !important;
+  text-align:center !important;
+  font-style:normal !important;
+}
+
+[data-theme="day"] #impactsIntro.impact-transition-box,
+[data-theme="day"] .impacts-section #impactsIntro.impact-transition-box{
+  color:#F0EAE7 !important;
+  box-shadow:0 18px 42px rgba(78,41,31,.14) !important;
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:min(100%, 720px) !important;
+    padding:22px 24px !important;
+    margin-bottom:34px !important;
+  }
+}
+
+@media(max-width:767px){
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 0 28px !important;
+    padding:18px 18px !important;
+    border-radius:18px !important;
+    font-size:16px !important;
+    line-height:1.78 !important;
+    text-align:left !important;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   PATCH VALIDATION V4 — Maison Foébé / Zone Émotions
+   Objectif : box Cascade réellement visible, responsive éditorial,
+   lisibilité premium et fallback animations sans masquer le contenu.
+════════════════════════════════════════════════════════════════ */
+[data-theme="day"]{--read:rgba(78,41,31,.88);--read-soft:rgba(78,41,31,.80);--read-strong:#4E291F;}
+[data-theme="night"]{--read:rgba(240,234,231,.90);--read-soft:rgba(240,234,231,.82);--read-strong:#F0EAE7;}
+
+/* Encart de transition couleur zone — cible exacte du texte IMPACTS_INTRO */
+#impactsIntro.impact-transition-box,
+.impacts-section #impactsIntro.impact-transition-box{
+  display:block!important;
+  box-sizing:border-box!important;
+  width:min(100%,760px)!important;
+  max-width:760px!important;
+  margin:0 auto 36px!important;
+  padding:22px 26px!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(240,234,231,.14), transparent 38%),
+    linear-gradient(135deg, rgba(106,180,232,.18), rgba(0,0,0,.10)),
+    #1A4060!important;
+  border:1px solid rgba(106,180,232,.42)!important;
+  box-shadow:0 18px 44px rgba(0,0,0,.14)!important;
+  color:#F0EAE7!important;
+  font-family:"Lora",serif!important;
+  font-size:clamp(16px,.55vw + 14px,17px)!important;
+  line-height:1.78!important;
+  text-align:center!important;
+  font-style:normal!important;
+}
+#impactsIntro.impact-transition-box *{color:#F0EAE7!important;}
+
+/* Transitions éditoriales : centrées sur grands écrans, lecture gauche sur mobile. */
+.venn-intro,
+.obs-intro,
+.traj-intro{
+  max-width:680px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  text-align:center!important;
+  color:var(--read)!important;
+}
+
+/* Paragraphes d'apprentissage : lisibles sans gonfler les labels. */
+.zone-intro-text,
+.warning-foebe,
+.pitch-val,
+.ici-states-guide,
+.state-def-text,
+.venn-intro,
+.facteur-desc,
+.vr-note,
+.obs-intro,
+.obs-card-sub,
+.obs-result-text,
+.impact-desc,
+.geste-text,
+.gestes-freq,
+.gestes-intention-text,
+.palp-desc,
+.palp-note span,
+.accomp-pitch p,
+.accomp-list li,
+.accomp-note-finale,
+.accomp-email-sub,
+.email-note{
+  font-size:clamp(15.8px,.5vw + 14px,16.5px)!important;
+  line-height:1.80!important;
+}
+.geste-why,
+.geste-sensoriel{
+  font-size:clamp(15.4px,.4vw + 13.8px,16px)!important;
+  line-height:1.74!important;
+}
+
+/* Labels internes : ne pas les transformer en paragraphes géants. */
+.geste-why strong,
+.impact-tag,
+.traj-label,
+.geste-meta span,
+.palp-label,
+.obs-card-num{
+  font-family:"Poppins",sans-serif!important;
+  font-size:12.5px!important;
+  line-height:1.25!important;
+  letter-spacing:1.4px!important;
+  text-transform:uppercase!important;
+}
+
+/* Sommaire interne lisible mais discret. */
+.aller-a-label{font-size:12px!important;letter-spacing:1.8px!important;}
+.aller-a-link{min-height:42px!important;padding:0 16px!important;font-size:14px!important;font-weight:600!important;line-height:1.25!important;}
+
+/* Focus visible : ne jamais supprimer outline sans alternative. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+.option:focus-visible,
+.ici-zone-dot:focus-visible{
+  outline:2px solid var(--warm)!important;
+  outline-offset:3px!important;
+}
+
+/* Fallback CSS renforcé : visible sans JS, animé seulement avec .js-ready. */
+.geste-card{opacity:1!important;transform:none!important;visibility:visible!important;}
+.impact-item,.traj-item{opacity:1!important;visibility:visible!important;}
+.js-ready .geste-card{opacity:0!important;transform:translateY(18px)!important;}
+.js-ready .geste-card.visible{opacity:1!important;transform:none!important;}
+.js-ready .impact-item{opacity:.42!important;}
+.js-ready .impact-item.lit{opacity:1!important;}
+.js-ready .traj-item{opacity:.42!important;}
+.js-ready .traj-item.lit{opacity:1!important;}
+
+@media(min-width:768px) and (max-width:1180px){
+  .page{max-width:940px!important;padding-left:38px!important;padding-right:38px!important;}
+  .venn-intro,.obs-intro,.traj-intro{max-width:720px!important;margin-bottom:32px!important;}
+  #impactsIntro.impact-transition-box{width:min(100%,720px)!important;max-width:720px!important;margin-bottom:34px!important;padding:22px 24px!important;}
+  .facteur-item{padding:22px 24px!important;gap:18px!important;}
+  .impact-item{gap:24px!important;padding-bottom:36px!important;}
+  .geste-card{padding:22px 24px!important;}
+}
+
+@media(max-width:767px){
+  .page{padding-left:20px!important;padding-right:20px!important;}
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:100%!important;
+    max-width:none!important;
+    margin:0 0 28px!important;
+    padding:18px!important;
+    border-radius:18px!important;
+    font-size:16px!important;
+    line-height:1.78!important;
+    text-align:left!important;
+  }
+  .venn-intro,.obs-intro,.traj-intro{max-width:none!important;text-align:left!important;margin-left:0!important;margin-right:0!important;margin-bottom:24px!important;}
+  .zone-intro-text,.warning-foebe,.pitch-val,.ici-states-guide,.state-def-text,.venn-intro,.facteur-desc,.vr-note,.obs-intro,.obs-card-sub,.obs-result-text,.impact-desc,.geste-text,.gestes-freq,.gestes-intention-text,.palp-desc,.palp-note span,.accomp-pitch p,.accomp-list li,.accomp-note-finale,.accomp-email-sub,.email-note{font-size:16px!important;line-height:1.80!important;}
+  .geste-why,.geste-sensoriel{font-size:15.5px!important;line-height:1.74!important;}
+  .aller-a-link{min-height:40px!important;padding:0 14px!important;font-size:13.5px!important;}
+}
+
+
+/* ============================================================
+   FOÉBÉ — PATCH FINAL VALIDATION ZONE ÉMOTIONS v5
+   Objectif : page validable sans refonte — lisibilité, rythme,
+   encart Cascade, labels maîtrisés, responsive et accessibilité.
+   ============================================================ */
+[data-theme="day"]{
+  --read:rgba(78,41,31,.88);
+  --read-soft:rgba(78,41,31,.80);
+  --read-strong:#4E291F;
+  --bg:#F0EAE7;
+  --bg2:#E8DDD8;
+  --bg3:#DDD0CB;
+  --text:#4E291F;
+  --warm:#BB7E60;
+  --rose:#C45279;
+  --red:#C34234;
+}
+[data-theme="night"]{
+  --read:rgba(240,234,231,.90);
+  --read-soft:rgba(240,234,231,.82);
+  --read-strong:#F0EAE7;
+  --bg:#4E291F;
+  --bg2:#3A1A10;
+  --bg3:#2C1A12;
+  --text:#F0EAE7;
+  --warm:#BB7E60;
+  --rose:#C45279;
+  --red:#C34234;
+}
+
+/* Eyebrows Foébé : badges éditoriaux, sans toucher aux micro-labels internes. */
+.section-eyebrow,
+.hero-eyebrow,
+.chapter-eyebrow,
+.eyebrow{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  max-width:100%!important;
+  padding:7px 13px!important;
+  border-radius:999px!important;
+  background:rgba(187,126,96,.14)!important;
+  border:1px solid rgba(187,126,96,.34)!important;
+  font-family:'Poppins',sans-serif!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:1.4px!important;
+  line-height:1.25!important;
+  color:var(--warm)!important;
+  text-transform:uppercase!important;
+}
+[data-theme="night"] .section-eyebrow,
+[data-theme="night"] .hero-eyebrow,
+[data-theme="night"] .chapter-eyebrow,
+[data-theme="night"] .eyebrow{
+  color:#F0EAE7!important;
+  background:rgba(187,126,96,.22)!important;
+  border-color:rgba(187,126,96,.46)!important;
+}
+
+/* Vrais textes de lecture : confort sans effet gonflé. */
+.zone-intro-text,
+.warning-foebe,
+.pitch-val,
+.ici-states-guide,
+.state-def-text,
+.venn-intro,
+.facteur-desc,
+.vr-note,
+.obs-intro,
+.obs-card-sub,
+.obs-result-text,
+.impact-desc,
+.geste-text,
+.geste-why,
+.geste-sensoriel,
+.gestes-freq,
+.gestes-intention-text,
+.palp-desc,
+.palp-note span,
+.accomp-pitch p,
+.accomp-list li,
+.accomp-note-finale,
+.accomp-email-sub,
+.email-note,
+.footer-copyright{
+  font-size:clamp(15.8px,.55vw + 13.4px,16.6px)!important;
+  line-height:1.82!important;
+  color:var(--read)!important;
+}
+
+/* Labels internes : rester discrets, ne pas devenir des paragraphes. */
+.geste-label,
+.geste-meta,
+.impact-tag,
+.impact-label,
+.traj-label,
+.traj-badge,
+.obs-card-num,
+.pitch-label,
+.facteur-name,
+.vr-title{
+  font-family:'Poppins',sans-serif!important;
+}
+.geste-label,
+.impact-tag,
+.traj-label,
+.traj-badge,
+.obs-card-num{
+  font-size:12px!important;
+  letter-spacing:1.3px!important;
+  line-height:1.25!important;
+}
+
+/* Encart de transition Cascade — fond couleur zone, texte crème. */
+#impactsIntro.impact-transition-box,
+.impacts-section #impactsIntro.impact-transition-box{
+  display:block!important;
+  box-sizing:border-box!important;
+  width:min(100%,760px)!important;
+  max-width:760px!important;
+  margin:0 auto 36px!important;
+  padding:22px 26px!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(240,234,231,.14), transparent 38%),
+    linear-gradient(135deg, rgba(106,180,232,.18), rgba(0,0,0,.10)),
+    #1A4060!important;
+  border:1px solid rgba(106,180,232,.42)!important;
+  color:#F0EAE7!important;
+  font-family:'Lora',serif!important;
+  font-size:clamp(16px,.55vw + 14px,17px)!important;
+  line-height:1.78!important;
+  text-align:center!important;
+  font-style:normal!important;
+  box-shadow:0 18px 44px rgba(0,0,0,.14)!important;
+}
+#impactsIntro.impact-transition-box *{color:#F0EAE7!important;}
+
+/* Transitions éditoriales : centrées hors mobile, lecture naturelle sur mobile. */
+.venn-intro,
+.obs-intro,
+.traj-intro{
+  max-width:680px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  text-align:center!important;
+  margin-bottom:32px!important;
+}
+
+/* Sommaire interne lisible sans devenir dominant. */
+.aller-a-label{font-size:12px!important;letter-spacing:1.8px!important;}
+.aller-a-link{
+  min-height:42px!important;
+  padding:0 16px!important;
+  font-size:14px!important;
+  font-weight:600!important;
+  line-height:1.25!important;
+}
+
+/* Blocs foncés : toujours texte crème sur contenu riche. */
+.page-pitch .pitch-val,
+.state-def-box .state-def-text,
+.venn-result .vr-note,
+.gestes-freq,
+.accomp-email-sub{
+  color:rgba(240,234,231,.93)!important;
+}
+
+/* Fallback animations : contenu visible si JS échoue. */
+.reveal,
+.impact-item,
+.geste-card,
+.traj-item{
+  opacity:1;
+  transform:none;
+  visibility:visible;
+}
+.js-ready .reveal,
+.js-ready .impact-item,
+.js-ready .geste-card,
+.js-ready .traj-item{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .42s ease, transform .42s ease;
+}
+.js-ready .reveal.visible,
+.js-ready .impact-item.visible,
+.js-ready .geste-card.visible,
+.js-ready .traj-item.visible{
+  opacity:1;
+  transform:none;
+  visibility:visible;
+}
+
+/* Accessibilité : focus visible stable. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible{
+  outline:2px solid var(--warm)!important;
+  outline-offset:3px!important;
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  .page{max-width:960px!important;padding-left:40px!important;padding-right:40px!important;}
+  .facteur-item{padding:24px 26px!important;gap:20px!important;}
+  .impact-item{gap:24px!important;padding-bottom:38px!important;}
+  .geste-card{padding:24px 26px!important;}
+  .palp-card{padding:28px 26px 30px!important;}
+  .venn-intro,.obs-intro,.traj-intro{max-width:720px!important;}
+  #impactsIntro.impact-transition-box{max-width:720px!important;margin-bottom:34px!important;padding:22px 24px!important;}
+  .aller-a{margin-top:32px!important;margin-bottom:10px!important;}
+  .aller-a-links{max-width:760px!important;gap:10px 12px!important;}
+  .aller-a-link{min-height:44px!important;padding:0 18px!important;font-size:14.5px!important;}
+}
+
+@media(max-width:767px){
+  .page{padding-left:20px!important;padding-right:20px!important;}
+  .zone-intro-text,
+  .warning-foebe,
+  .pitch-val,
+  .ici-states-guide,
+  .state-def-text,
+  .venn-intro,
+  .facteur-desc,
+  .vr-note,
+  .obs-intro,
+  .obs-card-sub,
+  .obs-result-text,
+  .impact-desc,
+  .geste-text,
+  .geste-why,
+  .geste-sensoriel,
+  .gestes-freq,
+  .gestes-intention-text,
+  .palp-desc,
+  .palp-note span,
+  .accomp-pitch p,
+  .accomp-list li,
+  .accomp-note-finale,
+  .accomp-email-sub,
+  .email-note{
+    font-size:16px!important;
+    line-height:1.84!important;
+  }
+  .venn-intro,
+  .obs-intro,
+  .traj-intro{
+    max-width:none!important;
+    text-align:left!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    margin-bottom:24px!important;
+  }
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:100%!important;
+    max-width:none!important;
+    margin:0 0 28px!important;
+    padding:18px!important;
+    border-radius:18px!important;
+    text-align:left!important;
+    font-size:16px!important;
+    line-height:1.78!important;
+  }
+  .aller-a-link{min-height:40px!important;padding:0 14px!important;font-size:13.5px!important;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.001ms!important;
+  }
+}
 </style>
 </head>
 
@@ -4071,11 +4657,15 @@ body.state-active .ici-card {
         <a href="/a-propos.html">À propos</a>
         <a href="/methode.html">Méthode</a>
         <a href="/test.html">Échelle Foébé</a>
-        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+        <a href="/foebe-zones-cadre.html" aria-current="page">Les 7 zones</a>
         <a href="/boussole-accueil-foebe.html">Boussole</a>
         <a href="mailto:foebecosmetics@gmail.com">Contact</a>
       </div>
     </nav>
+<noscript class="noscript-foebe">
+  <p>Cette page utilise JavaScript pour afficher certains contenus interactifs. Active JavaScript pour accéder au mini-test et aux gestes Foébé.</p>
+</noscript>
+
 
     <div id="pageProgress">
         <div id="pageProgressFill"></div>
@@ -4214,7 +4804,9 @@ body.state-active .ici-card {
                         <h2 class="chapter-title" id="impactsTitle"></h2>
                     </div>
                 </div>
-                <p class="impacts-intro" id="impactsIntro"></p>
+                <div class="impacts-intro impact-transition-box" id="impactsIntro" style="display:block!important;width:min(100%,760px)!important;max-width:760px!important;margin:0 auto 36px!important;padding:22px 26px!important;border-radius:22px!important;background:radial-gradient(circle at 12% 0%, rgba(240,234,231,.14), transparent 38%), linear-gradient(135deg, rgba(106,180,232,.18), rgba(0,0,0,.10)), #1A4060!important;border:1px solid rgba(106,180,232,.42)!important;box-shadow:0 18px 44px rgba(0,0,0,.14)!important;color:#F0EAE7!important;font-family:'Lora',serif!important;font-size:clamp(16px,.55vw + 14px,17px)!important;line-height:1.78!important;text-align:center!important;font-style:normal!important;box-sizing:border-box!important;">
+                    Une dérégulation émotionnelle ne reste pas cantonnée aux moments de réaction. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.
+                </div>
                 <div class="impacts-timeline" id="impactsTimeline"></div>
             </div>
 
@@ -5123,7 +5715,7 @@ body.state-active .ici-card {
             });
         })();
     </script>
-    <script src="/foebe-shell.js"></script>
+  <script src="/foebe-shell.js"></script>
 </body>
 
 </html>
