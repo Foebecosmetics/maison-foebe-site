@@ -4016,6 +4016,217 @@ body.state-active .ici-card {
           z-index: 900 !important;
         }
 
+
+
+/* ============================================================
+   FOÉBÉ — PATCH LISIBILITÉ PREMIUM v1
+   Injection chirurgicale — ne pas modifier les règles sources
+   ============================================================ */
+
+/* Tokens de lecture */
+[data-theme="day"] {
+  --read: rgba(78,41,31,.88);
+  --read-soft: rgba(78,41,31,.80);
+  --read-strong: #4E291F;
+}
+[data-theme="night"] {
+  --read: rgba(240,234,231,.90);
+  --read-soft: rgba(240,234,231,.82);
+  --read-strong: #F0EAE7;
+}
+
+/* ── Paragraphes d'apprentissage : taille desktop/tablette ── */
+.zone-intro-text,
+.warning-foebe,
+.pitch-val,
+.ici-states-guide,
+.state-def-text,
+.venn-intro,
+.facteur-desc,
+.vr-note,
+.obs-intro,
+.obs-card-sub,
+.obs-result-text,
+.impacts-intro,
+.impact-desc,
+.geste-text,
+.geste-why,
+.geste-sensoriel,
+.gestes-freq,
+.gestes-intention-text,
+.palp-desc,
+.palp-note span,
+.accomp-pitch p,
+.accomp-list li,
+.accomp-note-finale,
+.accomp-email-sub,
+.email-note,
+.footer-copyright {
+  font-size: clamp(16px, .72vw + 13px, 17px) !important;
+  line-height: 1.82 !important;
+}
+
+/* ── Couleur lecture — fonds clairs ── */
+.zone-intro-text,
+.warning-foebe,
+.ici-states-guide,
+.venn-intro,
+.facteur-desc,
+.obs-intro,
+.obs-card-sub,
+.obs-result-text,
+.impacts-intro,
+.impact-desc,
+.geste-text,
+.geste-why,
+.geste-sensoriel,
+.gestes-intention-text,
+.accomp-pitch p,
+.accomp-list li,
+.accomp-note-finale,
+.email-note,
+.footer-copyright {
+  color: var(--read) !important;
+}
+
+/* ── Couleur lecture — fonds foncés (warm/bordeaux) ── */
+.pitch-val,
+.state-def-text,
+.vr-note,
+.gestes-freq,
+.accomp-email-sub {
+  color: rgba(240,234,231,.93) !important;
+}
+
+/* ── Bloc crédibilité Foébé ── */
+.accomp-pitch,
+[data-theme="day"] .accomp-pitch,
+[data-theme="night"] .accomp-pitch {
+  background: #4E291F !important;
+  border-color: rgba(240,234,231,.72) !important;
+}
+.accomp-pitch p,
+[data-theme="day"] .accomp-pitch p,
+[data-theme="night"] .accomp-pitch p {
+  color: #F0EAE7 !important;
+  font-size: clamp(16px, .72vw + 13px, 17px) !important;
+  line-height: 1.86 !important;
+}
+.accomp-pitch strong,
+[data-theme="day"] .accomp-pitch strong,
+[data-theme="night"] .accomp-pitch strong {
+  color: #F0EAE7 !important;
+}
+
+/* ── Section Outils Foébé (pour-aller-plus-loin) ── */
+.pour-aller-plus-loin,
+[data-theme="day"] .pour-aller-plus-loin,
+[data-theme="night"] .pour-aller-plus-loin {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(187,126,96,.22), transparent 36%),
+    linear-gradient(180deg, rgba(240,234,231,.055), rgba(240,234,231,.018)),
+    #4E291F !important;
+  border: 1px solid rgba(187,126,96,.42) !important;
+  box-shadow: 0 18px 52px rgba(78,41,31,.20) !important;
+}
+.pour-aller-plus-loin .palp-eyebrow,
+.pour-aller-plus-loin .palp-title,
+.pour-aller-plus-loin .palp-label,
+.pour-aller-plus-loin .palp-name,
+.pour-aller-plus-loin .palp-cta {
+  color: #F0EAE7 !important;
+}
+.pour-aller-plus-loin .palp-desc,
+.pour-aller-plus-loin .palp-note span {
+  color: rgba(240,234,231,.88) !important;
+}
+
+/* ── Sommaire interne ── */
+.aller-a-label {
+  font-size: 12px !important;
+  letter-spacing: 1.8px !important;
+}
+.aller-a-link {
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+}
+
+/* ── Responsive tablette portrait + paysage ── */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .page {
+    max-width: 960px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  .facteur-item {
+    padding: 26px 28px !important;
+    gap: 20px !important;
+  }
+  .impact-item {
+    gap: 26px !important;
+    padding-bottom: 40px !important;
+  }
+  .geste-card {
+    padding: 26px 28px !important;
+  }
+  .palp-card {
+    padding: 28px 26px 30px !important;
+  }
+  .aller-a-links {
+    max-width: 760px !important;
+    gap: 10px 12px !important;
+  }
+  .aller-a-link {
+    min-height: 44px !important;
+    padding: 0 18px !important;
+    font-size: 14.5px !important;
+  }
+}
+
+/* ── Responsive téléphone ── */
+@media (max-width: 767px) {
+  .zone-intro-text,
+  .warning-foebe,
+  .pitch-val,
+  .ici-states-guide,
+  .state-def-text,
+  .venn-intro,
+  .facteur-desc,
+  .vr-note,
+  .obs-intro,
+  .obs-card-sub,
+  .obs-result-text,
+  .impacts-intro,
+  .impact-desc,
+  .geste-text,
+  .geste-why,
+  .geste-sensoriel,
+  .gestes-freq,
+  .gestes-intention-text,
+  .palp-desc,
+  .palp-note span,
+  .accomp-pitch p,
+  .accomp-list li,
+  .accomp-note-finale,
+  .accomp-email-sub,
+  .email-note {
+    font-size: 16px !important;
+    line-height: 1.84 !important;
+  }
+  .page {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .aller-a-link {
+    min-height: 40px !important;
+    padding: 0 14px !important;
+    font-size: 13.5px !important;
+  }
+}
+
     </style>
 </head>
 
