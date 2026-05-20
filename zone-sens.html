@@ -344,21 +344,44 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
+
+    <style id="fallbackNavCritical">
+/* Fallback nav critique — exigé par le prompt Premium Foébé.
+   Le Shell masque/remplace cette navigation quand /foebe-shell.js charge correctement. */
+.fallback-nav{position:fixed;top:0;left:0;right:0;z-index:950;min-height:60px;padding:0 clamp(14px,3vw,28px);display:flex;align-items:center;justify-content:space-between;gap:18px;overflow:hidden;white-space:nowrap;background:rgba(78,41,31,.94);border-bottom:1px solid rgba(187,126,96,.34);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-family:'Poppins',sans-serif;}
+[data-theme="day"] .fallback-nav{background:rgba(240,234,231,.94);border-bottom-color:rgba(78,41,31,.16);}
+[data-theme="night"] .fallback-nav{background:rgba(78,41,31,.94);border-bottom-color:rgba(187,126,96,.34);}
+.fallback-logo{font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.06em;line-height:1;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;flex:0 0 auto;}
+[data-theme="night"] .fallback-logo span{color:#F0EAE7;}
+[data-theme="day"] .fallback-logo span:nth-child(1),[data-theme="day"] .fallback-logo span:nth-child(5){color:#4E291F;}
+[data-theme="day"] .fallback-logo span:nth-child(2){color:#BB7E60;}
+[data-theme="day"] .fallback-logo span:nth-child(3){color:#C45279;}
+[data-theme="day"] .fallback-logo span:nth-child(4){color:#C34234;}
+.fallback-links{display:flex;align-items:center;gap:8px;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.fallback-links::-webkit-scrollbar{display:none;}
+.fallback-links a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 12px;border-radius:999px;color:rgba(240,234,231,.82);font-size:12px;font-weight:600;text-decoration:none;flex:0 0 auto;}
+[data-theme="day"] .fallback-links a{color:rgba(78,41,31,.78);}
+.fallback-links a:hover,.fallback-links a:focus-visible{background:rgba(187,126,96,.14);color:#F0EAE7;outline:2px solid #BB7E60;outline-offset:2px;}
+[data-theme="day"] .fallback-links a:hover,[data-theme="day"] .fallback-links a:focus-visible{color:#4E291F;}
+@media(max-width:720px){.fallback-nav{gap:12px;padding-inline:14px}.fallback-links{gap:6px}.fallback-links a{font-size:11.5px;padding:0 10px;}}
+@media(max-width:420px){.fallback-logo{font-size:16px}.fallback-links a{min-height:38px;font-size:11px;padding:0 9px;}}
+</style>
+
     <style>
         :root {
-            --z: ;
-            --z-mid: ;
-            --z-lite: ;
-            --z-dim: ;
-            --z-r: ;
-            --z-g: ;
-            --z-b: ;
-            --z-mid-r: ;
-            --z-mid-g: ;
-            --z-mid-b: ;
-            --z-lite-r: ;
-            --z-lite-g: ;
-            --z-lite-b: ;
+            --z: #3A2260;
+            --z-mid: #6A4AA8;
+            --z-lite: #A68FD8;
+            --z-dim: rgba(106, 74, 168, .13);
+            --z-r: 58;
+            --z-g: 34;
+            --z-b: 96;
+            --z-mid-r: 106;
+            --z-mid-g: 74;
+            --z-mid-b: 168;
+            --z-lite-r: 166;
+            --z-lite-g: 143;
+            --z-lite-b: 216;
             --bordeaux: #4E291F;
             --warm: #BB7E60;
             --warm-dark: #7A4A28;
@@ -371,29 +394,47 @@
 
         [data-theme="day"] {
             --bg: #F0EAE7;
-            --bg2: #E4D9D3;
+            --bg2: #E8DDD8;
+            --bg3: #DDD0CB;
             --text: #4E291F;
-            --sub: rgba(44, 26, 18, 0.68);
-            --dim: rgba(44, 26, 18, 0.65);
+            --sub: rgba(78, 41, 31, 0.76);
+            --muted: rgba(78, 41, 31, 0.74);
+            --soft: rgba(78, 41, 31, 0.58);
+            --dim: rgba(78, 41, 31, 0.48);
+            --read: rgba(78, 41, 31, .88);
+            --read-soft: rgba(78, 41, 31, .80);
+            --read-strong: #4E291F;
             --nav-bg: rgba(240, 234, 231, 0.96);
             --card: #ffffff;
-            --border: rgba(30, 61, 42, 0.12);
-            --surface: rgba(30, 61, 42, 0.05);
-            --shadow: rgba(30, 61, 42, 0.08);
-            --shadow-lg: rgba(30, 61, 42, 0.16);
+            --card2: rgba(187, 126, 96, .10);
+            --border: rgba(78, 41, 31, 0.14);
+            --line: rgba(187, 126, 96, .32);
+            --line2: rgba(78, 41, 31, .12);
+            --surface: rgba(78, 41, 31, 0.05);
+            --shadow: rgba(78, 41, 31, 0.08);
+            --shadow-lg: rgba(78, 41, 31, 0.16);
         }
 
         [data-theme="night"] {
             --bg: #4E291F;
             --bg2: #3A1A10;
+            --bg3: #2C1A12;
             --text: #F0EAE7;
             --sub: rgba(240, 234, 231, 0.78);
-            --dim: rgba(240, 234, 231, 0.62);
+            --muted: rgba(240, 234, 231, 0.74);
+            --soft: rgba(240, 234, 231, 0.58);
+            --dim: rgba(240, 234, 231, 0.42);
+            --read: rgba(240, 234, 231, .90);
+            --read-soft: rgba(240, 234, 231, .82);
+            --read-strong: #F0EAE7;
             --nav-bg: rgba(58, 26, 16, 0.97);
-            --card: rgba(240, 234, 231, 0.06);
+            --card: rgba(240, 234, 231, 0.055);
+            --card2: rgba(187, 126, 96, .12);
             --border: rgba(240, 234, 231, 0.12);
+            --line: rgba(187, 126, 96, .32);
+            --line2: rgba(240, 234, 231, .12);
             --surface: rgba(240, 234, 231, 0.06);
-            --shadow: rgba(0, 0, 0, 0.20);
+            --shadow: rgba(0, 0, 0, 0.28);
             --shadow-lg: rgba(0, 0, 0, 0.35);
         }
 
@@ -3856,6 +3897,295 @@ body.state-active .ici-card {
   opacity: 1;
 }
 
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CORRECTION PREMIUM FINALE — Zone Sens
+   Application stricte du prompt Foébé v3 : lisibilité, sommaire,
+   fallback CSS renforcé, Outils, crédibilité, responsive tablette.
+═══════════════════════════════════════════════════════════════ */
+.zone-intro-text,
+.warning-foebe,
+.pitch-val,
+.ici-states-guide,
+.state-def-text,
+.venn-intro,
+.facteur-desc,
+.vr-note,
+.obs-intro,
+.obs-card-sub,
+.obs-result-text,
+.impacts-intro,
+.impact-desc,
+.geste-text,
+.geste-why,
+.geste-sensoriel,
+.gestes-freq,
+.gestes-intention-text,
+.palp-desc,
+.palp-note span,
+.accomp-pitch p,
+.accomp-list li,
+.accomp-note-finale,
+.accomp-email-sub,
+.email-note,
+.footer-copyright{
+  font-size:clamp(16px, .72vw + 13px, 17px) !important;
+  line-height:1.82 !important;
+  color:var(--read) !important;
+}
+
+.pitch-val,
+.state-def-text,
+.vr-note,
+.gestes-freq,
+.accomp-email-sub{
+  color:rgba(240,234,231,.93) !important;
+}
+
+.aller-a-label{
+  font-size:12px !important;
+  letter-spacing:1.8px !important;
+}
+
+.aller-a-link{
+  min-height:42px !important;
+  padding:0 16px !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  line-height:1.25 !important;
+}
+
+.pour-aller-plus-loin,
+[data-theme="day"] .pour-aller-plus-loin,
+[data-theme="night"] .pour-aller-plus-loin{
+  background:
+    radial-gradient(circle at 12% 0%, rgba(187,126,96,.22), transparent 36%),
+    linear-gradient(180deg, rgba(240,234,231,.055), rgba(240,234,231,.018)),
+    #4E291F !important;
+  border:1px solid rgba(187,126,96,.42) !important;
+  box-shadow:0 18px 52px rgba(78,41,31,.20) !important;
+}
+
+.pour-aller-plus-loin .palp-eyebrow,
+.pour-aller-plus-loin .palp-title,
+.pour-aller-plus-loin .palp-label,
+.pour-aller-plus-loin .palp-name,
+.pour-aller-plus-loin .palp-cta{
+  color:#F0EAE7 !important;
+}
+
+.pour-aller-plus-loin .palp-desc,
+.pour-aller-plus-loin .palp-note span{
+  color:rgba(240,234,231,.88) !important;
+}
+
+.accomp-pitch,
+[data-theme="day"] .accomp-pitch,
+[data-theme="night"] .accomp-pitch{
+  background:#4E291F !important;
+  border-color:rgba(240,234,231,.72) !important;
+}
+
+.accomp-pitch p,
+[data-theme="day"] .accomp-pitch p,
+[data-theme="night"] .accomp-pitch p{
+  color:#F0EAE7 !important;
+  font-size:clamp(16px, .72vw + 13px, 17px) !important;
+  line-height:1.86 !important;
+}
+
+.accomp-pitch strong,
+[data-theme="day"] .accomp-pitch strong,
+[data-theme="night"] .accomp-pitch strong{
+  color:#F0EAE7 !important;
+}
+
+/* Fallback CSS renforcé : sans JS, le contenu reste visible. */
+.reveal,
+.impact-item,
+.geste-card,
+.traj-item{
+  opacity:1;
+  transform:none;
+  visibility:visible;
+}
+
+.js-ready .reveal,
+.js-ready .geste-card,
+.js-ready .traj-item{
+  opacity:0;
+  transform:translateY(20px);
+}
+
+.js-ready .impact-item{
+  visibility:visible;
+}
+
+.js-ready .reveal.visible,
+.js-ready .impact-item.visible,
+.js-ready .impact-item.lit,
+.js-ready .geste-card.visible,
+.js-ready .traj-item.visible{
+  opacity:1;
+  transform:none;
+  visibility:visible;
+}
+
+@media(max-width:767px){
+  .page{
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+
+  .zone-intro-text,
+  .warning-foebe,
+  .pitch-val,
+  .ici-states-guide,
+  .state-def-text,
+  .venn-intro,
+  .facteur-desc,
+  .vr-note,
+  .obs-intro,
+  .obs-card-sub,
+  .obs-result-text,
+  .impacts-intro,
+  .impact-desc,
+  .geste-text,
+  .geste-why,
+  .geste-sensoriel,
+  .gestes-freq,
+  .gestes-intention-text,
+  .palp-desc,
+  .palp-note span,
+  .accomp-pitch p,
+  .accomp-list li,
+  .accomp-note-finale,
+  .accomp-email-sub,
+  .email-note{
+    font-size:16px !important;
+    line-height:1.84 !important;
+  }
+
+  .aller-a-link{
+    min-height:40px !important;
+    padding:0 14px !important;
+    font-size:13.5px !important;
+  }
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  .page{
+    max-width:960px !important;
+    padding-left:40px !important;
+    padding-right:40px !important;
+  }
+
+  .aller-a{
+    margin-top:32px !important;
+    margin-bottom:10px !important;
+  }
+
+  .aller-a-links{
+    max-width:760px !important;
+    gap:10px 12px !important;
+  }
+
+  .aller-a-link{
+    min-height:44px !important;
+    padding:0 18px !important;
+    font-size:14.5px !important;
+  }
+
+  .facteur-item{
+    padding:26px 28px !important;
+    gap:20px !important;
+  }
+
+  .impact-item{
+    gap:26px !important;
+    padding-bottom:40px !important;
+  }
+
+  .geste-card{
+    padding:26px 28px !important;
+  }
+
+  .palp-card{
+    padding:28px 26px 30px !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+
+
+/* PATCH FOÉBÉ — encart de transition Effets en cascade
+   Le texte #impactsIntro devient un vrai cadre éditorial couleur zone,
+   comme sur Zone Émotions, sans dépendre d'un fond orange/warm. */
+#impactsIntro.impact-transition-box,
+.impacts-section #impactsIntro.impact-transition-box{
+  display:block !important;
+  box-sizing:border-box !important;
+  width:min(100%,760px) !important;
+  max-width:760px !important;
+  margin:0 auto 36px !important;
+  padding:22px 26px !important;
+  border-radius:22px !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(240,234,231,.14), transparent 38%),
+    linear-gradient(135deg, rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.18), rgba(0,0,0,.10)),
+    var(--z) !important;
+  border:1px solid rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.42) !important;
+  box-shadow:0 18px 44px rgba(0,0,0,.14) !important;
+  color:#F0EAE7 !important;
+  font-family:"Lora",serif !important;
+  font-size:clamp(16px,.55vw + 14px,17px) !important;
+  line-height:1.78 !important;
+  text-align:center !important;
+  font-style:normal !important;
+}
+
+#impactsIntro.impact-transition-box *{
+  color:#F0EAE7 !important;
+}
+
+[data-theme="day"] #impactsIntro.impact-transition-box,
+[data-theme="day"] .impacts-section #impactsIntro.impact-transition-box{
+  color:#F0EAE7 !important;
+  box-shadow:0 18px 42px rgba(78,41,31,.14) !important;
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:min(100%,720px) !important;
+    padding:22px 24px !important;
+    margin-bottom:34px !important;
+  }
+}
+
+@media(max-width:767px){
+  #impactsIntro.impact-transition-box,
+  .impacts-section #impactsIntro.impact-transition-box{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 0 28px !important;
+    padding:18px 18px !important;
+    border-radius:18px !important;
+    font-size:16px !important;
+    line-height:1.78 !important;
+    text-align:left !important;
+  }
+}
+
 </style>
 </head>
 
@@ -4013,7 +4343,9 @@ body.state-active .ici-card {
                         <h2 class="chapter-title" id="impactsTitle"></h2>
                     </div>
                 </div>
-                <p class="impacts-intro" id="impactsIntro"></p>
+                <div class="impacts-intro impact-transition-box" id="impactsIntro">
+                    Une déconnexion au sens ne reste pas cantonnée au domaine existentiel. Concrètement, elle finit par peser sur le reste de ton self-care de façon de plus en plus visible.
+                </div>
                 <div class="impacts-timeline" id="impactsTimeline"></div>
             </div>
 
@@ -4747,6 +5079,29 @@ body.state-active .ici-card {
                 else if (c) resetCard(c);
             });
         })();
+
+        (function() {
+            var revealItems = document.querySelectorAll('.reveal, .impact-item, .geste-card, .traj-item');
+            if (!revealItems.length) return;
+            if (!('IntersectionObserver' in window)) {
+                revealItems.forEach(function(item) {
+                    item.classList.add('visible');
+                    if (item.classList.contains('impact-item')) item.classList.add('lit');
+                });
+                return;
+            }
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        if (entry.target.classList.contains('impact-item')) entry.target.classList.add('lit');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealItems.forEach(function(item) { observer.observe(item); });
+        })();
+
         (function() {
             var cards = document.querySelectorAll(".geste-card");
             if (!cards.length) return;
