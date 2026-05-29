@@ -97,6 +97,44 @@
   ═══════════════════════════════════════════════════════════════════════════ */
   var currentFile = (window.location.pathname.split("/").pop() || "index.html").split("?")[0].split("#")[0];
   if (!currentFile) currentFile = "index.html";
+
+  /*
+   * Normalisation page active — Maison Foébé
+   * Permet à l'état actif du menu de fonctionner aussi pendant les tests locaux
+   * avec des fichiers versionnés : methode-v7.html, pratiquer-maison-foebe-v9.html, etc.
+   */
+  function normalizeCurrentFile(file) {
+    file = (file || "index.html").toLowerCase();
+    try { file = decodeURIComponent(file); } catch (e) {}
+
+    if (file === "" || file === "/" || file === "index" || file.indexOf("index-") === 0 || file.indexOf("index_") === 0) return "index.html";
+
+    if (file === "comprendre" || file.indexOf("comprendre") === 0) return "comprendre.html";
+    if (file === "pratiquer" || file.indexOf("pratiquer") === 0) return "pratiquer.html";
+    if (file === "methode" || file === "méthode" || file.indexOf("methode") === 0 || file.indexOf("méthode") === 0) return "methode.html";
+    if (file === "a-propos" || file.indexOf("a-propos") === 0 || file.indexOf("apropos") === 0) return "a-propos.html";
+
+    if (file === "test" || file.indexOf("test") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "test.html";
+    if (file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0) return "foebe-zones-cadre.html";
+    if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
+    if (file === "boussole-accueil-foebe" || file.indexOf("boussole") === 0) return "boussole-accueil-foebe.html";
+
+    if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
+    if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
+    if (file.indexOf("zone-mental") === 0) return "zone-mental.html";
+    if (file.indexOf("zone-emotions") === 0 || file.indexOf("zone-émotions") === 0) return "zone-emotions.html";
+    if (file.indexOf("zone-environnement") === 0) return "zone-environnement.html";
+    if (file.indexOf("zone-relations") === 0) return "zone-relations.html";
+    if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
+
+    if (file === "stories" || file.indexOf("stories") === 0 || file.indexOf("lexique") === 0) return "stories.html";
+    if (file === "dictionnaire" || file.indexOf("dictionnaire") === 0) return "dictionnaire.html";
+
+    return file;
+  }
+
+  currentFile = normalizeCurrentFile(currentFile);
+
   var zonesFiles = {
     "zone-energie.html": true,
     "zone-corps.html": true,
@@ -115,15 +153,15 @@
       { href: "index.html", label: "Accueil" }
     ]},
     { pole: "Découvrir", links: [
-      { href: "comprendre.html", label: "Point de départ" },
+      { href: "comprendre.html", label: "Comprendre" },
       { href: "a-propos.html",   label: "À propos"   },
       { href: "methode.html",    label: "La méthode" }
     ]},
     { pole: "Pratiquer", links: [
-      { href: "pratiquer.html",              label: "4 outils" },
+      { href: "pratiquer.html",              label: "Pratiquer" },
       { href: "test.html",                   label: "Échelle Foébé" },
-      { href: "foebe-zones-cadre.html",      label: "Comprendre les 7 zones", activeWhenZones: true },
-      { href: "respiration.html",            label: "Respiration guidée" },
+      { href: "foebe-zones-cadre.html",      label: "Les 7 zones", activeWhenZones: true },
+      { href: "respiration.html",            label: "Respiration" },
       { href: "boussole-accueil-foebe.html", label: "La Boussole" }
     ]},
     { pole: "Ressources", links: [
@@ -133,7 +171,8 @@
   ];
 
   function isCurrentLink(link) {
-    return link.href === currentFile || (link.activeWhenZones && zonesFiles[currentFile]);
+    var linkFile = normalizeCurrentFile(link.href);
+    return linkFile === currentFile || (link.activeWhenZones && zonesFiles[currentFile]);
   }
 
   function buildNavHTML() {
