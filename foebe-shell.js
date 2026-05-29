@@ -44,7 +44,7 @@
     "#navOverlay.open{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}",
     "[data-theme='day'] #navOverlay{background:rgba(78,41,31,.12)!important;}",
 
-    ".nav-panel-inner{max-width:1040px!important;margin:0 auto!important;padding:34px clamp(20px,4vw,40px) 38px!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(24px,4vw,54px)!important;}",
+    ".nav-panel-inner{max-width:1040px!important;margin:0 auto!important;padding:34px clamp(20px,4vw,40px) 38px!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(18px,3vw,42px)!important;}",
     ".nav-pole{display:flex!important;flex-direction:column!important;min-width:0!important;}",
     ".nav-pole-label{font-family:'Poppins',sans-serif!important;font-size:10px!important;font-weight:700!important;letter-spacing:2.2px!important;text-transform:uppercase!important;color:#BB7E60!important;padding-bottom:12px!important;margin-bottom:8px!important;border-bottom:1px solid rgba(187,126,96,.30)!important;}",
     ".nav-link{font-family:'Poppins',sans-serif!important;font-size:13px!important;font-weight:500!important;color:var(--text,#F0EAE7)!important;text-decoration:none!important;padding:10px 10px!important;border-radius:12px!important;min-height:42px!important;display:flex!important;align-items:center!important;position:relative!important;isolation:isolate!important;transition:color .18s ease,background .18s ease,padding-left .18s ease,transform .18s ease!important;}",
@@ -107,6 +107,9 @@
      3. INJECTION DU NAV
   ═══════════════════════════════════════════════════════════════════════════ */
   var NAV_STRUCTURE = [
+    { pole: "Accueil", links: [
+      { href: "index.html", label: "Accueil" }
+    ]},
     { pole: "Comprendre", links: [
       { href: "a-propos.html",  label: "À propos"   },
       { href: "methode.html",   label: "La méthode" }
@@ -388,3 +391,4 @@ if (fallbackNav) {
   fallbackNav.style.display = "none";
 }
 })();
+
