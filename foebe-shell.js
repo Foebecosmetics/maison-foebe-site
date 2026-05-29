@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version premium responsive — nav/footer unifiés sur toutes les pages
+ * Version premium responsive — nav/footer unifiés avec Accueil, Comprendre et Pratiquer
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -54,6 +54,10 @@
     ".nav-link:hover::before,.nav-link[aria-current='page']::before{opacity:1!important;transform:scale(1)!important;}",
     ".nav-link:hover::after,.nav-link[aria-current='page']::after{opacity:1!important;transform:translateY(-50%) scale(1)!important;}",
     ".nav-link[aria-current='page']{color:#BB7E60!important;padding-left:22px!important;font-weight:700!important;}",
+    ".nav-link[aria-current='page']{background:#BB7E60!important;color:#F0EAE7!important;border-color:#BB7E60!important;box-shadow:0 12px 26px rgba(187,126,96,.22)!important;}",
+    ".nav-link[aria-current='page']::before{opacity:0!important;transform:scale(1)!important;}",
+    ".nav-link[aria-current='page']::after{background:#F0EAE7!important;opacity:1!important;transform:translateY(-50%) scale(1)!important;}",
+    ".nav-link[aria-current='page']:hover{background:#BB7E60!important;color:#F0EAE7!important;padding-left:22px!important;transform:translateX(2px)!important;}",
     ".nav-link:focus-visible{outline:2px solid #BB7E60!important;outline-offset:3px!important;}",
 
     "footer{background:#2C1A12!important;color:#F0EAE7!important;padding:60px 24px 40px!important;border-top:1px solid rgba(187,126,96,.28)!important;text-align:center!important;}",
@@ -110,11 +114,13 @@
     { pole: "Accueil", links: [
       { href: "index.html", label: "Accueil" }
     ]},
-    { pole: "Comprendre", links: [
-      { href: "a-propos.html",  label: "À propos"   },
-      { href: "methode.html",   label: "La méthode" }
+    { pole: "Découvrir", links: [
+      { href: "comprendre.html", label: "Comprendre" },
+      { href: "a-propos.html",   label: "À propos"   },
+      { href: "methode.html",    label: "La méthode" }
     ]},
-    { pole: "Explorer", links: [
+    { pole: "Pratiquer", links: [
+      { href: "pratiquer.html",              label: "Pratiquer" },
       { href: "test.html",                   label: "Échelle Foébé" },
       { href: "foebe-zones-cadre.html",      label: "Les 7 zones", activeWhenZones: true },
       { href: "respiration.html",            label: "Respiration" },
@@ -212,6 +218,8 @@
       '<div class="footer-links">' +
         '<a class="footer-link" href="mentions.html">Mentions légales</a>' +
         '<a class="footer-link" href="mailto:foebecosmetics@gmail.com">Contact</a>' +
+        '<a class="footer-link" href="comprendre.html">Comprendre</a>' +
+        '<a class="footer-link" href="pratiquer.html">Pratiquer</a>' +
         '<a class="footer-link" href="a-propos.html">À propos</a>' +
         '<a class="footer-link" href="methode.html">Méthode</a>' +
       '</div>' +
@@ -391,4 +399,3 @@ if (fallbackNav) {
   fallbackNav.style.display = "none";
 }
 })();
-
