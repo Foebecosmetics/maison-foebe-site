@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="night">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Anti-FOUC thème — NE PAS MODIFIER -->
+<script>
+(function(){
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script>
+<script>
+document.documentElement.classList.add('js-ready');
+</script>
 <title>Test Self-Care — Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -11,7 +21,7 @@
   <link rel="manifest" href="/site.webmanifest">
 <meta name="robots" content="index, follow">
 <meta name="description" content="Explore les 7 dimensions de ton self-care en 21 affirmations. Identifie ta zone prioritaire et reçois des pistes concrètes. Test gratuit · 5 minutes · Maison Foébé.">
-<link rel="canonical" href="https://maisonfoebe.fr/test">
+<link rel="canonical" href="https://maisonfoebe.fr/test.html">
 <meta property="og:title" content="Test Self-Care — Maison Foébé">
 <meta property="og:description" content="21 affirmations pour explorer les 7 dimensions de ton self-care. Identifie ta zone prioritaire et reçois des pistes concrètes.">
 <meta property="og:type" content="website">
@@ -27,7 +37,200 @@
 <meta name="twitter:image" content="https://maisonfoebe.fr/images/og-foebe.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Test Self-Care — Maison Foébé","description":"Explore les 7 dimensions de ton self-care en 21 affirmations. Identifie ta zone prioritaire et reçois des pistes concrètes.","url":"https://maisonfoebe.fr/test.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé — l'observatoire"}}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style id="fallbackNavCritical">
+/* FALLBACK NAV CRITIQUE — Maison Foébé */
+body > nav#fallbackNav.fallback-nav{
+  position:fixed;top:0;left:0;right:0;z-index:950;
+  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:rgba(78,41,31,.94);border-bottom:1px solid rgba(187,126,96,.34);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 2px 14px rgba(0,0,0,.16);font-family:'Poppins',sans-serif;box-sizing:border-box;
+}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav{
+  background:rgba(240,234,231,.94);border-bottom-color:rgba(78,41,31,.16);box-shadow:0 2px 14px rgba(78,41,31,.08);
+}
+body > nav#fallbackNav.fallback-nav .fallback-logo{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.06em;line-height:1;
+  text-decoration:none;display:inline-flex;align-items:center;min-height:44px;flex:0 0 auto;max-width:42vw;white-space:nowrap;
+}
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{color:#F0EAE7;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){color:#4E291F;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2){color:#BB7E60;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3){color:#C45279;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4){color:#C34234;}
+body > nav#fallbackNav.fallback-nav .fallback-links{
+  display:flex;flex:1 1 auto;align-items:center;justify-content:flex-end;gap:6px;min-width:0;overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;
+}
+body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar{display:none;}
+body > nav#fallbackNav.fallback-nav .fallback-links>a{
+  min-height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0 11px;border-radius:999px;
+  color:var(--text,#F0EAE7);font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;white-space:nowrap;
+  flex:0 0 auto;text-decoration:none;border:1px solid transparent;opacity:.92;background:transparent;box-sizing:border-box;
+}
+body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
+body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
+  color:#F0EAE7;background:#BB7E60;border-color:#BB7E60;opacity:1;outline:none;
+}
+@media(max-width:720px){
+  body > nav#fallbackNav.fallback-nav{padding:0 12px;gap:12px;}
+  body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px;}
+  body > nav#fallbackNav.fallback-nav .fallback-links{justify-content:flex-start;}
+  body > nav#fallbackNav.fallback-nav .fallback-links>a{font-size:12px;padding:0 10px;}
+}
+@media(max-width:420px){
+  body > nav#fallbackNav.fallback-nav{gap:10px;padding:0 10px;}
+  body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px;max-width:36vw;}
+  body > nav#fallbackNav.fallback-nav .fallback-links>a{min-height:38px;font-size:12px;padding:0 10px;}
+}
+
+/* Corrections premium labels structurants — test */
+.gs-eyebrow,.radar-title,.priority-label,.evolution-title{
+  font-family:'Poppins',sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.35px;
+  line-height:1.25;
+  text-transform:uppercase;
+}
+[data-theme="day"] .gs-eyebrow,[data-theme="day"] .radar-title,[data-theme="day"] .priority-label,[data-theme="day"] .evolution-title{color:#4E291F;}
+[data-theme="night"] .radar-title,[data-theme="night"] .priority-label,[data-theme="night"] .evolution-title{color:#F0EAE7;}
+
+
+
+/* Correctif final — typographie responsive pour lecture fatiguée */
+.question-wrap{
+  max-width:min(760px,100%) !important;
+}
+.q-top{
+  max-height:58vh !important;
+}
+.q-text{
+  font-size:clamp(21px,2.15vw,34px) !important;
+  line-height:1.62 !important;
+  min-height:clamp(112px,15vh,172px) !important;
+  max-width:760px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.q-hint{
+  font-size:clamp(15.5px,.55vw + 13.5px,18.5px) !important;
+  line-height:1.65 !important;
+  min-height:52px !important;
+  max-width:700px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.q-counter,
+.likert-extremes{
+  font-size:14px !important;
+  line-height:1.45 !important;
+}
+.intro-wrap,
+.consent-wrap,
+.results-wrap{
+  max-width:min(660px,100%) !important;
+}
+.intro-text,
+.consent-text,
+.too-fast-body{
+  font-size:clamp(17.5px,.7vw + 15px,20px) !important;
+  line-height:1.85 !important;
+}
+.intro-consigne,
+.priority-text,
+.axe-insight,
+.gs-desc,
+.evolution-subtitle{
+  font-size:clamp(15.5px,.45vw + 14px,18px) !important;
+  line-height:1.75 !important;
+}
+.intro-note{
+  font-size:clamp(15px,.35vw + 13.5px,16.5px) !important;
+  line-height:1.7 !important;
+}
+.pill{
+  font-size:12.5px !important;
+  line-height:1.45 !important;
+}
+
+@media(min-width:1200px){
+  .question-wrap{
+    max-width:820px !important;
+  }
+  .q-text{
+    font-size:36px !important;
+    line-height:1.58 !important;
+    min-height:172px !important;
+  }
+  .q-hint{
+    font-size:19px !important;
+    line-height:1.62 !important;
+  }
+  .likert-btn{
+    width:70px !important;
+    height:70px !important;
+    font-size:23px !important;
+  }
+}
+
+@media(min-width:768px) and (max-width:1199px){
+  .question-wrap{
+    max-width:720px !important;
+  }
+  .q-text{
+    font-size:31px !important;
+    line-height:1.60 !important;
+    min-height:148px !important;
+  }
+  .q-hint{
+    font-size:17px !important;
+    line-height:1.65 !important;
+  }
+}
+
+@media(max-width:480px){
+  .question-wrap{
+    max-width:100% !important;
+  }
+  .q-top{
+    max-height:60vh !important;
+    padding-bottom:22px !important;
+  }
+  .q-text{
+    font-size:clamp(21px,6.1vw,24px) !important;
+    line-height:1.58 !important;
+    min-height:116px !important;
+  }
+  .q-hint{
+    font-size:15.5px !important;
+    line-height:1.62 !important;
+    min-height:52px !important;
+  }
+  .q-counter,
+  .likert-extremes{
+    font-size:13.5px !important;
+  }
+}
+
+@media(max-height:620px) and (orientation:landscape){
+  .q-text{
+    font-size:clamp(20px,3.2vw,25px) !important;
+    line-height:1.48 !important;
+    min-height:82px !important;
+  }
+  .q-hint{
+    font-size:15px !important;
+    line-height:1.48 !important;
+    min-height:38px !important;
+  }
+}
+
+</style>
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
@@ -80,28 +283,6 @@ body {
 @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(-30px,30px);}}
 @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,-20px);}}
 
-/* ── NAV ── */
-nav {
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:14px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--bg);border-bottom:1px solid var(--border);
-}
-.nav-logo {
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;
-  letter-spacing:-0.06em;color:var(--warm);text-decoration:none;
-}
-.nav-right { display:flex;align-items:center;gap:10px; }
-.theme-toggle {
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:20px;padding:7px 14px;font-size:12px;cursor:pointer;
-  color:var(--text-sub);font-family:'Poppins',sans-serif;
-  transition:all 0.2s;white-space:nowrap;font-weight:500;
-}
-.theme-toggle:hover { border-color:var(--warm);color:var(--warm); }
-.nav-back { font-size:12px;color:var(--text-dim);text-decoration:none;font-weight:500;transition:color 0.2s; }
-.nav-back:hover { color:var(--warm); }
-
 /* ── ÉCRANS ── */
 .screen {
   display:none;min-height:100vh;
@@ -120,9 +301,16 @@ nav {
 /* ── INTRO ── */
 .intro-wrap { max-width:500px;width:100%;text-align:center; }
 .eyebrow {
-  font-size:10px;letter-spacing:4px;text-transform:uppercase;
-  color:var(--warm);font-weight:600;margin-bottom:20px;display:block;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:max-content;max-width:100%;min-height:30px;
+  padding:7px 13px;border-radius:999px;
+  background:rgba(187,126,96,.14);border:1px solid rgba(187,126,96,.34);
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:1.35px;line-height:1.25;text-transform:uppercase;
+  color:var(--text);margin:0 auto 22px;
 }
+[data-theme="day"] .eyebrow{color:#4E291F;}
+[data-theme="night"] .eyebrow{color:#F0EAE7;background:rgba(187,126,96,.22);border-color:rgba(187,126,96,.46);}
 .intro-title {
   font-family:'Lora',serif;
   font-size:clamp(28px,6vw,46px);font-weight:400;
@@ -381,7 +569,6 @@ nav {
 
 /* ── RESPONSIVE ── */
 @media (max-width:380px) {
-  nav { padding:12px 14px; }
   .screen { padding:80px 16px 60px; }
   .likert-btn { width:48px;height:48px;font-size:17px;border-radius:12px; }
   .likert { gap:7px; }
@@ -389,7 +576,6 @@ nav {
   .intro-title { font-size:26px; }
   .global-shimmer { padding:32px 18px; }
   .radar-section { padding:22px 16px; }
-  .theme-toggle { font-size:11px;padding:6px 10px; }
 }
 @media (min-width:500px) {
   .likert-btn { width:60px;height:60px;font-size:20px; }
@@ -401,19 +587,202 @@ nav {
   .likert { gap:16px; }
   .q-text { font-size:26px; }
 }
+
+
+/* Correctif final — consentement et labels résultats lisibles */
+.consent-privacy-note{
+  font-family:'Lora',serif;
+  font-size:14px;
+  line-height:1.65;
+  color:var(--text-sub);
+  font-style:italic;
+  margin:-8px 0 18px;
+}
+.gs-eyebrow,
+.radar-title,
+.priority-label,
+.evolution-title{
+  font-family:'Poppins',sans-serif !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:1.35px !important;
+  line-height:1.25 !important;
+  text-transform:uppercase !important;
+}
+[data-theme="day"] .gs-eyebrow,
+[data-theme="day"] .radar-title,
+[data-theme="day"] .priority-label,
+[data-theme="day"] .evolution-title{
+  color:#4E291F !important;
+}
+[data-theme="night"] .radar-title,
+[data-theme="night"] .priority-label,
+[data-theme="night"] .evolution-title{
+  color:#F0EAE7 !important;
+}
+
+
+/* Correction premium — popup respiration */
+.breath-popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:500;
+  background:rgba(44,26,18,0.96);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 24px;
+  gap:0;
+}
+.breath-popup-title{
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#BB7E60;
+  font-weight:600;
+  margin-bottom:20px;
+  text-align:center;
+}
+.breath-popup-countdown{
+  font-family:'Lora',serif;
+  font-size:64px;
+  color:#F0EAE7;
+  line-height:1;
+  margin-bottom:0;
+  text-align:center;
+  transition:opacity 0.4s;
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.breath-popup-phase{
+  font-family:'Lora',serif;
+  font-size:26px;
+  font-style:italic;
+  color:#F0EAE7;
+  margin-bottom:6px;
+  text-align:center;
+  min-height:36px;
+  transition:opacity 0.6s ease;
+  opacity:0;
+}
+.breath-popup-count{
+  font-size:18px;
+  font-weight:600;
+  color:#BB7E60;
+  font-family:'Poppins',sans-serif;
+  margin-bottom:24px;
+  min-height:28px;
+  transition:opacity 0.4s;
+  opacity:0;
+}
+.breath-popup-visual{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:24px;
+}
+.breath-popup-arrow{
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(240,234,231,0.3);
+  font-weight:600;
+}
+.breath-popup-arrow:first-child{margin-bottom:10px;}
+.breath-popup-arrow:last-child{margin-top:10px;}
+.breath-popup-track{
+  width:3px;
+  height:180px;
+  background:rgba(187,126,96,0.2);
+  border-radius:2px;
+  position:relative;
+}
+.breath-popup-ball{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#BB7E60;
+  box-shadow:0 0 28px 8px rgba(187,126,96,0.3);
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:calc(100% - 24px);
+  transition:top 0s linear, background 1s ease, box-shadow 1s ease;
+}
+.breath-popup-cycles{
+  font-size:11px;
+  color:rgba(240,234,231,0.35);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:28px;
+  text-align:center;
+  min-height:18px;
+}
+.breath-popup-close{
+  padding:12px 28px;
+  background:transparent;
+  border:1px solid rgba(240,234,231,0.18);
+  border-radius:20px;
+  color:rgba(240,234,231,0.45);
+  font-family:'Poppins',sans-serif;
+  font-size:13px;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.breath-popup-close:hover,
+.breath-popup-close:focus-visible{
+  border-color:#BB7E60;
+  color:#BB7E60;
+}
+
+/* Correction premium — micro-labels lisibles */
+.axe-tag,
+.axe-delta,
+.footer-sub,
+.footer-link,
+.footer-note,
+.consent-rgpd{
+  font-size:11.5px;
+  line-height:1.45;
+}
+@media(max-width:420px){
+  .axe-tag,
+  .axe-delta,
+  .footer-sub,
+  .footer-link,
+  .footer-note,
+  .consent-rgpd{
+    font-size:12px;
+  }
+}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="bg-orb bg-orb-1"></div>
 <div class="bg-orb bg-orb-2"></div>
 
-<nav>
-  <a href="index.html" class="nav-logo">Foébé</a>
-  <div class="nav-right">
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Mode jour</button>
-    <a href="index.html" class="nav-back">← Accueil</a>
+<nav aria-label="Navigation de secours" class="fallback-nav" id="fallbackNav">
+  <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+  <div class="fallback-links">
+    <a href="index.html">Accueil</a>
+    <a href="comprendre.html">Comprendre</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="methode.html">Méthode</a>
+    <a href="pratiquer.html">Pratiquer</a>
+    <a href="test.html">Échelle Foébé</a>
+    <a href="foebe-zones-cadre.html">Les 7 zones</a>
+    <a href="respiration.html">Respiration</a>
+    <a href="boussole-accueil-foebe.html">La Boussole</a>
+    <a href="stories.html">Lexique Foébé</a>
+    <a href="dictionnaire.html">Dictionnaire</a>
   </div>
 </nav>
 
@@ -432,8 +801,8 @@ nav {
       Ce que tu vis, toi, en ce moment.
     </p>
     <div class="intro-consigne">
-      Pour chaque affirmation, indique à quel point elle te ressemble —
-      <strong>honnêtement, sans te juger.</strong><br>
+      Pour chaque affirmation, indique à quel point elle te ressemble,
+      <strong> honnêtement, sans te juger. </strong><br>
       Il n'y a pas de bonne ou mauvaise réponse.
     </div>
     <p class="intro-note">
@@ -466,7 +835,7 @@ nav {
         <span>Pas du tout</span>
         <span>Tout à fait</span>
       </div>
-      <div class="likert" id="likertBtns"></div>
+      <div class="likert" id="likertBtns" role="radiogroup" aria-label="Réponse à la question en cours"></div>
       <button class="btn-back" id="btnBack" onclick="goBack()">← Précédent</button>
     </div>
   </div>
@@ -493,20 +862,24 @@ nav {
 </div>
 
 <!-- ══ POPUP RESPIRATION ══ -->
-<div id="breathPopup" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(44,26,18,0.96);backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;gap:0;">
-  <p style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#BB7E60;font-weight:600;margin-bottom:20px;text-align:center;">Respiration · Foébé</p>
-  <p id="popupCountdown" style="font-family:'Lora',serif;font-size:64px;color:#F0EAE7;line-height:1;margin-bottom:0;text-align:center;transition:opacity 0.4s;min-height:80px;display:flex;align-items:center;justify-content:center;"></p>
-  <p id="popupPhase" style="font-family:'Lora',serif;font-size:26px;font-style:italic;color:#F0EAE7;margin-bottom:6px;text-align:center;min-height:36px;transition:opacity 0.6s ease;opacity:0;"></p>
-  <p id="popupCount" style="font-size:18px;font-weight:600;color:#BB7E60;font-family:'Poppins',sans-serif;margin-bottom:24px;min-height:28px;transition:opacity 0.4s;opacity:0;"></p>
-  <div style="position:relative;display:flex;flex-direction:column;align-items:center;margin-bottom:24px;">
-    <span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,231,0.3);font-weight:600;margin-bottom:10px;">↑</span>
-    <div id="popupTrack" style="width:3px;height:180px;background:rgba(187,126,96,0.2);border-radius:2px;position:relative;">
-      <div id="popupBall" style="width:48px;height:48px;border-radius:50%;background:#BB7E60;box-shadow:0 0 28px 8px rgba(187,126,96,0.3);position:absolute;left:50%;transform:translateX(-50%);top:calc(100% - 24px);transition:top 0s linear,background 1s ease,box-shadow 1s ease;"></div>
+<div id="breathPopup" class="breath-popup">
+  <p class="breath-popup-title">Respiration · Foébé</p>
+
+  <p id="popupCountdown" class="breath-popup-countdown"></p>
+  <p id="popupPhase" class="breath-popup-phase"></p>
+  <p id="popupCount" class="breath-popup-count"></p>
+
+  <div class="breath-popup-visual">
+    <span class="breath-popup-arrow">↑</span>
+    <div id="popupTrack" class="breath-popup-track">
+      <div id="popupBall" class="breath-popup-ball"></div>
     </div>
-    <span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,231,0.3);font-weight:600;margin-top:10px;">↓</span>
+    <span class="breath-popup-arrow">↓</span>
   </div>
-  <p id="popupCycles" style="font-size:11px;color:rgba(240,234,231,0.35);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:28px;text-align:center;min-height:18px;"></p>
-  <button onclick="closeBreathPopup()" style="padding:12px 28px;background:transparent;border:1px solid rgba(240,234,231,0.18);border-radius:20px;color:rgba(240,234,231,0.45);font-family:'Poppins',sans-serif;font-size:13px;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.borderColor='#BB7E60';this.style.color='#BB7E60'" onmouseout="this.style.borderColor='rgba(240,234,231,0.18)';this.style.color='rgba(240,234,231,0.45)'">
+
+  <p id="popupCycles" class="breath-popup-cycles"></p>
+
+  <button onclick="closeBreathPopup()" class="breath-popup-close">
     Terminer et reprendre le test
   </button>
 </div>
@@ -528,7 +901,10 @@ nav {
     </div>
 
     <p class="consent-text">
-      Foébé construit la première étude francophone sur le self-care des personnes qui fonctionnent et s'épuisent. Tes réponses anonymes nous aident à mieux comprendre et à créer des ressources pour toute la communauté.
+      Foébé construit une étude francophone sur le self-care des personnes qui fonctionnent et s'épuisent. Tes réponses pseudonymisées nous aident à mieux comprendre et à créer des ressources pour toute la communauté.
+    </p>
+    <p class="consent-privacy-note">
+      Certaines questions touchent à des dimensions personnelles sensibles. Tu peux refuser de contribuer ou choisir “Préfère ne pas répondre” sans conséquence.
     </p>
 
     <!-- Message sur l'évolution — visible seulement si pas encore contribué -->
@@ -540,13 +916,13 @@ nav {
     </div>
 
     <div class="consent-box">
-      <p class="consent-box-title">Ce qu'on collecte — de façon anonyme</p>
+      <p class="consent-box-title">Ce qu'on collecte — de façon pseudonymisée</p>
       <ul class="consent-list">
         <li>Quelques infos démographiques (genre, âge, statut, pays)</li>
         <li>Ton profil self-care et tes scores par dimension</li>
         <li>Un commentaire libre si tu le souhaites</li>
       </ul>
-      <p class="consent-rgpd">🔒 Données anonymes · Jamais revendues · Stockées en Europe (RGPD) · Tu peux refuser sans conséquence</p>
+      <p class="consent-rgpd">🔒 Données pseudonymisées · Jamais revendues · Stockées en Europe · Utilisées uniquement pour améliorer les ressources Foébé · Tu peux refuser sans conséquence. Un identifiant local est créé sur ton appareil pour permettre le suivi de ton évolution si tu acceptes de contribuer.</p>
     </div>
 
     <div class="demo-questions" id="demoQuestions">
@@ -659,29 +1035,6 @@ nav {
 </div>
 
 <div id="confettiWrap"></div>
-
-<!-- ══ FOOTER ══ -->
-<footer style="padding:60px 32px 40px;border-top:1px solid var(--border);margin-top:40px;">
-  <div class="footer-inner">
-    <a href="index.html" style="text-decoration:none;">
-      <div class="footer-logo">
-        <span style="color:var(--text);">F</span><span style="color:var(--warm);">o</span><span style="color:var(--accent);">é</span><span style="color:var(--red);">b</span><span style="color:var(--text);">é</span>
-      </div>
-    </a>
-    <p class="footer-sub">Test Self-Care · Observatoire Foébé 2026</p>
-    <div class="footer-links">
-      <a href="zone-relations.html" class="footer-link">🤝 Relations</a>
-      <a href="zone-mental.html" class="footer-link">🧠 Mental</a>
-      <a href="zone-energie.html" class="footer-link">⚡ Énergie</a>
-      <a href="zone-corps.html" class="footer-link">🌿 Corps</a>
-      <a href="zone-emotions.html" class="footer-link">🌊 Émotions</a>
-      <a href="zone-environnement.html" class="footer-link">🌍 Environnement</a>
-      <a href="zone-sens.html" class="footer-link">✨ Sens</a>
-    </div>
-   <a href="mentions.html" class="footer-link" style="font-size:11px;opacity:0.6;">Mentions légales</a>
-    <p class="footer-copyright">© 2026 Maison Foébé · Tous droits réservés</p>
-  </div>
-</footer>
 
 <script>
 // ══════════════════════════════════════════════════════
@@ -863,11 +1216,16 @@ function renderQ(idx){
   document.getElementById('qText').textContent = q.text;
   document.getElementById('qHint').textContent = q.hint;
   const likert = document.getElementById('likertBtns');
+  likert.setAttribute('role', 'radiogroup');
+  likert.setAttribute('aria-label', 'Réponse à la question en cours');
   likert.innerHTML = '';
   for(let v=1; v<=5; v++){
     const btn = document.createElement('button');
     btn.className = 'likert-btn' + (answers[idx] === v ? ' selected' : '');
     btn.textContent = v;
+    btn.type = 'button';
+    btn.setAttribute('aria-label', `Réponse ${v} sur 5 : ${v === 1 ? 'pas du tout' : v === 5 ? 'tout à fait' : 'niveau ' + v}`);
+    btn.setAttribute('aria-pressed', answers[idx] === v ? 'true' : 'false');
     btn.onclick = () => selectAnswer(idx, v);
     likert.appendChild(btn);
   }
@@ -880,6 +1238,7 @@ function selectAnswer(idx, value){
   answers[idx] = value;
   document.querySelectorAll('.likert-btn').forEach((btn,i) => {
     btn.classList.toggle('selected', i+1 === value);
+    btn.setAttribute('aria-pressed', i+1 === value ? 'true' : 'false');
   });
   setTimeout(() => {
     if(idx < questions.length - 1){
@@ -1389,5 +1748,6 @@ function launchConfetti(){
 }
 </script>
 
+<script src="/foebe-shell.js"></script>
 </body>
 </html>
