@@ -123,7 +123,7 @@
       { href: "pratiquer.html",              label: "4 outils" },
       { href: "test.html",                   label: "Échelle Foébé" },
       { href: "foebe-zones-cadre.html",      label: "Comprendre les 7 zones", activeWhenZones: true },
-      { href: "respiration.html",            label: "Respiration" },
+      { href: "respiration.html",            label: "Respiration guidée" },
       { href: "boussole-accueil-foebe.html", label: "La Boussole" }
     ]},
     { pole: "Ressources", links: [
