@@ -115,14 +115,14 @@
       { href: "index.html", label: "Accueil" }
     ]},
     { pole: "Découvrir", links: [
-      { href: "comprendre.html", label: "Comprendre" },
+      { href: "comprendre.html", label: "Point de départ" },
       { href: "a-propos.html",   label: "À propos"   },
       { href: "methode.html",    label: "La méthode" }
     ]},
     { pole: "Pratiquer", links: [
-      { href: "pratiquer.html",              label: "Pratiquer" },
+      { href: "pratiquer.html",              label: "4 outils" },
       { href: "test.html",                   label: "Échelle Foébé" },
-      { href: "foebe-zones-cadre.html",      label: "Les 7 zones", activeWhenZones: true },
+      { href: "foebe-zones-cadre.html",      label: "Comprendre les 7 zones", activeWhenZones: true },
       { href: "respiration.html",            label: "Respiration" },
       { href: "boussole-accueil-foebe.html", label: "La Boussole" }
     ]},
