@@ -12,7 +12,7 @@
   <title>Sas de la Boussole · Se situer avant d'entrer — Maison Foébé</title>
   <meta name="description" content="Un sas Maison Foébé pour te situer, choisir une piste d'attention et entrer dans la Boussole avec une première direction de self-care.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://maisonfoebe.fr/boussole-accueil-foebe">
+  <link rel="canonical" href="https://maisonfoebe.fr/boussole-accueil-foebe.html">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -23,7 +23,7 @@
   <meta property="og:title" content="Sas de la Boussole · Se situer avant d'entrer — Maison Foébé">
   <meta property="og:description" content="Deux gestes simples avant la Boussole : reconnaître comment tu arrives, puis choisir ce qui attire ton attention.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://maisonfoebe.fr/boussole-accueil-foebe">
+  <meta property="og:url" content="https://maisonfoebe.fr/boussole-accueil-foebe.html">
   <meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png">
   <meta property="og:image:alt" content="Sas de la Boussole — Maison Foébé">
   <meta property="og:site_name" content="Maison Foébé">
@@ -39,7 +39,7 @@
     "@type":"WebPage",
     "name":"Sas de la Boussole · Se situer avant d'entrer — Maison Foébé",
     "description":"Un sas Maison Foébé pour te situer, choisir une piste d'attention et entrer dans la Boussole avec une première direction de self-care.",
-    "url":"https://maisonfoebe.fr/boussole-accueil-foebe",
+    "url":"https://maisonfoebe.fr/boussole-accueil-foebe.html",
     "inLanguage":"fr",
     "isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}
   }
@@ -176,9 +176,9 @@
           max-width: 36vw !important;
         }
         body > nav#fallbackNav.fallback-nav .fallback-links > a {
-          min-height: 36px !important;
-          font-size: 11.5px !important;
-          padding: 0 9px !important;
+          min-height: 38px !important;
+          font-size: 12px !important;
+          padding: 0 10px !important;
         }
       }
     </style>
@@ -240,7 +240,14 @@
 
     /* ── Hero ── */
     .hero{max-width:760px;margin:0 auto 40px;text-align:center;}
-    .hero-mark{font-size:40px;line-height:1;margin-bottom:16px;display:block;filter:drop-shadow(0 10px 26px rgba(0,0,0,.18));}
+    .hero-mark{font-size:40px;line-height:1;margin-bottom:16px;display:block;filter:drop-shadow(0 10px 26px rgba(0,0,0,.18));transform-origin:center;animation:foebeCompassNeedle 7.2s ease-in-out infinite;will-change:transform;}
+    @keyframes foebeCompassNeedle{
+      0%,100%{transform:rotate(0deg) scale(1);}
+      18%{transform:rotate(-7deg) scale(1.015);}
+      38%{transform:rotate(5deg) scale(1);}
+      58%{transform:rotate(-3deg) scale(1.01);}
+      76%{transform:rotate(2deg) scale(1);}
+    }
     .hero-eyebrow{
       display:inline-flex;
       align-items:center;
@@ -612,6 +619,19 @@
       html{scroll-behavior:auto !important;}
       *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
       .js-ready .reveal{opacity:1 !important;transform:none !important;}
+      .hero-mark{animation:none !important;will-change:auto !important;}
+    }
+
+
+    /* Correctif final — eyebrow Foébé */
+    .hero-eyebrow{
+      font-size:13px !important;
+      min-height:30px !important;
+      padding:7px 13px !important;
+    }
+
+    [data-theme="day"] .hero-eyebrow{
+      color:#4E291F !important;
     }
   </style>
 </head>
@@ -641,9 +661,9 @@
       <p class="hero-sub">Commence par repérer où tu en es, puis choisis ce qui attire ton attention. Ta première piste se dessinera à partir de là.</p>
 
       <div class="route-strip" aria-label="Déroulé du sas" role="list">
-        <div class="route-step"><span class="route-num">01</span><strong>Ton point de départ</strong></div>
-        <div class="route-step"><span class="route-num">02</span><strong>Ce qui t'appelle</strong></div>
-        <div class="route-step"><span class="route-num">03</span><strong>Ta première piste</strong></div>
+        <div class="route-step" role="listitem"><span class="route-num">01</span><strong>Ton point de départ</strong></div>
+        <div class="route-step" role="listitem"><span class="route-num">02</span><strong>Ce qui t'appelle</strong></div>
+        <div class="route-step" role="listitem"><span class="route-num">03</span><strong>Ta première piste</strong></div>
       </div>
     </section>
 
@@ -803,6 +823,11 @@
     let selectedState = null;
     let selectedWord  = null;
 
+    document.querySelectorAll('#etape-02 .word-card').forEach(btn => {
+      btn.disabled = true;
+      btn.setAttribute('aria-disabled','true');
+    });
+
     const $ = (id) => document.getElementById(id);
     function scrollToId(id){ const el=$(id); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
 
@@ -815,6 +840,10 @@
       const note = $('lockNote');
       if(s2) s2.classList.remove('locked');
       if(note) note.textContent = 'Tu peux maintenant choisir le mot qui t’appelle le plus.';
+      document.querySelectorAll('#etape-02 .word-card').forEach(btn => {
+        btn.disabled = false;
+        btn.removeAttribute('aria-disabled');
+      });
     }
 
     function updateSynthesis(){
