@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="night">
+<html lang="fr" data-theme="night" data-foebe-nav="dark" data-foebe-footer="none">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Anti-FOUC thème — NE PAS MODIFIER -->
+<script>
+(function(){
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script>
+<script>document.documentElement.classList.add('js-ready');</script>
 <title>Lexique Foébé — Self-Care et Burnout · Maison Foébé</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -11,11 +19,11 @@
   <link rel="manifest" href="/site.webmanifest">
 <meta name="robots" content="index, follow">
 <meta name="description" content="10 définitions du self-care et du burnout fonctionnel, expliquées simplement pour ceux qui s'épuisent à fonctionner sans s'arrêter. Lexique Foébé.">
-<link rel="canonical" href="https://maisonfoebe.fr/stories" />
+<link rel="canonical" href="https://maisonfoebe.fr/stories.html">
 <meta property="og:title" content="Lexique Foébé — Self-Care et Burnout · Maison Foébé" />
-<meta property="og:description" content="10 définitions du self-care et du burnout fonctionnel, expliquées simplement. Lexique de l'Observatoire Foébé." />
+<meta property="og:description" content="10 définitions du self-care et du burnout fonctionnel, expliquées simplement. Lexique Maison Foébé." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://maisonfoebe.fr/stories" />
+<meta property="og:url" content="https://maisonfoebe.fr/stories.html">
 <meta property="og:image" content="https://maisonfoebe.fr/images/og-foebe.jpg" />
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,20 +31,20 @@
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lexique Foébé — Self-Care et Burnout · Maison Foébé">
-<meta name="twitter:description" content="10 définitions du self-care et du burnout fonctionnel. Lexique de l'Observatoire Foébé.">
+<meta name="twitter:description" content="10 définitions du self-care et du burnout fonctionnel. Lexique Maison Foébé.">
 <meta name="twitter:image" content="https://maisonfoebe.fr/images/og-foebe.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Lexique Foébé — Self-Care et Burnout","description":"10 définitions du self-care et du burnout fonctionnel<script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Lexique Foébé — Self-Care et Burnout",
-  "description": "10 définitions du self-care et du burnout fonctionnel expliquées simplement. Lexique de l’Observatoire Foébé.",
-  "url": "https://maisonfoebe.fr/stories",
+  "description": "10 définitions du self-care et du burnout fonctionnel expliquées simplement. Lexique Maison Foébé.",
+  "url": "https://maisonfoebe.fr/stories.html",
   "inLanguage": "fr",
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://maisonfoebe.fr/#website",
-    "name": "Maison Foébé — L’Observatoire"
+    "name": "Maison Foébé"
   }
 }
 </script>
@@ -44,6 +52,21 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style id="fallbackNavCritical">
+/* Fallback nav critique — affichée seulement si le Shell ne charge pas */
+body > nav#fallbackNav.fallback-nav{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:950!important;min-height:60px!important;height:60px!important;padding:0 clamp(14px,3vw,28px)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;background:rgba(78,41,31,.94)!important;border-bottom:1px solid rgba(187,126,96,.34)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;box-shadow:0 2px 14px rgba(0,0,0,.16)!important;font-family:"Poppins",sans-serif!important;box-sizing:border-box!important;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav{background:rgba(240,234,231,.94)!important;border-bottom-color:rgba(78,41,31,.16)!important;box-shadow:0 2px 14px rgba(78,41,31,.08)!important;}
+body > nav#fallbackNav.fallback-nav .fallback-logo{font-family:"Montserrat",sans-serif!important;font-weight:700!important;font-size:18px!important;letter-spacing:-.06em!important;line-height:1!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;min-height:44px!important;flex:0 0 auto!important;max-width:42vw!important;white-space:nowrap!important;}
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{color:#F0EAE7!important;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){color:#4E291F!important;}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2){color:#BB7E60!important;}[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3){color:#C45279!important;}[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4){color:#C34234!important;}
+body > nav#fallbackNav.fallback-nav .fallback-links{display:flex!important;flex:1 1 auto!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;white-space:nowrap!important;}
+body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar{display:none!important;}
+body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0 11px!important;border-radius:999px!important;color:var(--text,#F0EAE7)!important;font-family:"Poppins",sans-serif!important;font-size:12.5px!important;font-weight:600!important;white-space:nowrap!important;flex:0 0 auto!important;text-decoration:none!important;border:1px solid transparent!important;opacity:.92!important;background:transparent!important;box-sizing:border-box!important;}
+body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{color:#F0EAE7!important;background:#BB7E60!important;border-color:#BB7E60!important;opacity:1!important;outline:none!important;}
+@media(max-width:720px){body > nav#fallbackNav.fallback-nav{padding:0 12px!important;gap:12px!important;}body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px!important;}body > nav#fallbackNav.fallback-nav .fallback-links{justify-content:flex-start!important;}body > nav#fallbackNav.fallback-nav .fallback-links > a{font-size:12px!important;padding:0 10px!important;}}
+@media(max-width:420px){body > nav#fallbackNav.fallback-nav{gap:10px!important;padding:0 10px!important;}body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px!important;max-width:36vw!important;}body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;font-size:12px!important;padding:0 10px!important;}}
+</style>
 <style>
 /* ══════════════════════════════════════════════════════════════
    PALETTE FOÉBÉ — cohérente avec index-v2 et zone-corps
@@ -182,6 +205,29 @@ body { background: var(--bg); }
 }
 .story-meta { flex:1; }
 
+.story-hold-hint{
+  margin-left:auto;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(240,234,231,.16);
+  background:rgba(240,234,231,.07);
+  color:rgba(240,234,231,.72);
+  font-family:'Poppins',sans-serif;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.04em;
+  line-height:1;
+  white-space:nowrap;
+  pointer-events:none;
+  flex:0 0 auto;
+}
+@media(max-width:380px){
+  .story-hold-hint{
+    font-size:10px;
+    padding:5px 8px;
+  }
+}
+
 /* ══ CORPS ════════════════════════════════════════════════════ */
 #storyBody {
   flex:1;
@@ -281,78 +327,11 @@ body { background: var(--bg); }
 @media(min-width:600px){ .desk-arrow { display:flex; } }
 @media(min-width:900px){ #arrowLeft { left:-72px; } #arrowRight { right:-72px; } }
 
-/* ══ NAV OVERLAY — hors story wrap, niveau global ════════════
-   Cohérent avec index et zone-corps                          */
-#navOverlay {
-  position:fixed; inset:0; z-index:320;
-  background:rgba(0,0,0,0);
-  backdrop-filter:blur(0px);
-  opacity:0; pointer-events:none;
-  transition:opacity .25s ease, backdrop-filter .25s ease, background .25s ease;
-}
-#navOverlay.visible {
-  opacity:1; pointer-events:auto;
-  background:rgba(0,0,0,0.38); backdrop-filter:blur(3px);
-}
-#navOverlay.hiding { opacity:0; pointer-events:none; }
-
-/* ══ MENU NAV — identique à zone-corps (position:fixed, hors nav) ══ */
-@keyframes slideDown {
-  from { opacity:0; transform:scale(0.97) translateY(-8px); }
-  to   { opacity:1; transform:scale(1)    translateY(0); }
-}
-@keyframes slideUp {
-  from { opacity:1; transform:scale(1)    translateY(0); }
-  to   { opacity:0; transform:scale(0.97) translateY(-8px); }
-}
-#navMenu {
-  display:none;
-  position:fixed; top:64px; right:16px; z-index:330;
-  background:#2C1A12;
-  border:1px solid rgba(240,234,231,0.14);
-  border-radius:16px; padding:8px; min-width:220px;
-  box-shadow:0 16px 48px rgba(0,0,0,0.55);
-}
-#navMenu.opening { animation:slideDown .30s cubic-bezier(.16,1,.3,1) forwards; transform-origin:top right; }
-#navMenu.closing { animation:slideUp   .20s ease forwards; }
-#navMenu a, #navMenu button {
-  display:block; width:100%; padding:10px 14px; text-align:left;
-  background:none; border:none; color:#F0EAE7;
-  font-family:'Poppins',sans-serif; font-size:14px; font-weight:500;
-  cursor:pointer; border-radius:10px;
-  text-decoration:none;
-  transition:background .15s, transform .15s;
-}
-#navMenu a:hover, #navMenu button:hover {
-  background:rgba(240,234,231,0.08); transform:translateX(3px);
-}
-#navMenu hr { border:none; border-top:1px solid rgba(240,234,231,0.10); margin:6px 0; }
-
-/* ══ BARRE NAV — immersive, fond transparent au départ ══════ */
-#mainNav {
-  position:fixed; top:0; left:0; right:0; z-index:300;
-  height:56px; padding:0 20px;
-  display:flex; align-items:center; justify-content:flex-end;
-  /* Fond transparent : on n'affiche que le bouton menu */
-  background:transparent;
-  border:none;
-  transition:background .3s;
-}
-/* Bouton menu — cohérent zone-corps */
-#menuToggle {
-  font-size:19px; cursor:pointer; color:rgba(255,255,255,0.80);
-  background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.14);
-  padding:7px 10px; border-radius:10px;
-  transition:background .2s, color .2s;
-  z-index:331; position:relative;
-}
-#menuToggle:hover { background:rgba(255,255,255,0.18); color:#F0EAE7; }
-
 /* ══ ÉCRAN FIN ════════════════════════════════════════════════ */
 #endScreen {
   display:none;
   position:absolute; inset:0; z-index:10;
-  background:linear-gradient(160deg, #2C1A12 0%, #1a0f08 100%);
+  background:linear-gradient(160deg, #4e291f 0%, #1a0f08 100%);
   flex-direction:column; align-items:center; justify-content:center;
   padding:40px 32px; text-align:center;
 }
@@ -365,7 +344,7 @@ body { background: var(--bg); }
 #endScreen h2 em { font-style:italic; color:#BB7E60; }
 #endScreen p {
   font-family:'Lora',serif; font-size:15px; font-style:italic;
-  color:rgba(240,234,231,0.72); line-height:1.78;
+  color:#f0eae7; line-height:1.78;
   margin-bottom:32px; max-width:290px;
 }
 .end-btn {
@@ -380,7 +359,7 @@ body { background: var(--bg); }
 .end-btn:hover { background:#a86d50; transform:translateY(-1px); }
 .end-btn.sec {
   background:transparent;
-  border:1px solid rgba(240,234,231,0.22);
+  border:1px solid #bb7e60;
   color:rgba(240,234,231,0.78); font-weight:500;
 }
 .end-btn.sec:hover { border-color:#BB7E60; color:#BB7E60; }
@@ -390,38 +369,266 @@ body { background: var(--bg); }
 .end-social-link { color:rgba(240,234,231,0.72); text-decoration:none; transition:color .2s, transform .2s; }
 .end-social-link:hover { color:#BB7E60; transform:translateY(-1px); }
 
+
+body.fallback-nav-visible #storyContent{
+  padding-top:76px;
+}
+@media(min-width:600px){
+  body.fallback-nav-visible #storyContent{
+    padding-top:82px;
+  }
+}
+.story-disclaimer{
+  max-width:310px!important;
+  margin:0 auto 24px!important;
+  padding:14px 16px!important;
+  border:1px solid rgba(187,126,96,.28)!important;
+  border-radius:16px!important;
+  background:rgba(240,234,231,.055)!important;
+  font-family:'Lora',serif!important;
+  font-size:14.5px!important;
+  line-height:1.72!important;
+  font-style:normal!important;
+  color:rgba(240,234,231,.82)!important;
+}
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible{
+  outline:2px solid #BB7E60;
+  outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+  #storyOrb{display:none!important;}
+}
+
+
+
+/* Page Stories — navigation sombre permanente pour immersion */
+html[data-theme="day"] body > nav#fallbackNav.fallback-nav,
+html[data-theme="night"] body > nav#fallbackNav.fallback-nav{
+  background:rgba(44,26,18,.96)!important;
+  border-bottom-color:rgba(187,126,96,.34)!important;
+  box-shadow:0 2px 14px rgba(0,0,0,.18)!important;
+}
+html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span,
+html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{
+  color:#F0EAE7!important;
+}
+html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a,
+html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a{
+  color:#F0EAE7!important;
+}
+html[data-theme="day"] body nav#mainNav#mainNav,
+html[data-theme="night"] body nav#mainNav#mainNav{
+  background:rgba(44,26,18,.94)!important;
+  border-bottom:1px solid rgba(187,126,96,.34)!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.20)!important;
+}
+html[data-theme="day"] body nav#mainNav#mainNav .nav-logo span,
+html[data-theme="night"] body nav#mainNav#mainNav .nav-logo span{
+  color:#F0EAE7!important;
+}
+html[data-theme="day"] body nav#mainNav#mainNav #menuToggle,
+html[data-theme="night"] body nav#mainNav#mainNav #menuToggle,
+html[data-theme="day"] body nav#mainNav#mainNav .theme-toggle,
+html[data-theme="night"] body nav#mainNav#mainNav .theme-toggle{
+  color:#F0EAE7!important;
+  background:rgba(240,234,231,.10)!important;
+  border-color:rgba(240,234,231,.18)!important;
+}
+html[data-theme="day"] body div#navMenu#navMenu,
+html[data-theme="night"] body div#navMenu#navMenu{
+  background:linear-gradient(180deg,rgba(78,41,31,.98),rgba(44,26,18,.98))!important;
+  border-bottom-color:rgba(187,126,96,.30)!important;
+  box-shadow:0 30px 76px rgba(0,0,0,.42)!important;
+}
+html[data-theme="day"] body #navMenu .nav-link,
+html[data-theme="night"] body #navMenu .nav-link{
+  color:#F0EAE7!important;
+}
+html[data-theme="day"] body #navOverlay,
+html[data-theme="night"] body #navOverlay{
+  background:rgba(0,0,0,.24)!important;
+}
+
 /* ══ SEO caché ════════════════════════════════════════════════ */
 .seo-hidden { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+
+/* Correctif V7 — nav immersive sombre permanente + logo crème
+   Cette page reste en expérience story sombre, même si le thème global passe en jour. */
+html[data-theme] body > nav#fallbackNav.fallback-nav,
+html[data-theme="day"] body > nav#fallbackNav.fallback-nav,
+html[data-theme="night"] body > nav#fallbackNav.fallback-nav{
+  background:rgba(44,26,18,.96)!important;
+  border-bottom-color:rgba(187,126,96,.34)!important;
+  box-shadow:0 2px 14px rgba(0,0,0,.22)!important;
+}
+html[data-theme] body > nav#fallbackNav.fallback-nav .fallback-logo span,
+html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span,
+html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{
+  color:#F0EAE7!important;
+}
+html[data-theme] body > nav#fallbackNav.fallback-nav .fallback-links > a,
+html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a,
+html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a{
+  color:#F0EAE7!important;
+}
+html[data-theme] body #mainNav,
+html[data-theme="day"] body #mainNav,
+html[data-theme="night"] body #mainNav{
+  background:rgba(44,26,18,.94)!important;
+  border-bottom:1px solid rgba(187,126,96,.34)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.18)!important;
+}
+html[data-theme] body .nav-logo span,
+html[data-theme="day"] body .nav-logo span,
+html[data-theme="night"] body .nav-logo span,
+html[data-theme] body .nav-logo span:nth-child(1),
+html[data-theme] body .nav-logo span:nth-child(2),
+html[data-theme] body .nav-logo span:nth-child(3),
+html[data-theme] body .nav-logo span:nth-child(4),
+html[data-theme] body .nav-logo span:nth-child(5){
+  color:#F0EAE7!important;
+}
+html[data-theme] body #menuToggle,
+html[data-theme="day"] body #menuToggle,
+html[data-theme="night"] body #menuToggle{
+  color:#F0EAE7!important;
+  background:rgba(240,234,231,.08)!important;
+  border-color:rgba(187,126,96,.34)!important;
+}
+html[data-theme] body #navMenu,
+html[data-theme="day"] body #navMenu,
+html[data-theme="night"] body #navMenu{
+  background:linear-gradient(180deg,rgba(78,41,31,.98),rgba(44,26,18,.98))!important;
+  border-bottom-color:rgba(187,126,96,.30)!important;
+  box-shadow:0 30px 76px rgba(0,0,0,.42)!important;
+}
+html[data-theme] body .nav-link,
+html[data-theme="day"] body .nav-link,
+html[data-theme="night"] body .nav-link{
+  color:#F0EAE7!important;
+}
+html[data-theme] body #navOverlay,
+html[data-theme="day"] body #navOverlay,
+html[data-theme="night"] body #navOverlay{
+  background:rgba(0,0,0,.28)!important;
+}
+
+
+/* Stories — verrou nav immersive sombre permanente
+   Le thème de la page peut rester jour/nuit, mais la navigation de cette page reste sombre. */
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav,
+html[data-foebe-nav="dark"][data-theme="day"] body > nav#fallbackNav.fallback-nav,
+html[data-foebe-nav="dark"][data-theme="night"] body > nav#fallbackNav.fallback-nav{
+  background:rgba(44,26,18,.97)!important;
+  border-bottom-color:rgba(187,126,96,.38)!important;
+  box-shadow:0 2px 14px rgba(0,0,0,.24)!important;
+}
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo,
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span,
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2),
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3),
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4),
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){
+  color:#F0EAE7!important;
+  -webkit-text-fill-color:#F0EAE7!important;
+  filter:none!important;
+}
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a{
+  color:#F0EAE7!important;
+}
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,
+html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{
+  color:#F0EAE7!important;
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+}
+
+/* Même verrou pour la nav injectée par /foebe-shell.js sur GitHub. */
+html[data-foebe-nav="dark"] body #mainNav,
+html[data-foebe-nav="dark"][data-theme="day"] body #mainNav,
+html[data-foebe-nav="dark"][data-theme="night"] body #mainNav{
+  background:rgba(44,26,18,.96)!important;
+  border-bottom:1px solid rgba(187,126,96,.38)!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.26)!important;
+}
+html[data-foebe-nav="dark"] body #mainNav .nav-logo,
+html[data-foebe-nav="dark"] body #mainNav .nav-logo span,
+html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(1),
+html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(2),
+html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(3),
+html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(4),
+html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(5){
+  color:#F0EAE7!important;
+  -webkit-text-fill-color:#F0EAE7!important;
+  filter:none!important;
+}
+html[data-foebe-nav="dark"] body #mainNav #menuToggle,
+html[data-foebe-nav="dark"] body #mainNav .theme-toggle{
+  color:#F0EAE7!important;
+  background:rgba(240,234,231,.08)!important;
+  border-color:rgba(187,126,96,.38)!important;
+}
+html[data-foebe-nav="dark"] body #navMenu{
+  background:linear-gradient(180deg,rgba(78,41,31,.985),rgba(44,26,18,.985))!important;
+  border-color:rgba(187,126,96,.34)!important;
+  box-shadow:0 30px 76px rgba(0,0,0,.46)!important;
+}
+html[data-foebe-nav="dark"] body #navMenu a,
+html[data-foebe-nav="dark"] body #navMenu button,
+html[data-foebe-nav="dark"] body #navMenu .nav-link{
+  color:#F0EAE7!important;
+}
+html[data-foebe-nav="dark"] body #navOverlay{
+  background:rgba(0,0,0,.30)!important;
+}
+
+
+/* Page Stories — pas de footer global Shell sur l'expérience immersive.
+   La sortie/footer de cette page est intégrée directement dans l'écran final des stories. */
+html[data-foebe-footer="none"] body > footer,
+html[data-foebe-footer="none"] footer:not(#storyFooter){
+  display:none!important;
+  visibility:hidden!important;
+  height:0!important;
+  min-height:0!important;
+  max-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  overflow:hidden!important;
+}
 </style>
 </head>
 <body>
 
+<nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+  <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+  <div class="fallback-links">
+    <a href="/index.html">Accueil</a>
+    <a href="/comprendre.html">Comprendre</a>
+    <a href="/a-propos.html">À propos</a>
+    <a href="/methode.html">Méthode</a>
+    <a href="/pratiquer.html">Pratiquer</a>
+    <a href="/test.html">Échelle Foébé</a>
+    <a href="/foebe-zones-cadre.html">Les 7 zones</a>
+    <a href="/respiration.html">Respiration</a>
+    <a href="/boussole-accueil-foebe.html">La Boussole</a>
+    <a href="/stories.html" aria-current="page">Lexique Foébé</a>
+    <a href="/dictionnaire.html">Dictionnaire</a>
+  </div>
+</nav>
+
+
 <!-- SEO -->
-<main class="seo-hidden" aria-hidden="true">
+<main class="seo-hidden">
   <h1>Lexique Foébé — Self-Care et Burnout fonctionnel · Maison Foébé</h1>
   <p>Découvre un lexique du self-care pour comprendre l'épuisement émotionnel, le burnout fonctionnel et les mécanismes invisibles.</p>
+  <p>Ces définitions servent à mieux mettre des mots sur un vécu. Elles ne posent pas de diagnostic et ne remplacent pas un accompagnement médical ou psychologique.</p>
 </main>
-
-<!-- OVERLAY NAV -->
-<div id="navOverlay"></div>
-
-<!-- MENU NAV — hors du viewer, position:fixed -->
-<div id="navMenu" role="menu">
-    <a href="index.html">🏠 Accueil</a>
-    <a href="foebe-zones-cadre.html">🧘 Les zones du self-care</a>
-    <a href="test.html">✨ Faire le test</a>
-    <a href="respiration.html">🌊 Respiration</a>
-    <a href="boussole-accueil-foebe.html">🧭 Boussole</a>
-    <a href="stories.html">📖 Lexique Foébé</a>
-    <a href="dictionnaire.html" aria-current="page">📚 Dictionnaire skin·self-care</a>
-    <hr>
-    <button id="themeBtn" type="button">☀️ Mode jour</button>
-  </div>
-
-<!-- NAV IMMERSIVE — bouton seul, sans logo -->
-<nav id="mainNav">
-  <button id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
-</nav>
 
 <!-- VIEWER -->
 <div id="viewer">
@@ -443,6 +650,7 @@ body { background: var(--bg); }
           <span class="story-account">Maison Foébé</span>
           <span class="story-time">Lexique self-care</span>
         </div>
+        <span class="story-hold-hint" aria-hidden="true">Maintenir pour lire</span>
       </div>
 
       <!-- Corps animé élément par élément -->
@@ -464,9 +672,10 @@ body { background: var(--bg); }
     <div id="endScreen">
       <span style="font-size:46px;margin-bottom:24px;display:block;">🌿</span>
       <h2>Ces mots te parlent ?<br><em>Découvre où tu en es.</em></h2>
-      <p>Le test self-care Foébé explore ces 7 dimensions en 5 minutes. Un profil personnalisé, sans jugement.</p>
-      <a href="test.html" class="end-btn">Faire le test maintenant →</a>
-      <button class="end-btn sec" onclick="goToStory(0)">↺ Recommencer depuis le début</button>
+      <p>L’Échelle Foébé t’aide à observer tes signaux self-care en quelques minutes.</p>
+      <p class="story-disclaimer">Ces définitions ne posent pas de diagnostic et ne remplacent pas un accompagnement médical ou psychologique.</p>
+      <a href="/test.html" class="end-btn">Faire l’Échelle Foébé →</a>
+      <button class="end-btn sec" type="button" data-restart-story>↺ Recommencer depuis le début</button>
       <div class="end-social">
         <span>On se retrouve sur :</span>
         <div class="end-social-icons">
@@ -478,22 +687,21 @@ body { background: var(--bg); }
     </div>
 
     <!-- Flèches desktop -->
-    <button class="desk-arrow" id="arrowLeft"  type="button" onclick="prevStory()">‹</button>
-    <button class="desk-arrow" id="arrowRight" type="button" onclick="nextStory()">›</button>
+    <button class="desk-arrow" id="arrowLeft"  type="button" aria-label="Story précédente">‹</button>
+    <button class="desk-arrow" id="arrowRight" type="button" aria-label="Story suivante">›</button>
   </div>
 </div>
 
 <script>
 "use strict";
-document.documentElement.setAttribute('data-theme','night');
 
 /* ══ DONNÉES ════════════════════════════════════════════════ */
 var STORIES = [
   {
     emoji: '🔥', label: 'Définition',
     title: 'High-Functioning<br><em>Burnout</em>',
-    def: "État d'épuisement profond où la personne continue de fonctionner — et même de performer — tout en s'effondrant intérieurement.",
-    truth: '<strong>Ce que ça ressemble :</strong> tu coches les cases, tu livres, tu souris. Mais à l\'intérieur, plus rien ne se recharge. Tu fonctionnes sur les réserves. Et tu ne sais même plus depuis combien de temps.',
+    def: "État d'épuisement profond où la personne continue de fonctionner voire de performer, tout en s'effondrant intérieurement.",
+    truth: '<strong>À quoi ça ressemble :</strong> tu coches les cases, tu donnes, tu souris. Mais à l\'intérieur, plus rien ne se recharge. Tu fonctionnes sur les réserves. Et tu ne sais même plus depuis combien de temps.',
     tag: '#selfcare',
     bg: 'linear-gradient(160deg, #3A1A0F 0%, #2C1208 40%, #1a0a04 100%)',
     orb: 'rgba(187,126,96,0.18)', orbPos: 'top:-120px;right:-80px;width:320px;height:320px;'
@@ -502,7 +710,7 @@ var STORIES = [
     emoji: '😶', label: 'Définition',
     title: "L'<em>engourdissement</em><br>émotionnel",
     def: "Mécanisme de protection où les émotions sont mises en veille pour permettre de continuer à fonctionner sans s'effondrer.",
-    truth: '<strong>Ce que ça ressemble :</strong> tu ne pleures plus vraiment. Tu ne ris plus vraiment. Tu regardes ta vie de loin, comme derrière une vitre. Tu fonctionnes. Mais tu n\'es plus vraiment là.',
+    truth: '<strong>À quoi ça ressemble :</strong> tu ne pleures plus vraiment. Tu ne ris plus vraiment. Tu regardes ta vie de loin, comme derrière une vitre. Tu fonctionnes. Mais tu n\'es plus vraiment là.',
     tag: '#emotions',
     bg: 'linear-gradient(160deg, #1E1028 0%, #140B20 40%, #0c0714 100%)',
     orb: 'rgba(196,82,121,0.16)', orbPos: 'top:-80px;left:-80px;width:300px;height:300px;'
@@ -511,7 +719,7 @@ var STORIES = [
     emoji: '⚡', label: 'Définition',
     title: 'La <em>dette</em><br>de sommeil<br>chronique',
     def: "Accumulation d'un déficit de sommeil réparateur qui ne se comble pas avec quelques nuits correctes.",
-    truth: '<strong>Ce que ça ressemble :</strong> tu dors, mais tu te réveilles épuisé·e. Tu as besoin d\'un café avant d\'être humain·e. Ton corps récupère en surface — mais jamais en profondeur.',
+    truth: '<strong>À quoi ça ressemble :</strong> tu dors, mais tu te réveilles épuisé·e. Tu as besoin d\'un café pour te sentir fonctionner correctement et démarrer ta journée. Ton corps récupère en surface, mais rarement en profondeur.',
     tag: '#repos',
     bg: 'linear-gradient(160deg, #0F1E12 0%, #091408 40%, #050d04 100%)',
     orb: 'rgba(107,175,128,0.16)', orbPos: 'bottom:-60px;right:-40px;width:280px;height:280px;'
@@ -519,8 +727,8 @@ var STORIES = [
   {
     emoji: '🎭', label: 'Définition',
     title: 'Le <em>masque</em><br>de compétence',
-    def: "Façade de maîtrise et de performance maintenue pour les autres — et pour soi-même — qui dissimule un épuisement réel.",
-    truth: '<strong>Ce que ça ressemble :</strong> tout le monde te dit que tu gères. Tu gères. Mais tu sais que derrière, tu tiens à un fil. Et tu n\'oses pas montrer le fil, parce que tu ne sais plus qui tu serais sans le masque.',
+    def: "Masque de contrôle et de performance maintenu pour les autres et pour soi-même, qui dissimule un épuisement réel.",
+    truth: '<strong>À quoi ça ressemble :</strong> tout le monde te dit que tu gères, mais tu sais que derrière, tu t\'accroches à un fil. Et tu n\'oses pas le montrer, parce que tu ne sais plus qui tu es sans le masque.',
     tag: '#identite',
     bg: 'linear-gradient(160deg, #200E0E 0%, #160808 40%, #0e0404 100%)',
     orb: 'rgba(195,66,52,0.14)', orbPos: 'top:-100px;right:-60px;width:340px;height:340px;'
@@ -528,8 +736,8 @@ var STORIES = [
   {
     emoji: '🌊', label: 'Définition',
     title: 'La <em>fatigue</em><br>de compassion',
-    def: "Épuisement progressif lié au fait de donner aux autres — émotionnellement, pratiquement — sans se remplir soi-même.",
-    truth: '<strong>Ce que ça ressemble :</strong> tu t\'occupes des autres par automatisme. Mais un jour tu réalises que tu n\'as plus rien à donner — et tu culpabilises d\'avoir cette pensée. La culpabilité, c\'est le signal.',
+    def: "Épuisement progressif lié au fait de donner aux autres : émotionnellement, énergétiquement, etc. Et ce, sans se remplir soi-même.",
+    truth: '<strong>À quoi ça ressemble :</strong> tu t\'occupes des autres par automatisme. Mais un jour tu réalises que tu n\'as plus rien à donner et tu culpabilises d\'avoir cette pensée. La culpabilité est le signal.',
     tag: '#relations',
     bg: 'linear-gradient(160deg, #0C1520 0%, #080F18 40%, #040a10 100%)',
     orb: 'rgba(122,169,255,0.12)', orbPos: 'bottom:-60px;left:-40px;width:300px;height:300px;'
@@ -537,8 +745,8 @@ var STORIES = [
   {
     emoji: '🧠', label: 'Définition',
     title: 'La <em>surcharge</em><br>cognitive',
-    def: "État où l'espace mental est saturé par les listes, les inquiétudes et la planification — rendant impossible toute vraie détente.",
-    truth: '<strong>Ce que ça ressemble :</strong> même dans le bain, même dans le lit, ton cerveau tourne. Tu fais des to-do mentales à 23h. Tu ne peux pas "juste regarder un film." Ton repos est pollué.',
+    def: "État où l'espace mental est saturé par les listes, les inquiétudes et la planification rendant impossible un vrai moment de détente.",
+    truth: '<strong>À quoi ça ressemble :</strong> même dans le bain, même dans le lit, ton cerveau tourne. Tu fais des to-do lists mentales à 23h. Tu ne peux pas "juste regarder un film." Ton repos est pollué.',
     tag: '#mental',
     bg: 'linear-gradient(160deg, #1E1A0A 0%, #141205 40%, #0c0e02 100%)',
     orb: 'rgba(187,126,96,0.14)', orbPos: 'top:-80px;left:-60px;width:310px;height:310px;'
@@ -546,8 +754,8 @@ var STORIES = [
   {
     emoji: '🪞', label: 'Définition',
     title: 'La <em>valeur</em><br>conditionnelle',
-    def: "Croyance profonde que sa valeur dépend de ce qu'on produit, accomplit ou offre aux autres — jamais de ce qu'on est.",
-    truth: '<strong>Ce que ça ressemble :</strong> une journée sans produire, et tu te sens inutile. Tu mesures ta journée à ce que tu as coché. Tu t\'excuses d\'exister quand tu ne donnes pas.',
+    def: "Croyance profonde que sa valeur dépend de ce qu'on produit, accomplit ou offre aux autres, jamais de ce qu'on est.",
+    truth: '<strong>À quoi ça ressemble :</strong> une journée sans produire, et tu te sens inutile. Tu mesures ta journée à ce que tu as coché. Tu t\'excuses d\'exister quand tu ne donnes pas.',
     tag: '#performance',
     bg: 'linear-gradient(160deg, #0E1E1A 0%, #081514 40%, #030e0c 100%)',
     orb: 'rgba(107,175,128,0.12)', orbPos: 'bottom:-40px;right:-30px;width:270px;height:270px;'
@@ -555,8 +763,8 @@ var STORIES = [
   {
     emoji: '🌀', label: 'Définition',
     title: 'Le <em>repos</em><br>coupable',
-    def: "Incapacité à se reposer sans ressentir de la culpabilité ou de l'inconfort — comme si le repos devait se mériter.",
-    truth: '<strong>Ce que ça ressemble :</strong> tu prends une pause et tu penses à ce que tu "devrais" faire. Tu te reposes seulement quand tu es à bout. Le repos conditionnel n\'est pas du repos. C\'est du sursis.',
+    def: "Incapacité à se reposer sans ressentir de la culpabilité ou de l'inconfort, comme si le repos devait se mériter.",
+    truth: '<strong>À quoi ça ressemble :</strong> tu prends une pause et tu penses à ce que tu "devrais" faire. Tu te reposes seulement quand tu es à bout de force. Le repos conditionnel n\'est pas du repos ! C\'est du sursis.',
     tag: '#repos',
     bg: 'linear-gradient(160deg, #1E0A1A 0%, #160712 40%, #0e040c 100%)',
     orb: 'rgba(196,82,121,0.12)', orbPos: 'top:-70px;right:-50px;width:310px;height:310px;'
@@ -565,7 +773,7 @@ var STORIES = [
     emoji: '🧭', label: 'Définition',
     title: 'La <em>dérive</em><br>de valeurs',
     def: "Glissement progressif où l'on vit selon les attentes des autres plutôt que selon ce qui compte vraiment pour soi.",
-    truth: '<strong>Ce que ça ressemble :</strong> tu réussis — mais tu ne sais plus pourquoi. Tu avances — mais tu ne sais plus vers quoi. Un jour tu te demandes si ta vie est vraiment la tienne.',
+    truth: '<strong>À quoi ça ressemble :</strong> tu réussis, mais tu ne sais plus pourquoi. Tu avances, mais tu ne sais plus vers quoi. Parfois tu te demandes si ta vie est vraiment la tienne.',
     tag: '#sens',
     bg: 'linear-gradient(160deg, #181E0A 0%, #101504 40%, #0a0f02 100%)',
     orb: 'rgba(187,126,96,0.11)', orbPos: 'bottom:-60px;left:-40px;width:290px;height:290px;'
@@ -573,8 +781,8 @@ var STORIES = [
   {
     emoji: '🌿', label: 'Définition',
     title: 'Le <em>self-care</em><br>structuré',
-    def: "Pratique intentionnelle et régulière de prendre soin de soi — non pas comme récompense ou dernier recours, mais comme fondation.",
-    truth: '<strong>Ce que ça ressemble :</strong> pas les bains moussants. Pas le wellness Instagram. C\'est s\'écouter avant d\'être à bout. Connaître ses signaux. Se remettre au centre — parce que tu ne peux pas donner ce que tu n\'as pas.',
+    def: "Pratique intentionnelle et régulière de prendre soin de soi, non pas comme récompense ou dernier recours, mais comme fondation.",
+    truth: '<strong>À quoi ça ressemble :</strong> On ne parle pas des bains moussants, ni de wellness Instagram. Il s\'agit ici de s\'écouter avant d\'être à bout. Connaître ses signaux internes. Se remettre au centre parce que tu ne peux pas donner ce que tu n\'as pas.',
     tag: '#foebe',
     bg: 'linear-gradient(160deg, #0A0A1E 0%, #060612 40%, #030308 100%)',
     orb: 'rgba(187,126,96,0.18)', orbPos: 'top:-100px;right:-80px;width:360px;height:360px;'
@@ -582,6 +790,7 @@ var STORIES = [
 ];
 
 var DURATION = 8000;
+var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ══ ÉTAT ════════════════════════════════════════════════════ */
 var current = 0;
@@ -695,8 +904,13 @@ function goToStory(idx){
      que le fond ait commencé sa transition)                  */
   setTimeout(showElements, 60);
 
-  /* 6 — lance la progression */
-  startProgress(0);
+  /* 6 — lance la progression, sauf si l’utilisateur préfère réduire le mouvement */
+  if(prefersReducedMotion){
+    isPaused = true;
+    progPausedAt = 0;
+  } else {
+    startProgress(0);
+  }
 }
 
 function nextStory(){ if(current < STORIES.length - 1) goToStory(current + 1); else showEnd(); }
@@ -743,19 +957,53 @@ function resumeProgress(){
   startProgress(progPausedAt);
 }
 
-/* ══ TOUCH / SWIPE ═══════════════════════════════════════════ */
-var wrap     = document.getElementById('storyWrap');
-var holdTimer= null;
+/* ══ TOUCH / SWIPE / APPUI MAINTENU ═════════════════════════
+   Mobile : appui long = pause temporaire, relâcher = reprise.
+   Desktop : clic maintenu souris = même comportement.
+   Un appui long ne déclenche jamais l'avancement de story au relâchement. */
+var wrap      = document.getElementById('storyWrap');
+var tapLeft   = document.getElementById('tapLeft');
+var tapRight  = document.getElementById('tapRight');
+var holdTimer = null;
+var holdPaused = false;
+var suppressNextTap = false;
+
+function clearHoldTimer(){
+  if(holdTimer){
+    clearTimeout(holdTimer);
+    holdTimer = null;
+  }
+}
+
+function startHoldPause(){
+  clearHoldTimer();
+  holdPaused = false;
+  holdTimer = setTimeout(function(){
+    holdPaused = true;
+    pauseProgress();
+  }, 180);
+}
+
+function endHoldPause(){
+  clearHoldTimer();
+  if(holdPaused){
+    holdPaused = false;
+    suppressNextTap = true;
+    resumeProgress();
+    setTimeout(function(){ suppressNextTap = false; }, 0);
+    return true;
+  }
+  return false;
+}
 
 wrap.addEventListener('touchstart', function(e){
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
-  holdTimer = setTimeout(function(){ pauseProgress(); }, 180);
+  startHoldPause();
 }, {passive:true});
 
 wrap.addEventListener('touchend', function(e){
-  clearTimeout(holdTimer);
-  if(isPaused){ resumeProgress(); return; }
+  if(endHoldPause()) return;
   var dx = e.changedTouches[0].clientX - touchStartX;
   var dy = e.changedTouches[0].clientY - touchStartY;
   if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
@@ -765,68 +1013,73 @@ wrap.addEventListener('touchend', function(e){
   x < window.innerWidth * 0.35 ? prevStory() : nextStory();
 }, {passive:true});
 
-/* ══ CLICK DESKTOP ═══════════════════════════════════════════ */
-document.getElementById('tapLeft').addEventListener('click',  prevStory);
-document.getElementById('tapRight').addEventListener('click', nextStory);
+wrap.addEventListener('touchcancel', function(){
+  endHoldPause();
+}, {passive:true});
+
+/* Desktop : clic maintenu pour lire, comme l'appui long mobile. */
+[tapLeft, tapRight].forEach(function(zone){
+  if(!zone) return;
+
+  zone.addEventListener('mousedown', function(e){
+    if(e.button !== 0) return;
+    startHoldPause();
+  });
+
+  zone.addEventListener('mouseup', function(){
+    endHoldPause();
+  });
+
+  zone.addEventListener('mouseleave', function(){
+    if(holdPaused) endHoldPause();
+    else clearHoldTimer();
+  });
+
+  zone.addEventListener('click', function(e){
+    if(suppressNextTap){
+      e.preventDefault();
+      e.stopPropagation();
+      suppressNextTap = false;
+      return;
+    }
+    zone === tapLeft ? prevStory() : nextStory();
+  });
+});
+
+document.addEventListener('mouseup', function(){
+  if(holdPaused) endHoldPause();
+  else clearHoldTimer();
+});
+
+document.getElementById('arrowLeft').addEventListener('click', prevStory);
+document.getElementById('arrowRight').addEventListener('click', nextStory);
+document.querySelectorAll('[data-restart-story]').forEach(function(btn){ btn.addEventListener('click', function(){ goToStory(0); }); });
 
 /* ══ KEYBOARD ════════════════════════════════════════════════ */
 document.addEventListener('keydown', function(e){
   if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); nextStory(); }
   if(e.key === 'ArrowLeft') { e.preventDefault(); prevStory(); }
-  if(e.key === 'Escape')    { window.location.href = 'index.html'; }
+  if(e.key === 'Escape')    { window.location.href = '/index.html'; }
 });
 
-/* ══ MENU NAV — cohérent avec zone-corps ═══════════════════ */
-(function(){
-  var toggle   = document.getElementById('menuToggle');
-  var menu     = document.getElementById('navMenu');
-  var overlay  = document.getElementById('navOverlay');
-  var menuOpen = false;
-  var closeTimer = null;
-
-  function openMenu(){
-    if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; }
-    pauseProgress();
-    menu.style.display = 'block';
-    menu.classList.remove('closing');
-    menu.classList.add('opening');
-    overlay.classList.remove('hiding');
-    overlay.classList.add('visible');
-    menuOpen = true;
-    toggle.textContent = '✕';
-    toggle.setAttribute('aria-expanded','true');
-  }
-  function closeMenu(){
-    if(!menuOpen) return;
-    menuOpen = false;
-    menu.classList.remove('opening');
-    menu.classList.add('closing');
-    overlay.classList.remove('visible');
-    overlay.classList.add('hiding');
-    toggle.textContent = '☰';
-    toggle.setAttribute('aria-expanded','false');
-    closeTimer = setTimeout(function(){
-      menu.style.display = 'none';
-      menu.classList.remove('closing');
-      overlay.classList.remove('hiding');
-      closeTimer = null;
-      resumeProgress();
-    }, 210);
-  }
-
-  toggle.addEventListener('click', function(e){
-    e.stopPropagation();
-    menuOpen ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', function(){ closeMenu(); });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && menuOpen) closeMenu();
-  });
-})();
+/* ══ GARDE-FOU FALLBACK NAV IMMERSIVE ═══════════════════════
+   Si le Shell ne charge pas et que la fallback nav reste visible,
+   on décale le contenu story pour éviter qu'elle mange les barres. */
+function checkFallbackNavVisibility(){
+  var fallbackNav = document.getElementById('fallbackNav');
+  if(!fallbackNav) return;
+  var cs = window.getComputedStyle(fallbackNav);
+  var visible = cs.display !== 'none' && cs.visibility !== 'hidden' && parseFloat(cs.opacity || '1') > 0;
+  document.body.classList.toggle('fallback-nav-visible', visible);
+}
+window.addEventListener('load', function(){
+  setTimeout(checkFallbackNavVisibility, 180);
+});
 
 /* ══ DÉMARRAGE ═══════════════════════════════════════════════ */
 buildBars();
 goToStory(0);
 </script>
+<script src="/foebe-shell.js"></script>
 </body>
 </html>
