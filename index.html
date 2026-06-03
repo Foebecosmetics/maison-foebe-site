@@ -60,7 +60,8 @@ document.documentElement.classList.add('js-ready');
       },
       "sameAs": [
         "https://www.instagram.com/maisonfoebe",
-        "https://www.tiktok.com/@maisonfoebe"
+        "https://www.tiktok.com/@maisonfoebe",
+        "https://fr.pinterest.com/maisonfoebe/"
       ],
       "description": "Maison Foébé est un espace structuré du self-care. Elle propose un cadre structuré pour mieux se lire, repérer ce qui déborde et retrouver de la marge."
     }
@@ -408,6 +409,232 @@ img,svg{ max-width:100%; }
 .section-title em,
 .reco-title em{ color:var(--warm); font-style:italic; }
 
+
+/* Commencer ici — v32 cartes visuelles éditoriales
+   Objectif : rendre l'accueil plus immédiatement explorable sans dépendre de photos externes. */
+.home-start-section{
+  padding:clamp(58px,7vw,92px) 24px;
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+  border-top:1px solid rgba(187,126,96,.16);
+  border-bottom:1px solid rgba(187,126,96,.16);
+}
+.home-start-hero{
+  min-height:100svh;
+  padding-top:calc(var(--hero-nav-offset) + clamp(42px,7vw,96px));
+  padding-bottom:clamp(48px,7vw,92px);
+  display:flex;
+  align-items:center;
+}
+@supports(height:100dvh){ .home-start-hero{ min-height:100dvh; } }
+.home-start-hero .home-start-head{
+  margin-bottom:clamp(26px,4vw,42px);
+}
+.home-start-hero .home-start-title{
+  font-size:clamp(32px,5vw,54px);
+}
+.home-start-hero .home-start-intro{
+  font-size:clamp(16px,.85vw + 13.5px,18px);
+}
+.home-start-inner{
+  width:100%;
+  max-width:1060px;
+  margin:0 auto;
+}
+.home-start-head{
+  max-width:760px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+.home-start-title{
+  margin:8px auto 0;
+  color:var(--text);
+  font-family:"Lora",serif;
+  font-size:clamp(27px,4.2vw,42px);
+  font-weight:400;
+  line-height:1.22;
+  text-wrap:balance;
+}
+.home-start-title em{
+  color:var(--warm);
+  font-style:italic;
+}
+.home-start-intro{
+  max-width:650px;
+  margin:16px auto 0;
+  color:var(--read);
+  font-family:"Lora",serif;
+  font-size:clamp(16px,.72vw + 13px,17px);
+  line-height:1.78;
+}
+.home-start-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.home-start-card{
+  min-height:310px;
+  padding:18px 18px 20px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:rgba(240,234,231,.045);
+  color:var(--text);
+  text-decoration:none;
+  overflow:hidden;
+  position:relative;
+  isolation:isolate;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;
+}
+[data-theme="day"] .home-start-card{background:rgba(78,41,31,.04);}
+.home-start-card:hover,
+.home-start-card:focus-visible{
+  transform:translateY(-3px);
+  border-color:rgba(187,126,96,.58);
+  box-shadow:0 18px 46px var(--shadow);
+  background:rgba(187,126,96,.08);
+  outline:none;
+}
+.home-visual{
+  min-height:136px;
+  margin:0 0 18px;
+  border-radius:18px;
+  border:1px solid rgba(187,126,96,.25);
+  background:linear-gradient(145deg,rgba(187,126,96,.24),rgba(240,234,231,.055));
+  position:relative;
+  overflow:hidden;
+}
+.home-visual::before,
+.home-visual::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  pointer-events:none;
+}
+.home-visual::before{
+  width:112px;
+  height:112px;
+  right:-28px;
+  top:-30px;
+  background:rgba(187,126,96,.24);
+  filter:blur(2px);
+}
+.home-visual::after{
+  width:74px;
+  height:74px;
+  left:-18px;
+  bottom:-20px;
+  border:1px solid rgba(240,234,231,.18);
+  background:rgba(195,66,52,.10);
+}
+.home-visual-mark{
+  position:absolute;
+  inset:auto 16px 16px auto;
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(240,234,231,.25);
+  border-radius:999px;
+  background:rgba(78,41,31,.34);
+  color:#F0EAE7;
+  font-family:"Lora",serif;
+  font-size:25px;
+  font-style:italic;
+  line-height:1;
+}
+[data-theme="day"] .home-visual-mark{background:rgba(78,41,31,.80);}
+.home-visual-lines{
+  position:absolute;
+  left:18px;
+  right:72px;
+  top:22px;
+  display:grid;
+  gap:9px;
+}
+.home-visual-lines span{
+  height:8px;
+  border-radius:999px;
+  background:rgba(240,234,231,.18);
+}
+.home-visual-lines span:nth-child(2){width:78%;}
+.home-visual-lines span:nth-child(3){width:54%;}
+[data-theme="day"] .home-visual-lines span{background:rgba(78,41,31,.18);}
+.home-start-card:nth-child(2) .home-visual{background:linear-gradient(145deg,rgba(196,82,121,.22),rgba(240,234,231,.045));}
+.home-start-card:nth-child(2) .home-visual::after{background:rgba(196,82,121,.18);}
+.home-start-card:nth-child(3) .home-visual{background:linear-gradient(145deg,rgba(195,66,52,.18),rgba(187,126,96,.10));}
+.home-start-card:nth-child(4) .home-visual{background:linear-gradient(145deg,rgba(187,126,96,.20),rgba(240,234,231,.07));}
+.home-start-num{
+  color:var(--warm);
+  font-family:"Poppins",sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:.82;
+}
+.home-start-card h3{
+  margin:9px 0 10px;
+  color:var(--text);
+  font-family:"Lora",serif;
+  font-size:clamp(20px,2.1vw,24px);
+  font-weight:400;
+  line-height:1.18;
+}
+.home-start-card p{
+  flex:1;
+  color:var(--read);
+  font-family:"Lora",serif;
+  font-size:15.5px;
+  line-height:1.72;
+}
+.home-start-link{
+  margin-top:18px;
+  color:var(--warm);
+  font-family:"Poppins",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+}
+@media(max-width:1023px){
+  .home-start-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-section{padding:56px 20px;}
+  .home-start-hero{min-height:auto;padding-top:calc(var(--hero-nav-offset) + 30px);padding-bottom:56px;}
+  .home-start-head{text-align:left;margin-bottom:24px;}
+  .home-start-grid{grid-template-columns:1fr;gap:12px;}
+  .home-start-card{min-height:0;padding:16px;border-radius:20px;}
+  .home-visual{min-height:112px;margin-bottom:16px;}
+  .home-start-intro{margin-left:0;margin-right:0;}
+}
+
+/* Correctif V37 — entrée plus respirante */
+.home-start-hero{
+  align-items:center;
+}
+.home-start-hero .home-start-head{
+  margin-bottom:clamp(30px,4.8vw,52px);
+}
+.home-start-hero .section-eyebrow{
+  margin-bottom:clamp(18px,2.5vw,28px);
+}
+.home-start-hero .home-start-intro{
+  max-width:720px;
+}
+@media(min-width:1024px){
+  .home-start-hero .home-start-grid{
+    gap:clamp(16px,1.5vw,22px);
+  }
+}
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-hero .section-eyebrow{
+    margin-bottom:16px;
+  }
+}
+
 /* Reconnaissance */
 .reco-header{ margin-bottom:52px; text-align:left; }
 .reco-title{ margin:14px 0 18px; font-size:clamp(28px,4.5vw,42px); line-height:1.24; }
@@ -603,6 +830,423 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   html{ scroll-behavior:auto; }
   *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
+
+/* Correctif V39 — blocs terracotta premium
+   Objectif : harmoniser la section Pourquoi Foébé, la newsletter et la porte accompagnement
+   avec le warm Foébé, sans toucher aux cartes principales ni au Shell. */
+.founder-section,
+.newsletter-section{
+  background:#BB7E60!important;
+  color:#F0EAE7!important;
+}
+
+.founder-section .section-eyebrow,
+.newsletter-section .newsletter-label{
+  background:rgba(240,234,231,.14)!important;
+  border-color:rgba(240,234,231,.34)!important;
+  color:#F0EAE7!important;
+}
+
+.founder-section .section-step,
+.founder-section .section-title,
+.founder-section .founder-copy p,
+.newsletter-section .newsletter-title,
+.newsletter-section .newsletter-desc,
+.newsletter-section .newsletter-note{
+  color:#F0EAE7!important;
+}
+
+.founder-section .section-step::after{
+  background:rgba(240,234,231,.36)!important;
+}
+
+.founder-copy{
+  background:rgba(240,234,231,.12)!important;
+  border-left-color:rgba(240,234,231,.58)!important;
+}
+
+.newsletter-input{
+  background:#F0EAE7!important;
+  color:#4E291F!important;
+  border-color:rgba(240,234,231,.74)!important;
+}
+
+.newsletter-btn{
+  background:#4E291F!important;
+  color:#F0EAE7!important;
+  border:1px solid rgba(240,234,231,.26)!important;
+}
+
+.newsletter-btn:hover,
+.newsletter-btn:focus-visible{
+  background:#3A1A10!important;
+  color:#F0EAE7!important;
+}
+
+.porte3-locked{
+  background:#BB7E60!important;
+  border-color:rgba(240,234,231,.34)!important;
+  color:#F0EAE7!important;
+  filter:none!important;
+  opacity:1!important;
+}
+
+.porte3-locked .porte3-num,
+.porte3-locked .porte3-title,
+.porte3-locked .porte3-desc{
+  color:#F0EAE7!important;
+}
+
+.porte3-locked .locked-button,
+.porte3-locked .porte3-lock-cta{
+  background:#4E291F!important;
+  border-color:rgba(240,234,231,.34)!important;
+  color:#F0EAE7!important;
+}
+
+.porte3-locked .locked-button:hover,
+.porte3-locked .locked-button:focus-visible{
+  background:#3A1A10!important;
+  color:#F0EAE7!important;
+}
+
+
+/* Correctif V40 — bouton newsletter outline crème
+   Objectif : rendre “Me tenir informé” plus léger sur fond terracotta,
+   avec hover rose Foébé. */
+.newsletter-btn{
+  background:transparent!important;
+  color:#F0EAE7!important;
+  border:1.5px solid #F0EAE7!important;
+  box-shadow:none!important;
+}
+
+.newsletter-btn:hover,
+.newsletter-btn:focus-visible{
+  background:#C45279!important;
+  border-color:#C45279!important;
+  color:#F0EAE7!important;
+  transform:translateY(-1px)!important;
+}
+
+
+/* Correctif V41 — lisibilité immédiate des cartes d’accès
+   Objectif : faire comprendre en 3 secondes où cliquer, sans changer le contenu. */
+.home-start-card{
+  border-color:rgba(187,126,96,.34)!important;
+}
+
+.home-start-card h3{
+  margin-top:10px!important;
+  margin-bottom:9px!important;
+}
+
+.home-start-link{
+  width:max-content!important;
+  max-width:100%!important;
+  min-height:38px!important;
+  margin-top:18px!important;
+  padding:0 13px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:1px solid rgba(187,126,96,.48)!important;
+  border-radius:999px!important;
+  background:rgba(187,126,96,.12)!important;
+  color:var(--text)!important;
+  font-size:11.5px!important;
+  font-weight:800!important;
+  letter-spacing:.45px!important;
+  line-height:1!important;
+}
+
+.home-start-card:hover .home-start-link,
+.home-start-card:focus-visible .home-start-link{
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  color:#F0EAE7!important;
+}
+
+.home-start-num{
+  opacity:1!important;
+}
+
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-link{
+    min-height:40px!important;
+    font-size:11.2px!important;
+  }
+}
+
+
+/* Correctif V42 — micro-polissage final index
+   Objectif : CTA plus lisibles, zone Environnement moins serrée,
+   note newsletter plus éditoriale. */
+
+/* CTA visibles dans les cartes “Pratiquer / Comprendre / Être accompagné” */
+.porte3-link{
+  width:max-content!important;
+  max-width:100%!important;
+  min-height:40px!important;
+  margin-top:8px!important;
+  padding:0 14px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:1px solid rgba(187,126,96,.48)!important;
+  border-radius:999px!important;
+  background:rgba(187,126,96,.12)!important;
+  color:var(--text)!important;
+  font-family:"Poppins",sans-serif!important;
+  font-size:12px!important;
+  font-weight:800!important;
+  letter-spacing:.35px!important;
+  line-height:1!important;
+}
+
+.porte3-card:hover .porte3-link,
+.porte3-card:focus-visible .porte3-link{
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  color:#F0EAE7!important;
+}
+
+/* Porte accompagnement : CTA cohérent sur fond terracotta */
+.porte3-locked .porte3-link,
+.porte3-locked .locked-button,
+.porte3-locked .porte3-lock-cta{
+  width:max-content!important;
+  max-width:100%!important;
+  min-height:40px!important;
+  padding:0 14px!important;
+  background:transparent!important;
+  border:1.5px solid #F0EAE7!important;
+  color:#F0EAE7!important;
+}
+
+.porte3-locked:hover .porte3-link,
+.porte3-locked .locked-button:hover,
+.porte3-locked .locked-button:focus-visible{
+  background:#C45279!important;
+  border-color:#C45279!important;
+  color:#F0EAE7!important;
+}
+
+/* Zone Environnement : éviter que le mot colle aux bords sur desktop */
+@media(min-width:1024px){
+  .zones-choice{
+    grid-template-columns:repeat(7,minmax(118px,1fr))!important;
+  }
+
+  .zone-choice{
+    padding-left:12px!important;
+    padding-right:12px!important;
+  }
+
+  .zone-choice-title{
+    font-size:11px!important;
+    letter-spacing:.065em!important;
+  }
+}
+
+/* Note newsletter plus douce et éditoriale, sous le formulaire */
+.newsletter-note{
+  margin-top:12px!important;
+  font-family:"Lora",serif!important;
+  font-size:14px!important;
+  font-style:italic!important;
+  line-height:1.62!important;
+  color:rgba(240,234,231,.88)!important;
+}
+
+
+/* Correctif V43 — intégration des visuels éditoriaux sur les 4 portes */
+.home-visual--img{
+  padding:0!important;
+  background:#BB7E60!important;
+}
+.home-visual--img::before,
+.home-visual--img::after,
+.home-visual--img .home-visual-lines,
+.home-visual--img .home-visual-mark{
+  display:none!important;
+}
+.home-visual--img img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.home-visual--contain img{
+  object-fit:contain;
+}
+.home-visual--boussole,
+.home-visual--lexique,
+.home-visual--zones{
+  background:#4E291F!important;
+}
+.home-visual--boussole img,
+.home-visual--lexique img,
+.home-visual--zones img{
+  object-position:center center;
+}
+.home-visual--echelle img{
+  object-position:center center;
+}
+
+
+/* Correctif V47 — motifs éditoriaux dans les cartes des 7 zones
+   À faire dans GitHub :
+   /images/zones/motif-zone-corps.png
+   /images/zones/motif-zone-mental.png
+   /images/zones/motif-zone-energie.png
+   /images/zones/motif-zone-emotions.png
+   /images/zones/motif-zone-environnement.png
+   /images/zones/motif-zone-relations.png
+   /images/zones/motif-zone-sens.png
+
+   Fonctionnement :
+   - les motifs restent décoratifs, via ::before ;
+   - le texte reste toujours au-dessus ;
+   - la version nuit est plus chaude/contrastée ;
+   - la version jour est plus claire et plus douce.
+*/
+
+.zone-choice{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:var(--zone-card-bg, rgba(187,126,96,.055))!important;
+  border-color:var(--zone-card-border, rgba(187,126,96,.30))!important;
+}
+
+.zone-choice::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:var(--zone-motif);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:var(--zone-motif-opacity, .16);
+  filter:saturate(.92) contrast(.96);
+  transform:scale(1.02);
+  transition:opacity .24s ease, transform .24s ease;
+}
+
+.zone-choice::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    var(--zone-overlay-top, rgba(78,41,31,.10)),
+    var(--zone-overlay-bottom, rgba(78,41,31,.22))
+  );
+  opacity:var(--zone-overlay-opacity, .72);
+}
+
+.zone-choice > *{
+  position:relative;
+  z-index:1;
+}
+
+.zone-choice:hover::before,
+.zone-choice:focus-visible::before{
+  opacity:var(--zone-motif-opacity-hover, .24);
+  transform:scale(1.05);
+}
+
+.zone-choice-icon{
+  background:var(--zone-icon-bg, rgba(240,234,231,.92))!important;
+  border-color:var(--zone-icon-border, rgba(240,234,231,.88))!important;
+  color:var(--zone-icon-color, #4E291F)!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+}
+
+.zone-choice-title{
+  color:var(--zone-title-color, #F0EAE7)!important;
+  text-shadow:0 1px 12px rgba(0,0,0,.18);
+}
+
+/* Mapping images — version à remplir avec tes fichiers GitHub */
+.zone-choice-corps{
+  --zone-motif:url("/images/zones/motif-zone-corps.png");
+  --zone-card-bg:#9B664B;
+  --zone-card-border:rgba(240,234,231,.25);
+}
+
+.zone-choice-mental{
+  --zone-motif:url("/images/zones/motif-zone-mental.png");
+  --zone-card-bg:#7A2147;
+  --zone-card-border:rgba(240,234,231,.22);
+}
+
+.zone-choice-energie{
+  --zone-motif:url("/images/zones/motif-zone-energie.png");
+  --zone-card-bg:#BB7E60;
+  --zone-card-border:rgba(240,234,231,.26);
+}
+
+.zone-choice-emotions{
+  --zone-motif:url("/images/zones/motif-zone-emotions.png");
+  --zone-card-bg:#C45279;
+  --zone-card-border:rgba(240,234,231,.24);
+}
+
+.zone-choice-environnement{
+  --zone-motif:url("/images/zones/motif-zone-environnement.png");
+  --zone-card-bg:#1E4D2B;
+  --zone-card-border:rgba(240,234,231,.22);
+}
+
+.zone-choice-relations{
+  --zone-motif:url("/images/zones/motif-zone-relations.png");
+  --zone-card-bg:#5C1A40;
+  --zone-card-border:rgba(240,234,231,.22);
+}
+
+.zone-choice-sens{
+  --zone-motif:url("/images/zones/motif-zone-sens.png");
+  --zone-card-bg:#4E291F;
+  --zone-card-border:rgba(240,234,231,.24);
+}
+
+/* Adaptation thème jour : plus doux, texte brun, motifs plus discrets */
+[data-theme="day"] .zone-choice{
+  --zone-card-bg:rgba(78,41,31,.045);
+  --zone-card-border:rgba(78,41,31,.16);
+  --zone-title-color:#4E291F;
+  --zone-icon-bg:#BB7E60;
+  --zone-icon-border:#BB7E60;
+  --zone-icon-color:#F0EAE7;
+  --zone-motif-opacity:.12;
+  --zone-motif-opacity-hover:.18;
+  --zone-overlay-top:rgba(240,234,231,.70);
+  --zone-overlay-bottom:rgba(240,234,231,.82);
+  --zone-overlay-opacity:.92;
+}
+
+[data-theme="day"] .zone-choice-title{
+  text-shadow:none;
+}
+
+/* Mobile : garder la lisibilité avant l'image */
+@media(orientation:portrait) and (max-width:767px){
+  .zone-choice::before{
+    opacity:.12;
+  }
+
+  .zone-choice:hover::before,
+  .zone-choice:focus-visible::before{
+    opacity:.16;
+  }
+}
+
 </style>
 
 
@@ -623,22 +1267,48 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 </div>
 </nav>
 <!-- ══════════════════════════════════════════
-     HERO
+     ACCUEIL — Bienvenue + portes visuelles
 ══════════════════════════════════════════ -->
-<section aria-labelledby="hero-h1" class="hero">
-<h1 class="hero-title" id="hero-h1">
-<span class="line"><span>Tu fonctionnes.</span></span>
-<span class="line"><span>Tu tiens.</span></span>
-<span class="line"><span><em>Mais tu ne récupères plus.</em></span></span>
-</h1>
-<p class="hero-manifesto hero-manifesto-secondary">Le self-care comme compétence</p>
-<div aria-hidden="true" class="hero-title-spacer"></div>
-<div aria-hidden="true" class="hero-divider"></div>
-<div class="hero-actions"><a class="btn-hero-main hero-primary-cta" href="test.html">
-      Commencer avec l'Échelle Foébé <span aria-hidden="true">→</span>
-</a><p class="hero-proof">5 minutes · 21 affirmations · résultat immédiat</p></div>
+<section aria-labelledby="home-start-title" class="home-start-section home-start-hero" id="commencer">
+  <div class="home-start-inner">
+    <div class="home-start-head">
+      <span class="section-eyebrow">Bienvenue chez Maison Foébé</span>
+      <h1 class="home-start-title" id="home-start-title">Tu fonctionnes, mais tu ne récupères <em>plus vraiment.</em></h1>
+      <p class="home-start-intro">Foébé est là pour t’aider à lire ton propre fonctionnement, reconnaître les signaux et reconstruire un self-care qui tient.</p>
+    </div>
+    <div class="home-start-grid" aria-label="Commencer à explorer Maison Foébé">
+      <a class="home-start-card" href="test.html">
+        <div class="home-visual home-visual--img home-visual--echelle home-visual--contain" aria-hidden="true"><img alt="" loading="lazy" src="/images/index/echelle-foebe.png"/></div>
+        <span class="home-start-num">01 · Test</span>
+        <h3>Faire l’Échelle Foébé</h3>
+        <p>Observer ton niveau de surcharge et repérer tes premiers signaux en quelques minutes.</p>
+        <span class="home-start-link">Commencer le test →</span>
+      </a>
+      <a class="home-start-card" href="boussole-accueil-foebe.html">
+        <div class="home-visual home-visual--img home-visual--boussole home-visual--contain" aria-hidden="true"><img alt="" loading="lazy" src="/images/index/boussole-foebe.png"/></div>
+        <span class="home-start-num">02 · Orientation</span>
+        <h3>Explorer la Boussole</h3>
+        <p>Identifier la zone self-care qui demande ton attention aujourd’hui, sans te disperser.</p>
+        <span class="home-start-link">Ouvrir la boussole →</span>
+      </a>
+      <a class="home-start-card" href="stories.html">
+        <div class="home-visual home-visual--img home-visual--lexique home-visual--contain" aria-hidden="true"><img alt="" loading="lazy" src="/images/index/lexique-foebe.png"/></div>
+        <span class="home-start-num">03 · Lexique</span>
+        <h3>Lire un mot Foébé</h3>
+        <p>Mettre des mots simples sur l’épuisement, la surcharge ou le repos coupable.</p>
+        <span class="home-start-link">Lire le lexique →</span>
+      </a>
+      <a class="home-start-card" href="#zones-foebe">
+        <div class="home-visual home-visual--img home-visual--zones home-visual--contain" aria-hidden="true"><img alt="" loading="lazy" src="/images/index/zones-foebe.png"></div>
+        <span class="home-start-num">04 · Zones</span>
+        <h3>Découvrir les 7 zones</h3>
+        <p>Repérer la zone qui te parle le plus et descendre directement vers elle.</p>
+        <span class="home-start-link">Explorer les zones ↓</span>
+      </a>
+    </div>
+  </div>
 </section>
-<div aria-hidden="true" class="section-fade section-fade-down fade-hero-reco"></div>
+<div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
 <!-- ══════════════════════════════════════════
      RECONNAISSANCE
 ══════════════════════════════════════════ -->
@@ -702,32 +1372,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <span class="orientation-num orientation-movement">Structurer</span>
 <p><strong>Construire des repères qui tiennent.</strong> Pas une routine idéale. Un cadre réaliste, adapté à ta façon de fonctionner.</p>
 </div>
-<div class="orientation-row orientation-row-last"><span class="orientation-num orientation-movement">Stabiliser</span><p><strong>Stabiliser ce qui soutient.</strong> Des appuis simples, répétables, qui t’aident à ne pas repartir de zéro à chaque surcharge.</p></div></div><div aria-label="Les 7 zones Foébé" class="zones-block"><p class="section-step zones-step"><span>03</span></p><span class="section-eyebrow">Les 7 zones Foébé</span><h2 class="section-title zones-title">Des portes d’entrée simples,<br/><em>pas besoin de tout comprendre d’un coup.</em></h2><p class="zones-choice-intro">Les 7 zones du self-care correspondent à la grille d’analyse globale du self-care selon Foébé.<br/>Tu peux les lire une par une, ou commencer par celle qui te parle le plus.</p><div aria-label="Choisir une zone Foébé" class="zones-choice">
-<a aria-label="Lire la zone Corps" class="zone-choice" href="zone-corps.html">
+<div class="orientation-row orientation-row-last"><span class="orientation-num orientation-movement">Stabiliser</span><p><strong>Stabiliser ce qui soutient.</strong> Des appuis simples, répétables, qui t’aident à ne pas repartir de zéro à chaque surcharge.</p></div></div><div aria-label="Les 7 zones Foébé" class="zones-block" id="zones-foebe"><p class="section-step zones-step"><span>03</span></p><span class="section-eyebrow">Les 7 zones Foébé</span><h2 class="section-title zones-title">Des portes d’entrée simples,<br/><em>pas besoin de tout comprendre d’un coup.</em></h2><p class="zones-choice-intro">Les 7 zones donnent la carte du self-care chez Foébé.<br/>Tu peux les lire une par une, ou commencer par celle qui te parle le plus.</p><div aria-label="Choisir une zone Foébé" class="zones-choice">
+<a aria-label="Lire la zone Corps" class="zone-choice zone-choice-corps" href="zone-corps.html">
 <span aria-hidden="true" class="zone-choice-icon">C</span>
 <span class="zone-choice-title">Corps</span>
 </a>
-<a aria-label="Lire la zone Mental" class="zone-choice" href="zone-mental.html">
+<a aria-label="Lire la zone Mental" class="zone-choice zone-choice-mental" href="zone-mental.html">
 <span aria-hidden="true" class="zone-choice-icon">M</span>
 <span class="zone-choice-title">Mental</span>
 </a>
-<a aria-label="Lire la zone Énergie" class="zone-choice" href="zone-energie.html">
+<a aria-label="Lire la zone Énergie" class="zone-choice zone-choice-energie" href="zone-energie.html">
 <span aria-hidden="true" class="zone-choice-icon">É</span>
 <span class="zone-choice-title">Énergie</span>
 </a>
-<a aria-label="Lire la zone Émotions" class="zone-choice" href="zone-emotions.html">
+<a aria-label="Lire la zone Émotions" class="zone-choice zone-choice-emotions" href="zone-emotions.html">
 <span aria-hidden="true" class="zone-choice-icon">Ém</span>
 <span class="zone-choice-title">Émotions</span>
 </a>
-<a aria-label="Lire la zone Environnement" class="zone-choice" href="zone-environnement.html">
+<a aria-label="Lire la zone Environnement" class="zone-choice zone-choice-environnement" href="zone-environnement.html">
 <span aria-hidden="true" class="zone-choice-icon">Ev</span>
 <span class="zone-choice-title">Environnement</span>
 </a>
-<a aria-label="Lire la zone Relations" class="zone-choice" href="zone-relations.html">
+<a aria-label="Lire la zone Relations" class="zone-choice zone-choice-relations" href="zone-relations.html">
 <span aria-hidden="true" class="zone-choice-icon">R</span>
 <span class="zone-choice-title">Relations</span>
 </a>
-<a aria-label="Lire la zone Sens" class="zone-choice" href="zone-sens.html">
+<a aria-label="Lire la zone Sens" class="zone-choice zone-choice-sens" href="zone-sens.html">
 <span aria-hidden="true" class="zone-choice-icon">S</span>
 <span class="zone-choice-title">Sens</span>
 </a>
@@ -739,15 +1409,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <section aria-labelledby="founder-title" class="founder-section reveal">
 <div class="founder-inner">
 <p class="section-step"><span>04</span></p>
-<span class="section-eyebrow">Pourquoi cette méthode existe ?</span>
+<span class="section-eyebrow">Pourquoi Foébé</span>
 <h2 class="section-title" id="founder-title">
-      Foébé part d’un constat simple.
+      Un cadre né du terrain.
     </h2>
 <div class="founder-copy">
-<p>Beaucoup de personnes continuent de fonctionner longtemps après avoir commencé à s’épuiser.</p>
-<p>Pas par faiblesse, mais par <span class="foebe-highlight">adaptation</span>.</p>
-<p>Foébé offre un cadre clair à celles et ceux qui veulent comprendre leur self-care, sans étiquettes.</p>
-<p>Maison Foébé a été fondée par une docteure en psychologie et ergonome, spécialisée en santé au travail, à partir de dix ans d’observation clinique et de terrain.</p>
+<p>Foébé part d’un constat simple : on peut continuer à fonctionner longtemps tout en commençant déjà à s’épuiser.</p>
+<p>La méthode transforme ce constat en repères concrets : lire ses signaux, comprendre ses besoins et retrouver un self-care plus stable.</p>
+<p>Elle a été conçue par une docteure en psychologie et ergonome, spécialisée en santé au travail.</p>
 </div>
 </div>
 </section>
@@ -755,8 +1424,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <div class="section-inner">
 <div class="section-center reveal">
 <p class="section-step"><span>05</span></p>
-<span class="section-eyebrow">Commencer à explorer</span>
-<h2 class="section-title">Trois portes selon ce que tu recherches.</h2><p class="portes-clarity-note">Les outils gratuits sont accessibles directement. Les accompagnements ouvriront dans un second temps.</p>
+<span class="section-eyebrow">Choisir la suite</span>
+<h2 class="section-title">Trois chemins pour continuer.</h2><p class="portes-clarity-note">Les outils gratuits sont accessibles directement. Les accompagnements ouvriront dans un second temps.</p>
 </div>
 <div class="portes3-grid reveal reveal-delay-1">
 <a class="porte3-card porte3-main" href="pratiquer.html">
