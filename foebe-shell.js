@@ -262,7 +262,7 @@
       '</div>' +
       '<div class="footer-links">' +
         '<a class="footer-link" href="mentions.html">Mentions légales</a>' +
-        '<a class="footer-link" href="mailto:foebecosmetics@gmail.com">Contact</a>' +
+        '<a class="footer-link" href="mailto:contact@maisonfoebe.fr">Contact</a>' +
         '<a class="footer-link" href="comprendre.html">Comprendre</a>' +
         '<a class="footer-link" href="pratiquer.html">Pratiquer</a>' +
         '<a class="footer-link" href="a-propos.html">À propos</a>' +
