@@ -1095,21 +1095,30 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 }
 
 
-/* Correctif V47 — motifs éditoriaux dans les cartes des 7 zones
-   À faire dans GitHub :
-   /images/zones/motif-zone-corps.png
-   /images/zones/motif-zone-mental.png
-   /images/zones/motif-zone-energie.png
-   /images/zones/motif-zone-emotions.png
-   /images/zones/motif-zone-environnement.png
-   /images/zones/motif-zone-relations.png
-   /images/zones/motif-zone-sens.png
+/* Correctif V49 — motifs zones plus visibles, jour + nuit
+   Fichiers attendus dans GitHub :
 
-   Fonctionnement :
-   - les motifs restent décoratifs, via ::before ;
-   - le texte reste toujours au-dessus ;
-   - la version nuit est plus chaude/contrastée ;
-   - la version jour est plus claire et plus douce.
+   Cartes du haut :
+   /images/index/echelle-foebe.png
+   /images/index/boussole-foebe.png
+   /images/index/lexique-foebe.png
+   /images/index/zones-foebe.png
+
+   Motifs zones :
+   /images/zones/motif-zone-corps-night.png
+   /images/zones/motif-zone-corps-day.png
+   /images/zones/motif-zone-mental-night.png
+   /images/zones/motif-zone-mental-day.png
+   /images/zones/motif-zone-energie-night.png
+   /images/zones/motif-zone-energie-day.png
+   /images/zones/motif-zone-emotions-night.png
+   /images/zones/motif-zone-emotions-day.png
+   /images/zones/motif-zone-environnement-night.png
+   /images/zones/motif-zone-environnement-day.png
+   /images/zones/motif-zone-relations-night.png
+   /images/zones/motif-zone-relations-day.png
+   /images/zones/motif-zone-sens-night.png
+   /images/zones/motif-zone-sens-day.png
 */
 
 .zone-choice{
@@ -1130,8 +1139,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  opacity:var(--zone-motif-opacity, .16);
-  filter:saturate(.92) contrast(.96);
+  opacity:var(--zone-motif-opacity, .34);
+  filter:saturate(1.02) contrast(1.04);
   transform:scale(1.02);
   transition:opacity .24s ease, transform .24s ease;
 }
@@ -1144,10 +1153,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   pointer-events:none;
   background:linear-gradient(
     180deg,
-    var(--zone-overlay-top, rgba(78,41,31,.10)),
-    var(--zone-overlay-bottom, rgba(78,41,31,.22))
+    var(--zone-overlay-top, rgba(78,41,31,.03)),
+    var(--zone-overlay-bottom, rgba(78,41,31,.13))
   );
-  opacity:var(--zone-overlay-opacity, .72);
+  opacity:var(--zone-overlay-opacity, .42);
 }
 
 .zone-choice > *{
@@ -1157,93 +1166,125 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 
 .zone-choice:hover::before,
 .zone-choice:focus-visible::before{
-  opacity:var(--zone-motif-opacity-hover, .24);
+  opacity:var(--zone-motif-opacity-hover, .44);
   transform:scale(1.05);
 }
 
 .zone-choice-icon{
-  background:var(--zone-icon-bg, rgba(240,234,231,.92))!important;
-  border-color:var(--zone-icon-border, rgba(240,234,231,.88))!important;
+  background:var(--zone-icon-bg, rgba(240,234,231,.94))!important;
+  border-color:var(--zone-icon-border, rgba(240,234,231,.90))!important;
   color:var(--zone-icon-color, #4E291F)!important;
   box-shadow:0 10px 24px rgba(0,0,0,.08);
 }
 
 .zone-choice-title{
   color:var(--zone-title-color, #F0EAE7)!important;
-  text-shadow:0 1px 12px rgba(0,0,0,.18);
+  text-shadow:0 1px 12px rgba(0,0,0,.24);
 }
 
-/* Mapping images — version à remplir avec tes fichiers GitHub */
+/* Mapping nuit — motifs clairs sur cartes colorées */
 .zone-choice-corps{
-  --zone-motif:url("/images/zones/motif-zone-corps.png");
+  --zone-motif:url("/images/zones/motif-zone-corps-night.png");
   --zone-card-bg:#9B664B;
-  --zone-card-border:rgba(240,234,231,.25);
+  --zone-card-border:rgba(240,234,231,.28);
 }
 
 .zone-choice-mental{
-  --zone-motif:url("/images/zones/motif-zone-mental.png");
+  --zone-motif:url("/images/zones/motif-zone-mental-night.png");
   --zone-card-bg:#7A2147;
-  --zone-card-border:rgba(240,234,231,.22);
+  --zone-card-border:rgba(240,234,231,.25);
 }
 
 .zone-choice-energie{
-  --zone-motif:url("/images/zones/motif-zone-energie.png");
+  --zone-motif:url("/images/zones/motif-zone-energie-night.png");
   --zone-card-bg:#BB7E60;
-  --zone-card-border:rgba(240,234,231,.26);
+  --zone-card-border:rgba(240,234,231,.30);
 }
 
 .zone-choice-emotions{
-  --zone-motif:url("/images/zones/motif-zone-emotions.png");
+  --zone-motif:url("/images/zones/motif-zone-emotions-night.png");
   --zone-card-bg:#C45279;
-  --zone-card-border:rgba(240,234,231,.24);
+  --zone-card-border:rgba(240,234,231,.28);
 }
 
 .zone-choice-environnement{
-  --zone-motif:url("/images/zones/motif-zone-environnement.png");
+  --zone-motif:url("/images/zones/motif-zone-environnement-night.png");
   --zone-card-bg:#1E4D2B;
-  --zone-card-border:rgba(240,234,231,.22);
+  --zone-card-border:rgba(240,234,231,.25);
 }
 
 .zone-choice-relations{
-  --zone-motif:url("/images/zones/motif-zone-relations.png");
+  --zone-motif:url("/images/zones/motif-zone-relations-night.png");
   --zone-card-bg:#5C1A40;
-  --zone-card-border:rgba(240,234,231,.22);
+  --zone-card-border:rgba(240,234,231,.25);
 }
 
 .zone-choice-sens{
-  --zone-motif:url("/images/zones/motif-zone-sens.png");
+  --zone-motif:url("/images/zones/motif-zone-sens-night.png");
   --zone-card-bg:#4E291F;
-  --zone-card-border:rgba(240,234,231,.24);
+  --zone-card-border:rgba(240,234,231,.28);
 }
 
-/* Adaptation thème jour : plus doux, texte brun, motifs plus discrets */
+/* Mapping jour — motifs bruns sur cartes claires */
 [data-theme="day"] .zone-choice{
   --zone-card-bg:rgba(78,41,31,.045);
-  --zone-card-border:rgba(78,41,31,.16);
+  --zone-card-border:rgba(78,41,31,.20);
   --zone-title-color:#4E291F;
   --zone-icon-bg:#BB7E60;
   --zone-icon-border:#BB7E60;
   --zone-icon-color:#F0EAE7;
-  --zone-motif-opacity:.12;
-  --zone-motif-opacity-hover:.18;
-  --zone-overlay-top:rgba(240,234,231,.70);
-  --zone-overlay-bottom:rgba(240,234,231,.82);
-  --zone-overlay-opacity:.92;
+  --zone-motif-opacity:.28;
+  --zone-motif-opacity-hover:.38;
+  --zone-overlay-top:rgba(240,234,231,.42);
+  --zone-overlay-bottom:rgba(240,234,231,.64);
+  --zone-overlay-opacity:.70;
+}
+
+[data-theme="day"] .zone-choice-corps{
+  --zone-motif:url("/images/zones/motif-zone-corps-day.png");
+}
+
+[data-theme="day"] .zone-choice-mental{
+  --zone-motif:url("/images/zones/motif-zone-mental-day.png");
+}
+
+[data-theme="day"] .zone-choice-energie{
+  --zone-motif:url("/images/zones/motif-zone-energie-day.png");
+}
+
+[data-theme="day"] .zone-choice-emotions{
+  --zone-motif:url("/images/zones/motif-zone-emotions-day.png");
+}
+
+[data-theme="day"] .zone-choice-environnement{
+  --zone-motif:url("/images/zones/motif-zone-environnement-day.png");
+}
+
+[data-theme="day"] .zone-choice-relations{
+  --zone-motif:url("/images/zones/motif-zone-relations-day.png");
+}
+
+[data-theme="day"] .zone-choice-sens{
+  --zone-motif:url("/images/zones/motif-zone-sens-day.png");
 }
 
 [data-theme="day"] .zone-choice-title{
   text-shadow:none;
 }
 
-/* Mobile : garder la lisibilité avant l'image */
 @media(orientation:portrait) and (max-width:767px){
   .zone-choice::before{
-    opacity:.12;
+    opacity:var(--zone-motif-opacity-mobile, .28);
   }
 
   .zone-choice:hover::before,
   .zone-choice:focus-visible::before{
-    opacity:.16;
+    opacity:var(--zone-motif-opacity-hover-mobile, .34);
+  }
+
+  [data-theme="day"] .zone-choice{
+    --zone-motif-opacity-mobile:.24;
+    --zone-motif-opacity-hover-mobile:.30;
   }
 }
 
