@@ -5517,6 +5517,67 @@ body.state-active .ici-card {
     margin-bottom:24px;
   }
 }
+
+/* Signature visuelle header — Maison Foébé */
+.zone-hero{
+  isolation:isolate;
+}
+
+.zone-hero::before{
+  content:""!important;
+  position:absolute!important;
+  width:min(58vw,560px)!important;
+  height:min(34vw,300px)!important;
+  right:clamp(-170px,-8vw,-72px)!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  border-radius:0!important;
+  background-image:url("/images/zones/signatures/header-zone-corps.png")!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:contain!important;
+  background-color:transparent!important;
+  opacity:.125!important;
+  filter:none!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+
+[data-theme="day"] .zone-hero::before{
+  opacity:.105!important;
+}
+
+.zone-hero > *{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:767px){
+  .zone-hero::before{
+    width:min(86vw,420px)!important;
+    height:min(48vw,220px)!important;
+    right:50%!important;
+    top:54%!important;
+    transform:translate(50%,-50%)!important;
+    opacity:.085!important;
+  }
+
+  [data-theme="day"] .zone-hero::before{
+    opacity:.075!important;
+  }
+}
+
+@media(orientation:landscape) and (max-height:560px){
+  .zone-hero::before{
+    width:min(44vw,380px)!important;
+    height:min(24vw,170px)!important;
+    right:clamp(-110px,-6vw,-50px)!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    opacity:.09!important;
+  }
+}
+
 </style>
 </head>
 <body>
