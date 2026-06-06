@@ -70,6 +70,38 @@
 
 
 
+/* ── Progression mobile ── */
+.progress-mobile{
+  display:none;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+.progress-mobile-bar{
+  flex:1;
+  height:6px;
+  border-radius:99px;
+  background:rgba(240,234,231,.12);
+  overflow:hidden;
+}
+.progress-mobile-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--warm,#BB7E60),var(--rose,#C45279));
+  border-radius:99px;
+  transition:width .35s ease;
+}
+.progress-mobile-text{
+  font-family:"Poppins",sans-serif;
+  font-size:11.5px;
+  font-weight:700;
+  color:var(--warm,#BB7E60);
+  white-space:nowrap;
+}
+@media(max-width:920px){
+  .progress-mobile{ display:flex; }
+}
+
 /* Styles page Boussole */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--bg:#F0EAE7;--bg2:#E8DDD8;--bg3:#DDD0CB;--text:#4E291F;--muted:rgba(78,41,31,.74);--soft:rgba(78,41,31,.58);--dim:rgba(78,41,31,.42);--warm:#BB7E60;--rose:#C45279;--red:#C34234;--cream:#F0EAE7;--sand:#D9C8BE;--line:rgba(187,126,96,.38);--line2:rgba(78,41,31,.12);--card:rgba(255,255,255,.58);--card2:rgba(187,126,96,.12);--shadow:0 24px 70px rgba(78,41,31,.11);}
@@ -77,6 +109,7 @@
 [data-theme="night"]{--bg:#4E291F;--bg2:#3A1A10;--bg3:#2C1A12;--text:#F0EAE7;--muted:rgba(240,234,231,.74);--soft:rgba(240,234,231,.58);--dim:rgba(240,234,231,.42);--warm:#BB7E60;--rose:#C45279;--red:#C34234;--cream:#F0EAE7;--sand:#D9C8BE;--line:rgba(187,126,96,.32);--line2:rgba(240,234,231,.12);--card:rgba(240,234,231,.055);--card2:rgba(187,126,96,.12);--shadow:0 24px 70px rgba(0,0,0,.28);}
 
 html{scroll-behavior:smooth;background:var(--bg);}
+#mainContent:focus{outline:none;}
 body{font-family:"Poppins",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 10% 0%,rgba(187,126,96,.13),transparent 35%),linear-gradient(180deg,rgba(255,255,255,.34),transparent 48%);}
 a{color:inherit;}
@@ -467,20 +500,19 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
     <a href="/test.html">Échelle Foébé</a>
     <a href="/foebe-zones-cadre.html">Les 7 zones</a>
     <a href="/boussole.html" aria-current="page">Boussole</a>
-    <a href="mailto:foebecosmetics@gmail.com">Contact</a>
+    <a href="mailto:contact@maisonfoebe.fr">Contact</a>
   </div>
 </nav>
 
-<main class="site" id="main">
+<main class="site" id="mainContent" tabindex="-1">
   <div class="wrap">
     <section class="hero" aria-labelledby="page-title">
       <span class="hero-eyebrow">Boussole Foébé</span>
       <h1 id="page-title">S’entraîner <em>à lire son self-care.</em></h1>
-      <p class="hero-sub">Lis une scène courte. Choisis ce qui te semble le plus touché, puis l’indice qui t’a aidée. La Boussole t’aide ensuite à mieux comprendre ce qui se joue.</p>
+      <p class="hero-sub">Lis une scène courte. Choisis ce qui te semble le plus touché, puis l’indice qui t’a aidé·e. La Boussole t’aide ensuite à mieux comprendre ce qui se joue.</p>
       <p class="hero-note">Les scènes sont fictives et construites à partir de vécus courants.</p>
       <div class="hero-actions">
         <button class="btn primary" type="button" data-start>Commencer une lecture</button>
-        <a class="btn secondary" href="/test.html">Faire l’Échelle Foébé</a>
       </div>
     </section>
 
@@ -493,9 +525,8 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
       <aside class="panel">
         <span class="section-eyebrow">À retenir</span>
         <div class="mini-list">
-          <div class="mini-item"><span class="mini-index">01</span><p>La Boussole t’aide à reconnaître les 7 zones Foébé.</p></div>
-          <div class="mini-item"><span class="mini-index">02</span><p>L’Échelle Foébé te permet ensuite de lire ton propre self-care.</p></div>
-          <div class="mini-item"><span class="mini-index">03</span><p>Plusieurs pistes sont possibles. Commence par celle qui te semble la plus juste.</p></div>
+          <div class="mini-item"><span class="mini-index">01</span><p>La Boussole t’aide à reconnaître les 7 zones du self-care.</p></div>
+          <div class="mini-item"><span class="mini-index">02</span><p>Plusieurs pistes sont possibles. Commence par celle qui te semble la plus juste.</p></div>
         </div>
       </aside>
       <article class="panel example-panel">
@@ -515,6 +546,13 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
         <div class="scenario-list" id="scenarioList"></div>
       </aside>
 
+      <div class="progress-mobile" aria-hidden="true">
+        <div class="progress-mobile-bar">
+          <div class="progress-mobile-fill" id="progressMobileFill"></div>
+        </div>
+        <span class="progress-mobile-text" id="progressMobileText">0 sur 10</span>
+      </div>
+
       <article class="main-card" id="readerCard" aria-live="polite">
         <div class="reader-top">
           <div class="person" id="personMeta"></div>
@@ -532,8 +570,8 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
           </div>
           <div class="question-block" id="qSignal">
             <div class="question-kicker">Ensuite</div>
-            <h2 class="question-title">Qu’est-ce qui t’a mise sur cette piste ?</h2>
-            <p class="question-help">Choisis le détail qui t’a le plus aidée à comprendre ce qui se joue.</p>
+            <h2 class="question-title">Qu’est-ce qui t’a orienté·e sur cette piste ?</h2>
+            <p class="question-help">Choisis le détail qui t’a le plus aidé·e à comprendre ce qui se joue.</p>
             <div class="options" id="signalOptions"></div>
           </div>
           <div class="feedback" id="feedback"></div>
@@ -550,7 +588,7 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
           <p class="reading" id="foebeReading"></p>
           <div class="reader-actions">
             <button class="btn primary" type="button" id="nextScenarioBtn">Lire une autre scène</button>
-            <a class="btn secondary" href="/test.html">Faire l’Échelle Foébé</a>
+            <a class="btn secondary" href="/test.html">Si tu veux aller plus loin → L’Échelle Foébé</a>
           </div>
         </div>
       </article>
@@ -570,13 +608,6 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
       </div>
     </section>
 
-    <section class="cta-strip" aria-label="Suite du parcours">
-      <div>
-        <h2>Le parcours Foébé avance par étapes.</h2>
-        <p>Le Sas t’aide à te situer. La Boussole t’aide à reconnaître les zones. L’Échelle Foébé t’aide ensuite à appliquer cette lecture à toi.</p>
-      </div>
-      <a class="btn secondary" href="/foebe-zones-cadre.html">Voir les 7 zones</a>
-    </section>
   </div>
 </main>
 
@@ -876,7 +907,8 @@ function renderTabs(){
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'scenario-tab' + (index === state.current ? ' active' : '') + (state.completed.has(index) ? ' done' : '');
-    btn.innerHTML = `<span class="tab-num">${String(index + 1).padStart(2,'0')}</span><span class="tab-label">${s.person}, ${s.age}</span>`;
+    const doneLabel = state.completed.has(index) ? `<span class="tab-meta">${s.dominant}</span>` : '';
+    btn.innerHTML = `<span class="tab-num">${String(index + 1).padStart(2,'0')}</span><div><span class="tab-label">${s.person}, ${s.age}</span>${doneLabel}</div>`;
     btn.addEventListener('click', () => loadScenario(index, { scroll: true }));
     list.appendChild(btn);
   });
@@ -886,6 +918,8 @@ function updateProgress(){
   const done = state.completed.size;
   $('progressText').textContent = `${done} sur ${scenarios.length}`;
   $('progressFill').style.width = `${(done / scenarios.length) * 100}%`;
+  const mf = $('progressMobileFill'); if(mf) mf.style.width = `${(done / scenarios.length) * 100}%`;
+  const mt = $('progressMobileText'); if(mt) mt.textContent = `${done} sur ${scenarios.length}`;
   if(done === scenarios.length){
     renderFinal();
     $('finalCard').classList.add('show');
