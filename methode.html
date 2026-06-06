@@ -74,6 +74,13 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
 body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
   color:#F0EAE7;background:#BB7E60;border-color:#BB7E60;opacity:1;outline:none;
 }
+body > nav#fallbackNav.fallback-nav .fallback-links>a[aria-current="page"]{
+  color:#F0EAE7!important;
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  opacity:1!important;
+}
+
 @media(max-width:720px){
   body > nav#fallbackNav.fallback-nav{padding:0 12px;gap:12px;}
   body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px;}
@@ -103,6 +110,7 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
   --read:rgba(78,41,31,.91);--read-soft:rgba(78,41,31,.82);
 }
 html{scroll-behavior:smooth;}
+#mainContent:focus{outline:none;}
 body{
   font-family:'Poppins',sans-serif;font-size:16px;line-height:1.72;background:var(--bg);color:var(--text);overflow-x:hidden;
   transition:background .35s,color .35s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
@@ -1123,12 +1131,12 @@ body.chip-modal-open{overflow:hidden;}
 <div class="fallback-links">
 <a href="index.html">Accueil</a>
 <a href="comprendre.html">Comprendre</a>
-<a href="methode.html">Méthode</a>
+<a href="methode.html" aria-current="page">Méthode</a>
 <a href="pratiquer.html">Pratiquer</a>
 <a href="foebe-zones-cadre.html">7 zones</a>
 <a href="test.html">Test</a>
 </div>
-</nav><main id="mainContent"><section class="hero">
+</nav><main id="mainContent" tabindex="-1"><section class="hero">
 <div class="hero-inner">
 
 <h1 class="hero-title reveal reveal-delay-1">
@@ -1141,7 +1149,7 @@ body.chip-modal-open{overflow:hidden;}
 <button class="hero-chip" type="button" data-chip-title="Pas de la thérapie" data-chip-text="Foébé ne pose pas de diagnostic et ne remplace pas un suivi thérapeutique. C’est un espace d’observation pour mieux nommer son fonctionnement et repérer où commencer.">Pas de la thérapie</button>
 <button class="hero-chip" type="button" data-chip-title="Pas du wellness générique" data-chip-text="Foébé ne propose pas une routine miracle ou des conseils universels. Elle part des signaux, de la charge, du contexte réel et transforme le flou en repères concrets.">Pas du wellness générique</button>
 <button class="hero-chip" type="button" data-chip-title="Un espace structuré du self-care" data-chip-text="Foébé organise le self-care comme une compétence : observer, comprendre, structurer, stabiliser. Le but n’est pas de tout changer, mais de savoir où regarder en premier.">Un espace structuré du self-care</button>
-</div><div class="hero-cta reveal reveal-delay-3"><a class="btn-cta" href="test.html">Faire l’Échelle Foébé</a><a class="btn-outline" href="foebe-zones-cadre.html">Explorer les 7 zones →</a></div>
+</div>
 </div>
 </section><section class="section bg2">
 <div class="section-inner">
@@ -1257,19 +1265,6 @@ body.chip-modal-open{overflow:hidden;}
 <p class="posture-not"><strong>Ce n'est pas :</strong> une étiquette, une case, un résultat figé.</p>
 <p class="posture-is"><em> Mais, une lecture située du fonctionnement, ici et maintenant.</em></p>
 </div>
-</div>
-</div>
-</section><section class="section clarification-section">
-<div class="section-inner">
-<div class="reveal">
-<span class="section-eyebrow">Après cette lecture</span>
-<h2 class="section-title">De la lecture
-<em>au premier repère concret</em></h2>
-<p class="section-body">Les premiers outils Foébé donnent un point d'entrée : ils aident à repérer la zone prioritaire et à transformer une impression floue en premier repère utilisable.</p>
-</div>
-<div class="clarification-grid reveal reveal-delay-1">
-<div class="clarification-card"><span class="clarification-label">Les 7 zones</span><h3>Lire où ça se joue</h3><p>Les 7 zones offrent une première carte de lecture : corps, mental, énergie, émotions, environnement, relations, sens. Elles aident à voir où le self-care se dérègle.</p><a class="clarification-card-cta" href="foebe-zones-cadre.html">Explorer les 7 zones</a></div>
-<div class="clarification-card"><span class="clarification-label">L'Échelle Foébé</span><h3>Sortir du flou</h3><p>Le test gratuit aide à repérer la zone prioritaire, à sortir de l’impression floue et à donner un point de départ de lecture du self-care plus lisible.</p><a class="clarification-card-cta" href="test.html">Faire l'Échelle Foébé</a></div>
 </div>
 </div>
 </section><section class="section bg3">
