@@ -145,6 +145,8 @@
     "}",
     "",
     "",
+    "/* Correctif V4.4 — boussole exacte + halo jour adouci */",
+    "/* Correctif V4.5 — halo jour aligné sur la zone longue */",
     "/* Correctif V4.3 — signature lumineuse Foébé",
     "   Objectif : guider le regard vers le logo sur toutes les pages, sans effet néon.",
     "   Nuit : halo doux type lampadaire.",
@@ -154,7 +156,7 @@
     "#mainNav .nav-logo::before{content:''!important;position:absolute!important;left:50%!important;top:-34px!important;width:118px!important;height:74px!important;transform:translateX(-50%)!important;pointer-events:none!important;z-index:-1!important;border-radius:999px!important;background:radial-gradient(ellipse at center,rgba(240,234,231,.34) 0%,rgba(187,126,96,.22) 34%,rgba(187,126,96,.09) 58%,transparent 76%)!important;filter:blur(12px)!important;opacity:.82!important;}",
     "#mainNav .nav-logo::after{content:''!important;position:absolute!important;left:50%!important;top:-12px!important;width:72px!important;height:36px!important;transform:translateX(-50%)!important;pointer-events:none!important;z-index:-1!important;border-radius:999px!important;background:radial-gradient(ellipse at center,rgba(240,234,231,.22),transparent 70%)!important;filter:blur(8px)!important;opacity:.55!important;}",
     "[data-theme='day'] #mainNav .nav-logo{text-shadow:none!important;filter:none!important;}",
-    "[data-theme='day'] #mainNav .nav-logo::before{top:-28px!important;width:104px!important;height:58px!important;background:radial-gradient(ellipse at center,rgba(187,126,96,.18) 0%,rgba(187,126,96,.10) 44%,transparent 74%)!important;filter:blur(14px)!important;opacity:.55!important;}",
+    "[data-theme='day'] #mainNav .nav-logo::before{top:-34px!important;width:118px!important;height:74px!important;background:radial-gradient(ellipse at center,rgba(187,126,96,.16) 0%,rgba(187,126,96,.085) 42%,rgba(187,126,96,.035) 62%,transparent 78%)!important;filter:blur(15px)!important;opacity:.48!important;}",
     "[data-theme='day'] #mainNav .nav-logo::after{display:none!important;}",
     "@media(max-width:420px){#mainNav .nav-logo::before{width:96px!important;height:58px!important;top:-28px!important;opacity:.72!important;}#mainNav .nav-logo::after{width:62px!important;height:30px!important;top:-10px!important;}}",
     "",
@@ -193,7 +195,9 @@
     if (file === "test" || file.indexOf("test") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "test.html";
     if (file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0) return "foebe-zones-cadre.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
-    if (file === "boussole-accueil-foebe" || file.indexOf("boussole") === 0) return "boussole-accueil-foebe.html";
+    if (file === "boussole.html" || file === "boussole") return "boussole.html";
+    if (file === "boussole-accueil-foebe" || file.indexOf("boussole-accueil-foebe") === 0) return "boussole-accueil-foebe.html";
+    if (file.indexOf("boussole") === 0) return "boussole.html";
 
     if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
     if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
