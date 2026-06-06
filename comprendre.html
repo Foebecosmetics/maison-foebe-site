@@ -54,6 +54,13 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
 body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
   color:#F0EAE7;background:#BB7E60;border-color:#BB7E60;opacity:1;outline:none;
 }
+body > nav#fallbackNav.fallback-nav .fallback-links>a[aria-current="page"]{
+  color:#F0EAE7!important;
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  opacity:1!important;
+}
+
 @media(max-width:720px){
   body > nav#fallbackNav.fallback-nav{padding:0 12px;gap:12px;}
   body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px;}
@@ -63,7 +70,7 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
 @media(max-width:420px){
   body > nav#fallbackNav.fallback-nav{gap:10px;padding:0 10px;}
   body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px;max-width:36vw;}
-  body > nav#fallbackNav.fallback-nav .fallback-links>a{min-height:36px;font-size:11.5px;padding:0 9px;}
+  body > nav#fallbackNav.fallback-nav .fallback-links>a{min-height:38px;font-size:12px;padding:0 10px;}
 }
 </style><style id="foebePillarCleanCss">
 /* Maison Foébé — pages piliers clean CSS */
@@ -83,6 +90,7 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
   --read:rgba(78,41,31,.91);--read-soft:rgba(78,41,31,.82);
 }
 html{scroll-behavior:smooth;}
+#mainContent:focus{outline:none;}
 body{
   font-family:'Poppins',sans-serif;font-size:16px;line-height:1.72;background:var(--bg);color:var(--text);overflow-x:hidden;
   transition:background .35s,color .35s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
@@ -636,22 +644,19 @@ main{display:block;}
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
 <a href="index.html">Accueil</a>
-<a href="comprendre.html">Comprendre</a>
+<a href="comprendre.html" aria-current="page">Comprendre</a>
 <a href="methode.html">Méthode</a>
 <a href="pratiquer.html">Pratiquer</a>
 <a href="foebe-zones-cadre.html">7 zones</a>
 <a href="test.html">Test</a>
 </div>
-</nav><main id="mainContent"><!-- HERO --><section class="hero">
+</nav><main id="mainContent" tabindex="-1"><!-- HERO --><section class="hero">
 <div class="hero-inner">
 
 <h1 class="hero-title reveal d1">Comprendre Foébé.<br/><em>La méthode, les fondements, la posture.</em></h1>
 <span class="hero-rule reveal d2"></span>
 <p class="hero-body reveal d2">Foébé est un espace structuré du self-care.<br/>Ici, on pose le cadre avant de lire la suite.</p>
-<div class="hero-cta-row reveal d3">
-<a class="btn-primary" href="methode.html">Lire la méthode complète →</a>
-<a class="btn-ghost" href="index.html">← Retour à l'accueil</a>
-</div>
+
 </div>
 </section><!-- ENTRÉES --><section class="section bg2">
 <div class="section-inner">
@@ -701,7 +706,6 @@ main{display:block;}
 <p class="reveal conclusion-quote">Le cadre posé,<br/><em>tout se relit autrement.</em></p>
 <div class="reveal d1 conclusion-actions">
 <a class="btn-primary" href="pratiquer.html">Explorer les outils →</a>
-<a class="btn-ghost" href="index.html">← Revenir à l’accueil</a>
 </div>
 </div>
 </section></main><script>
