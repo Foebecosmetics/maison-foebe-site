@@ -611,7 +611,6 @@ img,svg{ max-width:100%; }
   .home-start-intro{margin-left:0;margin-right:0;}
 }
 
-/* Correctif V37 — entrée plus respirante */
 .home-start-hero{
   align-items:center;
 }
@@ -832,38 +831,45 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
 
-/* Correctif V39 — blocs terracotta premium
-   Objectif : harmoniser la section Pourquoi Foébé, la newsletter et la porte accompagnement
-   avec le warm Foébé, sans toucher aux cartes principales ni au Shell. */
-.founder-section,
-.newsletter-section{
-  background:#BB7E60!important;
-  color:#F0EAE7!important;
+.founder-section{
+  background:rgba(187,126,96,.14);
+  color:var(--text);
+}
+[data-theme="day"] .founder-section{
+  background:#BB7E60;
+  color:#F0EAE7;
 }
 
-.founder-section .section-eyebrow,
-.newsletter-section .newsletter-label{
-  background:rgba(240,234,231,.14)!important;
-  border-color:rgba(240,234,231,.34)!important;
-  color:#F0EAE7!important;
+.founder-section .section-eyebrow{
+  background:rgba(187,126,96,.18);
+  border-color:rgba(187,126,96,.38);
+  color:var(--warm);
 }
-
+[data-theme="day"] .founder-section .section-eyebrow{
+  background:rgba(240,234,231,.22);
+  border-color:rgba(240,234,231,.40);
+  color:#F0EAE7;
+}
 .founder-section .section-step,
 .founder-section .section-title,
-.founder-section .founder-copy p,
-.newsletter-section .newsletter-title,
-.newsletter-section .newsletter-desc,
-.newsletter-section .newsletter-note{
-  color:#F0EAE7!important;
+.founder-section .founder-copy p{
+  color:#F0EAE7;
 }
-
-.founder-section .section-step::after{
-  background:rgba(240,234,231,.36)!important;
+[data-theme="day"] .founder-section .section-step,
+[data-theme="day"] .founder-section .section-title,
+[data-theme="day"] .founder-section .founder-copy p{
+  color:#F0EAE7;
 }
-
+[data-theme="day"] .founder-section .section-step::after{
+  background:rgba(240,234,231,.36);
+}
 .founder-copy{
-  background:rgba(240,234,231,.12)!important;
-  border-left-color:rgba(240,234,231,.58)!important;
+  background:rgba(187,126,96,.10);
+  border-left-color:rgba(187,126,96,.55);
+}
+[data-theme="day"] .founder-copy{
+  background:rgba(240,234,231,.12);
+  border-left-color:rgba(240,234,231,.58);
 }
 
 .newsletter-input{
@@ -912,9 +918,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 }
 
 
-/* Correctif V40 — bouton newsletter outline crème
-   Objectif : rendre “Me tenir informé” plus léger sur fond terracotta,
-   avec hover rose Foébé. */
 .newsletter-btn{
   background:#bb7e60!important;
   color:#F0EAE7!important;
@@ -931,8 +934,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 }
 
 
-/* Correctif V41 — lisibilité immédiate des cartes d’accès
-   Objectif : faire comprendre en 3 secondes où cliquer, sans changer le contenu. */
 .home-start-card{
   border-color:rgba(187,126,96,.34)!important;
 }
@@ -979,10 +980,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   }
 }
 
-
-/* Correctif V42 — micro-polissage final index
-   Objectif : CTA plus lisibles, zone Environnement moins serrée,
-   note newsletter plus éditoriale. */
 
 /* CTA visibles dans les cartes “Pratiquer / Comprendre / Être accompagné” */
 .porte3-link{
@@ -1061,7 +1058,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 }
 
 
-/* Correctif V43 — intégration des visuels éditoriaux sur les 4 portes */
 .home-visual--img{
   padding:0!important;
   background:#BB7E60!important;
@@ -1095,32 +1091,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   object-position:center center;
 }
 
-
-/* Correctif V49 — motifs zones plus visibles, jour + nuit
-   Fichiers attendus dans GitHub :
-
-   Cartes du haut :
-   /images/index/echelle-foebe.png
-   /images/index/boussole-foebe.png
-   /images/index/lexique-foebe.png
-   /images/index/zones-foebe.png
-
-   Motifs zones :
-   /images/zones/motif-zone-corps-night.png
-   /images/zones/motif-zone-corps-day.png
-   /images/zones/motif-zone-mental-night.png
-   /images/zones/motif-zone-mental-day.png
-   /images/zones/motif-zone-energie-night.png
-   /images/zones/motif-zone-energie-day.png
-   /images/zones/motif-zone-emotions-night.png
-   /images/zones/motif-zone-emotions-day.png
-   /images/zones/motif-zone-environnement-night.png
-   /images/zones/motif-zone-environnement-day.png
-   /images/zones/motif-zone-relations-night.png
-   /images/zones/motif-zone-relations-day.png
-   /images/zones/motif-zone-sens-night.png
-   /images/zones/motif-zone-sens-day.png
-*/
 
 .zone-choice{
   position:relative!important;
@@ -1665,64 +1635,45 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 }
 
 
-/* Patch chirurgical — bouton newsletter visible */
-.newsletter-section .newsletter-btn{
-  min-height:48px!important;
-  padding:0 22px!important;
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  border:1.5px solid #F0EAE7!important;
-  border-radius:10px!important;
-  background:#4E291F!important;
-  color:#F0EAE7!important;
-  font-family:"Poppins",sans-serif!important;
-  font-size:15px!important;
-  font-weight:800!important;
-  line-height:1!important;
-  opacity:1!important;
-  visibility:visible!important;
-  white-space:nowrap!important;
-  box-shadow:none!important;
+/* Bouton newsletter accompagnement */
+.newsletter-section .newsletter-btn,
+.accompagnement-form .newsletter-btn{
+  min-height:48px;
+  padding:0 22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1.5px solid #BB7E60;
+  border-radius:10px;
+  background:#BB7E60;
+  color:#F0EAE7;
+  font-family:"Poppins",sans-serif;
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  opacity:1;
+  visibility:visible;
+  white-space:nowrap;
 }
-
 .newsletter-section .newsletter-btn:hover,
-.newsletter-section .newsletter-btn:focus-visible{
-  background:#C45279!important;
-  border-color:#C45279!important;
-  color:#F0EAE7!important;
-  transform:translateY(-1px)!important;
+.newsletter-section .newsletter-btn:focus-visible,
+.accompagnement-form .newsletter-btn:hover,
+.accompagnement-form .newsletter-btn:focus-visible{
+  background:#C45279;
+  border-color:#C45279;
+  color:#F0EAE7;
+  transform:translateY(-1px);
 }
-
 @media(orientation:portrait) and (max-width:767px){
-  .newsletter-section .newsletter-btn{
-    width:100%!important;
-  }
-}
-
-
-/* Patch chirurgical final — bouton newsletter Foébé warm */
-.newsletter-section .newsletter-btn{
-  background:#BB7E60!important;
-  color:#F0EAE7!important;
-  border:1.5px solid #BB7E60!important;
-  opacity:1!important;
-  visibility:visible!important;
-}
-
-.newsletter-section .newsletter-btn:hover,
-.newsletter-section .newsletter-btn:focus-visible{
-  background:#C45279!important;
-  border-color:#C45279!important;
-  color:#F0EAE7!important;
+  .newsletter-section .newsletter-btn{ width:100%; }
 }
 
 
 /* Signature éditoriale d'accueil — Maison Foébé */
 .home-start-signature{
-  width:min(100%,720px);
-  margin:clamp(16px,2.4vw,22px) auto 0;
-  padding:clamp(15px,2vw,18px) clamp(18px,2.6vw,24px);
+  width:min(720px,100%);
+  margin:clamp(14px,2.2vw,20px) auto 0;
+  padding:clamp(14px,1.9vw,17px) clamp(17px,2.4vw,23px);
   position:relative;
   overflow:hidden;
   border:1px solid rgba(187,126,96,.38);
@@ -1730,14 +1681,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   background:linear-gradient(135deg,rgba(187,126,96,.18),rgba(196,82,121,.075)),rgba(240,234,231,.045);
   color:var(--text);
   font-family:"Lora",serif;
-  font-size:clamp(16px,.7vw + 13.5px,18px);
+  font-size:clamp(15.5px,.62vw + 13.5px,17.5px);
   font-weight:400;
-  line-height:1.68;
+  line-height:1.58;
   text-align:center;
   text-wrap:balance;
   box-shadow:0 16px 42px rgba(0,0,0,.12);
 }
-
 .home-start-signature::before{
   content:"";
   position:absolute;
@@ -1746,7 +1696,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   border-radius:999px;
   background:#BB7E60;
 }
-
 .home-start-signature::after{
   content:"";
   position:absolute;
@@ -1758,22 +1707,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   background:rgba(187,126,96,.18);
   pointer-events:none;
 }
-
 [data-theme="day"] .home-start-signature{
   background:linear-gradient(135deg,rgba(187,126,96,.16),rgba(196,82,121,.055)),rgba(78,41,31,.035);
   box-shadow:0 12px 32px rgba(78,41,31,.08);
 }
-
 @media(orientation:portrait) and (max-width:767px){
   .home-start-signature{
-    margin-top:14px;
-    padding:15px 17px 15px 19px;
+    margin-top:13px;
+    padding:14px 16px 14px 18px;
     border-radius:20px;
     text-align:left;
-    font-size:15.5px;
-    line-height:1.62;
+    font-size:15.2px;
+    line-height:1.55;
   }
-
   .home-start-signature::after{
     width:76px;
     height:76px;
@@ -1782,51 +1728,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
     opacity:.8;
   }
 }
-
-@media(orientation:landscape) and (max-height:560px){
-  .home-start-signature{
-    margin-top:10px;
-    padding:11px 16px;
-    font-size:14px;
-    line-height:1.45;
-    border-radius:18px;
-  }
-}
-
-
-/* Patch publication — signature accueil vraiment responsive */
-.home-start-signature{
-  max-width:min(720px,100%);
-  margin:clamp(14px,2.1vw,20px) auto 0!important;
-  padding:clamp(14px,1.8vw,17px) clamp(17px,2.4vw,23px)!important;
-  font-size:clamp(15.5px,.62vw + 13.5px,17.5px)!important;
-  line-height:1.58!important;
-}
-
-@media(orientation:portrait) and (max-width:767px){
-  .home-start-signature{
-    max-width:100%;
-    margin-top:13px!important;
-    padding:14px 16px 14px 18px!important;
-    font-size:15.2px!important;
-    line-height:1.55!important;
-  }
-}
-
 @media(orientation:portrait) and (max-width:360px){
   .home-start-signature{
-    font-size:14.8px!important;
-    line-height:1.5!important;
-    padding:13px 15px 13px 18px!important;
+    font-size:14.8px;
+    line-height:1.5;
+    padding:13px 15px 13px 18px;
   }
 }
-
 @media(orientation:landscape) and (max-height:560px){
   .home-start-signature{
-    margin-top:9px!important;
-    padding:10px 15px!important;
-    font-size:13.8px!important;
-    line-height:1.42!important;
+    margin-top:9px;
+    padding:10px 15px;
+    font-size:13.8px;
+    line-height:1.42;
+    border-radius:18px;
   }
 }
 
@@ -1863,10 +1778,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   50%{ opacity:0; }
 }
 
-/* Correctif V50 — 5 portes équilibrées sur desktop
-   Objectif : le Dictionnaire devient une vraie porte, pas une carte horizontale à part.
-   Desktop : 3 cartes en haut, 2 cartes centrées en bas.
-*/
 @media(min-width:1024px){
   .home-start-inner{
     max-width:1120px;
@@ -1936,10 +1847,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 }
 
 
-
-/* Correctif V51 — accueil senior UX : 3 portes principales + accès secondaires
-   Objectif : réduire la charge de décision sans supprimer la Boussole ni le Dictionnaire.
-*/
 .home-start-grid--primary{
   align-items:stretch!important;
 }
@@ -2156,6 +2063,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   }
 }
 
+/* Micro-intro avant accès secondaires */
+.home-secondary-intro{
+  width:100%;
+  max-width:860px;
+  margin:clamp(18px,3vw,28px) auto 0;
+  font-family:"Poppins",sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  color:var(--warm);
+  opacity:.72;
+}
+
 .home-explore-note{
   font-family:"Poppins",sans-serif;
   font-size:12.5px;
@@ -2169,6 +2090,39 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 @media(orientation:portrait) and (max-width:767px){
   .home-explore-note{ font-size:12px; text-align:left; }
 }
+
+
+/* ── CTAs founder-section ── */
+.founder-ctas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+.btn-founder-primary{
+  display:inline-flex;align-items:center;
+  padding:13px 24px;
+  background:#F0EAE7;
+  color:#4E291F;
+  border:none;border-radius:10px;
+  font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;
+  text-decoration:none;
+  transition:background .2s,transform .2s;
+}
+.btn-founder-primary:hover{ background:#fff;transform:translateY(-2px); }
+.btn-founder-secondary{
+  display:inline-flex;align-items:center;
+  padding:13px 24px;
+  background:transparent;
+  color:#F0EAE7;
+  border:1px solid rgba(240,234,231,.45);border-radius:10px;
+  font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;
+  text-decoration:none;
+  transition:border-color .2s,color .2s,transform .2s;
+}
+.btn-founder-secondary:hover{ border-color:#F0EAE7;transform:translateY(-2px); }
+[data-theme="night"] .btn-founder-primary{ background:rgba(240,234,231,.92);color:#4E291F; }
+[data-theme="night"] .btn-founder-primary:hover{ background:#F0EAE7; }
 
 </style>
 
@@ -2197,11 +2151,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <section aria-labelledby="home-start-title" class="home-start-section home-start-hero" id="commencer">
   <div class="home-start-inner">
     <div class="home-start-head">
-      <span class="section-eyebrow">Bienvenue dans l’univers de Maison Foébé✨ </span>
       <h1 class="home-start-title" id="home-start-title">Tu fonctionnes, mais tu ne récupères <em>plus vraiment.</em></h1>
       
            <p class="home-start-signature">Ici, le self-care devient une compétence&nbsp;: apprendre à se lire, se réguler, puis avancer avec plus de douceur.</p>
-      <p class="home-explore-note">Commence par ce qui te parle. Il n'y a pas d'ordre obligatoire.</p>
+      <p class="home-explore-note">Commence par ce qui te parle. Il n'y a pas d'ordre précis.</p>
     </div>
     <div class="home-start-grid home-start-grid--primary" aria-label="Choisir par où commencer dans Maison Foébé">
       <a class="home-start-card home-start-card--primary" href="test.html" aria-label="Faire l’Échelle Foébé">
@@ -2232,7 +2185,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
         <span class="home-start-link">Me recentrer maintenant →</span>
       </a>
 
-      <a class="home-start-card home-start-card--primary" href="#zones-foebe" aria-label="Explorer les 7 zones du self-care">
+      <a class="home-start-card home-start-card--primary" href="foebe-zones-cadre.html" aria-label="Explorer les 7 zones du self-care">
         <div class="home-visual home-visual--zones-anim" aria-hidden="true">
           <svg class="zones-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path class="wave-path-1" fill="rgba(187,126,96,.14)" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
@@ -2242,11 +2195,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
         </div>
         <span class="home-start-num">03 · Explorer les zones</span>
         <h3>Je veux comprendre ce qui se joue.</h3>
-        <p>Sept zones pour comprendre ce qui se joue dans ton self-care.</p>
+        <p>Corps, mental, énergie, émotions, environnement, relations, sens. Commence par la zone qui te parle.</p>
         <span class="home-start-link">Explorer les zones →</span>
       </a>
     </div>
 
+    <p class="home-secondary-intro">Pour aller plus loin dans ta lecture.</p>
     <div class="home-secondary-access" aria-label="Accès complémentaires Maison Foébé">
       <a class="home-secondary-card" href="boussole-accueil-foebe.html" aria-label="Explorer la Boussole Foébé">
         <span class="home-secondary-icon" aria-hidden="true">
@@ -2310,67 +2264,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 </div>
 </div>
 </section>
-<div aria-hidden="true" class="section-fade section-fade-down fade-reco-portes"></div>
-<!-- ══════════════════════════════════════════
-     PORTES D'ENTRÉE — 3 intentions
-══════════════════════════════════════════ -->
-<section aria-labelledby="orientation-title" class="orientation-section reveal">
-<div class="orientation-inner">
-<p class="section-step"><span>02</span></p>
-<span class="section-eyebrow">Ce que Foébé rend lisible</span>
-<h2 class="section-title" id="orientation-title">Voir ce qui s’épuise,<br/><em>savoir où agir en priorité.</em></h2><p class="orientation-bridge">La méthode Foébé avance en quatre mouvements, qui deviennent quatre repères concrets pour comprendre où agir.</p>
-<div class="orientation-rail">
-<div class="orientation-row">
-<span class="orientation-num orientation-movement">Observer</span>
-<p><strong>Voir où l’énergie se perd.</strong> Les zones où tu continues à fonctionner, mais où tu ne récupères plus vraiment.</p>
-</div>
-<div class="orientation-row">
-<span class="orientation-num orientation-movement">Comprendre</span>
-<p><strong>Repérer ce qui déclenche le déséquilibre.</strong> Les rythmes, situations ou automatismes qui te font passer après tout le reste.</p>
-</div>
-<div class="orientation-row">
-<span class="orientation-num orientation-movement">Structurer</span>
-<p><strong>Construire des repères qui tiennent.</strong> Pas une routine idéale. Un cadre réaliste, adapté à ta façon de fonctionner.</p>
-</div>
-<div class="orientation-row orientation-row-last"><span class="orientation-num orientation-movement">Stabiliser</span><p><strong>Stabiliser ce qui soutient.</strong> Des appuis simples, répétables, qui t’aident à ne pas repartir de zéro à chaque surcharge.</p></div><a class="method-discreet-link" href="methode.html">
-  En savoir plus sur la méthode <span aria-hidden="true">→</span>
-</a></div><div aria-label="Les 7 zones du self-care" class="zones-block" id="zones-foebe"><p class="section-step zones-step"><span>03</span></p><span class="section-eyebrow">Les 7 zones du self-care</span><h2 class="section-title zones-title">7 zones pour cartographier<br/><em>ce qui s’épuise en toi.</em></h2><p class="zones-choice-intro">Chaque zone couvre un pan de ton self-care.<br/>Tu peux commencer par celle qui te parle le plus, ou les parcourir dans l’ordre.</p><div aria-label="Choisir une zone Foébé" class="zones-choice">
-<a aria-label="Lire la zone Corps" class="zone-choice zone-choice-corps" href="zone-corps.html">
-<span aria-hidden="true" class="zone-choice-icon">C</span>
-<span class="zone-choice-title">Corps</span>
-</a>
-<a aria-label="Lire la zone Mental" class="zone-choice zone-choice-mental" href="zone-mental.html">
-<span aria-hidden="true" class="zone-choice-icon">M</span>
-<span class="zone-choice-title">Mental</span>
-</a>
-<a aria-label="Lire la zone Énergie" class="zone-choice zone-choice-energie" href="zone-energie.html">
-<span aria-hidden="true" class="zone-choice-icon">É</span>
-<span class="zone-choice-title">Énergie</span>
-</a>
-<a aria-label="Lire la zone Émotions" class="zone-choice zone-choice-emotions" href="zone-emotions.html">
-<span aria-hidden="true" class="zone-choice-icon">Em</span>
-<span class="zone-choice-title">Émotions</span>
-</a>
-<a aria-label="Lire la zone Environnement" class="zone-choice zone-choice-environnement" href="zone-environnement.html">
-<span aria-hidden="true" class="zone-choice-icon">Env</span>
-<span class="zone-choice-title">Environnement</span>
-</a>
-<a aria-label="Lire la zone Relations" class="zone-choice zone-choice-relations" href="zone-relations.html">
-<span aria-hidden="true" class="zone-choice-icon">R</span>
-<span class="zone-choice-title">Relations</span>
-</a>
-<a aria-label="Lire la zone Sens" class="zone-choice zone-choice-sens" href="zone-sens.html">
-<span aria-hidden="true" class="zone-choice-icon">S</span>
-<span class="zone-choice-title">Sens</span>
-</a>
-</div><a class="orientation-link" href="foebe-zones-cadre.html">
-      Comprendre les 7 zones du self-care <span aria-hidden="true">→</span>
-</a></div>
-</div>
-</section>
 <section aria-labelledby="founder-title" class="founder-section reveal">
 <div class="founder-inner">
-<p class="section-step"><span>04</span></p>
+<p class="section-step"><span>02</span></p>
 <span class="section-eyebrow">Pourquoi Foébé</span>
 <h2 class="section-title" id="founder-title">
       Un cadre né du terrain.
@@ -2379,6 +2275,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <p>Foébé part d’un constat simple : on peut continuer à fonctionner longtemps tout en commençant déjà à s’épuiser.</p>
 <p>La méthode transforme ce constat en repères concrets : lire ses signaux, comprendre ses besoins et retrouver un self-care plus stable.</p>
 <p>Elle a été conçue par une docteure en psychologie et ergonome, spécialisée en santé au travail.</p>
+</div>
+<div class="founder-ctas">
+<a class="btn-founder-primary" href="methode.html">Découvrir la méthode →</a>
+<a class="btn-founder-secondary" href="a-propos.html">À propos →</a>
 </div>
 </div>
 </section>
