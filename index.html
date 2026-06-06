@@ -1830,52 +1830,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   }
 }
 
-/* ── Carte secondaire — Bibliothèque Foébé ── */
-.home-biblio-card{
-  display:grid;
-  grid-template-columns:180px 1fr;
-  gap:0;
-  width:min(100%,900px);
-  margin:clamp(14px,2vw,20px) auto 0;
-  border:1px solid var(--border);
-  border-radius:22px;
-  background:var(--card-bg);
-  overflow:hidden;
-  text-decoration:none;
-  color:var(--text);
-  transition:box-shadow .22s ease, transform .22s ease, border-color .22s ease;
-  position:relative;
-}
-.home-biblio-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:22px;
-  background:linear-gradient(135deg,rgba(196,82,121,.07),rgba(187,126,96,.07));
-  opacity:0;
-  transition:opacity .22s ease;
-  pointer-events:none;
-}
-.home-biblio-card:hover,
-.home-biblio-card:focus-visible{
-  box-shadow:0 12px 40px rgba(0,0,0,.14);
-  transform:translateY(-2px);
-  border-color:rgba(187,126,96,.55);
-}
-.home-biblio-card:hover::before,
-.home-biblio-card:focus-visible::before{ opacity:1; }
-.home-biblio-card:focus-visible{ outline:2px solid var(--warm); outline-offset:4px; }
 
-.home-biblio-visual{
-  background:linear-gradient(145deg,rgba(196,82,121,.22),rgba(187,126,96,.14));
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  padding:22px 20px;
-  border-right:1px solid var(--border);
-  min-height:110px;
-  overflow:hidden;
-}
+/* Dictionnaire — micro-animation typographique */
 .biblio-line{
   display:flex;
   align-items:center;
@@ -1900,49 +1856,304 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   .biblio-cursor{ animation:cursorBlink .75s step-end infinite; }
 }
 @media(prefers-reduced-motion:reduce){
-  #bibliotype::after{ content:"Acide hyaluronique"; }
+  #bibliotype::after{ content:"Acide"; }
 }
 @keyframes cursorBlink{
   0%,100%{ opacity:1; }
   50%{ opacity:0; }
 }
 
-.home-biblio-content{
-  padding:clamp(16px,2vw,24px) clamp(18px,2.5vw,28px);
+/* Correctif V50 — 5 portes équilibrées sur desktop
+   Objectif : le Dictionnaire devient une vraie porte, pas une carte horizontale à part.
+   Desktop : 3 cartes en haut, 2 cartes centrées en bas.
+*/
+@media(min-width:1024px){
+  .home-start-inner{
+    max-width:1120px;
+  }
+
+  .home-start-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:clamp(14px,1.45vw,20px)!important;
+    align-items:stretch!important;
+  }
+
+  .home-start-grid > .home-start-card{
+    grid-column:span 2;
+    min-height:318px;
+  }
+
+  .home-start-grid > .home-start-card:nth-child(4){
+    grid-column:2 / span 2;
+  }
+
+  .home-start-grid > .home-start-card:nth-child(5){
+    grid-column:4 / span 2;
+  }
+}
+
+.home-visual--biblio-anim{
+  background:linear-gradient(145deg,rgba(196,82,121,.20),rgba(187,126,96,.14))!important;
   display:flex;
-  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding:22px 18px;
+}
+
+.home-visual--biblio-anim::before,
+.home-visual--biblio-anim::after{
+  display:none!important;
+}
+
+.home-start-card--biblio .biblio-line{
+  max-width:100%;
+  overflow:hidden;
+  color:var(--text);
+}
+
+[data-theme="day"] .home-visual--biblio-anim{
+  background:linear-gradient(145deg,rgba(196,82,121,.13),rgba(187,126,96,.10))!important;
+}
+
+@media(min-width:768px) and (max-width:1023px){
+  .home-start-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .home-start-grid > .home-start-card:nth-child(5){
+    grid-column:1 / -1;
+    max-width:520px;
+    justify-self:center;
+  }
+}
+
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-grid > .home-start-card:nth-child(5){
+    grid-column:auto;
+    max-width:none;
+    justify-self:stretch;
+  }
+}
+
+
+
+/* Correctif V51 — accueil senior UX : 3 portes principales + accès secondaires
+   Objectif : réduire la charge de décision sans supprimer la Boussole ni le Dictionnaire.
+*/
+.home-start-grid--primary{
+  align-items:stretch!important;
+}
+
+@media(min-width:1024px){
+  .home-start-grid--primary{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    max-width:1040px!important;
+    margin-inline:auto!important;
+    gap:clamp(16px,1.8vw,24px)!important;
+  }
+
+  .home-start-grid--primary > .home-start-card{
+    grid-column:auto!important;
+    min-height:330px!important;
+  }
+}
+
+.home-start-card--primary h3{
+  text-wrap:balance;
+}
+
+.home-secondary-access{
+  width:100%;
+  max-width:860px;
+  margin:clamp(18px,3vw,28px) auto 0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.home-secondary-card{
+  min-height:112px;
+  padding:14px 16px;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  border:1px solid rgba(187,126,96,.30);
+  border-radius:20px;
+  background:rgba(187,126,96,.055);
+  color:var(--text);
+  text-decoration:none;
+  transition:background .22s ease,border-color .22s ease,transform .22s ease,box-shadow .22s ease;
+}
+
+.home-secondary-card:hover,
+.home-secondary-card:focus-visible{
+  background:rgba(187,126,96,.11);
+  border-color:rgba(187,126,96,.55);
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px var(--shadow);
+  outline:none;
+}
+
+.home-secondary-icon{
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
   justify-content:center;
-  gap:6px;
+  border:1px solid rgba(187,126,96,.30);
+  border-radius:18px;
+  background:rgba(240,234,231,.045);
+  overflow:hidden;
+  flex:0 0 auto;
 }
-.home-biblio-content h3{
+
+.home-secondary-icon .boussole-wrap{
+  width:46px;
+  height:46px;
+  transform:scale(.82);
+}
+
+.home-secondary-icon .boussole-wrap::before{
+  font-size:7px;
+  top:3px;
+}
+
+.home-secondary-icon .boussole-arrow{
+  height:34px;
+}
+
+.home-secondary-icon .boussole-arrow::before{
+  border-left-width:4px;
+  border-right-width:4px;
+  border-bottom-width:12px;
+}
+
+.home-secondary-icon .boussole-arrow::after{
+  border-left-width:4px;
+  border-right-width:4px;
+  border-top-width:12px;
+}
+
+.home-secondary-icon--biblio{
+  justify-content:flex-start;
+  padding:0 10px;
+}
+
+.home-secondary-icon--biblio .biblio-line{
+  max-width:100%;
+  font-size:12px;
+}
+
+.home-secondary-content{
+  min-width:0;
+  display:grid;
+  gap:4px;
+}
+
+.home-secondary-kicker{
+  color:var(--warm);
+  font-family:"Poppins",sans-serif;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.6px;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+.home-secondary-content strong{
+  color:var(--text);
   font-family:"Lora",serif;
-  font-size:clamp(16px,1.4vw,20px);
+  font-size:clamp(18px,1.4vw,21px);
   font-weight:400;
-  line-height:1.3;
-  margin:0;
+  line-height:1.18;
 }
-.home-biblio-content p{
-  font-family:"Lora",serif;
-  font-size:14px;
-  line-height:1.68;
+
+.home-secondary-content span:last-child{
   color:var(--read);
-  margin:0;
+  font-family:"Lora",serif;
+  font-size:14.5px;
+  line-height:1.55;
 }
 
-@media(max-width:640px){
-  .home-biblio-card{
+.home-secondary-arrow{
+  color:var(--warm);
+  font-family:"Poppins",sans-serif;
+  font-size:16px;
+  font-weight:800;
+  transition:transform .22s ease;
+}
+
+.home-secondary-card:hover .home-secondary-arrow,
+.home-secondary-card:focus-visible .home-secondary-arrow{
+  transform:translateX(3px);
+}
+
+[data-theme="day"] .home-secondary-card{
+  background:rgba(78,41,31,.035);
+  border-color:rgba(78,41,31,.16);
+}
+
+[data-theme="day"] .home-secondary-icon{
+  background:rgba(78,41,31,.035);
+  border-color:rgba(78,41,31,.14);
+}
+
+@media(min-width:768px) and (max-width:1023px){
+  .home-start-grid--primary{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:12px!important;
+  }
+
+  .home-start-grid--primary > .home-start-card{
+    grid-column:auto!important;
+    min-height:300px!important;
+  }
+
+  .home-secondary-access{
+    max-width:760px;
+  }
+}
+
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-grid--primary{
+    grid-template-columns:1fr!important;
+  }
+
+  .home-start-grid--primary > .home-start-card{
+    min-height:0!important;
+  }
+
+  .home-secondary-access{
     grid-template-columns:1fr;
+    margin-top:18px;
   }
-  .home-biblio-visual{
-    min-height:52px;
-    padding:14px 18px;
-    border-right:none;
-    border-bottom:1px solid var(--border);
+
+  .home-secondary-card{
+    min-height:96px;
+    padding:13px 14px;
+    border-radius:18px;
+  }
+
+  .home-secondary-icon{
+    width:50px;
+    height:50px;
+    border-radius:16px;
+  }
+
+  .home-secondary-content span:last-child{
+    font-size:14px;
   }
 }
 
-[data-theme="day"] .home-biblio-visual{
-  background:linear-gradient(145deg,rgba(196,82,121,.14),rgba(187,126,96,.10));
+@media(orientation:portrait) and (max-width:380px){
+  .home-secondary-card{
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+
+  .home-secondary-icon{
+    display:none;
+  }
 }
 
 .home-explore-note{
@@ -1989,11 +2200,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
       <span class="section-eyebrow">Bienvenue dans l’univers de Maison Foébé✨ </span>
       <h1 class="home-start-title" id="home-start-title">Tu fonctionnes, mais tu ne récupères <em>plus vraiment.</em></h1>
       
-           <p class="home-start-signature">Ici, le self-care devient une compétence : apprendre à se lire, se réguler, puis avancer avec plus de douceur.</p>
+           <p class="home-start-signature">Ici, le self-care devient une compétence&nbsp;: apprendre à se lire, se réguler, puis avancer avec plus de douceur.</p>
       <p class="home-explore-note">Commence par ce qui te parle. Il n'y a pas d'ordre obligatoire.</p>
     </div>
-    <div class="home-start-grid" aria-label="Choisir par où commencer dans Maison Foébé">
-      <a class="home-start-card" href="test.html">
+    <div class="home-start-grid home-start-grid--primary" aria-label="Choisir par où commencer dans Maison Foébé">
+      <a class="home-start-card home-start-card--primary" href="test.html" aria-label="Faire l’Échelle Foébé">
         <div class="home-visual home-visual--echelle-anim" aria-hidden="true">
           <span class="echelle-bar"></span>
           <span class="echelle-bar"></span>
@@ -2003,34 +2214,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
           <span class="echelle-bar"></span>
           <span class="echelle-bar"></span>
         </div>
-        <span class="home-start-num">01 · Test complet</span>
-        <h3>Faire l’Échelle Foébé</h3>
-        <p>21 affirmations pour voir quelles zones demandent ton attention.</p>
-        <span class="home-start-link">Commencer le test →</span>
+        <span class="home-start-num">01 · Me situer</span>
+        <h3>Je ne sais pas ce qui tire le plus.</h3>
+        <p>21 affirmations pour repérer les zones qui demandent ton attention en ce moment.</p>
+        <span class="home-start-link">Faire l’Échelle Foébé →</span>
       </a>
-      <a class="home-start-card" href="boussole-accueil-foebe.html">
-        <div class="home-visual home-visual--boussole-anim" aria-hidden="true">
-          <div class="boussole-wrap">
-            <div class="boussole-arrow"></div>
-          </div>
-        </div>
-        <span class="home-start-num">02 · Situation précise</span>
-        <h3>Explorer la Boussole</h3>
-        <p>Deux entrées : le sas pour t’aider à identifier l’instant, la boussole pour reconnaître les zones du self-care.</p>
-        <span class="home-start-link">Ouvrir la boussole →</span>
-      </a>
-      <a class="home-start-card" href="respiration.html">
+
+      <a class="home-start-card home-start-card--primary" href="respiration.html" aria-label="Lancer la respiration guidée">
         <div class="home-visual home-visual--respiration" aria-hidden="true">
           <span class="home-breath-circle" id="breathCircle">
             <span class="home-breath-label" id="breathLabel">Inspire</span>
           </span>
         </div>
-        <span class="home-start-num">03 · Geste immédiat</span>
-        <h3>Lancer la respiration guidée</h3>
+        <span class="home-start-num">02 · Me recentrer</span>
+        <h3>J’ai besoin de calmer le système maintenant.</h3>
         <p>Des exercices courts de respiration guidée pour retrouver un peu d’appui.</p>
         <span class="home-start-link">Respirer maintenant →</span>
       </a>
-      <a class="home-start-card" href="#zones-foebe">
+
+      <a class="home-start-card home-start-card--primary" href="#zones-foebe" aria-label="Explorer les 7 zones du self-care">
         <div class="home-visual home-visual--zones-anim" aria-hidden="true">
           <svg class="zones-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path class="wave-path-1" fill="rgba(187,126,96,.14)" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
@@ -2038,27 +2240,40 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
             <path class="wave-path-3" fill="rgba(240,234,231,.07)" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"/>
           </svg>
         </div>
-        <span class="home-start-num">04 · Carte du self-care</span>
-        <h3>Découvrir les 7 zones du self-care</h3>
-        <p>Comprendre ta carte : corps · mental · énergie · émotions · environnement · relations · sens</p>
+        <span class="home-start-num">03 · Explorer les zones</span>
+        <h3>Je veux comprendre ce qui se joue.</h3>
+        <p>Corps, mental, énergie, émotions, environnement, relations, sens : une carte pour lire ton self-care.</p>
         <span class="home-start-link">Explorer les zones ↓</span>
       </a>
     </div>
 
-    <!-- Carte secondaire — Bibliothèque Foébé -->
-    <a class="home-biblio-card" href="dictionnaire.html" aria-label="Ouvrir le Dictionnaire Foébé">
-      <div class="home-biblio-visual" aria-hidden="true">
-        <span class="biblio-line"><span id="bibliotype"></span><span class="biblio-cursor"></span></span>
-      </div>
-      <div class="home-biblio-content">
-        <span class="home-start-num">05 · Référence skincare &amp; self-care</span>
-        <h3>Dictionnaire Foébé</h3>
-        <p>Définitions, fiches ingrédients, termes clés du soin et du self-care — une référence à consulter à tout moment.</p>
-        <span class="home-start-link">Ouvrir le dictionnaire →</span>
-      </div>
-    </a>
+    <div class="home-secondary-access" aria-label="Accès complémentaires Maison Foébé">
+      <a class="home-secondary-card" href="boussole-accueil-foebe.html" aria-label="Explorer la Boussole Foébé">
+        <span class="home-secondary-icon" aria-hidden="true">
+          <span class="boussole-wrap">
+            <span class="boussole-arrow"></span>
+          </span>
+        </span>
+        <span class="home-secondary-content">
+          <span class="home-secondary-kicker">Parcours guidé</span>
+          <strong>Explorer la Boussole</strong>
+          <span>Pour reconnaître une situation précise et choisir une direction.</span>
+        </span>
+        <span class="home-secondary-arrow" aria-hidden="true">→</span>
+      </a>
 
-  </div>
+      <a class="home-secondary-card" href="dictionnaire.html" aria-label="Ouvrir le Dictionnaire Foébé">
+        <span class="home-secondary-icon home-secondary-icon--biblio" aria-hidden="true">
+          <span class="biblio-line"><span id="bibliotype"></span><span class="biblio-cursor"></span></span>
+        </span>
+        <span class="home-secondary-content">
+          <span class="home-secondary-kicker">Ressource</span>
+          <strong>Dictionnaire Foébé</strong>
+          <span>Pour mettre des mots précis sur le soin, le corps et le self-care.</span>
+        </span>
+        <span class="home-secondary-arrow" aria-hidden="true">→</span>
+      </a>
+    </div></div>
 </section>
 <div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
 <!-- ══════════════════════════════════════════
@@ -2255,16 +2470,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
   if(mq && mq.matches) return;
 
-  var words = [
-    'Sébum',
-    'Acide hyaluronique',
-    'Besoin de récupération',
-    'Niacinamide',
-    'Zone Énergie',
-    'Huile végétale',
-    'Rétinol',
-    'Burnout silencieux'
-  ];
+  var words = ["Acide","Sérum","Corps","Repos","Geste","Signal","Stress","Mental","Besoin","Rituel"];
 
   var wi = 0;
   var ci = 0;
