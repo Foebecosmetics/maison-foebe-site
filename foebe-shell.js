@@ -84,16 +84,23 @@
     "@media(max-width:380px){.nav-logo{font-size:17px!important;}#menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}.theme-toggle{width:36px!important;height:36px!important;}.nav-panel-inner{padding-bottom:8px!important;}}",
 
     "",
-    "/* Correctif V4.9 — loader signature Foébé accueil + différé",
-    "   Objectif : afficher une signature d’entrée uniquement sur l’accueil, puis seulement si une page met un peu de temps.",
-    "   Non bloquant, décoratif, accessible, supprimé automatiquement.",
+    "",
+    "/* Correctif V5 — loader signature Foébé respiration premium",
+    "   Objectif : porte d’entrée lente sur l’accueil + respiration adaptative pendant les chargements longs.",
+    "   Sans halo nav, non bloquant, accessible, supprimé automatiquement.",
     "*/",
-    "#foebeLoader{position:fixed!important;inset:0!important;z-index:100001!important;display:grid!important;place-items:center!important;background:#F0EAE7!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .34s ease,visibility .34s ease!important;}",
+    "#foebeLoader{position:fixed!important;inset:0!important;z-index:100001!important;display:grid!important;place-items:center!important;background:#F0EAE7!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .52s ease,visibility .52s ease!important;}",
     "#foebeLoader.is-visible{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}",
     "#foebeLoader.is-hidden{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}",
-    ".foebe-loader-mark{width:82px!important;height:82px!important;border:2px solid #BB7E60!important;border-radius:999px!important;display:grid!important;place-items:center!important;font-family:'Montserrat',sans-serif!important;font-size:38px!important;font-weight:700!important;letter-spacing:-.06em!important;color:#4E291F!important;background:rgba(240,234,231,.94)!important;box-shadow:0 0 0 rgba(187,126,96,0)!important;animation:foebeLoaderBreath 1.05s ease-in-out infinite!important;}",
-    "@keyframes foebeLoaderBreath{0%,100%{transform:scale(1);box-shadow:0 0 0 rgba(187,126,96,0);}50%{transform:scale(1.045);box-shadow:0 0 30px rgba(187,126,96,.28);}}",
-    "@media(prefers-reduced-motion:reduce){.foebe-loader-mark{animation:none!important;}#foebeLoader{transition:none!important;}}",
+    ".foebe-loader-wrap{position:relative!important;width:126px!important;height:126px!important;display:grid!important;place-items:center!important;}",
+    ".foebe-loader-ring{position:absolute!important;inset:0!important;border:2px solid #BB7E60!important;border-radius:999px!important;opacity:.98!important;transform-origin:center!important;animation:foebeLoaderInhale 2.15s cubic-bezier(.37,0,.22,1) infinite!important;}",
+    ".foebe-loader-ring::before{content:''!important;position:absolute!important;inset:9px!important;border:1px solid rgba(187,126,96,.28)!important;border-radius:999px!important;}",
+    ".foebe-loader-mark{position:relative!important;width:92px!important;height:92px!important;border-radius:999px!important;display:grid!important;place-items:center!important;font-family:'Montserrat',sans-serif!important;font-size:44px!important;font-weight:700!important;letter-spacing:-.06em!important;line-height:1!important;color:#4E291F!important;background:rgba(240,234,231,.98)!important;transform-origin:center!important;animation:foebeLoaderMark 2.15s cubic-bezier(.37,0,.22,1) infinite!important;}",
+    ".foebe-loader-word{position:absolute!important;top:calc(100% + 18px)!important;left:50%!important;transform:translateX(-50%)!important;font-family:'Poppins',sans-serif!important;font-size:11px!important;font-weight:700!important;letter-spacing:1.8px!important;text-transform:uppercase!important;color:rgba(78,41,31,.72)!important;white-space:nowrap!important;}",
+    "@keyframes foebeLoaderInhale{0%,100%{transform:scale(.94);opacity:.72;}46%{transform:scale(1.055);opacity:1;}62%{transform:scale(1.035);opacity:.92;}}",
+    "@keyframes foebeLoaderMark{0%,100%{transform:scale(1);}46%{transform:scale(.985);}62%{transform:scale(.992);}}",
+    "@media(max-width:420px){.foebe-loader-wrap{width:112px!important;height:112px!important;}.foebe-loader-mark{width:82px!important;height:82px!important;font-size:40px!important;}.foebe-loader-word{font-size:10px!important;letter-spacing:1.5px!important;top:calc(100% + 16px)!important;}}",
+    "@media(prefers-reduced-motion:reduce){.foebe-loader-ring,.foebe-loader-mark{animation:none!important;}#foebeLoader{transition:opacity .18s ease,visibility .18s ease!important;}}",
 
     "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon{transition:none!important;}}"
   ].join("\n");
@@ -107,10 +114,10 @@
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     1.5 LOADER SIGNATURE FOÉBÉ — porte d’entrée + différé, non bloquant
-     À la première arrivée sur l’accueil : apparition immédiate comme signature.
-     Ensuite : apparition seulement si une page met un peu de temps à charger.
-     Sécurité anti-blocage et option de désactivation par page.
+     1.5 LOADER SIGNATURE FOÉBÉ — respiration premium
+     Accueil : porte d’entrée plus lente, centrée, comme une inspiration.
+     Autres pages : loader différé uniquement si le chargement dure.
+     Adaptatif : la respiration continue tant que la page charge, puis expire.
   ═══════════════════════════════════════════════════════════════════════════ */
   function injectFoebeLoader() {
     var loaderMode = (
@@ -120,14 +127,6 @@
     ).toLowerCase();
 
     if (loaderMode === "none" || document.getElementById("foebeLoader")) return;
-
-    var loader = document.createElement("div");
-    loader.id = "foebeLoader";
-    loader.setAttribute("aria-hidden", "true");
-    loader.innerHTML = '<div class="foebe-loader-mark">F</div>';
-
-    var shown = false;
-    var removed = false;
 
     var pathName = (window.location.pathname || "/").toLowerCase();
     var fileName = (pathName.split("/").pop() || "index.html").split("?")[0].split("#")[0];
@@ -141,10 +140,32 @@
       firstEntrance = false;
     }
 
-    var showDelay = firstEntrance ? 0 : 220;
-    var minVisible = firstEntrance ? 760 : 360;
-    var maxLifetime = firstEntrance ? 1900 : 1600;
+    var loader = document.createElement("div");
+    loader.id = "foebeLoader";
+    loader.setAttribute("aria-hidden", "true");
+    loader.innerHTML =
+      '<div class="foebe-loader-wrap">' +
+        '<div class="foebe-loader-ring"></div>' +
+        '<div class="foebe-loader-mark">F</div>' +
+        '<div class="foebe-loader-word">Maison Foébé</div>' +
+      '</div>';
+
+    var shown = false;
+    var removed = false;
     var shownAt = 0;
+    var showDelay = firstEntrance ? 0 : 260;
+    var minVisible = firstEntrance ? 1850 : 820;
+    var maxLifetime = firstEntrance ? 3200 : 4200;
+
+    function showLoader() {
+      if (shown || removed) return;
+      document.body.insertBefore(loader, document.body.firstChild);
+      shown = true;
+      shownAt = Date.now();
+      requestAnimationFrame(function () {
+        if (!removed) loader.classList.add("is-visible");
+      });
+    }
 
     function actuallyRemove() {
       if (removed) return;
@@ -153,7 +174,7 @@
       loader.classList.remove("is-visible");
       setTimeout(function () {
         if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
-      }, 420);
+      }, 620);
     }
 
     function removeLoader() {
@@ -170,16 +191,6 @@
       setTimeout(actuallyRemove, wait);
     }
 
-    function showLoader() {
-      if (removed || shown) return;
-      document.body.insertBefore(loader, document.body.firstChild);
-      shown = true;
-      shownAt = Date.now();
-      requestAnimationFrame(function () {
-        if (!removed) loader.classList.add("is-visible");
-      });
-    }
-
     var showTimer = setTimeout(showLoader, showDelay);
 
     function finish() {
@@ -193,7 +204,7 @@
         setTimeout(finish, minVisible);
       } else {
         window.addEventListener("load", function () {
-          setTimeout(finish, 120);
+          setTimeout(finish, 520);
         }, { once: true });
       }
       return;
