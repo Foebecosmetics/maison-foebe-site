@@ -96,7 +96,7 @@
     "#foebeLoader.is-hidden{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}",
     ".foebe-loader-wrap{position:relative!important;width:154px!important;height:154px!important;display:grid!important;place-items:center!important;}",
     ".foebe-loader-ring{position:absolute!important;inset:0!important;border:2.5px solid #BB7E60!important;border-radius:999px!important;opacity:.9!important;transform-origin:center!important;animation:foebeLoaderBreathLarge 4.2s cubic-bezier(.42,0,.18,1) infinite!important;}",
-    ".foebe-loader-mark{position:relative!important;display:grid!important;place-items:center!important;width:100%!important;height:100%!important;font-family:'Montserrat',sans-serif!important;font-size:44px!important;font-weight:700!important;letter-spacing:-.06em!important;line-height:1!important;text-align:center!important;color:#4E291F!important;background:transparent!important;transform-origin:center!important;animation:foebeLoaderMarkCalm 4.2s cubic-bezier(.42,0,.18,1) infinite!important;}",
+    ".foebe-loader-mark{position:relative!important;display:grid!important;place-items:center!important;width:100%!important;height:100%!important;font-family:'Montserrat',sans-serif!important;font-size:44px!important;font-weight:700!important;letter-spacing:-.06em!important;line-height:1!important;text-align:center!important;color:#4E291F!important;background:transparent!important;}",
     "[data-theme='night'] .foebe-loader-mark{color:#BB7E60!important;}",
     "[data-theme='night'] .foebe-loader-ring{border-color:#F0EAE7!important;}",
     ".foebe-loader-word{position:absolute!important;top:calc(100% + 28px)!important;left:50%!important;transform:translateX(-50%)!important;font-family:'Montserrat',sans-serif!important;font-size:11px!important;font-weight:700!important;letter-spacing:2.4px!important;text-transform:uppercase!important;color:rgba(78,41,31,.76)!important;white-space:nowrap!important;}",
@@ -104,9 +104,8 @@
     "[data-theme='night'] .foebe-loader-welcome{color:#F0EAE7!important;opacity:.82!important;}",
     "[data-theme='night'] .foebe-loader-word{color:rgba(240,234,231,.65)!important;}",
     "@keyframes foebeLoaderBreathLarge{0%{transform:scale(.86);opacity:.62;}50%{transform:scale(1.16);opacity:1;}76%{transform:scale(.96);opacity:.82;}100%{transform:scale(.86);opacity:.62;}}",
-    "@keyframes foebeLoaderMarkCalm{0%,100%{transform:scale(.99);opacity:.96;}50%{transform:scale(1.025);opacity:1;}76%{transform:scale(1);opacity:.98;}}",
     "@media(max-width:420px){.foebe-loader-wrap{width:132px!important;height:132px!important;}.foebe-loader-mark{font-size:40px!important;}.foebe-loader-word{font-size:10px!important;letter-spacing:2px!important;top:calc(100% + 24px)!important;}.foebe-loader-welcome{font-size:15px!important;top:calc(100% + 44px)!important;}}",
-    "@media(prefers-reduced-motion:reduce){.foebe-loader-ring,.foebe-loader-mark{animation:none!important;}#foebeLoader{transition:opacity .22s ease,visibility .22s ease!important;}}",
+    "@media(prefers-reduced-motion:reduce){.foebe-loader-ring{animation:none!important;}#foebeLoader{transition:opacity .22s ease,visibility .22s ease!important;}}",
 
     "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon{transition:none!important;}}"
   ].join("\n");
@@ -117,6 +116,16 @@
   styleEl.id = "foebe-shell-css";
   styleEl.textContent = SHELL_CSS;
   document.head.appendChild(styleEl);
+
+  /* Thème sauvegardé — appliqué avant l'affichage du loader pour éviter le flash */
+  (function () {
+    try {
+      var saved = localStorage.getItem("foebeTheme");
+      if (saved === "day" || saved === "night") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    } catch (e) {}
+  })();
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -438,6 +447,7 @@
       e.stopPropagation();
       var next = h.getAttribute("data-theme") === "night" ? "day" : "night";
       h.setAttribute("data-theme", next);
+      try { localStorage.setItem("foebeTheme", next); } catch (e) {}
       syncThemeButton();
     });
   }
