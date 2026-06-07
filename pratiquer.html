@@ -73,6 +73,12 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
 body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
   color:#F0EAE7;background:#BB7E60;border-color:#BB7E60;opacity:1;outline:none;
 }
+body > nav#fallbackNav.fallback-nav .fallback-links>a[aria-current="page"]{
+  color:#F0EAE7!important;
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  opacity:1!important;
+}
 @media(max-width:720px){
   body > nav#fallbackNav.fallback-nav{padding:0 12px;gap:12px;}
   body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px;}
@@ -84,6 +90,81 @@ body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
   body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px;max-width:36vw;}
   body > nav#fallbackNav.fallback-nav .fallback-links>a{min-height:38px;font-size:12px;padding:0 10px;}
 }
+
+
+
+/* Pratiquer V11 — verrou hover cartes différencié jour/nuit
+   Nuit : fond warm + texte crème.
+   Jour : fond warm + texte brun #4E291F pour éviter clair sur clair. */
+.page-pratiquer .outil-card:hover,
+.page-pratiquer .outil-card:focus-visible{
+  background:#BB7E60 !important;
+  border-color:#BB7E60 !important;
+  color:#F0EAE7 !important;
+}
+.page-pratiquer .outil-card:hover .outil-num,
+.page-pratiquer .outil-card:focus-visible .outil-num,
+.page-pratiquer .outil-card:hover .outil-name,
+.page-pratiquer .outil-card:focus-visible .outil-name,
+.page-pratiquer .outil-card:hover .outil-name em,
+.page-pratiquer .outil-card:focus-visible .outil-name em,
+.page-pratiquer .outil-card:hover .outil-desc,
+.page-pratiquer .outil-card:focus-visible .outil-desc,
+.page-pratiquer .outil-card:hover .outil-meta,
+.page-pratiquer .outil-card:focus-visible .outil-meta{
+  color:#F0EAE7 !important;
+}
+.page-pratiquer .outil-card:hover .outil-rule,
+.page-pratiquer .outil-card:focus-visible .outil-rule{
+  background:#F0EAE7 !important;
+  opacity:.74 !important;
+}
+.page-pratiquer .outil-card:hover .outil-link,
+.page-pratiquer .outil-card:focus-visible .outil-link{
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+  color:#F0EAE7 !important;
+}
+.page-pratiquer .outil-card:hover .outil-pin,
+.page-pratiquer .outil-card:focus-visible .outil-pin{
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+  color:#F0EAE7 !important;
+}
+
+/* Mode jour : texte brun sur warm, plus lisible et plus premium. */
+[data-theme="day"] .page-pratiquer .outil-card:hover,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible{
+  background:#BB7E60 !important;
+  border-color:#BB7E60 !important;
+  color:#4E291F !important;
+}
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-num,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-num,
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-name,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-name,
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-name em,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-name em,
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-desc,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-desc,
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-meta,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-meta{
+  color:#4E291F !important;
+}
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-rule,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-rule{
+  background:#4E291F !important;
+  opacity:.72 !important;
+}
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-link,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-link,
+[data-theme="day"] .page-pratiquer .outil-card:hover .outil-pin,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible .outil-pin{
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+  color:#F0EAE7 !important;
+}
+
 </style><style id="foebePillarCleanCss">
 /* Maison Foébé — pages piliers clean CSS */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -109,6 +190,7 @@ body{
 a{color:inherit;}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--warm);outline-offset:3px;}
 main{display:block;}
+#mainContent:focus{outline:none;}
 .hero,.section,.posture-section,.conclusion-section,.outils-section,.transition-bloc{padding-left:24px;padding-right:24px;}
 .hero{
   min-height:clamp(620px,92svh,900px);display:flex;align-items:center;position:relative;overflow:visible;
@@ -1137,47 +1219,8 @@ main{display:block;}
 }
 
 
-/* Pratiquer V8 — hover cartes : texte brun, y compris entrée recommandée */
-.page-pratiquer .outil-card:hover,
-.page-pratiquer .outil-card:focus-visible{
-  background:#BB7E60 !important;
-  border-color:#BB7E60 !important;
-  color:#4E291F !important;
-}
-.page-pratiquer .outil-card:hover .outil-num,
-.page-pratiquer .outil-card:focus-visible .outil-num,
-.page-pratiquer .outil-card:hover .outil-name,
-.page-pratiquer .outil-card:focus-visible .outil-name,
-.page-pratiquer .outil-card:hover .outil-name em,
-.page-pratiquer .outil-card:focus-visible .outil-name em,
-.page-pratiquer .outil-card:hover .outil-desc,
-.page-pratiquer .outil-card:focus-visible .outil-desc,
-.page-pratiquer .outil-card:hover .outil-meta,
-.page-pratiquer .outil-card:focus-visible .outil-meta{
-  color:#4E291F !important;
-}
-.page-pratiquer .outil-card:hover .outil-rule,
-.page-pratiquer .outil-card:focus-visible .outil-rule{
-  background:#4E291F !important;
-  opacity:.72 !important;
-}
-.page-pratiquer .outil-card:hover .outil-link,
-.page-pratiquer .outil-card:focus-visible .outil-link{
-  background:#4E291F !important;
-  border-color:#4E291F !important;
-  color:#F0EAE7 !important;
-}
-.page-pratiquer .outil-card:hover .outil-pin,
-.page-pratiquer .outil-card:focus-visible .outil-pin{
-  background:#4E291F !important;
-  border-color:#4E291F !important;
-  color:#F0EAE7 !important;
-}
 
-
-
-/* Pratiquer V9 — état normal carte entrée recommandée en brun */
-[data-theme="day"] .page-pratiquer .outil-main{
+/* Pratiquer V9 — état normal carte entrée recommandée en brun */[data-theme="day"] .page-pratiquer .outil-main{
   color:#4E291F !important;
 }
 [data-theme="day"] .page-pratiquer .outil-main .outil-num,
@@ -1198,11 +1241,11 @@ main{display:block;}
 <a href="index.html">Accueil</a>
 <a href="comprendre.html">Comprendre</a>
 <a href="methode.html">Méthode</a>
-<a href="pratiquer.html">Pratiquer</a>
+<a href="pratiquer.html" aria-current="page">Pratiquer</a>
 <a href="foebe-zones-cadre.html">7 zones</a>
 <a href="test.html">Test</a>
 </div>
-</nav><main id="mainContent"><section aria-labelledby="hero-h1" class="hero">
+</nav><main id="mainContent" tabindex="-1"><section aria-labelledby="hero-h1" class="hero">
 
 <h1 class="hero-title reveal rd1">
     Quatre outils.<br/>
@@ -1242,8 +1285,8 @@ main{display:block;}
 <span class="outil-num">Outil 04</span>
 <h2 class="outil-name">La <em>Boussole</em></h2>
 <span aria-hidden="true" class="outil-rule"></span>
-<p class="outil-desc">Un outil d'exploration autour des 7 dimensions. Pour reconnaître ses signaux, distinguer le self-care réel de la performance déguisée, et retrouver une direction.</p>
-<p class="outil-meta">Explorer · orienter · vocabulaire Foébé</p>
+<p class="outil-desc">Un outil d'exploration autour des 7 dimensions. Pour reconnaître ses signaux, distinguer le self-care réel de la performance déguisée, et affiner sa lecture.</p>
+<p class="outil-meta">Explorer · lire · vocabulaire Foébé</p>
 <span class="outil-link">Ouvrir la Boussole <span aria-hidden="true">→</span></span>
 </a>
 </div>
