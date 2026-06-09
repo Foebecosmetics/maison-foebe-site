@@ -167,6 +167,450 @@ body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible{
   body > nav#fallbackNav.fallback-nav .fallback-logo{ max-width:36vw; font-size:16px; }
   body > nav#fallbackNav.fallback-nav .fallback-links > a{ min-height:36px; padding:0 9px; font-size:11.5px; }
 }
+
+/* Index vocabulaire — V4 anti-orphelin mobile + fermeture intuitive */
+.vocab-clarity-title{
+  max-width:760px;
+}
+@media(orientation:portrait) and (max-width:767px){
+  .vocab-clarity-title{
+    max-width:560px;
+  }
+}
+@media(orientation:portrait) and (max-width:420px){
+  .vocab-clarity-title{
+    max-width:330px;
+  }
+}
+@media(orientation:portrait) and (max-width:360px){
+  .vocab-clarity-title{
+    max-width:300px;
+  }
+}
+
+</style>
+<style id="foebeIndexVocabClarityCss">
+/* Index — clarification vocabulaire self-care / skincare / haircare
+   Placement : juste avant les accès ressources. Chirurgical, sans modifier les cartes. */
+.vocab-clarity{
+  max-width:820px;
+  margin:clamp(26px,4vw,42px) auto 22px;
+  padding:clamp(22px,3vw,30px);
+  border:1px solid rgba(187,126,96,.30);
+  border-radius:24px;
+  background:rgba(187,126,96,.075);
+  color:var(--text);
+  text-align:left;
+}
+[data-theme="day"] .vocab-clarity{
+  background:rgba(187,126,96,.10);
+  border-color:rgba(78,41,31,.16);
+}
+.vocab-clarity-kicker{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  min-height:28px;
+  margin-bottom:14px;
+  padding:6px 11px;
+  border-radius:999px;
+  border:1px solid rgba(187,126,96,.34);
+  background:rgba(187,126,96,.14);
+  color:var(--warm);
+  font-family:"Poppins",sans-serif;
+  font-size:11.5px;
+  font-weight:800;
+  letter-spacing:1.25px;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+[data-theme="night"] .vocab-clarity-kicker{
+  color:#F0EAE7;
+  background:rgba(187,126,96,.20);
+  border-color:rgba(187,126,96,.44);
+}
+.vocab-clarity-title{
+  margin:0;
+  color:var(--text);
+  font-family:"Lora",serif;
+  font-size:clamp(22px,3.2vw,32px);
+  font-weight:400;
+  line-height:1.22;
+}
+.vocab-clarity-title em{
+  color:var(--warm);
+  font-style:italic;
+}
+.vocab-clarity-intro,
+.vocab-clarity-note{
+  max-width:680px;
+  margin-top:13px;
+  color:var(--read);
+  font-family:"Lora",serif;
+  font-size:clamp(15.8px,.65vw + 13.5px,17px);
+  line-height:1.76;
+}
+.vocab-clarity-note{
+  color:var(--read-soft);
+  font-style:italic;
+}
+.vocab-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+.vocab-tag{
+  min-height:42px;
+  padding:0 15px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:1px solid rgba(187,126,96,.46);
+  border-radius:999px;
+  background:rgba(187,126,96,.10);
+  color:var(--text);
+  font-family:"Poppins",sans-serif;
+  font-size:13px;
+  font-weight:800;
+  line-height:1;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.vocab-tag::after{
+  content:"?";
+  width:19px;
+  height:19px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  background:#BB7E60;
+  color:#F0EAE7;
+  font-size:12px;
+  line-height:1;
+}
+.vocab-tag:hover,
+.vocab-tag:focus-visible,
+.vocab-tag[aria-expanded="true"]{
+  background:#BB7E60;
+  border-color:#BB7E60;
+  color:#F0EAE7;
+  transform:translateY(-1px);
+  outline:none;
+}
+[data-theme="day"] .vocab-tag:hover,
+[data-theme="day"] .vocab-tag:focus-visible,
+[data-theme="day"] .vocab-tag[aria-expanded="true"]{
+  color:#4E291F;
+}
+[data-theme="day"] .vocab-tag:hover::after,
+[data-theme="day"] .vocab-tag:focus-visible::after,
+[data-theme="day"] .vocab-tag[aria-expanded="true"]::after{
+  background:#4E291F;
+  color:#F0EAE7;
+}
+.vocab-panel{
+  display:none;
+  margin-top:16px;
+  padding:18px 20px;
+  border:1px solid rgba(187,126,96,.28);
+  border-radius:18px;
+  background:rgba(240,234,231,.055);
+  color:var(--read);
+  font-family:"Lora",serif;
+  font-size:16px;
+  line-height:1.76;
+}
+[data-theme="day"] .vocab-panel{
+  background:rgba(78,41,31,.045);
+}
+.vocab-panel.is-open{
+  display:block;
+}
+.vocab-panel strong{
+  display:block;
+  margin-bottom:6px;
+  color:var(--text);
+  font-family:"Poppins",sans-serif;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.15px;
+  text-transform:uppercase;
+}
+@media(orientation:portrait) and (max-width:767px){
+  .vocab-clarity{
+    margin:24px 0 18px;
+    padding:20px 18px;
+    border-radius:22px;
+  }
+  .vocab-tags{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .vocab-tag{
+    width:100%;
+    justify-content:space-between;
+    min-height:46px;
+  }
+  .vocab-panel{
+    padding:16px 17px;
+    font-size:15.5px;
+  }
+}
+
+
+/* Index — clarification vocabulaire V2
+   Bodycare ajouté + hover/clic warm avec texte crème + mobile renforcé. */
+.vocab-tags{
+  align-items:center;
+}
+.vocab-tag:hover,
+.vocab-tag:focus-visible,
+.vocab-tag[aria-expanded="true"],
+[data-theme="day"] .vocab-tag:hover,
+[data-theme="day"] .vocab-tag:focus-visible,
+[data-theme="day"] .vocab-tag[aria-expanded="true"],
+[data-theme="night"] .vocab-tag:hover,
+[data-theme="night"] .vocab-tag:focus-visible,
+[data-theme="night"] .vocab-tag[aria-expanded="true"]{
+  background:#BB7E60!important;
+  border-color:#BB7E60!important;
+  color:#F0EAE7!important;
+  transform:translateY(-1px);
+  outline:none;
+}
+.vocab-tag:hover::after,
+.vocab-tag:focus-visible::after,
+.vocab-tag[aria-expanded="true"]::after,
+[data-theme="day"] .vocab-tag:hover::after,
+[data-theme="day"] .vocab-tag:focus-visible::after,
+[data-theme="day"] .vocab-tag[aria-expanded="true"]::after,
+[data-theme="night"] .vocab-tag:hover::after,
+[data-theme="night"] .vocab-tag:focus-visible::after,
+[data-theme="night"] .vocab-tag[aria-expanded="true"]::after{
+  background:#F0EAE7!important;
+  color:#4E291F!important;
+}
+[data-theme="night"] .vocab-clarity{
+  background:rgba(187,126,96,.085);
+  border-color:rgba(187,126,96,.34);
+}
+[data-theme="night"] .vocab-panel{
+  background:rgba(240,234,231,.06);
+  border-color:rgba(187,126,96,.32);
+}
+@media(orientation:portrait) and (max-width:767px){
+  .vocab-clarity{
+    max-width:100%;
+  }
+  .vocab-tags{
+    gap:9px;
+  }
+  .vocab-tag{
+    min-height:48px;
+    padding:0 15px;
+    font-size:13px;
+  }
+}
+@media(orientation:portrait) and (max-width:380px){
+  .vocab-clarity-title{
+    font-size:clamp(21px,6.2vw,25px);
+  }
+  .vocab-clarity-intro,
+  .vocab-clarity-note{
+    font-size:15.3px;
+  }
+  .vocab-tag{
+    font-size:12.5px;
+  }
+}
+
+
+/* Index — clarification vocabulaire V3 responsive premium
+   Objectif : même rendu premium sur smartphone étroit, mobile, tablette et desktop.
+   Ne modifie que le bloc vocabulaire. */
+.vocab-clarity{
+  width:min(100%, 820px);
+  box-shadow:0 18px 46px rgba(0,0,0,.08);
+}
+[data-theme="day"] .vocab-clarity{
+  box-shadow:0 14px 34px rgba(78,41,31,.075);
+}
+.vocab-clarity-title{
+  text-wrap:balance;
+}
+.vocab-clarity-intro,
+.vocab-clarity-note{
+  text-wrap:pretty;
+}
+.vocab-tags{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.vocab-tag{
+  width:100%;
+  min-width:0;
+  white-space:nowrap;
+  text-align:center;
+}
+.vocab-panel{
+  max-width:100%;
+  overflow-wrap:break-word;
+}
+
+/* Desktop large : le bloc reste contenu, les tags respirent sans devenir énormes. */
+@media(min-width:1180px){
+  .vocab-clarity{
+    margin-top:clamp(30px,3.6vw,46px);
+    margin-bottom:24px;
+    padding:32px 34px;
+  }
+  .vocab-tags{
+    max-width:720px;
+  }
+}
+
+/* Tablette : 2 colonnes pour éviter les tags compressés. */
+@media(min-width:768px) and (max-width:1023px){
+  .vocab-clarity{
+    width:min(100%, 720px);
+    margin-top:30px;
+    padding:28px 26px;
+  }
+  .vocab-tags{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .vocab-tag{
+    min-height:46px;
+  }
+}
+
+/* Mobile : tags en pleine largeur, lecture calme. */
+@media(orientation:portrait) and (max-width:767px){
+  .vocab-clarity{
+    width:100%;
+    margin:22px 0 18px;
+    padding:20px 18px;
+    border-radius:22px;
+    box-shadow:none;
+  }
+  .vocab-clarity-kicker{
+    margin-bottom:13px;
+    font-size:11px;
+    letter-spacing:1.1px;
+  }
+  .vocab-clarity-title{
+    font-size:clamp(22px,6.3vw,28px);
+    line-height:1.18;
+  }
+  .vocab-clarity-intro,
+  .vocab-clarity-note{
+    margin-top:12px;
+    font-size:15.6px;
+    line-height:1.72;
+  }
+  .vocab-tags{
+    grid-template-columns:1fr;
+    gap:9px;
+    margin-top:18px;
+  }
+  .vocab-tag{
+    min-height:48px;
+    padding:0 15px;
+    justify-content:space-between;
+    font-size:13px;
+  }
+  .vocab-panel{
+    margin-top:13px;
+    padding:16px 17px;
+    border-radius:17px;
+    font-size:15.5px;
+    line-height:1.72;
+  }
+}
+
+/* Très petits écrans : réduire sans descendre sous une vraie lisibilité. */
+@media(orientation:portrait) and (max-width:380px){
+  .vocab-clarity{
+    padding:18px 16px;
+    border-radius:20px;
+  }
+  .vocab-clarity-title{
+    font-size:clamp(21px,6.1vw,24px);
+    line-height:1.17;
+  }
+  .vocab-clarity-intro,
+  .vocab-clarity-note{
+    font-size:15.2px;
+    line-height:1.68;
+  }
+  .vocab-tag{
+    min-height:46px;
+    font-size:12.5px;
+  }
+  .vocab-tag::after{
+    width:18px;
+    height:18px;
+    font-size:11px;
+  }
+  .vocab-panel{
+    padding:15px 15px;
+    font-size:15.2px;
+  }
+}
+
+/* Paysage bas : éviter que le bloc ne mange trop l’écran. */
+@media(orientation:landscape) and (max-height:560px){
+  .vocab-clarity{
+    margin-top:20px;
+    margin-bottom:16px;
+    padding:18px 20px;
+    border-radius:20px;
+  }
+  .vocab-clarity-title{
+    font-size:clamp(21px,3.2vw,28px);
+  }
+  .vocab-clarity-intro,
+  .vocab-clarity-note{
+    font-size:15px;
+    line-height:1.62;
+  }
+  .vocab-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+  .vocab-tag{
+    width:auto;
+    min-height:40px;
+    padding:0 13px;
+    font-size:12.5px;
+  }
+  .vocab-panel{
+    margin-top:12px;
+    padding:14px 16px;
+    font-size:15px;
+    line-height:1.62;
+  }
+}
+
+
+/* Index — vocabulaire déplacé après accès secondaires
+   Ajustement d'espacement uniquement : le bloc devient contexte éditorial après les ressources. */
+.home-secondary-access + .vocab-clarity{
+  margin-top:clamp(28px,4vw,46px);
+  margin-bottom:0;
+}
+@media(orientation:portrait) and (max-width:767px){
+  .home-secondary-access + .vocab-clarity{
+    margin-top:24px;
+  }
+}
 </style><style id="foebeIndexCleanCss">
 /* Maison Foébé — Index clean CSS
    Objectif : une base maintenable, sans couches versionnées, gardant le rendu validé. */
@@ -2199,7 +2643,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
         <span class="home-start-link">Explorer les zones →</span>
       </a>
     </div>
-
     <p class="home-secondary-intro">Pour aller plus loin dans ta lecture.</p>
     <div class="home-secondary-access" aria-label="Accès complémentaires Maison Foébé">
       <a class="home-secondary-card" href="boussole-accueil-foebe.html" aria-label="Explorer la Boussole Foébé">
@@ -2227,7 +2670,40 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
         </span>
         <span class="home-secondary-arrow" aria-hidden="true">→</span>
       </a>
-    </div></div>
+    </div>
+
+<div class="vocab-clarity reveal reveal-delay-1" aria-labelledby="vocab-clarity-title">
+      <span class="vocab-clarity-kicker">Quatre mots à distinguer</span>
+      <h2 class="vocab-clarity-title" id="vocab-clarity-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
+      <p class="vocab-clarity-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose.</p>
+
+      <div class="vocab-tags" aria-label="Définitions rapides">
+        <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-selfcare" data-vocab-target="vocab-selfcare">Self-care</button>
+        <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-skincare" data-vocab-target="vocab-skincare">Skincare</button>
+        <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-bodycare" data-vocab-target="vocab-bodycare">Bodycare</button>
+        <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-haircare" data-vocab-target="vocab-haircare">Haircare</button>
+      </div>
+
+      <div class="vocab-panel" id="vocab-selfcare" role="region" aria-label="Définition du self-care">
+        <strong>Self-care</strong>
+        La manière dont tu prends soin de ton équilibre : corps, mental, émotions, énergie, environnement, relations et sens.
+      </div>
+      <div class="vocab-panel" id="vocab-skincare" role="region" aria-label="Définition du skincare">
+        <strong>Skincare</strong>
+        Les gestes et actifs liés à la peau : barrière cutanée, hydratation, exfoliation, sensibilité, texture, confort.
+      </div>
+      <div class="vocab-panel" id="vocab-bodycare" role="region" aria-label="Définition du bodycare">
+        <strong>Bodycare</strong>
+        Les gestes liés au corps : nettoyage, hydratation, nutrition, exfoliation, confort, toucher et relation au corps.
+      </div>
+      <div class="vocab-panel" id="vocab-haircare" role="region" aria-label="Définition du haircare">
+        <strong>Haircare</strong>
+        Les gestes liés aux cheveux et au cuir chevelu : hydratation, porosité, casse, clarification, protection, routine.
+      </div>
+
+      <p class="vocab-clarity-note">Foébé relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
+    </div>
+</div>
 </section>
 <div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
 <!-- ══════════════════════════════════════════
@@ -2415,6 +2891,46 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(tick, 900);
 })();
 </script>
+
+<script>
+(function(){
+  var root = document.querySelector('.vocab-clarity');
+  var buttons = document.querySelectorAll('.vocab-tag[data-vocab-target]');
+  if (!buttons.length || !root) return;
+
+  function closeAll(exceptId){
+    buttons.forEach(function(btn){
+      var id = btn.getAttribute('data-vocab-target');
+      var panel = document.getElementById(id);
+      var keepOpen = id === exceptId;
+      btn.setAttribute('aria-expanded', keepOpen ? 'true' : 'false');
+      if (panel) panel.classList.toggle('is-open', keepOpen);
+    });
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var id = btn.getAttribute('data-vocab-target');
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      closeAll(isOpen ? null : id);
+    });
+  });
+
+  root.addEventListener('click', function(e){
+    if (!e.target.closest('.vocab-tag')) closeAll(null);
+  });
+
+  document.addEventListener('click', function(e){
+    if (!root.contains(e.target)) closeAll(null);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeAll(null);
+  });
+})();
+</script>
+
 <script src="/foebe-shell.js"></script>
 </body>
 </html>
