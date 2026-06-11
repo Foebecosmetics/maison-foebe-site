@@ -279,4 +279,1039 @@ main{display:block;}
 .fondatrice-titre,.detail-label,.cible-card-label,.recherche-tag,.tag-these{font-size:12px;color:var(--text);margin-bottom:12px;display:block;}
 .detail-bloc{border-left:2px solid rgba(187,126,96,.38);padding-left:20px;margin-bottom:22px;}
 .intention-list{margin-top:50px;border-top:1px solid var(--border);}
-.i
+.intention-item{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--border);}
+.intention-dot{width:10px;height:10px;border-radius:50%;background:var(--warm);margin-top:8px;justify-self:center;}
+.transition-bloc-inner{max-width:720px;display:grid;gap:20px;}
+.transition-body + .transition-body{padding-top:20px;border-top:1px solid var(--border);}
+/* Comprendre */
+.entrees-list{border-top:1px solid var(--border);margin-top:48px;}
+.entree-row{display:grid;grid-template-columns:minmax(220px,330px) 1fr;gap:36px;padding:40px 0;border-bottom:1px solid var(--border);align-items:start;}
+.entree-titre{margin-bottom:8px;}.entree-corps p{margin-bottom:12px;}.entree-corps p:last-child{margin-bottom:0;}
+.entree-lien{display:inline-flex;margin-top:18px;color:var(--warm);font-weight:700;text-decoration:none;}
+/* Test block */
+.test-block{display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;padding:0;}
+.test-right{border-left:1px solid var(--border);background:rgba(187,126,96,.10);display:flex;flex-direction:column;justify-content:center;}
+.test-specs{display:grid;gap:10px;margin-top:24px;}.test-spec{display:flex;align-items:center;gap:10px;}.test-spec-dot{width:7px;height:7px;border-radius:50%;background:var(--warm);flex:0 0 auto;}
+/* Conclusions */
+.conclusion-section{padding-top:clamp(76px,8vw,108px);padding-bottom:clamp(88px,9vw,122px);text-align:center;}
+.conclusion-inner{max-width:720px;}.conclusion-quote{font-size:clamp(22px,3.6vw,34px);font-style:italic;margin-bottom:28px;}
+.method-proof-box{margin-top:42px;max-width:680px;display:grid;gap:14px;}.method-proof-quote{font-style:italic;}.method-proof-source{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text);}
+/* reveal fallback */
+.reveal{opacity:1;transform:none;visibility:visible;transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1);}
+.js-ready .reveal{opacity:0;transform:translateY(20px);visibility:visible;}
+.js-ready .reveal.visible{opacity:1;transform:none;}
+.reveal-delay-1,.rd1,.d1{transition-delay:.08s;}.reveal-delay-2,.rd2,.d2{transition-delay:.16s;}.reveal-delay-3,.rd3,.d3{transition-delay:.24s;}
+@media(max-width:1023px){
+  .modeles-grid,.triptyque,.outils-grid{grid-template-columns:1fr 1fr;}
+  .fondatrice-layout,.test-block{grid-template-columns:1fr;}.test-right{border-left:0;border-top:1px solid var(--border);}
+}
+@media(max-width:767px){
+  .hero{min-height:100svh;align-items:flex-start;padding-top:calc(60px + 48px);padding-bottom:56px;}
+  .hero-title{font-size:clamp(32px,9.8vw,44px);line-height:1.09;}
+  .hero-body,.hero-sub{font-size:16px;line-height:1.75;}
+  .section,.posture-section,.outils-section,.conclusion-section,.transition-bloc{padding-left:20px;padding-right:20px;}
+  .section,.posture-section{padding-top:68px;padding-bottom:68px;}
+  .modeles-grid,.triptyque,.posture-grid,.clarification-grid,.cible-grid,.recherche-proof-grid,.outils-grid{grid-template-columns:1fr;}
+  .entree-row{grid-template-columns:1fr;gap:18px;padding:32px 0;}
+  .etape,.mouvement-etape{grid-template-columns:1fr;}.etape-num-col,.mouvement-num-col{justify-content:flex-start;border-right:0;border-bottom:1px solid var(--border);padding:18px 24px;}.etape-content,.mouvement-content{padding:22px 24px;}
+  .hero-cta,.hero-cta-row,.conclusion-actions{flex-direction:column;align-items:stretch;}.btn-cta,.btn-outline,.btn-primary,.btn-ghost,.btn-test{width:100%;}
+}
+@media(max-width:420px){
+  .hero{padding-left:18px;padding-right:18px;}.hero-eyebrow,.section-eyebrow,.eyebrow{font-size:12px;letter-spacing:1.2px;}
+  .modele-item,.triptyque-card,.posture-card,.clarification-card,.cible-card,.recherche-proof-card,.outil-card,.fondatrice-signature,.test-left,.test-right,.method-proof-box{padding:26px 20px;}
+}
+@media(min-width:1600px){.hero-title{font-size:62px;}.hero-inner,.section-inner,.posture-inner,.outils-inner{max-width:1040px;}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+}
+
+
+/* Ajustements publication premium — Maison Foébé */
+.hero{overflow:visible;}
+.hero + .section,
+.hero + .outils-section{padding-top:clamp(56px,7vw,84px);}
+.reveal{visibility:visible;}
+:not(.js-ready) .reveal{opacity:1;transform:none;}
+.hero-body,.hero-sub,.section-body,.section-sub,.s-body,.entree-corps,.outil-desc,.detail-text,.fondatrice-bio,.cible-intro,.cible-card-body,.recherche-proof-card p,.clarification-card p{
+  font-size:clamp(16px, .72vw + 13.5px, 17.5px);
+  line-height:1.82;
+}
+.hero-body,.hero-sub{font-size:clamp(17.5px, 1.8vw, 20px);}
+.entree-corps{margin-bottom:24px;}
+.entree-row .btn-primary{margin-top:8px;}
+.recherche-proof-card .recherche-link,
+.clarification-card .clarification-card-cta{
+  margin-top:26px;
+}
+.clarification-card p{margin-bottom:0;}
+.conclusion-actions{justify-content:center;}
+.conclusion-actions .btn-primary,
+.conclusion-actions .btn-cta,
+.conclusion-actions .btn-ghost,
+.conclusion-actions .btn-outline{margin-top:0;}
+.btn-cta,.btn-outline,.btn-primary,.btn-ghost,.clarification-card-cta,.recherche-link,.outil-link{min-height:48px;}
+@media(max-width:767px){
+  .hero-body,.hero-sub,.section-body,.section-sub,.s-body,.entree-corps,.outil-desc,.detail-text,.fondatrice-bio,.cible-intro,.cible-card-body,.recherche-proof-card p,.clarification-card p{
+    font-size:16px;
+    line-height:1.82;
+  }
+  .hero-body,.hero-sub{font-size:17px;}
+  .hero-cta,.hero-cta-row,.conclusion-actions{align-items:stretch;}
+}
+
+.page-pratiquer .hero{max-width:none;margin:0;padding-left:24px;padding-right:24px;align-items:flex-start;}
+.page-pratiquer .hero > *{width:100%;max-width:820px;margin-left:auto;margin-right:auto;}
+.page-pratiquer .hero-sub{font-size:clamp(17.5px,1.7vw,20px);max-width:640px;margin-left:auto;margin-right:auto;}
+.page-pratiquer .outils-section{padding-top:clamp(58px,7vw,88px);}
+@media(max-width:767px){.page-pratiquer .hero{padding-left:20px;padding-right:20px}.page-pratiquer .hero-sub{font-size:17px;}}
+
+
+/* Corrections finales Foébé — lisibilité, CTA, hero plein écran */
+@media(max-width:420px){
+  body > nav#fallbackNav.fallback-nav .fallback-links>a{
+    min-height:38px !important;
+    font-size:12px !important;
+    padding:0 10px !important;
+  }
+}
+
+.btn-cta,
+.btn-outline,
+.btn-primary,
+.btn-ghost,
+.btn-test,
+.outil-link,
+.modele-link,
+.clarification-card-cta,
+.recherche-link{
+  min-height:48px !important;
+}
+
+.hero{overflow:visible !important;}
+
+@media(min-width:768px) and (max-width:1180px) and (orientation:portrait){
+  .hero-body,
+  .hero-sub{
+    font-size:clamp(19px, 2.3vw, 21px) !important;
+    line-height:1.78 !important;
+  }
+}
+
+@media(max-width:767px){
+  .hero-body,
+  .hero-sub{
+    font-size:17px !important;
+    line-height:1.78 !important;
+  }
+}
+
+.hero-cta,
+.hero-cta-row{
+  margin-top:34px !important;
+}
+
+.entree-corps + .btn-primary,
+.entree-corps + .btn-cta,
+.entree-corps + .btn-ghost,
+.entree-corps + .btn-outline,
+.section-body + .btn-cta,
+.section-body + .btn-primary,
+.section-body + .btn-outline,
+.section-body + .btn-ghost{
+  margin-top:28px !important;
+}
+
+.modele-link,
+.modele-links,
+.clarification-card-cta,
+.recherche-link{
+  margin-top:26px !important;
+}
+
+.clarification-card p,
+.modele-desc,
+.entree-corps,
+.outil-desc{
+  margin-bottom:0 !important;
+}
+
+.conclusion-actions,
+.conclusion-inner > .reveal:last-child{
+  margin-top:34px !important;
+  justify-content:center !important;
+}
+
+.page-pratiquer .hero{
+  max-width:none !important;
+  min-height:100svh !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding-top:calc(60px + clamp(42px, 7svh, 78px)) !important;
+  padding-bottom:clamp(52px, 8svh, 92px) !important;
+  padding-left:24px !important;
+  padding-right:24px !important;
+}
+.page-pratiquer .hero > *{
+  width:100% !important;
+  max-width:820px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.page-pratiquer .hero-sub{
+  max-width:640px !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  font-size:clamp(18px, 1.9vw, 21px) !important;
+  line-height:1.78 !important;
+}
+.page-pratiquer .outils-section{padding-top:clamp(64px, 8vw, 104px) !important;}
+@media(max-width:767px){
+  .page-pratiquer .hero{padding-left:20px !important;padding-right:20px !important;}
+  .page-pratiquer .hero-sub{font-size:17px !important;}
+}
+
+
+
+.hero{
+  min-height:100svh !important;
+  overflow:visible !important;
+  box-sizing:border-box !important;
+}
+@supports (min-height:100dvh){
+  .hero{min-height:100dvh !important;}
+}
+.hero-title{
+  max-width:900px;
+}
+.hero-body,
+.hero-sub{
+  max-width:680px;
+}
+.hero-cta,
+.hero-cta-row{
+  margin-top:clamp(34px, 5svh, 52px) !important;
+}
+@media(min-width:768px) and (max-width:1180px) and (orientation:portrait){
+  .hero{
+    align-items:center !important;
+    justify-content:center !important;
+    padding-top:calc(60px + clamp(42px, 6svh, 72px)) !important;
+    padding-bottom:clamp(50px, 6svh, 76px) !important;
+  }
+  .hero-title{
+    font-size:clamp(44px, 6.7vw, 58px) !important;
+    line-height:1.08 !important;
+  }
+  .hero-body,
+  .hero-sub{
+    font-size:clamp(19px, 2.45vw, 22px) !important;
+    line-height:1.76 !important;
+  }
+}
+@media(max-width:767px) and (orientation:portrait){
+  .hero{
+    align-items:center !important;
+    justify-content:center !important;
+    padding-top:calc(60px + clamp(24px, 5svh, 46px)) !important;
+    padding-bottom:clamp(28px, 5svh, 48px) !important;
+  }
+  .hero-title{
+    font-size:clamp(32px, 10vw, 45px) !important;
+    line-height:1.08 !important;
+  }
+  .hero-body,
+  .hero-sub{
+    font-size:17px !important;
+    line-height:1.78 !important;
+  }
+}
+@media(max-height:620px) and (orientation:landscape){
+  .hero{
+    min-height:100svh !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding-top:calc(60px + 18px) !important;
+    padding-bottom:24px !important;
+  }
+  .hero-title{
+    font-size:clamp(30px, 5vw, 44px) !important;
+    line-height:1.06 !important;
+    margin-bottom:clamp(12px, 2.4svh, 20px) !important;
+  }
+  .hero-rule{
+    margin-bottom:clamp(12px, 2.2svh, 18px) !important;
+  }
+  .hero-body,
+  .hero-sub{
+    font-size:clamp(15.5px, 1.6vw, 17px) !important;
+    line-height:1.62 !important;
+  }
+  .hero-cta,
+  .hero-cta-row{
+    margin-top:clamp(18px, 3svh, 28px) !important;
+  }
+}
+
+.page-pratiquer .hero{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding-top:calc(60px + clamp(46px, 8svh, 84px)) !important;
+  padding-bottom:clamp(54px, 8svh, 88px) !important;
+  padding-left:24px !important;
+  padding-right:24px !important;
+}
+.page-pratiquer .hero > *{
+  width:100% !important;
+  max-width:820px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.page-pratiquer .hero-title,
+.page-pratiquer .hero-sub{
+  text-align:left !important;
+}
+.page-pratiquer .hero-sub{
+  max-width:680px !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  font-size:clamp(18px, 1.9vw, 21px) !important;
+  line-height:1.78 !important;
+}
+.page-pratiquer .outils-section{
+  padding-top:clamp(72px, 8vw, 108px) !important;
+}
+@media(min-width:768px) and (max-width:1180px) and (orientation:portrait){
+  .page-pratiquer .hero-sub{
+    font-size:21px !important;
+    line-height:1.76 !important;
+  }
+}
+@media(max-height:620px) and (orientation:landscape){
+  .page-pratiquer .hero-sub{
+    font-size:16.5px !important;
+    line-height:1.62 !important;
+  }
+}
+
+/* === CORRECTIF GLOBAL v1 === */
+/* ============================================================
+   MAISON FOÉBÉ — CORRECTIF GLOBAL v1
+   À ajouter en fin de <style id="foebePillarCleanCss">
+   ou linker après ce style sur toutes les pages piliers.
+   Chirurgical. Aucune refonte. Corrections ciblées uniquement.
+   ============================================================ */
+
+
+/* ── 1. EYEBROWS — contraste day ─────────────────────────────
+   Problème : color:var(--warm) = #BB7E60 sur #F0EAE7
+   Contraste ~2.9:1, sous WCAG AA.
+   Correction : bordeaux en day, crème en night (déjà ok).       */
+
+[data-theme="day"] .hero-eyebrow,
+[data-theme="day"] .section-eyebrow,
+[data-theme="day"] .eyebrow,
+[data-theme="day"] .test-eyebrow,
+[data-theme="day"] .seo-eyebrow {
+  color: #4E291F !important;
+}
+
+/* La teinte warm reste pour le fond/bordure du badge — on ne
+   touche pas background ni border-color, juste la couleur du
+   label. Contraste résultant : #4E291F sur rgba(187,126,96,.14)
+   ≈ 5.8:1 — au-dessus de AA. */
+
+
+/* ── 2. CTA ROW — espacement et mobile ───────────────────────
+   Problème : gap:12px trop serré, wrap sur mobile colle les CTA.
+   Correction : gap augmenté + column-gap/row-gap séparés
+   + mobile full-width stretch pour chaque bouton.               */
+
+.hero-cta,
+.hero-cta-row,
+.conclusion-actions {
+  gap: 14px !important;
+  row-gap: 16px !important;
+}
+
+@media (max-width: 520px) {
+  .hero-cta,
+  .hero-cta-row,
+  .conclusion-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .hero-cta .btn-cta,
+  .hero-cta .btn-outline,
+  .hero-cta .btn-primary,
+  .hero-cta .btn-ghost,
+  .hero-cta-row .btn-cta,
+  .hero-cta-row .btn-outline,
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-ghost,
+  .conclusion-actions .btn-cta,
+  .conclusion-actions .btn-outline,
+  .conclusion-actions .btn-primary,
+  .conclusion-actions .btn-ghost {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+
+/* ── 3. .etape-plus — lisibilité paragraphe ──────────────────
+   Problème : 13px sur un contenu pédagogique explicatif.
+   Correction : 15px min, lecture Lora.                          */
+
+.etape-plus,
+.mouvement-plus {
+  font-family: 'Lora', serif !important;
+  font-size: clamp(15px, .6vw + 13px, 16px) !important;
+  line-height: 1.76 !important;
+  font-weight: 400 !important;
+  color: var(--read-soft) !important;
+}
+
+@media (max-width: 767px) {
+  .etape-plus,
+  .mouvement-plus {
+    font-size: 15px !important;
+    line-height: 1.78 !important;
+  }
+}
+
+
+/* ── 4. Grille cartes — CTA internes espacés ─────────────────
+   .clarification-card-cta, .modele-link dans leur grille :
+   s'assurer que le CTA respire par rapport au texte dessus.     */
+
+.clarification-card-cta,
+.modele-link {
+  margin-top: 22px !important;
+}
+
+.modele-links {
+  margin-top: 18px !important;
+  gap: 10px !important;
+}
+
+/* Gap entre cartes clarification / modeles — augmenté en mobile */
+@media (max-width: 767px) {
+  .clarification-grid,
+  .modeles-grid,
+  .posture-grid {
+    gap: 14px !important;
+  }
+}
+
+
+/* ── 5. .outil-link — hauteur garantie dans flex-column ──────
+   Assurer que le faux-bouton ne s'écrase jamais.                */
+
+.outil-link {
+  min-height: 48px !important;
+  align-self: flex-start !important;
+}
+
+
+/* ── 6. .outil-meta — lisibilité minimale ───────────────────
+   13px acceptable ici (vraie micro-info), mais contraste
+   var(--read-soft) peut être trop faible en day sur card-bg.
+   Correction légère opacité.                                    */
+
+[data-theme="day"] .outil-meta,
+[data-theme="day"] .mini-note,
+[data-theme="day"] .hero-proof {
+  color: rgba(78, 41, 31, .72) !important;
+}
+
+
+/* ── 7. Séparateur conclusion — gap avant les actions ────────
+   .conclusion-inner : assurer de l'air entre la citation
+   et les CTA, surtout sur mobile.                              */
+
+.conclusion-inner .reveal:last-child {
+  margin-top: 32px !important;
+}
+
+@media (max-width: 767px) {
+  .conclusion-inner .reveal:last-child {
+    margin-top: 28px !important;
+  }
+}
+
+
+/* ── 8. .posture-tag — lisibilité day ────────────────────────
+   Tags dans les posture-card souvent en var(--warm) sur fond
+   card-bg clair : même problème qu'eyebrows.                   */
+
+[data-theme="day"] .posture-tag,
+[data-theme="day"] .clarification-label,
+[data-theme="day"] .outil-num,
+[data-theme="day"] .modele-num,
+[data-theme="day"] .etape-num,
+[data-theme="day"] .entree-num {
+  color: #7A4A38 !important;
+  /* #7A4A38 sur #F0EAE7 fond carte ≈ 4.6:1 — AA ok,
+     reste dans la gamme bordeaux-warm sans quitter l'ADN */
+}
+
+/* ── FIN DU CORRECTIF ────────────────────────────────────────── */
+
+
+/* ── V6 PRATIQUER — DISPOSITION PREMIUM STABILISÉE ─────────────
+   Objectif : page plus éditoriale, moins grille technique.
+   Échelle Foébé en entrée principale, autres outils en parcours secondaire.
+   Ne modifie pas le Shell, le JS ni le contenu. */
+.page-pratiquer .hero{
+  min-height:clamp(520px, 78svh, 760px) !important;
+  justify-content:center !important;
+  align-items:center !important;
+  text-align:left !important;
+  padding-top:calc(60px + clamp(56px, 8svh, 86px)) !important;
+  padding-bottom:clamp(44px, 6svh, 68px) !important;
+}
+.page-pratiquer .hero::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:clamp(24px, 5svh, 48px);
+  width:min(420px, 64vw);
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg, transparent, rgba(187,126,96,.48), transparent);
+  pointer-events:none;
+}
+.page-pratiquer .hero-title{
+  max-width:760px !important;
+  font-size:clamp(38px, 5.8vw, 62px) !important;
+  line-height:1.09 !important;
+  margin-bottom:clamp(22px, 3svh, 30px) !important;
+}
+.page-pratiquer .hero-rule{
+  margin-bottom:clamp(22px, 3svh, 30px) !important;
+}
+.page-pratiquer .hero-sub{
+  max-width:620px !important;
+  font-size:clamp(18px, 1.7vw, 20px) !important;
+  line-height:1.78 !important;
+  margin-bottom:0 !important;
+}
+
+.page-pratiquer .outils-section{
+  padding-top:clamp(42px, 5.5vw, 72px) !important;
+  padding-bottom:clamp(82px, 8vw, 116px) !important;
+}
+.page-pratiquer .section-step{
+  margin-bottom:clamp(30px, 4vw, 44px) !important;
+  color:var(--text) !important;
+}
+.page-pratiquer .outils-grid{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1.06fr) minmax(280px, .94fr) !important;
+  grid-template-areas:
+    "main zones"
+    "main respiration"
+    "main boussole" !important;
+  gap:16px !important;
+  background:transparent !important;
+  border-radius:0 !important;
+  overflow:visible !important;
+  align-items:stretch !important;
+}
+.page-pratiquer .outil-card{
+  position:relative !important;
+  min-height:100% !important;
+  border-radius:22px !important;
+  border:1px solid rgba(187,126,96,.32) !important;
+  background:rgba(240,234,231,.045) !important;
+  box-shadow:0 18px 44px rgba(0,0,0,.14) !important;
+  padding:clamp(28px, 3.2vw, 42px) clamp(24px, 3vw, 36px) !important;
+  overflow:hidden !important;
+  transition:transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease !important;
+}
+[data-theme="day"] .page-pratiquer .outil-card{
+  background:rgba(78,41,31,.035) !important;
+  box-shadow:0 14px 32px rgba(78,41,31,.08) !important;
+}
+.page-pratiquer .outil-card::before{
+  content:'';
+  position:absolute;
+  inset:0 0 auto 0;
+  height:4px;
+  background:#BB7E60;
+  opacity:.88;
+}
+.page-pratiquer .outil-card:hover,
+.page-pratiquer .outil-card:focus-visible{
+  transform:translateY(-2px) !important;
+  border-color:#C45279 !important;
+  background:rgba(196,82,121,.12) !important;
+  box-shadow:0 22px 54px rgba(0,0,0,.18) !important;
+}
+[data-theme="day"] .page-pratiquer .outil-card:hover,
+[data-theme="day"] .page-pratiquer .outil-card:focus-visible{
+  background:rgba(196,82,121,.10) !important;
+  box-shadow:0 18px 40px rgba(78,41,31,.10) !important;
+}
+.page-pratiquer .outil-main{
+  grid-area:main !important;
+  background:linear-gradient(180deg, rgba(187,126,96,.18), rgba(187,126,96,.08)) !important;
+  border-color:rgba(187,126,96,.56) !important;
+  box-shadow:0 24px 64px rgba(0,0,0,.18) !important;
+  justify-content:center !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main{
+  background:#BB7E60 !important;
+  color:#F0EAE7 !important;
+  border-color:#BB7E60 !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main .outil-num,
+[data-theme="day"] .page-pratiquer .outil-main .outil-pin,
+[data-theme="day"] .page-pratiquer .outil-main .outil-name,
+[data-theme="day"] .page-pratiquer .outil-main .outil-name em,
+[data-theme="day"] .page-pratiquer .outil-main .outil-desc,
+[data-theme="day"] .page-pratiquer .outil-main .outil-meta{
+  color:#F0EAE7 !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main .outil-rule{
+  background:#F0EAE7 !important;
+  opacity:.62 !important;
+}
+.page-pratiquer .outil-card:nth-child(2){grid-area:zones !important;}
+.page-pratiquer .outil-card:nth-child(3){grid-area:respiration !important;}
+.page-pratiquer .outil-card:nth-child(4){grid-area:boussole !important;}
+.page-pratiquer .outil-pin{
+  display:inline-flex !important;
+  align-items:center !important;
+  width:max-content !important;
+  max-width:100% !important;
+  min-height:30px !important;
+  padding:6px 12px !important;
+  border-radius:999px !important;
+  background:#C34234 !important;
+  color:#F0EAE7 !important;
+  font-family:'Poppins',sans-serif !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:.9px !important;
+  text-transform:uppercase !important;
+  margin-bottom:2px !important;
+}
+.page-pratiquer .outil-name{
+  font-size:clamp(20px, 2.3vw, 27px) !important;
+  line-height:1.16 !important;
+}
+.page-pratiquer .outil-main .outil-name{
+  font-size:clamp(28px, 4.2vw, 44px) !important;
+  line-height:1.08 !important;
+}
+.page-pratiquer .outil-desc{
+  font-size:clamp(16px, .74vw + 13.5px, 17.5px) !important;
+  line-height:1.82 !important;
+}
+.page-pratiquer .outil-main .outil-desc{
+  font-size:clamp(17px, 1vw + 14px, 19px) !important;
+  line-height:1.82 !important;
+}
+.page-pratiquer .outil-meta{
+  margin-top:4px !important;
+}
+.page-pratiquer .outil-link{
+  margin-top:clamp(20px, 3vw, 32px) !important;
+  min-height:48px !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main .outil-link{
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+  color:#F0EAE7 !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main:hover .outil-link,
+[data-theme="day"] .page-pratiquer .outil-main:focus-visible .outil-link{
+  background:#C45279 !important;
+  border-color:#C45279 !important;
+}
+
+@media(min-width:768px) and (max-width:1100px){
+  .page-pratiquer .hero{
+    min-height:clamp(560px, 82svh, 820px) !important;
+    padding-top:calc(60px + clamp(48px, 7svh, 72px)) !important;
+    padding-bottom:clamp(44px, 6svh, 66px) !important;
+  }
+  .page-pratiquer .outils-grid{
+    grid-template-columns:1fr !important;
+    grid-template-areas:
+      "main"
+      "zones"
+      "respiration"
+      "boussole" !important;
+    max-width:760px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  .page-pratiquer .outil-main{
+    justify-content:flex-start !important;
+  }
+}
+@media(max-width:767px){
+  .page-pratiquer .hero{
+    min-height:auto !important;
+    padding-top:calc(60px + clamp(42px, 7svh, 62px)) !important;
+    padding-bottom:clamp(42px, 6svh, 58px) !important;
+  }
+  .page-pratiquer .hero-title{
+    font-size:clamp(32px, 10.4vw, 44px) !important;
+  }
+  .page-pratiquer .hero-sub{
+    font-size:17px !important;
+    line-height:1.78 !important;
+  }
+  .page-pratiquer .outils-section{
+    padding-top:42px !important;
+  }
+  .page-pratiquer .outils-grid{
+    grid-template-columns:1fr !important;
+    grid-template-areas:
+      "main"
+      "zones"
+      "respiration"
+      "boussole" !important;
+    gap:14px !important;
+  }
+  .page-pratiquer .outil-card{
+    padding:28px 22px !important;
+  }
+  .page-pratiquer .outil-main .outil-name{
+    font-size:clamp(26px, 8vw, 34px) !important;
+  }
+}
+@media(max-height:620px) and (orientation:landscape){
+  .page-pratiquer .hero{
+    min-height:auto !important;
+    padding-top:calc(60px + 24px) !important;
+    padding-bottom:32px !important;
+  }
+  .page-pratiquer .hero-title{
+    font-size:clamp(30px, 5vw, 42px) !important;
+    margin-bottom:16px !important;
+  }
+  .page-pratiquer .hero-rule{
+    margin-bottom:16px !important;
+  }
+  .page-pratiquer .hero-sub{
+    font-size:16px !important;
+    line-height:1.62 !important;
+  }
+  .page-pratiquer .outils-section{
+    padding-top:34px !important;
+  }
+}
+
+
+/* Pratiquer V7 — disposition premium en 4 rectangles */
+.page-pratiquer .hero{
+  min-height:clamp(520px, 78svh, 760px) !important;
+  padding-top:calc(60px + clamp(46px, 7svh, 74px)) !important;
+  padding-bottom:clamp(46px, 6svh, 72px) !important;
+}
+.page-pratiquer .hero-inner{
+  max-width:820px !important;
+}
+.page-pratiquer .outils-section{
+  padding-top:clamp(40px, 5vw, 64px) !important;
+  padding-bottom:clamp(84px, 8vw, 112px) !important;
+}
+.page-pratiquer .outils-inner{
+  max-width:1180px !important;
+}
+.page-pratiquer .section-step{
+  max-width:820px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-bottom:clamp(26px, 3vw, 38px) !important;
+}
+.page-pratiquer .outils-grid{
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  grid-template-areas:none !important;
+  gap:16px !important;
+  background:transparent !important;
+  border-radius:0 !important;
+  overflow:visible !important;
+  margin-top:0 !important;
+}
+.page-pratiquer .outil-card,
+.page-pratiquer .outil-main,
+.page-pratiquer .outil-card:nth-child(2),
+.page-pratiquer .outil-card:nth-child(3),
+.page-pratiquer .outil-card:nth-child(4){
+  grid-area:auto !important;
+}
+.page-pratiquer .outil-card{
+  min-height:clamp(410px, 34vw, 500px) !important;
+  padding:clamp(28px, 2.6vw, 36px) clamp(20px, 2vw, 28px) !important;
+  border-radius:24px !important;
+  border:1.5px solid rgba(187,126,96,.42) !important;
+  background:rgba(240,234,231,.045) !important;
+  box-shadow:0 16px 38px rgba(0,0,0,.12) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+  gap:14px !important;
+  overflow:hidden !important;
+  color:var(--text) !important;
+  transform:none !important;
+  transition:background .22s ease, border-color .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease !important;
+}
+[data-theme="day"] .page-pratiquer .outil-card{
+  background:rgba(78,41,31,.035) !important;
+  box-shadow:0 14px 28px rgba(78,41,31,.08) !important;
+}
+.page-pratiquer .outil-card::before{
+  content:none !important;
+}
+.page-pratiquer .outil-main{
+  background:rgba(240,234,231,.045) !important;
+  border-color:rgba(187,126,96,.42) !important;
+  box-shadow:0 16px 38px rgba(0,0,0,.12) !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main{
+  background:rgba(78,41,31,.035) !important;
+  color:var(--text) !important;
+  border-color:rgba(187,126,96,.42) !important;
+}
+.page-pratiquer .outil-pin{
+  order:-1 !important;
+  min-height:26px !important;
+  padding:5px 10px !important;
+  margin:0 0 2px 0 !important;
+  border-radius:999px !important;
+  background:#C34234 !important;
+  color:#F0EAE7 !important;
+  font-size:11.5px !important;
+  letter-spacing:.8px !important;
+}
+.page-pratiquer .outil-num{
+  color:var(--warm) !important;
+  font-size:12.5px !important;
+  margin-bottom:0 !important;
+}
+.page-pratiquer .outil-name,
+.page-pratiquer .outil-main .outil-name{
+  font-size:clamp(20px, 1.7vw, 25px) !important;
+  line-height:1.16 !important;
+  margin-bottom:0 !important;
+}
+.page-pratiquer .outil-desc,
+.page-pratiquer .outil-main .outil-desc{
+  font-size:clamp(15.8px, .55vw + 13.7px, 16.8px) !important;
+  line-height:1.74 !important;
+  flex:1 1 auto !important;
+}
+.page-pratiquer .outil-meta{
+  font-size:13px !important;
+  line-height:1.55 !important;
+  margin-top:0 !important;
+  color:var(--read-soft) !important;
+}
+.page-pratiquer .outil-link{
+  margin-top:18px !important;
+  min-height:48px !important;
+  width:100% !important;
+  padding:0 16px !important;
+  background:transparent !important;
+  border:1px solid rgba(187,126,96,.48) !important;
+  color:var(--text) !important;
+}
+.page-pratiquer .outil-rule{
+  margin:2px 0 4px !important;
+}
+.page-pratiquer .outil-card:hover,
+.page-pratiquer .outil-card:focus-visible{
+  background:#BB7E60 !important;
+  border-color:#BB7E60 !important;
+  color:#F0EAE7 !important;
+  box-shadow:0 20px 48px rgba(78,41,31,.18) !important;
+  transform:translateY(-2px) !important;
+  outline:none !important;
+}
+.page-pratiquer .outil-card:hover .outil-num,
+.page-pratiquer .outil-card:focus-visible .outil-num,
+.page-pratiquer .outil-card:hover .outil-name,
+.page-pratiquer .outil-card:focus-visible .outil-name,
+.page-pratiquer .outil-card:hover .outil-name em,
+.page-pratiquer .outil-card:focus-visible .outil-name em,
+.page-pratiquer .outil-card:hover .outil-desc,
+.page-pratiquer .outil-card:focus-visible .outil-desc,
+.page-pratiquer .outil-card:hover .outil-meta,
+.page-pratiquer .outil-card:focus-visible .outil-meta{
+  color:#F0EAE7 !important;
+}
+.page-pratiquer .outil-card:hover .outil-rule,
+.page-pratiquer .outil-card:focus-visible .outil-rule{
+  background:#F0EAE7 !important;
+  opacity:.74 !important;
+}
+.page-pratiquer .outil-card:hover .outil-link,
+.page-pratiquer .outil-card:focus-visible .outil-link{
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+  color:#F0EAE7 !important;
+  gap:10px !important;
+}
+.page-pratiquer .outil-card:hover .outil-pin,
+.page-pratiquer .outil-card:focus-visible .outil-pin{
+  background:#4E291F !important;
+  color:#F0EAE7 !important;
+}
+@media(min-width:768px) and (max-width:1100px){
+  .page-pratiquer .outils-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    max-width:860px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  .page-pratiquer .outil-card{
+    min-height:360px !important;
+  }
+}
+@media(max-width:767px){
+  .page-pratiquer .hero{
+    min-height:auto !important;
+    padding-top:calc(60px + clamp(38px, 7svh, 56px)) !important;
+    padding-bottom:clamp(38px, 6svh, 54px) !important;
+  }
+  .page-pratiquer .outils-section{
+    padding-top:34px !important;
+  }
+  .page-pratiquer .section-step{
+    margin-bottom:22px !important;
+  }
+  .page-pratiquer .outils-grid{
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+  .page-pratiquer .outil-card{
+    min-height:auto !important;
+    padding:28px 22px !important;
+  }
+  .page-pratiquer .outil-link{
+    width:100% !important;
+  }
+}
+@media(max-height:620px) and (orientation:landscape){
+  .page-pratiquer .hero{
+    min-height:auto !important;
+    padding-top:calc(60px + 22px) !important;
+    padding-bottom:28px !important;
+  }
+  .page-pratiquer .outils-section{
+    padding-top:32px !important;
+  }
+}
+
+
+
+/* Pratiquer V9 — état normal carte entrée recommandée en brun */[data-theme="day"] .page-pratiquer .outil-main{
+  color:#4E291F !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main .outil-num,
+[data-theme="day"] .page-pratiquer .outil-main .outil-name,
+[data-theme="day"] .page-pratiquer .outil-main .outil-name em,
+[data-theme="day"] .page-pratiquer .outil-main .outil-desc,
+[data-theme="day"] .page-pratiquer .outil-main .outil-meta{
+  color:#4E291F !important;
+}
+[data-theme="day"] .page-pratiquer .outil-main .outil-rule{
+  background:#4E291F !important;
+  opacity:.62 !important;
+}
+</style></head>
+<body class="page-pratiquer"><nav aria-label="Navigation de secours" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div class="fallback-links">
+<a href="index.html">Accueil</a>
+<a href="comprendre.html">Comprendre</a>
+<a href="methode.html">Méthode</a>
+<a href="pratiquer.html" aria-current="page">Pratiquer</a>
+<a href="foebe-zones-cadre.html">7 zones</a>
+<a href="test.html">Test</a>
+</div>
+</nav><main id="mainContent" tabindex="-1"><section aria-labelledby="hero-h1" class="hero">
+
+<h1 class="hero-title reveal rd1">
+    Quatre outils.<br/>
+<em>Un seul objectif : mieux se lire.</em>
+</h1>
+<span aria-hidden="true" class="hero-rule reveal rd2"></span>
+<p class="hero-sub reveal rd2">Pas de parcours imposé. Chaque outil répond à un état, un besoin, un moment précis.</p>
+</section><section aria-label="Les outils Foébé" class="outils-section">
+<div class="outils-inner">
+<p class="section-step reveal"><span>Par où commencer</span></p>
+<div class="outils-grid reveal rd1">
+<a class="outil-card outil-main" href="test.html">
+<span class="outil-num">Outil 01</span><span class="outil-pin">Entrée recommandée</span>
+<h2 class="outil-name"><em>Échelle Foébé</em> · Première lecture</h2>
+<span aria-hidden="true" class="outil-rule"></span>
+<p class="outil-desc">21 affirmations couvrant les 7 zones du self-care. La zone qui tire le plus fort apparaît clairement, avec des repères pour commencer à agir.</p>
+<p class="outil-meta">5 minutes · sans inscription · résultat immédiat</p>
+<span class="outil-link">Faire l'évaluation <span aria-hidden="true">→</span></span>
+</a>
+<a class="outil-card" href="foebe-zones-cadre.html">
+<span class="outil-num">Outil 02</span>
+<h2 class="outil-name">Les <em>7 zones</em></h2>
+<span aria-hidden="true" class="outil-rule"></span>
+<p class="outil-desc">Sept dimensions du self-care, chacune avec ses signaux, ses mécanismes et les liens avec les autres zones. Utile avant ou après l'Échelle.</p>
+<p class="outil-meta">Exploration · approfondissement · 7 dimensions</p>
+<span class="outil-link">Explorer les zones <span aria-hidden="true">→</span></span>
+</a>
+<a class="outil-card" href="respiration.html">
+<span class="outil-num">Outil 03</span>
+<h2 class="outil-name"><em>Respiration guidée</em></h2>
+<span aria-hidden="true" class="outil-rule"></span>
+<p class="outil-desc">Trois exercices pour revenir à soi : apaisement profond, cohérence cardiaque, ancrage mental. Le rythme s'adapte à l'état : surcharge, tension, difficulté à s'endormir.</p>
+<p class="outil-meta">Réguler · stabiliser · s'ancrer</p>
+<span class="outil-link">Commencer la respiration <span aria-hidden="true">→</span></span>
+</a>
+<a class="outil-card" href="boussole-accueil-foebe.html">
+<span class="outil-num">Outil 04</span>
+<h2 class="outil-name">La <em>Boussole</em></h2>
+<span aria-hidden="true" class="outil-rule"></span>
+<p class="outil-desc">Un outil d'exploration autour des 7 dimensions. Pour reconnaître ses signaux, distinguer le self-care réel de la performance déguisée, et affiner sa lecture.</p>
+<p class="outil-meta">Explorer · lire · vocabulaire Foébé</p>
+<span class="outil-link">Ouvrir la Boussole <span aria-hidden="true">→</span></span>
+</a>
+</div>
+</div>
+</section></main><script>
+(function(){
+  var revealEls = document.querySelectorAll('.reveal');
+
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+
+  revealEls.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+<script src="/foebe-shell.js"></script>
+</body>
+</html>
