@@ -12,8 +12,8 @@
     document.documentElement.classList.add('js-ready');
     </script>
 <meta content="index, follow" name="robots"/>
-<meta content="Maison Foébé" property="og:site_name"/>
-<meta content="fr_FR" property="og:locale"/>
+
+
 <script id="zoneConfig">
 
         var ZONE_CONFIG = {
@@ -5555,28 +5555,40 @@ body.state-active .ici-card {
 </div>
 </nav>
 <div class="zone-hero">
-<span class="hero-num" id="heroNum"></span>
-<span class="hero-emoji" id="heroEmoji"></span>
+<span class="hero-num" id="heroNum">03</span>
+<span class="hero-emoji" id="heroEmoji">🧠</span>
 <h1 class="hero-title" id="heroTitle">Mental</h1>
 </div>
 <main id="main-content" tabindex="-1">
 <div class="page">
 <div class="zone-intro-block">
-<p class="zone-intro-text" id="zoneIntroText"></p>
+<p class="zone-intro-text" id="zoneIntroText">La zone <strong>Mental</strong> dans ton self-care concerne tes pensées, tes décisions et ta manière de percevoir ce qui t'arrive. Quand cette zone est surchargée, ce n'est pas toujours spectaculaire. Ce sont souvent les mêmes pensées qui reviennent, l'attention qui se fragmente, l'impression de ne jamais vraiment décrocher. Ce n'est pas une question d'intelligence ni de volonté. C'est une question de charge.</p>
 <aside class="warning-foebe" id="zoneWarning" style="display:none"></aside>
 </div>
-<div class="page-pitch" id="pagePitch"></div>
+<div class="page-pitch" id="pagePitch">
+<div class="pitch-item"><span class="pitch-icon">🔍</span><div><p class="pitch-label">Cette zone concerne</p><p class="pitch-val">La capacité à récupérer mentalement, à orienter ton attention, à sortir d'une boucle et à retrouver un peu d'espace intérieur.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">⚠️</span><div><p class="pitch-label">Prioritaire si tu observes</p><p class="pitch-val">Des pensées qui tournent, une concentration plus fragile, un cerveau qui continue même quand ton corps essaie déjà de ralentir.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">🗺️</span><div><p class="pitch-label">Sur cette page</p><p class="pitch-val">Tu vas comprendre comment la surcharge cognitive s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret.</p></div></div>
+</div>
 <div class="ici-section">
 <div class="ici-card">
 <div class="ici-card-header">
-<span class="ici-card-header-icon" id="iciIcon"></span>
+<span class="ici-card-header-icon" id="iciIcon">🧠</span>
 <div>
-<p class="ici-card-title" id="iciCardTitle"></p>
+<p class="ici-card-title" id="iciCardTitle">Pour mieux te situer</p>
 </div>
 </div>
 <div class="ici-zones-wrap" id="iciZonesWrap">
 <button aria-label="Voir les zones précédentes" class="ici-scroll-btn ici-scroll-btn-left" id="iciScrollLeft" type="button">‹</button>
-<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0"></div>
+<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0">
+<a href="zone-energie.html" class="ici-zone-dot"><div class="ici-dot-circle">⚡</div><span class="ici-dot-label">Énergie</span></a>
+<a href="zone-corps.html" class="ici-zone-dot"><div class="ici-dot-circle">🧘</div><span class="ici-dot-label">Corps</span></a>
+<div class="ici-zone-dot active"><div class="ici-dot-circle">🧠</div><span class="ici-dot-label">Mental</span></div>
+<a href="zone-emotions.html" class="ici-zone-dot"><div class="ici-dot-circle">🌊</div><span class="ici-dot-label">Émotions</span></a>
+<a href="zone-environnement.html" class="ici-zone-dot"><div class="ici-dot-circle">🌍</div><span class="ici-dot-label">Environnement</span></a>
+<a href="zone-relations.html" class="ici-zone-dot"><div class="ici-dot-circle">🤝</div><span class="ici-dot-label">Relations</span></a>
+<a href="zone-sens.html" class="ici-zone-dot"><div class="ici-dot-circle">✨</div><span class="ici-dot-label">Sens</span></a>
+</div>
 <button aria-label="Voir les zones suivantes" class="ici-scroll-btn ici-scroll-btn-right" id="iciScrollRight" type="button">›</button>
 </div>
 <p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="test.html">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
@@ -5605,31 +5617,35 @@ body.state-active .ici-card {
 <div class="section-break"></div>
 <div class="venn-section" id="comprendreSection">
 <div class="section-chapter">
-<span class="chapter-num" id="comprendreNum"></span>
+<span class="chapter-num" id="comprendreNum">01</span>
 <div>
-<span class="chapter-eyebrow" id="comprendreEyebrow"></span>
-<h2 class="chapter-title" id="comprendreTitle"></h2>
+<span class="chapter-eyebrow" id="comprendreEyebrow">Ce qui se passe vraiment</span>
+<h2 class="chapter-title" id="comprendreTitle">Comprendre la zone Mental</h2>
 </div>
 </div>
-<p class="venn-intro" id="vennIntro"></p>
-<div class="facteurs-list" id="facteursList"></div>
+<p class="venn-intro" id="vennIntro">La surcharge mentale ne commence pas par un effondrement. Elle s'installe par accumulation, souvent sans qu'on la voie venir.</p>
+<div class="facteurs-list" id="facteursList">
+<div class="facteur-item"><div class="facteur-icon">🔁</div><div><p class="facteur-name">La boucle sans sortie</p><p class="facteur-desc">Ton cerveau rejoue un problème non résolu encore et encore, parce qu'il cherche une issue. C'est un mécanisme de traitement normal. Sauf que sans nouvelles données, la boucle ne trouve pas de sortie. Elle consomme de l'énergie en permanence, même en arrière-plan.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">📶</div><div><p class="facteur-name">Trop à trier, pas assez de filtre</p><p class="facteur-desc">Quand le volume d'informations devient trop dense, le cerveau peut rester en mode tri : surveiller, évaluer, classer, même quand rien n'est vraiment urgent. Peu à peu, ce bruit devient le fond de la journée.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">🌫</div><div><p class="facteur-name">Le repos qui ne restaure pas</p><p class="facteur-desc">Le mental récupère aussi dans les phases où l'attention n'est pas dirigée volontairement : rêverie, ennui, marche sans destination. Quand ces moments disparaissent, la fatigue cognitive peut s'accumuler en silence. Changer d'écran n'est pas toujours une vraie coupure.</p></div></div>
+</div>
 <div class="venn-arrow"><span>Ce que ça produit</span></div>
 <div class="venn-result" id="vennResult">
-<span class="vr-icon" id="vrIcon"></span>
+<span class="vr-icon" id="vrIcon">🧠</span>
 <div>
-<p class="vr-title" id="vrTitle"></p>
-<p class="vr-note" id="vrNote"></p>
+<p class="vr-title" id="vrTitle">Résultat : un cerveau toujours allumé</p>
+<p class="vr-note" id="vrNote">Le signe d'épuisement mental n'est pas la panne sèche. C'est le bruit de fond constant, cette sensation que ton cerveau continue de tourner même quand tu essaies de te poser.</p>
 </div>
 </div>
-<aside class="warning-foebe" style="margin-top:28px;">Ces observations valent dans un contexte de mieux-être ordinaire. Certains symptômes cognitifs persistants méritent une évaluation médicale.</aside>
+<aside class="warning-foebe" style="margin-top:28px;">Ces repères s’inscrivent dans un contexte de mieux-être ordinaire. Si un symptôme persiste, s’aggrave ou t’inquiète, demande un avis médical ou professionnel adapté.</aside>
 </div>
 <div class="section-break"></div>
 <div class="obs-section" id="miniTestSection">
 <div class="section-chapter">
-<span class="chapter-num" id="miniNum"></span>
+<span class="chapter-num" id="miniNum">02</span>
 <div>
-<span class="chapter-eyebrow" id="miniEyebrow"></span>
-<h2 class="chapter-title" id="miniTitle"></h2>
+<span class="chapter-eyebrow" id="miniEyebrow">Auto-observation</span>
+<h2 class="chapter-title" id="miniTitle">Mini-test · 5 questions</h2>
 </div>
 </div>
 <p class="obs-intro" id="obsIntro">
@@ -5645,7 +5661,43 @@ body.state-active .ici-card {
 <p class="obs-help">
   Glisse la carte vers la droite si tu te reconnais, vers la gauche si ce n’est pas le cas. Tu peux aussi utiliser les boutons juste en dessous.
 </p>
-<div class="obs-stack" id="obsStack"></div>
+<div class="obs-stack" id="obsStack">
+<div class="obs-card obs-active" data-card="0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 1 sur 5</span>
+<p class="obs-card-q">Tu ressasses régulièrement les mêmes pensées sans avancer : le soir, ou en plein milieu d'autre chose.</p>
+<p class="obs-card-sub">Pas une réflexion productive. Une boucle qui tourne sans trouver de sortie.</p>
+</div>
+<div class="obs-card" data-card="1" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 2 sur 5</span>
+<p class="obs-card-q">Rester concentré·e sur une seule chose est devenu difficile. Tu passes à autre chose avant d'avoir terminé.</p>
+<p class="obs-card-sub">Ce n'est pas de la flemme. C'est un système de filtrage surchargé qui cherche à s'alléger.</p>
+</div>
+<div class="obs-card" data-card="2" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 3 sur 5</span>
+<p class="obs-card-q">En fin de journée, tu n'arrives pas à décrocher même quand tu es épuisé·e. Le corps réclame du repos, mais le mental continue.</p>
+<p class="obs-card-sub">Ce décalage corps-mental signale une surcharge installée. L'un est à plat, l'autre n'a pas reçu l'autorisation de s'arrêter.</p>
+</div>
+<div class="obs-card" data-card="3" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 4 sur 5</span>
+<p class="obs-card-q">Tu oublies des choses simples : un rendez-vous, l'endroit où tu viens de poser un objet, une étape d'une tâche que tu fais pourtant régulièrement.</p>
+<p class="obs-card-sub">C'est souvent le signe que ta mémoire de travail est déjà pleine d'autres choses.</p>
+</div>
+<div class="obs-card" data-card="4" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 5 sur 5</span>
+<p class="obs-card-q">Penser à tout ce que tu as à faire te fatigue avant même d'avoir commencé.</p>
+<p class="obs-card-sub">L'anticipation coûte parfois autant que l'action elle-même. Ce n'est pas un manque de motivation.</p>
+</div>
+</div>
 <div class="obs-buttons-bar" id="obsButtonsBar">
 <button class="obs-btn obs-btn-no" data-answer="false" type="button">Pas moi</button>
 <button class="obs-btn obs-btn-yes" data-answer="true" type="button">Oui, c'est mon cas</button>
@@ -5672,33 +5724,79 @@ body.state-active .ici-card {
 <div class="section-break"></div>
 <div class="impacts-section" id="impactsSection">
 <div class="section-chapter">
-<span class="chapter-num" id="impactsNum"></span>
+<span class="chapter-num" id="impactsNum">03</span>
 <div>
-<span class="chapter-eyebrow" id="impactsEyebrow"></span>
-<h2 class="chapter-title" id="impactsTitle"></h2>
+<span class="chapter-eyebrow" id="impactsEyebrow">Comment ça se propage</span>
+<h2 class="chapter-title" id="impactsTitle">Effets en cascade</h2>
 </div>
 </div>
-<p class="impacts-intro" id="impactsIntro"></p>
-<div class="impacts-timeline" id="impactsTimeline"></div>
+<p class="impacts-intro" id="impactsIntro">Un mental surchargé ne reste pas seulement dans la tête. Concrètement, il finit par peser sur le reste de ton self-care de façon visible.</p>
+<div class="impacts-timeline" id="impactsTimeline">
+<div class="impact-item primary" data-impact="0">
+<div class="impact-left"><div class="impact-dot primary">🧠</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim">Mental</span><span class="impact-tag primary">Point de départ</span></div><p class="impact-desc">Le bruit cognitif s'installe. Attention fragmentée, pensées en boucle, difficulté à prioriser ce qui compte vraiment.</p></div>
+</div>
+<div class="impact-item" data-impact="1">
+<div class="impact-left"><div class="impact-dot">🧘</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-corps.html" class="impact-dim-link">Corps</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Un cerveau souvent en alerte peut maintenir le corps dans une tension de fond : muscles contractés, sommeil plus fragile, fatigue difficile à expliquer clairement.</p></div>
+</div>
+<div class="impact-item" data-impact="2">
+<div class="impact-left"><div class="impact-dot">⚡</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-energie.html" class="impact-dim-link">Énergie</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Le fonctionnement mental mobilise déjà beaucoup de ressources. En vigilance prolongée, la récupération peut devenir moins fluide et la réserve plus difficile à reconstituer.</p></div>
+</div>
+<div class="impact-item" data-impact="3">
+<div class="impact-left"><div class="impact-dot">🌊</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-emotions.html" class="impact-dim-link">Émotions</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Quand les réserves cognitives sont basses, réguler ce que tu ressens devient plus difficile. Tu réagis parfois plus vite, plus fort, ou avec moins de recul.</p></div>
+</div>
+<div class="impact-item" data-impact="4">
+<div class="impact-left"><div class="impact-dot">🤝</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-relations.html" class="impact-dim-link">Relations</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Un mental surchargé est un mental ailleurs. Tu peux être présent·e physiquement dans une conversation et complètement absent·e mentalement.</p></div>
+</div>
+<div class="impact-item" data-impact="5">
+<div class="impact-left"><div class="impact-dot">✨</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-sens.html" class="impact-dim-link">Sens</a></span><span class="impact-tag deep">Impact profond</span></div><p class="impact-desc">Les décisions importantes demandent de la disponibilité mentale. En surcharge, cette place se réduit. L'urgence prend le dessus et ce qui compte vraiment passe après.</p></div>
+</div>
+</div>
 </div>
 <div class="section-break"></div>
 <div class="gestes-section" id="gestesSection">
 <div class="section-chapter">
-<span class="chapter-num" id="gestesNum"></span>
+<span class="chapter-num" id="gestesNum">04</span>
 <div>
-<span class="chapter-eyebrow" id="gestesEyebrow"></span>
-<h2 class="chapter-title" id="gestesTitle"></h2>
+<span class="chapter-eyebrow" id="gestesEyebrow">Des gestes pour commencer</span>
+<h2 class="chapter-title" id="gestesTitle">Rituels Foébé</h2>
 </div>
 </div>
 <div class="gestes-header">
-<span class="gestes-eyebrow" id="gestesHeaderEyebrow"></span>
-<p class="gestes-name" id="gestesName"></p>
-<p class="gestes-sub" id="gestesSub"></p>
+<span class="gestes-eyebrow" id="gestesHeaderEyebrow">Des gestes pour commencer</span>
+<p class="gestes-name" id="gestesName">Pour relâcher la charge mentale</p>
+<p class="gestes-sub" id="gestesSub">Trois gestes simples pour retrouver un peu d'espace</p>
 </div>
-<div class="gestes-grid" id="gestesGrid"></div>
-<div class="gestes-freq" id="gestesFreq"></div>
+<div class="gestes-grid" id="gestesGrid">
+<div class="geste-card geste-1">
+<p class="geste-type">🌀  Ne rien faire, vraiment.</p>
+<div class="geste-meta"><span>⏱ 10 min</span><span>Effort minimal</span></div>
+<p class="geste-text">Fais quelque chose sans objectif et sans écran : marcher sans direction, regarder par la fenêtre, laisser l'esprit aller où il veut. Pas de podcast. Pas de liste en tête.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Les moments sans objectif peuvent aider le mental à trier, relâcher et retrouver de l'espace. Ce n'est pas forcément du temps perdu : c'est parfois là que la pression baisse.</div>
+<p class="geste-sensoriel">Les premières minutes peuvent sembler inhabituelles ou vides. Ce n'est pas un problème. Dans cette zone, le plus difficile est justement d'accepter un moment sans objectif.</p></div>
+<div class="geste-card geste-2">
+<p class="geste-type">📝 Vider sur papier</p>
+<div class="geste-meta"><span>⏱ 5 min</span><span>Effort bas</span></div>
+<p class="geste-text">Écris tout ce qui tourne dans ta tête, sans relire, sans corriger, sans chercher à en faire quelque chose. Tu peux jeter la feuille après.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Ce qui est écrit demande souvent moins d'être maintenu actif dans la tête. L'externalisation peut libérer un peu de capacité mentale immédiatement.</div>
+</div>
+<div class="geste-card geste-3">
+<p class="geste-type">✅ Une tâche jusqu'au bout</p>
+<div class="geste-meta"><span>⏱ 25 min</span><span>Effort moyen</span></div>
+<p class="geste-text">Choisis une chose. Ferme tout le reste. Fais-la jusqu'au bout, même imparfaitement. Puis arrête-toi vraiment.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Retrouver l'expérience de finir quelque chose peut réactiver une satisfaction simple, souvent brouillée par le multitâche chronique. Un geste qui rappelle au mental qu'une tâche peut avoir une fin.</div>
+<p class="geste-sensoriel">Le but n'est pas de faire beaucoup. Le but est de recréer un point d'arrêt net, pour que ton cerveau enregistre qu'une action a commencé, s'est faite, puis s'est terminée.</p></div>
+</div>
+<div class="gestes-freq" id="gestesFreq">
+<span class="freq-icon">📅</span><p>Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques des pertes de concentration, de la rumination.</p>
+</div>
 <div class="gestes-intention-wrap">
-<p class="gestes-intention-text" id="gestesIntention"></p>
+<p class="gestes-intention-text" id="gestesIntention">Ces trois gestes ne règlent pas le problème de fond. Mais ils réduisent un peu la pression immédiate et redonnent un premier appui pour repartir sereinement.</p>
 </div>
 </div>
 <div class="section-break"></div>
@@ -5766,7 +5864,15 @@ body.state-active .ici-card {
 </div>
 <div class="zones-nav">
 <span class="zones-nav-label">Les 7 dimensions du self-care Foébé</span>
-<div class="zones-chips" id="zonesChips"></div>
+<div class="zones-chips" id="zonesChips">
+<a href="zone-energie.html" class="zone-chip">⚡ Énergie</a>
+<a href="zone-corps.html" class="zone-chip">🧘 Corps</a>
+<a href="zone-mental.html" class="zone-chip active">🧠 Mental</a>
+<a href="zone-emotions.html" class="zone-chip">🌊 Émotions</a>
+<a href="zone-environnement.html" class="zone-chip">🌍 Environnement</a>
+<a href="zone-relations.html" class="zone-chip">🤝 Relations</a>
+<a href="zone-sens.html" class="zone-chip">✨ Sens</a>
+</div>
 </div>
 </div>
 </main>
@@ -5842,6 +5948,7 @@ body.state-active .ici-card {
             document.getElementById("iciIcon").textContent = z.emoji;
             document.getElementById("iciCardTitle").textContent = "Pour mieux te situer";
             var bar = document.getElementById("iciZonesBar");
+            bar.innerHTML = "";
             ZONES_NAV.forEach(function(zone) {
                 var dot = zone.active ? document.createElement("div") : document.createElement("a");
                 if (!zone.active) dot.href = zone.url;
@@ -5918,6 +6025,7 @@ body.state-active .ici-card {
 
         function initPitch() {
             var wrap = document.getElementById("pagePitch");
+            wrap.innerHTML = "";
             PITCH_DATA.forEach(function(item) {
                 wrap.innerHTML += '<div class="pitch-item"><span class="pitch-icon">' + item.icon + '</span><div><p class="pitch-label">' + item.label + '</p><p class="pitch-val">' + item.val + '</p></div></div>';
             });
@@ -5930,6 +6038,7 @@ body.state-active .ici-card {
             setText("comprendreTitle", sm.title);
             setText("vennIntro", COMPRENDRE.intro);
             var list = document.getElementById("facteursList");
+            list.innerHTML = "";
             COMPRENDRE.facteurs.forEach(function(f) {
                 list.innerHTML += '<div class="facteur-item"><div class="facteur-icon">' + f.icon + '</div><div><p class="facteur-name">' + f.name + '</p><p class="facteur-desc">' + f.desc + '</p></div></div>';
             });
@@ -5944,6 +6053,7 @@ body.state-active .ici-card {
             setText("miniEyebrow", sm.eyebrow);
             setText("miniTitle", sm.title);
             var stack = document.getElementById("obsStack");
+            stack.innerHTML = "";
             OBS_QUESTIONS.forEach(function(q, i) {
                 var active = (i === 0) ? " obs-active" : "";
                 var opacity = (i === 0) ? "" : " style=\"opacity:0\"";
@@ -5965,6 +6075,7 @@ body.state-active .ici-card {
             setText("impactsTitle", sm.title);
             setText("impactsIntro", IMPACTS_INTRO);
             var tl = document.getElementById("impactsTimeline");
+            tl.innerHTML = "";
             IMPACTS_DATA.forEach(function(item, i) {
                 var primary = (item.tag === "primary") ? " primary" : "";
                 var dimHtml = item.url ? '<a href="' + item.url + '" class="impact-dim-link">' + item.dim + '</a>' : item.dim;
@@ -5986,6 +6097,7 @@ body.state-active .ici-card {
             setText("gestesSub", GESTES_META.sub);
             document.getElementById("gestesIntention").textContent = GESTES_META.intention;
             var grid = document.getElementById("gestesGrid");
+            grid.innerHTML = "";
             GESTES_DATA.forEach(function(g, i) {
                 var n = i + 1;
                 var metaSpans = g.meta.map(function(m) {
@@ -6005,6 +6117,7 @@ body.state-active .ici-card {
 
         function initZonesNav() {
             var wrap = document.getElementById("zonesChips");
+            wrap.innerHTML = "";
             ZONES_NAV.forEach(function(zone) {
                 var a = document.createElement("a");
                 a.href = zone.url;

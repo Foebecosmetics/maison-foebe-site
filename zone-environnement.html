@@ -12,8 +12,8 @@
     document.documentElement.classList.add('js-ready');
     </script>
 <meta content="index, follow" name="robots"/>
-<meta content="Maison Foébé" property="og:site_name"/>
-<meta content="fr_FR" property="og:locale"/>
+
+
 <script id="zoneConfig">
         var ZONE_CONFIG = {
             name: "Environnement",
@@ -319,7 +319,6 @@
 <meta content="Zone Environnement · Comprendre l’impact de l’espace, du désordre et des stimuli sur ton self-care." id="metaDesc" name="description"/>
 <link href="https://maisonfoebe.fr/zone-environnement" id="canonical" rel="canonical"/>
 <meta content="Zone Environnement · Maison Foébé" id="ogTitle" property="og:title"/>
-<meta content="Comprendre la déconnexion corporelle, faire le mini-test et choisir un premier geste de reconnexion." id="ogDesc" property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://maisonfoebe.fr/zone-environnement" id="ogUrl" property="og:url"/>
 <meta content="https://maisonfoebe.fr/images/zones/og-zone-environnement.png" property="og:image"/>
@@ -5653,28 +5652,40 @@ body.state-active .ici-card {
 </div>
 </nav>
 <div class="zone-hero">
-<span class="hero-num" id="heroNum"></span>
-<span class="hero-emoji" id="heroEmoji"></span>
+<span class="hero-num" id="heroNum">05</span>
+<span class="hero-emoji" id="heroEmoji">🌿</span>
 <h1 class="hero-title" id="heroTitle">Environnement</h1>
 </div>
 <main id="main-content" tabindex="-1">
 <div class="page">
 <div class="zone-intro-block">
-<p class="zone-intro-text" id="zoneIntroText"></p>
+<p class="zone-intro-text" id="zoneIntroText">La zone <strong>Environnement</strong> dans ton self-care concerne l'espace dans lequel tu vis et travailles. Quand cette zone se dérègle, ce n'est pas toujours spectaculaire. Cela provient souvent d'un désordre qui s'accumule, un espace qui ne ressource plus, une surexposition à des stimuli qui finissent par peser sans qu'on le remarque vraiment. Ce n'est pas une question d'ordre ni d'esthétique. C'est une question d'impact réel sur ton état.</p>
 <aside class="warning-foebe" id="zoneWarning" style="display:none"></aside>
 </div>
-<div class="page-pitch" id="pagePitch"></div>
+<div class="page-pitch" id="pagePitch">
+<div class="pitch-item"><span class="pitch-icon">🔍</span><div><p class="pitch-label">Cette zone concerne</p><p class="pitch-val">Ta capacité à créer et maintenir un environnement qui te ressource plutôt qu'il ne te draine, et à reconnaître l'impact réel de ton espace sur ton état.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">⚠️</span><div><p class="pitch-label">Prioritaire si tu observes</p><p class="pitch-val">Un espace qui génère de la tension plutôt que du calme, une surexposition aux écrans ou aux bruits, une incapacité à récupérer dans tes espaces habituels.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">🗺️</span><div><p class="pitch-label">Sur cette page</p><p class="pitch-val">Tu vas comprendre comment l'environnement influence ton self-care, souvent de façon invisible, tu vas pouvoir repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton self-care, puis choisir un premier geste concret.</p></div></div>
+</div>
 <div class="ici-section">
 <div class="ici-card">
 <div class="ici-card-header">
-<span class="ici-card-header-icon" id="iciIcon"></span>
+<span class="ici-card-header-icon" id="iciIcon">🌿</span>
 <div>
-<p class="ici-card-title" id="iciCardTitle"></p>
+<p class="ici-card-title" id="iciCardTitle">Pour mieux te situer</p>
 </div>
 </div>
 <div class="ici-zones-wrap" id="iciZonesWrap">
 <button aria-label="Voir les zones précédentes" class="ici-scroll-btn ici-scroll-btn-left" id="iciScrollLeft" type="button">‹</button>
-<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0"></div>
+<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0">
+<a href="zone-energie.html" class="ici-zone-dot"><div class="ici-dot-circle">⚡</div><span class="ici-dot-label">Énergie</span></a>
+<a href="zone-corps.html" class="ici-zone-dot"><div class="ici-dot-circle">🧘</div><span class="ici-dot-label">Corps</span></a>
+<a href="zone-mental.html" class="ici-zone-dot"><div class="ici-dot-circle">🧠</div><span class="ici-dot-label">Mental</span></a>
+<a href="zone-emotions.html" class="ici-zone-dot"><div class="ici-dot-circle">🌊</div><span class="ici-dot-label">Émotions</span></a>
+<div class="ici-zone-dot active"><div class="ici-dot-circle">🌍</div><span class="ici-dot-label">Environnement</span></div>
+<a href="zone-relations.html" class="ici-zone-dot"><div class="ici-dot-circle">🤝</div><span class="ici-dot-label">Relations</span></a>
+<a href="zone-sens.html" class="ici-zone-dot"><div class="ici-dot-circle">✨</div><span class="ici-dot-label">Sens</span></a>
+</div>
 <button aria-label="Voir les zones suivantes" class="ici-scroll-btn ici-scroll-btn-right" id="iciScrollRight" type="button">›</button>
 </div>
 <p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="test.html">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
@@ -5703,31 +5714,35 @@ body.state-active .ici-card {
 <div class="section-break"></div>
 <div class="venn-section" id="comprendreSection">
 <div class="section-chapter">
-<span class="chapter-num" id="comprendreNum"></span>
+<span class="chapter-num" id="comprendreNum">01</span>
 <div>
-<span class="chapter-eyebrow" id="comprendreEyebrow"></span>
-<h2 class="chapter-title" id="comprendreTitle"></h2>
+<span class="chapter-eyebrow" id="comprendreEyebrow">Ce qui se passe vraiment</span>
+<h2 class="chapter-title" id="comprendreTitle">Comprendre la zone Environnement</h2>
 </div>
 </div>
-<p class="venn-intro" id="vennIntro"></p>
-<div class="facteurs-list" id="facteursList"></div>
+<p class="venn-intro" id="vennIntro">L’environnement n’agit pas seulement comme un décor. Il influence l’attention, la tension, la récupération et la sensation de calme, souvent plus qu’on ne le remarque.</p>
+<div class="facteurs-list" id="facteursList">
+<div class="facteur-item"><div class="facteur-icon">📱</div><div><p class="facteur-name">La surexposition aux stimuli</p><p class="facteur-desc">Le cerveau traite en permanence ce qui l’entoure : bruits, lumières, notifications, désordre visuel. Chaque stimulus peut demander un micro-traitement, même discret, et finir par ajouter du bruit à l’arrière-plan.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">🗂️</div><div><p class="facteur-name">Le désordre comme charge cognitive</p><p class="facteur-desc">Un espace en désordre n'est pas juste inesthétique. Il génère une charge cognitive permanente. Des tâches non terminées signalées visuellement, des décisions remises à plus tard, forment un fond de tension qui ne se relâche pas.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">🌳</div><div><p class="facteur-name">L'absence de nature et de calme sensoriel</p><p class="facteur-desc">Les environnements naturels ou simplement calmes peuvent aider l’attention à se relâcher. Le but n’est pas la performance : juste offrir au système un autre type de stimulation.</p></div></div>
+</div>
 <div class="venn-arrow"><span>Ce que ça produit</span></div>
 <div class="venn-result" id="vennResult">
-<span class="vr-icon" id="vrIcon"></span>
+<span class="vr-icon" id="vrIcon">🌿</span>
 <div>
-<p class="vr-title" id="vrTitle"></p>
-<p class="vr-note" id="vrNote"></p>
+<p class="vr-title" id="vrTitle">Résultat : un espace qui ne ressource plus</p>
+<p class="vr-note" id="vrNote">L’environnement influence l’état intérieur plus qu’on ne le remarque : attention, tension, récupération, sensation de calme. Et quand l’espace ne soutient plus, la charge finit par devenir difficile à ignorer.</p>
 </div>
 </div>
-<aside class="warning-foebe" style="margin-top:28px;">Ces observations valent dans un contexte de mieux-être ordinaire. Certains symptômes cognitifs persistants méritent une évaluation médicale.</aside>
+<aside class="warning-foebe" style="margin-top:28px;">Ces repères s’inscrivent dans un contexte de mieux-être ordinaire. Si un symptôme persiste, s’aggrave ou t’inquiète, demande un avis médical ou professionnel adapté.</aside>
 </div>
 <div class="section-break"></div>
 <div class="obs-section" id="miniTestSection">
 <div class="section-chapter">
-<span class="chapter-num" id="miniNum"></span>
+<span class="chapter-num" id="miniNum">02</span>
 <div>
-<span class="chapter-eyebrow" id="miniEyebrow"></span>
-<h2 class="chapter-title" id="miniTitle"></h2>
+<span class="chapter-eyebrow" id="miniEyebrow">Auto-observation</span>
+<h2 class="chapter-title" id="miniTitle">Mini-test · 5 questions</h2>
 </div>
 </div>
 <p class="obs-intro" id="obsIntro">
@@ -5743,7 +5758,43 @@ body.state-active .ici-card {
 <p class="obs-help">
   Glisse la carte vers la droite si tu te reconnais, vers la gauche si ce n’est pas le cas. Tu peux aussi utiliser les boutons juste en dessous.
 </p>
-<div class="obs-stack" id="obsStack"></div>
+<div class="obs-stack" id="obsStack">
+<div class="obs-card obs-active" data-card="0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 1 sur 5</span>
+<p class="obs-card-q">Tu entres chez toi et tu ressens une légère tension plutôt qu'un relâchement. L'espace ne t'accueille pas vraiment.</p>
+<p class="obs-card-sub">L'espace de vie peut devenir un lieu de régulation. Quand ce n'est pas le cas, le corps peut garder une forme d'alerte même au repos.</p>
+</div>
+<div class="obs-card" data-card="1" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 2 sur 5</span>
+<p class="obs-card-q">Tu passes plusieurs heures sans vraie coupure d'écran. Les transitions entre applications, réseaux ou contenus se font sans pause.</p>
+<p class="obs-card-sub">La surexposition numérique peut maintenir le système de traitement en alerte continue, sans lui offrir de vraie coupure.</p>
+</div>
+<div class="obs-card" data-card="2" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 3 sur 5</span>
+<p class="obs-card-q">Un désordre ou une tâche visible dans ton environnement continue de peser mentalement même quand tu n'y travailles pas.</p>
+<p class="obs-card-sub">Les tâches incomplètes et visibles peuvent occuper de la place mentale. Le désordre n'est pas seulement un problème d'organisation.</p>
+</div>
+<div class="obs-card" data-card="3" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 4 sur 5</span>
+<p class="obs-card-q">Tu n'as pas de rituel de transition entre les espaces ou les temps de ta journée. Tout se fond dans tout.</p>
+<p class="obs-card-sub">L'absence de transition peut rendre plus difficile le passage d'un mode à l'autre. Tout reste dans le même registre.</p>
+</div>
+<div class="obs-card" data-card="4" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 5 sur 5</span>
+<p class="obs-card-q">Tu as du mal à récupérer dans tes espaces habituels. La détente reste de surface même quand tu t'y accordes du temps.</p>
+<p class="obs-card-sub">Quand l'espace lui-même est drainant, le repos peut rester difficile même avec du temps disponible.</p>
+</div>
+</div>
 <div class="obs-buttons-bar" id="obsButtonsBar">
 <button class="obs-btn obs-btn-no" data-answer="false" type="button">Pas moi</button>
 <button class="obs-btn obs-btn-yes" data-answer="true" type="button">Oui, c'est mon cas</button>
@@ -5770,33 +5821,79 @@ body.state-active .ici-card {
 <div class="section-break"></div>
 <div class="impacts-section" id="impactsSection">
 <div class="section-chapter">
-<span class="chapter-num" id="impactsNum"></span>
+<span class="chapter-num" id="impactsNum">03</span>
 <div>
-<span class="chapter-eyebrow" id="impactsEyebrow"></span>
-<h2 class="chapter-title" id="impactsTitle"></h2>
+<span class="chapter-eyebrow" id="impactsEyebrow">Comment ça se propage</span>
+<h2 class="chapter-title" id="impactsTitle">Effets en cascade</h2>
 </div>
 </div>
-<p class="impacts-intro" id="impactsIntro"></p>
-<div class="impacts-timeline" id="impactsTimeline"></div>
+<p class="impacts-intro" id="impactsIntro">Un environnement drainant ne reste pas cantonné à l'espace physique. Concrètement, il finit par peser sur le reste de ton self-care de façon visible.</p>
+<div class="impacts-timeline" id="impactsTimeline">
+<div class="impact-item primary" data-impact="0">
+<div class="impact-left"><div class="impact-dot primary">🌿</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim">Environnement</span><span class="impact-tag primary">Point de départ</span></div><p class="impact-desc">L'espace génère de la tension plutôt que du calme. La surexposition aux stimuli maintient le système en vigilance continue.</p></div>
+</div>
+<div class="impact-item" data-impact="1">
+<div class="impact-left"><div class="impact-dot">🧠</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-mental.html" class="impact-dim-link">Mental</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Un environnement désorganisé ou surchargé fragmente l'attention. La concentration demande plus d'effort quand le contexte visuel ou sonore est chargé.</p></div>
+</div>
+<div class="impact-item" data-impact="2">
+<div class="impact-left"><div class="impact-dot">⚡</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-energie.html" class="impact-dim-link">Énergie</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Composer avec un environnement surchargé peut consommer de l'énergie. La récupération devient souvent moins fluide quand l'espace n'est pas propice au calme.</p></div>
+</div>
+<div class="impact-item" data-impact="3">
+<div class="impact-left"><div class="impact-dot">🧘</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-corps.html" class="impact-dim-link">Corps</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">L'environnement parle aussi au corps. Un espace en désordre ou bruyant peut maintenir une légère tension et rendre la respiration moins profonde.</p></div>
+</div>
+<div class="impact-item" data-impact="4">
+<div class="impact-left"><div class="impact-dot">🌊</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-emotions.html" class="impact-dim-link">Émotions</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">L'espace peut refléter et amplifier l'état émotionnel. Un environnement qu'on ne maîtrise pas peut donner une sensation de perte de contrôle qui affecte la régulation émotionnelle.</p></div>
+</div>
+<div class="impact-item" data-impact="5">
+<div class="impact-left"><div class="impact-dot">✨</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="zone-sens.html" class="impact-dim-link">Sens</a></span><span class="impact-tag deep">Impact profond</span></div><p class="impact-desc">L'espace que tu crées dit quelque chose de ce qui compte pour toi. Quand il est en désaccord avec tes valeurs, un fond de malaise peut s'installer.</p></div>
+</div>
+</div>
 </div>
 <div class="section-break"></div>
 <div class="gestes-section" id="gestesSection">
 <div class="section-chapter">
-<span class="chapter-num" id="gestesNum"></span>
+<span class="chapter-num" id="gestesNum">04</span>
 <div>
-<span class="chapter-eyebrow" id="gestesEyebrow"></span>
-<h2 class="chapter-title" id="gestesTitle"></h2>
+<span class="chapter-eyebrow" id="gestesEyebrow">Des gestes pour commencer</span>
+<h2 class="chapter-title" id="gestesTitle">Rituels Foébé</h2>
 </div>
 </div>
 <div class="gestes-header">
-<span class="gestes-eyebrow" id="gestesHeaderEyebrow"></span>
-<p class="gestes-name" id="gestesName"></p>
-<p class="gestes-sub" id="gestesSub"></p>
+<span class="gestes-eyebrow" id="gestesHeaderEyebrow">Des gestes pour commencer</span>
+<p class="gestes-name" id="gestesName">Pour créer un espace qui ressource</p>
+<p class="gestes-sub" id="gestesSub">Trois gestes simples pour réduire la charge environnementale</p>
 </div>
-<div class="gestes-grid" id="gestesGrid"></div>
-<div class="gestes-freq" id="gestesFreq"></div>
+<div class="gestes-grid" id="gestesGrid">
+<div class="geste-card geste-1">
+<p class="geste-type">📵 Coupure numérique de quinze minutes</p>
+<div class="geste-meta"><span>⏱ 15 min</span><span>Effort bas</span></div>
+<p class="geste-text">Pose ton téléphone dans une autre pièce. Coupe les notifications. Reste dans l'espace physique sans aucun écran pendant quinze minutes.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>L’absence de stimulus numérique peut aider le système à changer de registre. Quinze minutes ne règlent pas tout, mais elles peuvent créer une première vraie coupure.</div>
+<p class="geste-sensoriel">Les premières minutes peuvent générer un réflexe de vérification. Ce réflexe lui-même peut devenir un indicateur de l'habitude prise avec les stimuli.</p></div>
+<div class="geste-card geste-2">
+<p class="geste-type">🧹 Un seul espace dégagé</p>
+<div class="geste-meta"><span>⏱ 10 min</span><span>Effort bas</span></div>
+<p class="geste-text">Choisis un endroit précis : ton bureau, ta table de nuit, ton plan de travail. Dégage-le complètement. Un seul espace, pas tout l'appartement.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Un espace dégagé peut réduire le bruit visuel et offrir un point d’appui. Même un seul endroit plus clair peut servir d’ancrage au calme dans un contexte chargé.</div>
+</div>
+<div class="geste-card geste-3">
+<p class="geste-type">🌿 Dix minutes dehors sans objectif</p>
+<div class="geste-meta"><span>⏱ 10 min</span><span>Effort minimal</span></div>
+<p class="geste-text">Sors. Sans écouteurs, sans liste, sans destination précise. Marche ou reste assis·e dehors. Laisse l'environnement naturel faire son effet.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Les environnements naturels ou simplement calmes peuvent aider l’attention à se relâcher. Le but n’est pas la performance : juste offrir au système un autre type de stimulation.</div>
+</div>
+</div>
+<div class="gestes-freq" id="gestesFreq">
+<span class="freq-icon">📅</span><p>Quand mettre en place ces gestes ? Une fois aujourd'hui, de préférence dans l'espace où tu passes le plus de temps.</p>
+</div>
 <div class="gestes-intention-wrap">
-<p class="gestes-intention-text" id="gestesIntention"></p>
+<p class="gestes-intention-text" id="gestesIntention">Ces trois gestes ne transforment pas un espace du jour au lendemain. Mais un environnement qui commence à ressourcer, même partiellement, change l'état dans lequel on se trouve.</p>
 </div>
 </div>
 <div class="section-break"></div>
@@ -5864,7 +5961,15 @@ body.state-active .ici-card {
 </div>
 <div class="zones-nav">
 <span class="zones-nav-label">Les 7 dimensions du self-care Foébé</span>
-<div class="zones-chips" id="zonesChips"></div>
+<div class="zones-chips" id="zonesChips">
+<a href="zone-energie.html" class="zone-chip">⚡ Énergie</a>
+<a href="zone-corps.html" class="zone-chip">🧘 Corps</a>
+<a href="zone-mental.html" class="zone-chip">🧠 Mental</a>
+<a href="zone-emotions.html" class="zone-chip">🌊 Émotions</a>
+<a href="zone-environnement.html" class="zone-chip active">🌍 Environnement</a>
+<a href="zone-relations.html" class="zone-chip">🤝 Relations</a>
+<a href="zone-sens.html" class="zone-chip">✨ Sens</a>
+</div>
 </div>
 </div>
 </main>
@@ -5940,6 +6045,7 @@ body.state-active .ici-card {
             document.getElementById("iciIcon").textContent = z.emoji;
             document.getElementById("iciCardTitle").textContent = "Pour mieux te situer";
             var bar = document.getElementById("iciZonesBar");
+            bar.innerHTML = "";
             ZONES_NAV.forEach(function(zone) {
                 var dot = zone.active ? document.createElement("div") : document.createElement("a");
                 if (!zone.active) dot.href = zone.url;
@@ -6016,6 +6122,7 @@ body.state-active .ici-card {
 
         function initPitch() {
             var wrap = document.getElementById("pagePitch");
+            wrap.innerHTML = "";
             PITCH_DATA.forEach(function(item) {
                 wrap.innerHTML += '<div class="pitch-item"><span class="pitch-icon">' + item.icon + '</span><div><p class="pitch-label">' + item.label + '</p><p class="pitch-val">' + item.val + '</p></div></div>';
             });
@@ -6028,6 +6135,7 @@ body.state-active .ici-card {
             setText("comprendreTitle", sm.title);
             setText("vennIntro", COMPRENDRE.intro);
             var list = document.getElementById("facteursList");
+            list.innerHTML = "";
             COMPRENDRE.facteurs.forEach(function(f) {
                 list.innerHTML += '<div class="facteur-item"><div class="facteur-icon">' + f.icon + '</div><div><p class="facteur-name">' + f.name + '</p><p class="facteur-desc">' + f.desc + '</p></div></div>';
             });
@@ -6042,6 +6150,7 @@ body.state-active .ici-card {
             setText("miniEyebrow", sm.eyebrow);
             setText("miniTitle", sm.title);
             var stack = document.getElementById("obsStack");
+            stack.innerHTML = "";
             OBS_QUESTIONS.forEach(function(q, i) {
                 var active = (i === 0) ? " obs-active" : "";
                 var opacity = (i === 0) ? "" : " style=\"opacity:0\"";
@@ -6063,6 +6172,7 @@ body.state-active .ici-card {
             setText("impactsTitle", sm.title);
             setText("impactsIntro", IMPACTS_INTRO);
             var tl = document.getElementById("impactsTimeline");
+            tl.innerHTML = "";
             IMPACTS_DATA.forEach(function(item, i) {
                 var primary = (item.tag === "primary") ? " primary" : "";
                 var dimHtml = item.url ? '<a href="' + item.url + '" class="impact-dim-link">' + item.dim + '</a>' : item.dim;
@@ -6084,6 +6194,7 @@ body.state-active .ici-card {
             setText("gestesSub", GESTES_META.sub);
             document.getElementById("gestesIntention").textContent = GESTES_META.intention;
             var grid = document.getElementById("gestesGrid");
+            grid.innerHTML = "";
             GESTES_DATA.forEach(function(g, i) {
                 var n = i + 1;
                 var metaSpans = g.meta.map(function(m) {
@@ -6103,6 +6214,7 @@ body.state-active .ici-card {
 
         function initZonesNav() {
             var wrap = document.getElementById("zonesChips");
+            wrap.innerHTML = "";
             ZONES_NAV.forEach(function(zone) {
                 var a = document.createElement("a");
                 a.href = zone.url;
