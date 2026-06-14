@@ -113,7 +113,7 @@
   /* ═══════════════════════════════════════════════════════════════════════════
      1.1 FIL D'ARIANE — intégré au Shell, sans fichier JS externe
      Objectif : repère détaillé, homogène, sans container global.
-     Placement : repère indépendant dans le hero, non pris dans les animations.
+     Correction : placement adapté aux pages avec/sans hero + pages animées.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function injectFoebeBreadcrumbFast() {
     var root = document.documentElement;
@@ -175,9 +175,11 @@
 
       if (
         file === "boussole-accueil-foebe" ||
-        file === "boussole" ||
-        file.indexOf("boussole") === 0
+        file.indexOf("boussole-accueil") === 0 ||
+        file.indexOf("sas-boussole") === 0 ||
+        file.indexOf("sas-de-la-boussole") === 0
       ) return "boussole-accueil-foebe.html";
+      if (file === "boussole" || file.indexOf("boussole-") === 0) return "boussole.html";
 
       if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
       if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
@@ -207,7 +209,12 @@
       return normalizeFile(last);
     }
 
+    function toPageClass(file) {
+      return "foebe-page-" + String(file || "page").replace(/\.html?$/i, "").replace(/[^a-z0-9]+/gi, "-").replace(/^-+|-+$/g, "");
+    }
+
     var currentFile = getCurrentFile();
+    if (body) body.classList.add(toPageClass(currentFile));
 
     var trails = {
       "comprendre.html": [
@@ -232,23 +239,29 @@
       ],
       "test.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { label: "Échelle Foébé", current: true }
       ],
       "foebe-zones-cadre.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { label: "Comprendre les 7 zones", current: true }
       ],
       "respiration.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { label: "Respiration guidée", current: true }
       ],
       "boussole-accueil-foebe.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
-        { label: "La Boussole", current: true }
+        { href: "pratiquer.html", label: "Pratiquer" },
+        { label: "Sas de la Boussole", current: true }
+      ],
+      "boussole.html": [
+        { href: "index.html", label: "Accueil" },
+        { href: "pratiquer.html", label: "Pratiquer" },
+        { href: "boussole-accueil-foebe.html", label: "Sas de la Boussole" },
+        { label: "Lecture de situation", current: true }
       ],
       "dictionnaire.html": [
         { href: "index.html", label: "Accueil" },
@@ -262,43 +275,43 @@
       ],
       "zone-corps.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Corps", current: true }
       ],
       "zone-emotions.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Émotions", current: true }
       ],
       "zone-mental.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Mental", current: true }
       ],
       "zone-energie.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Énergie", current: true }
       ],
       "zone-environnement.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Environnement", current: true }
       ],
       "zone-relations.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Relations", current: true }
       ],
       "zone-sens.html": [
         { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
+        { href: "pratiquer.html", label: "Pratiquer" },
         { href: "foebe-zones-cadre.html", label: "7 zones" },
         { label: "Sens", current: true }
       ]
@@ -321,8 +334,8 @@
       if (document.getElementById("foebe-breadcrumb-css")) return;
       var css = [
         ".hero.foebe-has-breadcrumb{position:relative!important;}",
-        ".hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(46px,6.5svh,82px)!important;}",
-        ".foebe-breadcrumb{position:absolute!important;top:calc(60px + clamp(20px,4svh,44px))!important;left:50%!important;transform:translateX(-50%)!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:0!important;padding:0!important;z-index:4!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;line-height:1.45!important;color:#F0EAE7!important;overflow-x:auto!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;animation:none!important;transition:none!important;}",
+        ".hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(54px,7svh,92px)!important;}",
+        ".foebe-breadcrumb{font-family:'Poppins',sans-serif!important;font-size:12px!important;line-height:1.45!important;color:#F0EAE7!important;overflow-x:auto!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;animation:none!important;transition:none!important;}",
         ".foebe-breadcrumb::-webkit-scrollbar{display:none!important;}",
         "[data-theme='day'] .foebe-breadcrumb{color:#4E291F!important;}",
         "[data-theme='night'] .foebe-breadcrumb{color:#F0EAE7!important;}",
@@ -332,6 +345,7 @@
         ".foebe-breadcrumb a,.foebe-breadcrumb span{color:currentColor!important;text-decoration:none!important;}",
         ".foebe-breadcrumb a{transition:color .18s ease,background .18s ease,border-color .18s ease,opacity .18s ease,transform .18s ease!important;}",
         ".foebe-breadcrumb-home{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:31px!important;padding:5px 12px!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;border:1px solid #BB7E60!important;font-weight:800!important;box-shadow:0 8px 18px rgba(187,126,96,.12)!important;}",
+        "[data-theme='day'] .foebe-breadcrumb .foebe-breadcrumb-home,[data-theme='night'] .foebe-breadcrumb .foebe-breadcrumb-home{color:#F0EAE7!important;background:#BB7E60!important;border-color:#BB7E60!important;}",
         ".foebe-breadcrumb-home:hover,.foebe-breadcrumb-home:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;outline:none!important;transform:translateY(-1px)!important;}",
         ".foebe-breadcrumb-link{font-weight:800!important;text-decoration-line:underline!important;text-decoration-color:#BB7E60!important;text-decoration-thickness:2px!important;text-underline-offset:5px!important;}",
         ".foebe-breadcrumb-link:hover,.foebe-breadcrumb-link:focus-visible{color:#BB7E60!important;outline:none!important;text-decoration-color:#C45279!important;}",
@@ -339,9 +353,15 @@
         ".foebe-breadcrumb-current{font-weight:850!important;opacity:1!important;}",
         "[data-theme='day'] .foebe-breadcrumb-link,[data-theme='day'] .foebe-breadcrumb-section,[data-theme='day'] .foebe-breadcrumb-current{color:#4E291F!important;}",
         "[data-theme='night'] .foebe-breadcrumb-link,[data-theme='night'] .foebe-breadcrumb-section,[data-theme='night'] .foebe-breadcrumb-current{color:#F0EAE7!important;}",
+        ".foebe-breadcrumb--hero{position:absolute!important;top:calc(60px + clamp(24px,4.6svh,50px))!important;left:50%!important;transform:translateX(-50%)!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:0!important;padding:0!important;z-index:4!important;}",
         ".foebe-breadcrumb--zone{width:min(calc(100% - 48px),980px)!important;}",
-        "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(42px,6svh,64px)!important;}.foebe-breadcrumb{top:calc(60px + clamp(14px,3svh,26px))!important;width:calc(100% - 36px)!important;font-size:11px!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{gap:5px!important;}.foebe-breadcrumb-home{min-height:30px!important;padding:5px 10px!important;}.foebe-breadcrumb-link{text-underline-offset:4px!important;text-decoration-thickness:1.5px!important;}.foebe-breadcrumb-section{opacity:.80!important;}}",
-        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.6px!important;width:calc(100% - 28px)!important;}.foebe-breadcrumb ol{gap:4px!important;}.foebe-breadcrumb li{gap:4px!important;}.foebe-breadcrumb-home{padding:5px 9px!important;}}",
+        ".foebe-breadcrumb--standalone{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:calc(60px + clamp(28px,4svh,50px)) auto clamp(26px,4svh,50px)!important;padding:0!important;z-index:2!important;}",
+        ".foebe-breadcrumb--inline{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(100%,960px)!important;max-width:960px!important;margin:0 auto clamp(26px,4svh,44px)!important;padding:0!important;z-index:2!important;align-self:stretch!important;}",
+        ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
+        ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
+        ".foebe-page-respiration .tech-card:hover::after,.foebe-page-respiration .tech-card:focus-visible::after{background:#C45279!important;color:#F0EAE7!important;}",
+        "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(48px,6.5svh,72px)!important;}.foebe-breadcrumb--hero{top:calc(60px + clamp(18px,3.6svh,34px))!important;width:calc(100% - 36px)!important;}.foebe-breadcrumb--standalone{width:calc(100% - 36px)!important;margin:calc(60px + clamp(24px,4svh,42px)) auto clamp(24px,4svh,42px)!important;}.foebe-breadcrumb{font-size:11px!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{gap:5px!important;}.foebe-breadcrumb-home{min-height:30px!important;padding:5px 10px!important;}.foebe-breadcrumb-link{text-underline-offset:4px!important;text-decoration-thickness:1.5px!important;}.foebe-breadcrumb-section{opacity:.80!important;}.foebe-page-respiration .tech-card{padding-bottom:56px!important;}.foebe-page-respiration .tech-card::after{left:15px!important;right:15px!important;bottom:14px!important;font-size:11.5px!important;}}",
+        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.6px!important;}.foebe-breadcrumb--hero,.foebe-breadcrumb--standalone{width:calc(100% - 28px)!important;}.foebe-breadcrumb ol{gap:4px!important;}.foebe-breadcrumb li{gap:4px!important;}.foebe-breadcrumb-home{padding:5px 9px!important;}}",
         "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
       ].join("\n");
 
@@ -378,40 +398,69 @@
 
     var nav = document.createElement("nav");
     var isZonePage = /^zone-/.test(currentFile);
-    nav.className = "foebe-breadcrumb foebe-breadcrumb--hero-float" + (isZonePage ? " foebe-breadcrumb--zone" : "");
+    nav.className = "foebe-breadcrumb" + (isZonePage ? " foebe-breadcrumb--zone" : "");
     nav.setAttribute("aria-label", "Fil d’Ariane");
     nav.setAttribute("data-foebe-auto", "1");
     nav.innerHTML = "<ol>" + renderTrail(trail) + "</ol>";
 
     var hero = document.querySelector(".hero");
     var main = document.querySelector("main");
+    var stateIntro = document.getElementById("stateIntro");
+    var testIntroWrap = document.querySelector("#screenIntro .intro-wrap, .screen.active .intro-wrap, .intro-wrap");
+    var dictLayout = document.querySelector(".dict-layout");
+    var isBoussolePage = currentFile === "boussole-accueil-foebe.html" || currentFile === "boussole.html";
 
-    /* Placement final :
-       - le fil reste visuellement dans le hero ;
-       - il n'est plus enfant du container animé du hero ;
-       - il ne devient pas une deuxième barre sous la navigation. */
+    /* Pages sans hero standard : fil intégré au bloc d’introduction, pas collé à la nav. */
+    if (currentFile === "respiration.html" && stateIntro) {
+      nav.className += " foebe-breadcrumb--inline";
+      stateIntro.insertBefore(nav, stateIntro.firstChild);
+      return;
+    }
+
+    if (currentFile === "test.html" && testIntroWrap) {
+      nav.className += " foebe-breadcrumb--inline";
+      testIntroWrap.insertBefore(nav, testIntroWrap.firstChild);
+      return;
+    }
+
+    /* Pages longues ou animées : fil autonome avant le contenu, pour éviter qu’il bouge. */
+    if (currentFile === "dictionnaire.html" && dictLayout && dictLayout.parentNode) {
+      nav.className += " foebe-breadcrumb--standalone";
+      dictLayout.parentNode.insertBefore(nav, dictLayout);
+      return;
+    }
+
+    if (isBoussolePage && hero) {
+      nav.className += " foebe-breadcrumb--standalone";
+      if (main) main.insertBefore(nav, hero);
+      else hero.parentNode.insertBefore(nav, hero);
+      return;
+    }
+
+    /* Pages avec hero classique : repère éditorial au-dessus du H1, sans container. */
     if (hero) {
+      nav.className += " foebe-breadcrumb--hero";
       hero.classList.add("foebe-has-breadcrumb");
       hero.insertBefore(nav, hero.firstChild);
       return;
     }
 
     if (main && main.firstChild) {
-      nav.style.position = "relative";
-      nav.style.top = "auto";
-      nav.style.left = "auto";
-      nav.style.transform = "none";
-      nav.style.margin = "calc(60px + 24px) auto 26px";
+      nav.className += " foebe-breadcrumb--standalone";
       main.insertBefore(nav, main.firstChild);
       return;
     }
 
     if (main) {
+      nav.className += " foebe-breadcrumb--standalone";
       main.appendChild(nav);
       return;
     }
 
-    if (document.body) document.body.insertBefore(nav, document.body.firstChild);
+    if (document.body) {
+      nav.className += " foebe-breadcrumb--standalone";
+      document.body.insertBefore(nav, document.body.firstChild);
+    }
   })();
 
     /* ═══════════════════════════════════════════════════════════════════════════
