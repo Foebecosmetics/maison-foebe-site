@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version premium responsive — nav/footer/fil d’Ariane unifiés · loader sécurisé
+ * Version premium responsive — nav/footer/fil d’Ariane unifiés
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -10,9 +10,7 @@
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     0. LOADER CRITIQUE — avant nav/footer
-     Objectif : afficher la porte d’entrée le plus tôt possible dès que le Shell s’exécute.
-     Note : pour zéro flash absolu, ajouter le mini-loader critique directement dans index.html.
+     0. THÈME INITIAL — respecter le choix sauvegardé avant l’injection nav/footer
   ═══════════════════════════════════════════════════════════════════════════ */
   (function () {
     try {
@@ -22,40 +20,6 @@
       }
     } catch (e) {}
   })();
-
-  function isFoebeHomeEntrancePath() {
-    var pathName = (window.location.pathname || "/").toLowerCase();
-    var fileName = (pathName.split("/").pop() || "index.html").split("?")[0].split("#")[0];
-    return pathName === "/" || fileName === "" || fileName === "index.html" || fileName.indexOf("index-") === 0 || fileName.indexOf("index_") === 0;
-  }
-
-  function injectFoebeLoaderCriticalCss() {
-    if (document.getElementById("foebe-loader-critical-css")) return;
-
-    var css = [
-      "#foebeLoader{position:fixed!important;inset:0!important;z-index:100001!important;display:grid!important;place-items:center!important;background:#F0EAE7!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .72s cubic-bezier(.22,1,.36,1),visibility .72s ease!important;}",
-      "#foebeLoader[data-foebe-loader-theme='night']{background:#3A1A10!important;}",
-      "#foebeLoader.is-visible{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}",
-      "#foebeLoader.is-hidden{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}",
-      ".foebe-loader-wrap{position:relative!important;width:154px!important;height:154px!important;}",
-      ".foebe-loader-ring{position:absolute!important;inset:0!important;border:2.5px solid #BB7E60!important;border-radius:999px!important;opacity:.9!important;transform-origin:center center!important;will-change:transform,opacity!important;animation:foebeLoaderBreathLarge 5s ease-in-out infinite!important;}",
-      ".foebe-loader-mark{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;font-family:'Montserrat',sans-serif!important;font-size:52px!important;font-weight:700!important;letter-spacing:-.06em!important;line-height:1!important;color:#4E291F!important;}",
-      "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-mark{color:#BB7E60!important;}",
-      "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-ring{border-color:#F0EAE7!important;}",
-      ".foebe-loader-word{position:absolute!important;top:calc(100% + 28px)!important;left:50%!important;transform:translateX(-50%)!important;font-family:'Montserrat',sans-serif!important;font-size:11px!important;font-weight:700!important;letter-spacing:2.4px!important;text-transform:uppercase!important;color:rgba(78,41,31,.76)!important;white-space:nowrap!important;}",
-      ".foebe-loader-welcome{position:absolute!important;top:calc(100% + 52px)!important;left:50%!important;transform:translateX(-50%)!important;font-family:'Lora',serif!important;font-style:italic!important;font-size:17px!important;font-weight:400!important;letter-spacing:.02em!important;color:#4E291F!important;white-space:nowrap!important;opacity:.88!important;}",
-      "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-welcome{color:#F0EAE7!important;opacity:.82!important;}",
-      "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-word{color:rgba(240,234,231,.65)!important;}",
-      "@keyframes foebeLoaderBreathLarge{0%{transform:scale(1);opacity:.7;}35%{transform:scale(1.28);opacity:1;}55%{transform:scale(1.28);opacity:1;}85%{transform:scale(1);opacity:.7;}100%{transform:scale(1);opacity:.7;}}",
-      "@media(max-width:420px){.foebe-loader-wrap{width:132px!important;height:132px!important;}.foebe-loader-mark{font-size:46px!important;}.foebe-loader-word{font-size:10px!important;letter-spacing:2px!important;top:calc(100% + 24px)!important;}.foebe-loader-welcome{font-size:15px!important;top:calc(100% + 44px)!important;}}",
-      "@media(prefers-reduced-motion:reduce){.foebe-loader-ring{animation:none!important;}#foebeLoader{transition:opacity .22s ease,visibility .22s ease!important;}}"
-    ].join("\n");
-
-    var style = document.createElement("style");
-    style.id = "foebe-loader-critical-css";
-    style.textContent = css;
-    (document.head || document.documentElement).appendChild(style);
-  }
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -136,26 +100,6 @@
     "",
     "",
     "",
-    "/* Correctif V5.1 — loader signature Foébé respiration large",
-    "   Objectif : une vraie porte d’entrée respirée sur l’accueil.",
-    "   Un seul cercle #BB7E60, mouvement ample et fluide, ouverture après inspiration/expiration.",
-    "*/",
-    "#foebeLoader{position:fixed!important;inset:0!important;z-index:100001!important;display:grid!important;place-items:center!important;background:#F0EAE7!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .72s cubic-bezier(.22,1,.36,1),visibility .72s ease!important;}",
-    "#foebeLoader[data-foebe-loader-theme='night']{background:#3A1A10!important;}",
-    "#foebeLoader.is-visible{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}",
-    "#foebeLoader.is-hidden{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}",
-    ".foebe-loader-wrap{position:relative!important;width:154px!important;height:154px!important;}",
-    ".foebe-loader-ring{position:absolute!important;inset:0!important;border:2.5px solid #BB7E60!important;border-radius:999px!important;opacity:.9!important;transform-origin:center center!important;will-change:transform,opacity!important;animation:foebeLoaderBreathLarge 5s ease-in-out infinite!important;}",
-    ".foebe-loader-mark{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;font-family:'Montserrat',sans-serif!important;font-size:52px!important;font-weight:700!important;letter-spacing:-.06em!important;line-height:1!important;color:#4E291F!important;}",
-    "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-mark{color:#BB7E60!important;}",
-    "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-ring{border-color:#F0EAE7!important;}",
-    ".foebe-loader-word{position:absolute!important;top:calc(100% + 28px)!important;left:50%!important;transform:translateX(-50%)!important;font-family:'Montserrat',sans-serif!important;font-size:11px!important;font-weight:700!important;letter-spacing:2.4px!important;text-transform:uppercase!important;color:rgba(78,41,31,.76)!important;white-space:nowrap!important;}",
-    ".foebe-loader-welcome{position:absolute!important;top:calc(100% + 52px)!important;left:50%!important;transform:translateX(-50%)!important;font-family:'Lora',serif!important;font-style:italic!important;font-size:17px!important;font-weight:400!important;letter-spacing:.02em!important;color:#4E291F!important;white-space:nowrap!important;opacity:.88!important;}",
-    "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-welcome{color:#F0EAE7!important;opacity:.82!important;}",
-    "#foebeLoader[data-foebe-loader-theme='night'] .foebe-loader-word{color:rgba(240,234,231,.65)!important;}",
-    "@keyframes foebeLoaderBreathLarge{0%{transform:scale(1);opacity:.7;}35%{transform:scale(1.28);opacity:1;}55%{transform:scale(1.28);opacity:1;}85%{transform:scale(1);opacity:.7;}100%{transform:scale(1);opacity:.7;}}",
-    "@media(max-width:420px){.foebe-loader-wrap{width:132px!important;height:132px!important;}.foebe-loader-mark{font-size:46px!important;}.foebe-loader-word{font-size:10px!important;letter-spacing:2px!important;top:calc(100% + 24px)!important;}.foebe-loader-welcome{font-size:15px!important;top:calc(100% + 44px)!important;}}",
-    "@media(prefers-reduced-motion:reduce){.foebe-loader-ring{animation:none!important;}#foebeLoader{transition:opacity .22s ease,visibility .22s ease!important;}}",
 
     "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon{transition:none!important;}}"
   ].join("\n");
@@ -171,7 +115,7 @@
   /* ═══════════════════════════════════════════════════════════════════════════
      1.1 FIL D’ARIANE GLOBAL — repère + retour accueil
      Objectif : aider les visiteurs à savoir où ils sont, sans coller au menu.
-     Note : masqué automatiquement sur l’accueil et le Lexique immersif.
+     Note : masqué sur l’accueil et le Lexique immersif, visible sur Dictionnaire.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function injectFoebeBreadcrumbCss() {
     if (document.getElementById("foebe-breadcrumb-css")) return;
@@ -193,8 +137,8 @@
       "[data-theme='night'] .foebe-breadcrumb a,[data-theme='night'] .foebe-breadcrumb-label{color:#F0EAE7!important;}",
       "[data-theme='night'] .foebe-breadcrumb a:hover,[data-theme='night'] .foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.18)!important;color:#F0EAE7!important;}",
       "[data-theme='night'] .foebe-breadcrumb [aria-current='page']{background:rgba(187,126,96,.20)!important;color:#F0EAE7!important;}",
-      "@media(max-width:900px){.foebe-breadcrumb{margin-top:68px!important;margin-bottom:14px!important;padding:0 14px!important;}.foebe-breadcrumb-inner{width:100%!important;border-radius:17px!important;padding:7px 9px!important;background:rgba(255,249,244,.70)!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{font-size:11px!important;}.foebe-breadcrumb a,.foebe-breadcrumb-label,.foebe-breadcrumb [aria-current='page']{padding:5px 6px!important;}.foebe-breadcrumb li:nth-last-child(n+6){display:none!important;}}",
-      "@media(max-width:520px){.foebe-breadcrumb{margin-top:64px!important;margin-bottom:10px!important;padding:0 12px!important;}.foebe-breadcrumb-inner{min-height:36px!important;border-radius:15px!important;}.foebe-breadcrumb li{font-size:10.5px!important;}.foebe-breadcrumb li:not(:first-child):not(:last-child):not(:nth-last-child(2)){display:none!important;}.foebe-breadcrumb a,.foebe-breadcrumb-label,.foebe-breadcrumb [aria-current='page']{min-height:26px!important;max-width:54vw!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}}",
+      "@media(max-width:900px){.foebe-breadcrumb{margin-top:68px!important;margin-bottom:14px!important;padding:0 14px!important;}.foebe-breadcrumb-inner{width:100%!important;border-radius:17px!important;padding:7px 9px!important;background:rgba(255,249,244,.70)!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{font-size:11px!important;}.foebe-breadcrumb a,.foebe-breadcrumb-label,.foebe-breadcrumb [aria-current='page']{padding:5px 6px!important;}}",
+      "@media(max-width:520px){.foebe-breadcrumb{margin-top:64px!important;margin-bottom:10px!important;padding:0 12px!important;}.foebe-breadcrumb-inner{min-height:36px!important;border-radius:15px!important;}.foebe-breadcrumb li{font-size:10.5px!important;}.foebe-breadcrumb a,.foebe-breadcrumb-label,.foebe-breadcrumb [aria-current='page']{min-height:26px!important;max-width:54vw!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}}",
       "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
     ].join("\n");
 
@@ -203,146 +147,6 @@
     breadcrumbStyle.textContent = css;
     document.head.appendChild(breadcrumbStyle);
   })();
-  /* ═══════════════════════════════════════════════════════════════════════════
-     1.5 LOADER SIGNATURE FOÉBÉ — respiration large
-     Accueil : porte d’entrée lente, centrée, avec une inspiration + expiration visibles.
-     Autres pages : aucun loader par défaut pour éviter le flash ; force/slow uniquement si demandé.
-  ═══════════════════════════════════════════════════════════════════════════ */
-  function getFoebeSavedTheme() {
-    try {
-      var saved = localStorage.getItem("foebeTheme");
-      if (saved === "day" || saved === "night") return saved;
-    } catch (e) {}
-    var current = document.documentElement.getAttribute("data-theme");
-    if (current === "day" || current === "night") return current;
-    return "day";
-  }
-
-  function injectFoebeLoader() {
-    var loaderMode = (
-      document.documentElement.getAttribute("data-foebe-loader") ||
-      (document.body && document.body.getAttribute("data-foebe-loader")) ||
-      ""
-    ).toLowerCase();
-
-    if (loaderMode === "none") return;
-
-    var isHomeEntrance = isFoebeHomeEntrancePath();
-    var firstEntrance = false;
-    var forcedLoader = loaderMode === "force";
-    var slowLoader = loaderMode === "slow";
-
-    try {
-      firstEntrance = isHomeEntrance && !(window.sessionStorage && sessionStorage.getItem("foebeEntranceSeen") === "1");
-      if (firstEntrance && window.sessionStorage) sessionStorage.setItem("foebeEntranceSeen", "1");
-    } catch (e) {
-      firstEntrance = false;
-    }
-
-    /* Sécurité UX : hors accueil, le loader est coupé par défaut.
-       Il ne revient que si une page le demande explicitement avec data-foebe-loader="force" ou "slow". */
-    if (!firstEntrance && !forcedLoader && !slowLoader) return;
-
-    var loaderTheme = getFoebeSavedTheme();
-    document.documentElement.setAttribute("data-theme", loaderTheme);
-
-    injectFoebeLoaderCriticalCss();
-
-    var loader = document.getElementById("foebeLoader");
-    if (!loader) {
-      loader = document.createElement("div");
-      loader.id = "foebeLoader";
-      loader.setAttribute("aria-hidden", "true");
-      loader.setAttribute("data-foebe-loader-theme", loaderTheme);
-      loader.innerHTML =
-        '<div class="foebe-loader-wrap">' +
-          '<div class="foebe-loader-ring"></div>' +
-          '<div class="foebe-loader-mark">F</div>' +
-          '<div class="foebe-loader-word">MAISON FOÉBÉ</div>' +
-          '<div class="foebe-loader-welcome">Bienvenue</div>' +
-        '</div>';
-    } else {
-      loader.setAttribute("data-foebe-loader-theme", loaderTheme);
-    }
-
-    var shown = false;
-    var removed = false;
-    var shownAt = 0;
-
-    var showDelay = firstEntrance ? 0 : (forcedLoader ? 300 : 1800);
-    var minVisible = firstEntrance ? 5200 : 900;
-    var maxLifetime = firstEntrance ? 6500 : 4200;
-
-    function ensureLoaderInBody() {
-      if (!document.body) return false;
-      if (!loader.parentNode) document.body.insertBefore(loader, document.body.firstChild);
-      return true;
-    }
-
-    function showLoader() {
-      if (shown || removed) return;
-      if (!ensureLoaderInBody()) return;
-
-      shown = true;
-      shownAt = Date.now();
-      loader.classList.remove("is-hidden");
-      loader.classList.add("is-visible");
-    }
-
-    function actuallyRemove() {
-      if (removed) return;
-      removed = true;
-      loader.classList.add("is-hidden");
-      loader.classList.remove("is-visible");
-      setTimeout(function () {
-        if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
-      }, 820);
-    }
-
-    function removeLoader() {
-      if (removed) return;
-
-      if (!shown) {
-        removed = true;
-        if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
-        return;
-      }
-
-      var elapsed = Date.now() - shownAt;
-      var wait = Math.max(0, minVisible - elapsed);
-      setTimeout(actuallyRemove, wait);
-    }
-
-    var showTimer = (!firstEntrance && !forcedLoader && document.readyState === "complete") ? null : setTimeout(showLoader, showDelay);
-
-    function finish() {
-      if (showTimer) clearTimeout(showTimer);
-      removeLoader();
-    }
-
-    if (firstEntrance) {
-      showLoader();
-      setTimeout(finish, maxLifetime);
-      if (document.readyState === "complete") {
-        setTimeout(finish, minVisible);
-      } else {
-        window.addEventListener("load", function () {
-          setTimeout(finish, 900);
-        }, { once: true });
-      }
-      return;
-    }
-
-    if (document.readyState === "complete") {
-      finish();
-    } else {
-      window.addEventListener("load", finish, { once: true });
-      setTimeout(finish, maxLifetime);
-    }
-  }
-
-  injectFoebeLoader();
-
   /* ═══════════════════════════════════════════════════════════════════════════
      2. DÉTECTION DE LA PAGE COURANTE
   ═══════════════════════════════════════════════════════════════════════════ */
@@ -575,10 +379,14 @@
     breadcrumb.innerHTML = '<div class="foebe-breadcrumb-inner"><ol>' + html + '</ol></div>';
 
     if (!oldBreadcrumb) {
-      if (pageMain && pageMain.parentNode) {
-        pageMain.parentNode.insertBefore(breadcrumb, pageMain);
-      } else if (navOverlay && navOverlay.parentNode) {
+      /* Important : on insère le fil d’Ariane après le Shell global, pas dans
+         les layouts internes comme le Dictionnaire, sinon il peut disparaître. */
+      if (navOverlay && navOverlay.parentNode) {
         navOverlay.insertAdjacentElement("afterend", breadcrumb);
+      } else if (mainNav && mainNav.parentNode) {
+        mainNav.insertAdjacentElement("afterend", breadcrumb);
+      } else if (pageMain && pageMain.parentNode) {
+        pageMain.parentNode.insertBefore(breadcrumb, pageMain);
       } else if (document.body) {
         document.body.insertBefore(breadcrumb, document.body.firstChild);
       }
