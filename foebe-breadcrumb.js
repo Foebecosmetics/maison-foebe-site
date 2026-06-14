@@ -113,8 +113,7 @@
   /* ═══════════════════════════════════════════════════════════════════════════
      1.1 FIL D'ARIANE — intégré au Shell, sans fichier JS externe
      Objectif : repère détaillé, homogène, sans container global.
-     Hors zones : toujours placé avant le hero, sous la nav fixe, avec respiration.
-     Zones : même logique avant le hero, largeur harmonisée, sans coller au container.
+     Placement : repère indépendant dans le hero, non pris dans les animations.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function injectFoebeBreadcrumbFast() {
     var root = document.documentElement;
@@ -127,8 +126,8 @@
     var mode = String(attr("data-foebe-breadcrumb") || "").toLowerCase();
     if (mode === "none" || mode === "off" || mode === "false") return;
 
-    /* Si une ancienne version statique ou automatique existe déjà, on la retire
-       pour garder un seul rendu harmonisé du fil d'Ariane. */
+    /* Une seule version du fil d'Ariane : on supprime les anciens blocs statiques
+       ou les anciennes injections automatiques avant de reconstruire le rendu. */
     document.querySelectorAll(".foebe-breadcrumb").forEach(function (oldBreadcrumb) {
       if (oldBreadcrumb && oldBreadcrumb.parentNode) oldBreadcrumb.parentNode.removeChild(oldBreadcrumb);
     });
@@ -147,10 +146,38 @@
       if (file === "methode" || file === "méthode" || file.indexOf("methode") === 0 || file.indexOf("méthode") === 0) return "methode.html";
       if (file === "a-propos" || file.indexOf("a-propos") === 0 || file.indexOf("apropos") === 0) return "a-propos.html";
 
-      if (file === "test" || file.indexOf("test") === 0 || file.indexOf("testpratiquer") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "test.html";
-      if (file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0 || file.indexOf("zones-cadre") === 0 || file.indexOf("7-zones") === 0) return "foebe-zones-cadre.html";
-      if (file === "respiration" || file.indexOf("respiration") === 0 || file.indexOf("respiration-guidee") === 0 || file.indexOf("respiration-guidée") === 0) return "respiration.html";
-      if (file === "boussole-accueil-foebe" || file.indexOf("boussole") === 0) return "boussole-accueil-foebe.html";
+      if (
+        file === "test" ||
+        file === "testpratiquer" ||
+        file === "test-pratiquer" ||
+        file.indexOf("test") === 0 ||
+        file.indexOf("echelle") === 0 ||
+        file.indexOf("échelle") === 0 ||
+        file.indexOf("echelle-foebe") === 0 ||
+        file.indexOf("échelle-foébé") === 0
+      ) return "test.html";
+
+      if (
+        file === "foebe-zones-cadre" ||
+        file.indexOf("foebe-zones-cadre") === 0 ||
+        file.indexOf("zones-cadre") === 0 ||
+        file.indexOf("7-zones") === 0 ||
+        file.indexOf("sept-zones") === 0
+      ) return "foebe-zones-cadre.html";
+
+      if (
+        file === "respiration" ||
+        file.indexOf("respiration") === 0 ||
+        file.indexOf("respiration-guidee") === 0 ||
+        file.indexOf("respiration-guidée") === 0 ||
+        file.indexOf("respiration-foebe") === 0
+      ) return "respiration.html";
+
+      if (
+        file === "boussole-accueil-foebe" ||
+        file === "boussole" ||
+        file.indexOf("boussole") === 0
+      ) return "boussole-accueil-foebe.html";
 
       if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
       if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
@@ -161,7 +188,13 @@
       if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
 
       if (file === "stories" || file.indexOf("stories") === 0 || file.indexOf("lexique") === 0) return "stories.html";
-      if (file === "dictionnaire" || file.indexOf("dictionnaire") === 0) return "dictionnaire.html";
+      if (
+        file === "dictionnaire" ||
+        file.indexOf("dictionnaire") === 0 ||
+        file.indexOf("bibliotheque") === 0 ||
+        file.indexOf("bibliothèque") === 0
+      ) return "dictionnaire.html";
+
       if (file === "mentions" || file.indexOf("mentions") === 0) return "mentions.html";
       return file;
     }
@@ -287,28 +320,29 @@
     function injectCss() {
       if (document.getElementById("foebe-breadcrumb-css")) return;
       var css = [
-        ".foebe-breadcrumb{width:100%;max-width:100%;margin:0 0 clamp(20px,3.4svh,34px)!important;padding:0!important;font-family:'Poppins',sans-serif;font-size:12.5px;line-height:1.45;color:#F0EAE7;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}",
-        ".foebe-breadcrumb::-webkit-scrollbar{display:none;}",
-        "[data-theme='day'] .foebe-breadcrumb{color:#4E291F;}",
-        "[data-theme='night'] .foebe-breadcrumb{color:#F0EAE7;}",
-        ".foebe-breadcrumb ol{display:flex;align-items:center;gap:7px;list-style:none;margin:0!important;padding:0!important;white-space:nowrap;}",
-        ".foebe-breadcrumb li{display:inline-flex;align-items:center;gap:7px;min-width:0;color:currentColor;}",
-        ".foebe-breadcrumb li:not(:last-child)::after{content:'›';color:#BB7E60;opacity:.95;font-weight:800;}",
-        ".foebe-breadcrumb a,.foebe-breadcrumb span{color:currentColor;text-decoration:none;}",
-        ".foebe-breadcrumb a{transition:color .18s ease,background .18s ease,border-color .18s ease,opacity .18s ease,transform .18s ease;}",
-        ".foebe-breadcrumb-home{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:6px 12px;border-radius:999px;background:#BB7E60!important;color:#F0EAE7!important;border:1px solid #BB7E60!important;font-weight:800;box-shadow:0 8px 18px rgba(187,126,96,.14);}",
-        ".foebe-breadcrumb-home:hover,.foebe-breadcrumb-home:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;outline:none;transform:translateY(-1px);}",
-        ".foebe-breadcrumb-link{font-weight:800;text-decoration-line:underline!important;text-decoration-color:#BB7E60!important;text-decoration-thickness:2px!important;text-underline-offset:5px!important;}",
-        ".foebe-breadcrumb-link:hover,.foebe-breadcrumb-link:focus-visible{color:#BB7E60!important;outline:none;text-decoration-color:#C45279!important;}",
-        ".foebe-breadcrumb-section{opacity:.86;font-weight:650;}",
-        ".foebe-breadcrumb-current{font-weight:850;opacity:1;}",
-        "[data-theme='day'] .foebe-breadcrumb-link,[data-theme='day'] .foebe-breadcrumb-section,[data-theme='day'] .foebe-breadcrumb-current{color:#4E291F;}",
-        "[data-theme='night'] .foebe-breadcrumb-link,[data-theme='night'] .foebe-breadcrumb-section,[data-theme='night'] .foebe-breadcrumb-current{color:#F0EAE7;}",
-        ".foebe-breadcrumb--in-hero{display:block;}",
-        ".foebe-breadcrumb--zone{margin-bottom:clamp(22px,4svh,42px)!important;}",
-        "@media(max-width:640px){.foebe-breadcrumb{font-size:11.2px;margin-bottom:clamp(16px,2.8svh,24px)!important;padding:0!important;}.foebe-breadcrumb ol{gap:5px;}.foebe-breadcrumb li{gap:5px;}.foebe-breadcrumb-home{min-height:30px;padding:5px 10px;}.foebe-breadcrumb-link{text-underline-offset:4px!important;text-decoration-thickness:1.5px!important;}.foebe-breadcrumb-section{opacity:.78;}}",
-        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.8px;}.foebe-breadcrumb ol{gap:4px;}.foebe-breadcrumb li{gap:4px;}.foebe-breadcrumb-home{padding:5px 9px;}}",
-        "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none;}}"
+        ".hero.foebe-has-breadcrumb{position:relative!important;}",
+        ".hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(46px,6.5svh,82px)!important;}",
+        ".foebe-breadcrumb{position:absolute!important;top:calc(60px + clamp(20px,4svh,44px))!important;left:50%!important;transform:translateX(-50%)!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:0!important;padding:0!important;z-index:4!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;line-height:1.45!important;color:#F0EAE7!important;overflow-x:auto!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;animation:none!important;transition:none!important;}",
+        ".foebe-breadcrumb::-webkit-scrollbar{display:none!important;}",
+        "[data-theme='day'] .foebe-breadcrumb{color:#4E291F!important;}",
+        "[data-theme='night'] .foebe-breadcrumb{color:#F0EAE7!important;}",
+        ".foebe-breadcrumb ol{display:flex!important;align-items:center!important;gap:7px!important;list-style:none!important;margin:0!important;padding:0!important;white-space:nowrap!important;}",
+        ".foebe-breadcrumb li{display:inline-flex!important;align-items:center!important;gap:7px!important;min-width:0!important;color:currentColor!important;}",
+        ".foebe-breadcrumb li:not(:last-child)::after{content:'›'!important;color:#BB7E60!important;opacity:.95!important;font-weight:800!important;}",
+        ".foebe-breadcrumb a,.foebe-breadcrumb span{color:currentColor!important;text-decoration:none!important;}",
+        ".foebe-breadcrumb a{transition:color .18s ease,background .18s ease,border-color .18s ease,opacity .18s ease,transform .18s ease!important;}",
+        ".foebe-breadcrumb-home{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:31px!important;padding:5px 12px!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;border:1px solid #BB7E60!important;font-weight:800!important;box-shadow:0 8px 18px rgba(187,126,96,.12)!important;}",
+        ".foebe-breadcrumb-home:hover,.foebe-breadcrumb-home:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;outline:none!important;transform:translateY(-1px)!important;}",
+        ".foebe-breadcrumb-link{font-weight:800!important;text-decoration-line:underline!important;text-decoration-color:#BB7E60!important;text-decoration-thickness:2px!important;text-underline-offset:5px!important;}",
+        ".foebe-breadcrumb-link:hover,.foebe-breadcrumb-link:focus-visible{color:#BB7E60!important;outline:none!important;text-decoration-color:#C45279!important;}",
+        ".foebe-breadcrumb-section{opacity:.86!important;font-weight:650!important;}",
+        ".foebe-breadcrumb-current{font-weight:850!important;opacity:1!important;}",
+        "[data-theme='day'] .foebe-breadcrumb-link,[data-theme='day'] .foebe-breadcrumb-section,[data-theme='day'] .foebe-breadcrumb-current{color:#4E291F!important;}",
+        "[data-theme='night'] .foebe-breadcrumb-link,[data-theme='night'] .foebe-breadcrumb-section,[data-theme='night'] .foebe-breadcrumb-current{color:#F0EAE7!important;}",
+        ".foebe-breadcrumb--zone{width:min(calc(100% - 48px),980px)!important;}",
+        "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(42px,6svh,64px)!important;}.foebe-breadcrumb{top:calc(60px + clamp(14px,3svh,26px))!important;width:calc(100% - 36px)!important;font-size:11px!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{gap:5px!important;}.foebe-breadcrumb-home{min-height:30px!important;padding:5px 10px!important;}.foebe-breadcrumb-link{text-underline-offset:4px!important;text-decoration-thickness:1.5px!important;}.foebe-breadcrumb-section{opacity:.80!important;}}",
+        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.6px!important;width:calc(100% - 28px)!important;}.foebe-breadcrumb ol{gap:4px!important;}.foebe-breadcrumb li{gap:4px!important;}.foebe-breadcrumb-home{padding:5px 9px!important;}}",
+        "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
       ].join("\n");
 
       var style = document.createElement("style");
@@ -344,40 +378,39 @@
 
     var nav = document.createElement("nav");
     var isZonePage = /^zone-/.test(currentFile);
-    nav.className = "foebe-breadcrumb foebe-breadcrumb--in-hero" + (isZonePage ? " foebe-breadcrumb--zone" : "");
+    nav.className = "foebe-breadcrumb foebe-breadcrumb--hero-float" + (isZonePage ? " foebe-breadcrumb--zone" : "");
     nav.setAttribute("aria-label", "Fil d’Ariane");
     nav.setAttribute("data-foebe-auto", "1");
     nav.innerHTML = "<ol>" + renderTrail(trail) + "</ol>";
 
     var hero = document.querySelector(".hero");
     var main = document.querySelector("main");
-    var heroInner = hero && (
-      hero.querySelector(".hero-inner") ||
-      hero.querySelector(".hero-content") ||
-      hero.querySelector(".hero-container") ||
-      hero.querySelector(".section-inner") ||
-      hero.firstElementChild
-    );
 
-    /* Placement premium : le fil d'Ariane fait partie du hero.
-       Il n'est plus une deuxième barre sous la navigation fixe, donc pas de bande
-       haute ni d'effet container sur mobile. */
-    if (heroInner) {
-      heroInner.insertBefore(nav, heroInner.firstChild);
-      return;
-    }
+    /* Placement final :
+       - le fil reste visuellement dans le hero ;
+       - il n'est plus enfant du container animé du hero ;
+       - il ne devient pas une deuxième barre sous la navigation. */
     if (hero) {
+      hero.classList.add("foebe-has-breadcrumb");
       hero.insertBefore(nav, hero.firstChild);
       return;
     }
+
     if (main && main.firstChild) {
+      nav.style.position = "relative";
+      nav.style.top = "auto";
+      nav.style.left = "auto";
+      nav.style.transform = "none";
+      nav.style.margin = "calc(60px + 24px) auto 26px";
       main.insertBefore(nav, main.firstChild);
       return;
     }
+
     if (main) {
       main.appendChild(nav);
       return;
     }
+
     if (document.body) document.body.insertBefore(nav, document.body.firstChild);
   })();
 
