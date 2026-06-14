@@ -5,7 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Anti-FOUC thème — NE PAS MODIFIER -->
 <script>
-(function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
+(function(){
+  try {
+    var saved = localStorage.getItem('foebeTheme');
+    if (saved === 'day' || saved === 'night') {
+      document.documentElement.setAttribute('data-theme', saved);
+      return;
+    }
+  } catch(e) {}
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script><script id="foebe-shell-fallback-guard">
+(function(){
+  var h = document.documentElement;
+  h.classList.add('foebe-shell-loading');
+  window.setTimeout(function(){
+    if (!h.classList.contains('foebe-shell-ready')) {
+      h.classList.add('foebe-shell-failed');
+    }
+  }, 2500);
+})();
 </script>
 <script>document.documentElement.classList.add('js-ready');</script>
 <title>Comprendre les 7 zones · Maison Foébé</title>
@@ -59,6 +79,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style id="fallbackNavCritical">
+/* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
+   Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
+html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
+html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
+  display:none!important;
+}
+
 body > nav#fallbackNav.fallback-nav{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:950!important;min-height:60px!important;height:60px!important;padding:0 clamp(14px,3vw,28px)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;background:rgba(78,41,31,.94)!important;border-bottom:1px solid rgba(187,126,96,.34)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;box-shadow:0 2px 14px rgba(0,0,0,.16)!important;font-family:Poppins,sans-serif!important;box-sizing:border-box!important}
 [data-theme="day"] body > nav#fallbackNav.fallback-nav{background:rgba(240,234,231,.94)!important;border-bottom-color:rgba(78,41,31,.16)!important;box-shadow:0 2px 14px rgba(78,41,31,.08)!important}
 body > nav#fallbackNav.fallback-nav .fallback-logo{font-family:Montserrat,sans-serif!important;font-weight:700!important;font-size:18px!important;letter-spacing:-.06em!important;line-height:1!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;min-height:44px!important;flex:0 0 auto!important;max-width:42vw!important;white-space:nowrap!important}

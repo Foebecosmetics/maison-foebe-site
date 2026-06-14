@@ -6,8 +6,25 @@
 <!-- Anti-FOUC thème — NE PAS MODIFIER -->
 <script>
 (function(){
+  try {
+    var saved = localStorage.getItem('foebeTheme');
+    if (saved === 'day' || saved === 'night') {
+      document.documentElement.setAttribute('data-theme', saved);
+      return;
+    }
+  } catch(e) {}
   var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script><script id="foebe-shell-fallback-guard">
+(function(){
+  var h = document.documentElement;
+  h.classList.add('foebe-shell-loading');
+  window.setTimeout(function(){
+    if (!h.classList.contains('foebe-shell-ready')) {
+      h.classList.add('foebe-shell-failed');
+    }
+  }, 2500);
 })();
 </script>
 <script>
@@ -40,6 +57,13 @@ document.documentElement.classList.add('js-ready');
 <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style id="fallbackNavCritical">
+/* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
+   Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
+html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
+html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
+  display:none!important;
+}
+
 /* FALLBACK NAV CRITIQUE — Maison Foébé */
 body > nav#fallbackNav.fallback-nav{
   position:fixed;top:0;left:0;right:0;z-index:950;

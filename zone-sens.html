@@ -6,8 +6,28 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <!-- Anti-FOUC thème — NE PAS MODIFIER -->
 <script>
-    (function(){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',p?'day':'night');})();
-    </script>
+(function(){
+  try {
+    var saved = localStorage.getItem('foebeTheme');
+    if (saved === 'day' || saved === 'night') {
+      document.documentElement.setAttribute('data-theme', saved);
+      return;
+    }
+  } catch(e) {}
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script><script id="foebe-shell-fallback-guard">
+(function(){
+  var h = document.documentElement;
+  h.classList.add('foebe-shell-loading');
+  window.setTimeout(function(){
+    if (!h.classList.contains('foebe-shell-ready')) {
+      h.classList.add('foebe-shell-failed');
+    }
+  }, 2500);
+})();
+</script>
 <script>
     document.documentElement.classList.add('js-ready');
     </script>
@@ -345,7 +365,14 @@
     </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<style id="fallbackNavCritical">body > nav#fallbackNav.fallback-nav {
+<style id="fallbackNavCritical">
+/* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
+   Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
+html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
+html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
+  display:none!important;
+}
+body > nav#fallbackNav.fallback-nav {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
