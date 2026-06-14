@@ -116,6 +116,19 @@
      Correction : placement adapté aux pages avec/sans hero + pages animées.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function injectFoebeBreadcrumbFast() {
+    /* Sécurité pages chargées différemment (ex. Dictionnaire) :
+       si le Shell s'exécute avant que le contenu existe, on relance au DOM prêt. */
+    if (!document.body || (document.readyState === "loading" && !document.querySelector("main,.hero,#stateIntro,.dict-hero,.dict-layout"))) {
+      if (!window.__foebeBreadcrumbDomReadyQueued) {
+        window.__foebeBreadcrumbDomReadyQueued = true;
+        document.addEventListener("DOMContentLoaded", function () {
+          window.__foebeBreadcrumbDomReadyQueued = false;
+          injectFoebeBreadcrumbFast();
+        }, { once: true });
+      }
+      return;
+    }
+
     var root = document.documentElement;
     var body = document.body;
 
@@ -357,10 +370,12 @@
         ".foebe-breadcrumb--zone{width:min(calc(100% - 48px),980px)!important;}",
         ".foebe-breadcrumb--standalone{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:calc(60px + clamp(28px,4svh,50px)) auto clamp(26px,4svh,50px)!important;padding:0!important;z-index:2!important;}",
         ".foebe-breadcrumb--inline{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(100%,960px)!important;max-width:960px!important;margin:0 auto clamp(26px,4svh,44px)!important;padding:0!important;z-index:2!important;align-self:stretch!important;}",
+        ".dict-hero .foebe-breadcrumb--dict{width:min(100%,960px)!important;margin:0 auto clamp(28px,4.2svh,46px)!important;text-align:left!important;position:relative!important;z-index:2!important;}",
         ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
         ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
         ".foebe-page-respiration .tech-card:hover::after,.foebe-page-respiration .tech-card:focus-visible::after{background:#C45279!important;color:#F0EAE7!important;}",
         "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(48px,6.5svh,72px)!important;}.foebe-breadcrumb--hero{top:calc(60px + clamp(18px,3.6svh,34px))!important;width:calc(100% - 36px)!important;}.foebe-breadcrumb--standalone{width:calc(100% - 36px)!important;margin:calc(60px + clamp(24px,4svh,42px)) auto clamp(24px,4svh,42px)!important;}.foebe-breadcrumb{font-size:11px!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{gap:5px!important;}.foebe-breadcrumb-home{min-height:30px!important;padding:5px 10px!important;}.foebe-breadcrumb-link{text-underline-offset:4px!important;text-decoration-thickness:1.5px!important;}.foebe-breadcrumb-section{opacity:.80!important;}.foebe-page-respiration .tech-card{padding-bottom:56px!important;}.foebe-page-respiration .tech-card::after{left:15px!important;right:15px!important;bottom:14px!important;font-size:11.5px!important;}}",
+        "@media(max-width:767px){.dict-hero .foebe-breadcrumb--dict{width:100%!important;margin:0 auto clamp(24px,3.8svh,36px)!important;}}",
         "@media(max-width:390px){.foebe-breadcrumb{font-size:10.6px!important;}.foebe-breadcrumb--hero,.foebe-breadcrumb--standalone{width:calc(100% - 28px)!important;}.foebe-breadcrumb ol{gap:4px!important;}.foebe-breadcrumb li{gap:4px!important;}.foebe-breadcrumb-home{padding:5px 9px!important;}}",
         "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
       ].join("\n");
@@ -407,7 +422,8 @@
     var main = document.querySelector("main");
     var stateIntro = document.getElementById("stateIntro");
     var testIntroWrap = document.querySelector("#screenIntro .intro-wrap, .screen.active .intro-wrap, .intro-wrap");
-    var dictLayout = document.querySelector(".dict-layout");
+    var dictHero = document.querySelector(".dict-hero");
+    var dictLayout = document.querySelector(".dict-layout, .dictionary-layout, .dictionary-shell, .dictionnaire-layout, .dict-page, .library-layout, .lexicon-layout");
     var isBoussolePage = currentFile === "boussole-accueil-foebe.html" || currentFile === "boussole.html";
 
     /* Pages sans hero standard : fil intégré au bloc d’introduction, pas collé à la nav. */
@@ -423,7 +439,15 @@
       return;
     }
 
-    /* Pages longues ou animées : fil autonome avant le contenu, pour éviter qu’il bouge. */
+    /* Dictionnaire : structure spéciale. On vise le header .dict-hero,
+       pas .dict-layout, pour afficher le fil au-dessus du H1. */
+    if (currentFile === "dictionnaire.html" && dictHero) {
+      nav.className += " foebe-breadcrumb--inline foebe-breadcrumb--dict";
+      dictHero.insertBefore(nav, dictHero.firstChild);
+      return;
+    }
+
+    /* Fallback Dictionnaire si un ancien fichier n’a pas .dict-hero. */
     if (currentFile === "dictionnaire.html" && dictLayout && dictLayout.parentNode) {
       nav.className += " foebe-breadcrumb--standalone";
       dictLayout.parentNode.insertBefore(nav, dictLayout);
