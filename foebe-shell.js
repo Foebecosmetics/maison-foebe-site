@@ -170,26 +170,31 @@
 
   /* ═══════════════════════════════════════════════════════════════════════════
      1.1 FIL D’ARIANE GLOBAL — repère + retour accueil
-     Objectif : aider les visiteurs à savoir où ils sont et revenir facilement.
+     Objectif : aider les visiteurs à savoir où ils sont, sans coller au menu.
+     Note : masqué automatiquement sur l’accueil et le Lexique immersif.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function injectFoebeBreadcrumbCss() {
     if (document.getElementById("foebe-breadcrumb-css")) return;
 
     var css = [
-      ".foebe-breadcrumb{position:sticky!important;top:68px!important;z-index:99970!important;max-width:1120px!important;margin:76px auto 0!important;padding:0 clamp(16px,3vw,28px)!important;font-family:'Poppins',sans-serif!important;}",
-      ".foebe-breadcrumb-inner{display:flex!important;align-items:center!important;gap:8px!important;min-height:42px!important;width:max-content!important;max-width:100%!important;padding:8px 12px!important;border-radius:999px!important;border:1px solid rgba(187,126,96,.28)!important;background:rgba(255,249,244,.92)!important;box-shadow:0 12px 28px rgba(78,41,31,.08)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;overflow-x:auto!important;scrollbar-width:none!important;}",
+      ".foebe-breadcrumb{position:relative!important;z-index:20!important;max-width:1120px!important;margin:72px auto 18px!important;padding:0 clamp(16px,3vw,28px)!important;font-family:'Poppins',sans-serif!important;}",
+      ".foebe-breadcrumb-inner{display:flex!important;align-items:center!important;gap:8px!important;min-height:38px!important;width:max-content!important;max-width:100%!important;padding:6px 10px!important;border-radius:999px!important;border:1px solid rgba(187,126,96,.22)!important;background:rgba(255,249,244,.78)!important;box-shadow:0 8px 22px rgba(78,41,31,.055)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;overflow-x:auto!important;scrollbar-width:none!important;}",
       ".foebe-breadcrumb-inner::-webkit-scrollbar{display:none!important;}",
-      ".foebe-breadcrumb ol{display:flex!important;align-items:center!important;gap:7px!important;list-style:none!important;margin:0!important;padding:0!important;min-width:0!important;white-space:nowrap!important;}",
-      ".foebe-breadcrumb li{display:inline-flex!important;align-items:center!important;gap:7px!important;margin:0!important;padding:0!important;font-size:12px!important;line-height:1!important;color:rgba(78,41,31,.68)!important;}",
-      ".foebe-breadcrumb a{display:inline-flex!important;align-items:center!important;min-height:28px!important;padding:5px 8px!important;border-radius:999px!important;color:#4E291F!important;text-decoration:none!important;font-weight:700!important;transition:background .18s ease,color .18s ease,transform .18s ease!important;}",
-      ".foebe-breadcrumb a:hover,.foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.16)!important;color:#BB7E60!important;outline:none!important;transform:translateY(-1px)!important;}",
-      ".foebe-breadcrumb [aria-current='page']{display:inline-flex!important;align-items:center!important;min-height:28px!important;padding:5px 9px!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-weight:800!important;}",
-      ".foebe-breadcrumb-sep{color:rgba(187,126,96,.72)!important;font-weight:900!important;}",
-      "[data-theme='night'] .foebe-breadcrumb-inner{background:rgba(78,41,31,.90)!important;border-color:rgba(187,126,96,.34)!important;box-shadow:0 14px 32px rgba(0,0,0,.20)!important;}",
-      "[data-theme='night'] .foebe-breadcrumb li{color:rgba(240,234,231,.68)!important;}",
+      ".foebe-breadcrumb ol{display:flex!important;align-items:center!important;gap:6px!important;list-style:none!important;margin:0!important;padding:0!important;min-width:0!important;white-space:nowrap!important;}",
+      ".foebe-breadcrumb li{display:inline-flex!important;align-items:center!important;gap:6px!important;margin:0!important;padding:0!important;font-size:11.5px!important;line-height:1!important;color:rgba(78,41,31,.62)!important;}",
+      ".foebe-breadcrumb a{display:inline-flex!important;align-items:center!important;min-height:27px!important;padding:5px 7px!important;border-radius:999px!important;color:#4E291F!important;text-decoration:none!important;font-weight:700!important;transition:background .18s ease,color .18s ease,transform .18s ease!important;}",
+      ".foebe-breadcrumb a:hover,.foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.14)!important;color:#BB7E60!important;outline:none!important;transform:translateY(-1px)!important;}",
+      ".foebe-breadcrumb [aria-current='page']{display:inline-flex!important;align-items:center!important;min-height:27px!important;padding:5px 8px!important;border-radius:999px!important;background:rgba(187,126,96,.14)!important;color:#6D4433!important;font-weight:800!important;}",
+      ".foebe-breadcrumb-sep{color:rgba(187,126,96,.58)!important;font-weight:900!important;}",
+      ".foebe-breadcrumb.is-compact{margin-top:68px!important;margin-bottom:10px!important;}",
+      ".foebe-breadcrumb.is-compact .foebe-breadcrumb-inner{background:rgba(255,249,244,.58)!important;box-shadow:none!important;}",
+      "[data-theme='night'] .foebe-breadcrumb-inner{background:rgba(78,41,31,.72)!important;border-color:rgba(187,126,96,.28)!important;box-shadow:0 10px 26px rgba(0,0,0,.12)!important;}",
+      "[data-theme='night'] .foebe-breadcrumb li{color:rgba(240,234,231,.62)!important;}",
       "[data-theme='night'] .foebe-breadcrumb a{color:#F0EAE7!important;}",
-      "[data-theme='night'] .foebe-breadcrumb a:hover,[data-theme='night'] .foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.18)!important;color:#BB7E60!important;}",
-      "@media(max-width:640px){.foebe-breadcrumb{top:64px!important;margin-top:68px!important;padding:0 14px!important;}.foebe-breadcrumb-inner{width:100%!important;border-radius:18px!important;padding:8px 10px!important;}.foebe-breadcrumb li{font-size:11.5px!important;}.foebe-breadcrumb a,.foebe-breadcrumb [aria-current='page']{padding:5px 7px!important;}}",
+      "[data-theme='night'] .foebe-breadcrumb a:hover,[data-theme='night'] .foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.18)!important;color:#F0EAE7!important;}",
+      "[data-theme='night'] .foebe-breadcrumb [aria-current='page']{background:rgba(187,126,96,.20)!important;color:#F0EAE7!important;}",
+      "@media(max-width:900px){.foebe-breadcrumb{margin-top:68px!important;margin-bottom:14px!important;padding:0 14px!important;}.foebe-breadcrumb-inner{width:100%!important;border-radius:17px!important;padding:7px 9px!important;background:rgba(255,249,244,.70)!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{font-size:11px!important;}.foebe-breadcrumb a,.foebe-breadcrumb [aria-current='page']{padding:5px 6px!important;}.foebe-breadcrumb li:nth-last-child(n+5){display:none!important;}}",
+      "@media(max-width:520px){.foebe-breadcrumb{margin-top:64px!important;margin-bottom:10px!important;padding:0 12px!important;}.foebe-breadcrumb-inner{min-height:36px!important;border-radius:15px!important;}.foebe-breadcrumb li{font-size:10.5px!important;}.foebe-breadcrumb li:not(:first-child):not(:last-child):not(:nth-last-child(2)){display:none!important;}.foebe-breadcrumb a,.foebe-breadcrumb [aria-current='page']{min-height:26px!important;max-width:54vw!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}}",
       "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
     ].join("\n");
 
@@ -242,9 +247,10 @@
     var removed = false;
     var shownAt = 0;
 
-    var showDelay = firstEntrance ? 0 : 300;
-    var minVisible = firstEntrance ? 5200 : 1350;
-    var maxLifetime = firstEntrance ? 6500 : 5200;
+    var forcedLoader = loaderMode === "force";
+    var showDelay = firstEntrance ? 0 : (forcedLoader ? 300 : 1500);
+    var minVisible = firstEntrance ? 5200 : 900;
+    var maxLifetime = firstEntrance ? 6500 : 4200;
 
     function ensureLoaderInBody() {
       if (!document.body) return false;
@@ -286,10 +292,10 @@
       setTimeout(actuallyRemove, wait);
     }
 
-    var showTimer = setTimeout(showLoader, showDelay);
+    var showTimer = (!firstEntrance && !forcedLoader && document.readyState === "complete") ? null : setTimeout(showLoader, showDelay);
 
     function finish() {
-      clearTimeout(showTimer);
+      if (showTimer) clearTimeout(showTimer);
       removeLoader();
     }
 
@@ -427,6 +433,14 @@
   function buildBreadcrumbTrail() {
     if (currentFile === "index.html") return [];
 
+    var breadcrumbMode = (
+      document.documentElement.getAttribute("data-foebe-breadcrumb") ||
+      (document.body && document.body.getAttribute("data-foebe-breadcrumb")) ||
+      ""
+    ).toLowerCase();
+
+    if (currentFile === "stories.html" && breadcrumbMode !== "force") return [];
+
     var currentLabels = {
       "comprendre.html": "Comprendre",
       "a-propos.html": "À propos",
@@ -436,6 +450,7 @@
       "foebe-zones-cadre.html": "Comprendre les 7 zones",
       "respiration.html": "Respiration guidée",
       "boussole-accueil-foebe.html": "La Boussole",
+      "boussole.html": "La Boussole",
       "stories.html": "Lexique Foébé",
       "dictionnaire.html": "Dictionnaire",
       "mentions.html": "Mentions légales",
@@ -460,7 +475,7 @@
       return trail;
     }
 
-    if (currentFile === "test.html" || currentFile === "respiration.html" || currentFile === "boussole-accueil-foebe.html") {
+    if (currentFile === "test.html" || currentFile === "respiration.html" || currentFile === "boussole-accueil-foebe.html" || currentFile === "boussole.html") {
       trail.push({ href: "pratiquer.html", label: "Pratiquer" });
       trail.push({ label: currentLabels[currentFile] || documentTitleLabel() });
       return trail;
@@ -495,10 +510,13 @@
       ""
     ).toLowerCase();
 
-    if (mode === "none") return;
+    var oldBreadcrumb = document.getElementById("foebeBreadcrumb");
+    if (mode === "none") {
+      if (oldBreadcrumb && oldBreadcrumb.parentNode) oldBreadcrumb.parentNode.removeChild(oldBreadcrumb);
+      return;
+    }
 
     var trail = buildBreadcrumbTrail();
-    var oldBreadcrumb = document.getElementById("foebeBreadcrumb");
 
     if (!trail.length) {
       if (oldBreadcrumb && oldBreadcrumb.parentNode) oldBreadcrumb.parentNode.removeChild(oldBreadcrumb);
@@ -516,7 +534,7 @@
 
     var breadcrumb = oldBreadcrumb || document.createElement("nav");
     breadcrumb.id = "foebeBreadcrumb";
-    breadcrumb.className = "foebe-breadcrumb";
+    breadcrumb.className = "foebe-breadcrumb" + (mode === "compact" || mode === "discreet" || mode === "discret" ? " is-compact" : "");
     breadcrumb.setAttribute("aria-label", "Fil d’Ariane");
     breadcrumb.innerHTML = '<div class="foebe-breadcrumb-inner"><ol>' + html + '</ol></div>';
 
@@ -525,7 +543,7 @@
         pageMain.parentNode.insertBefore(breadcrumb, pageMain);
       } else if (navOverlay && navOverlay.parentNode) {
         navOverlay.insertAdjacentElement("afterend", breadcrumb);
-      } else {
+      } else if (document.body) {
         document.body.insertBefore(breadcrumb, document.body.firstChild);
       }
     }
