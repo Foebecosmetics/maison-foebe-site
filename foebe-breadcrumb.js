@@ -192,7 +192,7 @@
         file.indexOf("sas-boussole") === 0 ||
         file.indexOf("sas-de-la-boussole") === 0
       ) return "boussole-accueil-foebe.html";
-      if (file === "boussole" || file.indexOf("boussole-") === 0) return "boussole.html";
+      if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
       if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
       if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
@@ -372,11 +372,12 @@
         ".foebe-breadcrumb--standalone{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:calc(60px + clamp(28px,4svh,50px)) auto clamp(26px,4svh,50px)!important;padding:0!important;z-index:2!important;}",
         ".foebe-breadcrumb--inline{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(100%,960px)!important;max-width:960px!important;margin:0 auto clamp(26px,4svh,44px)!important;padding:0!important;z-index:2!important;align-self:stretch!important;}",
         ".dict-hero .foebe-breadcrumb--dict{width:min(100%,960px)!important;margin:0 auto clamp(28px,4.2svh,46px)!important;text-align:left!important;position:relative!important;z-index:2!important;}",
+        ".hero .foebe-breadcrumb--boussole{width:min(100%,960px)!important;margin:0 auto clamp(28px,4.2svh,46px)!important;text-align:left!important;position:relative!important;z-index:3!important;}",
         ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
         ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
         ".foebe-page-respiration .tech-card:hover::after,.foebe-page-respiration .tech-card:focus-visible::after{background:#C45279!important;color:#F0EAE7!important;}",
         "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(48px,6.5svh,72px)!important;}.foebe-breadcrumb--hero{top:calc(60px + clamp(18px,3.6svh,34px))!important;width:calc(100% - 36px)!important;}.foebe-breadcrumb--standalone{width:calc(100% - 36px)!important;margin:calc(60px + clamp(24px,4svh,42px)) auto clamp(24px,4svh,42px)!important;}.foebe-breadcrumb{font-size:11px!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{gap:5px!important;}.foebe-breadcrumb-home{min-height:30px!important;padding:5px 10px!important;}.foebe-breadcrumb-link{border-bottom-width:1.5px!important;padding-bottom:1px!important;}.foebe-breadcrumb-section{opacity:.80!important;}.foebe-page-respiration .tech-card{padding-bottom:56px!important;}.foebe-page-respiration .tech-card::after{left:15px!important;right:15px!important;bottom:14px!important;font-size:11.5px!important;}}",
-        "@media(max-width:767px){.dict-hero .foebe-breadcrumb--dict{width:100%!important;margin:0 auto clamp(24px,3.8svh,36px)!important;}}",
+        "@media(max-width:767px){.dict-hero .foebe-breadcrumb--dict{width:100%!important;margin:0 auto clamp(24px,3.8svh,36px)!important;}.hero .foebe-breadcrumb--boussole{width:100%!important;margin:0 auto clamp(24px,3.8svh,36px)!important;}}",
         "@media(max-width:390px){.foebe-breadcrumb{font-size:10.6px!important;}.foebe-breadcrumb--hero,.foebe-breadcrumb--standalone{width:calc(100% - 28px)!important;}.foebe-breadcrumb ol{gap:4px!important;}.foebe-breadcrumb li{gap:4px!important;}.foebe-breadcrumb-home{padding:5px 9px!important;}}",
         "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
       ].join("\n");
@@ -455,10 +456,12 @@
       return;
     }
 
+    /* Boussole : structure spéciale main.site > .wrap > .hero.
+       On vise le hero lui-même, comme Dictionnaire vise .dict-hero,
+       pour éviter l'erreur insertBefore si .hero n'est pas enfant direct de main. */
     if (isBoussolePage && hero) {
-      nav.className += " foebe-breadcrumb--standalone";
-      if (main) main.insertBefore(nav, hero);
-      else hero.parentNode.insertBefore(nav, hero);
+      nav.className += " foebe-breadcrumb--inline foebe-breadcrumb--boussole";
+      hero.insertBefore(nav, hero.firstChild);
       return;
     }
 
@@ -513,7 +516,8 @@
     if (file === "test" || file.indexOf("test") === 0 || file.indexOf("testpratiquer") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "test.html";
     if (file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0) return "foebe-zones-cadre.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
-    if (file === "boussole-accueil-foebe" || file.indexOf("boussole") === 0) return "boussole-accueil-foebe.html";
+    if (file === "boussole-accueil-foebe" || file.indexOf("boussole-accueil") === 0 || file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole-accueil-foebe.html";
+    if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
     if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
     if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
