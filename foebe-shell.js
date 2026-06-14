@@ -10,9 +10,9 @@
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     0. THÈME — appliqué immédiatement
-     Ce bloc lit le thème sauvegardé pour éviter les retours visuels
-     jour/nuit au chargement des pages.
+     0. THÈME — appliqué immédiatement (fallback)
+     Note : sur l'index, un bloc critique inline dans <head> applique déjà le thème
+     et affiche le loader avant tout rendu. Ce bloc reste utile pour les autres pages.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function () {
     try {
@@ -22,12 +22,6 @@
       }
     } catch (e) {}
   })();
-
-  /* Le Shell a pris la main : le fallback critique peut rester caché. */
-  try {
-    document.documentElement.classList.add("foebe-shell-ready");
-    document.documentElement.classList.remove("foebe-shell-loading", "foebe-shell-failed");
-  } catch (e) {}
 
   /* ═══════════════════════════════════════════════════════════════════════════
      1. CSS PARTAGÉ — nav, menu, footer, responsive
@@ -116,8 +110,7 @@
   styleEl.id = "foebe-shell-css";
   styleEl.textContent = SHELL_CSS;
   document.head.appendChild(styleEl);
-
-  /* ═══════════════════════════════════════════════════════════════════════════
+    /* ═══════════════════════════════════════════════════════════════════════════
      2. DÉTECTION DE LA PAGE COURANTE
   ═══════════════════════════════════════════════════════════════════════════ */
   var currentFile = (window.location.pathname.split("/").pop() || "index.html").split("?")[0].split("#")[0];
@@ -481,4 +474,32 @@ if (fallbackNav) {
   fallbackNav.setAttribute("aria-hidden", "true");
   fallbackNav.style.display = "none";
 }
+  /* ═══════════════════════════════════════════════════════════════════════════
+     9. ÉTAT SHELL + MODULE FIL D'ARIANE
+     Le Shell ne contient pas la logique du fil d'Ariane : il charge seulement
+     le mini-module autonome /foebe-breadcrumb.js s'il est disponible.
+  ═══════════════════════════════════════════════════════════════════════════ */
+  try {
+    document.documentElement.classList.add("foebe-shell-ready");
+    document.documentElement.classList.remove("foebe-shell-loading", "foebe-shell-failed");
+  } catch (e) {}
+
+  (function loadFoebeBreadcrumbModule() {
+    var mode = (
+      document.documentElement.getAttribute("data-foebe-breadcrumb") ||
+      (document.body && document.body.getAttribute("data-foebe-breadcrumb")) ||
+      ""
+    ).toLowerCase();
+
+    if (mode === "none" || mode === "off" || mode === "false") return;
+    if (document.getElementById("foebe-breadcrumb-module")) return;
+
+    var script = document.createElement("script");
+    script.id = "foebe-breadcrumb-module";
+    script.src = "/foebe-breadcrumb.js";
+    script.defer = true;
+    document.body.appendChild(script);
+  })();
+
+
 })();

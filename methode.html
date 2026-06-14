@@ -1150,66 +1150,6 @@ body.chip-modal-open{overflow:hidden;}
   color:#4E291F !important;
 }
 
-/* Correctif fil d'Ariane statique — posé dans le hero, sans Shell */
-.page-methode .foebe-breadcrumb{
-  margin:0 0 clamp(18px,3svh,28px);
-  padding:0;
-  font-family:'Poppins',sans-serif;
-  font-size:12.5px;
-  line-height:1.45;
-  color:var(--read-soft);
-}
-.page-methode .foebe-breadcrumb ol{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:6px;
-  list-style:none;
-  margin:0;
-  padding:0;
-}
-.page-methode .foebe-breadcrumb li{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  min-width:0;
-}
-.page-methode .foebe-breadcrumb li:not(:last-child)::after{
-  content:"›";
-  color:#BB7E60;
-  opacity:.68;
-}
-.page-methode .foebe-breadcrumb a{
-  color:var(--read-soft);
-  opacity:.78;
-  text-decoration:none;
-  transition:color .18s ease,opacity .18s ease;
-}
-.page-methode .foebe-breadcrumb a:hover,
-.page-methode .foebe-breadcrumb a:focus-visible{
-  color:#BB7E60;
-  opacity:1;
-}
-.page-methode .foebe-breadcrumb span{
-  opacity:.74;
-}
-.page-methode .foebe-breadcrumb li[aria-current="page"]{
-  color:#BB7E60;
-  font-weight:700;
-}
-[data-theme="day"] .page-methode .foebe-breadcrumb{
-  color:rgba(78,41,31,.74);
-}
-[data-theme="day"] .page-methode .foebe-breadcrumb a{
-  color:rgba(78,41,31,.74);
-}
-@media(max-width:640px){
-  .page-methode .foebe-breadcrumb{
-    font-size:11.5px;
-    margin-bottom:18px;
-  }
-}
-
 /* Correctif ciblé — eyebrow "Ce que la méthode produit" en crème sur fond warm, version jour */
 [data-theme="day"] .page-methode .section.bg3 .section-eyebrow{
   color:#F0EAE7 !important;
@@ -1228,15 +1168,6 @@ body.chip-modal-open{overflow:hidden;}
 </div>
 </nav><main id="mainContent" tabindex="-1"><section class="hero">
 <div class="hero-inner">
-
-<nav class="foebe-breadcrumb reveal" aria-label="Fil d’Ariane">
-<ol>
-<li><a href="index.html">Accueil</a></li>
-<li><span>Découvrir</span></li>
-<li aria-current="page">La méthode Foébé</li>
-</ol>
-</nav>
-
 <h1 class="hero-title reveal reveal-delay-1">
       Sur quoi repose<br/><em>la lecture Foébé</em>
 </h1>
