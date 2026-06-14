@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version premium responsive — nav/footer/fil d’Ariane unifiés
+ * Version premium responsive — nav/footer unifiés avec Accueil, Comprendre et Pratiquer
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -10,7 +10,9 @@
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     0. THÈME INITIAL — respecter le choix sauvegardé avant l’injection nav/footer
+     0. THÈME — appliqué immédiatement
+     Ce bloc lit le thème sauvegardé pour éviter les retours visuels
+     jour/nuit au chargement des pages.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function () {
     try {
@@ -20,7 +22,6 @@
       }
     } catch (e) {}
   })();
-
 
   /* ═══════════════════════════════════════════════════════════════════════════
      1. CSS PARTAGÉ — nav, menu, footer, responsive
@@ -100,7 +101,6 @@
     "",
     "",
     "",
-
     "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon{transition:none!important;}}"
   ].join("\n");
 
@@ -111,42 +111,6 @@
   styleEl.textContent = SHELL_CSS;
   document.head.appendChild(styleEl);
 
-
-  /* ═══════════════════════════════════════════════════════════════════════════
-     1.1 FIL D’ARIANE GLOBAL — repère + retour accueil
-     Objectif : aider les visiteurs à savoir où ils sont, sans coller au menu.
-     Note : masqué sur l’accueil et le Lexique immersif, visible sur Dictionnaire.
-  ═══════════════════════════════════════════════════════════════════════════ */
-  (function injectFoebeBreadcrumbCss() {
-    if (document.getElementById("foebe-breadcrumb-css")) return;
-
-    var css = [
-      ".foebe-breadcrumb{position:relative!important;z-index:20!important;max-width:1120px!important;margin:72px auto 18px!important;padding:0 clamp(16px,3vw,28px)!important;font-family:'Poppins',sans-serif!important;}",
-      ".foebe-breadcrumb-inner{display:flex!important;align-items:center!important;gap:8px!important;min-height:38px!important;width:max-content!important;max-width:100%!important;padding:6px 10px!important;border-radius:999px!important;border:1px solid rgba(187,126,96,.22)!important;background:rgba(255,249,244,.78)!important;box-shadow:0 8px 22px rgba(78,41,31,.055)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;overflow-x:auto!important;scrollbar-width:none!important;}",
-      ".foebe-breadcrumb-inner::-webkit-scrollbar{display:none!important;}",
-      ".foebe-breadcrumb ol{display:flex!important;align-items:center!important;gap:6px!important;list-style:none!important;margin:0!important;padding:0!important;min-width:0!important;white-space:nowrap!important;}",
-      ".foebe-breadcrumb li{display:inline-flex!important;align-items:center!important;gap:6px!important;margin:0!important;padding:0!important;font-size:11.5px!important;line-height:1!important;color:rgba(78,41,31,.62)!important;}",
-      ".foebe-breadcrumb a,.foebe-breadcrumb-label{display:inline-flex!important;align-items:center!important;min-height:27px!important;padding:5px 7px!important;border-radius:999px!important;color:#4E291F!important;text-decoration:none!important;font-weight:700!important;transition:background .18s ease,color .18s ease,transform .18s ease!important;}",
-      ".foebe-breadcrumb a:hover,.foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.14)!important;color:#BB7E60!important;outline:none!important;transform:translateY(-1px)!important;}",
-      ".foebe-breadcrumb [aria-current='page']{display:inline-flex!important;align-items:center!important;min-height:27px!important;padding:5px 8px!important;border-radius:999px!important;background:rgba(187,126,96,.14)!important;color:#6D4433!important;font-weight:800!important;}",
-      ".foebe-breadcrumb-sep{color:rgba(187,126,96,.58)!important;font-weight:900!important;}",
-      ".foebe-breadcrumb.is-compact{margin-top:68px!important;margin-bottom:10px!important;}",
-      ".foebe-breadcrumb.is-compact .foebe-breadcrumb-inner{background:rgba(255,249,244,.58)!important;box-shadow:none!important;}",
-      "[data-theme='night'] .foebe-breadcrumb-inner{background:rgba(78,41,31,.72)!important;border-color:rgba(187,126,96,.28)!important;box-shadow:0 10px 26px rgba(0,0,0,.12)!important;}",
-      "[data-theme='night'] .foebe-breadcrumb li{color:rgba(240,234,231,.62)!important;}",
-      "[data-theme='night'] .foebe-breadcrumb a,[data-theme='night'] .foebe-breadcrumb-label{color:#F0EAE7!important;}",
-      "[data-theme='night'] .foebe-breadcrumb a:hover,[data-theme='night'] .foebe-breadcrumb a:focus-visible{background:rgba(187,126,96,.18)!important;color:#F0EAE7!important;}",
-      "[data-theme='night'] .foebe-breadcrumb [aria-current='page']{background:rgba(187,126,96,.20)!important;color:#F0EAE7!important;}",
-      "@media(max-width:900px){.foebe-breadcrumb{margin-top:68px!important;margin-bottom:14px!important;padding:0 14px!important;}.foebe-breadcrumb-inner{width:100%!important;border-radius:17px!important;padding:7px 9px!important;background:rgba(255,249,244,.70)!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{font-size:11px!important;}.foebe-breadcrumb a,.foebe-breadcrumb-label,.foebe-breadcrumb [aria-current='page']{padding:5px 6px!important;}}",
-      "@media(max-width:520px){.foebe-breadcrumb{margin-top:64px!important;margin-bottom:10px!important;padding:0 12px!important;}.foebe-breadcrumb-inner{min-height:36px!important;border-radius:15px!important;}.foebe-breadcrumb li{font-size:10.5px!important;}.foebe-breadcrumb a,.foebe-breadcrumb-label,.foebe-breadcrumb [aria-current='page']{min-height:26px!important;max-width:54vw!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}}",
-      "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
-    ].join("\n");
-
-    var breadcrumbStyle = document.createElement("style");
-    breadcrumbStyle.id = "foebe-breadcrumb-css";
-    breadcrumbStyle.textContent = css;
-    document.head.appendChild(breadcrumbStyle);
-  })();
   /* ═══════════════════════════════════════════════════════════════════════════
      2. DÉTECTION DE LA PAGE COURANTE
   ═══════════════════════════════════════════════════════════════════════════ */
@@ -240,159 +204,6 @@
     }).join("");
   }
 
-
-  function escapeHtml(value) {
-    return String(value == null ? "" : value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
-
-  function documentTitleLabel() {
-    var title = (document.title || "").replace(/\s*[|—-]\s*Maison Foébé.*$/i, "").trim();
-    return title || "Page";
-  }
-
-  function buildBreadcrumbTrail() {
-    if (currentFile === "index.html") return [];
-
-    var breadcrumbMode = (
-      document.documentElement.getAttribute("data-foebe-breadcrumb") ||
-      (document.body && document.body.getAttribute("data-foebe-breadcrumb")) ||
-      ""
-    ).toLowerCase();
-
-    /* Le Lexique Foébé / stories reste immersif par défaut. */
-    if (currentFile === "stories.html" && breadcrumbMode !== "force") return [];
-
-    var currentLabels = {
-      "comprendre.html": "Comprendre",
-      "a-propos.html": "À propos",
-      "methode.html": "La méthode Foébé",
-      "pratiquer.html": "4 outils",
-      "test.html": "Échelle Foébé",
-      "foebe-zones-cadre.html": "Comprendre les 7 zones",
-      "respiration.html": "Respiration guidée",
-      "boussole-accueil-foebe.html": "La Boussole",
-      "boussole.html": "La Boussole",
-      "stories.html": "Lexique Foébé",
-      "dictionnaire.html": "Dictionnaire",
-      "mentions.html": "Mentions légales",
-      "zone-energie.html": "Zone énergie",
-      "zone-corps.html": "Zone corps",
-      "zone-mental.html": "Zone mental",
-      "zone-emotions.html": "Zone émotions",
-      "zone-environnement.html": "Zone environnement",
-      "zone-relations.html": "Zone relations",
-      "zone-sens.html": "Zone sens"
-    };
-
-    var trail = [{ href: "index.html", label: "Accueil" }];
-    var label = currentLabels[currentFile] || documentTitleLabel();
-
-    function addCategory(name, href) {
-      trail.push(href ? { href: href, label: name, category: true } : { label: name, category: true });
-    }
-
-    function addCurrent(name) {
-      trail.push({ label: name || label });
-      return trail;
-    }
-
-    if (currentFile === "comprendre.html" || currentFile === "a-propos.html" || currentFile === "methode.html") {
-      addCategory("Découvrir");
-      return addCurrent(label);
-    }
-
-    if (currentFile === "pratiquer.html") {
-      addCategory("Pratiquer");
-      return addCurrent(label);
-    }
-
-    if (currentFile === "test.html" || currentFile === "respiration.html" || currentFile === "boussole-accueil-foebe.html" || currentFile === "boussole.html") {
-      addCategory("Pratiquer", "pratiquer.html");
-      return addCurrent(label);
-    }
-
-    if (currentFile === "foebe-zones-cadre.html") {
-      addCategory("Pratiquer", "pratiquer.html");
-      return addCurrent("Comprendre les 7 zones");
-    }
-
-    if (zonesFiles[currentFile]) {
-      addCategory("Pratiquer", "pratiquer.html");
-      trail.push({ href: "foebe-zones-cadre.html", label: "Comprendre les 7 zones" });
-      return addCurrent(label);
-    }
-
-    if (currentFile === "stories.html" || currentFile === "dictionnaire.html") {
-      addCategory("Ressources");
-      return addCurrent(label);
-    }
-
-    if (currentFile === "mentions.html") {
-      addCategory("Informations");
-      return addCurrent(label);
-    }
-
-    return addCurrent(label);
-  }
-
-  function injectBreadcrumb() {
-    var mode = (
-      document.documentElement.getAttribute("data-foebe-breadcrumb") ||
-      (document.body && document.body.getAttribute("data-foebe-breadcrumb")) ||
-      ""
-    ).toLowerCase();
-
-    var oldBreadcrumb = document.getElementById("foebeBreadcrumb");
-    if (mode === "none") {
-      if (oldBreadcrumb && oldBreadcrumb.parentNode) oldBreadcrumb.parentNode.removeChild(oldBreadcrumb);
-      return;
-    }
-
-    var trail = buildBreadcrumbTrail();
-
-    if (!trail.length) {
-      if (oldBreadcrumb && oldBreadcrumb.parentNode) oldBreadcrumb.parentNode.removeChild(oldBreadcrumb);
-      return;
-    }
-
-    var html = trail.map(function (item, index) {
-      var isLast = index === trail.length - 1;
-      var label = escapeHtml(item.label);
-      if (isLast) return '<li><span aria-current="page">' + label + '</span></li>';
-
-      var crumb = item.href
-        ? '<a href="' + escapeHtml(item.href) + '">' + label + '</a>'
-        : '<span class="foebe-breadcrumb-label">' + label + '</span>';
-
-      return '<li>' + crumb + '<span class="foebe-breadcrumb-sep" aria-hidden="true">›</span></li>';
-    }).join("");
-
-    var breadcrumb = oldBreadcrumb || document.createElement("nav");
-    breadcrumb.id = "foebeBreadcrumb";
-    breadcrumb.className = "foebe-breadcrumb" + (mode === "compact" || mode === "discreet" || mode === "discret" ? " is-compact" : "");
-    breadcrumb.setAttribute("aria-label", "Fil d’Ariane");
-    breadcrumb.innerHTML = '<div class="foebe-breadcrumb-inner"><ol>' + html + '</ol></div>';
-
-    if (!oldBreadcrumb) {
-      /* Important : on insère le fil d’Ariane après le Shell global, pas dans
-         les layouts internes comme le Dictionnaire, sinon il peut disparaître. */
-      if (navOverlay && navOverlay.parentNode) {
-        navOverlay.insertAdjacentElement("afterend", breadcrumb);
-      } else if (mainNav && mainNav.parentNode) {
-        mainNav.insertAdjacentElement("afterend", breadcrumb);
-      } else if (pageMain && pageMain.parentNode) {
-        pageMain.parentNode.insertBefore(breadcrumb, pageMain);
-      } else if (document.body) {
-        document.body.insertBefore(breadcrumb, document.body.firstChild);
-      }
-    }
-  }
-
   var pageMain = document.querySelector("main");
   if (pageMain && !pageMain.id) pageMain.id = "mainContent";
   if (pageMain && !pageMain.hasAttribute("tabindex")) pageMain.setAttribute("tabindex", "-1");
@@ -434,8 +245,6 @@
 
   navOverlay.setAttribute("aria-hidden", "true");
   navOverlay.className = "";
-
-  injectBreadcrumb();
 
   /* ═══════════════════════════════════════════════════════════════════════════
      4. INJECTION DU FOOTER
