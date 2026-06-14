@@ -112,9 +112,9 @@
 
   /* ═══════════════════════════════════════════════════════════════════════════
      1.1 FIL D'ARIANE — intégré au Shell, sans fichier JS externe
-     Objectif : éviter le délai du chargement /foebe-breadcrumb.js.
-     La logique reste isolée ici : elle ne touche pas au menu, au footer,
-     au thème ou au fallback. Elle injecte seulement un repère dans le hero.
+     Objectif : repère détaillé, homogène, sans container global.
+     Hors zones : toujours placé avant le hero, sous la nav fixe, avec respiration.
+     Zones : même logique avant le hero, largeur harmonisée, sans coller au container.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function injectFoebeBreadcrumbFast() {
     var root = document.documentElement;
@@ -136,16 +136,22 @@
     function normalizeFile(file) {
       file = String(file || "index.html").toLowerCase();
       try { file = decodeURIComponent(file); } catch (e) {}
+      file = file.replace(/^\/+|\/+$/g, "");
+      file = file.split("?")[0].split("#")[0];
+      file = file.replace(/\.html?$/i, "");
 
       if (file === "" || file === "/" || file === "index" || file.indexOf("index-") === 0 || file.indexOf("index_") === 0) return "index.html";
+
       if (file === "comprendre" || file.indexOf("comprendre") === 0) return "comprendre.html";
       if (file === "pratiquer" || file.indexOf("pratiquer") === 0) return "pratiquer.html";
       if (file === "methode" || file === "méthode" || file.indexOf("methode") === 0 || file.indexOf("méthode") === 0) return "methode.html";
       if (file === "a-propos" || file.indexOf("a-propos") === 0 || file.indexOf("apropos") === 0) return "a-propos.html";
+
       if (file === "test" || file.indexOf("test") === 0 || file.indexOf("testpratiquer") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "test.html";
-      if (file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0) return "foebe-zones-cadre.html";
-      if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
+      if (file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0 || file.indexOf("zones-cadre") === 0 || file.indexOf("7-zones") === 0) return "foebe-zones-cadre.html";
+      if (file === "respiration" || file.indexOf("respiration") === 0 || file.indexOf("respiration-guidee") === 0 || file.indexOf("respiration-guidée") === 0) return "respiration.html";
       if (file === "boussole-accueil-foebe" || file.indexOf("boussole") === 0) return "boussole-accueil-foebe.html";
+
       if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
       if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
       if (file.indexOf("zone-mental") === 0) return "zone-mental.html";
@@ -153,13 +159,22 @@
       if (file.indexOf("zone-environnement") === 0) return "zone-environnement.html";
       if (file.indexOf("zone-relations") === 0) return "zone-relations.html";
       if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
+
       if (file === "stories" || file.indexOf("stories") === 0 || file.indexOf("lexique") === 0) return "stories.html";
       if (file === "dictionnaire" || file.indexOf("dictionnaire") === 0) return "dictionnaire.html";
       if (file === "mentions" || file.indexOf("mentions") === 0) return "mentions.html";
       return file;
     }
 
-    var currentFile = normalizeFile((window.location.pathname.split("/").pop() || "index.html").split("?")[0].split("#")[0]);
+    function getCurrentFile() {
+      var path = window.location.pathname || "/";
+      path = path.replace(/\/+$/g, "");
+      if (!path || path === "") return "index.html";
+      var last = path.split("/").pop() || "index.html";
+      return normalizeFile(last);
+    }
+
+    var currentFile = getCurrentFile();
 
     var trails = {
       "comprendre.html": [
@@ -272,27 +287,27 @@
     function injectCss() {
       if (document.getElementById("foebe-breadcrumb-css")) return;
       var css = [
-        ".foebe-breadcrumb{width:min(100%,1040px);max-width:1040px;margin:clamp(22px,4svh,44px) auto clamp(30px,5svh,58px)!important;padding:0 clamp(20px,4vw,40px)!important;font-family:'Poppins',sans-serif;font-size:12.5px;line-height:1.45;color:#F0EAE7;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}",
+        ".foebe-breadcrumb{width:100%;max-width:100%;margin:0 0 clamp(20px,3.4svh,34px)!important;padding:0!important;font-family:'Poppins',sans-serif;font-size:12.5px;line-height:1.45;color:#F0EAE7;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}",
         ".foebe-breadcrumb::-webkit-scrollbar{display:none;}",
         "[data-theme='day'] .foebe-breadcrumb{color:#4E291F;}",
         "[data-theme='night'] .foebe-breadcrumb{color:#F0EAE7;}",
         ".foebe-breadcrumb ol{display:flex;align-items:center;gap:7px;list-style:none;margin:0!important;padding:0!important;white-space:nowrap;}",
         ".foebe-breadcrumb li{display:inline-flex;align-items:center;gap:7px;min-width:0;color:currentColor;}",
-        ".foebe-breadcrumb li:not(:last-child)::after{content:'›';color:#BB7E60;opacity:.9;font-weight:800;}",
+        ".foebe-breadcrumb li:not(:last-child)::after{content:'›';color:#BB7E60;opacity:.95;font-weight:800;}",
         ".foebe-breadcrumb a,.foebe-breadcrumb span{color:currentColor;text-decoration:none;}",
         ".foebe-breadcrumb a{transition:color .18s ease,background .18s ease,border-color .18s ease,opacity .18s ease,transform .18s ease;}",
-        ".foebe-breadcrumb-home{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:5px 10px;border-radius:999px;background:#BB7E60!important;color:#F0EAE7!important;border:1px solid #BB7E60!important;font-weight:800;box-shadow:0 8px 18px rgba(187,126,96,.16);}",
+        ".foebe-breadcrumb-home{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:6px 12px;border-radius:999px;background:#BB7E60!important;color:#F0EAE7!important;border:1px solid #BB7E60!important;font-weight:800;box-shadow:0 8px 18px rgba(187,126,96,.14);}",
         ".foebe-breadcrumb-home:hover,.foebe-breadcrumb-home:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;outline:none;transform:translateY(-1px);}",
-        ".foebe-breadcrumb-link{font-weight:700;text-decoration:underline;text-decoration-color:rgba(187,126,96,.72);text-decoration-thickness:1px;text-underline-offset:4px;}",
-        ".foebe-breadcrumb-link:hover,.foebe-breadcrumb-link:focus-visible{color:#BB7E60!important;outline:none;text-decoration-color:#BB7E60;}",
-        ".foebe-breadcrumb-section{opacity:.84;font-weight:600;}",
-        ".foebe-breadcrumb-current{font-weight:800;opacity:1;}",
+        ".foebe-breadcrumb-link{font-weight:800;text-decoration-line:underline!important;text-decoration-color:#BB7E60!important;text-decoration-thickness:2px!important;text-underline-offset:5px!important;}",
+        ".foebe-breadcrumb-link:hover,.foebe-breadcrumb-link:focus-visible{color:#BB7E60!important;outline:none;text-decoration-color:#C45279!important;}",
+        ".foebe-breadcrumb-section{opacity:.86;font-weight:650;}",
+        ".foebe-breadcrumb-current{font-weight:850;opacity:1;}",
         "[data-theme='day'] .foebe-breadcrumb-link,[data-theme='day'] .foebe-breadcrumb-section,[data-theme='day'] .foebe-breadcrumb-current{color:#4E291F;}",
         "[data-theme='night'] .foebe-breadcrumb-link,[data-theme='night'] .foebe-breadcrumb-section,[data-theme='night'] .foebe-breadcrumb-current{color:#F0EAE7;}",
-        ".foebe-breadcrumb.foebe-breadcrumb--zone{max-width:980px;margin-top:clamp(26px,5svh,56px)!important;margin-bottom:clamp(34px,6svh,66px)!important;text-align:left;}",
-        ".foebe-breadcrumb.foebe-breadcrumb--before-hero{margin-top:calc(60px + clamp(18px,4svh,38px))!important;margin-bottom:clamp(24px,4svh,46px)!important;}",
-        "@media(max-width:640px){.foebe-breadcrumb{width:100%;max-width:100%;font-size:11.4px;margin-top:clamp(18px,3svh,30px)!important;margin-bottom:clamp(24px,4svh,42px)!important;padding:0 20px!important;}.foebe-breadcrumb.foebe-breadcrumb--before-hero{margin-top:calc(58px + 18px)!important;}.foebe-breadcrumb ol{gap:5px;}.foebe-breadcrumb li{gap:5px;}.foebe-breadcrumb-home{min-height:30px;padding:5px 9px;}.foebe-breadcrumb-link{text-underline-offset:3px;}}",
-        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.9px;padding:0 16px!important;}.foebe-breadcrumb ol{gap:4px;}.foebe-breadcrumb li{gap:4px;}}",
+        ".foebe-breadcrumb--in-hero{display:block;}",
+        ".foebe-breadcrumb--zone{margin-bottom:clamp(22px,4svh,42px)!important;}",
+        "@media(max-width:640px){.foebe-breadcrumb{font-size:11.2px;margin-bottom:clamp(16px,2.8svh,24px)!important;padding:0!important;}.foebe-breadcrumb ol{gap:5px;}.foebe-breadcrumb li{gap:5px;}.foebe-breadcrumb-home{min-height:30px;padding:5px 10px;}.foebe-breadcrumb-link{text-underline-offset:4px!important;text-decoration-thickness:1.5px!important;}.foebe-breadcrumb-section{opacity:.78;}}",
+        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.8px;}.foebe-breadcrumb ol{gap:4px;}.foebe-breadcrumb li{gap:4px;}.foebe-breadcrumb-home{padding:5px 9px;}}",
         "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none;}}"
       ].join("\n");
 
@@ -329,35 +344,40 @@
 
     var nav = document.createElement("nav");
     var isZonePage = /^zone-/.test(currentFile);
-    nav.className = "foebe-breadcrumb" + (isZonePage ? " foebe-breadcrumb--zone" : "");
+    nav.className = "foebe-breadcrumb foebe-breadcrumb--in-hero" + (isZonePage ? " foebe-breadcrumb--zone" : "");
     nav.setAttribute("aria-label", "Fil d’Ariane");
     nav.setAttribute("data-foebe-auto", "1");
     nav.innerHTML = "<ol>" + renderTrail(trail) + "</ol>";
 
-    var heroInner = document.querySelector(".hero .hero-inner") || document.querySelector(".hero-inner");
     var hero = document.querySelector(".hero");
     var main = document.querySelector("main");
+    var heroInner = hero && (
+      hero.querySelector(".hero-inner") ||
+      hero.querySelector(".hero-content") ||
+      hero.querySelector(".hero-container") ||
+      hero.querySelector(".section-inner") ||
+      hero.firstElementChild
+    );
 
-    /* Pages zones : on évite de coller le fil dans le container du hero.
-       Il est placé avant le hero, avec son propre espacement et sa propre largeur. */
-    if (isZonePage && hero && hero.parentNode) {
-      nav.className += " foebe-breadcrumb--before-hero";
-      hero.parentNode.insertBefore(nav, hero);
-      return;
-    }
-
+    /* Placement premium : le fil d'Ariane fait partie du hero.
+       Il n'est plus une deuxième barre sous la navigation fixe, donc pas de bande
+       haute ni d'effet container sur mobile. */
     if (heroInner) {
-      var h1 = heroInner.querySelector("h1");
-      heroInner.insertBefore(nav, h1 || heroInner.firstChild);
+      heroInner.insertBefore(nav, heroInner.firstChild);
       return;
     }
-
-    if (main) {
-      nav.className += " foebe-breadcrumb--before-hero";
+    if (hero) {
+      hero.insertBefore(nav, hero.firstChild);
+      return;
+    }
+    if (main && main.firstChild) {
       main.insertBefore(nav, main.firstChild);
       return;
     }
-
+    if (main) {
+      main.appendChild(nav);
+      return;
+    }
     if (document.body) document.body.insertBefore(nav, document.body.firstChild);
   })();
 
