@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-theme="night" lang="fr">
+<html data-theme="night" lang="fr" data-foebe-breadcrumb="force">
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><!-- Anti-FOUC thème — NE PAS MODIFIER --><script>
 (function(){
@@ -789,7 +789,255 @@ main{display:block;}
     animation:none!important;
     opacity:0!important;
   }
-}</style></head>
+}</style>
+<style id="foebeScrollProgressCss">
+/* Barre de progression Maison Foébé — pages éditoriales */
+.foebe-scroll-progress {
+  position: fixed;
+  top: var(--nav-offset, 60px);
+  left: 0;
+  right: 0;
+  z-index: 940;
+  height: 3px;
+  background: rgba(187, 126, 96, .16);
+  pointer-events: none;
+}
+.foebe-scroll-progress__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #BB7E60, #C45279, #C34234);
+  box-shadow: 0 0 14px rgba(187, 126, 96, .34);
+  will-change: transform;
+}
+[data-theme="day"] .foebe-scroll-progress {
+  background: rgba(78, 41, 31, .10);
+}
+@media (max-width: 720px) {
+  .foebe-scroll-progress {
+    height: 2px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foebe-scroll-progress__bar {
+    transition: none !important;
+  }
+}
+</style>
+
+
+<style id="foebeAboutFrameAuroraSoftFoebe">
+/* À propos — cadre aurora Foébé doux.
+   On garde la palette Maison Foébé. Le cadre est animé, mais calme.
+   Les garde-fous contraste sont ciblés : on ne transforme pas toute la page en version austère. */
+
+@property --foebe-frame-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.page-a-propos .hero {
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+.page-a-propos .hero::before,
+.page-a-propos .hero::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: calc(var(--nav-offset, 60px) + 24px) clamp(18px, 5vw, 70px) clamp(28px, 6vw, 76px) !important;
+  border-radius: clamp(22px, 3vw, 36px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  transform: none !important;
+}
+
+.page-a-propos .hero-inner,
+.page-a-propos .hero > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Cadre complet, visible, mais pas dur */
+.page-a-propos .hero::before {
+  border: 1px solid rgba(187,126,96,.34) !important;
+  background:
+    radial-gradient(ellipse 70% 55% at 20% 20%, rgba(187,126,96,.08), transparent 62%),
+    radial-gradient(ellipse 60% 50% at 80% 78%, rgba(196,82,121,.06), transparent 64%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(240,234,231,.045),
+    0 20px 64px rgba(0,0,0,.14) !important;
+  opacity: .84 !important;
+  animation: foebeAboutFrameBaseBreathSoft 9s ease-in-out infinite !important;
+}
+
+/* Contour animé : palette Foébé douce, pas fluo */
+.page-a-propos .hero::after {
+  padding: 2px !important;
+  border: 0 !important;
+  background:
+    conic-gradient(
+      from var(--foebe-frame-angle),
+      #BB7E60 0deg,
+      #C45279 58deg,
+      #C34234 116deg,
+      #7A2147 174deg,
+      #1A4060 232deg,
+      #3A2260 290deg,
+      #BB7E60 360deg
+    ) !important;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) border-box !important;
+  -webkit-mask-composite: xor !important;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) border-box !important;
+  mask-composite: exclude !important;
+  opacity: .46 !important;
+  filter:
+    drop-shadow(0 0 8px rgba(187,126,96,.16))
+    drop-shadow(0 0 14px rgba(196,82,121,.10)) !important;
+  animation:
+    foebeAboutFrameAuroraSpinSoft 14s linear infinite,
+    foebeAboutFrameAuroraPulseSoft 7s ease-in-out infinite !important;
+}
+
+/* Mode jour : on garde les couleurs Foébé, mais plus poudrées */
+[data-theme="day"] .page-a-propos .hero::before {
+  border-color: rgba(187,126,96,.38) !important;
+  background:
+    radial-gradient(ellipse 70% 55% at 20% 20%, rgba(187,126,96,.10), transparent 62%),
+    radial-gradient(ellipse 60% 50% at 80% 78%, rgba(196,82,121,.055), transparent 64%),
+    rgba(255,255,255,.08) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.48),
+    0 18px 54px rgba(78,41,31,.10) !important;
+  opacity: .88 !important;
+}
+
+[data-theme="day"] .page-a-propos .hero::after {
+  background:
+    conic-gradient(
+      from var(--foebe-frame-angle),
+      #BB7E60 0deg,
+      #C45279 60deg,
+      #C34234 120deg,
+      #7A4A28 180deg,
+      #1A4060 240deg,
+      #3A2260 300deg,
+      #BB7E60 360deg
+    ) !important;
+  opacity: .38 !important;
+  filter:
+    drop-shadow(0 0 7px rgba(187,126,96,.12))
+    drop-shadow(0 0 12px rgba(196,82,121,.075)) !important;
+}
+
+@keyframes foebeAboutFrameAuroraSpinSoft {
+  from { --foebe-frame-angle: 0deg; }
+  to   { --foebe-frame-angle: 360deg; }
+}
+
+@keyframes foebeAboutFrameAuroraPulseSoft {
+  0%, 100% { opacity: .30; }
+  50%      { opacity: .52; }
+}
+
+@keyframes foebeAboutFrameBaseBreathSoft {
+  0%, 100% { opacity: .76; }
+  50%      { opacity: .90; }
+}
+
+/* Garde-fous contraste ciblés, sans casser la direction artistique */
+[data-theme="day"] .page-a-propos {
+  --text:#4E291F;
+  --text-sub:#4E291F;
+  color:#4E291F;
+}
+
+[data-theme="day"] .page-a-propos .hero-title,
+[data-theme="day"] .page-a-propos .section-title,
+[data-theme="day"] .page-a-propos h1,
+[data-theme="day"] .page-a-propos h2,
+[data-theme="day"] .page-a-propos h3 {
+  color:#4E291F !important;
+}
+
+[data-theme="day"] .page-a-propos p,
+[data-theme="day"] .page-a-propos li,
+[data-theme="day"] .page-a-propos .hero-sub,
+[data-theme="day"] .page-a-propos .section-sub,
+[data-theme="day"] .page-a-propos .hero-proof {
+  color:rgba(78,41,31,.86) !important;
+}
+
+/* On garde les accents Foébé, mais pas pour les longs paragraphes */
+[data-theme="day"] .page-a-propos em,
+[data-theme="day"] .page-a-propos .accent,
+[data-theme="day"] .page-a-propos .hero-title em,
+[data-theme="day"] .page-a-propos .section-title em {
+  color:#7A4A28 !important;
+}
+
+/* Si une carte garde un fond sombre en mode jour, son texte redevient crème. */
+[data-theme="day"] .page-a-propos .night-card,
+[data-theme="day"] .page-a-propos .dark-card,
+[data-theme="day"] .page-a-propos [data-contrast="dark"] {
+  color:#F0EAE7 !important;
+}
+
+[data-theme="day"] .page-a-propos .night-card *,
+[data-theme="day"] .page-a-propos .dark-card *,
+[data-theme="day"] .page-a-propos [data-contrast="dark"] * {
+  color:#F0EAE7 !important;
+}
+
+/* Boutons : Maison Foébé, mais assez contrastés */
+[data-theme="day"] .page-a-propos .btn-main,
+[data-theme="day"] .page-a-propos .btn-cta,
+[data-theme="day"] .page-a-propos .btn-primary,
+[data-theme="day"] .page-a-propos .btn-test {
+  background:#8A4F37 !important;
+  color:#F0EAE7 !important;
+  border-color:#8A4F37 !important;
+}
+
+[data-theme="night"] .page-a-propos .btn-main,
+[data-theme="night"] .page-a-propos .btn-cta,
+[data-theme="night"] .page-a-propos .btn-primary,
+[data-theme="night"] .page-a-propos .btn-test {
+  background:#BB7E60 !important;
+  color:#F0EAE7 !important;
+  border-color:#BB7E60 !important;
+}
+
+@media (max-width: 767px) {
+  .page-a-propos .hero::before,
+  .page-a-propos .hero::after {
+    inset: calc(var(--nav-offset, 60px) + 16px) 14px 18px !important;
+    border-radius: 22px !important;
+  }
+  .page-a-propos .hero::after {
+    padding: 1.5px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-a-propos .hero::before,
+  .page-a-propos .hero::after {
+    animation: none !important;
+  }
+  .page-a-propos .hero::after {
+    opacity: .36 !important;
+  }
+}
+</style>
+
+</head>
 <body class="page-a-propos"><nav aria-label="Navigation de secours" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -799,7 +1047,12 @@ main{display:block;}
 <a href="zones.html">7 zones</a>
 <a href="dictionnaire.html">Dictionnaire</a>
 </div>
-</nav><main id="mainContent"><section class="hero">
+</nav>
+
+<div class="foebe-scroll-progress" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+</div>
+<main id="mainContent"><section class="hero">
 <div class="hero-inner">
 
 <h1 class="hero-title reveal reveal-delay-1"> Qui tient<br/><em>le cadre</em>
@@ -933,6 +1186,45 @@ main{display:block;}
   revealEls.forEach(function(el){ observer.observe(el); });
 })();
 </script>
+
+<script id="foebeScrollProgressScript">
+(function(){
+  var bar = document.getElementById('foebeScrollProgressBar');
+  if (!bar) return;
+
+  var ticking = false;
+
+  function update(){
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var max = Math.max(
+      doc.scrollHeight,
+      body.scrollHeight,
+      doc.offsetHeight,
+      body.offsetHeight,
+      doc.clientHeight
+    ) - window.innerHeight;
+
+    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+    bar.style.transform = 'scaleX(' + progress + ')';
+    ticking = false;
+  }
+
+  function requestUpdate(){
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('load', requestUpdate);
+  update();
+})();
+</script>
+
 <script src="/foebe-shell.js"></script>
 </body>
 </html>
