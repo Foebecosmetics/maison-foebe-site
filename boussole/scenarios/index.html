@@ -33,12 +33,12 @@
 <title>La Boussole · Lire les situations · Maison Foébé</title>
 <meta name="description" content="La Boussole Foébé aide à lire des scènes du quotidien pour reconnaître les 7 dimensions du self-care avec des repères simples et concrets.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://maisonfoebe.fr/boussole.html">
+<link rel="canonical" href="https://maisonfoebe.fr/boussole/scenarios/">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:type" content="website">
 <meta property="og:title" content="La Boussole · Lire les situations · Maison Foébé">
 <meta property="og:description" content="Apprends à lire des scènes du quotidien, à reconnaître les zones Foébé et à distinguer le signal qui organise la situation.">
-<meta property="og:url" content="https://maisonfoebe.fr/boussole.html">
+<meta property="og:url" content="https://maisonfoebe.fr/boussole/scenarios/">
 <meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -52,7 +52,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Boussole — Maison Foébé","description":"Scénarios de discernement pour apprendre à reconnaître les 7 dimensions du self-care selon Maison Foébé.","url":"https://maisonfoebe.fr/boussole.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Boussole — Maison Foébé","description":"Scénarios de discernement pour apprendre à reconnaître les 7 dimensions du self-care selon Maison Foébé.","url":"https://maisonfoebe.fr/boussole/scenarios/","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -502,16 +502,197 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
   }
 }
 </style>
+
+<style id="foebeScrollProgressCss">
+.foebe-scroll-progress {
+  position: fixed;
+  top: var(--nav-offset, 60px);
+  left: 0;
+  right: 0;
+  z-index: 940;
+  height: 3px;
+  background: rgba(187, 126, 96, .16);
+  pointer-events: none;
+}
+.foebe-scroll-progress__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #BB7E60, #C45279, #C34234);
+  box-shadow: 0 0 14px rgba(187, 126, 96, .34);
+  will-change: transform;
+}
+[data-theme="day"] .foebe-scroll-progress {
+  background: rgba(78, 41, 31, .10);
+}
+@media (max-width: 720px) {
+  .foebe-scroll-progress { height: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foebe-scroll-progress__bar { transition: none !important; }
+}
+</style>
+
+
+<style id="foebeBoussoleScenariosFallbacks">
+/* Fallbacks Boussole Scénarios — aucun contenu essentiel ne reste invisible si JS échoue. */
+html:not(.js-ready) .question-block,
+html:not(.js-ready) .feedback,
+html:not(.js-ready) .result-panel,
+html:not(.js-ready) .final-card {
+  display: block !important;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+html:not(.js-ready) .sidebar,
+html:not(.js-ready) .main-card,
+html:not(.js-ready) .panel,
+html:not(.js-ready) .hero {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+.reveal,
+.impact-item,
+.geste-card,
+.traj-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+.js-ready .reveal,
+.js-ready .impact-item,
+.js-ready .geste-card,
+.js-ready .traj-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.js-ready .reveal.visible,
+.js-ready .impact-item.visible,
+.js-ready .geste-card.visible,
+.js-ready .traj-item.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .question-block.active,
+  .feedback.show,
+  .final-card.show {
+    animation: none !important;
+  }
+}
+</style>
+
+
+<style id="foebeBoussoleWelcomeCompass">
+/* Accueil Scénarios — micro-animation boussole douce */
+.welcome-compass {
+  width: 74px;
+  height: 74px;
+  margin: 24px auto 0;
+  position: relative;
+  border-radius: 999px;
+  border: 1px solid rgba(187, 126, 96, .42);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(187,126,96,.18), transparent 58%),
+    rgba(240,234,231,.045);
+  box-shadow:
+    0 0 0 8px rgba(187,126,96,.045),
+    0 18px 42px rgba(78,41,31,.10);
+  display: grid;
+  place-items: center;
+  color: var(--warm, #BB7E60);
+}
+[data-theme="night"] .welcome-compass {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(187,126,96,.20), transparent 58%),
+    rgba(240,234,231,.04);
+  box-shadow:
+    0 0 0 8px rgba(187,126,96,.055),
+    0 18px 42px rgba(0,0,0,.20);
+}
+.welcome-compass::before,
+.welcome-compass::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+.welcome-compass::before {
+  inset: 12px;
+  border: 1px dashed rgba(187,126,96,.38);
+  animation: foebeCompassSlowTurn 18s linear infinite;
+}
+.welcome-compass::after {
+  width: 9px;
+  height: 9px;
+  background: currentColor;
+  opacity: .88;
+}
+.welcome-compass__needle {
+  width: 4px;
+  height: 44px;
+  position: relative;
+  border-radius: 99px;
+  background: linear-gradient(180deg, #C34234 0 48%, #BB7E60 52% 100%);
+  transform-origin: center;
+  animation: foebeCompassNeedleBreathe 4.8s ease-in-out infinite;
+}
+.welcome-compass__needle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid #C34234;
+}
+.welcome-compass__label {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--soft, rgba(78,41,31,.58));
+  white-space: nowrap;
+}
+@keyframes foebeCompassSlowTurn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes foebeCompassNeedleBreathe {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(7deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-compass::before,
+  .welcome-compass__needle {
+    animation: none !important;
+  }
+}
+</style>
+
 </head>
-<body>
+<body data-foebe-breadcrumb="force">
 <noscript>
   <section class="noscript-panel" aria-label="Information JavaScript">
     <h2>La Boussole est interactive</h2>
     <p>Pour lire les scènes et recevoir les lectures, active JavaScript dans ton navigateur.</p>
     <p>Tu peux aussi continuer vers l’Échelle Foébé ou découvrir les 7 zones.</p>
     <div class="noscript-actions">
-      <a class="btn primary" href="/test.html">Faire l’Échelle Foébé</a>
-      <a class="btn secondary" href="/foebe-zones-cadre.html">Voir les 7 zones</a>
+      <a class="btn primary" href="/echelle-foebe.html">Faire l’Échelle Foébé</a>
+      <a class="btn secondary" href="/zones.html">Voir les 7 zones</a>
     </div>
   </section>
 </noscript>
@@ -519,14 +700,18 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
 <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
   <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
   <div class="fallback-links">
-    <a href="/a-propos.html">À propos</a>
+    <a href="/comprendre.html">Comprendre</a>
     <a href="/methode.html">Méthode</a>
-    <a href="/test.html">Échelle Foébé</a>
-    <a href="/foebe-zones-cadre.html">Les 7 zones</a>
-    <a href="/boussole.html" aria-current="page">Boussole</a>
-    <a href="mailto:contact@maisonfoebe.fr">Contact</a>
+    <a href="/echelle-foebe.html">Échelle Foébé</a>
+    <a href="/zones.html">7 zones</a>
+    <a href="/dictionnaire.html">Dictionnaire</a>
   </div>
 </nav>
+
+<div class="foebe-scroll-progress" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+</div>
+
 
 <main class="site" id="mainContent" tabindex="-1">
   <div class="wrap">
@@ -535,6 +720,12 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
       <h1 id="page-title">S’entraîner <em>à lire son self-care.</em></h1>
       <p class="hero-sub">Lis une scène courte. Choisis ce qui te semble le plus touché, puis l’indice qui t’a aidé·e. La Boussole t’aide ensuite à mieux comprendre ce qui se joue.</p>
       <p class="hero-note">Les scènes sont fictives et construites à partir de vécus courants.</p>
+      
+      <div class="welcome-compass" aria-hidden="true">
+        <span class="welcome-compass__needle"></span>
+        <span class="welcome-compass__label">Lire la scène</span>
+      </div>
+
       <div class="hero-actions">
         <button class="btn primary" type="button" data-start>Commencer une lecture</button>
       </div>
@@ -612,7 +803,7 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
           <p class="reading" id="foebeReading"></p>
           <div class="reader-actions">
             <button class="btn primary" type="button" id="nextScenarioBtn">Lire une autre scène</button>
-            <a class="btn secondary" href="/test.html">Si tu veux aller plus loin → L’Échelle Foébé</a>
+            <a class="btn secondary" href="/echelle-foebe.html">Si tu veux aller plus loin → L’Échelle Foébé</a>
           </div>
         </div>
       </article>
@@ -628,7 +819,7 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
           <h2>La suite : appliquer cette lecture à toi.</h2>
           <p>Si une scène t’a fait réfléchir, l’Échelle Foébé permet d’observer ce qui se joue dans ta propre façon de prendre soin de toi.</p>
         </div>
-        <a class="btn primary" href="/test.html">Faire l’Échelle Foébé</a>
+        <a class="btn primary" href="/echelle-foebe.html">Faire l’Échelle Foébé</a>
       </div>
     </section>
 
@@ -1159,6 +1350,45 @@ loadScenario(0);
 
 })();
 </script>
+<script id="foebeRevealFallbackScript">
+(function(){
+  var items = document.querySelectorAll('.reveal, .impact-item, .geste-card, .traj-item');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('visible'); });
+  }
+})();
+</script>
+
+
+<script id="foebeScrollProgressScript">
+(function(){
+  var bar = document.getElementById('foebeScrollProgressBar');
+  if (!bar) return;
+  var ticking = false;
+  function update(){
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var max = Math.max(doc.scrollHeight, body.scrollHeight, doc.offsetHeight, body.offsetHeight, doc.clientHeight) - window.innerHeight;
+    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+    bar.style.transform = 'scaleX(' + progress + ')';
+    ticking = false;
+  }
+  function requestUpdate(){
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('load', requestUpdate);
+  update();
+})();
+</script>
+
 <script src="/foebe-shell.js"></script>
+<script src="/foebe-breadcrumb.js"></script>
 </body>
 </html>
