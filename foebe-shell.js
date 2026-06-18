@@ -1,15 +1,13 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version routes publiques 2026-06 — nav/footer/fil d'Ariane unifiés
+ * Version routes publiques 2026 — nav/footer/fil d’Ariane unifiés
  *
- * À déposer dans public/foebe-shell.js.
- * HTML : <script src="/foebe-shell.js"></script>
- * Astro : <script is:inline src="/foebe-shell.js"></script>
+ * À déposer à la racine du site, au même niveau que index.html.
+ * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
+ * En Astro : <script is:inline src="/foebe-shell.js"></script>
  */
 (function () {
   "use strict";
-
-  var FOEBE_SHELL_ROUTES_VERSION = "routes-2026-06-index-echelle-zones-boussole-scenarios-lexique";
 
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -152,9 +150,8 @@
       file = String(file || "index.html").toLowerCase();
       try { file = decodeURIComponent(file); } catch (e) {}
       file = file.split("?")[0].split("#")[0];
-      file = file.replace(/^https?:\/\/[^/]+/i, "");
       file = file.replace(/^\/+|\/+$/g, "");
-      file = file.replace(/\/index\.html?$/i, "");
+      file = file.replace(/\/index$/i, "");
       file = file.replace(/\.html?$/i, "");
 
       if (file === "" || file === "/" || file === "index" || file.indexOf("index-") === 0 || file.indexOf("index_") === 0) return "index.html";
@@ -177,8 +174,6 @@
 
       if (
         file === "zones" ||
-        file === "foebe-zones-cadre" ||
-        file.indexOf("foebe-zones-cadre") === 0 ||
         file.indexOf("zones-cadre") === 0 ||
         file.indexOf("7-zones") === 0 ||
         file.indexOf("sept-zones") === 0
@@ -195,19 +190,17 @@
       if (
         file === "boussole/scenarios" ||
         file === "boussole/scenario" ||
-        file === "boussole-scenarios" ||
-        file === "boussole-scenario" ||
         file === "scenarios" ||
-        file === "scenario"
+        file === "scenario" ||
+        file.indexOf("boussole/scenarios") === 0 ||
+        file.indexOf("boussole/scenario") === 0
       ) return "boussole-scenarios.html";
 
       if (
-        file === "boussole" ||
-        file === "boussole-accueil-foebe" ||
-        file.indexOf("boussole-accueil") === 0 ||
         file.indexOf("sas-boussole") === 0 ||
         file.indexOf("sas-de-la-boussole") === 0
       ) return "boussole.html";
+      if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
       if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
       if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
@@ -217,7 +210,7 @@
       if (file.indexOf("zone-relations") === 0) return "zone-relations.html";
       if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
 
-      if (file === "stories" || file.indexOf("stories") === 0 || file.indexOf("lexique") === 0) return "lexique.html";
+      if (file === "lexique" || file.indexOf("lexique") === 0) return "lexique.html";
       if (
         file === "dictionnaire" ||
         file.indexOf("dictionnaire") === 0 ||
@@ -226,12 +219,19 @@
       ) return "dictionnaire.html";
 
       if (file === "mentions" || file.indexOf("mentions") === 0) return "mentions-legales.html";
-      if (file === "mentions-legales" || file.indexOf("mentions-legales") === 0) return "mentions-legales.html";
       return file;
     }
 
     function getCurrentFile() {
-      return normalizeFile(window.location.pathname || "/");
+      var path = window.location.pathname || "/";
+      try { path = decodeURIComponent(path); } catch (e) {}
+      path = path.split("?")[0].split("#")[0].replace(/\/+$/g, "");
+      if (!path || path === "") return "index.html";
+      if (/\/boussole\/scenarios$/i.test(path) || /\/boussole\/scenario$/i.test(path)) {
+        return "boussole-scenarios.html";
+      }
+      var last = path.split("/").pop() || "index.html";
+      return normalizeFile(last);
     }
 
     function toPageClass(file) {
@@ -243,103 +243,104 @@
 
     var trails = {
       "comprendre.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Découvrir" },
         { label: "Comprendre", current: true }
       ],
       "a-propos.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Découvrir" },
         { label: "À propos", current: true }
       ],
       "methode.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Découvrir" },
-        { label: "Méthode", current: true }
+        { label: "La méthode Foébé", current: true }
       ],
       "pratiquer.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Pratiquer" },
         { label: "4 outils", current: true }
       ],
       "echelle-foebe.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Pratiquer" },
         { label: "Échelle Foébé", current: true }
       ],
       "zones.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Pratiquer" },
         { label: "7 zones", current: true }
       ],
       "respiration.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Pratiquer" },
         { label: "Respiration guidée", current: true }
       ],
       "boussole.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Pratiquer" },
         { label: "Boussole", current: true }
       ],
       "boussole-scenarios.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/boussole.html", label: "Boussole" },
+        { href: "index.html", label: "Accueil" },
+        { href: "boussole.html", label: "Boussole" },
         { label: "Scénarios", current: true }
       ],
       "lexique.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Ressources" },
-        { label: "Lexique", current: true }
+        { label: "Lexique Foébé", current: true }
       ],
       "dictionnaire.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Ressources" },
         { label: "Dictionnaire", current: true }
       ],
       "mentions-legales.html": [
-        { href: "/index.html", label: "Accueil" },
+        { href: "index.html", label: "Accueil" },
         { label: "Informations" },
         { label: "Mentions légales", current: true }
       ],
       "zone-corps.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Corps", current: true }
       ],
       "zone-emotions.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Émotions", current: true }
       ],
       "zone-mental.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Mental", current: true }
       ],
       "zone-energie.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Énergie", current: true }
       ],
       "zone-environnement.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Environnement", current: true }
       ],
       "zone-relations.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Relations", current: true }
       ],
       "zone-sens.html": [
-        { href: "/index.html", label: "Accueil" },
-        { href: "/zones.html", label: "7 zones" },
+        { href: "index.html", label: "Accueil" },
+        { href: "zones.html", label: "7 zones" },
         { label: "Sens", current: true }
       ]
     };
 
     if (currentFile === "index.html") return;
+
     var trail = trails[currentFile];
     if (!trail) return;
 
@@ -426,7 +427,7 @@
     var testIntroWrap = document.querySelector("#screenIntro .intro-wrap, .screen.active .intro-wrap, .intro-wrap");
     var dictHero = document.querySelector(".dict-hero");
     var dictLayout = document.querySelector(".dict-layout, .dictionary-layout, .dictionary-shell, .dictionnaire-layout, .dict-page, .library-layout, .lexicon-layout");
-    var isBoussolePage = currentFile === "boussole.html" || currentFile === "boussole-scenarios.html";
+    var isBoussolePage = currentFile === "boussole.html" || currentFile === "boussole.html";
 
     /* Pages sans hero standard : fil intégré au bloc d’introduction, pas collé à la nav. */
     if (currentFile === "respiration.html" && stateIntro) {
@@ -494,8 +495,15 @@
     /* ═══════════════════════════════════════════════════════════════════════════
      2. DÉTECTION DE LA PAGE COURANTE
   ═══════════════════════════════════════════════════════════════════════════ */
-  var currentFile = (window.location.pathname || "/").split("?")[0].split("#")[0];
-  if (!currentFile) currentFile = "index.html";
+  var currentPath = (window.location.pathname || "/").split("?")[0].split("#")[0].replace(/\/+$/g, "");
+  var currentFile = "index.html";
+  if (currentPath && currentPath !== "/") {
+    if (/\/boussole\/scenarios$/i.test(currentPath) || /\/boussole\/scenario$/i.test(currentPath)) {
+      currentFile = "boussole-scenarios.html";
+    } else {
+      currentFile = (currentPath.split("/").pop() || "index.html");
+    }
+  }
 
   /*
    * Normalisation page active — Maison Foébé
@@ -506,9 +514,8 @@
     file = String(file || "index.html").toLowerCase();
     try { file = decodeURIComponent(file); } catch (e) {}
     file = file.split("?")[0].split("#")[0];
-    file = file.replace(/^https?:\/\/[^/]+/i, "");
     file = file.replace(/^\/+|\/+$/g, "");
-    file = file.replace(/\/index\.html?$/i, "");
+    file = file.replace(/\/index$/i, "");
     file = file.replace(/\.html?$/i, "");
 
     if (file === "" || file === "/" || file === "index" || file.indexOf("index-") === 0 || file.indexOf("index_") === 0) return "index.html";
@@ -519,11 +526,12 @@
     if (file === "a-propos" || file.indexOf("a-propos") === 0 || file.indexOf("apropos") === 0) return "a-propos.html";
 
     if (file === "test" || file.indexOf("test") === 0 || file.indexOf("testpratiquer") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "echelle-foebe.html";
-    if (file === "zones" || file === "foebe-zones-cadre" || file.indexOf("foebe-zones-cadre") === 0 || file.indexOf("zones-cadre") === 0 || file.indexOf("7-zones") === 0 || file.indexOf("sept-zones") === 0) return "zones.html";
+    if (file === "zones" || file.indexOf("zones") === 0) return "zones.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
 
-    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "boussole-scenarios" || file === "boussole-scenario" || file === "scenarios" || file === "scenario") return "boussole-scenarios.html";
-    if (file === "boussole" || file === "boussole-accueil-foebe" || file.indexOf("boussole-accueil") === 0 || file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole.html";
+    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-scenarios.html";
+    if (file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole.html";
+    if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
     if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
     if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
@@ -533,9 +541,9 @@
     if (file.indexOf("zone-relations") === 0) return "zone-relations.html";
     if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
 
-    if (file === "stories" || file.indexOf("stories") === 0 || file.indexOf("lexique") === 0) return "lexique.html";
+    if (file === "lexique" || file.indexOf("lexique") === 0) return "lexique.html";
     if (file === "dictionnaire" || file.indexOf("dictionnaire") === 0) return "dictionnaire.html";
-    if (file === "mentions" || file.indexOf("mentions") === 0 || file === "mentions-legales" || file.indexOf("mentions-legales") === 0) return "mentions-legales.html";
+    if (file === "mentions" || file.indexOf("mentions") === 0) return "mentions-legales.html";
 
     return file;
   }
@@ -557,23 +565,24 @@
   ═══════════════════════════════════════════════════════════════════════════ */
   var NAV_STRUCTURE = [
     { pole: "Accueil", links: [
-      { href: "/index.html", label: "Accueil" }
+      { href: "index.html", label: "Accueil" }
     ]},
     { pole: "Découvrir", links: [
-      { href: "/comprendre.html", label: "Comprendre" },
-      { href: "/methode.html",    label: "Méthode" },
-      { href: "/a-propos.html",   label: "À propos" }
+      { href: "comprendre.html", label: "Comprendre" },
+      { href: "a-propos.html",   label: "À propos"   },
+      { href: "methode.html",    label: "La méthode Foébé" }
     ]},
     { pole: "Pratiquer", links: [
-      { href: "/echelle-foebe.html",     label: "Échelle Foébé" },
-      { href: "/zones.html",             label: "7 zones", activeWhenZones: true },
-      { href: "/boussole.html",          label: "Boussole" },
-      { href: "/boussole/scenarios/",    label: "Scénarios" },
-      { href: "/respiration.html",       label: "Respiration" }
+      { href: "pratiquer.html",          label: "4 outils" },
+      { href: "echelle-foebe.html",      label: "Échelle Foébé" },
+      { href: "zones.html",              label: "7 zones", activeWhenZones: true },
+      { href: "respiration.html",        label: "Respiration guidée" },
+      { href: "boussole.html",           label: "Boussole" },
+      { href: "boussole/scenarios/",     label: "Scénarios" }
     ]},
     { pole: "Ressources", links: [
-      { href: "/lexique.html",       label: "Lexique" },
-      { href: "/dictionnaire.html",  label: "Dictionnaire" }
+      { href: "lexique.html",      label: "Lexique Foébé" },
+      { href: "dictionnaire.html", label: "Dictionnaire" }
     ]}
   ];
 
@@ -604,7 +613,7 @@
   }
   mainNav.setAttribute("aria-label", "Navigation principale");
   mainNav.innerHTML =
-    '<a aria-label="Maison Foébé — accueil" class="nav-logo" href="/index.html">' +
+    '<a aria-label="Maison Foébé — accueil" class="nav-logo" href="index.html">' +
       '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
     '</a>' +
           '<div class="nav-right">' +
@@ -667,7 +676,7 @@
 
   footerEl.innerHTML =
     '<div class="footer-inner">' +
-      '<a aria-label="Retour accueil Maison Foébé" class="footer-logo" href="/index.html">' +
+      '<a aria-label="Retour accueil Maison Foébé" class="footer-logo" href="index.html">' +
         '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
       '</a>' +
       '<p class="footer-sub">Maison Foébé · Espace structuré du self-care</p>' +
@@ -678,12 +687,11 @@
         '<a aria-label="Envoyer un email à Maison Foébé" class="social-icon" href="mailto:contact@maisonfoebe.fr">' + EMAIL_SVG + '</a>' +
       '</div>' +
       '<div class="footer-links">' +
-        '<a class="footer-link" href="/mentions-legales.html">Mentions légales</a>' +
-        '<a class="footer-link" href="/comprendre.html">Comprendre</a>' +
-        '<a class="footer-link" href="/methode.html">Méthode</a>' +
-        '<a class="footer-link" href="/echelle-foebe.html">Échelle Foébé</a>' +
-        '<a class="footer-link" href="/zones.html">7 zones</a>' +
-        '<a class="footer-link" href="/a-propos.html">À propos</a>' +
+        '<a class="footer-link" href="mentions-legales.html">Mentions légales</a>' +
+        '<a class="footer-link" href="comprendre.html">Comprendre</a>' +
+        '<a class="footer-link" href="pratiquer.html">Pratiquer</a>' +
+        '<a class="footer-link" href="a-propos.html">À propos</a>' +
+        '<a class="footer-link" href="methode.html">Méthode</a>' +
       '</div>' +
       '<p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>' +
     '</div>';
