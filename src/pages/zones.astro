@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="night" lang="fr">
+<html data-theme="night" lang="fr" data-foebe-breadcrumb="force">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1055,6 +1055,44 @@ main{
   }
 }
 </style>
+
+<style id="foebeScrollProgressCss">
+/* Barre de progression Maison Foébé — pages éditoriales */
+.foebe-scroll-progress {
+  position: fixed;
+  top: var(--nav-offset, 60px);
+  left: 0;
+  right: 0;
+  z-index: 940;
+  height: 3px;
+  background: rgba(187, 126, 96, .16);
+  pointer-events: none;
+}
+.foebe-scroll-progress__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #BB7E60, #C45279, #C34234);
+  box-shadow: 0 0 14px rgba(187, 126, 96, .34);
+  will-change: transform;
+}
+[data-theme="day"] .foebe-scroll-progress {
+  background: rgba(78, 41, 31, .10);
+}
+@media (max-width: 720px) {
+  .foebe-scroll-progress {
+    height: 2px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foebe-scroll-progress__bar {
+    transition: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation principale de secours">
@@ -1067,6 +1105,11 @@ main{
     <a href="dictionnaire.html">Dictionnaire</a>
   </div>
 </nav>
+
+<div class="foebe-scroll-progress" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+</div>
+
 <main>
 <section class="hero" aria-labelledby="hero-heading">
 <h1 class="hero-title" id="hero-heading"><span class="line">Comprendre les</span><span class="line"><em>7 zones</em> du self-care</span></h1>
@@ -1106,6 +1149,45 @@ main{
   revealItems.forEach(function(el){observer.observe(el);});
 })();
 </script>
+
+<script is:inline id="foebeScrollProgressScript">
+(function(){
+  var bar = document.getElementById('foebeScrollProgressBar');
+  if (!bar) return;
+
+  var ticking = false;
+
+  function update(){
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var max = Math.max(
+      doc.scrollHeight,
+      body.scrollHeight,
+      doc.offsetHeight,
+      body.offsetHeight,
+      doc.clientHeight
+    ) - window.innerHeight;
+
+    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+    bar.style.transform = 'scaleX(' + progress + ')';
+    ticking = false;
+  }
+
+  function requestUpdate(){
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('load', requestUpdate);
+  update();
+})();
+</script>
+
 <script is:inline src="/foebe-shell.js"></script>
 </body>
 </html>
