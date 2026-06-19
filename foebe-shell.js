@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version V8 — navigation contextuelle + progression globale compatible fallback
+ * Version V9 — navigation contextuelle + progression fine + stories immersives
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -27,7 +27,7 @@
      1. CSS PARTAGÉ — nav, menu, footer, responsive
   ═══════════════════════════════════════════════════════════════════════════ */
   var SHELL_CSS = [
-    ":root{--foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#BB7E60 22%,#C45279 44%,#C34234 66%,#F0EAE7 84%,#4E291F 100%)!important;}",
+    ":root{--foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#8E5B43 24%,#BB7E60 48%,#C45279 74%,#C34234 100%)!important;}",
     "#mainNav{position:fixed!important;top:0!important;left:0!important;right:0!important;height:60px!important;",
     "background:color-mix(in srgb,var(--bg) 92%,transparent)!important;border-bottom:1px solid var(--border,rgba(187,126,96,.25))!important;",
     "display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:clamp(10px,2vw,22px)!important;padding:0 clamp(16px,3vw,28px)!important;",
@@ -56,9 +56,17 @@
     "[data-theme='day'] .shell-page-current{color:#4E291F!important;}",
     "[data-theme='night'] .shell-context-back,[data-theme='night'] .shell-page-current{color:#F0EAE7!important;}",
     "[data-theme='night'] .shell-context-back__arrow{color:#BB7E60!important;}",
-    "#foebeReadingProgress{position:absolute!important;left:0!important;right:0!important;bottom:-1px!important;height:3px!important;overflow:hidden!important;background:rgba(187,126,96,.14)!important;pointer-events:none!important;z-index:2!important;}",
-    "#foebeReadingProgressBar{display:block!important;width:100%!important;height:100%!important;transform:scaleX(var(--foebe-reading-progress,0))!important;transform-origin:left center!important;will-change:transform!important;background:var(--foebe-progress-gradient)!important;box-shadow:0 0 8px rgba(196,82,121,.26)!important;transition:transform .08s linear!important;}",
+    "#foebeReadingProgress{position:absolute!important;left:0!important;right:0!important;bottom:-1px!important;height:2px!important;overflow:hidden!important;background:transparent!important;pointer-events:none!important;z-index:2!important;}",
+    "#foebeReadingProgressBar{display:block!important;width:100%!important;height:100%!important;transform:scaleX(var(--foebe-reading-progress,0))!important;transform-origin:left center!important;will-change:transform!important;background:var(--foebe-progress-gradient)!important;box-shadow:0 1px 4px rgba(187,126,96,.18)!important;transition:transform .08s linear!important;}",
     "html.foebe-reading-progress-disabled #foebeReadingProgress{display:none!important;}",
+    "html[data-foebe-nav='dark'] #mainNav{background:rgba(44,26,18,.96)!important;border-bottom-color:rgba(187,126,96,.38)!important;box-shadow:0 10px 32px rgba(0,0,0,.26)!important;}",
+    "html[data-foebe-nav='dark'] .shell-context-back,html[data-foebe-nav='dark'] .shell-page-current{color:#F0EAE7!important;}",
+    "html[data-foebe-nav='dark'] .shell-context-back__arrow{color:#BB7E60!important;}",
+    "html[data-foebe-nav='dark'] .shell-page-current::after{background:#BB7E60!important;}",
+    "html[data-foebe-nav='dark'] #menuToggle,html[data-foebe-nav='dark'] .theme-toggle{color:#F0EAE7!important;background:rgba(240,234,231,.08)!important;border-color:rgba(187,126,96,.38)!important;}",
+    "html[data-foebe-nav='dark'] #navMenu{background:linear-gradient(180deg,rgba(78,41,31,.985),rgba(44,26,18,.985))!important;}",
+    "html[data-foebe-nav='dark'] #navMenu .nav-link{color:#F0EAE7!important;}",
+    "html.foebe-story-immersive .theme-toggle{display:none!important;}",
 
     ".nav-right{display:flex!important;align-items:center!important;gap:10px!important;}",
     ".theme-toggle,#menuToggle{appearance:none!important;-webkit-appearance:none!important;}",
@@ -283,6 +291,20 @@
 
   var shellPageContext = getShellPageContext();
   if (shellPageContext) document.documentElement.classList.add("foebe-has-shell-context");
+
+  var shellPathForMode = String(currentPath || window.location.pathname || "/").toLowerCase();
+  var shellIsStoryImmersive = (
+    currentFile === "lexique.html" ||
+    currentFile === "dictionnaire.html" ||
+    currentFile === "stories.html" ||
+    shellPathForMode.indexOf("/stories/") !== -1 ||
+    shellPathForMode.indexOf("/lexique/") !== -1 ||
+    shellPathForMode.indexOf("/dictionnaire/") !== -1 ||
+    /^(story-|fiche-|lexique-|dictionnaire-)/.test(currentFile)
+  );
+  if (shellIsStoryImmersive) {
+    document.documentElement.classList.add("foebe-story-immersive");
+  }
 
   /* ═══════════════════════════════════════════════════════════════════════════
      3. INJECTION DU NAV
@@ -919,6 +941,7 @@ if (fallbackNav) {
     }
 
     function isImmersiveStoryPage() {
+      if (shellIsStoryImmersive) return true;
       var path = normalizedPath();
       var parts = path.split("/").filter(Boolean);
       var file = parts.length ? parts[parts.length - 1] : "index.html";
@@ -962,7 +985,7 @@ if (fallbackNav) {
     }
 
     function inactivityDelay() {
-      return isImmersiveStoryPage() ? 2200 : 2700;
+      return isImmersiveStoryPage() ? 1500 : 2200;
     }
 
     function injectCss() {
@@ -978,6 +1001,15 @@ if (fallbackNav) {
             "pointer-events:auto!important;",
             "will-change:transform,opacity!important;",
             "transition:transform .28s cubic-bezier(.22,1,.36,1),opacity .20s ease,background .35s,border-color .35s,box-shadow .35s!important;",
+          "}",
+          "html.foebe-story-immersive.foebe-nav-auto-hide #mainNav{",
+            "background:rgba(44,26,18,.96)!important;",
+          "}",
+          "html.foebe-story-immersive.foebe-nav-auto-hide.foebe-nav-hidden:not(.foebe-nav-menu-open) #mainNav{",
+            "transform:translate3d(0,calc(-100% - 10px),0)!important;",
+            "opacity:0!important;",
+            "visibility:hidden!important;",
+            "pointer-events:none!important;",
           "}",
           "html.foebe-nav-auto-hide.foebe-nav-hidden:not(.foebe-nav-menu-open) #mainNav{",
             "transform:translate3d(0,calc(-100% - 8px),0)!important;",
@@ -1011,7 +1043,7 @@ if (fallbackNav) {
         root.classList.remove(hiddenClass);
       } else {
         root.classList.remove(menuOpenClass);
-        if (mobileEnabled()) scheduleHide();
+        if (mobileEnabled()) scheduleHide(isImmersiveStoryPage() ? 1500 : 2200);
       }
     }
 
@@ -1049,6 +1081,16 @@ if (fallbackNav) {
       }
 
       root.classList.add(enabledClass);
+      if (isImmersiveStoryPage()) root.classList.add("foebe-story-shell-active");
+      else root.classList.remove("foebe-story-shell-active");
+
+      if (isImmersiveStoryPage() && !menuIsOpen()) {
+        clearHideTimer();
+        root.classList.remove(menuOpenClass);
+        root.classList.add(hiddenClass);
+        return;
+      }
+
       root.classList.remove(hiddenClass);
       setMenuState();
       if (!menuIsOpen()) scheduleHide();
@@ -1072,7 +1114,7 @@ if (fallbackNav) {
 
       /* Sur les stories, un toucher dans les 76 px supérieurs rappelle le Shell.
          Un toucher ailleurs continue la story sans casser l'immersion. */
-      if (pointerStartY !== null && pointerStartY <= 76) {
+      if (pointerStartY !== null && pointerStartY <= 24) {
         showNav();
       }
     }
