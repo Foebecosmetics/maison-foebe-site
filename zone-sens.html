@@ -43,7 +43,7 @@
             emoji: "✨",
             title: "Zone Sens · Maison Foébé",
             metaDesc: "Zone Sens · Maison Foébé : comprendre la perte de sens, le décalage entre valeurs et actions, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets pour retrouver un fil directeur.",
-            canonicalUrl: "https://maisonfoebe.fr/zone-sens",
+            canonicalUrl: "https://maisonfoebe.fr/zone-sens.html",
             ogTitle: "Zone Sens · Maison Foébé",
             ogDesc: "Zone Sens : comprendre la perte de direction, faire le mini-test, voir les effets en cascade et choisir un geste de reconnexion au sens. Self-care structuré Foébé",
             keywords: "self-care, zone sens, perte de sens, fatigue existentielle, burnout fonctionnel, valeurs",
@@ -337,11 +337,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="description" id="metaDesc" content="Zone Sens · Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur avec Maison Foébé.">
-    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-sens">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-sens.html">
     <meta property="og:title" id="ogTitle" content="Zone Sens · Maison Foébé">
     <meta property="og:description" id="ogDesc" content="Comprendre la perte de sens, faire le mini-test et choisir un premier geste pour retrouver un fil directeur.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-sens">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-sens.html">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-sens.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Zone Sens · Maison Foébé">
@@ -353,7 +353,7 @@
       "@type": "WebPage",
       "name": "Zone Sens · Maison Foébé",
       "description": "Comprendre les mécanismes de la zone Sens : urgence qui écrase l'essentiel, décalage valeurs-actions, absence de cap.",
-      "url": "https://maisonfoebe.fr/zone-sens",
+      "url": "https://maisonfoebe.fr/zone-sens.html",
       "inLanguage": "fr",
       "isPartOf": {
         "@type": "WebSite",
@@ -5603,6 +5603,45 @@ body.state-active .ici-card {
   .zone-hero-waves{ height:clamp(56px,22vw,115px); }
 }
 </style>
+
+<style id="foebeZoneProgressStableCss">
+/* Correctif progression — pages zones HTML plates.
+   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
+   Z-index haut pour ne plus disparaître derrière la nav. */
+#pageProgress{
+  position:fixed!important;
+  top:60px!important;
+  left:0!important;
+  right:0!important;
+  z-index:100020!important;
+  height:3px!important;
+  background:rgba(187,126,96,.16)!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+}
+#pageProgressFill{
+  display:block!important;
+  height:100%!important;
+  width:0%;
+  background:linear-gradient(90deg,var(--z-mid,#BB7E60),#BB7E60,#C45279,#C34234)!important;
+  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
+  transition:width .12s linear!important;
+  will-change:width!important;
+}
+[data-theme="day"] #pageProgress{
+  background:rgba(78,41,31,.10)!important;
+}
+@media(max-width:640px){
+  #pageProgress{
+    top:58px!important;
+    height:2px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #pageProgressFill{transition:none!important;}
+}
+</style>
+
 </head>
 <body>
 <div id="pageProgress">

@@ -528,10 +528,10 @@ main{
 /* Initiales par zone */
 .star-mental{    --x:18%; --y:30%; --c:#C4607E; --init:"M" }
 .star-corps{     --x:38%; --y:16%; --c:#C28A55; --init:"C" }
-.star-energie{   --x:64%; --y:20%; --c:#D4A56A; --init:"Én" }
-.star-emotions{  --x:84%; --y:46%; --c:#4A88B0; --init:"Ém" }
+.star-energie{   --x:64%; --y:20%; --c:#D4A56A; --init:"É" }
+.star-emotions{  --x:84%; --y:46%; --c:#4A88B0; --init:"E" }
 .star-relations{ --x:68%; --y:80%; --c:#C06090; --init:"R" }
-.star-environnement{--x:28%;--y:78%;--c:#5AAA72;--init:"Ev"}
+.star-environnement{--x:28%;--y:78%;--c:#5AAA72;--init:"V"}
 .star-sens{      --x:50%; --y:50%; --c:#9A78D0; --init:"S" }
 
 /* Mode jour — mêmes teintes mais plus profondes pour contraste sur F0EAE7 */
@@ -1094,298 +1094,42 @@ main{
 </style>
 
 
-<style id="foebeZonesMobileConstellationPatch">
-/* Patch final zones — barre collée à la nav + constellation mobile lisible.
-   HTML only. Ne touche pas à la structure desktop ni au Shell. */
+<style id="foebeZoneProgressStableCss">
+/* Correctif progression — page 7 zones HTML plate.
+   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
+   Z-index haut pour ne plus disparaître derrière la nav. */
 .foebe-scroll-progress{
-  top:59px !important;
-}
-@media(max-width:720px){
-  .foebe-scroll-progress{
-    top:57px !important;
-  }
-}
-
-/* Téléphone : on garde l'idée constellation, mais on supprime les liaisons visuelles
-   et on transforme les étoiles en repères lisibles. */
-@media(orientation:portrait) and (max-width:767px){
-  .zone-cosmos{
-    width:100% !important;
-    aspect-ratio:auto !important;
-    min-height:0 !important;
-    margin-top:32px !important;
-    padding:18px !important;
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:10px !important;
-    border-radius:22px !important;
-    overflow:hidden !important;
-    background:
-      radial-gradient(circle at 18% 12%, rgba(187,126,96,.18), transparent 30%),
-      radial-gradient(circle at 86% 88%, rgba(196,82,121,.12), transparent 28%),
-      linear-gradient(160deg, rgba(240,234,231,.045), rgba(187,126,96,.035)) !important;
-  }
-  [data-theme="day"] .zone-cosmos{
-    background:
-      radial-gradient(circle at 18% 12%, rgba(187,126,96,.13), transparent 30%),
-      radial-gradient(circle at 86% 88%, rgba(78,41,31,.07), transparent 30%),
-      linear-gradient(160deg, rgba(255,255,255,.34), rgba(187,126,96,.08)) !important;
-  }
-  .zone-cosmos::before{
-    background-image:
-      radial-gradient(circle, rgba(240,234,231,.42) 0 .7px, transparent 1.2px),
-      radial-gradient(circle, rgba(187,126,96,.28) 0 .55px, transparent 1px) !important;
-    background-size:72px 72px, 118px 118px !important;
-    background-position:12px 20px, 46px 62px !important;
-    opacity:.32 !important;
-    mask-image:none !important;
-    -webkit-mask-image:none !important;
-  }
-  [data-theme="day"] .zone-cosmos::before{
-    background-image:
-      radial-gradient(circle, rgba(78,41,31,.22) 0 .7px, transparent 1.2px),
-      radial-gradient(circle, rgba(187,126,96,.24) 0 .55px, transparent 1px) !important;
-    opacity:.22 !important;
-  }
-  .zone-cosmos::after{
-    opacity:.22 !important;
-    filter:blur(44px) !important;
-  }
-
-  .cosmos-lines{
-    display:none !important;
-  }
-
-  .cosmos-center{
-    position:relative !important;
-    left:auto !important;
-    top:auto !important;
-    transform:none !important;
-    width:44px !important;
-    height:44px !important;
-    margin:0 auto 8px !important;
-    grid-column:1 / -1 !important;
-    font-size:18px !important;
-    z-index:2 !important;
-  }
-
-  .cosmos-star,
-  .cosmos-star:hover,
-  .cosmos-star:focus-visible{
-    position:relative !important;
-    left:auto !important;
-    top:auto !important;
-    transform:none !important;
-    width:100% !important;
-    height:auto !important;
-    min-height:54px !important;
-    padding:11px 13px !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:flex-start !important;
-    gap:12px !important;
-    border:1px solid rgba(187,126,96,.28) !important;
-    border-radius:16px !important;
-    background:rgba(240,234,231,.055) !important;
-    color:#F0EAE7 !important;
-    box-shadow:none !important;
-    text-decoration:none !important;
-    overflow:hidden !important;
-  }
-  [data-theme="day"] .cosmos-star,
-  [data-theme="day"] .cosmos-star:hover,
-  [data-theme="day"] .cosmos-star:focus-visible{
-    background:rgba(255,255,255,.36) !important;
-    border-color:rgba(78,41,31,.18) !important;
-    color:#4E291F !important;
-  }
-
-  .cosmos-star::before,
-  .cosmos-star:hover::before,
-  .cosmos-star:focus-visible::before{
-    position:relative !important;
-    flex:0 0 auto !important;
-    width:25px !important;
-    height:25px !important;
-    transform:none !important;
-    background:#5E3519 !important;
-    border:1px solid rgba(240,234,231,.35) !important;
-    color:#F0EAE7 !important;
-    box-shadow:0 0 0 5px rgba(187,126,96,.12), 0 0 16px rgba(187,126,96,.20) !important;
-    font-size:9.5px !important;
-  }
-  [data-theme="day"] .cosmos-star::before,
-  [data-theme="day"] .cosmos-star:hover::before,
-  [data-theme="day"] .cosmos-star:focus-visible::before{
-    background:#4E291F !important;
-    border-color:#4E291F !important;
-    color:#F0EAE7 !important;
-    box-shadow:0 0 0 5px rgba(78,41,31,.08) !important;
-  }
-
-  .cosmos-star::after,
-  .cosmos-star:hover::after,
-  .cosmos-star:focus-visible::after{
-    content:"" !important;
-    position:absolute !important;
-    right:13px !important;
-    top:50% !important;
-    transform:translateY(-50%) !important;
-    width:5px !important;
-    height:5px !important;
-    border:0 !important;
-    border-radius:999px !important;
-    background:#BB7E60 !important;
-    opacity:.72 !important;
-    box-shadow:0 0 12px rgba(187,126,96,.35) !important;
-  }
-  [data-theme="day"] .cosmos-star::after,
-  [data-theme="day"] .cosmos-star:hover::after,
-  [data-theme="day"] .cosmos-star:focus-visible::after{
-    background:#4E291F !important;
-    box-shadow:none !important;
-    opacity:.55 !important;
-  }
-
-  .cosmos-star span,
-  .star-corps span,
-  .star-sens span,
-  .star-energie span,
-  .star-emotions span,
-  .star-mental span,
-  .star-environnement span,
-  .cosmos-star:hover span,
-  .cosmos-star:focus-visible span,
-  .star-corps:hover span,
-  .star-corps:focus-visible span,
-  .star-energie:hover span,
-  .star-energie:focus-visible span,
-  .star-emotions:hover span,
-  .star-emotions:focus-visible span,
-  .star-mental:hover span,
-  .star-mental:focus-visible span,
-  .star-environnement:hover span,
-  .star-environnement:focus-visible span{
-    position:static !important;
-    inset:auto !important;
-    transform:none !important;
-    max-width:none !important;
-    padding:0 !important;
-    border:0 !important;
-    background:transparent !important;
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    color:currentColor !important;
-    font-size:12px !important;
-    font-weight:800 !important;
-    letter-spacing:.11em !important;
-    line-height:1.15 !important;
-    text-align:left !important;
-    white-space:normal !important;
-    opacity:1 !important;
-  }
-
-  .cosmos-star:hover,
-  .cosmos-star:focus-visible{
-    border-color:rgba(187,126,96,.52) !important;
-    background:rgba(187,126,96,.12) !important;
-    outline:2px solid rgba(187,126,96,.42) !important;
-    outline-offset:2px !important;
-  }
-  [data-theme="day"] .cosmos-star:hover,
-  [data-theme="day"] .cosmos-star:focus-visible{
-    border-color:rgba(78,41,31,.36) !important;
-    background:rgba(187,126,96,.14) !important;
-  }
-}
-
-@media(orientation:portrait) and (max-width:390px){
-  .zone-cosmos{
-    padding:16px !important;
-    gap:9px !important;
-  }
-  .cosmos-star,
-  .cosmos-star:hover,
-  .cosmos-star:focus-visible{
-    min-height:52px !important;
-    padding:10px 12px !important;
-  }
-  .cosmos-star span{
-    font-size:11.5px !important;
-    letter-spacing:.095em !important;
-  }
-}
-</style>
-
-
-<style id="foebeZonesProgressFontFinalPatch">
-/* Zones — correctif final : barre visible mobile/tablette + typographies constellation.
-   HTML seul. Ne touche pas à la structure ni aux liens. */
-.foebe-scroll-progress{
-  position:fixed !important;
-  top:59px !important;
-  left:0 !important;
-  right:0 !important;
-  z-index:100000 !important;
-  display:block !important;
-  visibility:visible !important;
-  opacity:1 !important;
-  height:3px !important;
-  pointer-events:none !important;
-  background:rgba(187,126,96,.16) !important;
-  transform:none !important;
+  position:fixed!important;
+  top:60px!important;
+  left:0!important;
+  right:0!important;
+  z-index:100020!important;
+  height:3px!important;
+  background:rgba(187,126,96,.16)!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
 }
 .foebe-scroll-progress__bar{
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  transform-origin:left center !important;
-  background:linear-gradient(90deg,#BB7E60 0%,#C45279 58%,#C34234 100%) !important;
-  box-shadow:0 0 14px rgba(187,126,96,.34) !important;
-}
-html.foebe-shell-ready .foebe-scroll-progress,
-html.foebe-shell-loading .foebe-scroll-progress,
-html.foebe-shell-failed .foebe-scroll-progress{
-  top:59px !important;
-}
-@media(max-width:720px){
-  .foebe-scroll-progress,
-  html.foebe-shell-ready .foebe-scroll-progress,
-  html.foebe-shell-loading .foebe-scroll-progress,
-  html.foebe-shell-failed .foebe-scroll-progress{
-    top:57px !important;
-    height:2px !important;
-  }
-}
-@media(min-width:721px) and (max-width:1180px){
-  .foebe-scroll-progress,
-  html.foebe-shell-ready .foebe-scroll-progress,
-  html.foebe-shell-loading .foebe-scroll-progress,
-  html.foebe-shell-failed .foebe-scroll-progress{
-    top:59px !important;
-    height:3px !important;
-  }
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  transform:scaleX(0);
+  transform-origin:left center!important;
+  background:linear-gradient(90deg,#BB7E60,#C45279,#C34234)!important;
+  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
+  will-change:transform!important;
 }
 [data-theme="day"] .foebe-scroll-progress{
-  background:rgba(78,41,31,.10) !important;
+  background:rgba(78,41,31,.10)!important;
 }
-
-/* Constellation : F Maison Foébé en Montserrat, pas en Lora. */
-.cosmos-center{
-  font-family:Montserrat, Poppins, sans-serif !important;
-  font-style:normal !important;
-  font-weight:700 !important;
-  letter-spacing:-.06em !important;
+@media(max-width:640px){
+  .foebe-scroll-progress{
+    top:58px!important;
+    height:2px!important;
+  }
 }
-
-/* Lettres des zones en Poppins, nettes et non manuscrites. */
-.cosmos-star::before,
-.cosmos-star:hover::before,
-.cosmos-star:focus-visible::before{
-  font-family:Poppins, sans-serif !important;
-  font-style:normal !important;
-  font-weight:700 !important;
-  letter-spacing:.02em !important;
+@media(prefers-reduced-motion:reduce){
+  .foebe-scroll-progress__bar{transition:none!important;}
 }
 </style>
 

@@ -43,7 +43,7 @@
             emoji: "🌊",
             title: "Zone Émotions · Maison Foébé",
             metaDesc: "Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l'accumulation silencieuse et la platitude émotionnelle persistante, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de régulation.",
-            canonicalUrl: "https://maisonfoebe.fr/zone-emotions",
+            canonicalUrl: "https://maisonfoebe.fr/zone-emotions.html",
             ogTitle: "Zone Émotions · Maison Foébé",
             ogDesc: "Zone Émotions : comprendre la dérégulation émotionnelle, faire le mini-test, voir les effets en cascade et choisir un geste de régulation. Self-care structuré Foébé",
             keywords: "self-care, zone émotions, dérégulation émotionnelle, régulation, burnout fonctionnel, platitude émotionnelle",
@@ -339,11 +339,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="description" id="metaDesc" content="Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l’accumulation silencieuse et la platitude émotionnelle, faire le mini-test et choisir un premier geste concret.">
-    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-emotions">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-emotions.html">
     <meta property="og:title" id="ogTitle" content="Zone Émotions · Maison Foébé">
     <meta property="og:description" id="ogDesc" content="Comprendre la dérégulation émotionnelle, faire le mini-test et choisir un premier geste pour retrouver un peu d’espace émotionnel.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-emotions">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-emotions.html">
     <meta content="https://maisonfoebe.fr/images/zones/og-zone-emotions.png" property="og:image">
     <meta name="twitter:card" content="summary_large_image">
     <meta content="Zone Émotions · Maison Foébé" name="twitter:title">
@@ -355,7 +355,7 @@
       "@type": "WebPage",
       "name": "Zone Émotions · Maison Foébé",
       "description": "Comprendre les mécanismes de la zone Émotions : accumulation silencieuse, mise à distance, seuil émotionnel qui s'abaisse.",
-      "url": "https://maisonfoebe.fr/zone-emotions",
+      "url": "https://maisonfoebe.fr/zone-emotions.html",
       "inLanguage": "fr",
       "isPartOf": {
         "@type": "WebSite",
@@ -5606,6 +5606,45 @@ body.state-active .ici-card {
   .zone-hero-waves{ height:clamp(56px,22vw,115px); }
 }
 </style>
+
+<style id="foebeZoneProgressStableCss">
+/* Correctif progression — pages zones HTML plates.
+   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
+   Z-index haut pour ne plus disparaître derrière la nav. */
+#pageProgress{
+  position:fixed!important;
+  top:60px!important;
+  left:0!important;
+  right:0!important;
+  z-index:100020!important;
+  height:3px!important;
+  background:rgba(187,126,96,.16)!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+}
+#pageProgressFill{
+  display:block!important;
+  height:100%!important;
+  width:0%;
+  background:linear-gradient(90deg,var(--z-mid,#BB7E60),#BB7E60,#C45279,#C34234)!important;
+  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
+  transition:width .12s linear!important;
+  will-change:width!important;
+}
+[data-theme="day"] #pageProgress{
+  background:rgba(78,41,31,.10)!important;
+}
+@media(max-width:640px){
+  #pageProgress{
+    top:58px!important;
+    height:2px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #pageProgressFill{transition:none!important;}
+}
+</style>
+
 </head>
 <body>
 <div id="pageProgress">

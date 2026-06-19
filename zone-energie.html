@@ -43,7 +43,7 @@
             emoji: "⚡",
             title: "Zone Énergie · Maison Foébé",
             metaDesc: "Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, identifier si cette zone est prioritaire avec un mini-test en 5 questions, et découvrir des gestes concrets de recharge.",
-            canonicalUrl: "https://maisonfoebe.fr/zone-energie",
+            canonicalUrl: "https://maisonfoebe.fr/zone-energie.html",
             ogTitle: "Zone Énergie · Maison Foébé",
             ogDesc: "Zone Énergie : comprendre le déficit énergétique, faire le mini-test, voir les effets en cascade et choisir un geste de recharge. Self-care structuré Foébé",
             keywords: "self-care, zone énergie, fatigue chronique, récupération, burnout fonctionnel, déficit énergétique",
@@ -339,11 +339,11 @@ zLiteB: 163
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="description" id="metaDesc" content="Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, faire le mini-test et choisir un premier geste concret.">
-    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-energie">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-energie.html">
     <meta property="og:title" id="ogTitle" content="Zone Énergie · Maison Foébé">
     <meta property="og:description" id="ogDesc" content="Comprendre le déficit énergétique, faire le mini-test et choisir un premier geste pour reconstruire une réserve plus stable.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-energie">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-energie.html">
     <meta property="og:image" content="https://maisonfoebe.fr/images/zones/og-zone-energie.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Zone Énergie · Maison Foébé">
@@ -355,7 +355,7 @@ zLiteB: 163
       "@type": "WebPage",
       "name": "Zone Énergie · Maison Foébé",
       "description": "Comprendre les mécanismes de la zone Énergie : réserve énergétique, repos qui ne restaure pas, seuil de récupération.",
-      "url": "https://maisonfoebe.fr/zone-energie",
+      "url": "https://maisonfoebe.fr/zone-energie.html",
       "inLanguage": "fr",
       "isPartOf": {
         "@type": "WebSite",
@@ -5605,6 +5605,45 @@ body.state-active .ici-card {
   .zone-hero-waves{ height:clamp(56px,22vw,115px); }
 }
 </style>
+
+<style id="foebeZoneProgressStableCss">
+/* Correctif progression — pages zones HTML plates.
+   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
+   Z-index haut pour ne plus disparaître derrière la nav. */
+#pageProgress{
+  position:fixed!important;
+  top:60px!important;
+  left:0!important;
+  right:0!important;
+  z-index:100020!important;
+  height:3px!important;
+  background:rgba(187,126,96,.16)!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+}
+#pageProgressFill{
+  display:block!important;
+  height:100%!important;
+  width:0%;
+  background:linear-gradient(90deg,var(--z-mid,#BB7E60),#BB7E60,#C45279,#C34234)!important;
+  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
+  transition:width .12s linear!important;
+  will-change:width!important;
+}
+[data-theme="day"] #pageProgress{
+  background:rgba(78,41,31,.10)!important;
+}
+@media(max-width:640px){
+  #pageProgress{
+    top:58px!important;
+    height:2px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #pageProgressFill{transition:none!important;}
+}
+</style>
+
 </head>
 <body>
 <div id="pageProgress">

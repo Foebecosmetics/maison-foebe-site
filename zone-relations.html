@@ -43,7 +43,7 @@
                     emoji: "🤝",
                     title: "Zone Relations · Maison Foébé",
                     metaDesc: "Zone Relations · Maison Foébé : comprendre le déséquilibre relationnel, l'isolement progressif et la difficulté à poser des limites, identifier si cette zone est prioritaire avec un mini-test en 5 questions.",
-                    canonicalUrl: "https://maisonfoebe.fr/zone-relations",
+                    canonicalUrl: "https://maisonfoebe.fr/zone-relations.html",
                     ogTitle: "Zone Relations · Maison Foébé",
                     ogDesc: "Zone Relations : comprendre le déséquilibre dans les liens, faire le mini-test, voir les effets en cascade et choisir un geste concret. Self-care structuré Foébé",
                     keywords: "self-care, zone relations, isolement, limites, donner recevoir, burnout fonctionnel",
@@ -339,11 +339,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="description" id="metaDesc" content="Zone Relations · Comprendre le déséquilibre dans les liens, l'isolement progressif et poser un premier geste avec Maison Foébé.">
-    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-relations">
+    <link rel="canonical" id="canonical" href="https://maisonfoebe.fr/zone-relations.html">
     <meta property="og:title" id="ogTitle" content="Zone Relations · Maison Foébé">
     <meta property="og:description" id="ogDesc" content="Comprendre le déséquilibre relationnel, faire le mini-test et choisir un premier geste pour rééquilibrer les liens.">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-relations">
+    <meta property="og:url" id="ogUrl" content="https://maisonfoebe.fr/zone-relations.html">
     <meta content="https://maisonfoebe.fr/images/zones/og-zone-relations.png" property="og:image">
     <meta name="twitter:card" content="summary_large_image">
     <meta content="Zone Mental · Maison Foébé" name="twitter:title">
@@ -355,7 +355,7 @@
       "@type": "WebPage",
       "name": "Zone Relations · Maison Foébé",
       "description": "Comprendre les mécanismes de la zone Relations : balance donner-recevoir, limites non posées, isolement progressif.",
-      "url": "https://maisonfoebe.fr/zone-relations",
+      "url": "https://maisonfoebe.fr/zone-relations.html",
       "inLanguage": "fr",
       "isPartOf": {
         "@type": "WebSite",
@@ -5606,6 +5606,45 @@ body.state-active .ici-card {
   .zone-hero-waves{ height:clamp(56px,22vw,115px); }
 }
 </style>
+
+<style id="foebeZoneProgressStableCss">
+/* Correctif progression — pages zones HTML plates.
+   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
+   Z-index haut pour ne plus disparaître derrière la nav. */
+#pageProgress{
+  position:fixed!important;
+  top:60px!important;
+  left:0!important;
+  right:0!important;
+  z-index:100020!important;
+  height:3px!important;
+  background:rgba(187,126,96,.16)!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+}
+#pageProgressFill{
+  display:block!important;
+  height:100%!important;
+  width:0%;
+  background:linear-gradient(90deg,var(--z-mid,#BB7E60),#BB7E60,#C45279,#C34234)!important;
+  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
+  transition:width .12s linear!important;
+  will-change:width!important;
+}
+[data-theme="day"] #pageProgress{
+  background:rgba(78,41,31,.10)!important;
+}
+@media(max-width:640px){
+  #pageProgress{
+    top:58px!important;
+    height:2px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #pageProgressFill{transition:none!important;}
+}
+</style>
+
 </head>
 <body>
 <div id="pageProgress">
