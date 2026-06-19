@@ -1,0 +1,102 @@
+/* Maison Foébé — garde-fous accessibilité/refactor Astro
+   Le contenu reste visible sans JavaScript. Les animations ne sont activées que lorsque .foebe-effects-ready existe. */
+
+:root {
+  --focus-ring: 0 0 0 3px rgba(var(--z-mid-r), var(--z-mid-g), var(--z-mid-b), .38);
+  --touch-target: 48px;
+  --foebe-radius-sm: 14px;
+  --foebe-radius-md: 18px;
+  --foebe-radius-lg: 24px;
+  --foebe-section-gap: clamp(38px, 6vw, 82px);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--z-lite);
+  outline-offset: 4px;
+  box-shadow: var(--focus-ring);
+}
+
+button,
+.btn,
+.aller-a-link,
+.ici-zone-dot,
+.ici-state-tag,
+.palp-cta,
+.accomp-link {
+  min-height: var(--touch-target);
+}
+
+.reveal,
+.impact-item,
+.geste-card {
+  visibility: visible;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+
+  .reveal,
+  .impact-item,
+  .geste-card {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
+
+/* Stabilisation Astro — animations progressives sûres
+   Par défaut, le contenu essentiel reste visible. Les états cachés/dimmed
+   ne s'activent qu'après initialisation explicite de l'IntersectionObserver. */
+html:not(.foebe-effects-ready) .reveal,
+html:not(.foebe-effects-ready) .impact-item,
+html:not(.foebe-effects-ready) .geste-card,
+html.foebe-no-js-motion .reveal,
+html.foebe-no-js-motion .impact-item,
+html.foebe-no-js-motion .geste-card {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+html.foebe-effects-ready .reveal,
+html.foebe-effects-ready .geste-card {
+  opacity: 0 !important;
+  transform: translateY(18px) !important;
+  visibility: visible !important;
+}
+
+html.foebe-effects-ready .reveal.visible,
+html.foebe-effects-ready .geste-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+html.foebe-effects-ready .impact-item {
+  opacity: .35 !important;
+  visibility: visible !important;
+}
+
+html.foebe-effects-ready .impact-item.lit {
+  opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.foebe-effects-ready .reveal,
+  html.foebe-effects-ready .impact-item,
+  html.foebe-effects-ready .geste-card {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
