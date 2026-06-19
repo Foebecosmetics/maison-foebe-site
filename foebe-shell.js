@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version routes publiques 2026 — nav/footer/repères contextuels
+ * Version V8 — navigation contextuelle + progression globale compatible fallback
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -27,9 +27,10 @@
      1. CSS PARTAGÉ — nav, menu, footer, responsive
   ═══════════════════════════════════════════════════════════════════════════ */
   var SHELL_CSS = [
+    ":root{--foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#BB7E60 22%,#C45279 44%,#C34234 66%,#F0EAE7 84%,#4E291F 100%)!important;}",
     "#mainNav{position:fixed!important;top:0!important;left:0!important;right:0!important;height:60px!important;",
     "background:color-mix(in srgb,var(--bg) 92%,transparent)!important;border-bottom:1px solid var(--border,rgba(187,126,96,.25))!important;",
-    "display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 clamp(16px,3vw,28px)!important;",
+    "display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:clamp(10px,2vw,22px)!important;padding:0 clamp(16px,3vw,28px)!important;",
     "z-index:99990!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;",
     "box-shadow:0 8px 28px rgba(0,0,0,.08)!important;transition:background .35s,border-color .35s,box-shadow .35s!important;}",
     "[data-theme='day'] #mainNav{background:rgba(240,234,231,.92)!important;box-shadow:0 8px 26px rgba(78,41,31,.08)!important;}",
@@ -40,6 +41,24 @@
     "[data-theme='day'] .nav-logo span:nth-child(1),[data-theme='day'] .nav-logo span:nth-child(5){color:#4E291F!important;}",
     "[data-theme='day'] .nav-logo span:nth-child(2){color:#BB7E60!important;}[data-theme='day'] .nav-logo span:nth-child(3){color:#C45279!important;}[data-theme='day'] .nav-logo span:nth-child(4){color:#C34234!important;}",
     ".nav-logo:hover span{filter:brightness(1.08)!important;}",
+
+    ".nav-left{display:flex!important;align-items:center!important;gap:clamp(8px,1.5vw,16px)!important;min-width:0!important;}",
+    ".shell-context-back{display:inline-flex!important;align-items:center!important;gap:7px!important;min-height:44px!important;max-width:150px!important;padding:0 4px!important;font-family:'Poppins',sans-serif!important;font-size:11.5px!important;font-weight:650!important;line-height:1.2!important;letter-spacing:.015em!important;color:#BB7E60!important;text-decoration:none!important;white-space:nowrap!important;position:relative!important;overflow:hidden!important;}",
+    ".shell-context-back__arrow{font-size:14px!important;font-weight:800!important;line-height:1!important;flex:0 0 auto!important;}",
+    ".shell-context-back__label{overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}",
+    ".shell-context-back::after{content:''!important;position:absolute!important;left:25px!important;right:4px!important;bottom:8px!important;height:1px!important;background:#BB7E60!important;transform:scaleX(0)!important;transform-origin:left!important;transition:transform .18s ease!important;}",
+    ".shell-context-back:hover::after,.shell-context-back:focus-visible::after{transform:scaleX(1)!important;}",
+    ".shell-context-back:focus-visible{outline:2px solid #BB7E60!important;outline-offset:2px!important;border-radius:4px!important;}",
+    ".shell-page-current{justify-self:center!important;align-self:center!important;min-width:0!important;max-width:min(38vw,360px)!important;padding:7px 1px 6px!important;font-family:'Poppins',sans-serif!important;font-size:11.5px!important;font-weight:700!important;line-height:1.2!important;letter-spacing:.055em!important;color:var(--text,#4E291F)!important;text-align:center!important;text-transform:none!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;position:relative!important;}",
+    ".shell-page-current::after{content:''!important;position:absolute!important;left:16%!important;right:16%!important;bottom:1px!important;height:2px!important;border-radius:999px!important;background:#BB7E60!important;}",
+    ".shell-page-current--home{visibility:hidden!important;}",
+    "[data-theme='day'] .shell-context-back{color:#BB7E60!important;}",
+    "[data-theme='day'] .shell-page-current{color:#4E291F!important;}",
+    "[data-theme='night'] .shell-context-back,[data-theme='night'] .shell-page-current{color:#F0EAE7!important;}",
+    "[data-theme='night'] .shell-context-back__arrow{color:#BB7E60!important;}",
+    "#foebeReadingProgress{position:absolute!important;left:0!important;right:0!important;bottom:-1px!important;height:3px!important;overflow:hidden!important;background:rgba(187,126,96,.14)!important;pointer-events:none!important;z-index:2!important;}",
+    "#foebeReadingProgressBar{display:block!important;width:100%!important;height:100%!important;transform:scaleX(var(--foebe-reading-progress,0))!important;transform-origin:left center!important;will-change:transform!important;background:var(--foebe-progress-gradient)!important;box-shadow:0 0 8px rgba(196,82,121,.26)!important;transition:transform .08s linear!important;}",
+    "html.foebe-reading-progress-disabled #foebeReadingProgress{display:none!important;}",
 
     ".nav-right{display:flex!important;align-items:center!important;gap:10px!important;}",
     ".theme-toggle,#menuToggle{appearance:none!important;-webkit-appearance:none!important;}",
@@ -59,7 +78,7 @@
     "#navOverlay.open{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}",
     "[data-theme='day'] #navOverlay{background:rgba(78,41,31,.12)!important;}",
 
-    ".nav-panel-inner{max-width:1040px!important;margin:0 auto!important;padding:34px clamp(20px,4vw,40px) 38px!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(18px,3vw,42px)!important;}",
+    ".nav-panel-inner{max-width:960px!important;margin:0 auto!important;padding:34px clamp(20px,4vw,40px) 38px!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(18px,3vw,42px)!important;}",
     ".nav-pole{display:flex!important;flex-direction:column!important;min-width:0!important;}",
     ".nav-pole-label{font-family:'Poppins',sans-serif!important;font-size:10px!important;font-weight:700!important;letter-spacing:2.2px!important;text-transform:uppercase!important;color:#BB7E60!important;padding-bottom:12px!important;margin-bottom:8px!important;border-bottom:1px solid rgba(187,126,96,.30)!important;}",
     ".nav-link{font-family:'Poppins',sans-serif!important;font-size:13px!important;font-weight:500!important;color:var(--text,#F0EAE7)!important;text-decoration:none!important;padding:10px 10px!important;border-radius:12px!important;min-height:42px!important;display:flex!important;align-items:center!important;position:relative!important;isolation:isolate!important;transition:color .18s ease,background .18s ease,padding-left .18s ease,transform .18s ease!important;}",
@@ -68,7 +87,6 @@
     ".nav-link:hover{color:#BB7E60!important;padding-left:22px!important;transform:translateX(2px)!important;background:transparent!important;}",
     ".nav-link:hover::before,.nav-link[aria-current='page']::before{opacity:1!important;transform:scale(1)!important;}",
     ".nav-link:hover::after,.nav-link[aria-current='page']::after{opacity:1!important;transform:translateY(-50%) scale(1)!important;}",
-    ".nav-link[aria-current='page']{color:#BB7E60!important;padding-left:22px!important;font-weight:700!important;}",
     ".nav-link[aria-current='page']{background:#BB7E60!important;color:#F0EAE7!important;border-color:#BB7E60!important;box-shadow:0 12px 26px rgba(187,126,96,.22)!important;}",
     ".nav-link[aria-current='page']::before{opacity:0!important;transform:scale(1)!important;}",
     ".nav-link[aria-current='page']::after{background:#F0EAE7!important;opacity:1!important;transform:translateY(-50%) scale(1)!important;}",
@@ -95,13 +113,19 @@
     ".footer-note{font-family:'Poppins',sans-serif!important;font-size:12px!important;color:currentColor!important;line-height:1.5!important;opacity:.68!important;}",
 
     "@media(max-width:900px){.nav-panel-inner{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px 30px!important;padding:26px 22px 30px!important;}.nav-pole:last-child{grid-column:1/-1!important;}.nav-pole:last-child .nav-link{display:inline-flex!important;margin-right:10px!important;}}",
+    "@media(max-width:767px){html.foebe-has-shell-context #mainNav .nav-logo{display:none!important;}#mainNav{grid-template-columns:minmax(68px,auto) minmax(0,1fr) auto!important;gap:8px!important;}.nav-left{gap:0!important;min-width:0!important;}.shell-context-back{max-width:92px!important;min-height:42px!important;padding:0 2px!important;font-size:11px!important;}.shell-context-back::after{left:22px!important;right:2px!important;bottom:7px!important;}.shell-page-current{max-width:100%!important;font-size:11px!important;letter-spacing:.035em!important;padding-inline:0!important;}.shell-page-current::after{left:18%!important;right:18%!important;}.nav-right{gap:7px!important;}}",
+    "@media(max-width:380px){#mainNav{padding-inline:12px!important;grid-template-columns:minmax(62px,auto) minmax(0,1fr) auto!important;gap:6px!important;}.shell-context-back{max-width:78px!important;font-size:10.5px!important;}.shell-page-current{font-size:10.5px!important;letter-spacing:.02em!important;}.nav-right{gap:5px!important;}}",
     "@media(max-width:640px){#mainNav{height:58px!important;padding:0 16px!important;}#navMenu{top:58px!important;max-height:calc(100vh - 58px)!important;}#navOverlay{top:58px!important;}.nav-panel-inner{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;}.nav-pole{border-bottom:1px solid rgba(187,126,96,.25)!important;padding:15px 18px 12px!important;}.nav-pole:last-child{border-bottom:none!important;}.nav-pole-label{font-size:10px!important;margin-bottom:6px!important;padding-bottom:10px!important;}.nav-link{font-size:14px!important;min-height:46px!important;padding:12px 10px!important;border-radius:10px!important;}.nav-link:hover,.nav-link[aria-current='page']{padding-left:24px!important;}footer{padding:42px 18px 30px!important;}.footer-inner{gap:14px!important;}.footer-links{gap:6px 16px!important;}.footer-link{font-size:12.5px!important;}}",
     "@media(max-width:380px){.nav-logo{font-size:17px!important;}#menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}.theme-toggle{width:36px!important;height:36px!important;}.nav-panel-inner{padding-bottom:8px!important;}}",
+    ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
+    ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
+    ".foebe-page-respiration .tech-card:hover::after,.foebe-page-respiration .tech-card:focus-visible::after{background:#C45279!important;color:#F0EAE7!important;}",
+    "@media(max-width:767px){.foebe-page-respiration .tech-card{padding-bottom:56px!important;}.foebe-page-respiration .tech-card::after{left:15px!important;right:15px!important;bottom:14px!important;font-size:11.5px!important;}}",
 
     "",
     "",
     "",
-    "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon{transition:none!important;}}"
+    "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon,.shell-context-back::after,#foebeReadingProgressBar{transition:none!important;}}"
   ].join("\n");
 
   var oldStyle = document.getElementById("foebe-shell-css");
@@ -112,387 +136,6 @@
   document.head.appendChild(styleEl);
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     1.1 FIL D'ARIANE — intégré au Shell, sans fichier JS externe
-     Objectif : repère détaillé, homogène, sans container global.
-     Correction : placement adapté aux pages avec/sans hero + pages animées.
-  ═══════════════════════════════════════════════════════════════════════════ */
-  (function injectFoebeBreadcrumbFast() {
-    /* Sécurité pages chargées différemment (ex. Dictionnaire) :
-       si le Shell s'exécute avant que le contenu existe, on relance au DOM prêt. */
-    if (!document.body || (document.readyState === "loading" && !document.querySelector("main,.hero,#stateIntro,.dict-hero,.dict-layout"))) {
-      if (!window.__foebeBreadcrumbDomReadyQueued) {
-        window.__foebeBreadcrumbDomReadyQueued = true;
-        document.addEventListener("DOMContentLoaded", function () {
-          window.__foebeBreadcrumbDomReadyQueued = false;
-          injectFoebeBreadcrumbFast();
-        }, { once: true });
-      }
-      return;
-    }
-
-    var root = document.documentElement;
-    var body = document.body;
-
-    function attr(name) {
-      return (root && root.getAttribute(name)) || (body && body.getAttribute(name)) || "";
-    }
-
-    var mode = String(attr("data-foebe-breadcrumb") || "").toLowerCase();
-    if (mode === "none" || mode === "off" || mode === "false") return;
-
-    /* Une seule version du fil d'Ariane : on supprime les anciens blocs statiques
-       ou les anciennes injections automatiques avant de reconstruire le rendu. */
-    document.querySelectorAll(".foebe-breadcrumb").forEach(function (oldBreadcrumb) {
-      if (oldBreadcrumb && oldBreadcrumb.parentNode) oldBreadcrumb.parentNode.removeChild(oldBreadcrumb);
-    });
-
-    function normalizeFile(file) {
-      file = String(file || "index.html").toLowerCase();
-      try { file = decodeURIComponent(file); } catch (e) {}
-      file = file.split("?")[0].split("#")[0];
-      file = file.replace(/^\/+|\/+$/g, "");
-      file = file.replace(/\/index$/i, "");
-      file = file.replace(/\.html?$/i, "");
-
-      if (file === "" || file === "/" || file === "index" || file.indexOf("index-") === 0 || file.indexOf("index_") === 0) return "index.html";
-
-      if (file === "comprendre" || file.indexOf("comprendre") === 0) return "comprendre.html";
-      if (file === "pratiquer" || file.indexOf("pratiquer") === 0) return "pratiquer.html";
-      if (file === "methode" || file === "méthode" || file.indexOf("methode") === 0 || file.indexOf("méthode") === 0) return "methode.html";
-      if (file === "a-propos" || file.indexOf("a-propos") === 0 || file.indexOf("apropos") === 0) return "a-propos.html";
-
-      if (
-        file === "test" ||
-        file === "testpratiquer" ||
-        file === "test-pratiquer" ||
-        file.indexOf("test") === 0 ||
-        file.indexOf("echelle") === 0 ||
-        file.indexOf("échelle") === 0 ||
-        file.indexOf("echelle-foebe") === 0 ||
-        file.indexOf("échelle-foébé") === 0
-      ) return "echelle-foebe.html";
-
-      if (
-        file === "zones" ||
-        file.indexOf("zones-cadre") === 0 ||
-        file.indexOf("7-zones") === 0 ||
-        file.indexOf("sept-zones") === 0
-      ) return "zones.html";
-
-      if (
-        file === "respiration" ||
-        file.indexOf("respiration") === 0 ||
-        file.indexOf("respiration-guidee") === 0 ||
-        file.indexOf("respiration-guidée") === 0 ||
-        file.indexOf("respiration-foebe") === 0
-      ) return "respiration.html";
-
-      if (
-        file === "boussole/scenarios" ||
-        file === "boussole/scenario" ||
-        file === "scenarios" ||
-        file === "scenario" ||
-        file.indexOf("boussole/scenarios") === 0 ||
-        file.indexOf("boussole/scenario") === 0
-      ) return "boussole-scenarios.html";
-
-      if (
-        file.indexOf("sas-boussole") === 0 ||
-        file.indexOf("sas-de-la-boussole") === 0
-      ) return "boussole.html";
-      if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
-
-      if (file.indexOf("zone-energie") === 0 || file.indexOf("zone-énergie") === 0) return "zone-energie.html";
-      if (file.indexOf("zone-corps") === 0) return "zone-corps.html";
-      if (file.indexOf("zone-mental") === 0) return "zone-mental.html";
-      if (file.indexOf("zone-emotions") === 0 || file.indexOf("zone-émotions") === 0) return "zone-emotions.html";
-      if (file.indexOf("zone-environnement") === 0) return "zone-environnement.html";
-      if (file.indexOf("zone-relations") === 0) return "zone-relations.html";
-      if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
-
-      if (file === "lexique" || file.indexOf("lexique") === 0) return "lexique.html";
-      if (
-        file === "dictionnaire" ||
-        file.indexOf("dictionnaire") === 0 ||
-        file.indexOf("bibliotheque") === 0 ||
-        file.indexOf("bibliothèque") === 0
-      ) return "dictionnaire.html";
-
-      if (file === "mentions" || file.indexOf("mentions") === 0) return "mentions-legales.html";
-      return file;
-    }
-
-    function getCurrentFile() {
-      var path = window.location.pathname || "/";
-      try { path = decodeURIComponent(path); } catch (e) {}
-      path = path.split("?")[0].split("#")[0].replace(/\/+$/g, "");
-      if (!path || path === "") return "index.html";
-      if (/\/boussole\/scenarios$/i.test(path) || /\/boussole\/scenario$/i.test(path)) {
-        return "boussole-scenarios.html";
-      }
-      var last = path.split("/").pop() || "index.html";
-      return normalizeFile(last);
-    }
-
-    function toPageClass(file) {
-      return "foebe-page-" + String(file || "page").replace(/\.html?$/i, "").replace(/[^a-z0-9]+/gi, "-").replace(/^-+|-+$/g, "");
-    }
-
-    var currentFile = getCurrentFile();
-    if (body) body.classList.add(toPageClass(currentFile));
-
-    var trails = {
-      "comprendre.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Découvrir" },
-        { label: "Comprendre", current: true }
-      ],
-      "a-propos.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Découvrir" },
-        { label: "À propos", current: true }
-      ],
-      "methode.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Découvrir" },
-        { label: "La méthode Foébé", current: true }
-      ],
-      "pratiquer.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
-        { label: "4 outils", current: true }
-      ],
-      "echelle-foebe.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
-        { label: "Échelle Foébé", current: true }
-      ],
-      "zones.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
-        { label: "7 zones", current: true }
-      ],
-      "respiration.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
-        { label: "Respiration guidée", current: true }
-      ],
-      "boussole.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Pratiquer" },
-        { label: "Boussole", current: true }
-      ],
-      "boussole-scenarios.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "boussole.html", label: "Boussole" },
-        { label: "Scénarios", current: true }
-      ],
-      "lexique.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Ressources" },
-        { label: "Lexique Foébé", current: true }
-      ],
-      "dictionnaire.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Ressources" },
-        { label: "Dictionnaire", current: true }
-      ],
-      "mentions-legales.html": [
-        { href: "index.html", label: "Accueil" },
-        { label: "Informations" },
-        { label: "Mentions légales", current: true }
-      ],
-      "zone-corps.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Corps", current: true }
-      ],
-      "zone-emotions.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Émotions", current: true }
-      ],
-      "zone-mental.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Mental", current: true }
-      ],
-      "zone-energie.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Énergie", current: true }
-      ],
-      "zone-environnement.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Environnement", current: true }
-      ],
-      "zone-relations.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Relations", current: true }
-      ],
-      "zone-sens.html": [
-        { href: "index.html", label: "Accueil" },
-        { href: "zones.html", label: "7 zones" },
-        { label: "Sens", current: true }
-      ]
-    };
-
-    if (currentFile === "index.html") return;
-
-    var trail = trails[currentFile];
-    if (!trail) return;
-
-    function injectCss() {
-      if (document.getElementById("foebe-breadcrumb-css")) return;
-      var css = [
-        ".hero.foebe-has-breadcrumb{position:relative!important;}",
-        ".hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(54px,7svh,92px)!important;}",
-        ".foebe-breadcrumb{font-family:'Poppins',sans-serif!important;font-size:12px!important;line-height:1.45!important;color:#F0EAE7!important;overflow-x:auto!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;animation:none!important;transition:none!important;}",
-        ".foebe-breadcrumb::-webkit-scrollbar{display:none!important;}",
-        "[data-theme='day'] .foebe-breadcrumb{color:#4E291F!important;}",
-        "[data-theme='night'] .foebe-breadcrumb{color:#F0EAE7!important;}",
-        ".foebe-breadcrumb ol{display:flex!important;align-items:center!important;gap:7px!important;list-style:none!important;margin:0!important;padding:0!important;white-space:nowrap!important;}",
-        ".foebe-breadcrumb li{display:inline-flex!important;align-items:center!important;gap:7px!important;min-width:0!important;color:currentColor!important;}",
-        ".foebe-breadcrumb li:not(:last-child)::after{content:'›'!important;color:#BB7E60!important;opacity:.95!important;font-weight:800!important;}",
-        ".foebe-breadcrumb a,.foebe-breadcrumb span{color:currentColor!important;text-decoration:none!important;}",
-        ".foebe-breadcrumb a{transition:color .18s ease,background .18s ease,border-color .18s ease,opacity .18s ease,box-shadow .18s ease!important;}",
-        ".foebe-breadcrumb-home{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:31px!important;padding:5px 12px!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;border:1px solid #BB7E60!important;font-weight:800!important;box-shadow:0 0 0 0 rgba(187,126,96,0)!important;}",
-        "[data-theme='day'] .foebe-breadcrumb .foebe-breadcrumb-home,[data-theme='night'] .foebe-breadcrumb .foebe-breadcrumb-home{color:#F0EAE7!important;background:#BB7E60!important;border-color:#BB7E60!important;}",
-        ".foebe-breadcrumb .foebe-breadcrumb-home,.foebe-breadcrumb .foebe-breadcrumb-home:hover,.foebe-breadcrumb .foebe-breadcrumb-home:focus-visible{color:#F0EAE7!important;transform:none!important;}",
-        ".foebe-breadcrumb-home:hover,.foebe-breadcrumb-home:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;outline:none!important;transform:none!important;box-shadow:0 0 0 3px rgba(187,126,96,.22)!important;}",
-        ".foebe-breadcrumb-link{font-weight:800!important;text-decoration:none!important;border-bottom:2px solid #BB7E60!important;padding-bottom:1px!important;}",
-        ".foebe-breadcrumb-link:hover,.foebe-breadcrumb-link:focus-visible{color:#BB7E60!important;outline:none!important;border-bottom-color:#C45279!important;box-shadow:0 2px 0 rgba(196,82,121,.16)!important;}",
-        ".foebe-breadcrumb-section{opacity:.86!important;font-weight:650!important;}",
-        ".foebe-breadcrumb-current{font-weight:850!important;opacity:1!important;}",
-        "[data-theme='day'] .foebe-breadcrumb-link,[data-theme='day'] .foebe-breadcrumb-section,[data-theme='day'] .foebe-breadcrumb-current{color:#4E291F!important;}",
-        "[data-theme='night'] .foebe-breadcrumb-link,[data-theme='night'] .foebe-breadcrumb-section,[data-theme='night'] .foebe-breadcrumb-current{color:#F0EAE7!important;}",
-        ".foebe-breadcrumb--hero{position:absolute!important;top:calc(60px + clamp(24px,4.6svh,50px))!important;left:50%!important;transform:translateX(-50%)!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:0!important;padding:0!important;z-index:4!important;}",
-        ".foebe-breadcrumb--zone{width:min(calc(100% - 48px),980px)!important;}",
-        ".foebe-breadcrumb--standalone{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(calc(100% - 48px),960px)!important;max-width:960px!important;margin:calc(60px + clamp(28px,4svh,50px)) auto clamp(26px,4svh,50px)!important;padding:0!important;z-index:2!important;}",
-        ".foebe-breadcrumb--inline{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:min(100%,960px)!important;max-width:960px!important;margin:0 auto clamp(26px,4svh,44px)!important;padding:0!important;z-index:2!important;align-self:stretch!important;}",
-        ".dict-hero .foebe-breadcrumb--dict{width:min(100%,960px)!important;margin:0 auto clamp(28px,4.2svh,46px)!important;text-align:left!important;position:relative!important;z-index:2!important;}",
-        ".hero .foebe-breadcrumb--boussole{width:min(100%,960px)!important;margin:0 auto clamp(28px,4.2svh,46px)!important;text-align:left!important;position:relative!important;z-index:3!important;}",
-        ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
-        ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
-        ".foebe-page-respiration .tech-card:hover::after,.foebe-page-respiration .tech-card:focus-visible::after{background:#C45279!important;color:#F0EAE7!important;}",
-        "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(48px,6.5svh,72px)!important;}.foebe-breadcrumb--hero{top:calc(60px + clamp(18px,3.6svh,34px))!important;width:calc(100% - 36px)!important;}.foebe-breadcrumb--standalone{width:calc(100% - 36px)!important;margin:calc(60px + clamp(24px,4svh,42px)) auto clamp(24px,4svh,42px)!important;}.foebe-breadcrumb{font-size:11px!important;}.foebe-breadcrumb ol{gap:5px!important;}.foebe-breadcrumb li{gap:5px!important;}.foebe-breadcrumb-home{min-height:30px!important;padding:5px 10px!important;}.foebe-breadcrumb-link{border-bottom-width:1.5px!important;padding-bottom:1px!important;}.foebe-breadcrumb-section{opacity:.80!important;}.foebe-page-respiration .tech-card{padding-bottom:56px!important;}.foebe-page-respiration .tech-card::after{left:15px!important;right:15px!important;bottom:14px!important;font-size:11.5px!important;}}",
-        "@media(max-width:767px){.dict-hero .foebe-breadcrumb--dict{width:100%!important;margin:0 auto clamp(24px,3.8svh,36px)!important;}.hero .foebe-breadcrumb--boussole{width:100%!important;margin:0 auto clamp(24px,3.8svh,36px)!important;}}",
-        "@media(max-width:390px){.foebe-breadcrumb{font-size:10.6px!important;}.foebe-breadcrumb--hero,.foebe-breadcrumb--standalone{width:calc(100% - 28px)!important;}.foebe-breadcrumb ol{gap:4px!important;}.foebe-breadcrumb li{gap:4px!important;}.foebe-breadcrumb-home{padding:5px 9px!important;}}",
-        "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
-      ].join("\n");
-
-      var style = document.createElement("style");
-      style.id = "foebe-breadcrumb-css";
-      style.textContent = css;
-      (document.head || document.documentElement).appendChild(style);
-    }
-
-    function escapeHtml(value) {
-      return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-    }
-
-    function renderTrail(items) {
-      return items.map(function (item, index) {
-        var label = escapeHtml(item.label);
-        if (item.current) return '<li><span class="foebe-breadcrumb-current" aria-current="page">' + label + '</span></li>';
-        if (item.href) {
-          var isHome = index === 0 && item.label === "Accueil";
-          var cls = isHome ? "foebe-breadcrumb-home" : "foebe-breadcrumb-link";
-          var aria = isHome ? ' aria-label="Retour à l’accueil"' : ' aria-label="Aller à ' + label + '"';
-          return '<li><a class="' + cls + '" href="' + escapeHtml(item.href) + '"' + aria + ' title="Aller à ' + label + '">' + label + '</a></li>';
-        }
-        return '<li><span class="foebe-breadcrumb-section">' + label + '</span></li>';
-      }).join("");
-    }
-
-    injectCss();
-
-    var nav = document.createElement("nav");
-    var isZonePage = /^zone-/.test(currentFile);
-    nav.className = "foebe-breadcrumb" + (isZonePage ? " foebe-breadcrumb--zone" : "");
-    nav.setAttribute("aria-label", "Fil d’Ariane");
-    nav.setAttribute("data-foebe-auto", "1");
-    nav.innerHTML = "<ol>" + renderTrail(trail) + "</ol>";
-
-    var hero = document.querySelector(".hero");
-    var main = document.querySelector("main");
-    var stateIntro = document.getElementById("stateIntro");
-    var testIntroWrap = document.querySelector("#screenIntro .intro-wrap, .screen.active .intro-wrap, .intro-wrap");
-    var dictHero = document.querySelector(".dict-hero");
-    var dictLayout = document.querySelector(".dict-layout, .dictionary-layout, .dictionary-shell, .dictionnaire-layout, .dict-page, .library-layout, .lexicon-layout");
-    var isBoussolePage = currentFile === "boussole.html" || currentFile === "boussole.html";
-
-    /* Pages sans hero standard : fil intégré au bloc d’introduction, pas collé à la nav. */
-    if (currentFile === "respiration.html" && stateIntro) {
-      nav.className += " foebe-breadcrumb--inline";
-      stateIntro.insertBefore(nav, stateIntro.firstChild);
-      return;
-    }
-
-    if (currentFile === "echelle-foebe.html" && testIntroWrap) {
-      nav.className += " foebe-breadcrumb--inline";
-      testIntroWrap.insertBefore(nav, testIntroWrap.firstChild);
-      return;
-    }
-
-    /* Dictionnaire : structure spéciale. On vise le header .dict-hero,
-       pas .dict-layout, pour afficher le fil au-dessus du H1. */
-    if (currentFile === "dictionnaire.html" && dictHero) {
-      nav.className += " foebe-breadcrumb--inline foebe-breadcrumb--dict";
-      dictHero.insertBefore(nav, dictHero.firstChild);
-      return;
-    }
-
-    /* Fallback Dictionnaire si un ancien fichier n’a pas .dict-hero. */
-    if (currentFile === "dictionnaire.html" && dictLayout && dictLayout.parentNode) {
-      nav.className += " foebe-breadcrumb--standalone";
-      dictLayout.parentNode.insertBefore(nav, dictLayout);
-      return;
-    }
-
-    /* Boussole : structure spéciale main.site > .wrap > .hero.
-       On vise le hero lui-même, comme Dictionnaire vise .dict-hero,
-       pour éviter l'erreur insertBefore si .hero n'est pas enfant direct de main. */
-    if (isBoussolePage && hero) {
-      nav.className += " foebe-breadcrumb--inline foebe-breadcrumb--boussole";
-      hero.insertBefore(nav, hero.firstChild);
-      return;
-    }
-
-    /* Pages avec hero classique : repère éditorial au-dessus du H1, sans container. */
-    if (hero) {
-      nav.className += " foebe-breadcrumb--hero";
-      hero.classList.add("foebe-has-breadcrumb");
-      hero.insertBefore(nav, hero.firstChild);
-      return;
-    }
-
-    if (main && main.firstChild) {
-      nav.className += " foebe-breadcrumb--standalone";
-      main.insertBefore(nav, main.firstChild);
-      return;
-    }
-
-    if (main) {
-      nav.className += " foebe-breadcrumb--standalone";
-      main.appendChild(nav);
-      return;
-    }
-
-    if (document.body) {
-      nav.className += " foebe-breadcrumb--standalone";
-      document.body.insertBefore(nav, document.body.firstChild);
-    }
-  })();
-
-    /* ═══════════════════════════════════════════════════════════════════════════
      2. DÉTECTION DE LA PAGE COURANTE
   ═══════════════════════════════════════════════════════════════════════════ */
   var currentPath = (window.location.pathname || "/").split("?")[0].split("#")[0].replace(/\/+$/g, "");
@@ -529,7 +172,7 @@
     if (file === "zones" || file.indexOf("zones") === 0) return "zones.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
 
-    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-scenarios.html";
+    if (file === "boussole-scenarios" || file.indexOf("boussole-scenarios") === 0 || file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-scenarios.html";
     if (file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole.html";
     if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
@@ -550,6 +193,15 @@
 
   currentFile = normalizeCurrentFile(currentFile);
 
+  if (document.body) {
+    document.body.classList.add(
+      "foebe-page-" + String(currentFile || "page")
+        .replace(/\.html?$/i, "")
+        .replace(/[^a-z0-9]+/gi, "-")
+        .replace(/^-+|-+$/g, "")
+    );
+  }
+
   var zonesFiles = {
     "zone-energie.html": true,
     "zone-corps.html": true,
@@ -559,6 +211,78 @@
     "zone-relations.html": true,
     "zone-sens.html": true
   };
+
+
+  function shellEscapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function shellPageLabelFallback() {
+    var h1 = document.querySelector("main h1,.hero h1,.zone-hero h1,.dict-hero h1,h1");
+    if (h1 && h1.textContent) {
+      var fromH1 = h1.textContent.replace(/\s+/g, " ").trim();
+      if (fromH1) return fromH1;
+    }
+    var fromTitle = String(document.title || "").split(/[|–—]/)[0].trim();
+    return fromTitle || "Page actuelle";
+  }
+
+  function getShellPageContext() {
+    var path = String(currentPath || window.location.pathname || "/").toLowerCase();
+    try { path = decodeURIComponent(path); } catch (e) {}
+
+    if (currentFile === "index.html") return null;
+
+    var exact = {
+      "comprendre.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "Comprendre", aria: "Retour à l’accueil" },
+      "a-propos.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "À propos", aria: "Retour à l’accueil" },
+      "methode.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "La méthode Foébé", aria: "Retour à l’accueil" },
+      "pratiquer.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "4 outils", aria: "Retour à l’accueil" },
+      "echelle-foebe.html": { href: "/pratiquer.html", backLabel: "4 outils", currentLabel: "Échelle Foébé", aria: "Retour aux 4 outils" },
+      "zones.html": { href: "/pratiquer.html", backLabel: "4 outils", currentLabel: "7 zones", aria: "Retour aux 4 outils" },
+      "respiration.html": { href: "/pratiquer.html", backLabel: "4 outils", currentLabel: "Respiration guidée", aria: "Retour aux 4 outils" },
+      "boussole.html": { href: "/pratiquer.html", backLabel: "4 outils", currentLabel: "Boussole", aria: "Retour aux 4 outils" },
+      "boussole-scenarios.html": { href: "/boussole.html", backLabel: "Boussole", currentLabel: "Scénarios", aria: "Retour à la Boussole Foébé" },
+      "lexique.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "Lexique Foébé", aria: "Retour à l’accueil" },
+      "dictionnaire.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "Dictionnaire", aria: "Retour à l’accueil" },
+      "mentions-legales.html": { href: "/index.html", backLabel: "Accueil", currentLabel: "Mentions légales", aria: "Retour à l’accueil" }
+    };
+
+    if (exact[currentFile]) return exact[currentFile];
+
+    var zoneLabels = {
+      "zone-corps.html": "Corps",
+      "zone-mental.html": "Mental",
+      "zone-energie.html": "Énergie",
+      "zone-emotions.html": "Émotions",
+      "zone-environnement.html": "Environnement",
+      "zone-relations.html": "Relations",
+      "zone-sens.html": "Sens"
+    };
+    if (zoneLabels[currentFile]) {
+      return { href: "/zones.html", backLabel: "7 zones", currentLabel: zoneLabels[currentFile], aria: "Retour à la page des 7 zones" };
+    }
+
+    if (
+      path.indexOf("/stories/") !== -1 ||
+      path.indexOf("/lexique/") !== -1 ||
+      path.indexOf("/dictionnaire/") !== -1 ||
+      currentFile === "stories.html" ||
+      /^(story-|fiche-|lexique-|dictionnaire-)/.test(currentFile)
+    ) {
+      return { href: "/dictionnaire.html", backLabel: "Dictionnaire", currentLabel: shellPageLabelFallback(), aria: "Retour au Dictionnaire Foébé" };
+    }
+
+    return { href: "/index.html", backLabel: "Accueil", currentLabel: shellPageLabelFallback(), aria: "Retour à l’accueil" };
+  }
+
+  var shellPageContext = getShellPageContext();
+  if (shellPageContext) document.documentElement.classList.add("foebe-has-shell-context");
 
   /* ═══════════════════════════════════════════════════════════════════════════
      3. INJECTION DU NAV
@@ -612,14 +336,27 @@
     document.body.insertBefore(mainNav, document.body.firstChild);
   }
   mainNav.setAttribute("aria-label", "Navigation principale");
+
+  var shellBackHtml = shellPageContext
+    ? '<a class="shell-context-back" href="' + shellEscapeHtml(shellPageContext.href) + '" aria-label="' + shellEscapeHtml(shellPageContext.aria) + '">' +
+        '<span class="shell-context-back__arrow" aria-hidden="true">←</span>' +
+        '<span class="shell-context-back__label">' + shellEscapeHtml(shellPageContext.backLabel) + '</span>' +
+      '</a>'
+    : '';
+  var shellCurrentLabel = shellPageContext ? shellPageContext.currentLabel : "Accueil";
+
   mainNav.innerHTML =
-    '<a aria-label="Maison Foébé — accueil" class="nav-logo" href="index.html">' +
-      '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
-    '</a>' +
-          '<div class="nav-right">' +
-        '<button aria-label="Changer le thème" class="theme-toggle" id="themeToggle" type="button">☀️</button>' +
-        '<button aria-controls="navMenu" aria-expanded="false" aria-label="Ouvrir le menu" id="menuToggle" type="button">☰</button>' +
-      '</div>';
+    '<div class="nav-left">' +
+      '<a aria-label="Maison Foébé — accueil" class="nav-logo" href="index.html">' +
+        '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
+      '</a>' + shellBackHtml +
+    '</div>' +
+    '<span class="shell-page-current' + (shellPageContext ? '' : ' shell-page-current--home') + '" aria-current="page" title="' + shellEscapeHtml(shellCurrentLabel) + '">' + shellEscapeHtml(shellCurrentLabel) + '</span>' +
+    '<div class="nav-right">' +
+      '<button aria-label="Changer le thème" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">☀️</button>' +
+      '<button aria-controls="navMenu" aria-expanded="false" aria-label="Ouvrir le menu" id="menuToggle" type="button">☰</button>' +
+    '</div>' +
+    '<div id="foebeReadingProgress" aria-hidden="true"><span id="foebeReadingProgressBar"></span></div>';
 
   var navMenu = document.getElementById("navMenu");
   if (!navMenu) {
@@ -642,6 +379,106 @@
 
   navOverlay.setAttribute("aria-hidden", "true");
   navOverlay.className = "";
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     3.1 PROGRESSION DE LECTURE GLOBALE
+     Une seule barre harmonisée, attachée au Shell et masquée si la page ne scrolle pas.
+  ═══════════════════════════════════════════════════════════════════════════ */
+  (function initFoebeReadingProgress() {
+    var root = document.documentElement;
+    var bar = document.getElementById("foebeReadingProgressBar");
+    if (!bar) return;
+
+    var ticking = false;
+    var legacySelector = ".foebe-scroll-progress,#scrollProgress,.scroll-progress,[data-scroll-progress],.reading-progress,.page-reading-progress";
+
+    function removeLegacyReadingBars() {
+      document.querySelectorAll(legacySelector).forEach(function (el) {
+        if (!el || el.id === "foebeReadingProgress" || el.id === "foebeReadingProgressBar") return;
+        if (el.classList && el.classList.contains("foebe-scroll-progress--fallback")) return;
+        if (el.closest && el.closest("#mainNav")) return;
+        if (el.parentNode) el.parentNode.removeChild(el);
+      });
+    }
+
+    function updateReadingProgress() {
+      ticking = false;
+      var doc = document.documentElement;
+      var body = document.body;
+      var scrollTop = window.pageYOffset || doc.scrollTop || (body && body.scrollTop) || 0;
+      var fullHeight = Math.max(
+        doc.scrollHeight, doc.offsetHeight, doc.clientHeight,
+        body ? body.scrollHeight : 0,
+        body ? body.offsetHeight : 0
+      );
+      var viewport = window.innerHeight || doc.clientHeight || 0;
+      var maxScroll = Math.max(0, fullHeight - viewport);
+      var path = String(currentPath || window.location.pathname || "").toLowerCase();
+      var immersiveNoScroll = (
+        currentFile === "lexique.html" ||
+        currentFile === "dictionnaire.html" ||
+        currentFile === "stories.html" ||
+        path.indexOf("/stories") !== -1 ||
+        path.indexOf("/lexique") !== -1 ||
+        path.indexOf("/dictionnaire") !== -1
+      );
+
+      var progressMode = String(
+        root.getAttribute("data-foebe-progress") ||
+        (body && body.getAttribute("data-foebe-progress")) ||
+        ""
+      ).toLowerCase();
+
+      var progressDisabledByPage =
+        progressMode === "off" ||
+        progressMode === "none" ||
+        progressMode === "false";
+
+      if (progressDisabledByPage || immersiveNoScroll || maxScroll <= 8) {
+        root.classList.add("foebe-reading-progress-disabled");
+        bar.style.setProperty("--foebe-reading-progress", "0");
+        return;
+      }
+
+      root.classList.remove("foebe-reading-progress-disabled");
+      var ratio = Math.max(0, Math.min(1, scrollTop / maxScroll));
+      bar.style.setProperty("--foebe-reading-progress", ratio.toFixed(4));
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateReadingProgress);
+    }
+
+    removeLegacyReadingBars();
+    updateReadingProgress();
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate, { passive: true });
+    window.addEventListener("orientationchange", requestUpdate, { passive: true });
+    window.addEventListener("load", requestUpdate);
+    window.addEventListener("pageshow", requestUpdate);
+
+    try {
+      if (window.ResizeObserver) {
+        var resizeObserver = new ResizeObserver(requestUpdate);
+        resizeObserver.observe(document.documentElement);
+        if (document.body) resizeObserver.observe(document.body);
+      }
+    } catch (e) {}
+
+    try {
+      var progressObserver = new MutationObserver(function () {
+        removeLegacyReadingBars();
+        requestUpdate();
+      });
+      progressObserver.observe(document.documentElement, { childList: true, subtree: true });
+      window.setTimeout(function () {
+        try { progressObserver.disconnect(); } catch (e) {}
+      }, 3000);
+    } catch (e) {}
+  })();
 
   /* ═══════════════════════════════════════════════════════════════════════════
      4. INJECTION DU FOOTER
@@ -709,6 +546,7 @@
     var isNight = h.getAttribute("data-theme") === "night";
     themeBtn.textContent = isNight ? "☀️" : "🌙";
     themeBtn.setAttribute("aria-label", isNight ? "Passer en mode jour" : "Passer en mode nuit");
+    themeBtn.setAttribute("aria-pressed", isNight ? "true" : "false");
   }
 
   syncThemeButton();
@@ -732,7 +570,34 @@
   var hoverCloseTimer = null;
   var canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  function openMenu() {
+  var focusTrapHandler = null;
+  function getFocusables(root) {
+    if (!root) return [];
+    return Array.prototype.slice.call(
+      root.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])')
+    ).filter(function(el){ return el.offsetParent !== null || el === document.activeElement; });
+  }
+  function activateFocusTrap() {
+    if (focusTrapHandler) return;
+    focusTrapHandler = function(e) {
+      if (e.key === "Escape") { e.preventDefault(); closeMenu({ returnFocus: true }); return; }
+      if (e.key !== "Tab") return;
+      var focusables = getFocusables(navMenu);
+      if (!focusables.length) return;
+      var first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", focusTrapHandler);
+  }
+  function deactivateFocusTrap() {
+    if (!focusTrapHandler) return;
+    document.removeEventListener("keydown", focusTrapHandler);
+    focusTrapHandler = null;
+  }
+
+  function openMenu(options) {
+    options = options || {};
     if (hoverCloseTimer) {
       clearTimeout(hoverCloseTimer);
       hoverCloseTimer = null;
@@ -749,6 +614,16 @@
       menuToggle.textContent = "×";
       menuToggle.setAttribute("aria-label", "Fermer le menu");
     }
+
+    /* Focus trap uniquement lors d’une ouverture volontaire (clic ou clavier).
+       Une ouverture au survol desktop ne déplace jamais le focus. */
+    if (options.trapFocus) {
+      activateFocusTrap();
+      var first = getFocusables(navMenu)[0];
+      if (first) { try { first.focus({ preventScroll: true }); } catch(e) { first.focus(); } }
+    } else {
+      deactivateFocusTrap();
+    }
   }
 
   function closeMenu(options) {
@@ -764,6 +639,7 @@
     navOverlay.classList.remove("open");
     navOverlay.setAttribute("aria-hidden", "true");
 
+    deactivateFocusTrap();
     if (menuToggle) {
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.textContent = "☰";
@@ -793,18 +669,18 @@
       if (navMenu.classList.contains("open")) {
         closeMenu({ returnFocus: true });
       } else {
-        openMenu();
+        openMenu({ trapFocus: true });
       }
     });
 
     if (canHover) {
-      menuToggle.addEventListener("mouseenter", openMenu);
+      menuToggle.addEventListener("mouseenter", function () { openMenu({ trapFocus: false }); });
     }
   }
 
   if (canHover) {
     mainNav.addEventListener("mouseleave", scheduleCloseMenu);
-    navMenu.addEventListener("mouseenter", openMenu);
+    navMenu.addEventListener("mouseenter", function () { openMenu({ trapFocus: false }); });
     navMenu.addEventListener("mouseleave", scheduleCloseMenu);
   }
 
@@ -877,64 +753,38 @@ if (fallbackNav) {
      9. ÉTAT SHELL
   ═══════════════════════════════════════════════════════════════════════════ */
   try {
+    if (window.__foebeShellWatchdog) {
+      clearTimeout(window.__foebeShellWatchdog);
+      window.__foebeShellWatchdog = null;
+    }
+
     document.documentElement.classList.add("foebe-shell-ready");
-    document.documentElement.classList.remove("foebe-shell-loading", "foebe-shell-failed");
+    document.documentElement.classList.remove(
+      "foebe-shell-loading",
+      "foebe-shell-failed"
+    );
+
+    try {
+      window.dispatchEvent(new CustomEvent("foebe:shell-ready"));
+    } catch (eventError) {}
   } catch (e) {}
-/* FOEBE IMMERSIVE PAGE CLEANER — START
-     Dictionnaire/Lexique/Stories : expérience immersive.
-     On supprime les barres fixes parasites : breadcrumb auto + éventuelle barre de progression. */
+/* FOEBE CLEANUP UNIFIÉ — START
+     Compatibilité après suppression du fil d’Ariane global.
+     - masque/supprime les anciens breadcrumbs éventuellement présents dans les pages ;
+     - préserve le mode immersif Lexique/Dictionnaire/Stories ;
+     - retire les anciennes barres de progression de lecture devenues redondantes ;
+     - un seul MutationObserver, borné à 3 secondes. */
   (function () {
-    function cleanImmersivePages() {
-      var path = (window.location.pathname || "").toLowerCase();
-      var file = path.split("/").pop() || "index.html";
-
-      var isImmersive =
-        file === "dictionnaire.html" ||
-        file === "lexique.html" ||
-        file === "stories.html" ||
-        path.indexOf("/stories") !== -1 ||
-        path.indexOf("/lexique") !== -1 ||
-        path.indexOf("/dictionnaire") !== -1;
-
-      if (!isImmersive) return;
-
-      document.documentElement.classList.add("foebe-no-breadcrumb", "foebe-immersive-page");
-      document.body && document.body.classList.add("foebe-no-breadcrumb", "foebe-immersive-page");
-
-      document.querySelectorAll(".foebe-breadcrumb, .foebe-scroll-progress").forEach(function (el) {
-        if (el && el.parentNode) el.parentNode.removeChild(el);
-      });
-
-      if (!document.getElementById("foebeImmersiveCleanerCss")) {
-        var style = document.createElement("style");
-        style.id = "foebeImmersiveCleanerCss";
-        style.textContent =
-          "html.foebe-immersive-page .foebe-breadcrumb,body.foebe-immersive-page .foebe-breadcrumb," +
-          "html.foebe-immersive-page .foebe-scroll-progress,body.foebe-immersive-page .foebe-scroll-progress{" +
-          "display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}";
-        (document.head || document.documentElement).appendChild(style);
-      }
+    function normalizedPath() {
+      var path = String(window.location.pathname || "/").toLowerCase();
+      try { path = decodeURIComponent(path); } catch (e) {}
+      return path.split("?")[0].split("#")[0].replace(/\/+/g, "/");
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", cleanImmersivePages, { once: true });
-    } else {
-      cleanImmersivePages();
-    }
-    window.addEventListener("load", cleanImmersivePages);
-    window.setTimeout(cleanImmersivePages, 250);
-    window.setTimeout(cleanImmersivePages, 1200);
-  })();
-  /* FOEBE IMMERSIVE PAGE CLEANER — END */
-
-
-  /* FOEBE LEXIQUE MOBILE IMMERSIF — START
-     Lexique/Dictionnaire/Stories : sur mobile, on garde seulement le Shell utile
-     et on enlève les barres fixes parasites qui coupent l’avatar/l’intro immersive. */
-  (function () {
-    function isLexiqueImmersivePage() {
-      var path = (window.location.pathname || "").toLowerCase();
-      var file = path.split("/").pop() || "index.html";
+    function isImmersivePage() {
+      var path = normalizedPath();
+      var parts = path.split("/").filter(Boolean);
+      var file = parts.length ? parts[parts.length - 1] : "index.html";
       return (
         file === "dictionnaire.html" ||
         file === "lexique.html" ||
@@ -945,64 +795,44 @@ if (fallbackNav) {
       );
     }
 
-    function applyLexiqueImmersiveMode() {
-      if (!isLexiqueImmersivePage()) return;
+    var immersive = isImmersivePage();
 
-      var html = document.documentElement;
-      var body = document.body;
-
-      html.classList.add("foebe-no-breadcrumb", "foebe-immersive-page", "foebe-lexique-immersive");
-      if (body) body.classList.add("foebe-no-breadcrumb", "foebe-immersive-page", "foebe-lexique-immersive");
-
-      /* On retire vraiment les éléments fixes parasites déjà injectés. */
-      document.querySelectorAll(
-        ".foebe-breadcrumb," +
-        ".foebe-scroll-progress," +
-        ".story-topbar,.stories-topbar,.story-fixed-bar,.stories-fixed-bar," +
-        ".story-progress,.stories-progress,.lexique-topbar,.dictionnaire-topbar," +
-        ".lexique-fixed-bar,.dictionnaire-fixed-bar," +
-        "[data-story-topbar],[data-stories-topbar],[data-lexique-topbar]"
-      ).forEach(function (el) {
-        if (el && el.parentNode) el.parentNode.removeChild(el);
-      });
-
-      if (!document.getElementById("foebeLexiqueImmersiveMobileCss")) {
-        var style = document.createElement("style");
-        style.id = "foebeLexiqueImmersiveMobileCss";
-        style.textContent = [
-          "html.foebe-lexique-immersive .foebe-breadcrumb,body.foebe-lexique-immersive .foebe-breadcrumb,html.foebe-lexique-immersive .foebe-scroll-progress,body.foebe-lexique-immersive .foebe-scroll-progress{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
-
-          "html.foebe-lexique-immersive .story-topbar,body.foebe-lexique-immersive .story-topbar,html.foebe-lexique-immersive .stories-topbar,body.foebe-lexique-immersive .stories-topbar,html.foebe-lexique-immersive .story-fixed-bar,body.foebe-lexique-immersive .story-fixed-bar,html.foebe-lexique-immersive .stories-fixed-bar,body.foebe-lexique-immersive .stories-fixed-bar,html.foebe-lexique-immersive .story-progress,body.foebe-lexique-immersive .story-progress,html.foebe-lexique-immersive .stories-progress,body.foebe-lexique-immersive .stories-progress,html.foebe-lexique-immersive .lexique-topbar,body.foebe-lexique-immersive .lexique-topbar,html.foebe-lexique-immersive .dictionnaire-topbar,body.foebe-lexique-immersive .dictionnaire-topbar{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
-
-          "@media(max-width:767px){html.foebe-lexique-immersive #mainNav{height:54px!important;min-height:54px!important;padding:0 14px!important;box-shadow:0 6px 18px rgba(0,0,0,.10)!important;background:color-mix(in srgb,var(--bg) 86%,transparent)!important;}html.foebe-lexique-immersive #navMenu{top:54px!important;max-height:calc(100dvh - 54px)!important;}html.foebe-lexique-immersive #navOverlay{top:54px!important;}html.foebe-lexique-immersive .nav-logo{font-size:17px!important;}html.foebe-lexique-immersive .theme-toggle{display:none!important;}html.foebe-lexique-immersive #menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}html.foebe-lexique-immersive body > nav#fallbackNav.fallback-nav .fallback-links{display:none!important;}html.foebe-lexique-immersive body > nav#fallbackNav.fallback-nav{height:54px!important;min-height:54px!important;}}"
-        ].join("\\n");
-        (document.head || document.documentElement).appendChild(style);
-      }
+    function injectCleanupCss() {
+      if (document.getElementById("foebeUnifiedCleanupCss")) return;
+      var style = document.createElement("style");
+      style.id = "foebeUnifiedCleanupCss";
+      style.textContent = [
+        ".foebe-breadcrumb{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;max-height:0!important;overflow:hidden!important;}",
+        "html.foebe-lexique-immersive .foebe-scroll-progress,body.foebe-lexique-immersive .foebe-scroll-progress,",
+        "html.foebe-lexique-immersive .story-topbar,body.foebe-lexique-immersive .story-topbar,",
+        "html.foebe-lexique-immersive .stories-topbar,body.foebe-lexique-immersive .stories-topbar,",
+        "html.foebe-lexique-immersive .story-fixed-bar,body.foebe-lexique-immersive .story-fixed-bar,",
+        "html.foebe-lexique-immersive .stories-fixed-bar,body.foebe-lexique-immersive .stories-fixed-bar,",
+        "html.foebe-lexique-immersive .story-progress,body.foebe-lexique-immersive .story-progress,",
+        "html.foebe-lexique-immersive .stories-progress,body.foebe-lexique-immersive .stories-progress,",
+        "html.foebe-lexique-immersive .lexique-topbar,body.foebe-lexique-immersive .lexique-topbar,",
+        "html.foebe-lexique-immersive .dictionnaire-topbar,body.foebe-lexique-immersive .dictionnaire-topbar,",
+        "html.foebe-lexique-immersive .lexique-fixed-bar,body.foebe-lexique-immersive .lexique-fixed-bar,",
+        "html.foebe-lexique-immersive .dictionnaire-fixed-bar,body.foebe-lexique-immersive .dictionnaire-fixed-bar,",
+        "html.foebe-lexique-immersive [data-story-topbar],body.foebe-lexique-immersive [data-story-topbar],",
+        "html.foebe-lexique-immersive [data-stories-topbar],body.foebe-lexique-immersive [data-stories-topbar],",
+        "html.foebe-lexique-immersive [data-lexique-topbar],body.foebe-lexique-immersive [data-lexique-topbar]",
+        "{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
+        "@media(max-width:767px){",
+          "html.foebe-lexique-immersive #mainNav{height:54px!important;min-height:54px!important;padding:0 14px!important;box-shadow:0 6px 18px rgba(0,0,0,.10)!important;background:color-mix(in srgb,var(--bg) 86%,transparent)!important;}",
+          "html.foebe-lexique-immersive #navMenu{top:54px!important;max-height:calc(100dvh - 54px)!important;}",
+          "html.foebe-lexique-immersive #navOverlay{top:54px!important;}",
+          "html.foebe-lexique-immersive .nav-logo{font-size:17px!important;}",
+          "html.foebe-lexique-immersive .theme-toggle{display:none!important;}",
+          "html.foebe-lexique-immersive #menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}",
+          "html.foebe-lexique-immersive body > nav#fallbackNav.fallback-nav .fallback-links{display:none!important;}",
+          "html.foebe-lexique-immersive body > nav#fallbackNav.fallback-nav{height:54px!important;min-height:54px!important;}",
+        "}"
+      ].join("");
+      (document.head || document.documentElement).appendChild(style);
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", applyLexiqueImmersiveMode, { once: true });
-    } else {
-      applyLexiqueImmersiveMode();
-    }
-
-    window.addEventListener("load", applyLexiqueImmersiveMode);
-    window.addEventListener("resize", applyLexiqueImmersiveMode, { passive: true });
-    window.addEventListener("orientationchange", applyLexiqueImmersiveMode, { passive: true });
-
-    window.setTimeout(applyLexiqueImmersiveMode, 100);
-    window.setTimeout(applyLexiqueImmersiveMode, 450);
-    window.setTimeout(applyLexiqueImmersiveMode, 1200);
-    window.setTimeout(applyLexiqueImmersiveMode, 2400);
-  })();
-  /* FOEBE LEXIQUE MOBILE IMMERSIF — END */
-
-
-  /* FOEBE NO BREADCRUMB — START
-     Décision produit : aucun fil d'Ariane global, ni desktop ni mobile.
-     Les pages profondes utilisent seulement leurs liens de retour contextuels. */
-  (function () {
-    function removeBreadcrumbs() {
+    function cleanLegacyUi() {
       document.documentElement.classList.add("foebe-no-breadcrumb");
       if (document.body) document.body.classList.add("foebe-no-breadcrumb");
 
@@ -1010,216 +840,55 @@ if (fallbackNav) {
         if (el && el.parentNode) el.parentNode.removeChild(el);
       });
 
-      if (!document.getElementById("foebeNoBreadcrumbCss")) {
-        var style = document.createElement("style");
-        style.id = "foebeNoBreadcrumbCss";
-        style.textContent =
-          ".foebe-breadcrumb{display:none!important;visibility:hidden!important;" +
-          "opacity:0!important;pointer-events:none!important;max-height:0!important;" +
-          "overflow:hidden!important;}";
-        (document.head || document.documentElement).appendChild(style);
+      document.querySelectorAll(
+        ".foebe-scroll-progress,#scrollProgress,.scroll-progress,[data-scroll-progress],.reading-progress,.page-reading-progress"
+      ).forEach(function (el) {
+        if (!el || el.id === "foebeReadingProgress" || el.id === "foebeReadingProgressBar") return;
+        if (el.classList && el.classList.contains("foebe-scroll-progress--fallback")) return;
+        if (el.closest && el.closest("#mainNav")) return;
+        if (el.parentNode) el.parentNode.removeChild(el);
+      });
+
+      if (!immersive) return;
+
+      document.documentElement.classList.add("foebe-immersive-page", "foebe-lexique-immersive");
+      if (document.body) document.body.classList.add("foebe-immersive-page", "foebe-lexique-immersive");
+
+      document.querySelectorAll(
+        ".foebe-scroll-progress," +
+        ".story-topbar,.stories-topbar,.story-fixed-bar,.stories-fixed-bar," +
+        ".story-progress,.stories-progress,.lexique-topbar,.dictionnaire-topbar," +
+        ".lexique-fixed-bar,.dictionnaire-fixed-bar," +
+        "[data-story-topbar],[data-stories-topbar],[data-lexique-topbar]"
+      ).forEach(function (el) {
+        if (el && el.classList && el.classList.contains("foebe-scroll-progress--fallback")) return;
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+      });
+    }
+
+    injectCleanupCss();
+
+    function startCleanup() {
+      cleanLegacyUi();
+
+      try {
+        var observer = new MutationObserver(cleanLegacyUi);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        window.setTimeout(function () {
+          try { observer.disconnect(); } catch (e) {}
+        }, 3000);
+      } catch (e) {
+        window.setTimeout(cleanLegacyUi, 900);
       }
     }
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", removeBreadcrumbs, { once: true });
+      document.addEventListener("DOMContentLoaded", startCleanup, { once: true });
     } else {
-      removeBreadcrumbs();
+      startCleanup();
     }
-
-    window.addEventListener("load", removeBreadcrumbs);
-    window.setTimeout(removeBreadcrumbs, 150);
-    window.setTimeout(removeBreadcrumbs, 800);
   })();
-  /* FOEBE NO BREADCRUMB — END */
-
-
-  /* FOEBE RETOUR CONTEXTUEL — START
-     Pas de breadcrumb global.
-     Le Shell ajoute seulement un lien discret dans les pages profondes. */
-  (function () {
-    function normalizePath() {
-      var path = String(window.location.pathname || "/").toLowerCase();
-      try { path = decodeURIComponent(path); } catch (e) {}
-      path = path.split("?")[0].split("#")[0].replace(/\/+/g, "/");
-      return path;
-    }
-
-    function getContextConfig() {
-      var path = normalizePath();
-      var parts = path.split("/").filter(Boolean);
-      var file = parts.length ? parts[parts.length - 1] : "index.html";
-
-      /* Pages principales : aucun lien retour. */
-      if (
-        file === "index.html" ||
-        file === "a-propos.html" ||
-        file === "comprendre.html" ||
-        file === "methode.html" ||
-        file === "echelle-foebe.html" ||
-        file === "zones.html" ||
-        file === "boussole.html" ||
-        file === "dictionnaire.html" ||
-        file === "lexique.html" ||
-        file === "stories.html" ||
-        file === "mentions-legales.html"
-      ) {
-        return null;
-      }
-
-      /* Pages des 7 zones. */
-      if (
-        /^zone-(corps|mental|energie|énergie|emotions|émotions|relations|environnement|sens)(?:\.html)?$/.test(file)
-      ) {
-        return {
-          href: "/zones.html",
-          label: "Retour aux 7 zones",
-          aria: "Retour à la page des 7 zones"
-        };
-      }
-
-      /* Scénarios de la Boussole. */
-      if (
-        file === "boussole-scenarios.html" ||
-        file === "scenarios.html" ||
-        file === "scenario.html" ||
-        path.indexOf("/boussole/scenarios") !== -1
-      ) {
-        return {
-          href: "/boussole.html",
-          label: "Retour à la Boussole",
-          aria: "Retour à la Boussole Foébé"
-        };
-      }
-
-      /* Fiches / histoires du Dictionnaire immersif.
-         La page principale reste immersive ; seules les pages profondes ont ce retour. */
-      if (
-        path.indexOf("/stories/") !== -1 ||
-        path.indexOf("/lexique/") !== -1 ||
-        path.indexOf("/dictionnaire/") !== -1 ||
-        /^(story-|fiche-|lexique-|dictionnaire-)/.test(file)
-      ) {
-        return {
-          href: "/dictionnaire.html",
-          label: "Retour au Dictionnaire",
-          aria: "Retour au Dictionnaire Foébé"
-        };
-      }
-
-      return null;
-    }
-
-    function injectContextCss() {
-      if (document.getElementById("foebeContextReturnCss")) return;
-
-      var style = document.createElement("style");
-      style.id = "foebeContextReturnCss";
-      style.textContent = [
-        ".foebe-context-return{",
-          "display:inline-flex!important;",
-          "align-items:center!important;",
-          "gap:8px!important;",
-          "width:max-content!important;",
-          "max-width:100%!important;",
-          "min-height:38px!important;",
-          "margin:0 0 18px!important;",
-          "padding:7px 13px!important;",
-          "border:1px solid rgba(187,126,96,.34)!important;",
-          "border-radius:999px!important;",
-          "background:rgba(187,126,96,.10)!important;",
-          "color:var(--text,#F0EAE7)!important;",
-          "font-family:'Poppins',sans-serif!important;",
-          "font-size:12.5px!important;",
-          "font-weight:700!important;",
-          "line-height:1.2!important;",
-          "text-decoration:none!important;",
-          "box-shadow:0 8px 22px rgba(78,41,31,.07)!important;",
-          "transition:background .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease!important;",
-        "}",
-        ".foebe-context-return::before{",
-          "content:'←'!important;",
-          "display:inline-flex!important;",
-          "align-items:center!important;",
-          "justify-content:center!important;",
-          "color:#BB7E60!important;",
-          "font-size:15px!important;",
-          "font-weight:800!important;",
-          "line-height:1!important;",
-        "}",
-        ".foebe-context-return:hover,.foebe-context-return:focus-visible{",
-          "background:rgba(187,126,96,.17)!important;",
-          "border-color:#BB7E60!important;",
-          "transform:translateX(-2px)!important;",
-          "box-shadow:0 10px 26px rgba(187,126,96,.13)!important;",
-          "outline:none!important;",
-        "}",
-        ".foebe-context-return:focus-visible{",
-          "box-shadow:0 0 0 3px rgba(187,126,96,.20),0 10px 26px rgba(187,126,96,.13)!important;",
-        "}",
-        "[data-theme='day'] .foebe-context-return{",
-          "color:#4E291F!important;",
-          "background:rgba(187,126,96,.09)!important;",
-          "border-color:rgba(78,41,31,.22)!important;",
-        "}",
-        "[data-theme='night'] .foebe-context-return{",
-          "color:#F0EAE7!important;",
-          "background:rgba(187,126,96,.12)!important;",
-        "}",
-        "@media(max-width:767px){",
-          ".foebe-context-return{",
-            "min-height:36px!important;",
-            "margin-bottom:14px!important;",
-            "padding:6px 11px!important;",
-            "font-size:12px!important;",
-            "box-shadow:none!important;",
-          "}",
-        "}",
-        "@media(prefers-reduced-motion:reduce){",
-          ".foebe-context-return{transition:none!important;}",
-        "}"
-      ].join("");
-      (document.head || document.documentElement).appendChild(style);
-    }
-
-    function injectContextReturn() {
-      if (document.getElementById("foebeContextReturn")) return;
-
-      var config = getContextConfig();
-      if (!config) return;
-
-      var h1 =
-        document.querySelector("main .hero h1") ||
-        document.querySelector(".hero h1") ||
-        document.querySelector("main h1") ||
-        document.querySelector("h1");
-
-      if (!h1 || !h1.parentNode) return;
-
-      injectContextCss();
-
-      var link = document.createElement("a");
-      link.id = "foebeContextReturn";
-      link.className = "foebe-context-return";
-      link.href = config.href;
-      link.setAttribute("aria-label", config.aria);
-      link.textContent = config.label;
-
-      h1.parentNode.insertBefore(link, h1);
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", injectContextReturn, { once: true });
-    } else {
-      injectContextReturn();
-    }
-
-    window.addEventListener("load", injectContextReturn);
-    window.setTimeout(injectContextReturn, 180);
-    window.setTimeout(injectContextReturn, 700);
-  })();
-  /* FOEBE RETOUR CONTEXTUEL — END */
-
+  /* FOEBE CLEANUP UNIFIÉ — END */
 
   /* FOEBE NAV IMMERSIVE MOBILE — START
      Toutes les pages mobiles : la navigation s'efface après une courte inactivité
@@ -1246,7 +915,7 @@ if (fallbackNav) {
     function normalizedPath() {
       var path = String(window.location.pathname || "/").toLowerCase();
       try { path = decodeURIComponent(path); } catch (e) {}
-      return path.split("?")[0].split("#")[0].replace(/\\+/g, "/");
+      return path.split("?")[0].split("#")[0].replace(/\/+/g, "/");
     }
 
     function isImmersiveStoryPage() {
@@ -1514,5 +1183,58 @@ if (fallbackNav) {
     }
   })();
   /* FOEBE NAV IMMERSIVE MOBILE — END */
+
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     V4 — SKIP-LINK ACCESSIBILITÉ + SAFE-AREA iPhone
+  ═══════════════════════════════════════════════════════════════════════════ */
+  (function () {
+    /* CSS skip-link + safe-area menu mobile */
+    if (!document.getElementById("foebeV4Css")) {
+      var st = document.createElement("style");
+      st.id = "foebeV4Css";
+      st.textContent =
+        ".foebe-skip-link{position:fixed!important;top:8px!important;left:8px!important;z-index:999999!important;" +
+          "background:#BB7E60!important;color:#F0EAE7!important;padding:10px 16px!important;border-radius:8px!important;" +
+          "font-family:'Poppins',sans-serif!important;font-weight:700!important;font-size:14px!important;" +
+          "text-decoration:none!important;transform:translateY(-200%)!important;transition:transform .2s ease!important;" +
+          "box-shadow:0 8px 24px rgba(0,0,0,.18)!important;}" +
+        ".foebe-skip-link:focus,.foebe-skip-link:focus-visible{transform:translateY(0)!important;outline:2px solid #F0EAE7!important;outline-offset:2px!important;}" +
+        "@media(max-width:640px){#navMenu{padding-bottom:env(safe-area-inset-bottom,0px)!important;}}";
+      (document.head || document.documentElement).appendChild(st);
+    }
+
+    function ensureMainTarget() {
+      var main = document.querySelector("main");
+      if (main && !main.id) main.id = "mainContent";
+      return main ? main.id : null;
+    }
+
+    function injectSkipLink() {
+      if (document.getElementById("foebeSkipLink")) return;
+      var targetId = ensureMainTarget();
+      if (!targetId) return;
+      var link = document.createElement("a");
+      link.id = "foebeSkipLink";
+      link.className = "foebe-skip-link";
+      link.href = "#" + targetId;
+      link.textContent = "Aller au contenu";
+      link.addEventListener("click", function () {
+        var main = document.getElementById(targetId);
+        if (!main) return;
+        window.setTimeout(function () {
+          try { main.focus({ preventScroll: true }); } catch (e) { main.focus(); }
+        }, 0);
+      });
+      (document.body || document.documentElement).insertBefore(link, (document.body || document.documentElement).firstChild);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", injectSkipLink, { once: true });
+    } else {
+      injectSkipLink();
+    }
+  })();
 
 })();
