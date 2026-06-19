@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html data-theme="night" lang="fr" data-foebe-breadcrumb="force">
+
+<html data-theme="night" lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <!-- Anti-FOUC thème — NE PAS MODIFIER -->
 <script>
 (function(){
@@ -17,41 +18,44 @@
   document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
 })();
 </script><script id="foebe-shell-fallback-guard">
-(function(){
-  var h = document.documentElement;
-  h.classList.add('foebe-shell-loading');
-  window.setTimeout(function(){
-    if (!h.classList.contains('foebe-shell-ready')) {
-      h.classList.add('foebe-shell-failed');
+(function () {
+  var root = document.documentElement;
+  root.classList.add("foebe-shell-loading");
+
+  window.__foebeShellWatchdog = window.setTimeout(function () {
+    if (!root.classList.contains("foebe-shell-ready")) {
+      root.classList.remove("foebe-shell-loading");
+      root.classList.add("foebe-shell-failed");
+      try { window.dispatchEvent(new CustomEvent("foebe:shell-failed")); } catch (e) {}
     }
-  }, 2500);
+  }, 3000);
 })();
 </script>
 <script>document.documentElement.classList.add('js-ready');</script>
 <title>Les 7 zones · Maison Foébé</title>
-<link rel="canonical" href="https://maisonfoebe.fr/zones.html">
-<link rel="sitemap" type="application/xml" href="sitemap.xml">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="description" content="Comprendre les 7 zones Foébé : mental, corps, énergie, émotions, relations, environnement et sens. Un cadre clair pour repérer ce qui s'épuise et choisir par où commencer.">
-<meta name="robots" content="index,follow">
-<meta property="og:title" content="Les 7 zones · Maison Foébé">
-<meta property="og:description" content="Les 7 zones du self-care Foébé : ce qu'elles couvrent, comment les lire, et comment choisir par où commencer.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://maisonfoebe.fr/zones.html">
-<meta property="og:image" content="https://maisonfoebe.fr/images/og-foebe.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Maison Foébé, espace structuré du self-care">
-<meta property="og:site_name" content="Maison Foébé">
-<meta property="og:locale" content="fr_FR">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Les 7 zones · Maison Foébé">
-<meta name="twitter:description" content="Les 7 zones du self-care Foébé : ce qu'elles couvrent, comment les lire, et comment choisir par où commencer.">
-<meta name="twitter:image" content="https://maisonfoebe.fr/images/og-foebe.jpg">
-<script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
+<link href="https://maisonfoebe.fr/zones.html" rel="canonical"/>
+<link href="sitemap.xml" rel="sitemap" type="application/xml"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="Comprendre les 7 zones Foébé : mental, corps, énergie, émotions, relations, environnement et sens. Un cadre clair pour repérer ce qui s'épuise et choisir par où commencer." name="description"/>
+<meta content="index,follow" name="robots"/>
+<meta content="Les 7 zones · Maison Foébé" property="og:title"/>
+<meta content="Les 7 zones du self-care Foébé : ce qu'elles couvrent, comment les lire, et comment choisir par où commencer." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://maisonfoebe.fr/zones.html" property="og:url"/>
+<meta content="https://maisonfoebe.fr/images/og-foebe.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Maison Foébé, espace structuré du self-care" property="og:image:alt"/>
+<meta content="Maison Foébé" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Les 7 zones · Maison Foébé" name="twitter:title"/>
+<meta content="Les 7 zones du self-care Foébé : ce qu'elles couvrent, comment les lire, et comment choisir par où commencer." name="twitter:description"/>
+<meta content="https://maisonfoebe.fr/images/og-foebe.jpg" name="twitter:image"/>
+<script data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f" defer="" src="https://cloud.umami.is/script.js"></script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -75,9 +79,9 @@
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&amp;family=Montserrat:wght@700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style id="fallbackNavCritical">
 /* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
    Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
@@ -1055,131 +1059,807 @@ main{
   }
 }
 </style>
+<style id="foebeZonesPremiumV2Css">
+/* Maison Foébé — Zones premium éditoriales v2 */
+:root{
+  --foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#8E5B43 24%,#BB7E60 48%,#C45279 74%,#C34234 100%);
+  --foebe-nav-height:60px;
+}
+#mainContent:focus{outline:none}
 
-<style id="foebeScrollProgressCss">
-/* Barre de progression Maison Foébé — pages éditoriales */
-.foebe-scroll-progress {
-  position: fixed;
-  top: var(--nav-offset, 60px);
-  left: 0;
-  right: 0;
-  z-index: 940;
-  height: 3px;
-  background: rgba(187, 126, 96, .16);
-  pointer-events: none;
+/* Fallback commun */
+html.foebe-shell-loading:not(.foebe-shell-failed) body>nav#fallbackNav,
+html.foebe-shell-ready body>nav#fallbackNav{display:none!important}
+html.foebe-shell-failed body>nav#fallbackNav{display:flex!important}
+.foebe-scroll-progress--fallback{
+  display:none;position:fixed;top:var(--foebe-nav-height);left:0;right:0;
+  height:2px;z-index:99987;overflow:hidden;pointer-events:none;background:transparent
 }
-.foebe-scroll-progress__bar {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(0);
-  transform-origin: left center;
-  background: linear-gradient(90deg, #BB7E60, #C45279, #C34234);
-  box-shadow: 0 0 14px rgba(187, 126, 96, .34);
-  will-change: transform;
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;width:100%;height:100%;transform:scaleX(0);
+  transform-origin:left center;background:var(--foebe-progress-gradient);
+  box-shadow:0 1px 4px rgba(187,126,96,.18);will-change:transform
 }
-[data-theme="day"] .foebe-scroll-progress {
-  background: rgba(78, 41, 31, .10);
-}
-@media (max-width: 720px) {
-  .foebe-scroll-progress {
-    height: 2px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .foebe-scroll-progress__bar {
-    transition: none !important;
-  }
-}
-</style>
+html.foebe-shell-loading .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block}
+html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
 
+/* Surlignages éditoriaux — six repères, pas plus. */
+.foebe-highlight{
+  display:inline;padding:.03em .17em .08em;margin:0 -.02em;
+  border-radius:.24em;color:inherit;background:transparent;
+  box-decoration-break:clone;-webkit-box-decoration-break:clone
+}
+[data-theme="night"] .foebe-highlight--warm{background:rgba(187,126,96,.31);color:#F0EAE7}
+[data-theme="night"] .foebe-highlight--rose{background:rgba(196,82,121,.30);color:#F0EAE7}
+[data-theme="night"] .foebe-highlight--red{background:rgba(195,66,52,.29);color:#F0EAE7}
+[data-theme="day"] .foebe-highlight--warm{background:rgba(187,126,96,.25);color:#4E291F}
+[data-theme="day"] .foebe-highlight--rose{background:rgba(196,82,121,.17);color:#4E291F}
+[data-theme="day"] .foebe-highlight--red{background:rgba(195,66,52,.15);color:#4E291F}
 
-<style id="foebeZoneProgressStableCss">
-/* Correctif progression — page 7 zones HTML plate.
-   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
-   Z-index haut pour ne plus disparaître derrière la nav. */
-.foebe-scroll-progress{
-  position:fixed!important;
-  top:60px!important;
-  left:0!important;
-  right:0!important;
-  z-index:100020!important;
-  height:3px!important;
-  background:rgba(187,126,96,.16)!important;
-  pointer-events:none!important;
-  overflow:hidden!important;
+/* Hero : calme, lisible, centré sur le rôle des zones. */
+.page-zones-premium .hero{
+  min-height:clamp(620px,88svh,860px);
+  padding:calc(var(--foebe-nav-height) + clamp(56px,8svh,96px)) clamp(20px,6vw,80px) clamp(68px,9svh,104px);
+  background:
+    radial-gradient(ellipse 56% 46% at 14% 12%,rgba(187,126,96,.18),transparent 68%),
+    radial-gradient(ellipse 42% 38% at 88% 24%,rgba(196,82,121,.10),transparent 72%),
+    radial-gradient(ellipse 50% 34% at 50% 100%,rgba(26,64,96,.07),transparent 72%),
+    linear-gradient(180deg,var(--bg),color-mix(in srgb,var(--bg) 94%,#2C1A12 6%))
 }
-.foebe-scroll-progress__bar{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  transform:scaleX(0);
-  transform-origin:left center!important;
-  background:linear-gradient(90deg,#BB7E60,#C45279,#C34234)!important;
-  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
-  will-change:transform!important;
+[data-theme="day"] .page-zones-premium .hero{
+  background:
+    radial-gradient(ellipse 56% 46% at 14% 12%,rgba(187,126,96,.16),transparent 68%),
+    radial-gradient(ellipse 42% 38% at 88% 24%,rgba(196,82,121,.07),transparent 72%),
+    radial-gradient(ellipse 50% 34% at 50% 100%,rgba(26,64,96,.045),transparent 72%),
+    linear-gradient(180deg,#F0EAE7,#E8DDD8)
 }
-[data-theme="day"] .foebe-scroll-progress{
-  background:rgba(78,41,31,.10)!important;
+.page-zones-premium .hero::before,
+.page-zones-premium .hero::after{filter:blur(120px);opacity:.75}
+.page-zones-premium .hero-title{max-width:940px;font-size:clamp(42px,6.5vw,72px);line-height:1.055;letter-spacing:-.018em;text-wrap:balance}
+.page-zones-premium .hero-title em{color:#BB7E60}
+.page-zones-premium .hero-sub{max-width:720px;margin-top:30px;font-size:clamp(18px,1.45vw,21px);line-height:1.78;font-style:normal}
+
+/* Positionnement central : un encart de respiration plutôt qu’un bandeau plat. */
+.page-zones-premium .phrase-section{
+  padding:clamp(74px,9vw,116px) clamp(20px,5vw,48px);
+  background:var(--bg2)
 }
-@media(max-width:640px){
-  .foebe-scroll-progress{
-    top:58px!important;
-    height:2px!important;
-  }
+.page-zones-premium .phrase-text{
+  max-width:900px;padding:clamp(30px,5vw,52px);
+  border:1px solid var(--border);border-radius:30px;
+  background:linear-gradient(145deg,rgba(240,234,231,.07),rgba(187,126,96,.07));
+  box-shadow:0 24px 68px var(--shadow);
+  font-size:clamp(25px,3.9vw,42px);line-height:1.42;text-wrap:balance
 }
+[data-theme="day"] .page-zones-premium .phrase-text{
+  background:linear-gradient(145deg,rgba(255,255,255,.58),rgba(187,126,96,.10))
+}
+.page-zones-premium .foebe-wave{width:min(760px,92%);height:58px;margin-top:34px}
+.page-zones-premium .foebe-wave path{stroke-width:1.7;opacity:.78}
+
+/* Sections : progression éditoriale calme. */
+.page-zones-premium .section{padding:clamp(80px,9vw,120px) clamp(20px,5vw,48px)}
+.page-zones-premium .section-inner{max-width:1120px}
+.page-zones-premium .section-center.narrow{max-width:790px}
+.page-zones-premium .section-title{font-size:clamp(31px,4.3vw,49px);line-height:1.13;letter-spacing:-.012em;text-wrap:balance}
+.page-zones-premium .section-sub{max-width:730px;font-size:clamp(16.5px,.65vw + 14px,18px);line-height:1.82;font-style:normal}
+
+/* Pourquoi 7 zones : trois repères qui se lisent comme un système. */
+.page-zones-premium .triptyque{
+  margin-top:52px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;
+  overflow:hidden;border:1px solid var(--border);border-radius:30px;
+  background:var(--card-bg);box-shadow:0 28px 72px var(--shadow)
+}
+.page-zones-premium .triptyque-card{
+  min-height:290px;padding:34px 30px;border:0;border-right:1px solid var(--border);
+  border-radius:0;background:transparent;box-shadow:none
+}
+.page-zones-premium .triptyque-card:last-child{border-right:0}
+.page-zones-premium .triptyque-card::before{height:4px;background:var(--card-accent,#BB7E60);opacity:1}
+.page-zones-premium .triptyque-card:nth-child(2){--card-accent:#C45279}
+.page-zones-premium .triptyque-card:nth-child(3){--card-accent:#C34234}
+.page-zones-premium .triptyque-num{font-size:52px;color:var(--card-accent,#BB7E60);opacity:.26}
+.page-zones-premium .triptyque-title{font-size:clamp(22px,2.4vw,29px);line-height:1.2}
+.page-zones-premium .triptyque-title em{color:var(--card-accent,#BB7E60)}
+.page-zones-premium .triptyque-body{font-size:16.5px;line-height:1.78}
+
+/* Mode d’emploi : ligne de lecture unique et légère. */
+.page-zones-premium .steps-grid{
+  margin-top:52px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  overflow:hidden;border:1px solid var(--border);border-radius:28px;background:var(--border);
+  box-shadow:0 24px 62px var(--shadow)
+}
+.page-zones-premium .step{
+  min-height:300px;padding:30px 25px;border:0;border-radius:0;background:var(--bg)
+}
+[data-theme="day"] .page-zones-premium .step{background:rgba(255,255,255,.35)}
+.page-zones-premium .step:nth-child(2){--step:#C45279}
+.page-zones-premium .step:nth-child(3){--step:#C34234}
+.page-zones-premium .step:nth-child(4){--step:#8E5B43}
+.page-zones-premium .step-badge{
+  width:46px;height:46px;margin-bottom:22px;border-radius:999px;
+  border-color:var(--step,#BB7E60);background:var(--step,#BB7E60);color:#F0EAE7
+}
+.page-zones-premium .step-title{font-family:'Lora',serif;font-size:22px;line-height:1.22}
+.page-zones-premium .step-body{font-size:15.7px;line-height:1.78}
+
+/* Observatoire : cartographie organique, pas carte d’étoiles. */
+.page-zones-premium .zones-section{
+  background:
+    radial-gradient(ellipse 50% 36% at 50% 0%,rgba(187,126,96,.12),transparent 72%),
+    var(--bg2)
+}
+.zone-flow{
+  --zone-flow-border:rgba(187,126,96,.27);
+  position:relative;width:min(100%,1080px);min-height:520px;
+  margin:clamp(44px,6vw,70px) auto 0;padding:48px 42px;
+  overflow:hidden;isolation:isolate;border:1px solid var(--zone-flow-border);
+  border-radius:34px;background:
+    radial-gradient(ellipse 40% 45% at 50% 48%,rgba(187,126,96,.13),transparent 72%),
+    linear-gradient(145deg,rgba(240,234,231,.07),rgba(240,234,231,.025));
+  box-shadow:0 32px 90px rgba(0,0,0,.26),inset 0 1px 0 rgba(240,234,231,.08)
+}
+[data-theme="day"] .zone-flow{
+  --zone-flow-border:rgba(78,41,31,.16);
+  background:
+    radial-gradient(ellipse 40% 45% at 50% 48%,rgba(187,126,96,.15),transparent 72%),
+    linear-gradient(145deg,rgba(255,255,255,.66),rgba(187,126,96,.08));
+  box-shadow:0 28px 70px rgba(78,41,31,.13),inset 0 1px 0 rgba(255,255,255,.75)
+}
+.zone-flow__canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+.zone-flow__canvas svg{width:100%;height:100%;display:block}
+.zone-wave{fill:none;stroke:url(#zoneWaveGradient);stroke-linecap:round;vector-effect:non-scaling-stroke}
+.zone-wave--main{stroke-width:3;opacity:.72;stroke-dasharray:16 13}
+.zone-wave--soft{stroke-width:1.35;opacity:.27;stroke-dasharray:7 11}
+.zone-wave--lower{opacity:.18}
+.zone-flow__core{
+  position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);
+  width:84px;height:84px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid rgba(187,126,96,.48);
+  background:linear-gradient(145deg,rgba(240,234,231,.14),rgba(187,126,96,.13));
+  box-shadow:0 0 0 14px rgba(187,126,96,.05),0 0 55px rgba(187,126,96,.21);
+  color:var(--text);font-family:'Montserrat',sans-serif;font-size:36px;font-weight:700;letter-spacing:-.08em
+}
+.zone-flow__nodes{position:absolute;inset:0;z-index:3}
+.zone-flow__node{
+  --zone:#BB7E60;position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);
+  min-width:142px;min-height:58px;padding:9px 13px 9px 10px;
+  display:grid;grid-template-columns:38px minmax(0,1fr) 18px;align-items:center;gap:9px;
+  border:1px solid color-mix(in srgb,var(--zone) 48%,var(--zone-flow-border));
+  border-radius:18px;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  color:var(--text);text-decoration:none;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 14px 34px rgba(0,0,0,.16),0 0 0 6px color-mix(in srgb,var(--zone) 6%,transparent);
+  transition:transform .28s cubic-bezier(.22,1,.36,1),background .22s,border-color .22s,box-shadow .22s
+}
+[data-theme="day"] .zone-flow__node{background:rgba(240,234,231,.87);box-shadow:0 12px 28px rgba(78,41,31,.10),0 0 0 6px color-mix(in srgb,var(--zone) 5%,transparent)}
+.zone-flow__node:hover,.zone-flow__node:focus-visible{
+  transform:translate(-50%,-50%) translateY(-4px);background:var(--zone);border-color:var(--zone);
+  color:#F0EAE7;box-shadow:0 20px 42px color-mix(in srgb,var(--zone) 24%,rgba(0,0,0,.18));outline:none
+}
+.zone-flow__dot{
+  width:38px;height:38px;display:grid;place-items:center;border-radius:13px;
+  background:var(--zone);color:#F0EAE7;font-size:12px;font-weight:800;letter-spacing:.04em;
+  box-shadow:0 8px 18px color-mix(in srgb,var(--zone) 28%,transparent)
+}
+.zone-flow__node:hover .zone-flow__dot,.zone-flow__node:focus-visible .zone-flow__dot{background:#F0EAE7;color:var(--zone)}
+.zone-flow__label{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.25}
+.zone-flow__arrow{font-size:15px;transition:transform .22s}
+.zone-flow__node:hover .zone-flow__arrow,.zone-flow__node:focus-visible .zone-flow__arrow{transform:translateX(3px)}
+.zone-flow__node--mental{--zone:#7A2147;--x:12%;--y:24%}
+.zone-flow__node--corps{--zone:#7A4A28;--x:35%;--y:14%}
+.zone-flow__node--energie{--zone:#8E5B43;--x:68%;--y:17%}
+.zone-flow__node--emotions{--zone:#1A4060;--x:88%;--y:37%}
+.zone-flow__node--relations{--zone:#5C1A40;--x:77%;--y:78%}
+.zone-flow__node--environnement{--zone:#1E4D2B;--x:23%;--y:80%}
+.zone-flow__node--sens{--zone:#3A2260;--x:52%;--y:67%}
+
+/* Point d’entrée : deux choix lisibles, sans surcharge. */
+.page-zones-premium .entry-section{background:var(--bg);padding-top:clamp(84px,9vw,120px)}
+.page-zones-premium .entry-grid{gap:20px}
+.page-zones-premium .entry-card{border-radius:28px}
+.page-zones-premium .entry-primary{box-shadow:0 26px 72px var(--shadow)}
+.page-zones-premium .entry-title{font-size:clamp(24px,2.8vw,34px)}
+.page-zones-premium .entry-copy{font-size:16.5px;line-height:1.82}
+.page-zones-premium .entry-primary .btn-test,
+.page-zones-premium .entry-secondary .btn-soft{min-height:48px;border-radius:999px}
+
+@media(prefers-reduced-motion:no-preference){
+  .zone-wave--main{animation:zoneWaveFlow 11s linear infinite}
+  .zone-wave--soft{animation:zoneWaveFlow 17s linear infinite reverse}
+  .zone-flow__core{animation:zoneCoreBreathe 6s ease-in-out infinite}
+}
+@media(prefers-reduced-motion:no-preference) and (max-width:980px){
+  .zone-flow__node:nth-child(odd){animation:zoneNodeFloat 5.8s ease-in-out infinite}
+  .zone-flow__node:nth-child(even){animation:zoneNodeFloat 6.6s ease-in-out infinite .6s}
+}
+@keyframes zoneWaveFlow{to{stroke-dashoffset:-174}}
+@keyframes zoneCoreBreathe{0%,100%{transform:translate(-50%,-50%) scale(.97)}50%{transform:translate(-50%,-50%) scale(1.04)}}
+@keyframes zoneNodeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+
+/* Tablette : les 3 blocs se lisent l'un sous l'autre, la carte reste accompagnante. */
+@media(min-width:561px) and (max-width:980px){
+  .zone-flow{min-height:auto;padding:108px 26px 32px;border-radius:30px}
+  .zone-flow__canvas{opacity:.52}
+  .zone-flow__core{top:54px;width:66px;height:66px;font-size:28px;box-shadow:0 0 0 12px rgba(187,126,96,.05),0 0 44px rgba(187,126,96,.18)}
+  .zone-flow__nodes{position:relative;inset:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+  .zone-flow__node{position:relative;left:auto;top:auto;transform:none;min-width:0;width:100%;min-height:72px;padding:11px 14px 11px 11px}
+  .zone-flow__node:hover,.zone-flow__node:focus-visible{transform:translateY(-3px)}
+  .zone-flow__node--sens{grid-column:1/-1;width:min(100%,420px);justify-self:center}
+  .page-zones-premium .steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .page-zones-premium .triptyque{grid-template-columns:1fr;border-radius:26px}
+  .page-zones-premium .triptyque-card{min-height:0;padding:30px 26px;border-right:0;border-bottom:1px solid var(--border)}
+  .page-zones-premium .triptyque-card:last-child{border-bottom:0}
+}
+
+/* Mobile : parcours guidé, vivant et plus doux qu'une simple liste. */
+@media(max-width:560px){
+  :root{--foebe-nav-height:58px}
+  .page-zones-premium .hero{min-height:auto;padding:calc(var(--foebe-nav-height) + 52px) 18px 64px;text-align:left;align-items:flex-start}
+  .page-zones-premium .hero-title{font-size:clamp(36px,11vw,48px);margin:0;max-width:100%}
+  .page-zones-premium .hero-sub{font-size:17px;line-height:1.74;margin:24px 0 0}
+  .page-zones-premium .phrase-section{padding:62px 18px}
+  .page-zones-premium .phrase-text{padding:28px 22px;border-radius:24px;text-align:left;font-size:clamp(24px,7.4vw,32px);line-height:1.4}
+  .page-zones-premium .foebe-wave{width:100%;height:48px;margin-top:26px}
+  .page-zones-premium .section{padding:68px 18px}
+  .page-zones-premium .section-center{text-align:left}
+  .page-zones-premium .section-eyebrow,.page-zones-premium .test-eyebrow{margin-left:0;margin-right:0}
+  .page-zones-premium .section-title{font-size:clamp(30px,9vw,40px)}
+  .page-zones-premium .section-sub{margin-left:0;margin-right:0;font-size:16px;line-height:1.78}
+  .page-zones-premium .triptyque{grid-template-columns:1fr;border-radius:24px}
+  .page-zones-premium .triptyque-card{min-height:0;border-right:0;border-bottom:1px solid var(--border);padding:28px 22px}
+  .page-zones-premium .triptyque-card:last-child{border-bottom:0}
+  .page-zones-premium .steps-grid{grid-template-columns:1fr;border-radius:24px}
+  .page-zones-premium .step{min-height:0;padding:27px 22px}
+  .zone-flow{min-height:auto;margin-top:34px;padding:100px 14px 22px;border-radius:24px}
+  .zone-flow__canvas{opacity:.44}
+  .zone-flow__core{top:52px;width:64px;height:64px;font-size:28px;box-shadow:0 0 0 11px rgba(187,126,96,.05),0 0 40px rgba(187,126,96,.16)}
+  .zone-flow__nodes{position:relative;inset:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .zone-flow__node{position:relative;left:auto;top:auto;transform:none;width:100%;min-width:0;min-height:76px;border-radius:18px;padding:11px 12px 11px 10px;grid-template-columns:38px minmax(0,1fr);gap:10px}
+  .zone-flow__node:hover,.zone-flow__node:focus-visible{transform:translateY(-2px)}
+  .zone-flow__arrow{display:none}
+  .zone-flow__label{font-size:11.8px;letter-spacing:.075em}
+  .zone-flow__node--sens{grid-column:1/-1}
+  .page-zones-premium .entry-grid{grid-template-columns:1fr}
+  .page-zones-premium .entry-card{padding:28px 22px;border-radius:24px}
+}
+
+@media(min-width:401px) and (max-width:560px){
+  .zone-flow{padding-left:16px;padding-right:16px}
+}
+
+@media(max-width:400px){
+  .zone-flow{padding-left:12px;padding-right:12px}
+  .zone-flow__nodes{grid-template-columns:1fr}
+  .zone-flow__node{grid-template-columns:36px minmax(0,1fr);padding-left:8px;padding-right:10px}
+  .zone-flow__dot{width:36px;height:36px;border-radius:12px}
+}
+
+/* Paysage compact : carte horizontale dense mais lisible, sans retomber en liste. */
+@media(orientation:landscape) and (max-height:620px) and (min-width:700px){
+  .page-zones-premium .hero{min-height:100svh;padding-top:calc(var(--foebe-nav-height) + 24px);padding-bottom:28px}
+  .page-zones-premium .hero-title{font-size:clamp(34px,5vw,50px)}
+  .page-zones-premium .hero-sub{margin-top:18px;font-size:16px;line-height:1.62}
+  .zone-flow{min-height:auto;margin-top:34px;padding:96px 24px 24px}
+  .zone-flow__canvas{opacity:.5}
+  .zone-flow__core{top:48px;width:62px;height:62px;font-size:27px}
+  .zone-flow__nodes{position:relative;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .zone-flow__node{position:relative;left:auto;top:auto;transform:none;min-width:0;min-height:64px;padding:10px 12px 10px 10px;grid-template-columns:36px minmax(0,1fr);gap:10px}
+  .zone-flow__arrow{display:none}
+  .zone-flow__node:hover,.zone-flow__node:focus-visible{transform:translateY(-2px)}
+  .zone-flow__node--sens{grid-column:2/span 1}
+}
+
+@media(min-width:1800px){
+  .page-zones-premium .section-inner{max-width:1220px}
+  .zone-flow{width:min(100%,1180px);min-height:570px}
+  .zone-flow__node{min-width:154px}
+}
+
 @media(prefers-reduced-motion:reduce){
-  .foebe-scroll-progress__bar{transition:none!important;}
+  .zone-wave,.zone-flow__core{animation:none!important}
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
 }
-</style>
+</style><style id="foebeZonesHeroPositionFix">
+/* Hero Zones — position éditoriale remontée.
+   Le premier écran reste ample, mais le H1 se place plus haut visuellement. */
+.page-zones-premium .hero{
+  min-height:100svh;
+  justify-content:center;
+  padding-top:calc(var(--foebe-nav-height) + clamp(22px,3.6svh,46px));
+  padding-bottom:clamp(104px,15svh,164px);
+}
+@supports (min-height:100dvh){
+  .page-zones-premium .hero{min-height:100dvh}
+}
 
-</head>
-<body>
-<nav id="fallbackNav" class="fallback-nav" aria-label="Navigation principale de secours">
-  <a class="fallback-logo" href="index.html" aria-label="Maison Foébé — accueil"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-  <div class="fallback-links" aria-label="Liens rapides">
-    <a href="comprendre.html">Comprendre</a>
-    <a href="methode.html">Méthode</a>
-    <a href="echelle-foebe.html">Échelle Foébé</a>
-    <a href="zones.html" aria-current="page">7 zones</a>
-    <a href="dictionnaire.html">Dictionnaire</a>
-  </div>
-</nav>
+/* Tablette portrait : centre visuel situé autour de 43–45 % de l'écran. */
+@media(min-width:561px) and (max-width:1180px) and (orientation:portrait){
+  .page-zones-premium .hero{
+    min-height:100svh;
+    padding-top:calc(var(--foebe-nav-height) + clamp(20px,3svh,38px));
+    padding-bottom:clamp(118px,16svh,178px);
+  }
+  @supports (min-height:100dvh){
+    .page-zones-premium .hero{min-height:100dvh}
+  }
+}
 
-<div class="foebe-scroll-progress" aria-hidden="true">
-  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+/* Mobile portrait : même composition, mais moins de vide au-dessus. */
+@media(max-width:560px) and (orientation:portrait){
+  .page-zones-premium .hero{
+    min-height:100svh;
+    justify-content:center;
+    align-items:flex-start;
+    text-align:left;
+    padding-top:calc(var(--foebe-nav-height) + clamp(16px,2.8svh,28px));
+    padding-bottom:clamp(92px,14svh,132px);
+  }
+  @supports (min-height:100dvh){
+    .page-zones-premium .hero{min-height:100dvh}
+  }
+}
+
+/* Paysage compact : le titre reste visible sans être repoussé vers le bas. */
+@media(orientation:landscape) and (max-height:620px) and (min-width:700px){
+  .page-zones-premium .hero{
+    min-height:100svh;
+    justify-content:center;
+    padding-top:calc(var(--foebe-nav-height) + 10px);
+    padding-bottom:clamp(36px,8svh,54px);
+  }
+}
+
+/* Très grands écrans : correction plus discrète pour conserver la majesté. */
+@media(min-width:1800px) and (min-height:900px){
+  .page-zones-premium .hero{
+    padding-top:calc(var(--foebe-nav-height) + 40px);
+    padding-bottom:clamp(138px,16svh,210px);
+  }
+}
+</style><style id="foebeZonesConstellationResponsiveV6">
+/* Zones V6 — cercles constellés réellement posés sur les vagues, tous écrans. */
+.zone-flow__canvas--portrait,
+.zone-flow__canvas--landscape{display:none}
+
+/* Les 3 repères : trois colonnes uniquement quand elles respirent vraiment. */
+@media(max-width:1180px){
+  .page-zones-premium .triptyque{grid-template-columns:1fr!important;border-radius:26px}
+  .page-zones-premium .triptyque-card{
+    min-height:0!important;padding:30px 26px!important;
+    border-right:0!important;border-bottom:1px solid var(--border)!important
+  }
+  .page-zones-premium .triptyque-card:last-child{border-bottom:0!important}
+}
+@media(min-width:1181px){
+  .page-zones-premium .triptyque{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+
+/* Langage commun : chaque zone est un cercle, jamais une carte rectangulaire. */
+.zone-flow{overflow:hidden!important}
+.zone-flow__nodes{position:absolute!important;inset:0!important;display:block!important;z-index:4!important}
+.zone-flow__node{
+  --zone:#BB7E60;
+  position:absolute!important;left:var(--x)!important;top:var(--y)!important;
+  width:74px!important;height:74px!important;min-width:0!important;min-height:0!important;
+  padding:0!important;display:grid!important;place-items:center!important;
+  grid-template-columns:none!important;gap:0!important;
+  transform:translate(-50%,-50%)!important;
+  border:2px solid color-mix(in srgb,var(--zone) 72%,rgba(240,234,231,.34))!important;
+  border-radius:50%!important;
+  background:
+    radial-gradient(circle at 34% 28%,rgba(255,255,255,.22),transparent 42%),
+    color-mix(in srgb,var(--bg) 84%,var(--zone) 16%)!important;
+  color:#F0EAE7!important;text-decoration:none!important;
+  box-shadow:
+    0 0 0 7px color-mix(in srgb,var(--zone) 9%,transparent),
+    0 14px 34px rgba(0,0,0,.17),
+    0 0 28px color-mix(in srgb,var(--zone) 26%,transparent)!important;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  isolation:isolate;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),background .22s,border-color .22s,box-shadow .22s!important
+}
+[data-theme="day"] .zone-flow__node{
+  background:
+    radial-gradient(circle at 34% 28%,rgba(255,255,255,.92),transparent 44%),
+    color-mix(in srgb,#F0EAE7 88%,var(--zone) 12%)!important;
+  color:var(--zone)!important;
+  border-color:color-mix(in srgb,var(--zone) 68%,#4E291F 8%)!important;
+  box-shadow:
+    0 0 0 7px color-mix(in srgb,var(--zone) 7%,transparent),
+    0 12px 28px rgba(78,41,31,.11),
+    0 0 22px color-mix(in srgb,var(--zone) 15%,transparent)!important
+}
+.zone-flow__node::before{
+  content:"";position:absolute;inset:8px;border-radius:50%;z-index:-1;
+  border:1px solid color-mix(in srgb,var(--zone) 42%,transparent);
+  opacity:.72
+}
+.zone-flow__node:hover,.zone-flow__node:focus-visible{
+  transform:translate(-50%,-50%) scale(1.09)!important;
+  background:var(--zone)!important;border-color:var(--zone)!important;color:#F0EAE7!important;
+  box-shadow:
+    0 0 0 9px color-mix(in srgb,var(--zone) 15%,transparent),
+    0 18px 42px color-mix(in srgb,var(--zone) 25%,rgba(0,0,0,.18)),
+    0 0 42px color-mix(in srgb,var(--zone) 42%,transparent)!important;
+  outline:none!important
+}
+.zone-flow__node:focus-visible{outline:2px solid #F0EAE7!important;outline-offset:5px!important}
+.zone-flow__dot{
+  width:auto!important;height:auto!important;margin:0!important;padding:0!important;
+  display:block!important;background:none!important;box-shadow:none!important;border-radius:0!important;
+  color:inherit!important;font-family:'Montserrat',sans-serif!important;
+  font-size:clamp(15px,1.3vw,19px)!important;font-weight:700!important;letter-spacing:-.025em!important;
+  line-height:1!important
+}
+.zone-flow__label{
+  position:absolute!important;left:50%!important;top:calc(100% + 10px)!important;
+  transform:translateX(-50%)!important;width:max-content!important;max-width:150px!important;
+  padding:5px 10px!important;border:1px solid rgba(240,234,231,.12)!important;
+  border-radius:999px!important;background:rgba(44,26,18,.82)!important;
+  color:rgba(240,234,231,.94)!important;
+  font-family:'Poppins',sans-serif!important;font-size:10px!important;font-weight:700!important;
+  letter-spacing:.10em!important;line-height:1.2!important;text-transform:uppercase!important;
+  white-space:nowrap!important;text-align:center!important;
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  box-shadow:0 8px 22px rgba(0,0,0,.12)!important;
+  pointer-events:none!important
+}
+[data-theme="day"] .zone-flow__label{
+  background:rgba(240,234,231,.94)!important;color:#4E291F!important;
+  border-color:rgba(78,41,31,.13)!important;box-shadow:0 7px 18px rgba(78,41,31,.08)!important
+}
+.zone-flow__arrow{display:none!important}
+.zone-flow__node--mental{--zone:#7A2147}
+.zone-flow__node--corps{--zone:#7A4A28}
+.zone-flow__node--energie{--zone:#8E5B43}
+.zone-flow__node--emotions{--zone:#1A4060}
+.zone-flow__node--relations{--zone:#5C1A40}
+.zone-flow__node--environnement{--zone:#1E4D2B}
+.zone-flow__node--sens{--zone:#3A2260}
+
+/* Desktop : constellation horizontale, labels alternés au-dessus/dessous. */
+@media(min-width:1181px){
+  .zone-flow{min-height:560px!important}
+  .zone-flow__canvas--desktop{display:block!important}
+  .zone-flow__node--mental{--x:11%;--y:58%}
+  .zone-flow__node--corps{--x:25%;--y:38%}
+  .zone-flow__node--energie{--x:38%;--y:53%}
+  .zone-flow__node--emotions{--x:52%;--y:68%}
+  .zone-flow__node--relations{--x:66%;--y:55%}
+  .zone-flow__node--environnement{--x:81%;--y:34%}
+  .zone-flow__node--sens{--x:92%;--y:54%}
+  .zone-flow__node--corps .zone-flow__label,
+  .zone-flow__node--environnement .zone-flow__label{
+    top:auto!important;bottom:calc(100% + 10px)!important
+  }
+}
+
+/* Tablette portrait : constellation verticale, alternée autour d'une vague vivante. */
+@media(min-width:561px) and (max-width:1180px) and (orientation:portrait){
+  .zone-flow{height:760px!important;min-height:760px!important;padding:0!important;border-radius:30px!important}
+  .zone-flow__canvas--desktop,.zone-flow__canvas--landscape{display:none!important}
+  .zone-flow__canvas--portrait{display:block!important;opacity:.80!important}
+  .zone-flow__core{left:50%!important;top:52%!important;width:72px!important;height:72px!important;font-size:31px!important}
+  .zone-flow__node{width:66px!important;height:66px!important}
+  .zone-flow__label{font-size:9.6px!important;max-width:132px!important;padding:5px 9px!important}
+  .zone-flow__node--corps{--x:50%;--y:8%}
+  .zone-flow__node--mental{--x:25%;--y:21%}
+  .zone-flow__node--energie{--x:75%;--y:34%}
+  .zone-flow__node--emotions{--x:25%;--y:47%}
+  .zone-flow__node--sens{--x:75%;--y:60%}
+  .zone-flow__node--environnement{--x:25%;--y:74%}
+  .zone-flow__node--relations{--x:75%;--y:88%}
+}
+
+/* Mobile portrait : même constellation, plus compacte mais jamais transformée en liste. */
+@media(max-width:560px) and (orientation:portrait){
+  .zone-flow{height:700px!important;min-height:700px!important;margin-top:34px!important;padding:0!important;border-radius:24px!important}
+  .zone-flow__canvas--desktop,.zone-flow__canvas--landscape{display:none!important}
+  .zone-flow__canvas--portrait{display:block!important;opacity:.82!important}
+  .zone-flow__core{left:50%!important;top:53%!important;width:62px!important;height:62px!important;font-size:27px!important}
+  .zone-flow__node{width:58px!important;height:58px!important}
+  .zone-flow__dot{font-size:15px!important}
+  .zone-flow__label{top:calc(100% + 7px)!important;max-width:102px!important;padding:4px 7px!important;font-size:8.5px!important;letter-spacing:.075em!important}
+  .zone-flow__node--corps{--x:50%;--y:8%}
+  .zone-flow__node--mental{--x:24%;--y:21%}
+  .zone-flow__node--energie{--x:76%;--y:34%}
+  .zone-flow__node--emotions{--x:24%;--y:47%}
+  .zone-flow__node--sens{--x:76%;--y:60%}
+  .zone-flow__node--environnement{--x:24%;--y:74%}
+  .zone-flow__node--relations{--x:76%;--y:88%}
+}
+@media(max-width:360px) and (orientation:portrait){
+  .zone-flow{height:680px!important;min-height:680px!important}
+  .zone-flow__node{width:54px!important;height:54px!important}
+  .zone-flow__label{max-width:92px!important;font-size:7.9px!important;padding:4px 6px!important}
+  .zone-flow__node--mental,.zone-flow__node--emotions,.zone-flow__node--environnement{--x:23%}
+  .zone-flow__node--energie,.zone-flow__node--sens,.zone-flow__node--relations{--x:77%}
+}
+
+/* Tablette/mobile paysage : constellation horizontale recomposée sur une vague courte. */
+@media(max-width:1180px) and (orientation:landscape){
+  .zone-flow{height:420px!important;min-height:420px!important;margin-top:34px!important;padding:0!important;border-radius:26px!important}
+  .zone-flow__canvas--desktop,.zone-flow__canvas--portrait{display:none!important}
+  .zone-flow__canvas--landscape{display:block!important;opacity:.82!important}
+  .zone-flow__core{left:50%!important;top:50%!important;width:66px!important;height:66px!important;font-size:29px!important}
+  .zone-flow__node{width:62px!important;height:62px!important}
+  .zone-flow__label{font-size:8.7px!important;max-width:108px!important;padding:4px 7px!important}
+  .zone-flow__node--mental{--x:9%;--y:57%}
+  .zone-flow__node--corps{--x:23%;--y:34%}
+  .zone-flow__node--energie{--x:37%;--y:50%}
+  .zone-flow__node--emotions{--x:51%;--y:70%}
+  .zone-flow__node--relations{--x:66%;--y:56%}
+  .zone-flow__node--environnement{--x:81%;--y:35%}
+  .zone-flow__node--sens{--x:93%;--y:57%}
+  .zone-flow__node--corps .zone-flow__label,
+  .zone-flow__node--environnement .zone-flow__label{
+    top:auto!important;bottom:calc(100% + 7px)!important
+  }
+}
+@media(max-width:740px) and (orientation:landscape){
+  .zone-flow{height:380px!important;min-height:380px!important}
+  .zone-flow__core{width:58px!important;height:58px!important;font-size:25px!important}
+  .zone-flow__node{width:52px!important;height:52px!important}
+  .zone-flow__dot{font-size:13px!important}
+  .zone-flow__label{font-size:7.6px!important;max-width:88px!important;padding:3px 6px!important}
+  .zone-flow__node--mental{--x:8%}
+  .zone-flow__node--sens{--x:92%}
+}
+
+/* Mouvement : ligne qui circule, cercles qui respirent sans fatiguer. */
+@keyframes zoneCircleGlow{
+  0%,100%{filter:saturate(.96) brightness(.98)}
+  50%{filter:saturate(1.08) brightness(1.08)}
+}
+@keyframes zoneGlyphBreathe{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
+@media(prefers-reduced-motion:no-preference){
+  .zone-flow__node{animation:zoneCircleGlow 6.8s ease-in-out infinite!important}
+  .zone-flow__node:nth-child(2n){animation-delay:.7s!important;animation-duration:7.6s!important}
+  .zone-flow__node:nth-child(3n){animation-delay:1.2s!important;animation-duration:8.2s!important}
+  .zone-flow__dot{animation:zoneGlyphBreathe 5.8s ease-in-out infinite!important}
+  .zone-flow__node:hover,.zone-flow__node:focus-visible{animation-play-state:paused!important}
+}
+
+/* Jour : ligne lisible et douce ; nuit : halo légèrement plus présent. */
+[data-theme="day"] .zone-flow__canvas--portrait,
+[data-theme="day"] .zone-flow__canvas--landscape{opacity:.72!important}
+[data-theme="night"] .zone-flow__canvas--portrait,
+[data-theme="night"] .zone-flow__canvas--landscape,
+[data-theme="night"] .zone-flow__canvas--desktop{filter:drop-shadow(0 0 9px rgba(187,126,96,.12))}
+
+@media(prefers-reduced-motion:reduce){
+  .zone-flow__node,.zone-flow__dot{animation:none!important}
+}
+
+
+/* Chaque format utilise son propre dégradé SVG : la vague reste réellement visible. */
+.zone-flow__canvas--desktop .zone-wave--main{
+  stroke:url(#zoneWaveGradient)!important;stroke-width:4px!important;opacity:.92!important;
+  filter:drop-shadow(0 0 5px rgba(187,126,96,.24))
+}
+.zone-flow__canvas--portrait .zone-wave--main{
+  stroke:url(#zoneWaveGradientPortrait)!important;stroke-width:4.2px!important;opacity:.94!important;
+  filter:drop-shadow(0 0 5px rgba(187,126,96,.25))
+}
+.zone-flow__canvas--landscape .zone-wave--main{
+  stroke:url(#zoneWaveGradientLandscape)!important;stroke-width:4px!important;opacity:.94!important;
+  filter:drop-shadow(0 0 5px rgba(187,126,96,.24))
+}
+.zone-flow__canvas--portrait .zone-wave--soft,
+.zone-flow__canvas--landscape .zone-wave--soft{
+  stroke:rgba(187,126,96,.38)!important;opacity:.58!important
+}
+[data-theme="day"] .zone-flow__canvas--portrait .zone-wave--soft,
+[data-theme="day"] .zone-flow__canvas--landscape .zone-wave--soft{
+  stroke:rgba(78,41,31,.24)!important;opacity:.48!important
+}
+[data-theme="day"] .zone-flow__canvas .zone-wave--main{
+  filter:drop-shadow(0 0 4px rgba(78,41,31,.13))
+}
+</style><style id="foebeZonesBrandSignature">
+/* Signature de la cartographie — clairement distincte des 7 zones. */
+.zone-flow__core{display:none!important}
+
+.zone-flow__brand{
+  position:absolute;
+  right:18px;
+  bottom:14px;
+  z-index:5;
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
+  min-height:34px;
+  padding:6px 10px;
+  border:1px solid rgba(240,234,231,.13);
+  border-radius:999px;
+  background:rgba(44,26,18,.46);
+  color:#F0EAE7;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  opacity:.72;
+  transition:opacity .2s ease,background .2s ease,border-color .2s ease,transform .2s ease
+}
+.zone-flow__brand:hover,
+.zone-flow__brand:focus-visible{
+  opacity:1;
+  transform:translateY(-1px);
+  background:rgba(78,41,31,.80);
+  border-color:rgba(187,126,96,.46);
+  outline:2px solid #BB7E60;
+  outline-offset:3px
+}
+.zone-flow__brand-maison{
+  font-family:'Poppins',sans-serif;
+  font-size:8.5px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  opacity:.72
+}
+.zone-flow__brand-name{
+  display:inline-flex;
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-.06em
+}
+.zone-flow__brand-name span:nth-child(1),
+.zone-flow__brand-name span:nth-child(5){color:#F0EAE7}
+.zone-flow__brand-name span:nth-child(2){color:#BB7E60}
+.zone-flow__brand-name span:nth-child(3){color:#C45279}
+.zone-flow__brand-name span:nth-child(4){color:#C34234}
+
+[data-theme="day"] .zone-flow__brand{
+  background:rgba(240,234,231,.78);
+  color:#4E291F;
+  border-color:rgba(78,41,31,.13);
+  box-shadow:0 7px 18px rgba(78,41,31,.08)
+}
+[data-theme="day"] .zone-flow__brand:hover,
+[data-theme="day"] .zone-flow__brand:focus-visible{
+  background:#F0EAE7;
+  border-color:rgba(78,41,31,.25)
+}
+[data-theme="day"] .zone-flow__brand-name span:nth-child(1),
+[data-theme="day"] .zone-flow__brand-name span:nth-child(5){color:#4E291F}
+
+/* Tablette et mobile : watermark plus discret et placé dans la zone libre. */
+@media(max-width:1180px){
+  .zone-flow__brand{
+    right:12px;
+    bottom:10px;
+    min-height:31px;
+    padding:5px 9px;
+    gap:5px;
+    opacity:.64
+  }
+  .zone-flow__brand-maison{font-size:7.6px}
+  .zone-flow__brand-name{font-size:12px}
+}
+@media(max-width:560px) and (orientation:portrait){
+  .zone-flow__brand{
+    right:10px;
+    bottom:8px;
+    transform:scale(.92);
+    transform-origin:right bottom
+  }
+  .zone-flow__brand:hover,
+  .zone-flow__brand:focus-visible{
+    transform:scale(.92) translateY(-1px)
+  }
+}
+@media(max-width:740px) and (orientation:landscape){
+  .zone-flow__brand{
+    right:9px;
+    bottom:7px;
+    transform:scale(.88);
+    transform-origin:right bottom
+  }
+  .zone-flow__brand:hover,
+  .zone-flow__brand:focus-visible{
+    transform:scale(.88) translateY(-1px)
+  }
+}
+</style></head>
+<body class="page-zones-premium" data-page-version="zones-constellation-circles-responsive-v6-2026">
+<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div aria-label="Liens rapides" class="fallback-links">
+<a href="/comprendre.html">Comprendre</a>
+<a href="/methode.html">Méthode</a>
+<a href="/echelle-foebe.html">Échelle Foébé</a>
+<a aria-current="page" href="/zones.html">7 zones</a>
+<a href="/dictionnaire.html">Dictionnaire</a>
+</div>
+</nav><div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+<span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div><noscript><style>
+.foebe-scroll-progress--fallback{display:block!important}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}
+</style></noscript>
+<main id="mainContent" tabindex="-1">
+<section aria-labelledby="hero-heading" class="hero">
+<h1 class="hero-title" id="hero-heading"><span class="line">Comprendre les</span><span class="line"><em>7 zones</em> du self-care</span></h1>
+<p class="hero-sub">Une zone est une <mark class="foebe-highlight foebe-highlight--warm">porte d'entrée</mark> dans une partie de ton self-care.</p>
+</section>
+<section aria-label="Positionnement Foébé" class="phrase-section"><p class="phrase-text reveal">Ce n'est pas une case.<br/>Elle permet de repérer <mark class="foebe-highlight foebe-highlight--rose">ce qui tire le plus fort</mark>, comprendre <mark class="foebe-highlight foebe-highlight--red">ce qui se dérègle</mark>, puis choisir un <mark class="foebe-highlight foebe-highlight--warm">geste concret</mark>.</p><div aria-hidden="true" class="foebe-wave reveal reveal-delay-1"><svg preserveaspectratio="none" viewbox="0 0 680 52"><path d="M8 30 C72 8, 122 8, 186 30 S300 52, 364 30 S478 8, 542 30 S626 52, 672 30"></path></svg></div></section>
+<section aria-labelledby="zone-concept-heading" class="section"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">Comprendre le système</span><h2 class="section-title" id="zone-concept-heading">Pourquoi <em>7 zones</em> ?</h2><p class="section-sub">Foébé découpe le self-care en 7 dimensions lisibles. Chacune avec ses propres signaux, mécanismes et gestes de récupération.</p></div><div class="triptyque"><article class="triptyque-card reveal reveal-delay-1"><span class="triptyque-num">01</span><h3 class="triptyque-title">Chaque zone = <em>une compétence précise.</em></h3><p class="triptyque-body">Tu observes, comprends, structures et stabilises.</p></article><article class="triptyque-card reveal reveal-delay-2"><span class="triptyque-num">02</span><h3 class="triptyque-title">Un signal = <em>un repère</em></h3><p class="triptyque-body">Les signes décrits dans chaque zone correspondent à des manifestations réelles et vécues du self-care au quotidien.</p></article><article class="triptyque-card reveal reveal-delay-3"><span class="triptyque-num">03</span><h3 class="triptyque-title">Un geste = <em>une réponse</em></h3><p class="triptyque-body">Chaque zone propose une lecture, une explication des mécanismes et des gestes adaptés à ce que tu peux observer de ton propre self-care.</p></article></div></div></section>
+<section aria-labelledby="lire-heading" class="section"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">Mode d'emploi</span><h2 class="section-title" id="lire-heading">Comment lire <em>une zone</em></h2><p class="section-sub">Chaque page zone suit la même structure. Voici comment s'y repérer.</p></div><div class="steps-grid reveal"><article class="step"><span class="step-badge">01</span><h3 class="step-title">Comprendre le mécanisme</h3><p class="step-body">Chaque zone explique ce qui se passe vraiment dans ton self-care. Elle ne nomme pas juste un problème, elle montre comment il s'installe.</p></article><article class="step"><span class="step-badge">02</span><h3 class="step-title">Te situer</h3><p class="step-body">Un mini-test de 5 questions pour identifier si cette zone est prioritaire pour toi en ce moment.</p></article><article class="step"><span class="step-badge">03</span><h3 class="step-title">Voir les effets en cascade</h3><p class="step-body">Quand une zone est sous pression, elle agit sur les autres. Chaque page cartographie ces liens.</p></article><article class="step"><span class="step-badge">04</span><h3 class="step-title">Choisir un geste</h3><p class="step-body">Trois gestes concrets, classés par effort. Pas une liste générique, mais une réponse à ce que tu viens d'observer.</p></article></div></div></section>
+<section aria-labelledby="zones-heading" class="section zones-section" id="les-zones"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">L'observatoire</span><h2 class="section-title" id="zones-heading">Les 7 zones à explorer</h2><p class="section-sub">Chacune t'aide à décrypter ce qui se joue dans ton self-care, à reconnaître les <mark class="foebe-highlight foebe-highlight--rose">signaux faibles</mark> et à commencer par un geste concret, tenable.</p></div><nav aria-label="Cartographie des 7 zones Foébé" class="zone-flow reveal reveal-delay-1">
+<div aria-hidden="true" class="zone-flow__canvas zone-flow__canvas--desktop">
+<svg focusable="false" preserveaspectratio="none" viewbox="0 0 1200 520">
+<defs>
+<lineargradient id="zoneWaveGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#7A4A28"></stop>
+<stop offset="27%" stop-color="#BB7E60"></stop>
+<stop offset="55%" stop-color="#C45279"></stop>
+<stop offset="78%" stop-color="#1A4060"></stop>
+<stop offset="100%" stop-color="#3A2260"></stop>
+</lineargradient>
+</defs>
+<path class="zone-wave zone-wave--soft" d="M-40 165 C120 72 246 246 405 157 S702 54 864 170 S1080 274 1240 152"></path>
+<path class="zone-wave zone-wave--main" d="M-50 264 C130 372 258 128 432 260 S720 390 894 250 S1086 126 1250 278"></path>
+<path class="zone-wave zone-wave--soft zone-wave--lower" d="M-30 374 C134 278 290 456 454 364 S742 266 902 374 S1088 452 1240 348"></path>
+</svg>
+</div><div aria-hidden="true" class="zone-flow__canvas zone-flow__canvas--portrait">
+<svg focusable="false" preserveaspectratio="none" viewbox="0 0 360 760">
+<defs>
+<lineargradient id="zoneWaveGradientPortrait" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#7A4A28"></stop>
+<stop offset="24%" stop-color="#BB7E60"></stop>
+<stop offset="48%" stop-color="#C45279"></stop>
+<stop offset="72%" stop-color="#1A4060"></stop>
+<stop offset="100%" stop-color="#3A2260"></stop>
+</lineargradient>
+</defs>
+<path class="zone-wave zone-wave--soft" d="M180 20 C60 86 58 166 180 222 S302 352 180 406 S58 518 180 574 S302 678 180 740"></path>
+<path class="zone-wave zone-wave--main" d="M180 20 C72 84 68 162 180 218 S292 344 180 400 S68 512 180 568 S292 672 180 740" stroke="url(#zoneWaveGradientPortrait)"></path>
+<path class="zone-wave zone-wave--soft zone-wave--lower" d="M132 28 C246 102 242 174 132 230 S22 350 132 414 S244 528 132 586 S24 680 132 736"></path>
+</svg>
+</div><div aria-hidden="true" class="zone-flow__canvas zone-flow__canvas--landscape">
+<svg focusable="false" preserveaspectratio="none" viewbox="0 0 1000 430">
+<defs>
+<lineargradient id="zoneWaveGradientLandscape" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#7A4A28"></stop>
+<stop offset="25%" stop-color="#BB7E60"></stop>
+<stop offset="50%" stop-color="#C45279"></stop>
+<stop offset="75%" stop-color="#1A4060"></stop>
+<stop offset="100%" stop-color="#3A2260"></stop>
+</lineargradient>
+</defs>
+<path class="zone-wave zone-wave--soft" d="M-30 130 C110 45 245 220 390 126 S655 48 790 146 S930 230 1030 142"></path>
+<path class="zone-wave zone-wave--main" d="M-40 230 C120 330 250 92 410 224 S690 338 835 210 S950 100 1040 238" stroke="url(#zoneWaveGradientLandscape)"></path>
+<path class="zone-wave zone-wave--soft zone-wave--lower" d="M-20 328 C130 240 278 405 430 322 S708 236 842 332 S950 400 1030 320"></path>
+</svg>
 </div>
 
-<main>
-<section class="hero" aria-labelledby="hero-heading">
-<h1 class="hero-title" id="hero-heading"><span class="line">Comprendre les</span><span class="line"><em>7 zones</em> du self-care</span></h1>
-  <p class="hero-sub">Une zone est une porte d'entrée dans une partie de ton self-care.</p>
-</section>
-<section class="phrase-section" aria-label="Positionnement Foébé"><p class="phrase-text reveal">Ce n'est pas une case.<br>Elle permet de repérer ce qui tire le plus fort, comprendre ce qui se dérègle, puis choisir un geste concret.</p><div class="foebe-wave reveal reveal-delay-1" aria-hidden="true"><svg viewBox="0 0 680 52" preserveAspectRatio="none"><path d="M8 30 C72 8, 122 8, 186 30 S300 52, 364 30 S478 8, 542 30 S626 52, 672 30"></path></svg></div></section>
-<section class="section" aria-labelledby="zone-concept-heading"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">Comprendre le système</span><h2 class="section-title" id="zone-concept-heading">Pourquoi <em>7 zones</em> ?</h2><p class="section-sub">Foébé découpe le self-care en 7 dimensions lisibles. Chacune avec ses propres signaux, mécanismes et gestes de récupération.</p></div><div class="triptyque"><article class="triptyque-card reveal reveal-delay-1"><span class="triptyque-num">01</span><h3 class="triptyque-title">Chaque zone = <em>une compétence précise.</em></h3><p class="triptyque-body">Tu observes, comprends, structures et stabilises.</p></article><article class="triptyque-card reveal reveal-delay-2"><span class="triptyque-num">02</span><h3 class="triptyque-title">Un signal = <em>un repère</em></h3><p class="triptyque-body">Les signes décrits dans chaque zone correspondent à des manifestations réelles et vécues du self-care au quotidien.</p></article><article class="triptyque-card reveal reveal-delay-3"><span class="triptyque-num">03</span><h3 class="triptyque-title">Un geste = <em>une réponse</em></h3><p class="triptyque-body">Chaque zone propose une lecture, une explication des mécanismes et des gestes adaptés à ce que tu peux observer de ton propre self-care.</p></article></div></div></section>
-
-<section class="section" aria-labelledby="lire-heading"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">Mode d'emploi</span><h2 class="section-title" id="lire-heading">Comment lire <em>une zone</em></h2><p class="section-sub">Chaque page zone suit la même structure. Voici comment s'y repérer.</p></div><div class="steps-grid reveal"><article class="step"><span class="step-badge">01</span><h3 class="step-title">Comprendre le mécanisme</h3><p class="step-body">Chaque zone explique ce qui se passe vraiment dans ton self-care. Elle ne nomme pas juste un problème, elle montre comment il s'installe.</p></article><article class="step"><span class="step-badge">02</span><h3 class="step-title">Te situer</h3><p class="step-body">Un mini-test de 5 questions pour identifier si cette zone est prioritaire pour toi en ce moment.</p></article><article class="step"><span class="step-badge">03</span><h3 class="step-title">Voir les effets en cascade</h3><p class="step-body">Quand une zone est sous pression, elle agit sur les autres. Chaque page cartographie ces liens.</p></article><article class="step"><span class="step-badge">04</span><h3 class="step-title">Choisir un geste</h3><p class="step-body">Trois gestes concrets, classés par effort. Pas une liste générique, mais une réponse à ce que tu viens d'observer.</p></article></div></div></section>
-<section class="section zones-section" id="les-zones" aria-labelledby="zones-heading"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">L'observatoire</span><h2 class="section-title" id="zones-heading">Les 7 zones à explorer</h2><p class="section-sub">Chacune t'aide à décrypter ce qui se joue dans ton self-care, à reconnaître les signaux faibles et à commencer par un geste concret, tenable.</p></div><nav class="zone-cosmos reveal reveal-delay-1" aria-label="Constellation des 7 zones Foébé">
-    <svg class="cosmos-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path class="glow" d="M50 50 L18 30"></path>
-      <path class="glow" d="M50 50 L38 18"></path>
-      <path class="glow" d="M50 50 L62 22"></path>
-      <path class="glow" d="M50 50 L82 46"></path>
-      <path class="glow" d="M50 50 L66 78"></path>
-      <path class="glow" d="M50 50 L30 76"></path>
-      <path d="M18 30 Q28 14 38 18 Q50 12 62 22 Q78 28 82 46 Q80 68 66 78 Q48 86 30 76 Q14 58 18 30 Z"></path>
-    </svg>
-    <span class="cosmos-center" aria-hidden="true">F</span>
-    <a class="cosmos-star star-mental" href="zone-mental.html"><span>Mental</span></a>
-    <a class="cosmos-star star-corps" href="zone-corps.html"><span>Corps</span></a>
-    <a class="cosmos-star star-energie" href="zone-energie.html"><span>Énergie</span></a>
-    <a class="cosmos-star star-emotions" href="zone-emotions.html"><span>Émotions</span></a>
-    <a class="cosmos-star star-relations" href="zone-relations.html"><span>Relations</span></a>
-    <a class="cosmos-star star-environnement" href="zone-environnement.html"><span>Environnement</span></a>
-    <a class="cosmos-star star-sens" href="zone-sens.html"><span>Sens</span></a>
-  </nav></div></section>
-<section class="section test-section entry-section" aria-labelledby="test-heading"><div class="section-inner"><div class="section-center narrow reveal"><span class="test-eyebrow">Point d'entrée</span><h2 class="test-title" id="test-heading">Choisir la bonne <em>porte d'entrée</em></h2><p class="section-sub entry-sub">Tu peux partir d'une zone qui te parle déjà, ou laisser le test repérer celle qui demande le plus d'attention en ce moment.</p></div><div class="entry-grid reveal"><article class="entry-card entry-primary"><span class="entry-label">Orientation guidée</span><h3 class="entry-title">L’Échelle Foébé</h3><p class="entry-copy">21 affirmations, 7 dimensions, une direction claire. Tu arrives avec une impression vague, tu repars avec une zone prioritaire et un premier repère concret.</p><div class="test-specs entry-specs"><p class="test-spec"><span class="test-spec-dot" aria-hidden="true"></span><span>5 minutes, gratuit, sans compte</span></p><p class="test-spec"><span class="test-spec-dot" aria-hidden="true"></span><span>21 affirmations · 7 zones analysées</span></p><p class="test-spec"><span class="test-spec-dot" aria-hidden="true"></span><span>Un profil personnalisé, sans injonction</span></p></div><a href="echelle-foebe.html" class="btn-test">Faire l’Échelle Foébé <span aria-hidden="true">→</span></a></article><aside class="entry-card entry-secondary"><span class="entry-label">Repères</span><h3 class="entry-title">Dictionnaire Foébé</h3><p class="entry-copy">Des définitions simples pour mettre des mots sur les signaux, comprendre les mécanismes et mieux lire les zones avant d'agir.</p><a href="dictionnaire.html" class="btn-soft">Ouvrir le dictionnaire <span aria-hidden="true">→</span></a></aside></div></div></section>
-
+<div class="zone-flow__nodes">
+<a aria-label="Explorer la zone Mental" class="zone-flow__node zone-flow__node--mental" href="zone-mental.html"><span aria-hidden="true" class="zone-flow__dot">M</span><span class="zone-flow__label">Mental</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+<a aria-label="Explorer la zone Corps" class="zone-flow__node zone-flow__node--corps" href="zone-corps.html"><span aria-hidden="true" class="zone-flow__dot">C</span><span class="zone-flow__label">Corps</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+<a aria-label="Explorer la zone Énergie" class="zone-flow__node zone-flow__node--energie" href="zone-energie.html"><span aria-hidden="true" class="zone-flow__dot">É</span><span class="zone-flow__label">Énergie</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+<a aria-label="Explorer la zone Émotions" class="zone-flow__node zone-flow__node--emotions" href="zone-emotions.html"><span aria-hidden="true" class="zone-flow__dot">Em</span><span class="zone-flow__label">Émotions</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+<a aria-label="Explorer la zone Relations" class="zone-flow__node zone-flow__node--relations" href="zone-relations.html"><span aria-hidden="true" class="zone-flow__dot">R</span><span class="zone-flow__label">Relations</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+<a aria-label="Explorer la zone Environnement" class="zone-flow__node zone-flow__node--environnement" href="zone-environnement.html"><span aria-hidden="true" class="zone-flow__dot">Ev</span><span class="zone-flow__label">Environnement</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+<a aria-label="Explorer la zone Sens" class="zone-flow__node zone-flow__node--sens" href="zone-sens.html"><span aria-hidden="true" class="zone-flow__dot">S</span><span class="zone-flow__label">Sens</span><span aria-hidden="true" class="zone-flow__arrow">→</span></a>
+</div>
+<a aria-label="Maison Foébé — retour à l'accueil" class="zone-flow__brand" href="/index.html">
+<span class="zone-flow__brand-maison">Maison</span>
+<span aria-hidden="true" class="zone-flow__brand-name">
+<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+</span>
+</a></nav></div></section>
+<section aria-labelledby="test-heading" class="section test-section entry-section"><div class="section-inner"><div class="section-center narrow reveal"><span class="test-eyebrow">Point d'entrée</span><h2 class="test-title" id="test-heading">Choisir la bonne <em>porte d'entrée</em></h2><p class="section-sub entry-sub">Tu peux partir d'une zone qui te parle déjà, ou laisser le test repérer celle qui demande le plus d'attention en ce moment.</p></div><div class="entry-grid reveal"><article class="entry-card entry-primary"><span class="entry-label">Orientation guidée</span><h3 class="entry-title">L’Échelle Foébé</h3><p class="entry-copy">21 affirmations, 7 dimensions, une direction claire. Tu arrives avec une impression vague, tu repars avec une <mark class="foebe-highlight foebe-highlight--red">zone prioritaire</mark> et un premier repère concret.</p><div class="test-specs entry-specs"><p class="test-spec"><span aria-hidden="true" class="test-spec-dot"></span><span>5 minutes, gratuit, sans compte</span></p><p class="test-spec"><span aria-hidden="true" class="test-spec-dot"></span><span>21 affirmations · 7 zones analysées</span></p><p class="test-spec"><span aria-hidden="true" class="test-spec-dot"></span><span>Un profil personnalisé, sans injonction</span></p></div><a class="btn-test" href="echelle-foebe.html">Faire l’Échelle Foébé <span aria-hidden="true">→</span></a></article><aside class="entry-card entry-secondary"><span class="entry-label">Repères</span><h3 class="entry-title">Dictionnaire Foébé</h3><p class="entry-copy">Des définitions simples pour mettre des mots sur les signaux, comprendre les mécanismes et mieux lire les zones avant d'agir.</p><a class="btn-soft" href="dictionnaire.html">Ouvrir le dictionnaire <span aria-hidden="true">→</span></a></aside></div></div></section>
 </main>
 <script>
 (function(){
@@ -1189,45 +1869,34 @@ main{
   revealItems.forEach(function(el){observer.observe(el);});
 })();
 </script>
-
-<script id="foebeScrollProgressScript">
-(function(){
-  var bar = document.getElementById('foebeScrollProgressBar');
+<script id="foebeFallbackProgressScript">
+(function () {
+  var root = document.documentElement;
+  var bar = document.getElementById("foebeScrollProgressFallbackBar");
   if (!bar) return;
 
-  var ticking = false;
-
-  function update(){
+  function updateFallbackProgress() {
+    if (!root.classList.contains("foebe-shell-failed")) return;
     var doc = document.documentElement;
     var body = document.body || doc;
     var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    var max = Math.max(
-      doc.scrollHeight,
-      body.scrollHeight,
-      doc.offsetHeight,
-      body.offsetHeight,
-      doc.clientHeight
-    ) - window.innerHeight;
-
-    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
-    bar.style.transform = 'scaleX(' + progress + ')';
-    ticking = false;
+    var fullHeight = Math.max(
+      doc.scrollHeight, doc.offsetHeight, doc.clientHeight,
+      body.scrollHeight || 0, body.offsetHeight || 0
+    );
+    var maxScroll = Math.max(0, fullHeight - window.innerHeight);
+    var progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+    bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
   }
 
-  function requestUpdate(){
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate);
-  window.addEventListener('load', requestUpdate);
-  update();
+  window.addEventListener("foebe:shell-failed", updateFallbackProgress);
+  window.addEventListener("scroll", updateFallbackProgress, { passive: true });
+  window.addEventListener("resize", updateFallbackProgress, { passive: true });
+  window.addEventListener("orientationchange", updateFallbackProgress, { passive: true });
+  window.addEventListener("load", updateFallbackProgress);
+  window.addEventListener("pageshow", updateFallbackProgress);
+  updateFallbackProgress();
 })();
-</script>
-
-<script src="/foebe-shell.js"></script>
+</script><script src="/foebe-shell.js"></script>
 </body>
 </html>
