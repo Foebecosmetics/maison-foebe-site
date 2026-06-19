@@ -47,8 +47,8 @@
       var path = cleanPath(window.location.pathname || "/");
       if (!path || path === "index" || path === "index.html") return "index.html";
 
-      if (path === "boussole/scenarios" || path === "boussole-boussole-scenarios.htmlindex" || path === "boussole-boussole-scenarios.htmlindex.html") {
-        return "boussole-boussole-scenarios.html";
+      if (path === "boussole/scenarios" || path === "boussole-scenarios.htmlindex" || path === "boussole-scenarios.htmlindex.html") {
+        return "boussole-scenarios.html";
       }
 
       var file = path.split("/").pop() || "index.html";
@@ -83,7 +83,7 @@
       if (file.indexOf("zone-environnement") === 0) return "zone-environnement.html";
       if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
 
-      if (file.indexOf("boussole-scenarios") === 0 || file === "scenarios" || file === "scenario") return "boussole-boussole-scenarios.html";
+      if (file.indexOf("boussole-scenarios") === 0 || file === "scenarios" || file === "scenario") return "boussole-scenarios.html";
       if (file.indexOf("boussole") === 0 || file.indexOf("boussole-accueil") === 0) return "boussole.html";
 
       if (file.indexOf("dictionnaire") === 0 || file.indexOf("lexique") === 0 || file.indexOf("stories") === 0) return "dictionnaire.html";
@@ -171,7 +171,7 @@
           { label: "Boussole", current: true }
         ]
       },
-      "boussole-boussole-scenarios.html": {
+      "boussole-scenarios.html": {
         current: "Scénarios",
         back: { href: "/boussole.html", label: "Retour à la Boussole" },
         desktop: [
@@ -337,7 +337,7 @@
     var main = document.querySelector("main");
     var dictHero = document.querySelector(".dict-hero");
     var dictLayout = document.querySelector(".dict-layout, .dictionary-layout, .dictionary-shell, .dictionnaire-layout, .dict-page, .library-layout, .lexicon-layout");
-    var isBoussolePage = current === "boussole.html" || current === "boussole-boussole-scenarios.html";
+    var isBoussolePage = current === "boussole.html" || current === "boussole-scenarios.html";
 
     if (current === "dictionnaire.html" && dictHero) {
       nav.className += " foebe-breadcrumb--inline foebe-breadcrumb--dict";

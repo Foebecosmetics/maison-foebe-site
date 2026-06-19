@@ -194,7 +194,7 @@
         file === "scenario" ||
         file.indexOf("boussole/scenarios") === 0 ||
         file.indexOf("boussole/scenario") === 0
-      ) return "boussole-boussole-scenarios.html";
+      ) return "boussole-scenarios.html";
 
       if (
         file.indexOf("sas-boussole") === 0 ||
@@ -228,7 +228,7 @@
       path = path.split("?")[0].split("#")[0].replace(/\/+$/g, "");
       if (!path || path === "") return "index.html";
       if (/\/boussole\/scenarios$/i.test(path) || /\/boussole\/scenario$/i.test(path)) {
-        return "boussole-boussole-scenarios.html";
+        return "boussole-scenarios.html";
       }
       var last = path.split("/").pop() || "index.html";
       return normalizeFile(last);
@@ -282,7 +282,7 @@
         { label: "Pratiquer" },
         { label: "Boussole", current: true }
       ],
-      "boussole-boussole-scenarios.html": [
+      "boussole-scenarios.html": [
         { href: "index.html", label: "Accueil" },
         { href: "boussole.html", label: "Boussole" },
         { label: "Scénarios", current: true }
@@ -499,7 +499,7 @@
   var currentFile = "index.html";
   if (currentPath && currentPath !== "/") {
     if (/\/boussole\/scenarios$/i.test(currentPath) || /\/boussole\/scenario$/i.test(currentPath)) {
-      currentFile = "boussole-boussole-scenarios.html";
+      currentFile = "boussole-scenarios.html";
     } else {
       currentFile = (currentPath.split("/").pop() || "index.html");
     }
@@ -529,7 +529,7 @@
     if (file === "zones" || file.indexOf("zones") === 0) return "zones.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
 
-    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-boussole-scenarios.html";
+    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-scenarios.html";
     if (file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole.html";
     if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
@@ -578,7 +578,7 @@
       { href: "zones.html",              label: "7 zones", activeWhenZones: true },
       { href: "respiration.html",        label: "Respiration guidée" },
       { href: "boussole.html",           label: "Boussole" },
-      { href: "boussole-boussole-scenarios.html",     label: "Scénarios" }
+      { href: "boussole-scenarios.html",     label: "Scénarios" }
     ]},
     { pole: "Ressources", links: [
       { href: "lexique.html",      label: "Lexique Foébé" },
@@ -971,5 +971,75 @@ if (fallbackNav) {
     window.setTimeout(cleanImmersivePages, 1200);
   })();
   /* FOEBE IMMERSIVE PAGE CLEANER — END */
+
+
+  /* FOEBE LEXIQUE MOBILE IMMERSIF — START
+     Lexique/Dictionnaire/Stories : sur mobile, on garde seulement le Shell utile
+     et on enlève les barres fixes parasites qui coupent l’avatar/l’intro immersive. */
+  (function () {
+    function isLexiqueImmersivePage() {
+      var path = (window.location.pathname || "").toLowerCase();
+      var file = path.split("/").pop() || "index.html";
+      return (
+        file === "dictionnaire.html" ||
+        file === "lexique.html" ||
+        file === "stories.html" ||
+        path.indexOf("/stories") !== -1 ||
+        path.indexOf("/lexique") !== -1 ||
+        path.indexOf("/dictionnaire") !== -1
+      );
+    }
+
+    function applyLexiqueImmersiveMode() {
+      if (!isLexiqueImmersivePage()) return;
+
+      var html = document.documentElement;
+      var body = document.body;
+
+      html.classList.add("foebe-no-breadcrumb", "foebe-immersive-page", "foebe-lexique-immersive");
+      if (body) body.classList.add("foebe-no-breadcrumb", "foebe-immersive-page", "foebe-lexique-immersive");
+
+      /* On retire vraiment les éléments fixes parasites déjà injectés. */
+      document.querySelectorAll(
+        ".foebe-breadcrumb," +
+        ".foebe-scroll-progress," +
+        ".story-topbar,.stories-topbar,.story-fixed-bar,.stories-fixed-bar," +
+        ".story-progress,.stories-progress,.lexique-topbar,.dictionnaire-topbar," +
+        ".lexique-fixed-bar,.dictionnaire-fixed-bar," +
+        "[data-story-topbar],[data-stories-topbar],[data-lexique-topbar]"
+      ).forEach(function (el) {
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+      });
+
+      if (!document.getElementById("foebeLexiqueImmersiveMobileCss")) {
+        var style = document.createElement("style");
+        style.id = "foebeLexiqueImmersiveMobileCss";
+        style.textContent = [
+          "html.foebe-lexique-immersive .foebe-breadcrumb,body.foebe-lexique-immersive .foebe-breadcrumb,html.foebe-lexique-immersive .foebe-scroll-progress,body.foebe-lexique-immersive .foebe-scroll-progress{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
+
+          "html.foebe-lexique-immersive .story-topbar,body.foebe-lexique-immersive .story-topbar,html.foebe-lexique-immersive .stories-topbar,body.foebe-lexique-immersive .stories-topbar,html.foebe-lexique-immersive .story-fixed-bar,body.foebe-lexique-immersive .story-fixed-bar,html.foebe-lexique-immersive .stories-fixed-bar,body.foebe-lexique-immersive .stories-fixed-bar,html.foebe-lexique-immersive .story-progress,body.foebe-lexique-immersive .story-progress,html.foebe-lexique-immersive .stories-progress,body.foebe-lexique-immersive .stories-progress,html.foebe-lexique-immersive .lexique-topbar,body.foebe-lexique-immersive .lexique-topbar,html.foebe-lexique-immersive .dictionnaire-topbar,body.foebe-lexique-immersive .dictionnaire-topbar{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
+
+          "@media(max-width:767px){html.foebe-lexique-immersive #mainNav{height:54px!important;min-height:54px!important;padding:0 14px!important;box-shadow:0 6px 18px rgba(0,0,0,.10)!important;background:color-mix(in srgb,var(--bg) 86%,transparent)!important;}html.foebe-lexique-immersive #navMenu{top:54px!important;max-height:calc(100dvh - 54px)!important;}html.foebe-lexique-immersive #navOverlay{top:54px!important;}html.foebe-lexique-immersive .nav-logo{font-size:17px!important;}html.foebe-lexique-immersive .theme-toggle{display:none!important;}html.foebe-lexique-immersive #menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}html.foebe-lexique-immersive body > nav#fallbackNav.fallback-nav .fallback-links{display:none!important;}html.foebe-lexique-immersive body > nav#fallbackNav.fallback-nav{height:54px!important;min-height:54px!important;}}"
+        ].join("\\n");
+        (document.head || document.documentElement).appendChild(style);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", applyLexiqueImmersiveMode, { once: true });
+    } else {
+      applyLexiqueImmersiveMode();
+    }
+
+    window.addEventListener("load", applyLexiqueImmersiveMode);
+    window.addEventListener("resize", applyLexiqueImmersiveMode, { passive: true });
+    window.addEventListener("orientationchange", applyLexiqueImmersiveMode, { passive: true });
+
+    window.setTimeout(applyLexiqueImmersiveMode, 100);
+    window.setTimeout(applyLexiqueImmersiveMode, 450);
+    window.setTimeout(applyLexiqueImmersiveMode, 1200);
+    window.setTimeout(applyLexiqueImmersiveMode, 2400);
+  })();
+  /* FOEBE LEXIQUE MOBILE IMMERSIF — END */
 
 })();
