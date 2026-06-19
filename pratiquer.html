@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="night" lang="fr" data-foebe-breadcrumb="force">
+<html data-theme="night" lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,7 +86,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#BB7E60 28%,#C45279 50%,#F0EAE7 64%,#C34234 80%,#4E291F 100%);
+  --foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#8E5B43 22%,#BB7E60 46%,#C45279 72%,#C34234 100%);
   --foebe-nav-height:60px;
   --warm:#BB7E60;
   --brown:#4E291F;
@@ -224,11 +224,11 @@ body>nav#fallbackNav{
   top:var(--foebe-nav-height);
   left:0;
   right:0;
-  height:3px;
+  height:2px;
   z-index:99987;
   overflow:hidden;
   pointer-events:none;
-  background:rgba(187,126,96,.12);
+  background:transparent;
 }
 .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
   display:block;
@@ -238,7 +238,7 @@ body>nav#fallbackNav{
   transform:scaleX(0);
   transform-origin:left center;
   will-change:transform;
-  box-shadow:0 1px 7px rgba(187,126,96,.28);
+  box-shadow:0 1px 4px rgba(187,126,96,.18);
 }
 html.foebe-shell-loading .foebe-scroll-progress--fallback,
 html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
@@ -675,10 +675,11 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 </style>
 </head>
 
-<body class="page-pratiquer">
+<body class="page-pratiquer" data-page-version="editorial-harmonisee-2026">
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
   <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
   <div class="fallback-links">
+    <a href="pratiquer.html" aria-current="page">Pratiquer</a>
     <a href="comprendre.html">Comprendre</a>
     <a href="methode.html">Méthode</a>
     <a href="echelle-foebe.html">Échelle Foébé</a>
@@ -751,7 +752,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
           <span class="tool-copy">
             <span class="tool-topline"><span class="tool-label">Me situer</span><span class="tool-badge">Entrée recommandée</span></span>
             <span class="tool-title">L’<span class="foebe-text foebe-text--warm">Échelle Foébé</span></span>
-            <span class="tool-desc">21 affirmations couvrent les sept zones du self-care. Tu obtiens une première lecture de l’endroit où la tension se concentre, sans diagnostic ni étiquette.</span>
+            <span class="tool-desc">Vingt et une affirmations couvrent les sept zones du self-care. Tu obtiens une première lecture de l’endroit où la tension se concentre, sans diagnostic ni étiquette.</span>
             <span class="tool-meta">5 minutes · sans inscription · résultat immédiat</span>
           </span>
           <span class="tool-action">Faire l’Échelle <span aria-hidden="true">→</span></span>
