@@ -32,7 +32,7 @@
   <title>Sas de la Boussole · Se situer avant d'entrer — Maison Foébé</title>
   <meta name="description" content="Un sas Maison Foébé pour te situer, choisir une piste d’attention et entrer dans la Boussole avec un premier repère de lecture.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://maisonfoebe.fr/boussole-accueil-foebe.html">
+  <link rel="canonical" href="https://maisonfoebe.fr/boussole.html">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -43,7 +43,7 @@
   <meta property="og:title" content="Sas de la Boussole · Se situer avant d'entrer — Maison Foébé">
   <meta property="og:description" content="Deux gestes simples avant la Boussole : reconnaître comment tu arrives, puis choisir ce qui attire ton attention.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://maisonfoebe.fr/boussole-accueil-foebe.html">
+  <meta property="og:url" content="https://maisonfoebe.fr/boussole.html">
   <meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png">
   <meta property="og:image:alt" content="Sas de la Boussole — Maison Foébé">
   <meta property="og:site_name" content="Maison Foébé">
@@ -59,7 +59,7 @@
     "@type":"WebPage",
     "name":"Sas de la Boussole · Se situer avant d'entrer — Maison Foébé",
     "description":"Un sas Maison Foébé pour te situer, choisir une piste d’attention et entrer dans la Boussole avec un premier repère de lecture.",
-    "url":"https://maisonfoebe.fr/boussole-accueil-foebe.html",
+    "url":"https://maisonfoebe.fr/boussole.html",
     "inLanguage":"fr",
     "isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}
   }
@@ -169,11 +169,18 @@ html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
 
       body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
       body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
-        color: #F0EAE7 !important;
-        background: #BB7E60 !important;
-        border-color: #BB7E60 !important;
+        color: #4E291F !important;
+        background: #F0EAE7 !important;
+        border-color: #F0EAE7 !important;
         opacity: 1 !important;
         outline: none !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #F0EAE7 !important;
+        background: #4E291F !important;
+        border-color: #4E291F !important;
       }
 
       @media(max-width:720px) {
@@ -661,23 +668,57 @@ html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
     [data-theme="day"] .hero-eyebrow{
       color:#4E291F !important;
     }
+
+
+    /* Barre de progression — collée à la nav fixe
+       On chevauche la nav de 1px pour éviter le filet vide visible sur mobile. */
+    .foebe-scroll-progress{
+      position:fixed;
+      top:59px;
+      left:0;
+      right:0;
+      z-index:940;
+      height:3px;
+      background:rgba(187,126,96,.16);
+      pointer-events:none;
+    }
+    .foebe-scroll-progress__bar{
+      display:block;
+      width:100%;
+      height:100%;
+      transform:scaleX(0);
+      transform-origin:left center;
+      background:linear-gradient(90deg,#BB7E60,#C45279,#C34234);
+      box-shadow:0 0 14px rgba(187,126,96,.30);
+      will-change:transform;
+    }
+    [data-theme="day"] .foebe-scroll-progress{background:rgba(78,41,31,.10);}
+    @media(max-width:640px){
+      .foebe-scroll-progress{height:2px;}
+      html.foebe-shell-loading:not(.foebe-shell-failed) .foebe-scroll-progress,
+      html.foebe-shell-ready .foebe-scroll-progress{top:57px;}
+      html.foebe-shell-failed .foebe-scroll-progress{top:59px;}
+    }
+    @media(prefers-reduced-motion:reduce){.foebe-scroll-progress__bar{transition:none!important;}}
   </style>
 </head>
 <body>
-  <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
-      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
-        <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-      </a>
+  <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation principale de secours">
+    <a class="fallback-logo" href="index.html" aria-label="Maison Foébé — accueil">
+      <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+    </a>
+    <div class="fallback-links" aria-label="Liens rapides">
+      <a href="comprendre.html">Comprendre</a>
+      <a href="methode.html">Méthode</a>
+      <a href="echelle-foebe.html">Échelle Foébé</a>
+      <a href="zones.html">7 zones</a>
+      <a href="dictionnaire.html">Dictionnaire</a>
+    </div>
+  </nav>
 
-      <div class="fallback-links">
-        <a href="/a-propos.html">À propos</a>
-        <a href="/methode.html">Méthode</a>
-        <a href="/test.html">Échelle Foébé</a>
-        <a href="/foebe-zones-cadre.html">Les 7 zones</a>
-        <a href="/boussole-accueil-foebe.html">Boussole</a>
-        <a href="mailto:contact@maisonfoebe.fr">Contact</a>
-      </div>
-    </nav>
+  <div class="foebe-scroll-progress" aria-hidden="true">
+    <span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+  </div>
 
   <main class="page">
 
@@ -821,7 +862,7 @@ html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
         <div class="question-box"><p id="synQuestion"></p></div>
         <div class="actions" style="margin-top:20px;">
           <a id="synZoneLink" class="btn btn-primary" href="#">Explorer la zone liée</a>
-          <a class="btn btn-secondary" href="boussole.html">Entrer dans la Boussole</a>
+          <a class="btn btn-secondary" href="boussole-scenarios.html">Entrer dans la Boussole</a>
         </div>
       </div>
     </section>
@@ -838,7 +879,7 @@ html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
       emotions:{label:"Coupé·e", zone:"Zone Émotions", url:"zone-emotions.html", title:"Tu sembles arriver avec peu d’accès à ce que tu ressens.", text:"Le premier repère peut être très simple : ne pas forcer une réponse et commencer par remarquer ce qui est là, même si c’est encore flou.", question:"Qu’est-ce que je ressens, même vaguement, si je n’essaie pas d’être précis·e ?"},
       corps:{label:"À bout", zone:"Zone Corps", url:"zone-corps.html", title:"Tu sembles arriver à bout, avec une charge déjà trop forte.", text:"Quand c’est déjà trop, le premier repère n’est pas de tenir encore, mais de repérer ce qui peut être allégé maintenant : le rythme, une demande, une contrainte, une priorité.", question:"Quel signal concret mérite d’être pris au sérieux avant que je continue ?"},
       sens:{label:"Perdu·e", zone:"Zone Sens", url:"zone-sens.html", title:"Tu sembles arriver avec une direction devenue moins lisible.", text:"Quand on ne sait plus très bien où l’on va, le premier repère n’est pas de tout redéfinir, mais de retrouver une direction assez juste pour aujourd’hui.", question:"Qu’est-ce qui compte encore assez pour me donner une direction aujourd’hui ?"},
-      ouverture:{label:"Curieux·se", zone:"La Boussole", url:"boussole.html", title:"Tu sembles arriver avec de l’ouverture et de la curiosité.", text:"Tu n’arrives pas forcément avec quelque chose à réparer. C’est peut-être simplement un bon moment pour explorer, en observant ce qui résonne plutôt que ce qu’il faudrait corriger.", question:"Qu'est-ce que j'ai envie de mieux comprendre chez moi en ce moment ?"}
+      ouverture:{label:"Curieux·se", zone:"La Boussole", url:"boussole-scenarios.html", title:"Tu sembles arriver avec de l’ouverture et de la curiosité.", text:"Tu n’arrives pas forcément avec quelque chose à réparer. C’est peut-être simplement un bon moment pour explorer, en observant ce qui résonne plutôt que ce qu’il faudrait corriger.", question:"Qu'est-ce que j'ai envie de mieux comprendre chez moi en ce moment ?"}
     };
     const wordData = {
       repos:{label:"Repos", zone:"Zone Énergie", url:"zone-energie.html", title:"Repos ne veut pas dire tout arrêter.", text:"Ce mot peut indiquer un besoin de vraie marge : moins de sollicitations, moins d’effort, moins de choses à porter en même temps.", gesture:"Créer dix minutes sans écran, sans tâche et sans justification."},
@@ -952,6 +993,21 @@ html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
       }, {threshold:.1});
       revealEls.forEach(el => io.observe(el));
     }
+
+
+
+    /* Barre de progression scroll */
+    const progressBar = $('foebeScrollProgressBar');
+    function updateFoebeScrollProgress(){
+      if(!progressBar) return;
+      const doc = document.documentElement;
+      const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const ratio = Math.min(1, Math.max(0, window.scrollY / max));
+      progressBar.style.transform = `scaleX(${ratio})`;
+    }
+    updateFoebeScrollProgress();
+    window.addEventListener('scroll', updateFoebeScrollProgress, {passive:true});
+    window.addEventListener('resize', updateFoebeScrollProgress);
 
     /* Back to top */
     const back = $('backToTop');
