@@ -2617,11 +2617,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   position:fixed;
   left:0;
   right:0;
-  top:var(--hero-nav-offset,60px);
+  top:59px;
   z-index:920;
-  height:2px;
+  height:3px;
   pointer-events:none;
-  background:transparent;
+  background:rgba(187,126,96,.14);
 }
 .foebe-index-progress span{
   display:block;
@@ -2629,11 +2629,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   height:100%;
   transform:scaleX(0);
   transform-origin:left center;
-  background:linear-gradient(90deg,rgba(187,126,96,.15),rgba(187,126,96,.95),rgba(196,82,121,.72));
-  box-shadow:0 0 14px rgba(187,126,96,.22);
+  background:linear-gradient(90deg,#BB7E60,#C45279,#C34234);
+  box-shadow:0 0 14px rgba(187,126,96,.26);
   transition:transform .12s linear;
 }
-[data-theme="day"] 
+[data-theme="day"] .foebe-index-progress{
+  background:rgba(78,41,31,.10);
+}
+@media(max-width:640px){
+  .foebe-index-progress{
+    top:57px;
+    height:2px;
+  }
+}
 /* Fallback : les éléments sont visibles tant que le JS n'a pas explicitement activé la motion. */
 [data-index-motion]{ opacity:1; transform:none; visibility:visible; }
 .foebe-index-motion-ready [data-index-motion]{
@@ -2850,7 +2858,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 @media(max-width:980px){
       }
 @media(orientation:portrait) and (max-width:767px){
-  .foebe-index-progress{ top:var(--hero-nav-offset,60px); }
   .foebe-zone-node-map{ inset:16px 16px; }
   .foebe-zone-node-map i{ width:8px; height:8px; }
   .home-start-card::after,
@@ -3085,6 +3092,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   font-family:"Lora",serif!important;
 }
 </style>
+<style id="foebeIndexTargetedFixes20260619">
+
+/* Correctif ciblé — Index 2026-06-19 : barre collée à la nav + zones jour plus sobres */
+[data-theme="day"] .foebe-zone-node-map i{
+  width:8px!important;
+  height:8px!important;
+  background:#4E291F!important;
+  opacity:.82!important;
+  box-shadow:0 0 0 3px rgba(187,126,96,.18),0 0 12px rgba(78,41,31,.16)!important;
+}
+[data-theme="day"] .foebe-zone-node-map::before,
+[data-theme="day"] .foebe-zone-node-map::after{
+  background:linear-gradient(90deg,transparent,rgba(78,41,31,.24),rgba(187,126,96,.30),transparent)!important;
+  opacity:.72!important;
+}
+[data-theme="day"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:focus-visible .foebe-zone-node-map i{
+  background:#BB7E60!important;
+  opacity:.92!important;
+  box-shadow:0 0 0 3px rgba(78,41,31,.10),0 0 14px rgba(187,126,96,.22)!important;
+}
+@media(orientation:portrait) and (max-width:767px){
+  [data-theme="day"] .foebe-zone-node-map i{
+    width:7px!important;
+    height:7px!important;
+    box-shadow:0 0 0 2px rgba(187,126,96,.16),0 0 10px rgba(78,41,31,.14)!important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- Navigation fallback critique — remplacée/masquée par Foébé Shell si disponible -->
@@ -3190,7 +3226,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <div class="vocab-clarity reveal reveal-delay-1 index-motion-panel" data-index-motion="panel" aria-labelledby="vocab-clarity-title">
       <span class="vocab-clarity-kicker">Quatre mots à distinguer</span>
       <h2 class="vocab-clarity-title" id="vocab-clarity-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
-      <p class="vocab-clarity-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose.</p>
+      <p class="vocab-clarity-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
 
       <div class="vocab-tags vocab-accordion" aria-label="Définitions rapides">
         <div class="vocab-item">
@@ -3226,8 +3262,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
           </div>
         </div>
       </div>
-
-      <p class="vocab-clarity-note">Foébé relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
     </div>
 </div>
 </section>
