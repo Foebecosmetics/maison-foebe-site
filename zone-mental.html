@@ -200,7 +200,7 @@
                 text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vue sur les 7 dimensions de ton self-care.",
                 crossLink: {
                     label: "Explorer les 7 zones →",
-                    url: "test.html"
+                    url: "echelle-foebe.html"
                 }
             },
             {
@@ -5561,6 +5561,52 @@ body.state-active .ici-card {
   }
 }
 </style>
+<style>
+/* Vagues animées du header — même principe que sur l'index, recoloré par zone */
+.zone-hero-waves{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:clamp(80px,18vw,190px);
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.zone-wave-svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.zone-wave-path-1{ fill:rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.16); }
+.zone-wave-path-2{ fill:rgba(var(--z-lite-r),var(--z-lite-g),var(--z-lite-b),.10); }
+.zone-wave-path-3{ fill:rgba(240,234,231,.07); }
+
+@keyframes zoneWave1{
+  0%,100%{ d:path("M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"); }
+  50%{ d:path("M0,72 C60,48 120,96 180,72 C240,48 300,96 360,72 L360,136 L0,136 Z"); }
+}
+@keyframes zoneWave2{
+  0%,100%{ d:path("M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z"); }
+  50%{ d:path("M0,68 C50,88 110,48 180,68 C240,88 300,48 360,68 L360,136 L0,136 Z"); }
+}
+@keyframes zoneWave3{
+  0%,100%{ d:path("M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"); }
+  50%{ d:path("M0,86 C70,106 130,72 200,86 C270,100 320,72 360,86 L360,136 L0,136 Z"); }
+}
+
+@media(prefers-reduced-motion:no-preference){
+  .zone-wave-path-1{ animation:zoneWave1 4s ease-in-out infinite; }
+  .zone-wave-path-2{ animation:zoneWave2 5.5s ease-in-out infinite .6s; }
+  .zone-wave-path-3{ animation:zoneWave3 7s ease-in-out infinite 1.2s; }
+}
+
+@media(max-width:767px){
+  .zone-hero-waves{ height:clamp(56px,22vw,115px); }
+}
+</style>
 </head>
 <body>
 <div id="pageProgress">
@@ -5569,19 +5615,23 @@ body.state-active .ici-card {
 <button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
 <div id="stateOverlay"></div>
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
-<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html">
-<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
-</a>
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
-<a href="/a-propos.html">À propos</a>
+<a href="/comprendre.html">Comprendre</a>
 <a href="/methode.html">Méthode</a>
-<a href="/test.html">Échelle Foébé</a>
-<a href="/foebe-zones-cadre.html">Les 7 zones</a>
-<a href="/boussole-accueil-foebe.html">Boussole</a>
-<a href="mailto:foebecosmetics@gmail.com">Contact</a>
+<a href="/echelle-foebe.html">Échelle Foébé</a>
+<a href="/zones.html" aria-current="page">7 zones</a>
+<a href="/dictionnaire.html">Dictionnaire</a>
 </div>
 </nav>
 <div class="zone-hero">
+<div class="zone-hero-waves" aria-hidden="true">
+<svg class="zone-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<path class="zone-wave-path-1" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-2" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-3" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"/>
+</svg>
+</div>
 <span class="hero-num" id="heroNum">03</span>
 <span class="hero-emoji" id="heroEmoji">🧠</span>
 <h1 class="hero-title" id="heroTitle">Mental</h1>
@@ -5618,7 +5668,7 @@ body.state-active .ici-card {
 </div>
 <button aria-label="Voir les zones suivantes" class="ici-scroll-btn ici-scroll-btn-right" id="iciScrollRight" type="button">›</button>
 </div>
-<p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="test.html">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
+<p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="echelle-foebe.html">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
 <div class="ici-states">
 <button class="ici-state-tag sol" data-state="sol" type="button"><span class="ici-state-dot"></span>Solide</button>
 <button class="ici-state-tag nour" data-state="nour" type="button"><span class="ici-state-dot"></span>À nourrir</button>
@@ -5739,7 +5789,7 @@ body.state-active .ici-card {
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="test.html" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="echelle-foebe.html" id="obsCrossLink"></a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -5839,7 +5889,7 @@ body.state-active .ici-card {
 <p class="palp-desc">Un exercice guidé pour relâcher les tensions stockées et revenir dans les sensations du corps.</p>
 <span class="palp-cta">Ouvrir l'exercice →</span>
 </a>
-<a class="palp-card palp-card-right" href="boussole-accueil-foebe.html">
+<a class="palp-card palp-card-right" href="boussole.html">
 <p class="palp-label">Outil d'exploration</p>
 <p class="palp-name">La Boussole Foébé</p>
 <p class="palp-desc">Elle t'aide à comprendre ton self-care à travers des cas concrets. Elle t'entraîne à repérer les signaux, déséquilibres et les liens entre les zones.</p>
@@ -5874,13 +5924,14 @@ body.state-active .ici-card {
 <p class="accomp-email-sub">Si tu veux être informé·e quand les nouveaux espaces ouvrent, laisse ton email.</p>
 <form action="https://formspree.io/f/mnnqbjrl" id="waitlistForm" method="POST" novalidate="">
 <input id="formZoneField" name="zone" type="hidden" value=""/>
+<input name="_subject" type="hidden" value="Maison Foébé · Zone page · Liste d’attente"/>
 <input name="source" type="hidden" value="zone-page"/>
 <div id="emailFormWrap">
 <div class="email-form">
 <input aria-label="Ton adresse email" aria-required="true" autocomplete="email" class="email-input" id="emailInput" name="email" placeholder="ton@email.com" required="" type="email"/>
 <button class="email-submit" id="emailSubmitBtn" type="submit">Me tenir au courant →</button>
 </div>
-<p class="email-note">Sans engagement · Pas de spam · <a class="email-privacy-link" href="mentions.html">Politique de confidentialité</a></p>
+<p class="email-note">Sans engagement · Pas de spam · <a class="email-privacy-link" href="mentions-legales.html">Politique de confidentialité</a></p>
 <p aria-live="polite" class="email-error" id="emailError" role="alert"></p>
 </div>
 </form>
@@ -6372,7 +6423,7 @@ body.state-active .ici-card {
             if (obsScore === 0) {
                 cta.textContent = "Faire le test complet →";
                 handler = function() {
-                    window.location.href = "test.html";
+                    window.location.href = "echelle-foebe.html";
                 };
             } else if (obsScore <= 3) {
                 cta.textContent = "Voir les gestes pour cette zone →";
@@ -6645,6 +6696,10 @@ body.state-active .ici-card {
                 }
                 if (input) input.classList.remove('error');
                 if (errEl) errEl.textContent = '';
+                if (!window.fetch) {
+                    form.submit();
+                    return;
+                }
                 if (submitBtn) {
                     submitBtn.textContent = 'Envoi…';
                     submitBtn.disabled = true;
