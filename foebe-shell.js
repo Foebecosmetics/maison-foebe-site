@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version V9 — navigation contextuelle + progression fine + stories immersives
+ * Version V9.1 — menu actif nettoyé + navigation contextuelle stable
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -91,14 +91,12 @@
     ".nav-pole-label{font-family:'Poppins',sans-serif!important;font-size:10px!important;font-weight:700!important;letter-spacing:2.2px!important;text-transform:uppercase!important;color:#BB7E60!important;padding-bottom:12px!important;margin-bottom:8px!important;border-bottom:1px solid rgba(187,126,96,.30)!important;}",
     ".nav-link{font-family:'Poppins',sans-serif!important;font-size:13px!important;font-weight:500!important;color:var(--text,#F0EAE7)!important;text-decoration:none!important;padding:10px 10px!important;border-radius:12px!important;min-height:42px!important;display:flex!important;align-items:center!important;position:relative!important;isolation:isolate!important;transition:color .18s ease,background .18s ease,padding-left .18s ease,transform .18s ease!important;}",
     ".nav-link::before{content:''!important;position:absolute!important;inset:5px!important;border-radius:10px!important;background:rgba(187,126,96,.12)!important;opacity:0!important;transform:scale(.98)!important;z-index:-1!important;transition:opacity .18s ease,transform .18s ease!important;}",
-    ".nav-link::after{content:''!important;position:absolute!important;left:10px!important;top:50%!important;width:5px!important;height:5px!important;border-radius:999px!important;background:#BB7E60!important;opacity:0!important;transform:translateY(-50%) scale(.6)!important;transition:opacity .18s ease,transform .18s ease!important;}",
-    ".nav-link:hover{color:#BB7E60!important;padding-left:22px!important;transform:translateX(2px)!important;background:transparent!important;}",
+    ".nav-link::after{content:none!important;display:none!important;}",
+    ".nav-link:hover{color:#BB7E60!important;padding-left:14px!important;transform:translateX(1px)!important;background:transparent!important;}",
     ".nav-link:hover::before,.nav-link[aria-current='page']::before{opacity:1!important;transform:scale(1)!important;}",
-    ".nav-link:hover::after,.nav-link[aria-current='page']::after{opacity:1!important;transform:translateY(-50%) scale(1)!important;}",
-    ".nav-link[aria-current='page']{background:#BB7E60!important;color:#F0EAE7!important;border-color:#BB7E60!important;box-shadow:0 12px 26px rgba(187,126,96,.22)!important;}",
+        ".nav-link[aria-current='page']{background:#BB7E60!important;color:#F0EAE7!important;border-color:#BB7E60!important;box-shadow:0 12px 26px rgba(187,126,96,.22)!important;}",
     ".nav-link[aria-current='page']::before{opacity:0!important;transform:scale(1)!important;}",
-    ".nav-link[aria-current='page']::after{background:#F0EAE7!important;opacity:1!important;transform:translateY(-50%) scale(1)!important;}",
-    ".nav-link[aria-current='page']:hover{background:#BB7E60!important;color:#F0EAE7!important;padding-left:22px!important;transform:translateX(2px)!important;}",
+        ".nav-link[aria-current='page']:hover{background:#BB7E60!important;color:#F0EAE7!important;padding-left:14px!important;transform:translateX(1px)!important;}",
     ".nav-link:focus-visible{outline:2px solid #BB7E60!important;outline-offset:3px!important;}",
 
     "footer{background:#2C1A12!important;color:#F0EAE7!important;padding:60px 24px 40px!important;border-top:1px solid rgba(187,126,96,.28)!important;text-align:center!important;}",
@@ -123,7 +121,7 @@
     "@media(max-width:900px){.nav-panel-inner{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px 30px!important;padding:26px 22px 30px!important;}.nav-pole:last-child{grid-column:1/-1!important;}.nav-pole:last-child .nav-link{display:inline-flex!important;margin-right:10px!important;}}",
     "@media(max-width:767px){html.foebe-has-shell-context #mainNav .nav-logo{display:none!important;}#mainNav{grid-template-columns:minmax(68px,auto) minmax(0,1fr) auto!important;gap:8px!important;}.nav-left{gap:0!important;min-width:0!important;}.shell-context-back{max-width:92px!important;min-height:42px!important;padding:0 2px!important;font-size:11px!important;}.shell-context-back::after{left:22px!important;right:2px!important;bottom:7px!important;}.shell-page-current{max-width:100%!important;font-size:11px!important;letter-spacing:.035em!important;padding-inline:0!important;}.shell-page-current::after{left:18%!important;right:18%!important;}.nav-right{gap:7px!important;}}",
     "@media(max-width:380px){#mainNav{padding-inline:12px!important;grid-template-columns:minmax(62px,auto) minmax(0,1fr) auto!important;gap:6px!important;}.shell-context-back{max-width:78px!important;font-size:10.5px!important;}.shell-page-current{font-size:10.5px!important;letter-spacing:.02em!important;}.nav-right{gap:5px!important;}}",
-    "@media(max-width:640px){#mainNav{height:58px!important;padding:0 16px!important;}#navMenu{top:58px!important;max-height:calc(100vh - 58px)!important;}#navOverlay{top:58px!important;}.nav-panel-inner{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;}.nav-pole{border-bottom:1px solid rgba(187,126,96,.25)!important;padding:15px 18px 12px!important;}.nav-pole:last-child{border-bottom:none!important;}.nav-pole-label{font-size:10px!important;margin-bottom:6px!important;padding-bottom:10px!important;}.nav-link{font-size:14px!important;min-height:46px!important;padding:12px 10px!important;border-radius:10px!important;}.nav-link:hover,.nav-link[aria-current='page']{padding-left:24px!important;}footer{padding:42px 18px 30px!important;}.footer-inner{gap:14px!important;}.footer-links{gap:6px 16px!important;}.footer-link{font-size:12.5px!important;}}",
+    "@media(max-width:640px){#mainNav{height:58px!important;padding:0 16px!important;}#navMenu{top:58px!important;max-height:calc(100vh - 58px)!important;}#navOverlay{top:58px!important;}.nav-panel-inner{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;}.nav-pole{border-bottom:1px solid rgba(187,126,96,.25)!important;padding:15px 18px 12px!important;}.nav-pole:last-child{border-bottom:none!important;}.nav-pole-label{font-size:10px!important;margin-bottom:6px!important;padding-bottom:10px!important;}.nav-link{font-size:14px!important;min-height:46px!important;padding:12px 10px!important;border-radius:10px!important;}.nav-link:hover,.nav-link[aria-current='page']{padding-left:14px!important;}footer{padding:42px 18px 30px!important;}.footer-inner{gap:14px!important;}.footer-links{gap:6px 16px!important;}.footer-link{font-size:12.5px!important;}}",
     "@media(max-width:380px){.nav-logo{font-size:17px!important;}#menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}.theme-toggle{width:36px!important;height:36px!important;}.nav-panel-inner{padding-bottom:8px!important;}}",
     ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
     ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
@@ -310,7 +308,7 @@
      3. INJECTION DU NAV
   ═══════════════════════════════════════════════════════════════════════════ */
   var NAV_STRUCTURE = [
-    { pole: "🏠", links: [
+    { pole: "Maison Foébé", links: [
       { href: "index.html", label: "Accueil" }
     ]},
     { pole: "Découvrir", links: [
