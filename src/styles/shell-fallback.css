@@ -1,0 +1,157 @@
+/* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
+   Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
+html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
+html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
+  display:none!important;
+}
+body > nav#fallbackNav.fallback-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 950 !important;
+        min-height: 60px !important;
+        height: 60px !important;
+        padding: 0 clamp(14px, 3vw, 28px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        background: rgba(78, 41, 31, .94) !important;
+        border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        box-shadow: 0 2px 14px rgba(0,0,0,.16) !important;
+        font-family: "Poppins", sans-serif !important;
+        box-sizing: border-box !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav {
+        background: rgba(240, 234, 231, .94) !important;
+        border-bottom-color: rgba(78, 41, 31, .16) !important;
+        box-shadow: 0 2px 14px rgba(78,41,31,.08) !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-logo {
+        font-family: "Montserrat", sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        letter-spacing: -.06em !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        min-height: 44px !important;
+        flex: 0 0 auto !important;
+        max-width: 42vw !important;
+        white-space: nowrap !important;
+      }
+
+      [data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span {
+        color: #F0EAE7 !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5) {
+        color: #4E291F !important;
+      }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2) { color: #BB7E60 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3) { color: #C45279 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4) { color: #C34234 !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        white-space: nowrap !important;
+      }
+      body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar { display: none !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a {
+        min-height: 38px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 11px !important;
+        border-radius: 999px !important;
+        color: var(--text, #F0EAE7) !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        text-decoration: none !important;
+        border: 1px solid transparent !important;
+        opacity: .92 !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #F0EAE7 !important;
+        background: #BB7E60 !important;
+        border-color: #BB7E60 !important;
+        opacity: 1 !important;
+        outline: none !important;
+      }
+
+      @media(max-width:720px) {
+        body > nav#fallbackNav.fallback-nav {
+          padding: 0 12px !important;
+          gap: 12px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 17px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links {
+          justify-content: flex-start !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          font-size: 12px !important;
+          padding: 0 10px !important;
+        }
+      }
+
+      @media(max-width:420px) {
+        body > nav#fallbackNav.fallback-nav {
+          gap: 10px !important;
+          padding: 0 10px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 16px !important;
+          max-width: 36vw !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          min-height: 36px !important;
+          font-size: 11.5px !important;
+          padding: 0 9px !important;
+        }
+      }
+
+
+/* Fallback nav — état actif/hover à contraste renforcé (>= 7:1) */
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{
+  color:#4E291F!important;
+  background:#F0EAE7!important;
+  border-color:#F0EAE7!important;
+  opacity:1!important;
+}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{
+  color:#F0EAE7!important;
+  background:#4E291F!important;
+  border-color:#4E291F!important;
+  opacity:1!important;
+}

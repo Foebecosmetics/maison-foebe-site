@@ -1,0 +1,32 @@
+---
+const { zone } = Astro.props;
+const runtimeSrc = `/assets/js/zones/${zone.slug}.js`;
+---
+<script is:inline set:html={zone.configScript}></script>
+<Fragment set:html={`<script defer src="${runtimeSrc}"></script>`}></Fragment>
+<script id="foebeRevealFallback" is:inline>
+  (function(){
+    var root = document.documentElement;
+    var items = document.querySelectorAll('.reveal, .impact-item, .geste-card');
+    if (!items.length) return;
+
+    function makeVisible(){
+      root.classList.add('foebe-no-js-motion');
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.add('visible', 'lit');
+        items[i].style.visibility = 'visible';
+      }
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      makeVisible();
+      return;
+    }
+
+    window.setTimeout(function(){
+      if (!root.classList.contains('foebe-effects-ready')) {
+        makeVisible();
+      }
+    }, 2500);
+  })();
+</script>
