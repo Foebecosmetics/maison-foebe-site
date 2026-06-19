@@ -18,14 +18,21 @@
   document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
 })();
 </script><script id="foebe-shell-fallback-guard">
-(function(){
-  var h = document.documentElement;
-  h.classList.add('foebe-shell-loading');
-  window.setTimeout(function(){
-    if (!h.classList.contains('foebe-shell-ready')) {
-      h.classList.add('foebe-shell-failed');
+(function () {
+  var root = document.documentElement;
+
+  root.classList.add("foebe-shell-loading");
+
+  window.__foebeShellWatchdog = window.setTimeout(function () {
+    if (!root.classList.contains("foebe-shell-ready")) {
+      root.classList.remove("foebe-shell-loading");
+      root.classList.add("foebe-shell-failed");
+
+      try {
+        window.dispatchEvent(new CustomEvent("foebe:shell-failed"));
+      } catch (e) {}
     }
-  }, 2500);
+  }, 3000);
 })();
 </script>
 <script>
@@ -2604,9 +2611,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 [data-theme="night"] .btn-founder-primary:hover{ background:#F0EAE7; }
 
 </style>
-
-
-
 <style id="foebeIndexGuidedMotionV1">
 /* ═══════════════════════════════════════════════════════
    Maison Foébé — INDEX motion éditoriale page par page
@@ -2882,8 +2886,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   .foebe-index-motion-ready [data-index-motion]{ opacity:1!important; transform:none!important; }
   }
 </style>
-
-
 <style id="foebeIndexAccordionSafeCss">
 /* Index — accordéon vocabulaire stable, mobile/tablette safe, contraste ≥ 7 sur les éléments touchés. */
 .vocab-tags.vocab-accordion{
@@ -3027,7 +3029,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   .vocab-tags.vocab-accordion .vocab-tag::after{transition:none!important;}
 }
 </style>
-
 <style id="foebeIndexTargetedFinalFixes">
 /* Corrections ciblées — index stable : lisibilité intro secondaire, Pourquoi Foébé, accordéon sans titres répétés. */
 .home-secondary-intro{
@@ -3121,148 +3122,1673 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
   }
 }
 </style>
+<style id="foebeIndexEditorialWarm20260619">
+/* Maison Foébé — accueil éditorial chaleureux
+   Palette vivante, lecture guidée, mobile sans surcharge de mouvement. */
+:root{
+  --foebe-progress-gradient:linear-gradient(
+    90deg,
+    #4E291F 0%,
+    #BB7E60 28%,
+    #C45279 50%,
+    #F0EAE7 64%,
+    #C34234 80%,
+    #4E291F 100%
+  );
+  --foebe-nav-height:60px;
+}
+[data-theme="day"]{
+  --warm:#BB7E60;
+  --warm-hover:#A86D50;
+  --border:rgba(187,126,96,.30);
+  --surface:rgba(187,126,96,.12);
+  --card-bg:rgba(240,234,231,.72);
+  --shadow:rgba(78,41,31,.10);
+}
+
+/* Barre locale uniquement si le Shell échoue. */
+.foebe-scroll-progress--fallback{
+  display:none;
+  position:fixed;
+  top:var(--foebe-nav-height);
+  left:0;
+  right:0;
+  height:3px;
+  z-index:99987;
+  overflow:hidden;
+  pointer-events:none;
+  background:rgba(187,126,96,.12);
+}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;
+  width:100%;
+  height:100%;
+  background:var(--foebe-progress-gradient);
+  transform:scaleX(0);
+  transform-origin:left center;
+  will-change:transform;
+  box-shadow:0 1px 7px rgba(187,126,96,.28);
+}
+html.foebe-shell-loading .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important;}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block;}
+html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+
+/* Entrée de page : cocon, pas de grand aplat brun austère. */
+.home-start-section.home-start-hero{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 12% 14%,rgba(187,126,96,.26),transparent 34%),
+    radial-gradient(circle at 88% 20%,rgba(196,82,121,.15),transparent 31%),
+    linear-gradient(180deg,rgba(240,234,231,.035),rgba(187,126,96,.055)),
+    var(--bg)!important;
+  border-bottom:1px solid rgba(187,126,96,.22)!important;
+}
+[data-theme="day"] .home-start-section.home-start-hero{
+  background:
+    radial-gradient(circle at 10% 13%,rgba(187,126,96,.34),transparent 35%),
+    radial-gradient(circle at 88% 18%,rgba(196,82,121,.16),transparent 31%),
+    linear-gradient(180deg,#F0EAE7 0%,rgba(187,126,96,.12) 100%)!important;
+}
+.home-start-section.home-start-hero::before{
+  content:"";
+  position:absolute;
+  inset:var(--foebe-nav-height) 0 auto;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(187,126,96,.66),rgba(196,82,121,.42),transparent);
+  pointer-events:none;
+  z-index:-1;
+}
+.home-start-head{max-width:860px!important;}
+.home-start-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  margin-bottom:22px;
+  padding:7px 14px;
+  border:1px solid rgba(187,126,96,.42);
+  border-radius:999px;
+  background:rgba(187,126,96,.14);
+  color:var(--text);
+  font-family:"Poppins",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.25px;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+[data-theme="night"] .home-start-eyebrow{
+  background:rgba(187,126,96,.22);
+  color:#F0EAE7;
+}
+.home-start-title{
+  max-width:900px!important;
+  font-size:clamp(38px,5.4vw,64px)!important;
+  line-height:1.08!important;
+  letter-spacing:-.018em;
+  text-wrap:balance;
+}
+.foebe-word,
+.foebe-inline{
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+  border-radius:.32em;
+}
+.foebe-word{padding:0 .08em .03em;}
+.foebe-inline{padding:.02em .18em .06em;}
+[data-theme="night"] .foebe-word--warm,
+[data-theme="night"] .foebe-inline--warm{
+  color:#F0EAE7;
+  background:rgba(187,126,96,.24);
+}
+[data-theme="night"] .foebe-word--rose,
+[data-theme="night"] .foebe-inline--rose{
+  color:#F0EAE7;
+  background:rgba(196,82,121,.24);
+}
+[data-theme="night"] .foebe-word--red,
+[data-theme="night"] .foebe-inline--red{
+  color:#F0EAE7;
+  background:rgba(195,66,52,.22);
+}
+[data-theme="day"] .foebe-word--warm,
+[data-theme="day"] .foebe-inline--warm{
+  color:#4E291F;
+  background:rgba(187,126,96,.32);
+}
+[data-theme="day"] .foebe-word--rose,
+[data-theme="day"] .foebe-inline--rose{
+  color:#4E291F;
+  background:rgba(196,82,121,.17);
+}
+[data-theme="day"] .foebe-word--red,
+[data-theme="day"] .foebe-inline--red{
+  color:#4E291F;
+  background:rgba(195,66,52,.15);
+}
+.home-start-signature{
+  max-width:760px!important;
+  margin-top:24px!important;
+  border-color:rgba(187,126,96,.46)!important;
+  background:
+    radial-gradient(circle at 92% 10%,rgba(196,82,121,.12),transparent 30%),
+    linear-gradient(135deg,rgba(187,126,96,.18),rgba(240,234,231,.055))!important;
+  box-shadow:0 18px 46px rgba(0,0,0,.10)!important;
+  line-height:1.68!important;
+}
+[data-theme="day"] .home-start-signature{
+  background:
+    radial-gradient(circle at 92% 10%,rgba(196,82,121,.11),transparent 30%),
+    linear-gradient(135deg,rgba(240,234,231,.88),rgba(187,126,96,.17))!important;
+  border-color:rgba(187,126,96,.48)!important;
+  box-shadow:0 16px 36px rgba(78,41,31,.08)!important;
+}
+.home-explore-note{
+  margin-top:15px!important;
+  color:var(--read-soft)!important;
+  font-family:"Lora",serif!important;
+  font-style:italic;
+  font-size:14.5px!important;
+}
+
+/* Les trois portes forment une seule composition éditoriale. */
+.home-start-grid--primary{
+  margin-top:clamp(30px,4vw,48px)!important;
+  padding:1px!important;
+  gap:1px!important;
+  border:1px solid rgba(187,126,96,.34);
+  border-radius:30px;
+  background:rgba(187,126,96,.30)!important;
+  overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.13);
+}
+[data-theme="day"] .home-start-grid--primary{
+  background:rgba(187,126,96,.34)!important;
+  box-shadow:0 22px 52px rgba(78,41,31,.10);
+}
+.home-start-grid--primary .home-start-card{
+  min-height:390px!important;
+  padding:22px 22px 24px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:rgba(240,234,231,.045)!important;
+  box-shadow:none!important;
+}
+[data-theme="day"] .home-start-grid--primary .home-start-card{
+  background:rgba(240,234,231,.92)!important;
+}
+.home-start-grid--primary .home-start-card:nth-child(1){--card-accent:#BB7E60;}
+.home-start-grid--primary .home-start-card:nth-child(2){--card-accent:#C34234;}
+.home-start-grid--primary .home-start-card:nth-child(3){--card-accent:#C45279;}
+.home-start-grid--primary .home-start-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0 0 auto!important;
+  width:auto!important;
+  height:4px!important;
+  border-radius:0!important;
+  background:var(--card-accent)!important;
+  filter:none!important;
+  opacity:.92!important;
+}
+.home-start-grid--primary .home-start-card:hover,
+.home-start-grid--primary .home-start-card:focus-visible{
+  transform:none!important;
+  background:rgba(187,126,96,.11)!important;
+  box-shadow:inset 0 0 0 1px rgba(187,126,96,.24)!important;
+}
+[data-theme="day"] .home-start-grid--primary .home-start-card:hover,
+[data-theme="day"] .home-start-grid--primary .home-start-card:focus-visible{
+  background:rgba(187,126,96,.17)!important;
+}
+.home-start-num{
+  width:max-content;
+  max-width:100%;
+  padding:6px 10px;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--card-accent) 16%,transparent);
+  color:var(--text)!important;
+  letter-spacing:1.2px!important;
+}
+.home-start-card h3{font-size:clamp(21px,2vw,27px)!important;line-height:1.22!important;}
+.home-start-card p{font-size:16px!important;line-height:1.76!important;}
+.home-start-link{
+  border-color:color-mix(in srgb,var(--card-accent) 58%,transparent)!important;
+  background:color-mix(in srgb,var(--card-accent) 12%,transparent)!important;
+}
+.home-start-card:hover .home-start-link,
+.home-start-card:focus-visible .home-start-link{
+  background:#F0EAE7!important;
+  border-color:var(--card-accent)!important;
+  color:#4E291F!important;
+}
+
+/* Carte 03 : points roses en jour, vagues rose + terracotta plus claires. */
+.home-visual--zones-anim{
+  background:linear-gradient(145deg,rgba(196,82,121,.18),rgba(187,126,96,.16))!important;
+}
+.wave-path-1{fill:rgba(187,126,96,.20)!important;}
+.wave-path-2{fill:rgba(196,82,121,.15)!important;}
+.wave-path-3{fill:rgba(240,234,231,.09)!important;}
+[data-theme="day"] .home-visual--zones-anim{
+  background:linear-gradient(145deg,rgba(240,234,231,.92),rgba(187,126,96,.22),rgba(196,82,121,.14))!important;
+}
+[data-theme="day"] .wave-path-1{fill:rgba(187,126,96,.27)!important;}
+[data-theme="day"] .wave-path-2{fill:rgba(196,82,121,.22)!important;}
+[data-theme="day"] .wave-path-3{fill:rgba(196,82,121,.10)!important;}
+[data-theme="day"] .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:focus-visible .foebe-zone-node-map i{
+  background:#C45279!important;
+  opacity:.90!important;
+  box-shadow:0 0 0 4px rgba(196,82,121,.12),0 0 18px rgba(187,126,96,.24)!important;
+}
+[data-theme="day"] .foebe-zone-node-map::before,
+[data-theme="day"] .foebe-zone-node-map::after{
+  background:linear-gradient(90deg,transparent,rgba(196,82,121,.34),rgba(187,126,96,.36),transparent)!important;
+  opacity:.82!important;
+}
+
+/* Accès complémentaires : deux repères calmes, non austères. */
+.home-secondary-intro{
+  color:var(--text)!important;
+  font-family:"Lora",serif!important;
+  font-size:clamp(18px,2vw,23px)!important;
+  font-style:italic;
+}
+.home-secondary-access{
+  gap:14px!important;
+}
+.home-secondary-card{
+  border-color:rgba(187,126,96,.34)!important;
+  border-radius:22px!important;
+  background:rgba(187,126,96,.075)!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.08)!important;
+}
+[data-theme="day"] .home-secondary-card{
+  background:rgba(240,234,231,.72)!important;
+  border-color:rgba(187,126,96,.38)!important;
+  box-shadow:0 12px 30px rgba(78,41,31,.07)!important;
+}
+.home-secondary-card:nth-child(2){border-color:rgba(196,82,121,.32)!important;}
+
+/* Bloc vocabulaire : éditorial, palette dans les repères plutôt qu'un seul brun. */
+.vocab-clarity{
+  border-color:rgba(187,126,96,.38)!important;
+  background:
+    radial-gradient(circle at 92% 0%,rgba(196,82,121,.10),transparent 32%),
+    rgba(187,126,96,.075)!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.08)!important;
+}
+[data-theme="day"] .vocab-clarity{
+  background:
+    radial-gradient(circle at 92% 0%,rgba(196,82,121,.11),transparent 32%),
+    rgba(240,234,231,.84)!important;
+  border-color:rgba(187,126,96,.42)!important;
+}
+.vocab-clarity-title em{color:inherit!important;background:rgba(196,82,121,.18);border-radius:.3em;padding:0 .12em .04em;}
+
+/* Reconnaissance : les signaux deviennent des repères respirants, pas des lignes froides. */
+.reco-section{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(187,126,96,.16),transparent 30%),
+    radial-gradient(circle at 88% 16%,rgba(196,82,121,.09),transparent 30%),
+    var(--bg2)!important;
+}
+[data-theme="day"] .reco-section{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(187,126,96,.23),transparent 31%),
+    radial-gradient(circle at 88% 16%,rgba(196,82,121,.11),transparent 30%),
+    #F0EAE7!important;
+}
+.reco-grid{
+  gap:12px!important;
+  border:0!important;
+  margin-top:34px!important;
+}
+.reco-item,
+.reco-item:nth-child(odd),
+.reco-item:nth-child(even){
+  min-height:126px;
+  padding:22px!important;
+  border:1px solid rgba(187,126,96,.26)!important;
+  border-radius:20px;
+  background:rgba(240,234,231,.045);
+}
+[data-theme="day"] .reco-item,
+[data-theme="day"] .reco-item:nth-child(odd),
+[data-theme="day"] .reco-item:nth-child(even){
+  background:rgba(240,234,231,.82)!important;
+  border-color:rgba(187,126,96,.34)!important;
+}
+.reco-item:nth-child(2),.reco-item:nth-child(4){border-color:rgba(196,82,121,.28)!important;}
+.reco-dash{color:#C45279!important;}
+
+/* Pourquoi Foébé : surface chaude et rassurante en jour comme en nuit. */
+.founder-section{
+  background:
+    radial-gradient(circle at 88% 12%,rgba(196,82,121,.11),transparent 32%),
+    linear-gradient(135deg,rgba(187,126,96,.18),rgba(187,126,96,.09)),
+    var(--bg)!important;
+}
+[data-theme="day"] .founder-section{
+  background:
+    radial-gradient(circle at 88% 12%,rgba(196,82,121,.12),transparent 32%),
+    linear-gradient(135deg,rgba(187,126,96,.26),rgba(240,234,231,.92))!important;
+}
+[data-theme="day"] .founder-copy{
+  background:rgba(240,234,231,.66)!important;
+  border-left-color:#BB7E60!important;
+}
+[data-theme="day"] .founder-copy::after{
+  background:linear-gradient(180deg,transparent,#BB7E60,#C45279,transparent)!important;
+}
+[data-theme="day"] .btn-founder-primary{
+  background:#F0EAE7!important;
+  color:#4E291F!important;
+  border:1.5px solid #BB7E60!important;
+}
+[data-theme="day"] .btn-founder-primary:hover,
+[data-theme="day"] .btn-founder-primary:focus-visible{
+  background:rgba(187,126,96,.18)!important;
+  color:#4E291F!important;
+}
+[data-theme="day"] .btn-founder-secondary{
+  border-color:#C45279!important;
+  background:rgba(196,82,121,.08)!important;
+}
+
+/* Accompagnement : même famille éditoriale, sans gros bloc sombre. */
+.section--accompagnement{
+  background:
+    radial-gradient(circle at 12% 80%,rgba(187,126,96,.16),transparent 34%),
+    radial-gradient(circle at 90% 12%,rgba(196,82,121,.10),transparent 30%),
+    var(--bg3)!important;
+}
+[data-theme="day"] .section--accompagnement{
+  background:
+    radial-gradient(circle at 12% 80%,rgba(187,126,96,.24),transparent 34%),
+    radial-gradient(circle at 90% 12%,rgba(196,82,121,.12),transparent 30%),
+    #F0EAE7!important;
+}
+.accompagnement-card{
+  border:1px solid rgba(187,126,96,.38)!important;
+  border-radius:28px!important;
+  background:rgba(187,126,96,.08)!important;
+  box-shadow:0 20px 52px rgba(0,0,0,.10)!important;
+}
+[data-theme="day"] .accompagnement-card{
+  background:rgba(240,234,231,.78)!important;
+  border-color:rgba(187,126,96,.44)!important;
+  box-shadow:0 18px 44px rgba(78,41,31,.08)!important;
+}
+.porte3-soon-badge{
+  background:rgba(196,82,121,.16)!important;
+  border-color:rgba(196,82,121,.34)!important;
+  color:var(--text)!important;
+}
+
+/* Mobile/tablette : lecture immédiate et animations décoratives neutralisées. */
+@media(min-width:768px) and (max-width:1100px){
+  .home-start-grid--primary{grid-template-columns:1fr!important;max-width:820px;margin-inline:auto!important;}
+  .home-start-grid--primary .home-start-card{
+    min-height:0!important;
+    display:grid!important;
+    grid-template-columns:230px minmax(0,1fr)!important;
+    grid-template-rows:auto auto 1fr auto!important;
+    column-gap:24px!important;
+    align-items:start!important;
+  }
+  .home-start-grid--primary .home-visual{grid-column:1;grid-row:1 / 5;margin:0!important;min-height:100%!important;}
+  .home-start-grid--primary .home-start-num,
+  .home-start-grid--primary h3,
+  .home-start-grid--primary p,
+  .home-start-grid--primary .home-start-link{grid-column:2;}
+}
+@media(max-width:640px){
+  :root{--foebe-nav-height:58px;}
+  .foebe-scroll-progress--fallback{height:2px;}
+}
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-section.home-start-hero{padding-top:calc(var(--foebe-nav-height) + 30px)!important;}
+  .home-start-head{text-align:left!important;}
+  .home-start-eyebrow{margin-bottom:16px;}
+  .home-start-title{font-size:clamp(32px,10.2vw,44px)!important;line-height:1.08!important;}
+  .home-start-signature{margin-left:0!important;margin-right:0!important;}
+  .home-start-grid--primary{border-radius:24px;}
+  .home-start-grid--primary .home-start-card{min-height:0!important;padding:20px!important;}
+  .home-secondary-access{grid-template-columns:1fr!important;}
+  .reco-grid{grid-template-columns:1fr!important;}
+  .reco-item{min-height:0!important;}
+  .wave-path-1,.wave-path-2,.wave-path-3,
+  .home-breath-circle,
+  .boussole-arrow,
+  .echelle-bar,
+  .foebe-zone-node-map i,
+  .accompagnement-card,
+  .hero-title .line span{
+    animation:none!important;
+    transition:none!important;
+  }
+  .foebe-zone-node-map i{transform:none!important;opacity:.88!important;}
+  .foebe-index-motion-ready [data-index-motion]{opacity:1!important;transform:none!important;transition:none!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important;}
+}
+</style>
+
+<style id="foebeIndexEditorialV2Css">
+/* Maison Foébé — Index éditorial V2 : guidance visible, chaleur, animations mobiles conservées */
+[data-theme="day"]{
+  --warm:#BB7E60!important;
+  --warm-hover:#A86D50!important;
+  --surface:rgba(187,126,96,.12)!important;
+  --card-bg:rgba(240,234,231,.88)!important;
+}
+
+/* Surlignages éditoriaux : aplats, jamais soulignés */
+.foebe-marker{
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+  display:inline;
+  padding:.03em .18em .08em;
+  border-radius:.34em;
+  font-style:normal;
+  text-decoration:none!important;
+  box-shadow:inset 0 -.02em 0 rgba(255,255,255,.04);
+}
+[data-theme="night"] .foebe-marker--warm{background:rgba(187,126,96,.34);color:#F0EAE7;}
+[data-theme="night"] .foebe-marker--rose{background:rgba(196,82,121,.30);color:#F0EAE7;}
+[data-theme="night"] .foebe-marker--red{background:rgba(195,66,52,.28);color:#F0EAE7;}
+[data-theme="day"] .foebe-marker--warm{background:rgba(187,126,96,.44);color:#4E291F;}
+[data-theme="day"] .foebe-marker--rose{background:rgba(196,82,121,.23);color:#4E291F;}
+[data-theme="day"] .foebe-marker--red{background:rgba(195,66,52,.20);color:#4E291F;}
+
+.home-start-section.home-start-hero{
+  background:
+    radial-gradient(circle at 12% 12%,rgba(187,126,96,.20),transparent 31%),
+    radial-gradient(circle at 88% 18%,rgba(196,82,121,.12),transparent 28%),
+    linear-gradient(180deg,var(--bg),var(--bg2))!important;
+}
+[data-theme="day"] .home-start-section.home-start-hero{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(187,126,96,.36),transparent 34%),
+    radial-gradient(circle at 88% 16%,rgba(196,82,121,.18),transparent 31%),
+    linear-gradient(180deg,#F0EAE7 0%,rgba(187,126,96,.17) 100%)!important;
+}
+.home-start-head{
+  max-width:900px!important;
+  padding:clamp(26px,4vw,44px)!important;
+  border:1px solid rgba(187,126,96,.38)!important;
+  border-radius:30px!important;
+  background:rgba(240,234,231,.045)!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.12)!important;
+  text-align:left!important;
+  position:relative;
+  overflow:hidden;
+}
+.home-start-head::after{
+  content:"";
+  position:absolute;
+  width:220px;height:220px;
+  right:-90px;top:-100px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(196,82,121,.22),transparent 68%);
+  pointer-events:none;
+}
+[data-theme="day"] .home-start-head{
+  background:rgba(240,234,231,.78)!important;
+  border-color:rgba(187,126,96,.50)!important;
+  box-shadow:0 22px 58px rgba(78,41,31,.09)!important;
+}
+.home-start-signature{
+  border-left:4px solid #BB7E60!important;
+  border-radius:0 20px 20px 0!important;
+  padding:20px 22px!important;
+  box-shadow:none!important;
+}
+
+.home-choice-guide{
+  width:min(100%,900px);
+  margin:clamp(30px,4vw,46px) auto 18px;
+  padding:20px 22px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:18px;
+  align-items:center;
+  border:1px solid rgba(187,126,96,.36);
+  border-radius:22px;
+  background:rgba(187,126,96,.09);
+}
+[data-theme="day"] .home-choice-guide{background:rgba(240,234,231,.76);border-color:rgba(187,126,96,.46);}
+.home-choice-kicker{
+  min-height:32px;
+  padding:7px 12px;
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  background:#BB7E60;
+  color:#F0EAE7;
+  font:700 11.5px/1.2 "Poppins",sans-serif;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.home-choice-guide p{
+  color:var(--read);
+  font:400 clamp(16px,.8vw + 13.5px,18px)/1.72 "Lora",serif;
+}
+
+.home-start-grid--primary{
+  margin-top:0!important;
+  border-radius:28px!important;
+  background:linear-gradient(90deg,#BB7E60,#C34234,#C45279)!important;
+  box-shadow:0 26px 70px rgba(0,0,0,.15)!important;
+}
+[data-theme="day"] .home-start-grid--primary{box-shadow:0 24px 58px rgba(78,41,31,.11)!important;}
+.home-start-grid--primary .home-start-card{
+  padding:26px 24px 28px!important;
+  background:rgba(78,41,31,.92)!important;
+}
+[data-theme="day"] .home-start-grid--primary .home-start-card{background:rgba(240,234,231,.96)!important;}
+.home-start-grid--primary .home-start-card:nth-child(1){background:linear-gradient(180deg,rgba(187,126,96,.17),rgba(78,41,31,.92))!important;}
+.home-start-grid--primary .home-start-card:nth-child(2){background:linear-gradient(180deg,rgba(195,66,52,.15),rgba(78,41,31,.92))!important;}
+.home-start-grid--primary .home-start-card:nth-child(3){background:linear-gradient(180deg,rgba(196,82,121,.16),rgba(78,41,31,.92))!important;}
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(1){background:linear-gradient(180deg,rgba(187,126,96,.22),rgba(240,234,231,.97))!important;}
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(2){background:linear-gradient(180deg,rgba(195,66,52,.14),rgba(240,234,231,.97))!important;}
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(3){background:linear-gradient(180deg,rgba(196,82,121,.16),rgba(240,234,231,.97))!important;}
+.home-start-card h3{font-size:clamp(22px,2.25vw,29px)!important;line-height:1.28!important;}
+.home-start-card .home-start-num{background:rgba(240,234,231,.08)!important;border:1px solid color-mix(in srgb,var(--card-accent) 52%,transparent);}
+[data-theme="day"] .home-start-card .home-start-num{background:rgba(240,234,231,.74)!important;}
+.home-start-card .home-start-link{min-height:44px!important;padding:0 15px!important;font-size:12px!important;}
+
+.editorial-bridge{
+  max-width:680px;
+  margin-top:22px;
+  padding:18px 20px;
+  border-left:4px solid #C45279;
+  border-radius:0 18px 18px 0;
+  background:rgba(196,82,121,.09);
+  color:var(--read);
+  font:400 clamp(16px,.72vw + 13px,17px)/1.76 "Lora",serif;
+}
+[data-theme="day"] .editorial-bridge{background:rgba(196,82,121,.10);}
+.reco-grid{
+  padding:1px!important;
+  gap:1px!important;
+  border:1px solid rgba(187,126,96,.34)!important;
+  border-radius:24px!important;
+  overflow:hidden!important;
+  background:linear-gradient(135deg,#BB7E60,#C45279)!important;
+}
+.reco-item,
+.reco-item:nth-child(odd),
+.reco-item:nth-child(even){
+  border:0!important;
+  border-radius:0!important;
+  background:rgba(78,41,31,.94)!important;
+}
+[data-theme="day"] .reco-item,
+[data-theme="day"] .reco-item:nth-child(odd),
+[data-theme="day"] .reco-item:nth-child(even){background:rgba(240,234,231,.96)!important;}
+
+.founder-inner{
+  max-width:860px!important;
+  padding:clamp(28px,4vw,46px)!important;
+  border:1px solid rgba(187,126,96,.38);
+  border-radius:30px;
+  background:rgba(240,234,231,.055);
+  box-shadow:0 22px 60px rgba(0,0,0,.11);
+}
+[data-theme="day"] .founder-inner{background:rgba(240,234,231,.76);border-color:rgba(187,126,96,.50);box-shadow:0 20px 48px rgba(78,41,31,.08);}
+.founder-copy{border-left:0!important;border-radius:22px!important;padding:24px!important;background:rgba(187,126,96,.10)!important;}
+[data-theme="day"] .founder-copy{background:rgba(187,126,96,.15)!important;}
+
+.accompagnement-card{
+  position:relative;
+  overflow:hidden;
+}
+.accompagnement-card::before{
+  content:"F";
+  position:absolute;
+  right:clamp(20px,4vw,46px);
+  top:50%;
+  transform:translateY(-50%);
+  width:92px;height:92px;
+  display:grid;place-items:center;
+  border:2px solid #BB7E60;
+  border-radius:50%;
+  color:var(--text);
+  font:700 44px/1 "Montserrat",sans-serif;
+  opacity:.18;
+  pointer-events:none;
+}
+
+/* Les animations restent présentes sur mobile, avec un rythme plus doux. */
+@media(orientation:portrait) and (max-width:767px){
+  .home-choice-guide{grid-template-columns:1fr;gap:12px;padding:18px;border-radius:20px;}
+  .home-choice-kicker{width:max-content;}
+  .home-start-head{padding:24px 20px!important;border-radius:24px!important;}
+  .home-start-signature{padding:17px 18px!important;}
+  .home-start-grid--primary{border-radius:22px!important;}
+  .home-start-grid--primary .home-start-card{padding:22px 20px 24px!important;}
+  .home-start-grid--primary .home-start-card:hover,
+  .home-start-grid--primary .home-start-card:focus-visible{transform:none!important;}
+  .echelle-bar{animation:barRise 3.4s cubic-bezier(.34,1.56,.64,1) infinite!important;}
+  .echelle-bar:nth-child(1){animation-delay:0s!important;}
+  .echelle-bar:nth-child(2){animation-delay:.18s!important;}
+  .echelle-bar:nth-child(3){animation-delay:.36s!important;}
+  .echelle-bar:nth-child(4){animation-delay:.54s!important;}
+  .echelle-bar:nth-child(5){animation-delay:.72s!important;}
+  .echelle-bar:nth-child(6){animation-delay:.90s!important;}
+  .echelle-bar:nth-child(7){animation-delay:1.08s!important;}
+  .home-breath-circle{animation:breatheExpand 12s ease-in-out infinite!important;}
+  .wave-path-1{animation:wave1 6.5s ease-in-out infinite!important;}
+  .wave-path-2{animation:wave2 8s ease-in-out infinite .7s!important;}
+  .wave-path-3{animation:wave3 9.5s ease-in-out infinite 1.2s!important;}
+  .foebe-zone-node-map i{animation:indexNodeGlow 8s ease-in-out infinite!important;}
+  .boussole-arrow{animation:compassSearch 5.2s cubic-bezier(.25,.46,.45,.94) infinite!important;}
+  .foebe-index-motion-ready [data-index-motion]{
+    opacity:1!important;
+    transform:none!important;
+    transition:opacity .35s ease,transform .35s ease!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .echelle-bar,.home-breath-circle,.wave-path-1,.wave-path-2,.wave-path-3,.foebe-zone-node-map i,.boussole-arrow{animation:none!important;}
+}
+</style>
+
+<style id="foebeIndexNightEditorialV3Css">
+/* Maison Foébé — Index éditorial V3 nuit
+   Même niveau de guidance que le mode jour, avec surfaces chaudes et contrastes adaptés. */
+
+[data-theme="night"] body{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(187,126,96,.12),transparent 30%),
+    radial-gradient(circle at 90% 22%,rgba(196,82,121,.08),transparent 28%),
+    #4E291F;
+}
+
+/* Hero : un vrai cocon éditorial, pas brun sur brun. */
+[data-theme="night"] .home-start-section.home-start-hero{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(187,126,96,.30),transparent 34%),
+    radial-gradient(circle at 88% 15%,rgba(196,82,121,.20),transparent 31%),
+    linear-gradient(180deg,#4E291F 0%,#3A1A10 100%)!important;
+}
+[data-theme="night"] .home-start-head{
+  background:
+    radial-gradient(circle at 92% 8%,rgba(196,82,121,.16),transparent 31%),
+    linear-gradient(145deg,rgba(187,126,96,.18),rgba(240,234,231,.075))!important;
+  border-color:rgba(187,126,96,.62)!important;
+  box-shadow:0 26px 76px rgba(0,0,0,.24)!important;
+}
+[data-theme="night"] .home-start-head::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:linear-gradient(180deg,#BB7E60,#C45279,#C34234);
+  opacity:.92;
+  pointer-events:none;
+}
+[data-theme="night"] .home-start-signature{
+  background:linear-gradient(135deg,rgba(187,126,96,.22),rgba(196,82,121,.09))!important;
+  border-left-color:#BB7E60!important;
+}
+
+/* Surlignages : visibles en nuit, sans ressembler à des liens. */
+[data-theme="night"] .foebe-marker,
+[data-theme="night"] .foebe-word,
+[data-theme="night"] .foebe-inline{
+  box-shadow:inset 0 0 0 1px rgba(240,234,231,.08),0 5px 16px rgba(0,0,0,.08);
+}
+[data-theme="night"] .foebe-marker--warm,
+[data-theme="night"] .foebe-word--warm,
+[data-theme="night"] .foebe-inline--warm{
+  background:linear-gradient(180deg,rgba(187,126,96,.52),rgba(187,126,96,.34))!important;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .foebe-marker--rose,
+[data-theme="night"] .foebe-word--rose,
+[data-theme="night"] .foebe-inline--rose{
+  background:linear-gradient(180deg,rgba(196,82,121,.48),rgba(196,82,121,.30))!important;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .foebe-marker--red,
+[data-theme="night"] .foebe-word--red,
+[data-theme="night"] .foebe-inline--red{
+  background:linear-gradient(180deg,rgba(195,66,52,.46),rgba(195,66,52,.28))!important;
+  color:#F0EAE7!important;
+}
+
+/* Guide des trois portes. */
+[data-theme="night"] .home-choice-guide{
+  background:
+    radial-gradient(circle at 92% 0%,rgba(196,82,121,.14),transparent 34%),
+    linear-gradient(135deg,rgba(187,126,96,.20),rgba(240,234,231,.07))!important;
+  border-color:rgba(187,126,96,.56)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.16);
+}
+[data-theme="night"] .home-choice-kicker{
+  background:#F0EAE7!important;
+  color:#4E291F!important;
+  border:1px solid rgba(187,126,96,.58);
+}
+
+/* Les portes ont chacune une vraie teinte en nuit. */
+[data-theme="night"] .home-start-grid--primary{
+  background:linear-gradient(90deg,#BB7E60 0%,#C34234 50%,#C45279 100%)!important;
+  box-shadow:0 28px 76px rgba(0,0,0,.25)!important;
+}
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(1){
+  background:
+    radial-gradient(circle at 82% 12%,rgba(240,234,231,.08),transparent 30%),
+    linear-gradient(180deg,rgba(187,126,96,.30),rgba(240,234,231,.075))!important;
+}
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(2){
+  background:
+    radial-gradient(circle at 82% 12%,rgba(240,234,231,.07),transparent 30%),
+    linear-gradient(180deg,rgba(195,66,52,.25),rgba(240,234,231,.068))!important;
+}
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(3){
+  background:
+    radial-gradient(circle at 82% 12%,rgba(240,234,231,.07),transparent 30%),
+    linear-gradient(180deg,rgba(196,82,121,.27),rgba(240,234,231,.07))!important;
+}
+[data-theme="night"] .home-start-grid--primary .home-start-card:hover,
+[data-theme="night"] .home-start-grid--primary .home-start-card:focus-visible{
+  background:linear-gradient(180deg,rgba(187,126,96,.28),rgba(240,234,231,.11))!important;
+  box-shadow:inset 0 0 0 1px rgba(240,234,231,.12)!important;
+}
+[data-theme="night"] .home-start-card .home-start-num{
+  background:rgba(240,234,231,.12)!important;
+  color:#F0EAE7!important;
+  border-color:rgba(240,234,231,.22)!important;
+}
+[data-theme="night"] .home-start-card .home-start-link{
+  background:rgba(240,234,231,.10)!important;
+  border-color:rgba(240,234,231,.34)!important;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .home-start-card:hover .home-start-link,
+[data-theme="night"] .home-start-card:focus-visible .home-start-link{
+  background:#F0EAE7!important;
+  border-color:#F0EAE7!important;
+  color:#4E291F!important;
+}
+
+/* Porte 03 : vagues et points clairement Foébé en nuit aussi. */
+[data-theme="night"] .home-visual--zones-anim{
+  background:linear-gradient(145deg,rgba(196,82,121,.30),rgba(187,126,96,.24))!important;
+}
+[data-theme="night"] .wave-path-1{fill:rgba(187,126,96,.34)!important;}
+[data-theme="night"] .wave-path-2{fill:rgba(196,82,121,.27)!important;}
+[data-theme="night"] .wave-path-3{fill:rgba(240,234,231,.13)!important;}
+[data-theme="night"] .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:focus-visible .foebe-zone-node-map i{
+  background:#C45279!important;
+  opacity:.96!important;
+  box-shadow:0 0 0 4px rgba(196,82,121,.16),0 0 20px rgba(187,126,96,.32)!important;
+}
+[data-theme="night"] .foebe-zone-node-map::before,
+[data-theme="night"] .foebe-zone-node-map::after{
+  background:linear-gradient(90deg,transparent,rgba(196,82,121,.44),rgba(187,126,96,.46),transparent)!important;
+  opacity:.90!important;
+}
+
+/* Signaux : quatre repères colorés, pas une plaque sombre uniforme. */
+[data-theme="night"] .reco-section{
+  background:
+    radial-gradient(circle at 8% 10%,rgba(187,126,96,.24),transparent 31%),
+    radial-gradient(circle at 90% 14%,rgba(196,82,121,.16),transparent 30%),
+    #3A1A10!important;
+}
+[data-theme="night"] .editorial-bridge{
+  background:linear-gradient(90deg,rgba(196,82,121,.22),rgba(187,126,96,.10))!important;
+  border-left-color:#C45279!important;
+}
+[data-theme="night"] .reco-grid{
+  background:linear-gradient(135deg,#BB7E60,#C45279,#C34234)!important;
+  border-color:rgba(240,234,231,.16)!important;
+}
+[data-theme="night"] .reco-item,
+[data-theme="night"] .reco-item:nth-child(odd),
+[data-theme="night"] .reco-item:nth-child(even){
+  background:rgba(240,234,231,.075)!important;
+}
+[data-theme="night"] .reco-item:nth-child(1){box-shadow:inset 4px 0 0 #BB7E60;}
+[data-theme="night"] .reco-item:nth-child(2){box-shadow:inset 4px 0 0 #C45279;}
+[data-theme="night"] .reco-item:nth-child(3){box-shadow:inset 4px 0 0 #C34234;}
+[data-theme="night"] .reco-item:nth-child(4){box-shadow:inset 4px 0 0 #C45279;}
+
+/* Méthode, vocabulaire et accompagnement : surfaces distinctes en nuit. */
+[data-theme="night"] .founder-section{
+  background:
+    radial-gradient(circle at 10% 14%,rgba(187,126,96,.24),transparent 32%),
+    radial-gradient(circle at 90% 20%,rgba(196,82,121,.12),transparent 30%),
+    #4E291F!important;
+}
+[data-theme="night"] .founder-inner{
+  background:
+    radial-gradient(circle at 90% 5%,rgba(196,82,121,.14),transparent 30%),
+    linear-gradient(145deg,rgba(187,126,96,.17),rgba(240,234,231,.065))!important;
+  border-color:rgba(187,126,96,.58)!important;
+  box-shadow:0 24px 66px rgba(0,0,0,.20)!important;
+}
+[data-theme="night"] .founder-copy{
+  background:linear-gradient(135deg,rgba(187,126,96,.22),rgba(196,82,121,.08))!important;
+}
+[data-theme="night"] .vocab-clarity{
+  background:
+    radial-gradient(circle at 92% 0%,rgba(196,82,121,.17),transparent 33%),
+    linear-gradient(145deg,rgba(187,126,96,.16),rgba(240,234,231,.06))!important;
+  border-color:rgba(187,126,96,.54)!important;
+}
+[data-theme="night"] .home-secondary-card{
+  background:linear-gradient(145deg,rgba(187,126,96,.15),rgba(240,234,231,.055))!important;
+  border-color:rgba(187,126,96,.48)!important;
+}
+[data-theme="night"] .home-secondary-card:nth-child(2){
+  background:linear-gradient(145deg,rgba(196,82,121,.16),rgba(240,234,231,.055))!important;
+  border-color:rgba(196,82,121,.46)!important;
+}
+[data-theme="night"] .section--accompagnement{
+  background:
+    radial-gradient(circle at 12% 82%,rgba(187,126,96,.22),transparent 34%),
+    radial-gradient(circle at 90% 12%,rgba(196,82,121,.16),transparent 30%),
+    #3A1A10!important;
+}
+[data-theme="night"] .accompagnement-card{
+  background:
+    radial-gradient(circle at 92% 18%,rgba(196,82,121,.15),transparent 32%),
+    linear-gradient(145deg,rgba(187,126,96,.20),rgba(240,234,231,.065))!important;
+  border-color:rgba(187,126,96,.58)!important;
+}
+[data-theme="night"] .accompagnement-card::before{
+  border-color:#BB7E60!important;
+  color:#F0EAE7!important;
+  opacity:.30!important;
+}
+
+/* Mobile : mêmes couleurs et animations conservées, sans hover parasite. */
+@media(orientation:portrait) and (max-width:767px){
+  [data-theme="night"] .home-start-head{
+    background:linear-gradient(145deg,rgba(187,126,96,.20),rgba(196,82,121,.09),rgba(240,234,231,.055))!important;
+  }
+  [data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(1),
+  [data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(2),
+  [data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(3){
+    background:linear-gradient(180deg,rgba(187,126,96,.20),rgba(240,234,231,.065))!important;
+  }
+  [data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(2){
+    background:linear-gradient(180deg,rgba(195,66,52,.19),rgba(240,234,231,.062))!important;
+  }
+  [data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(3){
+    background:linear-gradient(180deg,rgba(196,82,121,.21),rgba(240,234,231,.064))!important;
+  }
+}
+</style>
+
+
+<style id="foebeIndexContrastPremiumV4Css">
+/* Maison Foébé — contraste premium V4
+   Les teintes de surlignage sont des mélanges calculés de la palette Foébé
+   sur le fond jour/nuit. Elles gardent l'identité couleur avec un contraste
+   supérieur à 6,5:1 pour les textes essentiels. */
+:root{
+  --foebe-marker-day-warm:#DBBFB1; /* #4E291F : 7.28:1 */
+  --foebe-marker-day-rose:#E1B6C2; /* #4E291F : 7.03:1 */
+  --foebe-marker-day-red:#E2B8B1;  /* #4E291F : 7.06:1 */
+  --foebe-marker-night-warm:#734635; /* #F0EAE7 : 6.64:1 */
+  --foebe-marker-night-rose:#76373E; /* #F0EAE7 : 7.39:1 */
+  --foebe-marker-night-red:#763226;  /* #F0EAE7 : 7.82:1 */
+}
+
+/* Surlignages : aplats stables, sans chevauchement lors des retours à la ligne. */
+.foebe-marker,
+.foebe-word,
+.foebe-inline{
+  -webkit-box-decoration-break:clone!important;
+  box-decoration-break:clone!important;
+  text-decoration:none!important;
+  white-space:normal!important;
+  line-height:inherit!important;
+  margin-inline:.025em!important;
+  border-radius:.28em!important;
+  box-shadow:inset 0 0 0 1px rgba(78,41,31,.10)!important;
+}
+.foebe-word{padding:0 .11em .035em!important;}
+.foebe-marker,
+.foebe-inline{padding:.005em .14em .045em!important;}
+
+[data-theme="day"] .foebe-marker--warm,
+[data-theme="day"] .foebe-word--warm,
+[data-theme="day"] .foebe-inline--warm{
+  background:var(--foebe-marker-day-warm)!important;
+  color:#4E291F!important;
+}
+[data-theme="day"] .foebe-marker--rose,
+[data-theme="day"] .foebe-word--rose,
+[data-theme="day"] .foebe-inline--rose{
+  background:var(--foebe-marker-day-rose)!important;
+  color:#4E291F!important;
+}
+[data-theme="day"] .foebe-marker--red,
+[data-theme="day"] .foebe-word--red,
+[data-theme="day"] .foebe-inline--red{
+  background:var(--foebe-marker-day-red)!important;
+  color:#4E291F!important;
+}
+[data-theme="night"] .foebe-marker,
+[data-theme="night"] .foebe-word,
+[data-theme="night"] .foebe-inline{
+  box-shadow:inset 0 0 0 1px rgba(240,234,231,.12)!important;
+}
+[data-theme="night"] .foebe-marker--warm,
+[data-theme="night"] .foebe-word--warm,
+[data-theme="night"] .foebe-inline--warm{
+  background:var(--foebe-marker-night-warm)!important;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .foebe-marker--rose,
+[data-theme="night"] .foebe-word--rose,
+[data-theme="night"] .foebe-inline--rose{
+  background:var(--foebe-marker-night-rose)!important;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .foebe-marker--red,
+[data-theme="night"] .foebe-word--red,
+[data-theme="night"] .foebe-inline--red{
+  background:var(--foebe-marker-night-red)!important;
+  color:#F0EAE7!important;
+}
+
+/* Les titres respirent assez pour que deux fragments colorés ne se touchent jamais. */
+.home-start-title{line-height:1.17!important;}
+.home-start-card h3{line-height:1.38!important;}
+.reco-title{line-height:1.36!important;}
+.section-title,
+.accompagnement-title,
+.vocab-clarity-title{line-height:1.30!important;}
+.home-choice-guide p,
+.home-start-signature,
+.reco-item p,
+.founder-copy p,
+.accompagnement-desc{line-height:1.82!important;}
+
+/* Micro-labels : la couleur sert de surface ou de bordure, jamais de petit texte peu contrasté. */
+[data-theme="day"] .home-start-eyebrow,
+[data-theme="day"] .section-eyebrow,
+[data-theme="day"] .newsletter-label,
+[data-theme="day"] .vocab-clarity-kicker,
+[data-theme="day"] .home-choice-kicker{
+  background:var(--foebe-marker-day-warm)!important;
+  border-color:#BB7E60!important;
+  color:#4E291F!important;
+}
+[data-theme="night"] .home-start-eyebrow,
+[data-theme="night"] .section-eyebrow,
+[data-theme="night"] .newsletter-label,
+[data-theme="night"] .vocab-clarity-kicker{
+  background:var(--foebe-marker-night-warm)!important;
+  border-color:#BB7E60!important;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .home-choice-kicker{
+  background:#F0EAE7!important;
+  border-color:#BB7E60!important;
+  color:#4E291F!important;
+}
+[data-theme="day"] .home-secondary-kicker{color:#4E291F!important;}
+[data-theme="night"] .home-secondary-kicker{color:#F0EAE7!important;}
+
+/* CTA : contraste fort, accent Foébé porté par la bordure et le focus. */
+.newsletter-section .newsletter-btn,
+.accompagnement-form .newsletter-btn{
+  background:#4E291F!important;
+  border:2px solid #BB7E60!important;
+  color:#F0EAE7!important;
+  box-shadow:0 8px 22px rgba(78,41,31,.16)!important;
+}
+.newsletter-section .newsletter-btn:hover,
+.newsletter-section .newsletter-btn:focus-visible,
+.accompagnement-form .newsletter-btn:hover,
+.accompagnement-form .newsletter-btn:focus-visible{
+  background:#F0EAE7!important;
+  border-color:#C45279!important;
+  color:#4E291F!important;
+}
+
+/* Porte 03 : constellation visible sur chaque phase de l'animation. */
+.home-visual--zones-anim{
+  isolation:isolate!important;
+  border-color:rgba(196,82,121,.54)!important;
+}
+[data-theme="day"] .home-visual--zones-anim{
+  background:linear-gradient(145deg,#F0EAE7 0%,#E5D4CC 54%,#E7CCD1 100%)!important;
+}
+[data-theme="night"] .home-visual--zones-anim{
+  background:linear-gradient(145deg,#4E291F 0%,#734635 52%,#76373E 100%)!important;
+}
+[data-theme="day"] .wave-path-1{fill:rgba(187,126,96,.46)!important;}
+[data-theme="day"] .wave-path-2{fill:rgba(196,82,121,.34)!important;}
+[data-theme="day"] .wave-path-3{fill:rgba(195,66,52,.12)!important;}
+[data-theme="night"] .wave-path-1{fill:rgba(187,126,96,.42)!important;}
+[data-theme="night"] .wave-path-2{fill:rgba(196,82,121,.34)!important;}
+[data-theme="night"] .wave-path-3{fill:rgba(240,234,231,.16)!important;}
+.foebe-zone-node-map{z-index:4!important;}
+.foebe-zone-node-map::before,
+.foebe-zone-node-map::after{
+  height:2px!important;
+  z-index:0!important;
+  background:linear-gradient(90deg,transparent 0%,#BB7E60 24%,#C45279 54%,#F0EAE7 76%,transparent 100%)!important;
+  opacity:.92!important;
+  filter:drop-shadow(0 1px 2px rgba(78,41,31,.18));
+}
+.foebe-zone-node-map i,
+[data-theme="day"] .foebe-zone-node-map i,
+[data-theme="night"] .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:focus-visible .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:focus-visible .foebe-zone-node-map i{
+  width:11px!important;
+  height:11px!important;
+  z-index:2!important;
+  opacity:1!important;
+  background:#C45279!important;
+  border:2px solid #F0EAE7!important;
+  box-shadow:
+    0 0 0 2px rgba(196,82,121,.72),
+    0 0 0 5px rgba(240,234,231,.18),
+    0 0 18px rgba(196,82,121,.58)!important;
+}
+@keyframes indexNodeGlowPremium{
+  0%,100%{transform:scale(.96);opacity:.90;}
+  50%{transform:scale(1.18);opacity:1;}
+}
+@media(prefers-reduced-motion:no-preference){
+  .foebe-zone-node-map i{
+    animation:indexNodeGlowPremium 7.5s ease-in-out infinite!important;
+    animation-delay:calc(var(--node-index,0) * .34s)!important;
+  }
+}
+
+@media(orientation:portrait) and (max-width:767px){
+  .home-start-title{line-height:1.20!important;}
+  .home-start-card h3{line-height:1.42!important;}
+  .reco-title{line-height:1.40!important;}
+  .foebe-marker,
+  .foebe-inline{padding:.005em .13em .04em!important;}
+  .foebe-zone-node-map i,
+  [data-theme="day"] .foebe-zone-node-map i,
+  [data-theme="night"] .foebe-zone-node-map i{
+    width:10px!important;
+    height:10px!important;
+    border-width:2px!important;
+    box-shadow:
+      0 0 0 2px rgba(196,82,121,.72),
+      0 0 0 4px rgba(240,234,231,.18),
+      0 0 15px rgba(196,82,121,.52)!important;
+  }
+  @media(prefers-reduced-motion:no-preference){
+    .wave-path-1{animation:wave1 6.5s ease-in-out infinite!important;}
+    .wave-path-2{animation:wave2 8s ease-in-out infinite .7s!important;}
+    .wave-path-3{animation:wave3 9.5s ease-in-out infinite 1.2s!important;}
+    .foebe-zone-node-map i{animation:indexNodeGlowPremium 8s ease-in-out infinite!important;}
+  }
+}
+</style>
+
+
+<style id="foebeIndexCalmBalanceV5Css">
+/* Maison Foébé — équilibre calme V5
+   Retour à une palette peau / crème / terracotta, avec rose et rouge en accents.
+   Les mouvements restent présents mais lents, sans surcharge pour une lecture fatiguée. */
+
+/* 1. Porte 03 : fond crème permanent, vagues peau et points lisibles. */
+.home-start-grid--primary{
+  background:#BB7E60!important;
+}
+.home-start-grid--primary .home-start-card:nth-child(3),
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(3),
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(3){
+  background:linear-gradient(180deg,rgba(187,126,96,.18),rgba(240,234,231,.075))!important;
+}
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(3){
+  background:linear-gradient(180deg,rgba(187,126,96,.18),rgba(240,234,231,.98))!important;
+}
+.home-visual--zones-anim,
+[data-theme="day"] .home-visual--zones-anim,
+[data-theme="night"] .home-visual--zones-anim{
+  background:#F0EAE7!important;
+  border-color:rgba(78,41,31,.20)!important;
+  box-shadow:inset 0 0 0 1px rgba(187,126,96,.12)!important;
+}
+.wave-path-1,
+[data-theme="day"] .wave-path-1,
+[data-theme="night"] .wave-path-1{fill:rgba(187,126,96,.34)!important;}
+.wave-path-2,
+[data-theme="day"] .wave-path-2,
+[data-theme="night"] .wave-path-2{fill:rgba(187,126,96,.18)!important;}
+.wave-path-3,
+[data-theme="day"] .wave-path-3,
+[data-theme="night"] .wave-path-3{fill:rgba(196,82,121,.11)!important;}
+.foebe-zone-node-map::before,
+.foebe-zone-node-map::after,
+[data-theme="day"] .foebe-zone-node-map::before,
+[data-theme="day"] .foebe-zone-node-map::after,
+[data-theme="night"] .foebe-zone-node-map::before,
+[data-theme="night"] .foebe-zone-node-map::after{
+  background:linear-gradient(90deg,transparent 0%,rgba(78,41,31,.24) 18%,rgba(187,126,96,.72) 48%,rgba(78,41,31,.24) 82%,transparent 100%)!important;
+  opacity:.78!important;
+}
+.foebe-zone-node-map i,
+[data-theme="day"] .foebe-zone-node-map i,
+[data-theme="night"] .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:focus-visible .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:focus-visible .foebe-zone-node-map i{
+  background:#C45279!important;
+  border:2px solid #4E291F!important;
+  box-shadow:0 0 0 3px #F0EAE7,0 0 0 5px rgba(187,126,96,.64),0 0 14px rgba(78,41,31,.22)!important;
+  opacity:1!important;
+}
+
+/* 2. Signaux : tableau peau humaine, sans plaque rose. */
+.reco-section,
+[data-theme="night"] .reco-section{
+  background:radial-gradient(circle at 10% 8%,rgba(187,126,96,.18),transparent 31%),#3A1A10!important;
+}
+[data-theme="day"] .reco-section{
+  background:radial-gradient(circle at 10% 8%,rgba(187,126,96,.22),transparent 31%),#F0EAE7!important;
+}
+.reco-grid,
+[data-theme="night"] .reco-grid,
+[data-theme="day"] .reco-grid{
+  padding:1px!important;
+  gap:1px!important;
+  background:#BB7E60!important;
+  border-color:rgba(187,126,96,.48)!important;
+}
+.reco-item,
+.reco-item:nth-child(odd),
+.reco-item:nth-child(even),
+[data-theme="night"] .reco-item,
+[data-theme="night"] .reco-item:nth-child(odd),
+[data-theme="night"] .reco-item:nth-child(even){
+  background:#5F3629!important;
+  box-shadow:none!important;
+}
+[data-theme="day"] .reco-item,
+[data-theme="day"] .reco-item:nth-child(odd),
+[data-theme="day"] .reco-item:nth-child(even){
+  background:#E8D5CC!important;
+  box-shadow:none!important;
+}
+.reco-dash,
+.reco-item.is-visible .reco-dash{
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(187,126,96,.72);
+  border-radius:999px;
+  background:rgba(187,126,96,.18);
+  color:#F0EAE7!important;
+  font-size:18px!important;
+  line-height:1!important;
+  text-shadow:none!important;
+}
+[data-theme="day"] .reco-dash,
+[data-theme="day"] .reco-item.is-visible .reco-dash{
+  background:rgba(187,126,96,.24);
+  border-color:rgba(78,41,31,.28);
+  color:#4E291F!important;
+}
+.reco-section .foebe-marker--rose,
+.reco-section .foebe-marker--red{
+  background:#734635!important;
+  color:#F0EAE7!important;
+}
+[data-theme="day"] .reco-section .foebe-marker--rose,
+[data-theme="day"] .reco-section .foebe-marker--red{
+  background:#E4CFC4!important;
+  color:#4E291F!important;
+}
+.editorial-bridge,
+[data-theme="night"] .editorial-bridge,
+[data-theme="day"] .editorial-bridge{
+  max-width:100%!important;
+  margin:18px 0 0!important;
+  padding:18px 20px!important;
+  border-left:4px solid #BB7E60!important;
+  background:rgba(187,126,96,.12)!important;
+}
+[data-theme="day"] .editorial-bridge{background:rgba(187,126,96,.16)!important;}
+
+/* 3. Accordéon : surfaces peau, plus vivant mais calme en jour et en nuit. */
+.vocab-clarity,
+[data-theme="night"] .vocab-clarity{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#5F3629,#4E291F)!important;
+  border-color:rgba(187,126,96,.56)!important;
+  box-shadow:0 22px 58px rgba(0,0,0,.18)!important;
+}
+[data-theme="day"] .vocab-clarity{
+  background:linear-gradient(145deg,#F0EAE7,#E8D5CC)!important;
+  border-color:rgba(187,126,96,.52)!important;
+  box-shadow:0 18px 42px rgba(78,41,31,.09)!important;
+}
+.vocab-clarity-title em,
+[data-theme="night"] .vocab-clarity-title em{
+  background:#734635!important;
+  color:#F0EAE7!important;
+}
+[data-theme="day"] .vocab-clarity-title em{
+  background:#DBBFB1!important;
+  color:#4E291F!important;
+}
+.vocab-item,
+[data-theme="night"] .vocab-item{
+  --vocab-accent:#BB7E60;
+  position:relative;
+  background:#5F3629!important;
+  border-color:rgba(187,126,96,.42)!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.12)!important;
+}
+[data-theme="day"] .vocab-item{
+  background:#E8D5CC!important;
+  border-color:rgba(78,41,31,.18)!important;
+  box-shadow:0 10px 24px rgba(78,41,31,.07)!important;
+}
+.vocab-item:nth-child(3){--vocab-accent:#C34234;}
+.vocab-item:nth-child(4){--vocab-accent:#C45279;}
+.vocab-item::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--vocab-accent);
+  opacity:.88;
+  z-index:2;
+  pointer-events:none;
+}
+.vocab-tags.vocab-accordion .vocab-tag,
+[data-theme="night"] .vocab-tags.vocab-accordion .vocab-tag{
+  color:#F0EAE7!important;
+}
+[data-theme="day"] .vocab-tags.vocab-accordion .vocab-tag{color:#4E291F!important;}
+.vocab-tags.vocab-accordion .vocab-tag:hover,
+.vocab-tags.vocab-accordion .vocab-tag:focus-visible,
+.vocab-tags.vocab-accordion .vocab-tag[aria-expanded="true"],
+[data-theme="night"] .vocab-tags.vocab-accordion .vocab-tag:hover,
+[data-theme="night"] .vocab-tags.vocab-accordion .vocab-tag:focus-visible,
+[data-theme="night"] .vocab-tags.vocab-accordion .vocab-tag[aria-expanded="true"]{
+  background:#6B4133!important;
+  color:#F0EAE7!important;
+}
+[data-theme="day"] .vocab-tags.vocab-accordion .vocab-tag:hover,
+[data-theme="day"] .vocab-tags.vocab-accordion .vocab-tag:focus-visible,
+[data-theme="day"] .vocab-tags.vocab-accordion .vocab-tag[aria-expanded="true"]{
+  background:#E4CFC4!important;
+  color:#4E291F!important;
+}
+.vocab-tags.vocab-accordion .vocab-panel,
+[data-theme="night"] .vocab-tags.vocab-accordion .vocab-panel{
+  background:#6B4133!important;
+  color:#F0EAE7!important;
+  border-top-color:rgba(187,126,96,.34)!important;
+}
+[data-theme="day"] .vocab-tags.vocab-accordion .vocab-panel{
+  background:#E4CFC4!important;
+  color:#4E291F!important;
+  border-top-color:rgba(78,41,31,.16)!important;
+}
+
+/* 4. Bas de page : continuité animée douce, sans effet publicitaire. */
+.vocab-clarity::before{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:0;
+  height:2px;
+  z-index:3;
+  background:linear-gradient(90deg,transparent,#BB7E60 34%,#C34234 58%,transparent);
+  transform-origin:left center;
+  opacity:.72;
+  pointer-events:none;
+}
+.founder-section::before,
+.section--accompagnement::before{
+  background:radial-gradient(circle,rgba(187,126,96,.20),rgba(240,234,231,.055) 44%,transparent 72%)!important;
+  opacity:.66!important;
+}
+.founder-copy::after{
+  background:linear-gradient(180deg,transparent,#BB7E60,#F0EAE7,#BB7E60,transparent)!important;
+}
+.accompagnement-card,
+[data-theme="night"] .accompagnement-card{
+  background:linear-gradient(145deg,rgba(187,126,96,.20),rgba(240,234,231,.065))!important;
+}
+[data-theme="day"] .accompagnement-card{
+  background:linear-gradient(145deg,rgba(240,234,231,.88),rgba(187,126,96,.18))!important;
+}
+
+@keyframes foebeLowerLineBreath{
+  0%,100%{transform:scaleX(.42);opacity:.40;}
+  50%{transform:scaleX(1);opacity:.86;}
+}
+@keyframes foebeLowerHaloDrift{
+  0%,100%{transform:translate3d(0,0,0) scale(1);}
+  50%{transform:translate3d(-22px,-14px,0) scale(1.08);}
+}
+@keyframes foebeLowerMonogramBreath{
+  0%,100%{transform:translateY(-50%) scale(1);opacity:.16;}
+  50%{transform:translateY(-50%) scale(1.05);opacity:.28;}
+}
+@media(prefers-reduced-motion:no-preference){
+  .vocab-clarity::before{animation:foebeLowerLineBreath 9s ease-in-out infinite;}
+  .founder-section::before{animation:foebeLowerHaloDrift 14s ease-in-out infinite;}
+  .section--accompagnement::before{animation:foebeLowerHaloDrift 16s ease-in-out infinite reverse;}
+  .founder-copy::after{animation:foebeLowerLineBreath 8s ease-in-out infinite;}
+  .accompagnement-card::before{animation:foebeLowerMonogramBreath 9s ease-in-out infinite;}
+}
+
+@media(orientation:portrait) and (max-width:767px){
+  .reco-item,
+  .reco-item:nth-child(odd),
+  .reco-item:nth-child(even){min-height:auto!important;}
+  .editorial-bridge{padding:17px 18px!important;}
+  .vocab-clarity::before{left:12%;right:12%;}
+  .accompagnement-card::before{right:18px;width:72px;height:72px;font-size:34px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .vocab-clarity::before,
+  .founder-section::before,
+  .section--accompagnement::before,
+  .founder-copy::after,
+  .accompagnement-card::before{animation:none!important;}
+}
+</style>
+
+
+<style id="foebeIndexDoorsCalmV6Css">
+/* Maison Foébé — portes apaisées V6
+   Les trois portes reviennent à des surfaces crème / terracotta transparentes.
+   Aucun rose ni brun foncé dans la constellation de la porte 03. */
+
+.home-start-grid--primary,
+[data-theme="day"] .home-start-grid--primary,
+[data-theme="night"] .home-start-grid--primary{
+  background:rgba(187,126,96,.48)!important;
+  box-shadow:0 24px 64px rgba(78,41,31,.14)!important;
+}
+
+.home-start-grid--primary .home-start-card,
+.home-start-grid--primary .home-start-card:nth-child(1),
+.home-start-grid--primary .home-start-card:nth-child(2),
+.home-start-grid--primary .home-start-card:nth-child(3),
+[data-theme="night"] .home-start-grid--primary .home-start-card,
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(1),
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(2),
+[data-theme="night"] .home-start-grid--primary .home-start-card:nth-child(3){
+  --card-accent:#BB7E60!important;
+  background:linear-gradient(180deg,rgba(187,126,96,.18),rgba(240,234,231,.065))!important;
+  border-color:rgba(187,126,96,.36)!important;
+}
+
+[data-theme="day"] .home-start-grid--primary .home-start-card,
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(1),
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(2),
+[data-theme="day"] .home-start-grid--primary .home-start-card:nth-child(3){
+  background:linear-gradient(180deg,rgba(187,126,96,.16),rgba(240,234,231,.98))!important;
+  border-color:rgba(187,126,96,.34)!important;
+}
+
+.home-start-grid--primary .home-start-card:hover,
+.home-start-grid--primary .home-start-card:focus-visible,
+[data-theme="night"] .home-start-grid--primary .home-start-card:hover,
+[data-theme="night"] .home-start-grid--primary .home-start-card:focus-visible{
+  background:linear-gradient(180deg,rgba(187,126,96,.25),rgba(240,234,231,.10))!important;
+  border-color:#BB7E60!important;
+}
+[data-theme="day"] .home-start-grid--primary .home-start-card:hover,
+[data-theme="day"] .home-start-grid--primary .home-start-card:focus-visible{
+  background:linear-gradient(180deg,rgba(187,126,96,.24),#F0EAE7)!important;
+  border-color:#BB7E60!important;
+}
+
+/* Dans les portes, tous les repères textuels reviennent au terracotta. */
+[data-theme="day"] .home-start-grid--primary .foebe-marker,
+[data-theme="day"] .home-start-grid--primary .foebe-marker--warm,
+[data-theme="day"] .home-start-grid--primary .foebe-marker--rose,
+[data-theme="day"] .home-start-grid--primary .foebe-marker--red{
+  background:#DBBFB1!important;
+  color:#4E291F!important;
+  box-shadow:inset 0 0 0 1px rgba(187,126,96,.30)!important;
+}
+[data-theme="night"] .home-start-grid--primary .foebe-marker,
+[data-theme="night"] .home-start-grid--primary .foebe-marker--warm,
+[data-theme="night"] .home-start-grid--primary .foebe-marker--rose,
+[data-theme="night"] .home-start-grid--primary .foebe-marker--red{
+  background:#734635!important;
+  color:#F0EAE7!important;
+  box-shadow:inset 0 0 0 1px rgba(187,126,96,.42)!important;
+}
+
+/* Porte 03 : fond crème, vagues uniquement crème / terracotta. */
+.home-visual--zones-anim,
+[data-theme="day"] .home-visual--zones-anim,
+[data-theme="night"] .home-visual--zones-anim{
+  background:#F0EAE7!important;
+  border-color:rgba(187,126,96,.42)!important;
+  box-shadow:inset 0 0 0 1px rgba(187,126,96,.12)!important;
+}
+.wave-path-1,
+[data-theme="day"] .wave-path-1,
+[data-theme="night"] .wave-path-1{fill:rgba(187,126,96,.36)!important;}
+.wave-path-2,
+[data-theme="day"] .wave-path-2,
+[data-theme="night"] .wave-path-2{fill:rgba(187,126,96,.20)!important;}
+.wave-path-3,
+[data-theme="day"] .wave-path-3,
+[data-theme="night"] .wave-path-3{fill:rgba(240,234,231,.78)!important;}
+
+.foebe-zone-node-map::before,
+.foebe-zone-node-map::after,
+[data-theme="day"] .foebe-zone-node-map::before,
+[data-theme="day"] .foebe-zone-node-map::after,
+[data-theme="night"] .foebe-zone-node-map::before,
+[data-theme="night"] .foebe-zone-node-map::after{
+  background:linear-gradient(90deg,transparent 0%,rgba(187,126,96,.34) 18%,#BB7E60 50%,rgba(187,126,96,.34) 82%,transparent 100%)!important;
+  opacity:.84!important;
+  filter:none!important;
+}
+
+.foebe-zone-node-map i,
+[data-theme="day"] .foebe-zone-node-map i,
+[data-theme="night"] .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="day"] .home-start-card:focus-visible .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:hover .foebe-zone-node-map i,
+[data-theme="night"] .home-start-card:focus-visible .foebe-zone-node-map i{
+  background:#BB7E60!important;
+  border:2px solid #F0EAE7!important;
+  box-shadow:0 0 0 3px rgba(187,126,96,.54),0 0 0 6px rgba(240,234,231,.34),0 0 16px rgba(187,126,96,.38)!important;
+  opacity:1!important;
+}
+
+@keyframes indexNodeGlowCalm{
+  0%,100%{transform:scale(.96);opacity:.90;}
+  50%{transform:scale(1.14);opacity:1;}
+}
+@media(prefers-reduced-motion:no-preference){
+  .foebe-zone-node-map i{
+    animation:indexNodeGlowCalm 8s ease-in-out infinite!important;
+    animation-delay:calc(var(--node-index,0) * .34s)!important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- Navigation fallback critique — remplacée/masquée par Foébé Shell si disponible -->
-<nav id="fallbackNav" class="fallback-nav" aria-label="Navigation principale de secours">
-  <a class="fallback-logo" href="index.html" aria-label="Maison Foébé — accueil"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-  <div class="fallback-links" aria-label="Liens rapides">
-    <a href="comprendre.html">Comprendre</a>
-    <a href="methode.html">Méthode</a>
-    <a href="echelle-foebe.html">Échelle Foébé</a>
-    <a href="zones.html">7 zones</a>
-    <a href="dictionnaire.html">Dictionnaire</a>
-  </div>
+<nav aria-label="Navigation principale de secours" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div aria-label="Liens rapides" class="fallback-links">
+<a href="comprendre.html">Comprendre</a>
+<a href="methode.html">Méthode</a>
+<a href="echelle-foebe.html">Échelle Foébé</a>
+<a href="zones.html">7 zones</a>
+<a href="dictionnaire.html">Dictionnaire</a>
+</div>
 </nav>
-<!-- Motion éditoriale INDEX — barre de progression uniquement -->
-<div class="foebe-index-progress" aria-hidden="true"><span></span></div>
+<!-- Barre locale de secours : le Shell conserve sa propre barre globale -->
+<div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+<span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+<style>
+    .foebe-scroll-progress--fallback { display:block !important; }
+  </style>
+</noscript>
 <main id="mainContent" tabindex="-1">
 <!-- ══════════════════════════════════════════
      ACCUEIL — Bienvenue + portes visuelles
 ══════════════════════════════════════════ -->
 <section aria-labelledby="home-start-title" class="home-start-section home-start-hero" id="commencer">
-  <div class="home-start-inner">
-    <div class="home-start-head index-motion-intro" data-index-motion="intro">
-      <h1 class="home-start-title" id="home-start-title">Tu fonctionnes, mais tu ne récupères <em>plus vraiment.</em></h1>
-      
-           <p class="home-start-signature">Ici, le self-care devient une compétence&nbsp;: apprendre à se lire, se réguler, puis avancer avec plus de douceur.</p>
-      <p class="home-explore-note">Commence par ce qui te parle. Il n'y a pas d'ordre précis.</p>
-    </div>
-    <div class="home-start-grid home-start-grid--primary" aria-label="Choisir par où commencer dans Maison Foébé">
-      <a class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="echelle-foebe.html" aria-label="Faire l’Échelle Foébé">
-        <div class="home-visual home-visual--echelle-anim" aria-hidden="true">
-          <span class="echelle-bar"></span>
-          <span class="echelle-bar"></span>
-          <span class="echelle-bar"></span>
-          <span class="echelle-bar"></span>
-          <span class="echelle-bar"></span>
-          <span class="echelle-bar"></span>
-          <span class="echelle-bar"></span>
-        </div>
-        <span class="home-start-num">01 · Me situer</span>
-        <h3>Je ne sais pas ce qui me pèse le plus...</h3>
-        <p>21 affirmations pour repérer les zones qui demandent ton attention en ce moment.</p>
-        <span class="home-start-link">Commencer l’Échelle Foébé →</span>
-      </a>
-
-      <a class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="respiration.html" aria-label="Lancer la respiration guidée">
-        <div class="home-visual home-visual--respiration" aria-hidden="true">
-          <span class="home-breath-circle" id="breathCircle">
-            <span class="home-breath-label" id="breathLabel">Inspire</span>
-          </span>
-        </div>
-        <span class="home-start-num">02 · Me recentrer</span>
-        <h3>J’ai besoin de redescendre maintenant.</h3>
-        <p>Des exercices courts de respiration guidée pour retrouver un peu d’appui.</p>
-        <span class="home-start-link">Me recentrer maintenant →</span>
-      </a>
-
-      <a class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="zones.html" aria-label="Explorer les 7 zones du self-care">
-        <div class="home-visual home-visual--zones-anim" aria-hidden="true">
-          <svg class="zones-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="wave-path-1" fill="rgba(187,126,96,.14)" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
-            <path class="wave-path-2" fill="rgba(187,126,96,.09)" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z"/>
-            <path class="wave-path-3" fill="rgba(240,234,231,.07)" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"/>
-          </svg>
-          <span class="foebe-zone-node-map" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </span>
-        </div>
-        <span class="home-start-num">03 · Explorer les zones</span>
-        <h3>Je veux comprendre ce qui se joue.</h3>
-        <p>Corps, mental, énergie, émotions, environnement, relations, sens. Commence par la zone qui te parle.</p>
-        <span class="home-start-link">Explorer les zones →</span>
-      </a>
-    </div>
-    <p class="home-secondary-intro">Pour aller plus loin dans ta lecture.</p>
-    <div class="home-secondary-access" aria-label="Accès complémentaires Maison Foébé">
-      <a class="home-secondary-card index-motion-card" data-index-motion="card" href="boussole.html" aria-label="Explorer la Boussole Foébé">
-        <span class="home-secondary-icon" aria-hidden="true">
-          <span class="boussole-wrap">
-            <span class="boussole-arrow"></span>
-          </span>
-        </span>
-        <span class="home-secondary-content">
-          <span class="home-secondary-kicker">Parcours guidé</span>
-          <strong>Explorer la Boussole</strong>
-          <span>Pour reconnaître une situation précise et choisir une direction.</span>
-        </span>
-        <span class="home-secondary-arrow" aria-hidden="true">→</span>
-      </a>
-
-      <a class="home-secondary-card index-motion-card" data-index-motion="card" href="dictionnaire.html" aria-label="Ouvrir le Dictionnaire Foébé">
-        <span class="home-secondary-icon home-secondary-icon--biblio" aria-hidden="true">
-          <span class="biblio-line"><span id="bibliotype"></span><span class="biblio-cursor"></span></span>
-        </span>
-        <span class="home-secondary-content">
-          <span class="home-secondary-kicker">Ressource</span>
-          <strong>Dictionnaire Foébé</strong>
-          <span>Pour mettre des mots précis sur le soin, le corps et le self-care.</span>
-        </span>
-        <span class="home-secondary-arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-
-<div class="vocab-clarity reveal reveal-delay-1 index-motion-panel" data-index-motion="panel" aria-labelledby="vocab-clarity-title">
-      <span class="vocab-clarity-kicker">Quatre mots à distinguer</span>
-      <h2 class="vocab-clarity-title" id="vocab-clarity-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
-      <p class="vocab-clarity-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
-
-      <div class="vocab-tags vocab-accordion" aria-label="Définitions rapides">
-        <div class="vocab-item">
-          <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-selfcare" data-vocab-target="vocab-selfcare">
-            <span>Self-care</span>
-          </button>
-          <div class="vocab-panel" id="vocab-selfcare" role="region" aria-label="Définition du self-care" aria-hidden="true">
+<div class="home-start-inner">
+<div class="home-start-head index-motion-intro" data-index-motion="intro">
+<span class="home-start-eyebrow">Bienvenue à Maison Foébé</span>
+<h1 class="home-start-title" id="home-start-title">Tu <span class="foebe-word foebe-word--warm">fonctionnes</span>, mais tu ne récupères <span class="foebe-word foebe-word--rose">plus vraiment.</span></h1>
+<p class="home-start-signature">Ici, le <span class="foebe-inline foebe-inline--warm">self-care</span> devient une compétence : apprendre à <span class="foebe-inline foebe-inline--rose">se lire</span>, <span class="foebe-inline foebe-inline--red">se réguler</span>, puis avancer avec plus de douceur.</p>
+<p class="home-explore-note">Commence par ce qui te parle. Il n'y a pas d'ordre précis.</p>
+</div>
+<div aria-label="Trois portes pour commencer" class="home-choice-guide">
+<span class="home-choice-kicker">Trois portes d’entrée</span>
+<p>Commence par <span class="foebe-marker foebe-marker--warm">te situer</span>, <span class="foebe-marker foebe-marker--red">redescendre</span> ou <span class="foebe-marker foebe-marker--rose">comprendre ce qui se joue</span>.</p>
+</div><div aria-label="Choisir par où commencer dans Maison Foébé" class="home-start-grid home-start-grid--primary">
+<a aria-label="Faire l’Échelle Foébé" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="echelle-foebe.html">
+<div aria-hidden="true" class="home-visual home-visual--echelle-anim">
+<span class="echelle-bar"></span>
+<span class="echelle-bar"></span>
+<span class="echelle-bar"></span>
+<span class="echelle-bar"></span>
+<span class="echelle-bar"></span>
+<span class="echelle-bar"></span>
+<span class="echelle-bar"></span>
+</div>
+<span class="home-start-num">01 · Me situer</span>
+<h3>Je ne sais pas <span class="foebe-marker foebe-marker--warm">ce qui me pèse</span> le plus…</h3>
+<p>21 affirmations pour repérer les zones qui demandent ton attention en ce moment.</p>
+<span class="home-start-link">Commencer l’Échelle Foébé →</span>
+</a>
+<a aria-label="Lancer la respiration guidée" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="respiration.html">
+<div aria-hidden="true" class="home-visual home-visual--respiration">
+<span class="home-breath-circle" id="breathCircle">
+<span class="home-breath-label" id="breathLabel">Inspire</span>
+</span>
+</div>
+<span class="home-start-num">02 · Me recentrer</span>
+<h3>J’ai besoin de <span class="foebe-marker foebe-marker--red">redescendre maintenant.</span></h3>
+<p>Des exercices courts de respiration guidée pour retrouver un peu d’appui.</p>
+<span class="home-start-link">Me recentrer maintenant →</span>
+</a>
+<a aria-label="Explorer les 7 zones du self-care" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="zones.html">
+<div aria-hidden="true" class="home-visual home-visual--zones-anim">
+<svg class="zones-wave-svg" preserveaspectratio="none" viewbox="0 0 360 136" xmlns="http://www.w3.org/2000/svg">
+<path class="wave-path-1" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z" fill="rgba(187,126,96,.14)"></path>
+<path class="wave-path-2" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z" fill="rgba(187,126,96,.09)"></path>
+<path class="wave-path-3" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z" fill="rgba(240,234,231,.07)"></path>
+</svg>
+<span aria-hidden="true" class="foebe-zone-node-map">
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</span>
+</div>
+<span class="home-start-num">03 · Explorer les zones</span>
+<h3>Je veux <span class="foebe-marker foebe-marker--rose">comprendre ce qui se joue.</span></h3>
+<p>Corps, mental, énergie, émotions, environnement, relations, sens. Commence par la zone qui te parle.</p>
+<span class="home-start-link">Explorer les zones →</span>
+</a>
+</div>
+<p class="home-secondary-intro">Pour aller plus loin dans ta lecture.</p>
+<div aria-label="Accès complémentaires Maison Foébé" class="home-secondary-access">
+<a aria-label="Explorer la Boussole Foébé" class="home-secondary-card index-motion-card" data-index-motion="card" href="boussole.html">
+<span aria-hidden="true" class="home-secondary-icon">
+<span class="boussole-wrap">
+<span class="boussole-arrow"></span>
+</span>
+</span>
+<span class="home-secondary-content">
+<span class="home-secondary-kicker">Parcours guidé</span>
+<strong>Explorer la Boussole</strong>
+<span>Pour reconnaître une situation précise et choisir une direction.</span>
+</span>
+<span aria-hidden="true" class="home-secondary-arrow">→</span>
+</a>
+<a aria-label="Ouvrir le Dictionnaire Foébé" class="home-secondary-card index-motion-card" data-index-motion="card" href="dictionnaire.html">
+<span aria-hidden="true" class="home-secondary-icon home-secondary-icon--biblio">
+<span class="biblio-line"><span id="bibliotype"></span><span class="biblio-cursor"></span></span>
+</span>
+<span class="home-secondary-content">
+<span class="home-secondary-kicker">Ressource</span>
+<strong>Dictionnaire Foébé</strong>
+<span>Pour mettre des mots précis sur le soin, le corps et le self-care.</span>
+</span>
+<span aria-hidden="true" class="home-secondary-arrow">→</span>
+</a>
+</div>
+<div aria-labelledby="vocab-clarity-title" class="vocab-clarity reveal reveal-delay-1 index-motion-panel" data-index-motion="panel">
+<span class="vocab-clarity-kicker">Quatre mots à distinguer</span>
+<h2 class="vocab-clarity-title" id="vocab-clarity-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
+<p class="vocab-clarity-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
+<div aria-label="Définitions rapides" class="vocab-tags vocab-accordion">
+<div class="vocab-item">
+<button aria-controls="vocab-selfcare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-selfcare" type="button">
+<span>Self-care</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du self-care" class="vocab-panel" id="vocab-selfcare" role="region">
             La manière dont tu prends soin de ton équilibre : corps, mental, émotions, énergie, environnement, relations et sens.
           </div>
-        </div>
-        <div class="vocab-item">
-          <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-skincare" data-vocab-target="vocab-skincare">
-            <span>Skincare</span>
-          </button>
-          <div class="vocab-panel" id="vocab-skincare" role="region" aria-label="Définition du skincare" aria-hidden="true">
+</div>
+<div class="vocab-item">
+<button aria-controls="vocab-skincare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-skincare" type="button">
+<span>Skincare</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du skincare" class="vocab-panel" id="vocab-skincare" role="region">
             Les gestes et actifs liés à la peau : barrière cutanée, hydratation, exfoliation, sensibilité, texture, confort.
           </div>
-        </div>
-        <div class="vocab-item">
-          <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-bodycare" data-vocab-target="vocab-bodycare">
-            <span>Bodycare</span>
-          </button>
-          <div class="vocab-panel" id="vocab-bodycare" role="region" aria-label="Définition du bodycare" aria-hidden="true">
+</div>
+<div class="vocab-item">
+<button aria-controls="vocab-bodycare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-bodycare" type="button">
+<span>Bodycare</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du bodycare" class="vocab-panel" id="vocab-bodycare" role="region">
             Les gestes liés au corps : nettoyage, hydratation, nutrition, exfoliation, confort, toucher et relation au corps.
           </div>
-        </div>
-        <div class="vocab-item">
-          <button class="vocab-tag" type="button" aria-expanded="false" aria-controls="vocab-haircare" data-vocab-target="vocab-haircare">
-            <span>Haircare</span>
-          </button>
-          <div class="vocab-panel" id="vocab-haircare" role="region" aria-label="Définition du haircare" aria-hidden="true">
+</div>
+<div class="vocab-item">
+<button aria-controls="vocab-haircare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-haircare" type="button">
+<span>Haircare</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du haircare" class="vocab-panel" id="vocab-haircare" role="region">
             Les gestes liés aux cheveux et au cuir chevelu : hydratation, porosité, casse, clarification, protection, routine.
           </div>
-        </div>
-      </div>
-    </div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
@@ -3275,29 +4801,30 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <p class="section-step"><span>01</span></p>
 <span class="section-eyebrow">Tu reconnais cette situation ?</span>
 <h2 class="reco-title">
-        L'épuisement fonctionnel<br/>
-<em>ne ressemble pas à un effondrement.</em>
+      Tu peux <span class="foebe-marker foebe-marker--warm">continuer à fonctionner</span><br/>
+      tout en commençant à <span class="foebe-marker foebe-marker--red">t’épuiser.</span>
 </h2>
 <p class="reco-intro">On le voit chez des personnes qui continuent à fonctionner : elles organisent, livrent, tiennent. Concrètement, cela peut se reconnaître à ces signaux.</p>
 </div>
 <div class="reco-grid reveal reveal-delay-1">
 <div class="reco-item index-motion-signal" data-index-motion="signal">
 <span aria-hidden="true" class="reco-dash">—</span>
-<p>Une fatigue chronique que le repos ne résout pas vraiment.</p>
+<p>Une <span class="foebe-marker foebe-marker--warm">fatigue chronique</span> que le repos ne résout pas vraiment.</p>
 </div>
 <div class="reco-item index-motion-signal" data-index-motion="signal">
 <span aria-hidden="true" class="reco-dash">—</span>
-<p>Un mental qui ne s'arrête plus, même dans les moments calmes.</p>
+<p>Un <span class="foebe-marker foebe-marker--rose">mental qui ne s’arrête plus</span>, même dans les moments calmes.</p>
 </div>
 <div class="reco-item index-motion-signal" data-index-motion="signal">
 <span aria-hidden="true" class="reco-dash">—</span>
-<p>Une adaptation si ancienne qu'on ne sait plus ce dont on a besoin.</p>
+<p>Une adaptation si ancienne qu’on ne sait plus <span class="foebe-marker foebe-marker--red">ce dont on a besoin.</span></p>
 </div>
 <div class="reco-item index-motion-signal" data-index-motion="signal">
 <span aria-hidden="true" class="reco-dash">—</span>
-<p>Le sentiment que quelque chose ne va pas, sans pouvoir nommer quoi.</p>
+<p>Le sentiment que <span class="foebe-marker foebe-marker--rose">quelque chose ne va pas</span>, sans pouvoir nommer quoi.</p>
 </div>
 </div>
+<p class="editorial-bridge">Tu n’as pas besoin d’attendre de t’effondrer pour <span class="foebe-marker foebe-marker--warm">prendre au sérieux ce que tu ressens.</span></p>
 </div>
 </section>
 <section aria-labelledby="founder-title" class="founder-section reveal index-motion-panel" data-index-motion="panel" id="pourquoi-foebe">
@@ -3305,12 +4832,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 <p class="section-step"><span>02</span></p>
 <span class="section-eyebrow">Pourquoi Foébé</span>
 <h2 class="section-title" id="founder-title">
-      Un cadre né du terrain.
-    </h2>
+      Un cadre né du <span class="foebe-word foebe-word--warm">terrain.</span>
+</h2>
 <div class="founder-copy">
-<p>Foébé part d’un constat simple : on peut continuer à fonctionner longtemps tout en commençant déjà à s’épuiser.</p>
-<p>La méthode transforme ce constat en repères concrets : lire ses signaux, comprendre ses besoins et retrouver un self-care plus stable.</p>
-<p>Elle a été conçue par une docteure en psychologie et ergonome, spécialisée en santé au travail.</p>
+<p>Foébé part d’un constat simple : on peut <span class="foebe-marker foebe-marker--warm">continuer à fonctionner</span> longtemps tout en commençant déjà à s’épuiser.</p>
+<p>La méthode transforme ce constat en repères concrets : <span class="foebe-marker foebe-marker--rose">lire ses signaux</span>, <span class="foebe-marker foebe-marker--red">comprendre ses besoins</span> et retrouver un self-care plus stable.</p>
+<p>Elle a été conçue par une docteure en psychologie et ergonome, spécialisée en <span class="foebe-marker foebe-marker--warm">santé au travail.</span></p>
 </div>
 <div class="founder-ctas">
 <a class="btn-founder-primary" href="methode.html">Découvrir la méthode →</a>
@@ -3318,13 +4845,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role="button"]:focus-v
 </div>
 </div>
 </section>
-<section class="section section--accompagnement" id="portes" aria-labelledby="accompagnement-title">
+<section aria-labelledby="accompagnement-title" class="section section--accompagnement" id="portes">
 <div class="section-inner">
 <div class="accompagnement-card reveal index-motion-panel" data-index-motion="panel">
 <div class="accompagnement-left">
 <span class="porte3-soon-badge">Bientôt disponible</span>
-<h2 class="accompagnement-title" id="accompagnement-title">Un accompagnement,<br/><em>quand un outil seul ne suffit plus.</em></h2>
-<p class="accompagnement-desc">Les accompagnements Foébé ouvriront progressivement. Pour être prévenu·e à l'ouverture, une adresse suffit.</p>
+<h2 class="accompagnement-title" id="accompagnement-title">Un <span class="foebe-word foebe-word--rose">accompagnement</span>,<br/><em>quand un outil seul ne suffit plus.</em></h2>
+<p class="accompagnement-desc">Les accompagnements Foébé ouvriront progressivement, pour les moments où <span class="foebe-marker foebe-marker--rose">un repère ne suffit plus</span> et où tu as besoin d’un cadre humain.</p>
 </div>
 <div class="accompagnement-right">
 <form action="https://formspree.io/f/mnnqbjrl" class="newsletter-form accompagnement-form" method="POST">
@@ -3451,7 +4978,6 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(tick, 900);
 })();
 </script>
-
 <script>
 (function(){
   var root = document.querySelector('.vocab-clarity');
@@ -3545,8 +5071,6 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 })();
 </script>
-
-
 <script id="foebeIndexGuidedMotionV1Script">
 (function(){
   function ready(fn){
@@ -3557,7 +5081,6 @@ document.addEventListener('DOMContentLoaded', function(){
   ready(function(){
     var root = document.documentElement;
     var items = Array.prototype.slice.call(document.querySelectorAll('[data-index-motion]'));
-    var progress = document.querySelector('.foebe-index-progress span');
     var reduce = false;
     try { reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
 
@@ -3566,7 +5089,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     try{
-      if(items.length && !reduce && 'IntersectionObserver' in window){
+      if(items.length && !reduce && 'IntersectionObserver' in window && window.innerWidth > 767){
         var observer = new IntersectionObserver(function(entries){
           entries.forEach(function(entry){
             if(entry.isIntersecting){
@@ -3574,7 +5097,7 @@ document.addEventListener('DOMContentLoaded', function(){
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold:.16, rootMargin:'0px 0px -8% 0px' });
+        }, { threshold:.14, rootMargin:'0px 0px -6% 0px' });
 
         items.forEach(function(el){ observer.observe(el); });
         root.classList.add('foebe-index-motion-ready');
@@ -3587,28 +5110,39 @@ document.addEventListener('DOMContentLoaded', function(){
       root.classList.add('foebe-index-no-motion');
       revealAll();
     }
-
-    var ticking = false;
-    function updateGuide(){
-      ticking = false;
-      var doc = document.documentElement;
-      var max = Math.max(1, doc.scrollHeight - window.innerHeight);
-      var pct = Math.min(1, Math.max(0, (window.scrollY || doc.scrollTop || 0) / max));
-      if(progress) progress.style.transform = 'scaleX(' + pct + ')';
-    }
-    function requestGuide(){
-      if(!ticking){
-        ticking = true;
-        window.requestAnimationFrame(updateGuide);
-      }
-    }
-    updateGuide();
-    window.addEventListener('scroll', requestGuide, { passive:true });
-    window.addEventListener('resize', requestGuide);
   });
 })();
 </script>
+<script id="foebeProgressFallbackScript">
+(function () {
+  var bar = document.getElementById("foebeScrollProgressFallbackBar");
+  if (!bar) return;
 
+  function progressIsOff() {
+    var root = document.documentElement;
+    var body = document.body;
+    return root.getAttribute("data-foebe-progress") === "off" ||
+      (body && body.getAttribute("data-foebe-progress") === "off");
+  }
+
+  function updateFallbackProgress() {
+    if (progressIsOff() || !document.documentElement.classList.contains("foebe-shell-failed")) {
+      return;
+    }
+
+    var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = documentHeight > 0
+      ? Math.min(1, Math.max(0, window.scrollY / documentHeight))
+      : 0;
+
+    bar.style.transform = "scaleX(" + progress + ")";
+  }
+
+  window.addEventListener("foebe:shell-failed", updateFallbackProgress);
+  window.addEventListener("scroll", updateFallbackProgress, { passive: true });
+  window.addEventListener("resize", updateFallbackProgress);
+})();
+</script>
 <script src="/foebe-shell.js"></script>
 </body>
 </html>
