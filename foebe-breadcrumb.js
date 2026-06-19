@@ -95,8 +95,17 @@
     var current = normalizeCurrent();
     if (current === "index.html") return;
 
-    /* Pages immersives : pas de fil d’Ariane automatique.
-       Lexique/Dictionnaire doit rester une expérience pleine page. */
+    /* Mobile : pas de breadcrumb. Point.
+       Sur téléphone, on ne charge pas de barre contextuelle : les personnes utilisent le Shell/nav. */
+    if (window.matchMedia && window.matchMedia("(max-width: 767px)").matches) {
+      document.querySelectorAll(".foebe-breadcrumb").forEach(function (old) {
+        if (old && old.parentNode) old.parentNode.removeChild(old);
+      });
+      return;
+    }
+
+
+    /* Pages immersives : aucun breadcrumb automatique. */
     if (
       current === "dictionnaire.html" ||
       current === "lexique.html" ||
@@ -107,7 +116,6 @@
       });
       return;
     }
-
 
     var trails = {
       "comprendre.html": {
@@ -286,6 +294,12 @@
         "@media(max-width:767px){.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__desktop{display:none!important;visibility:hidden!important;opacity:0!important;max-height:0!important;overflow:hidden!important;pointer-events:none!important;}.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__mobile{display:flex!important;visibility:visible!important;opacity:1!important;max-height:none!important;overflow:visible!important;pointer-events:auto!important;}}",
         "@media(min-width:768px){.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__desktop{display:flex!important;visibility:visible!important;opacity:1!important;max-height:none!important;overflow-x:auto!important;}.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__mobile{display:none!important;visibility:hidden!important;opacity:0!important;max-height:0!important;overflow:hidden!important;pointer-events:none!important;}}",
         "body > .foebe-breadcrumb:not([data-foebe-auto='1']){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
+
+        
+        "/* V5 desktop only : aucun breadcrumb mobile */",
+        "@media(max-width:767px){.foebe-breadcrumb,.foebe-breadcrumb__desktop,.foebe-breadcrumb__mobile{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;max-height:0!important;overflow:hidden!important;}}",
+        "@media(min-width:768px){.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__desktop{display:flex!important;visibility:visible!important;opacity:1!important;}.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__mobile{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;max-height:0!important;overflow:hidden!important;}}",
+        "html.foebe-no-breadcrumb .foebe-breadcrumb,body.foebe-no-breadcrumb .foebe-breadcrumb{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
 
         "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
       ].join("\n");

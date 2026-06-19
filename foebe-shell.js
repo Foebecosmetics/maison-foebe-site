@@ -892,6 +892,20 @@ if (fallbackNav) {
     window.__FOEBE_BREADCRUMB_AUTO_LOADER__ = true;
 
     function loadFoebeBreadcrumb() {
+      
+      var path = (window.location.pathname || "").toLowerCase();
+      var file = path.split("/").pop() || "index.html";
+      var isImmersive =
+        file === "dictionnaire.html" ||
+        file === "lexique.html" ||
+        file === "stories.html" ||
+        path.indexOf("/stories") !== -1 ||
+        path.indexOf("/lexique") !== -1 ||
+        path.indexOf("/dictionnaire") !== -1;
+
+      if (isImmersive) return;
+      if (window.matchMedia && window.matchMedia("(max-width: 767px)").matches) return;
+
       if (document.querySelector('script[src="/foebe-breadcrumb.js"]')) return;
 
       var script = document.createElement("script");
@@ -909,5 +923,53 @@ if (fallbackNav) {
     }
   })();
   /* FOEBE AUTO BREADCRUMB LOADER — END */
+
+
+  /* FOEBE IMMERSIVE PAGE CLEANER — START
+     Dictionnaire/Lexique/Stories : expérience immersive.
+     On supprime les barres fixes parasites : breadcrumb auto + éventuelle barre de progression. */
+  (function () {
+    function cleanImmersivePages() {
+      var path = (window.location.pathname || "").toLowerCase();
+      var file = path.split("/").pop() || "index.html";
+
+      var isImmersive =
+        file === "dictionnaire.html" ||
+        file === "lexique.html" ||
+        file === "stories.html" ||
+        path.indexOf("/stories") !== -1 ||
+        path.indexOf("/lexique") !== -1 ||
+        path.indexOf("/dictionnaire") !== -1;
+
+      if (!isImmersive) return;
+
+      document.documentElement.classList.add("foebe-no-breadcrumb", "foebe-immersive-page");
+      document.body && document.body.classList.add("foebe-no-breadcrumb", "foebe-immersive-page");
+
+      document.querySelectorAll(".foebe-breadcrumb, .foebe-scroll-progress").forEach(function (el) {
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+      });
+
+      if (!document.getElementById("foebeImmersiveCleanerCss")) {
+        var style = document.createElement("style");
+        style.id = "foebeImmersiveCleanerCss";
+        style.textContent =
+          "html.foebe-immersive-page .foebe-breadcrumb,body.foebe-immersive-page .foebe-breadcrumb," +
+          "html.foebe-immersive-page .foebe-scroll-progress,body.foebe-immersive-page .foebe-scroll-progress{" +
+          "display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}";
+        (document.head || document.documentElement).appendChild(style);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", cleanImmersivePages, { once: true });
+    } else {
+      cleanImmersivePages();
+    }
+    window.addEventListener("load", cleanImmersivePages);
+    window.setTimeout(cleanImmersivePages, 250);
+    window.setTimeout(cleanImmersivePages, 1200);
+  })();
+  /* FOEBE IMMERSIVE PAGE CLEANER — END */
 
 })();
