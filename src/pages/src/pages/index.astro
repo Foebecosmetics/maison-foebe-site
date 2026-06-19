@@ -1,0 +1,20 @@
+---
+import { zones } from '../data/zones/index.js';
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zones Maison Foébé · Index technique</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <main>
+      <h1>Zones Maison Foébé</h1>
+      <ul>
+        {zones.map((zone) => <li><a href={zone.route}>{zone.title}</a></li>)}
+      </ul>
+    </main>
+  </body>
+</html>
