@@ -194,7 +194,7 @@
         file === "scenario" ||
         file.indexOf("boussole/scenarios") === 0 ||
         file.indexOf("boussole/scenario") === 0
-      ) return "boussole-scenarios.html";
+      ) return "boussole-boussole-scenarios.html";
 
       if (
         file.indexOf("sas-boussole") === 0 ||
@@ -228,7 +228,7 @@
       path = path.split("?")[0].split("#")[0].replace(/\/+$/g, "");
       if (!path || path === "") return "index.html";
       if (/\/boussole\/scenarios$/i.test(path) || /\/boussole\/scenario$/i.test(path)) {
-        return "boussole-scenarios.html";
+        return "boussole-boussole-scenarios.html";
       }
       var last = path.split("/").pop() || "index.html";
       return normalizeFile(last);
@@ -282,7 +282,7 @@
         { label: "Pratiquer" },
         { label: "Boussole", current: true }
       ],
-      "boussole-scenarios.html": [
+      "boussole-boussole-scenarios.html": [
         { href: "index.html", label: "Accueil" },
         { href: "boussole.html", label: "Boussole" },
         { label: "Scénarios", current: true }
@@ -499,7 +499,7 @@
   var currentFile = "index.html";
   if (currentPath && currentPath !== "/") {
     if (/\/boussole\/scenarios$/i.test(currentPath) || /\/boussole\/scenario$/i.test(currentPath)) {
-      currentFile = "boussole-scenarios.html";
+      currentFile = "boussole-boussole-scenarios.html";
     } else {
       currentFile = (currentPath.split("/").pop() || "index.html");
     }
@@ -529,7 +529,7 @@
     if (file === "zones" || file.indexOf("zones") === 0) return "zones.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
 
-    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-scenarios.html";
+    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-boussole-scenarios.html";
     if (file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole.html";
     if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
@@ -578,7 +578,7 @@
       { href: "zones.html",              label: "7 zones", activeWhenZones: true },
       { href: "respiration.html",        label: "Respiration guidée" },
       { href: "boussole.html",           label: "Boussole" },
-      { href: "boussole/scenarios/",     label: "Scénarios" }
+      { href: "boussole-boussole-scenarios.html",     label: "Scénarios" }
     ]},
     { pole: "Ressources", links: [
       { href: "lexique.html",      label: "Lexique Foébé" },

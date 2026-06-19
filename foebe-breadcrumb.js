@@ -47,8 +47,8 @@
       var path = cleanPath(window.location.pathname || "/");
       if (!path || path === "index" || path === "index.html") return "index.html";
 
-      if (path === "boussole/scenarios" || path === "boussole/scenarios/index" || path === "boussole/scenarios/index.html") {
-        return "boussole-scenarios.html";
+      if (path === "boussole/scenarios" || path === "boussole-boussole-scenarios.htmlindex" || path === "boussole-boussole-scenarios.htmlindex.html") {
+        return "boussole-boussole-scenarios.html";
       }
 
       var file = path.split("/").pop() || "index.html";
@@ -83,7 +83,7 @@
       if (file.indexOf("zone-environnement") === 0) return "zone-environnement.html";
       if (file.indexOf("zone-sens") === 0) return "zone-sens.html";
 
-      if (file.indexOf("boussole-scenarios") === 0 || file === "scenarios" || file === "scenario") return "boussole-scenarios.html";
+      if (file.indexOf("boussole-scenarios") === 0 || file === "scenarios" || file === "scenario") return "boussole-boussole-scenarios.html";
       if (file.indexOf("boussole") === 0 || file.indexOf("boussole-accueil") === 0) return "boussole.html";
 
       if (file.indexOf("dictionnaire") === 0 || file.indexOf("lexique") === 0 || file.indexOf("stories") === 0) return "dictionnaire.html";
@@ -94,6 +94,20 @@
 
     var current = normalizeCurrent();
     if (current === "index.html") return;
+
+    /* Pages immersives : pas de fil d’Ariane automatique.
+       Lexique/Dictionnaire doit rester une expérience pleine page. */
+    if (
+      current === "dictionnaire.html" ||
+      current === "lexique.html" ||
+      current === "stories.html"
+    ) {
+      document.querySelectorAll(".foebe-breadcrumb").forEach(function (old) {
+        if (old && old.parentNode) old.parentNode.removeChild(old);
+      });
+      return;
+    }
+
 
     var trails = {
       "comprendre.html": {
@@ -149,7 +163,7 @@
           { label: "Boussole", current: true }
         ]
       },
-      "boussole-scenarios.html": {
+      "boussole-boussole-scenarios.html": {
         current: "Scénarios",
         back: { href: "/boussole.html", label: "Retour à la Boussole" },
         desktop: [
@@ -265,6 +279,14 @@
 
         "@media(max-width:767px){.hero.foebe-has-breadcrumb .hero-inner,.hero.foebe-has-breadcrumb .hero-content,.hero.foebe-has-breadcrumb .hero-container,.hero.foebe-has-breadcrumb .section-inner{padding-top:clamp(32px,5svh,54px)!important;}.foebe-breadcrumb{width:calc(100% - 28px)!important;}.foebe-breadcrumb__desktop{display:none!important;}.foebe-breadcrumb__mobile{display:flex!important;}.foebe-breadcrumb--hero{top:calc(60px + 12px)!important;}.foebe-breadcrumb--standalone{margin:calc(60px + 16px) auto 20px!important;}.foebe-breadcrumb--inline{margin:0 auto 18px!important;width:100%!important;}.foebe-breadcrumb-back{font-size:11.5px!important;padding:0 10px!important;max-width:68%!important;overflow:hidden!important;text-overflow:ellipsis!important;}.foebe-breadcrumb-now{font-size:10.5px!important;max-width:42%!important;}}",
         "@media(max-width:380px){.foebe-breadcrumb{width:calc(100% - 22px)!important;}.foebe-breadcrumb__mobile{padding:6px 7px!important;border-radius:16px!important;}.foebe-breadcrumb-back{font-size:11px!important;max-width:72%!important;padding:0 9px!important;}.foebe-breadcrumb-now{font-size:10px!important;max-width:38%!important;}}",
+        
+        "/* Anti-conflit mobile/desktop — priorité finale */",
+        ".foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__desktop{display:flex!important;visibility:visible!important;opacity:1!important;}",
+        ".foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__mobile{display:none!important;visibility:hidden!important;opacity:0!important;max-height:0!important;overflow:hidden!important;}",
+        "@media(max-width:767px){.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__desktop{display:none!important;visibility:hidden!important;opacity:0!important;max-height:0!important;overflow:hidden!important;pointer-events:none!important;}.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__mobile{display:flex!important;visibility:visible!important;opacity:1!important;max-height:none!important;overflow:visible!important;pointer-events:auto!important;}}",
+        "@media(min-width:768px){.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__desktop{display:flex!important;visibility:visible!important;opacity:1!important;max-height:none!important;overflow-x:auto!important;}.foebe-breadcrumb[data-foebe-auto='1'] .foebe-breadcrumb__mobile{display:none!important;visibility:hidden!important;opacity:0!important;max-height:0!important;overflow:hidden!important;pointer-events:none!important;}}",
+        "body > .foebe-breadcrumb:not([data-foebe-auto='1']){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}",
+
         "@media(prefers-reduced-motion:reduce){.foebe-breadcrumb a{transition:none!important;}}"
       ].join("\n");
 
@@ -282,6 +304,14 @@
     nav.setAttribute("aria-label", "Fil d’Ariane");
     nav.setAttribute("data-foebe-auto", "1");
 
+    /* Sécurité anti-conflit : un seul breadcrumb actif, le nôtre. */
+    document.querySelectorAll(".foebe-breadcrumb").forEach(function (node) {
+      if (node !== nav && node.parentNode) {
+        node.parentNode.removeChild(node);
+      }
+    });
+
+
     nav.innerHTML =
       '<ol class="foebe-breadcrumb__desktop">' + renderDesktop(config.desktop) + '</ol>' +
       '<div class="foebe-breadcrumb__mobile">' +
@@ -293,7 +323,7 @@
     var main = document.querySelector("main");
     var dictHero = document.querySelector(".dict-hero");
     var dictLayout = document.querySelector(".dict-layout, .dictionary-layout, .dictionary-shell, .dictionnaire-layout, .dict-page, .library-layout, .lexicon-layout");
-    var isBoussolePage = current === "boussole.html" || current === "boussole-scenarios.html";
+    var isBoussolePage = current === "boussole.html" || current === "boussole-boussole-scenarios.html";
 
     if (current === "dictionnaire.html" && dictHero) {
       nav.className += " foebe-breadcrumb--inline foebe-breadcrumb--dict";
