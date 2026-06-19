@@ -310,7 +310,7 @@
      3. INJECTION DU NAV
   ═══════════════════════════════════════════════════════════════════════════ */
   var NAV_STRUCTURE = [
-    { pole: "Accueil", links: [
+    { pole: "🏠", links: [
       { href: "index.html", label: "Accueil" }
     ]},
     { pole: "Découvrir", links: [
