@@ -188,10 +188,12 @@
       ) return "respiration.html";
 
       if (
-        file === "boussole-scenarios" ||
+        file === "boussole/scenarios" ||
+        file === "boussole/scenario" ||
         file === "scenarios" ||
         file === "scenario" ||
-        file.indexOf("boussole-scenarios") === 0
+        file.indexOf("boussole/scenarios") === 0 ||
+        file.indexOf("boussole/scenario") === 0
       ) return "boussole-scenarios.html";
 
       if (
@@ -225,7 +227,7 @@
       try { path = decodeURIComponent(path); } catch (e) {}
       path = path.split("?")[0].split("#")[0].replace(/\/+$/g, "");
       if (!path || path === "") return "index.html";
-      if (/\/boussole-scenarios(?:\.html)?$/i.test(path)) {
+      if (/\/boussole\/scenarios$/i.test(path) || /\/boussole\/scenario$/i.test(path)) {
         return "boussole-scenarios.html";
       }
       var last = path.split("/").pop() || "index.html";
@@ -496,7 +498,7 @@
   var currentPath = (window.location.pathname || "/").split("?")[0].split("#")[0].replace(/\/+$/g, "");
   var currentFile = "index.html";
   if (currentPath && currentPath !== "/") {
-    if (/\/boussole-scenarios(?:\.html)?$/i.test(currentPath)) {
+    if (/\/boussole\/scenarios$/i.test(currentPath) || /\/boussole\/scenario$/i.test(currentPath)) {
       currentFile = "boussole-scenarios.html";
     } else {
       currentFile = (currentPath.split("/").pop() || "index.html");
@@ -527,7 +529,7 @@
     if (file === "zones" || file.indexOf("zones") === 0) return "zones.html";
     if (file === "respiration" || file.indexOf("respiration") === 0) return "respiration.html";
 
-    if (file === "boussole-scenarios" || file === "scenarios" || file === "scenario" || file.indexOf("boussole-scenarios") === 0) return "boussole-scenarios.html";
+    if (file === "boussole/scenarios" || file === "boussole/scenario" || file === "scenarios" || file === "scenario" || file.indexOf("boussole/scenarios") === 0 || file.indexOf("boussole/scenario") === 0) return "boussole-scenarios.html";
     if (file.indexOf("sas-boussole") === 0 || file.indexOf("sas-de-la-boussole") === 0) return "boussole.html";
     if (file === "boussole" || file.indexOf("boussole") === 0) return "boussole.html";
 
@@ -576,7 +578,7 @@
       { href: "zones.html",              label: "7 zones", activeWhenZones: true },
       { href: "respiration.html",        label: "Respiration guidée" },
       { href: "boussole.html",           label: "Boussole" },
-      { href: "boussole-scenarios.html", label: "Scénarios" }
+      { href: "boussole/scenarios/",     label: "Scénarios" }
     ]},
     { pole: "Ressources", links: [
       { href: "lexique.html",      label: "Lexique Foébé" },
@@ -879,5 +881,33 @@ if (fallbackNav) {
     document.documentElement.classList.remove("foebe-shell-loading", "foebe-shell-failed");
   } catch (e) {}
 
+
+
+  /* FOEBE AUTO BREADCRUMB LOADER — START
+     Charge automatiquement le fil d’Ariane responsive.
+     Résultat : pas besoin d’ajouter <script src="/foebe-breadcrumb.js"></script>
+     page par page. */
+  (function () {
+    if (window.__FOEBE_BREADCRUMB_AUTO_LOADER__) return;
+    window.__FOEBE_BREADCRUMB_AUTO_LOADER__ = true;
+
+    function loadFoebeBreadcrumb() {
+      if (document.querySelector('script[src="/foebe-breadcrumb.js"]')) return;
+
+      var script = document.createElement("script");
+      script.src = "/foebe-breadcrumb.js";
+      script.defer = true;
+      script.setAttribute("data-foebe-auto-breadcrumb", "1");
+
+      (document.body || document.documentElement).appendChild(script);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadFoebeBreadcrumb, { once: true });
+    } else {
+      loadFoebeBreadcrumb();
+    }
+  })();
+  /* FOEBE AUTO BREADCRUMB LOADER — END */
 
 })();
