@@ -663,23 +663,277 @@ main{display:block;}
 }
 
 /* ── FIN DU CORRECTIF ────────────────────────────────────────── */
+
+/* === Comprendre — progression + animation cadre vivant + contrastes v1 === */
+.foebe-scroll-progress{
+  position:fixed;
+  top:var(--nav-offset,60px);
+  left:0;
+  right:0;
+  z-index:940;
+  height:3px;
+  background:rgba(187,126,96,.16);
+  pointer-events:none;
+}
+.foebe-scroll-progress__bar{
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:linear-gradient(90deg,#BB7E60,#C45279,#C34234);
+  box-shadow:0 0 14px rgba(187,126,96,.32);
+  will-change:transform;
+}
+[data-theme="day"] .foebe-scroll-progress{background:rgba(78,41,31,.10);}
+@media(max-width:720px){.foebe-scroll-progress{height:2px;}}
+
+.comprendre-frame-motion{
+  width:min(560px,100%);
+  margin-top:clamp(28px,4svh,42px);
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  padding:18px clamp(16px,3vw,24px);
+  border:1px solid rgba(187,126,96,.32);
+  border-radius:22px;
+  background:linear-gradient(135deg,rgba(240,234,231,.055),rgba(187,126,96,.08));
+  box-shadow:0 18px 48px rgba(0,0,0,.16);
+  overflow:hidden;
+}
+[data-theme="day"] .comprendre-frame-motion{
+  background:linear-gradient(135deg,rgba(255,255,255,.44),rgba(187,126,96,.08));
+  box-shadow:0 14px 34px rgba(78,41,31,.10);
+}
+.comprendre-frame-motion::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 18% 50%,rgba(187,126,96,.18),transparent 30%),
+             radial-gradient(circle at 80% 50%,rgba(196,82,121,.12),transparent 32%);
+  opacity:.72;
+  pointer-events:none;
+}
+.comprendre-frame-motion .frame-link{
+  position:absolute;
+  left:calc(16.66% + 12px);
+  right:calc(16.66% + 12px);
+  top:34px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(187,126,96,.18),rgba(187,126,96,.72),rgba(196,82,121,.42));
+  transform-origin:left center;
+  pointer-events:none;
+}
+.comprendre-frame-motion .frame-step{
+  position:relative;
+  z-index:1;
+  display:grid;
+  justify-items:center;
+  gap:9px;
+  min-width:0;
+}
+.comprendre-frame-motion .frame-step i{
+  display:block;
+  width:13px;
+  height:13px;
+  border-radius:999px;
+  background:#F0EAE7;
+  border:1px solid rgba(187,126,96,.72);
+  box-shadow:0 0 0 6px rgba(187,126,96,.10),0 0 18px rgba(187,126,96,.34);
+}
+[data-theme="day"] .comprendre-frame-motion .frame-step i{
+  background:#4E291F;
+  box-shadow:0 0 0 6px rgba(187,126,96,.12),0 0 16px rgba(78,41,31,.14);
+}
+.comprendre-frame-motion .frame-step strong{
+  font-family:"Poppins",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#F0EAE7;
+  line-height:1.25;
+}
+[data-theme="day"] .comprendre-frame-motion .frame-step strong{color:#4E291F;}
+
+@keyframes comprendreLineDraw{
+  0%{transform:scaleX(.12);opacity:.48;}
+  46%{transform:scaleX(1);opacity:1;}
+  100%{transform:scaleX(1);opacity:.72;}
+}
+@keyframes comprendreDotPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 6px rgba(187,126,96,.10),0 0 18px rgba(187,126,96,.34);}
+  50%{transform:scale(1.18);box-shadow:0 0 0 9px rgba(187,126,96,.14),0 0 26px rgba(187,126,96,.46);}
+}
+@media(prefers-reduced-motion:no-preference){
+  .comprendre-frame-motion .frame-link{animation:comprendreLineDraw 4.8s ease-in-out infinite alternate;}
+  .comprendre-frame-motion .frame-step i{animation:comprendreDotPulse 4.8s ease-in-out infinite;}
+  .comprendre-frame-motion .frame-step:nth-child(3) i{animation-delay:.45s;}
+  .comprendre-frame-motion .frame-step:nth-child(4) i{animation-delay:.9s;}
+}
+@media(max-width:560px){
+  .comprendre-frame-motion{
+    grid-template-columns:1fr;
+    width:100%;
+    gap:16px;
+    padding:20px 18px;
+  }
+  .comprendre-frame-motion .frame-link{
+    left:50%;
+    right:auto;
+    top:31px;
+    bottom:31px;
+    width:1px;
+    height:auto;
+    transform-origin:top center;
+    background:linear-gradient(180deg,rgba(187,126,96,.18),rgba(187,126,96,.72),rgba(196,82,121,.42));
+  }
+  .comprendre-frame-motion .frame-step{
+    grid-template-columns:22px 1fr;
+    justify-items:start;
+    align-items:center;
+    gap:12px;
+  }
+  .comprendre-frame-motion .frame-step strong{
+    font-size:12.5px;
+    text-align:left;
+  }
+}
+
+/* Verrou contraste texte — seuil 7+ sur les éléments lisibles touchés */
+[data-theme="night"] .hero-title em,
+[data-theme="night"] .section-title em,
+[data-theme="night"] .s-title em,
+[data-theme="night"] .entree-titre em,
+[data-theme="night"] .conclusion-quote em{
+  color:#F0EAE7 !important;
+}
+[data-theme="day"] .hero-title em,
+[data-theme="day"] .section-title em,
+[data-theme="day"] .s-title em,
+[data-theme="day"] .entree-titre em,
+[data-theme="day"] .conclusion-quote em{
+  color:#4E291F !important;
+}
+[data-theme="day"]{
+  --read-soft:rgba(78,41,31,.91);
+  --text-dim:#6A4032;
+}
+[data-theme="day"] .entree-num,
+[data-theme="day"] .entree-sous-titre,
+[data-theme="day"] .section-step,
+[data-theme="day"] .outil-num,
+[data-theme="day"] .modele-num,
+[data-theme="day"] .etape-num{
+  color:#6A4032 !important;
+  opacity:1 !important;
+}
+[data-theme="night"] .entree-num,
+[data-theme="night"] .entree-sous-titre,
+[data-theme="night"] .section-step,
+[data-theme="night"] .outil-num,
+[data-theme="night"] .modele-num,
+[data-theme="night"] .etape-num{
+  color:#F0EAE7 !important;
+  opacity:1 !important;
+}
+[data-theme="night"] .btn-primary,
+[data-theme="night"] .btn-cta,
+[data-theme="night"] .btn-test,
+[data-theme="night"] .outil-link,
+[data-theme="night"] .modele-link,
+[data-theme="night"] .clarification-card-cta,
+[data-theme="night"] .recherche-link{
+  background:#F0EAE7 !important;
+  border-color:#F0EAE7 !important;
+  color:#4E291F !important;
+}
+[data-theme="night"] .btn-primary:hover,
+[data-theme="night"] .btn-cta:hover,
+[data-theme="night"] .btn-test:hover,
+[data-theme="night"] .outil-link:hover,
+[data-theme="night"] .modele-link:hover,
+[data-theme="night"] .clarification-card-cta:hover,
+[data-theme="night"] .recherche-link:hover,
+[data-theme="night"] .btn-primary:focus-visible,
+[data-theme="night"] .btn-cta:focus-visible,
+[data-theme="night"] .btn-test:focus-visible,
+[data-theme="night"] .outil-link:focus-visible,
+[data-theme="night"] .modele-link:focus-visible,
+[data-theme="night"] .clarification-card-cta:focus-visible,
+[data-theme="night"] .recherche-link:focus-visible{
+  background:#E8DDD8 !important;
+  border-color:#E8DDD8 !important;
+  color:#4E291F !important;
+}
+[data-theme="day"] .btn-primary,
+[data-theme="day"] .btn-cta,
+[data-theme="day"] .btn-test,
+[data-theme="day"] .outil-link,
+[data-theme="day"] .modele-link,
+[data-theme="day"] .clarification-card-cta,
+[data-theme="day"] .recherche-link{
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+  color:#F0EAE7 !important;
+}
+[data-theme="day"] .btn-primary:hover,
+[data-theme="day"] .btn-cta:hover,
+[data-theme="day"] .btn-test:hover,
+[data-theme="day"] .outil-link:hover,
+[data-theme="day"] .modele-link:hover,
+[data-theme="day"] .clarification-card-cta:hover,
+[data-theme="day"] .recherche-link:hover,
+[data-theme="day"] .btn-primary:focus-visible,
+[data-theme="day"] .btn-cta:focus-visible,
+[data-theme="day"] .btn-test:focus-visible,
+[data-theme="day"] .outil-link:focus-visible,
+[data-theme="day"] .modele-link:focus-visible,
+[data-theme="day"] .clarification-card-cta:focus-visible,
+[data-theme="day"] .recherche-link:focus-visible{
+  background:#3A1A10 !important;
+  border-color:#3A1A10 !important;
+  color:#F0EAE7 !important;
+}
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible,
+[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links>a[aria-current="page"]{
+  color:#4E291F !important;
+  background:#F0EAE7 !important;
+  border-color:#F0EAE7 !important;
+}
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible,
+[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links>a[aria-current="page"]{
+  color:#F0EAE7 !important;
+  background:#4E291F !important;
+  border-color:#4E291F !important;
+}
 </style></head>
-<body class="page-comprendre"><nav aria-label="Navigation de secours" class="fallback-nav" id="fallbackNav">
+<body class="page-comprendre"><nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
-<a href="index.html">Accueil</a>
 <a href="comprendre.html" aria-current="page">Comprendre</a>
 <a href="methode.html">Méthode</a>
-<a href="pratiquer.html">Pratiquer</a>
-<a href="foebe-zones-cadre.html">7 zones</a>
-<a href="test.html">Test</a>
+<a href="echelle-foebe.html">Échelle Foébé</a>
+<a href="zones.html">7 zones</a>
+<a href="dictionnaire.html">Dictionnaire</a>
 </div>
-</nav><main id="mainContent" tabindex="-1"><!-- HERO --><section class="hero">
+</nav><div class="foebe-scroll-progress" aria-hidden="true">
+<span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+</div><main id="mainContent" tabindex="-1"><!-- HERO --><section class="hero">
 <div class="hero-inner">
 
 <h1 class="hero-title reveal d1">Comprendre Foébé.<br/><em>La méthode, les fondements, la posture.</em></h1>
 <span class="hero-rule reveal d2"></span>
 <p class="hero-body reveal d2">Foébé est un espace structuré du self-care.<br/>Ici, on pose le cadre avant de lire la suite.</p>
+<div class="comprendre-frame-motion reveal d3" aria-hidden="true">
+<span class="frame-link" aria-hidden="true"></span>
+<span class="frame-step"><i></i><strong>Cadre</strong></span>
+<span class="frame-step"><i></i><strong>Fondements</strong></span>
+<span class="frame-step"><i></i><strong>Posture</strong></span>
+</div>
 
 </div>
 </section><!-- ENTRÉES --><section class="section bg2">
@@ -751,6 +1005,21 @@ main{display:block;}
   }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
 
   revealEls.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+<script>
+(function(){
+  var bar = document.getElementById('foebeScrollProgressBar');
+  if(!bar) return;
+  function updateProgress(){
+    var doc = document.documentElement;
+    var max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    var value = Math.min(1, Math.max(0, window.scrollY / max));
+    bar.style.transform = 'scaleX(' + value + ')';
+  }
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
 })();
 </script>
 <script src="/foebe-shell.js"></script>
