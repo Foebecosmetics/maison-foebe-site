@@ -1220,4 +1220,299 @@ if (fallbackNav) {
   })();
   /* FOEBE RETOUR CONTEXTUEL — END */
 
+
+  /* FOEBE NAV IMMERSIVE MOBILE — START
+     Toutes les pages mobiles : la navigation s'efface après une courte inactivité
+     et revient dès que la personne interagit.
+
+     Variante Lexique / Dictionnaire / Stories : les appuis servant à avancer une
+     story ne rappellent pas la navigation. Elle revient par la zone haute, par un
+     geste vers le bas depuis le haut, par le clavier, ou lorsque le menu est ouvert.
+
+     Desktop : aucun changement. */
+  (function () {
+    var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 767px)") : null;
+    var reduceMotionQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    var hideTimer = null;
+    var pointerStartY = null;
+    var pointerStartX = null;
+    var lastMouseMove = 0;
+    var keyboardMode = false;
+    var styleId = "foebeNavImmersiveMobileCss";
+    var hiddenClass = "foebe-nav-hidden";
+    var enabledClass = "foebe-nav-auto-hide";
+    var menuOpenClass = "foebe-nav-menu-open";
+
+    function normalizedPath() {
+      var path = String(window.location.pathname || "/").toLowerCase();
+      try { path = decodeURIComponent(path); } catch (e) {}
+      return path.split("?")[0].split("#")[0].replace(/\\+/g, "/");
+    }
+
+    function isImmersiveStoryPage() {
+      var path = normalizedPath();
+      var parts = path.split("/").filter(Boolean);
+      var file = parts.length ? parts[parts.length - 1] : "index.html";
+      return (
+        file === "dictionnaire.html" ||
+        file === "lexique.html" ||
+        file === "stories.html" ||
+        path.indexOf("/stories/") !== -1 ||
+        path.indexOf("/lexique/") !== -1 ||
+        path.indexOf("/dictionnaire/") !== -1 ||
+        /^(story-|fiche-|lexique-|dictionnaire-)/.test(file)
+      );
+    }
+
+    function mobileEnabled() {
+      return mobileQuery ? mobileQuery.matches : window.innerWidth <= 767;
+    }
+
+    function menuIsOpen() {
+      var toggle = document.getElementById("menuToggle");
+      var menu = document.getElementById("navMenu");
+      return !!(
+        (toggle && toggle.getAttribute("aria-expanded") === "true") ||
+        (menu && menu.classList.contains("open"))
+      );
+    }
+
+    function focusNeedsNav() {
+      if (!keyboardMode) return false;
+      var active = document.activeElement;
+      var nav = document.getElementById("mainNav");
+      var menu = document.getElementById("navMenu");
+      return !!(active && ((nav && nav.contains(active)) || (menu && menu.contains(active))));
+    }
+
+    function clearHideTimer() {
+      if (hideTimer) {
+        window.clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+    }
+
+    function inactivityDelay() {
+      return isImmersiveStoryPage() ? 2200 : 2700;
+    }
+
+    function injectCss() {
+      if (document.getElementById(styleId)) return;
+      var style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = [
+        "@media(max-width:767px){",
+          "html.foebe-nav-auto-hide #mainNav{",
+            "transform:translate3d(0,0,0)!important;",
+            "opacity:1!important;",
+            "visibility:visible!important;",
+            "pointer-events:auto!important;",
+            "will-change:transform,opacity!important;",
+            "transition:transform .28s cubic-bezier(.22,1,.36,1),opacity .20s ease,background .35s,border-color .35s,box-shadow .35s!important;",
+          "}",
+          "html.foebe-nav-auto-hide.foebe-nav-hidden:not(.foebe-nav-menu-open) #mainNav{",
+            "transform:translate3d(0,calc(-100% - 8px),0)!important;",
+            "opacity:0!important;",
+            "visibility:hidden!important;",
+            "pointer-events:none!important;",
+          "}",
+          "html.foebe-nav-auto-hide.foebe-nav-menu-open #mainNav{",
+            "transform:translate3d(0,0,0)!important;",
+            "opacity:1!important;",
+            "visibility:visible!important;",
+            "pointer-events:auto!important;",
+          "}",
+          "html.foebe-nav-auto-hide.foebe-nav-hidden:not(.foebe-nav-menu-open) #navMenu:not(.open),",
+          "html.foebe-nav-auto-hide.foebe-nav-hidden:not(.foebe-nav-menu-open) #navOverlay:not(.open){",
+            "pointer-events:none!important;",
+          "}",
+        "}",
+        "@media(max-width:767px) and (prefers-reduced-motion:reduce){",
+          "html.foebe-nav-auto-hide #mainNav{transition:none!important;}",
+        "}"
+      ].join("");
+      (document.head || document.documentElement).appendChild(style);
+    }
+
+    function setMenuState() {
+      var root = document.documentElement;
+      if (menuIsOpen()) {
+        clearHideTimer();
+        root.classList.add(menuOpenClass);
+        root.classList.remove(hiddenClass);
+      } else {
+        root.classList.remove(menuOpenClass);
+        if (mobileEnabled()) scheduleHide();
+      }
+    }
+
+    function hideNav() {
+      hideTimer = null;
+      if (!mobileEnabled() || menuIsOpen() || focusNeedsNav()) return;
+      document.documentElement.classList.add(hiddenClass);
+    }
+
+    function scheduleHide(delay) {
+      clearHideTimer();
+      if (!mobileEnabled() || menuIsOpen() || focusNeedsNav()) return;
+      hideTimer = window.setTimeout(hideNav, typeof delay === "number" ? delay : inactivityDelay());
+    }
+
+    function showNav(options) {
+      options = options || {};
+      if (!mobileEnabled()) return;
+      document.documentElement.classList.remove(hiddenClass);
+      if (options.keepVisible || menuIsOpen() || focusNeedsNav()) {
+        clearHideTimer();
+      } else {
+        scheduleHide(options.delay);
+      }
+    }
+
+    function enableForCurrentViewport() {
+      var root = document.documentElement;
+      injectCss();
+      clearHideTimer();
+
+      if (!mobileEnabled()) {
+        root.classList.remove(enabledClass, hiddenClass, menuOpenClass);
+        return;
+      }
+
+      root.classList.add(enabledClass);
+      root.classList.remove(hiddenClass);
+      setMenuState();
+      if (!menuIsOpen()) scheduleHide();
+    }
+
+    function onGeneralActivity() {
+      if (!mobileEnabled() || isImmersiveStoryPage()) return;
+      showNav();
+    }
+
+    function onPointerDown(event) {
+      if (!mobileEnabled()) return;
+      keyboardMode = false;
+      pointerStartY = typeof event.clientY === "number" ? event.clientY : null;
+      pointerStartX = typeof event.clientX === "number" ? event.clientX : null;
+
+      if (!isImmersiveStoryPage()) {
+        showNav();
+        return;
+      }
+
+      /* Sur les stories, un toucher dans les 76 px supérieurs rappelle le Shell.
+         Un toucher ailleurs continue la story sans casser l'immersion. */
+      if (pointerStartY !== null && pointerStartY <= 76) {
+        showNav();
+      }
+    }
+
+    function onPointerUp(event) {
+      if (!mobileEnabled() || !isImmersiveStoryPage()) {
+        pointerStartY = null;
+        pointerStartX = null;
+        return;
+      }
+
+      var endY = typeof event.clientY === "number" ? event.clientY : null;
+      var endX = typeof event.clientX === "number" ? event.clientX : null;
+
+      if (
+        pointerStartY !== null && endY !== null &&
+        pointerStartY <= 140 &&
+        endY - pointerStartY >= 46 &&
+        (pointerStartX === null || endX === null || Math.abs(endX - pointerStartX) <= 90)
+      ) {
+        showNav();
+      }
+
+      pointerStartY = null;
+      pointerStartX = null;
+    }
+
+    function onMouseMove(event) {
+      if (!mobileEnabled() || isImmersiveStoryPage()) return;
+      var now = Date.now();
+      if (now - lastMouseMove < 180) return;
+      lastMouseMove = now;
+      showNav();
+    }
+
+    function onKeyDown() {
+      if (!mobileEnabled()) return;
+      keyboardMode = true;
+      showNav();
+    }
+
+    function onFocusIn(event) {
+      if (!mobileEnabled()) return;
+      var nav = document.getElementById("mainNav");
+      var menu = document.getElementById("navMenu");
+      if ((nav && nav.contains(event.target)) || (menu && menu.contains(event.target))) {
+        showNav({ keepVisible: true });
+      } else if (!isImmersiveStoryPage()) {
+        showNav();
+      }
+    }
+
+    function observeMenu() {
+      var toggle = document.getElementById("menuToggle");
+      var menu = document.getElementById("navMenu");
+      if (!toggle && !menu) return;
+
+      if (window.MutationObserver) {
+        var observer = new MutationObserver(setMenuState);
+        if (toggle) observer.observe(toggle, { attributes: true, attributeFilter: ["aria-expanded"] });
+        if (menu) observer.observe(menu, { attributes: true, attributeFilter: ["class", "aria-hidden"] });
+      }
+
+      if (toggle) {
+        toggle.addEventListener("click", function () {
+          showNav({ keepVisible: true });
+          window.setTimeout(setMenuState, 0);
+        }, true);
+      }
+    }
+
+    function initNavImmersion() {
+      injectCss();
+      enableForCurrentViewport();
+      observeMenu();
+
+      window.addEventListener("scroll", onGeneralActivity, { passive: true });
+      window.addEventListener("wheel", onGeneralActivity, { passive: true });
+      window.addEventListener("resize", enableForCurrentViewport, { passive: true });
+      window.addEventListener("orientationchange", enableForCurrentViewport, { passive: true });
+      window.addEventListener("pageshow", enableForCurrentViewport);
+
+      document.addEventListener("pointerdown", onPointerDown, { passive: true, capture: true });
+      document.addEventListener("pointerup", onPointerUp, { passive: true, capture: true });
+      document.addEventListener("mousemove", onMouseMove, { passive: true });
+      document.addEventListener("keydown", onKeyDown, true);
+      document.addEventListener("focusin", onFocusIn, true);
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) showNav();
+      });
+
+      if (mobileQuery && typeof mobileQuery.addEventListener === "function") {
+        mobileQuery.addEventListener("change", enableForCurrentViewport);
+      } else if (mobileQuery && typeof mobileQuery.addListener === "function") {
+        mobileQuery.addListener(enableForCurrentViewport);
+      }
+
+      /* Reduced motion ne désactive pas le confort ; seule l'animation est retirée par CSS. */
+      if (reduceMotionQuery && typeof reduceMotionQuery.addEventListener === "function") {
+        reduceMotionQuery.addEventListener("change", injectCss);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initNavImmersion, { once: true });
+    } else {
+      initNavImmersion();
+    }
+  })();
+  /* FOEBE NAV IMMERSIVE MOBILE — END */
+
 })();
