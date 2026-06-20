@@ -17,7 +17,8 @@
   var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
 })();
-</script><script id="foebe-shell-fallback-guard">
+</script>
+<script id="foebe-shell-fallback-guard">
 (function () {
   var root = document.documentElement;
 
@@ -35,9 +36,7 @@
   }, 3000);
 })();
 </script>
-<script>
-document.documentElement.classList.add('js-ready');
-</script>
+
 <title>Maison Foébé · Le self-care comme compétence</title>
 <link href="https://maisonfoebe.fr" rel="canonical"/>
 <link href="sitemap.xml" rel="sitemap" type="application/xml"/>
@@ -96,8 +95,13 @@ document.documentElement.classList.add('js-ready');
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&amp;family=Poppins:wght@400;500;600&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
-<style id="foebeIndexEditorialPremiumCss">
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+<style id="foebeIndexCss">
+/* ==================================================
+   1. Fondations, thème, navigation et composants globaux
+   ================================================== */
+*,
+*::before,
+*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
   --foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#8E5B43 24%,#BB7E60 48%,#C45279 74%,#C34234 100%);
@@ -146,11 +150,12 @@ body{
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility
 }
 a{color:inherit}
-img,svg{max-width:100%}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--warm);outline-offset:4px}
+img,
+svg{max-width:100%}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible{outline:2px solid var(--warm);outline-offset:4px}
 #mainContent:focus{outline:none}
-
-/* NAVIGATION FALLBACK — 5 entrées validées, visible uniquement en cas d'échec Shell. */
 html.foebe-shell-loading:not(.foebe-shell-failed) body>nav#fallbackNav,
 html.foebe-shell-ready body>nav#fallbackNav{display:none!important}
 html.foebe-shell-failed body>nav#fallbackNav{display:flex!important}
@@ -186,11 +191,10 @@ body>nav#fallbackNav{
   border-radius:999px;color:var(--text);font-size:12.5px;
   font-weight:600;text-decoration:none
 }
-.fallback-links a:hover,.fallback-links a:focus-visible{
+.fallback-links a:hover,
+.fallback-links a:focus-visible{
   background:#BB7E60;border-color:#BB7E60;color:#F0EAE7;outline:none
 }
-
-/* BARRE DE PROGRESSION FALLBACK — contrat commun Maison Foébé. */
 .foebe-scroll-progress--fallback{
   display:none;position:fixed;top:var(--foebe-nav-height);left:0;right:0;
   height:2px;z-index:99987;overflow:hidden;pointer-events:none;background:transparent
@@ -202,23 +206,19 @@ body>nav#fallbackNav{
 }
 html.foebe-shell-loading .foebe-scroll-progress--fallback,
 html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
-html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block!important}
 html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
 body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
-
-/* LANGAGE ÉDITORIAL */
-.foebe-word,.foebe-color,.foebe-inline,.foebe-marker{font-style:inherit;text-decoration:none!important}
-.foebe-word--warm,.foebe-color--warm,.foebe-inline--warm,.foebe-marker--warm{color:#BB7E60}
-.foebe-word--rose,.foebe-color--rose,.foebe-inline--rose{color:#C45279}
-.foebe-color--red,.foebe-inline--red,.foebe-marker--red{color:#C34234}
+.foebe-word,
+.foebe-color{font-style:inherit;text-decoration:none}
+.foebe-word--warm,
+.foebe-color--warm{color:#BB7E60}
+.foebe-word--rose,
+.foebe-color--rose{color:#C45279}
+.foebe-color--red{color:#C34234}
 [data-theme="night"] .foebe-word--rose,
 [data-theme="night"] .foebe-color--rose,
-[data-theme="night"] .foebe-inline--rose,
-[data-theme="night"] .foebe-color--red,
-[data-theme="night"] .foebe-inline--red,
-[data-theme="night"] .foebe-marker--red{color:#F0EAE7}
-
-/* HERO D'ACCUEIL — calme, lisible, centré sur l'état vécu. */
+[data-theme="night"] .foebe-color--red{color:#F0EAE7}
 .home-start-section{
   position:relative;isolation:isolate;overflow:hidden;
   padding:calc(var(--foebe-nav-height) + 42px) clamp(20px,5vw,56px) clamp(82px,9vw,126px);
@@ -228,7 +228,8 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
     radial-gradient(ellipse 42% 34% at 72% 96%,rgba(195,66,52,.045),transparent 74%),
     linear-gradient(180deg,var(--bg) 0%,var(--bg) 43%,var(--bg2) 100%)
 }
-.home-start-section::before,.home-start-section::after{
+.home-start-section::before,
+.home-start-section::after{
   content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:-1;
   border:1px solid rgba(187,126,96,.12)
 }
@@ -244,13 +245,17 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   box-shadow:0 0 0 34px rgba(187,126,96,.028);
   animation:homeHaloDrift 18s ease-in-out infinite reverse
 }
-@keyframes homeHaloDrift{0%,100%{transform:translate3d(0,0,0) scale(.98)}50%{transform:translate3d(0,-16px,0) scale(1.04)}}
+@keyframes homeHaloDrift{0%,
+100%{transform:translate3d(0,0,0) scale(.98)}50%{transform:translate3d(0,-16px,0) scale(1.04)}}
 .home-start-inner{width:100%;max-width:1180px;margin:0 auto;position:relative;z-index:1}
 .home-start-head{
   min-height:clamp(470px,68svh,690px);max-width:900px;margin:0 auto;
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center
 }
-.home-start-eyebrow,.section-eyebrow,.vocab-clarity-kicker,.porte3-soon-badge{
+.home-start-eyebrow,
+.section-eyebrow,
+.home-vocab-kicker,
+.porte3-soon-badge{
   display:inline-flex;align-items:center;width:max-content;max-width:100%;min-height:30px;
   padding:7px 13px;border:1px solid rgba(187,126,96,.38);border-radius:999px;
   background:rgba(187,126,96,.16);color:#F0EAE7;
@@ -258,7 +263,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 }
 [data-theme="day"] .home-start-eyebrow,
 [data-theme="day"] .section-eyebrow,
-[data-theme="day"] .vocab-clarity-kicker{
+[data-theme="day"] .home-vocab-kicker{
   color:#4E291F;background:rgba(187,126,96,.13);border-color:rgba(78,41,31,.15)
 }
 .home-start-title{
@@ -288,8 +293,6 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 }
 [data-theme="day"] .home-choice-kicker{color:#7A4A38}
 .home-choice-guide p{font-family:'Lora',serif;font-size:16px;line-height:1.68;color:var(--read)}
-
-/* TROIS PORTES PRINCIPALES */
 .home-start-grid{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px
 }
@@ -307,7 +310,8 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   content:"";position:absolute;left:22px;right:22px;bottom:0;height:3px;
   border-radius:999px 999px 0 0;background:var(--accent);opacity:.82
 }
-.home-start-card:hover,.home-start-card:focus-visible{
+.home-start-card:hover,
+.home-start-card:focus-visible{
   transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 58%,transparent);
   background:color-mix(in srgb,var(--accent) 8%,var(--panel));
   box-shadow:0 28px 68px var(--shadow);outline:none
@@ -336,43 +340,132 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   font-size:11.5px;font-weight:800;letter-spacing:.035em;text-transform:uppercase;
   transition:background .2s ease,color .2s ease,gap .2s ease
 }
-.home-start-card:hover .home-start-link,.home-start-card:focus-visible .home-start-link{
+.home-start-card:hover .home-start-link,
+.home-start-card:focus-visible .home-start-link{
   background:var(--accent);color:#F0EAE7
 }
-
-/* Échelle animée */
 .home-visual--echelle-anim{display:flex;align-items:flex-end;justify-content:center;gap:9px;padding:26px 22px}
-.echelle-bar{
-  width:9.5%;min-width:12px;border-radius:999px 999px 5px 5px;
-  background:linear-gradient(180deg,#F0EAE7,var(--accent));
-  transform-origin:center bottom;animation:echellePulse 3.8s ease-in-out infinite
+.home-visual--respiration{
+  display:grid;place-items:center;position:relative;isolation:isolate;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(196,82,121,.13),transparent 52%),
+    linear-gradient(145deg,rgba(196,82,121,.16),rgba(240,234,231,.045));
+  border-color:rgba(196,82,121,.34)
 }
-.echelle-bar:nth-child(1){height:28%;animation-delay:-.2s}.echelle-bar:nth-child(2){height:42%;animation-delay:-.5s}.echelle-bar:nth-child(3){height:58%;animation-delay:-.8s}.echelle-bar:nth-child(4){height:82%;animation-delay:-1.1s}.echelle-bar:nth-child(5){height:68%;animation-delay:-1.4s}.echelle-bar:nth-child(6){height:49%;animation-delay:-1.7s}.echelle-bar:nth-child(7){height:34%;animation-delay:-2s}
-@keyframes echellePulse{0%,100%{transform:scaleY(.86);opacity:.72}50%{transform:scaleY(1.04);opacity:1}}
-
-/* Respiration animée */
-.home-visual--respiration{display:grid;place-items:center}
-.home-breath-circle{
-  width:92px;height:92px;display:grid;place-items:center;border-radius:50%;
-  border:1px solid rgba(240,234,231,.48);background:rgba(195,66,52,.26);
-  box-shadow:0 0 0 18px rgba(195,66,52,.06),0 0 0 38px rgba(187,126,96,.035);
-  animation:homeBreathe 12s ease-in-out infinite
+.home-breath-preview{
+  --breath-track-height:78px;
+  --breath-ball-size:26px;
+  --breath-travel:calc(var(--breath-track-height) - var(--breath-ball-size));
+  width:100%;display:grid;
+  grid-template-rows:auto var(--breath-track-height) auto auto;
+  justify-items:center;align-items:center;gap:2px
 }
-.home-breath-label{font-family:'Lora',serif;font-size:14px;font-style:italic;color:#F0EAE7;transition:opacity .2s ease}
-@keyframes homeBreathe{0%,100%{transform:scale(.78)}33%{transform:scale(1.08)}50%{transform:scale(1.08)}83%{transform:scale(.78)}}
+.home-breath-direction{
+  color:rgba(240,234,231,.58);font-size:11px;font-weight:700;line-height:1
+}
+.home-breath-track{
+  width:3px;height:var(--breath-track-height);position:relative;display:block;
+  border-radius:999px;background:rgba(240,234,231,.30)
+}
+.home-breath-ball{
+  position:absolute;left:50%;top:0;
+  width:var(--breath-ball-size);height:var(--breath-ball-size);
+  border:1px solid rgba(240,234,231,.82);border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 28%,rgba(240,234,231,.34),transparent 36%),
+    #BB7E60;
+  box-shadow:0 0 24px 7px rgba(187,126,96,.28);
+  transform:translate3d(-50%,var(--breath-travel),0);
+  will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden
+}
+.home-visual--respiration.is-running .home-breath-ball{
+  animation:foebeBreathCursor 12s linear infinite
+}
+.home-breath-label{
+  min-width:72px;margin-top:4px;
+  font-family:'Lora',serif;font-size:14px;font-style:italic;line-height:1.2;
+  color:#F0EAE7;text-align:center;text-shadow:0 1px 8px rgba(78,41,31,.22);
+  transition:opacity .28s ease
+}
+@keyframes foebeBreathCursor{
+  0%{
+    transform:translate3d(-50%,var(--breath-travel),0);
+    animation-timing-function:cubic-bezier(.37,0,.63,1)
+  }
+  33.333%{
+    transform:translate3d(-50%,0,0);
+    animation-timing-function:linear
+  }
+  41.667%{
+    transform:translate3d(-50%,0,0);
+    animation-timing-function:cubic-bezier(.37,0,.63,1)
+  }
+  91.667%{
+    transform:translate3d(-50%,var(--breath-travel),0);
+    animation-timing-function:linear
+  }
+  100%{transform:translate3d(-50%,var(--breath-travel),0)}
+}
+[data-theme="day"] .home-visual--respiration{
+  background:
+    radial-gradient(circle at 50% 48%,rgba(196,82,121,.10),transparent 52%),
+    linear-gradient(145deg,rgba(196,82,121,.10),rgba(255,255,255,.58));
+  border-color:rgba(78,41,31,.14)
+}
+[data-theme="day"] .home-breath-track{background:rgba(78,41,31,.22)}
+[data-theme="day"] .home-breath-direction{color:rgba(78,41,31,.48)}
+[data-theme="day"] .home-breath-label{color:#4E291F;text-shadow:none}
+[data-theme="day"] .home-breath-ball{
+  border-color:rgba(240,234,231,.96);
+  box-shadow:0 0 22px 6px rgba(187,126,96,.22)
+}
 
-/* Ondes des zones */
+
+@media(min-width:681px) and (max-width:1023px){
+  .home-breath-preview{
+    --breath-track-height:108px;
+    --breath-ball-size:30px
+  }
+  .home-breath-label{font-size:16px;margin-top:7px}
+}
+@media(max-width:680px){
+  .home-breath-preview{
+    --breath-track-height:56px;
+    --breath-ball-size:22px
+  }
+  .home-breath-direction{font-size:9px}
+  .home-breath-label{font-size:13px;margin-top:2px}
+}
+@media(orientation:landscape) and (max-height:700px) and (min-width:700px){
+  .home-breath-preview{
+    --breath-track-height:58px;
+    --breath-ball-size:22px
+  }
+  .home-breath-label{font-size:13px;margin-top:2px}
+}
+@media(min-width:1800px){
+  .home-breath-preview{
+    --breath-track-height:86px;
+    --breath-ball-size:28px
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .home-visual--respiration.is-running .home-breath-ball{animation:none!important}
+  .home-breath-ball{
+    top:50%;transform:translate3d(-50%,-50%,0)!important;will-change:auto
+  }
+}
 .home-visual--zones-anim{display:grid;place-items:center;background:linear-gradient(145deg,rgba(196,82,121,.18),rgba(187,126,96,.08))}
 .zones-wave-svg{position:absolute;inset:0;width:100%;height:100%}
 .wave-path-1{animation:waveShift 9s ease-in-out infinite}.wave-path-2{animation:waveShift 12s ease-in-out infinite reverse}.wave-path-3{animation:waveShift 15s ease-in-out infinite}
-@keyframes waveShift{0%,100%{transform:translateX(-2%)}50%{transform:translateX(2%)}}
+@keyframes waveShift{0%,
+100%{transform:translateX(-2%)}50%{transform:translateX(2%)}}
 .foebe-zone-node-map{position:relative;z-index:2;width:118px;height:86px;display:block}
 .foebe-zone-node-map i{position:absolute;width:13px;height:13px;border-radius:50%;background:#F0EAE7;box-shadow:0 0 0 7px rgba(240,234,231,.08);animation:nodePulse 3.8s ease-in-out infinite}
 .foebe-zone-node-map i:nth-child(1){left:50%;top:0}.foebe-zone-node-map i:nth-child(2){right:12%;top:18%}.foebe-zone-node-map i:nth-child(3){right:0;top:56%}.foebe-zone-node-map i:nth-child(4){right:27%;bottom:0}.foebe-zone-node-map i:nth-child(5){left:27%;bottom:0}.foebe-zone-node-map i:nth-child(6){left:0;top:56%}.foebe-zone-node-map i:nth-child(7){left:12%;top:18%}
 .foebe-zone-node-map i:nth-child(2n){animation-delay:-1.2s}.foebe-zone-node-map i:nth-child(3n){animation-delay:-2.2s}
-@keyframes nodePulse{0%,100%{transform:scale(.86);opacity:.62}50%{transform:scale(1.08);opacity:1}}
-
-/* ACCÈS SECONDAIRES */
+@keyframes nodePulse{0%,
+100%{transform:scale(.86);opacity:.62}50%{transform:scale(1.08);opacity:1}}
 .home-secondary-intro{
   margin:42px 0 16px;font-family:'Lora',serif;font-size:15.5px;font-style:italic;color:var(--read-soft)
 }
@@ -383,7 +476,8 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   border:1px solid var(--border);border-radius:22px;background:var(--panel);
   color:var(--text);text-decoration:none;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease
 }
-.home-secondary-card:hover,.home-secondary-card:focus-visible{
+.home-secondary-card:hover,
+.home-secondary-card:focus-visible{
   transform:translateY(-2px);border-color:rgba(187,126,96,.52);
   background:rgba(187,126,96,.085);box-shadow:0 18px 46px var(--shadow);outline:none
 }
@@ -401,55 +495,27 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 .boussole-wrap::before{content:"";position:absolute;inset:7px;border:1px solid rgba(187,126,96,.45);border-radius:50%}
 .boussole-arrow{position:absolute;width:3px;height:19px;left:15px;top:7px;background:#BB7E60;border-radius:999px;transform-origin:50% 10px;animation:compassMove 5.8s ease-in-out infinite}
 .boussole-arrow::before{content:"";position:absolute;left:-3px;top:-2px;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:7px solid #BB7E60}
-@keyframes compassMove{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(32deg)}}
+@keyframes compassMove{0%,
+100%{transform:rotate(-28deg)}50%{transform:rotate(32deg)}}
 .biblio-line{display:flex;align-items:center;min-width:40px;font-family:'Lora',serif;font-size:12px;color:var(--text)}
 .biblio-cursor{width:1px;height:16px;margin-left:2px;background:#BB7E60;animation:cursorBlink .9s steps(1) infinite}
 @keyframes cursorBlink{50%{opacity:0}}
-
-/* VOCABULAIRE — encart éditorial, non surchargeant. */
-.vocab-clarity{
+.home-vocab{
   max-width:980px;margin:56px auto 0;padding:clamp(28px,4vw,44px);
   border:1px solid var(--border);border-radius:28px;
   background:linear-gradient(145deg,var(--panel-strong),rgba(187,126,96,.065));
   box-shadow:0 24px 62px rgba(0,0,0,.10)
 }
-[data-theme="day"] .vocab-clarity{box-shadow:0 18px 44px rgba(78,41,31,.07)}
-.vocab-clarity-title{
+[data-theme="day"] .home-vocab{box-shadow:0 18px 44px rgba(78,41,31,.07)}
+.home-vocab-title{
   max-width:820px;margin-top:17px;font-family:'Lora',serif;
   font-size:clamp(28px,4vw,44px);font-weight:400;line-height:1.18;color:var(--text);text-wrap:balance
 }
-.vocab-clarity-title em{font-style:italic;color:#BB7E60}
-.vocab-clarity-intro{
+.home-vocab-title em{font-style:italic;color:#BB7E60}
+.home-vocab-intro{
   max-width:760px;margin-top:18px;font-family:'Lora',serif;
   font-size:16.5px;line-height:1.8;color:var(--read)
 }
-.vocab-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:26px}
-.vocab-item{min-width:0}
-.vocab-tag{
-  width:100%;min-height:46px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;gap:9px;
-  border:1px solid rgba(187,126,96,.40);border-radius:999px;
-  background:rgba(187,126,96,.08);color:var(--text);
-  font-size:12.5px;font-weight:800;cursor:pointer;
-  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease
-}
-.vocab-tag::after{
-  content:"?";width:19px;height:19px;display:grid;place-items:center;flex:0 0 auto;
-  border-radius:50%;background:#BB7E60;color:#F0EAE7;font-size:11px
-}
-.vocab-tag:hover,.vocab-tag:focus-visible,.vocab-tag[aria-expanded="true"]{
-  background:#BB7E60;border-color:#BB7E60;color:#F0EAE7;transform:translateY(-1px);outline:none
-}
-.vocab-tag:hover::after,.vocab-tag:focus-visible::after,.vocab-tag[aria-expanded="true"]::after{background:#F0EAE7;color:#4E291F}
-.vocab-panel{
-  max-height:0;overflow:hidden;opacity:0;margin-top:0;padding:0 16px;
-  border:0 solid var(--border);border-radius:16px;background:rgba(240,234,231,.045);
-  font-family:'Lora',serif;font-size:15px;line-height:1.7;color:var(--read);
-  transition:max-height .36s ease,opacity .22s ease,margin .22s ease,padding .22s ease,border-width .22s ease
-}
-[data-theme="day"] .vocab-panel{background:rgba(78,41,31,.04)}
-.vocab-panel.is-open{opacity:1;margin-top:10px;padding:15px 16px;border-width:1px}
-
-/* RECONNAISSANCE — lecture en deux temps. */
 .reco-section{
   padding:clamp(88px,10vw,138px) clamp(20px,5vw,48px);
   background:
@@ -489,8 +555,6 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   background:linear-gradient(135deg,rgba(187,126,96,.13),rgba(196,82,121,.045));
   font-family:'Lora',serif;font-size:clamp(18px,1.4vw,21px);font-style:italic;line-height:1.7;color:var(--text);text-align:center
 }
-
-/* POURQUOI FOÉBÉ — incarnation sans alourdir. */
 .founder-section{
   padding:clamp(88px,10vw,138px) clamp(20px,5vw,48px);
   background:
@@ -502,7 +566,9 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);
   column-gap:clamp(44px,7vw,90px);align-items:start
 }
-.founder-inner>.section-step,.founder-inner>.section-eyebrow,.founder-inner>.section-title{grid-column:1}
+.founder-inner>.section-step,
+.founder-inner>.section-eyebrow,
+.founder-inner>.section-title{grid-column:1}
 .founder-inner>.section-step{grid-row:1}.founder-inner>.section-eyebrow{grid-row:2;margin-bottom:20px}
 .founder-inner>.section-title{grid-row:3;font-family:'Lora',serif;font-size:clamp(32px,4.6vw,50px);font-weight:400;line-height:1.16;color:var(--text)}
 .founder-copy{
@@ -513,19 +579,20 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   font-family:'Lora',serif;font-size:17px;line-height:1.78;color:var(--read)
 }
 .founder-ctas{grid-column:2;display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn-founder-primary,.btn-founder-secondary{
+.btn-founder-primary,
+.btn-founder-secondary{
   min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
   border-radius:999px;font-size:13.5px;font-weight:700;text-decoration:none;
   transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,gap .2s ease
 }
 .btn-founder-primary{background:#BB7E60;border:1px solid #BB7E60;color:#F0EAE7}
 .btn-founder-secondary{background:transparent;border:1px solid rgba(187,126,96,.48);color:var(--text)}
-.btn-founder-primary:hover,.btn-founder-primary:focus-visible,
-.btn-founder-secondary:hover,.btn-founder-secondary:focus-visible{
+.btn-founder-primary:hover,
+.btn-founder-primary:focus-visible,
+.btn-founder-secondary:hover,
+.btn-founder-secondary:focus-visible{
   background:#C45279;border-color:#C45279;color:#F0EAE7;transform:translateY(-1px);gap:11px;outline:none
 }
-
-/* ACCOMPAGNEMENT — conversion douce. */
 .section--accompagnement{
   padding:clamp(86px,10vw,132px) clamp(20px,5vw,48px);
   background:
@@ -566,17 +633,17 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   background:#BB7E60;color:#F0EAE7;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;
   transition:background .2s ease,border-color .2s ease,transform .2s ease
 }
-.newsletter-btn:hover,.newsletter-btn:focus-visible{background:#C45279;border-color:#C45279;transform:translateY(-1px);outline:none}
+.newsletter-btn:hover,
+.newsletter-btn:focus-visible{background:#C45279;border-color:#C45279;transform:translateY(-1px);outline:none}
 .newsletter-note{margin-top:11px;font-family:'Lora',serif;font-size:13.5px;font-style:italic;line-height:1.55;color:var(--read-soft);text-align:center}
-
-/* ANIMATIONS DE RÉVÉLATION — fallback renforcé. */
-.reveal,[data-index-motion]{opacity:1;transform:none;visibility:visible}
+.reveal,
+[data-index-motion]{opacity:1;transform:none;visibility:visible}
 @media(min-width:768px) and (prefers-reduced-motion:no-preference){
-  .js-ready .reveal:not([data-index-motion]){
+  html.foebe-reveal-ready .reveal:not([data-index-motion]){
     opacity:0;transform:translateY(18px);
     transition:opacity .62s ease,transform .62s cubic-bezier(.16,1,.3,1)
   }
-  .js-ready .reveal:not([data-index-motion]).visible{opacity:1;transform:none}
+  html.foebe-reveal-ready .reveal:not([data-index-motion]).visible{opacity:1;transform:none}
   html.foebe-index-motion-ready [data-index-motion]{
     opacity:0;transform:translateY(22px);
     transition:opacity .68s ease,transform .68s cubic-bezier(.16,1,.3,1)
@@ -584,27 +651,28 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   html.foebe-index-motion-ready [data-index-motion].is-visible{opacity:1;transform:none}
   html.foebe-index-motion-ready .home-start-grid [data-index-motion]:nth-child(2){transition-delay:.08s}
   html.foebe-index-motion-ready .home-start-grid [data-index-motion]:nth-child(3){transition-delay:.16s}
-  .reveal-delay-1{transition-delay:.08s!important}.reveal-delay-2{transition-delay:.16s!important}
+  .reveal-delay-1{transition-delay:.08s}
 }
 
 .section-fade{height:0;min-height:0;overflow:hidden;pointer-events:none;background:transparent}
-
-/* TABLETTE */
 @media(max-width:1023px){
   .home-start-grid{grid-template-columns:1fr;max-width:760px;margin-inline:auto}
   .home-start-card{min-height:0;display:grid;grid-template-columns:210px minmax(0,1fr);grid-template-rows:auto auto 1fr auto;column-gap:22px;align-items:start}
   .home-visual{grid-row:1/5;height:100%;min-height:250px;margin:0}
-  .home-start-num,.home-start-card h3,.home-start-card>p,.home-start-link{grid-column:2}
+  .home-start-num,
+.home-start-card h3,
+.home-start-card>p,
+.home-start-link{grid-column:2}
   .home-start-link{align-self:end}
-  .vocab-tags{grid-template-columns:repeat(2,minmax(0,1fr))}
   .reco-inner{grid-template-columns:1fr;gap:42px}.reco-header{position:relative;top:auto;max-width:760px}
   .founder-inner{grid-template-columns:1fr;gap:30px}
-  .founder-inner>.section-step,.founder-inner>.section-eyebrow,.founder-inner>.section-title,
-  .founder-copy,.founder-ctas{grid-column:1;grid-row:auto}
+  .founder-inner>.section-step,
+.founder-inner>.section-eyebrow,
+.founder-inner>.section-title,
+.founder-copy,
+.founder-ctas{grid-column:1;grid-row:auto}
   .accompagnement-card{grid-template-columns:1fr}
 }
-
-/* MOBILE */
 @media(max-width:680px){
   :root{--foebe-nav-height:58px}
   body>nav#fallbackNav{height:58px;min-height:58px;padding:0 10px;gap:10px}
@@ -624,21 +692,23 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   .home-secondary-access{grid-template-columns:1fr}
   .home-secondary-card{grid-template-columns:52px minmax(0,1fr) auto;padding:17px;border-radius:20px}
   .home-secondary-icon{width:50px;height:50px}
-  .vocab-clarity{margin-top:42px;padding:25px 19px;border-radius:24px}
-  .vocab-clarity-title{font-size:clamp(27px,8.5vw,36px)}
-  .vocab-clarity-intro{font-size:16px}
-  .vocab-tags{grid-template-columns:1fr}
+  .home-vocab{margin-top:42px;padding:25px 19px;border-radius:24px}
+  .home-vocab-title{font-size:clamp(27px,8.5vw,36px)}
+  .home-vocab-intro{font-size:16px}
 
-  .reco-section,.founder-section,.section--accompagnement{padding:72px 18px}
-  .reco-title,.founder-inner>.section-title,.accompagnement-title{font-size:clamp(31px,9.5vw,41px)}
+  .reco-section,
+.founder-section,
+.section--accompagnement{padding:72px 18px}
+  .reco-title,
+.founder-inner>.section-title,
+.accompagnement-title{font-size:clamp(31px,9.5vw,41px)}
   .reco-item p{font-size:17px}
   .editorial-bridge{padding:20px 18px;font-size:17.5px;text-align:left}
   .founder-copy p{font-size:16.5px}
-  .founder-ctas{flex-direction:column;align-items:stretch}.btn-founder-primary,.btn-founder-secondary{width:100%}
+  .founder-ctas{flex-direction:column;align-items:stretch}.btn-founder-primary,
+.btn-founder-secondary{width:100%}
   .accompagnement-card{padding:27px 20px;border-radius:25px}.accompagnement-right{padding:18px}
 }
-
-/* PETITS MOBILES */
 @media(max-width:380px){
   .home-start-section{padding-left:15px;padding-right:15px}
   .home-start-title{font-size:clamp(35px,10.8vw,43px)}
@@ -646,11 +716,11 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   .home-secondary-card{grid-template-columns:46px minmax(0,1fr) auto;gap:12px}
   .home-secondary-icon{width:46px;height:46px}
   .home-secondary-content strong{font-size:19px}
-  .vocab-clarity{padding:22px 16px}
-  .reco-section,.founder-section,.section--accompagnement{padding-left:15px;padding-right:15px}
+  .home-vocab{padding:22px 16px}
+  .reco-section,
+.founder-section,
+.section--accompagnement{padding-left:15px;padding-right:15px}
 }
-
-/* PAYSAGE COMPACT */
 @media(orientation:landscape) and (max-height:700px) and (min-width:700px){
   .home-start-section{padding-top:calc(var(--foebe-nav-height) + 24px)}
   .home-start-head{min-height:auto;padding:34px 0 42px;max-width:960px}
@@ -658,209 +728,99 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   .home-start-signature{font-size:16px;line-height:1.62;margin-top:18px}
   .home-explore-note{margin-top:10px}
   .home-start-card{min-height:365px}.home-visual{height:136px}
-  .reco-section,.founder-section,.section--accompagnement{padding-top:72px;padding-bottom:72px}
+  .reco-section,
+.founder-section,
+.section--accompagnement{padding-top:72px;padding-bottom:72px}
 }
-
-/* TRÈS GRANDS ÉCRANS */
 @media(min-width:1800px){
   .home-start-inner{max-width:1320px}.home-start-head{max-width:1040px}.home-start-title{font-size:82px}
-  .reco-inner,.founder-inner,.section-inner{max-width:1240px}
+  .reco-inner,
+.founder-inner,
+.section-inner{max-width:1240px}
 }
-
-/* ACCESSIBILITÉ MOUVEMENT */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  *,
+*::before,
+*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
 }
-</style>
-<style id="foebeIndexHighlightsAnimationFixCss">
-/* Surlignage éditorial : six repères maximum, choisis pour résumer Foébé et son public. */
+
+/* ==================================================
+   2. Surlignages éditoriaux et dimensions des visuels
+   ================================================== */
 .foebe-highlight{
   --hl:rgba(187,126,96,.30);
   position:relative;
   padding:0 .10em .035em;
   border-radius:.14em;
-  color:inherit!important;
+  color:inherit;
   font-style:inherit;
-  text-decoration:none!important;
+  text-decoration:none;
   background:linear-gradient(180deg,transparent 14%,var(--hl) 14% 89%,transparent 89%);
   box-decoration-break:clone;
   -webkit-box-decoration-break:clone;
 }
-.foebe-highlight--warm{--hl:rgba(187,126,96,.36);color:#F0EAE7!important}
-.foebe-highlight--rose{--hl:rgba(196,82,121,.35);color:#F0EAE7!important}
-.foebe-highlight--red{--hl:rgba(195,66,52,.35);color:#F0EAE7!important}
-[data-theme="day"] .foebe-highlight--warm{--hl:rgba(187,126,96,.26);color:#4E291F!important}
-[data-theme="day"] .foebe-highlight--rose{--hl:rgba(196,82,121,.18);color:#7A2147!important}
-[data-theme="day"] .foebe-highlight--red{--hl:rgba(195,66,52,.17);color:#8C2F27!important}
-
-/* Les cadres animés occupent réellement toute la largeur disponible. */
+.foebe-highlight--warm{--hl:rgba(187,126,96,.36);color:#F0EAE7}
+.foebe-highlight--rose{--hl:rgba(196,82,121,.35);color:#F0EAE7}
+.foebe-highlight--red{--hl:rgba(195,66,52,.35);color:#F0EAE7}
+[data-theme="day"] .foebe-highlight--warm{--hl:rgba(187,126,96,.26);color:#4E291F}
+[data-theme="day"] .foebe-highlight--rose{--hl:rgba(196,82,121,.18);color:#7A2147}
+[data-theme="day"] .foebe-highlight--red{--hl:rgba(195,66,52,.17);color:#8C2F27}
 .home-visual{
-  width:100%!important;
-  min-width:0!important;
+  width:100%;
+  min-width:0;
 }
 .home-visual--echelle-anim{
-  justify-content:stretch!important;
-  gap:clamp(7px,1.05vw,14px)!important;
-  padding:clamp(22px,2.4vw,32px) clamp(18px,2.6vw,30px)!important;
-}
-.echelle-bar{
-  flex:1 1 0!important;
-  width:auto!important;
-  min-width:0!important;
-  max-width:none!important;
-}
-
-.home-visual--respiration{
-  position:relative!important;
-  isolation:isolate;
-  overflow:hidden!important;
-}
-.home-visual--respiration::before,
-.home-visual--respiration::after{
-  content:"";
-  position:absolute;
-  left:50%;top:50%;
-  border:1px solid rgba(240,234,231,.23);
-  border-radius:50%;
-  pointer-events:none;
-  z-index:0;
-  animation:homeBreathField 12s ease-in-out infinite;
-}
-.home-visual--respiration::before{
-  width:76%;aspect-ratio:2.15/1;
-}
-.home-visual--respiration::after{
-  width:94%;aspect-ratio:2.55/1;
-  opacity:.58;
-  animation-delay:-2s;
-}
-[data-theme="day"] .home-visual--respiration::before,
-[data-theme="day"] .home-visual--respiration::after{
-  border-color:rgba(78,41,31,.18);
-}
-.home-breath-circle{
-  position:relative;z-index:2;
-  width:clamp(88px,36%,118px)!important;
-  height:auto!important;
-  aspect-ratio:1;
-}
-@keyframes homeBreathField{
-  0%,100%{transform:translate(-50%,-50%) scale(.78);opacity:.25}
-  33%,50%{transform:translate(-50%,-50%) scale(1.05);opacity:.72}
-  83%{transform:translate(-50%,-50%) scale(.78);opacity:.25}
+  justify-content:stretch;
+  gap:clamp(7px,1.05vw,14px);
+  padding:clamp(22px,2.4vw,32px) clamp(18px,2.6vw,30px);
 }
 
 .home-visual--zones-anim .zones-wave-svg{
-  inset:-2%!important;
-  width:104%!important;
-  height:104%!important;
+  inset:-6% -14%;
+  width:128%;
+  height:112%;
+  max-width:none;
 }
 .foebe-zone-node-map{
-  width:82%!important;
-  height:70%!important;
-  max-width:none!important;
+  width:82%;
+  height:70%;
+  max-width:none;
   aspect-ratio:auto;
 }
 .foebe-zone-node-map i{
-  width:clamp(12px,7.2%,16px)!important;
-  height:auto!important;
+  width:clamp(12px,7.2%,16px);
+  height:auto;
   aspect-ratio:1;
 }
-
-/* Les deux mini-animations secondaires respirent davantage sans dominer la lecture. */
 @media(min-width:681px){
-  .home-secondary-card{grid-template-columns:74px minmax(0,1fr) auto!important}
-  .home-secondary-icon{width:72px!important;height:72px!important}
-  .boussole-wrap{width:46px!important;height:46px!important}
-  .boussole-wrap::before{inset:9px!important}
-  .boussole-arrow{left:21px!important;top:9px!important;height:27px!important;transform-origin:50% 14px!important}
-  .biblio-line{width:58px!important;justify-content:center!important;overflow:hidden!important}
+  .home-secondary-card{grid-template-columns:74px minmax(0,1fr) auto}
+  .home-secondary-icon{width:72px;height:72px}
+  .boussole-wrap{width:46px;height:46px}
+  .boussole-wrap::before{inset:9px}
+  .boussole-arrow{left:21px;top:9px;height:27px;transform-origin:50% 14px}
+  .biblio-line{width:58px;justify-content:center;overflow:hidden}
 }
 
 @media(max-width:680px){
-  .home-visual--echelle-anim{gap:clamp(6px,2.1vw,11px)!important;padding-inline:18px!important}
-  .home-breath-circle{width:clamp(84px,34%,105px)!important}
-  .foebe-zone-node-map{width:78%!important;height:70%!important}
+  .home-visual--echelle-anim{gap:clamp(6px,2.1vw,11px);padding-inline:18px}
+  .foebe-zone-node-map{width:78%;height:70%}
 }
 
 @media(orientation:landscape) and (max-height:700px) and (min-width:700px){
-  .home-visual--echelle-anim{padding-block:20px!important}
-  .home-breath-circle{width:clamp(78px,31%,102px)!important}
-  .foebe-zone-node-map{width:76%!important;height:70%!important}
+  .home-visual--echelle-anim{padding-block:20px}
+  .foebe-zone-node-map{width:76%;height:70%}
 }
 
 @media(min-width:1800px){
-  .home-visual--echelle-anim{gap:16px!important;padding-inline:34px!important}
-  .home-breath-circle{width:126px!important}
-  .foebe-zone-node-map{width:84%!important;height:72%!important}
+  .home-visual--echelle-anim{gap:16px;padding-inline:34px}
+  .foebe-zone-node-map{width:84%;height:72%}
 }
 
-@media(prefers-reduced-motion:reduce){
-  .home-visual--respiration::before,
-  .home-visual--respiration::after{animation:none!important}
-}
-</style>
-<style id="foebeIndexFinalBreathPalette">
-/* Index final — respiration plus douce : rouge + rose + crème.
-   Le rouge reste un accent, le rose et le crème portent l'apaisement. */
-.home-visual--respiration{
-  background:
-    radial-gradient(circle at 50% 48%,rgba(196,82,121,.13),transparent 48%),
-    linear-gradient(145deg,rgba(196,82,121,.16),rgba(240,234,231,.045))!important;
-  border-color:rgba(196,82,121,.34)!important
-}
-
-.home-breath-circle{
-  border:1px solid rgba(240,234,231,.72)!important;
-  background:
-    radial-gradient(circle at 34% 28%,rgba(240,234,231,.30),transparent 37%),
-    linear-gradient(145deg,rgba(196,82,121,.90),rgba(195,66,52,.74))!important;
-  box-shadow:
-    0 0 0 18px rgba(196,82,121,.11),
-    0 0 0 38px rgba(240,234,231,.045)!important
-}
-
-.home-visual--respiration::before{
-  border-color:rgba(196,82,121,.34)!important
-}
-.home-visual--respiration::after{
-  border-color:rgba(240,234,231,.23)!important
-}
-
-/* Mode jour : contraste net sur le fond clair, sans effet danger. */
-[data-theme="day"] .home-visual--respiration{
-  background:
-    radial-gradient(circle at 50% 48%,rgba(196,82,121,.10),transparent 48%),
-    linear-gradient(145deg,rgba(196,82,121,.10),rgba(255,255,255,.58))!important;
-  border-color:rgba(78,41,31,.14)!important
-}
-[data-theme="day"] .home-breath-circle{
-  border-color:rgba(240,234,231,.94)!important;
-  background:
-    radial-gradient(circle at 34% 28%,rgba(240,234,231,.34),transparent 37%),
-    linear-gradient(145deg,#C45279,#C34234)!important;
-  box-shadow:
-    0 0 0 18px rgba(196,82,121,.12),
-    0 0 0 38px rgba(195,66,52,.055)!important
-}
-[data-theme="day"] .home-visual--respiration::before{
-  border-color:rgba(196,82,121,.25)!important
-}
-[data-theme="day"] .home-visual--respiration::after{
-  border-color:rgba(195,66,52,.15)!important
-}
-
-/* Le libellé reste crème dans les deux thèmes. */
-.home-breath-label{
-  color:#F0EAE7!important;
-  text-shadow:0 1px 10px rgba(78,41,31,.22)
-}
-</style><style id="foebeIndexDayBackgroundUnified">
-/* Index — mode jour uniformisé.
-   Les grands fonds de page utilisent tous la base Foébé #F0EAE7.
-   Les cartes, repères et animations conservent leur palette propre. */
+/* ==================================================
+   3. Surfaces du mode jour
+   ================================================== */
 [data-theme="day"] body{
   background:#F0EAE7
 }
@@ -869,46 +829,33 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 [data-theme="day"] .reco-section,
 [data-theme="day"] .founder-section,
 [data-theme="day"] .section--accompagnement{
-  background:#F0EAE7!important
+  background:#F0EAE7
 }
-
-/* La transition entre sections ne recrée aucun bandeau ou dégradé. */
 [data-theme="day"] .section-fade{
-  background:#F0EAE7!important
+  background:#F0EAE7
 }
-
-/* Les halos décoratifs du hero restent très discrets en jour. */
 [data-theme="day"] .home-start-section::before,
 [data-theme="day"] .home-start-section::after{
   opacity:.42
 }
-
-/* Les surfaces intérieures restent lisibles sur le fond uniforme. */
 [data-theme="day"] .home-choice-guide,
 [data-theme="day"] .home-start-card,
 [data-theme="day"] .home-secondary-card,
-[data-theme="day"] .vocab-clarity,
+[data-theme="day"] .home-vocab,
 [data-theme="day"] .editorial-bridge,
 [data-theme="day"] .accompagnement-card{
   border-color:rgba(78,41,31,.14)
 }
-</style><style id="foebeIndexDayNodesAccordionReadingFix">
-/* Constellation — points plus visibles en mode jour. */
-[data-theme="day"] .foebe-zone-node-map i{
-  background:#BB7E60!important;
-  border:1px solid rgba(78,41,31,.16);
-  box-shadow:
-    0 0 0 6px rgba(187,126,96,.13),
-    0 6px 16px rgba(78,41,31,.10)!important
-}
 
-/* Accordéons — vraies fiches de lecture, plus guidées et moins austères. */
-.vocab-tags{
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:14px!important;
+/* ==================================================
+   4. Accordéon du vocabulaire de l’accueil
+   ================================================== */
+.home-vocab-list{
+  grid-template-columns:1fr;
+  gap:14px;
   counter-reset:vocab
 }
-.vocab-item{
+.home-vocab-item{
   --vocab-accent:#BB7E60;
   min-width:0;
   padding:8px;
@@ -918,16 +865,16 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   box-shadow:0 12px 30px rgba(0,0,0,.055);
   counter-increment:vocab
 }
-.vocab-item:nth-child(2){--vocab-accent:#C45279}
-.vocab-item:nth-child(3){--vocab-accent:#C34234}
-.vocab-item:nth-child(4){--vocab-accent:#8E5B43}
+.home-vocab-item:nth-child(2){--vocab-accent:#C45279}
+.home-vocab-item:nth-child(3){--vocab-accent:#C34234}
+.home-vocab-item:nth-child(4){--vocab-accent:#8E5B43}
 
-[data-theme="day"] .vocab-item{
+[data-theme="day"] .home-vocab-item{
   background:rgba(255,255,255,.36);
   box-shadow:0 10px 24px rgba(78,41,31,.055)
 }
 
-.vocab-tag{
+.home-vocab-trigger{
   width:100%;
   min-height:62px;
   padding:10px 13px;
@@ -950,7 +897,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
     color .2s ease,
     transform .2s ease
 }
-.vocab-tag::before{
+.home-vocab-trigger::before{
   content:"0" counter(vocab);
   width:32px;
   height:32px;
@@ -963,7 +910,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   font-weight:800;
   letter-spacing:.06em
 }
-.vocab-tag::after{
+.home-vocab-trigger::after{
   content:"+";
   width:28px;
   height:28px;
@@ -978,37 +925,37 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   line-height:1;
   transition:transform .2s ease,background .2s ease,color .2s ease
 }
-.vocab-tag span{
+.home-vocab-trigger span{
   min-width:0;
   line-height:1.35
 }
-.vocab-tag:hover,
-.vocab-tag:focus-visible{
+.home-vocab-trigger:hover,
+.home-vocab-trigger:focus-visible{
   background:color-mix(in srgb,var(--vocab-accent) 9%,transparent);
   border-color:color-mix(in srgb,var(--vocab-accent) 36%,transparent);
   color:var(--text);
   transform:none;
   outline:none
 }
-.vocab-tag[aria-expanded="true"]{
+.home-vocab-trigger[aria-expanded="true"]{
   background:color-mix(in srgb,var(--vocab-accent) 12%,transparent);
   border-color:color-mix(in srgb,var(--vocab-accent) 42%,transparent);
   color:var(--text);
   transform:none
 }
-.vocab-tag[aria-expanded="true"]::after{
+.home-vocab-trigger[aria-expanded="true"]::after{
   content:"−";
   transform:rotate(180deg);
   background:#F0EAE7;
   color:var(--vocab-accent)
 }
 
-[data-theme="day"] .vocab-tag[aria-expanded="true"]::after{
+[data-theme="day"] .home-vocab-trigger[aria-expanded="true"]::after{
   background:var(--vocab-accent);
   color:#F0EAE7
 }
 
-.vocab-panel{
+.home-vocab-panel{
   position:relative;
   max-height:0;
   overflow:hidden;
@@ -1029,7 +976,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
     padding .22s ease,
     border-width .22s ease
 }
-.vocab-panel::before{
+.home-vocab-panel::before{
   content:"Définition";
   display:block;
   margin-bottom:8px;
@@ -1041,7 +988,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   letter-spacing:.14em;
   text-transform:uppercase
 }
-.vocab-panel.is-open{
+.home-vocab-panel.is-open{
   opacity:1;
   margin-top:7px;
   padding:17px 18px 19px;
@@ -1049,75 +996,66 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   border-left-width:3px
 }
 
-[data-theme="day"] .vocab-panel{
+[data-theme="day"] .home-vocab-panel{
   background:color-mix(in srgb,var(--vocab-accent) 7%,#F0EAE7)
 }
 
 @media(max-width:680px){
-  .vocab-tags{
-    grid-template-columns:1fr!important;
-    gap:11px!important
+  .home-vocab-list{
+    gap:11px
   }
-  .vocab-item{
+  .home-vocab-item{
     padding:7px;
     border-radius:19px
   }
-  .vocab-tag{
+  .home-vocab-trigger{
     min-height:58px;
     grid-template-columns:32px minmax(0,1fr) 27px;
     gap:10px;
     padding:9px 11px;
     font-size:13.5px
   }
-  .vocab-tag::before{
+  .home-vocab-trigger::before{
     width:30px;
     height:30px
   }
-  .vocab-tag::after{
+  .home-vocab-trigger::after{
     width:27px;
     height:27px
   }
-  .vocab-panel{
+  .home-vocab-panel{
     font-size:15.5px;
     line-height:1.74
   }
 }
 
 @media(max-width:360px){
-  .vocab-tag{
+  .home-vocab-trigger{
     grid-template-columns:29px minmax(0,1fr) 25px;
     padding-left:9px;
     padding-right:9px
   }
-  .vocab-tag::before{
+  .home-vocab-trigger::before{
     width:28px;
     height:28px;
     font-size:9px
   }
-  .vocab-tag::after{
+  .home-vocab-trigger::after{
     width:25px;
     height:25px;
     font-size:16px
   }
 }
-</style><style id="foebeIndexDayNodesSimpleFix">
-/* Constellation — mode jour : points crème, contour terracotta, rien de plus. */
-[data-theme="day"] .foebe-zone-node-map i{
-  background:#F0EAE7!important;
-  border:2px solid #BB7E60!important;
-  box-shadow:none!important
-}
-</style><style id="foebeIndexCenteredGuideRecognitionTable">
-/* ─────────────────────────────────────────────
-   TROIS PORTES — composition centrée et couleur
-   uniforme selon le thème.
-───────────────────────────────────────────── */
+
+/* ==================================================
+   5. Guide d’entrée et tableau de reconnaissance
+   ================================================== */
 .home-choice-guide{
-  display:flex!important;
+  display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:8px!important;
+  gap:8px;
   max-width:900px;
   text-align:center
 }
@@ -1134,30 +1072,25 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 [data-theme="day"] .home-choice-guide .home-choice-kicker,
 [data-theme="day"] .home-choice-guide p,
 [data-theme="day"] .home-choice-guide .foebe-color{
-  color:#4E291F!important
+  color:#4E291F
 }
 [data-theme="night"] .home-choice-guide,
 [data-theme="night"] .home-choice-guide .home-choice-kicker,
 [data-theme="night"] .home-choice-guide p,
 [data-theme="night"] .home-choice-guide .foebe-color{
-  color:#F0EAE7!important
+  color:#F0EAE7
 }
-
-/* ─────────────────────────────────────────────
-   RECONNAISSANCE — introduction au-dessus,
-   puis vrai tableau de signaux.
-───────────────────────────────────────────── */
 .reco-inner{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr)!important;
-  gap:clamp(34px,5vw,54px)!important;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:clamp(34px,5vw,54px);
   align-items:start
 }
 .reco-header{
-  position:relative!important;
-  top:auto!important;
+  position:relative;
+  top:auto;
   width:100%;
-  max-width:900px!important;
+  max-width:900px;
   margin:0 auto;
   text-align:center
 }
@@ -1183,21 +1116,19 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   text-align:center
 }
 .reco-intro{
-  max-width:760px!important;
-  margin:20px auto 0!important;
+  max-width:760px;
+  margin:20px auto 0;
   text-align:center
 }
-
-/* Tableau 2 × 2 sur ordinateur et tablette. */
 .reco-grid{
   width:100%;
   max-width:980px;
   margin:0 auto;
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:0!important;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
   overflow:hidden;
-  border:1px solid var(--border)!important;
+  border:1px solid var(--border);
   border-radius:26px;
   background:var(--panel);
   box-shadow:0 18px 48px var(--shadow)
@@ -1205,23 +1136,23 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 .reco-item{
   min-width:0;
   min-height:168px;
-  padding:clamp(24px,3vw,34px)!important;
-  display:grid!important;
-  grid-template-columns:30px minmax(0,1fr)!important;
-  gap:15px!important;
+  padding:clamp(24px,3vw,34px);
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr);
+  gap:15px;
   align-content:center;
   align-items:start;
-  border:0!important;
-  border-bottom:1px solid var(--border)!important;
+  border:0;
+  border-bottom:1px solid var(--border);
   background:transparent;
   transition:background .2s ease
 }
 .reco-item:nth-child(odd){
-  border-right:1px solid var(--border)!important
+  border-right:1px solid var(--border)
 }
 .reco-item:nth-child(3),
 .reco-item:nth-child(4){
-  border-bottom:0!important
+  border-bottom:0
 }
 .reco-item:hover{
   background:rgba(187,126,96,.055)
@@ -1234,24 +1165,21 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   margin-top:2px;
   border:1px solid rgba(187,126,96,.38);
   border-radius:50%;
-  color:#BB7E60!important;
-  font-family:'Poppins',sans-serif!important;
-  font-size:14px!important;
-  line-height:1!important
+  color:#BB7E60;
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+  line-height:1
 }
 .reco-item p{
   min-width:0;
   margin:0;
-  font-size:clamp(16.5px,1vw,18.5px)!important;
-  line-height:1.7!important
+  font-size:clamp(16.5px,1vw,18.5px);
+  line-height:1.7
 }
 .editorial-bridge{
   width:min(100%,780px);
-  margin:0 auto!important
+  margin:0 auto
 }
-
-/* Tablette portrait : le tableau reste 2 × 2,
-   avec des cellules un peu plus compactes. */
 @media(min-width:681px) and (max-width:1023px){
   .reco-section{
     padding-left:clamp(22px,4vw,40px);
@@ -1262,64 +1190,58 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   }
   .reco-item{
     min-height:158px;
-    padding:25px 24px!important
+    padding:25px 24px
   }
 }
-
-/* Mobile portrait : une seule colonne,
-   mais toujours dans un vrai cadre continu. */
 @media(max-width:680px){
   .home-choice-guide{
-    align-items:center!important;
-    text-align:center!important
+    align-items:center;
+    text-align:center
   }
   .home-choice-guide p,
-  .home-choice-kicker{
-    text-align:center!important
+.home-choice-kicker{
+    text-align:center
   }
 
   .reco-inner{
-    gap:30px!important
+    gap:30px
   }
   .reco-header{
-    text-align:center!important
+    text-align:center
   }
   .reco-header .section-step{
-    justify-content:center!important
+    justify-content:center
   }
   .reco-title,
-  .reco-intro{
-    text-align:center!important
+.reco-intro{
+    text-align:center
   }
   .reco-grid{
-    grid-template-columns:1fr!important;
+    grid-template-columns:1fr;
     border-radius:22px
   }
   .reco-item{
     min-height:0;
-    padding:24px 20px!important;
-    border-right:0!important;
-    border-bottom:1px solid var(--border)!important
+    padding:24px 20px;
+    border-right:0;
+    border-bottom:1px solid var(--border)
   }
   .reco-item:nth-child(3){
-    border-bottom:1px solid var(--border)!important
+    border-bottom:1px solid var(--border)
   }
   .reco-item:nth-child(4){
-    border-bottom:0!important
+    border-bottom:0
   }
 }
-
-/* Paysage compact : introduction resserrée,
-   tableau 2 × 2 conservé. */
 @media(orientation:landscape) and (max-height:700px) and (min-width:700px){
   .reco-inner{
-    gap:28px!important
+    gap:28px
   }
   .reco-header{
-    max-width:880px!important
+    max-width:880px
   }
   .reco-intro{
-    margin-top:14px!important;
+    margin-top:14px;
     line-height:1.64
   }
   .reco-grid{
@@ -1327,474 +1249,157 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   }
   .reco-item{
     min-height:130px;
-    padding:20px 24px!important
+    padding:20px 24px
   }
 }
-
-/* Très petits écrans : aucune sortie de cadre. */
 @media(max-width:380px){
   .reco-grid{
     border-radius:19px
   }
   .reco-item{
-    grid-template-columns:26px minmax(0,1fr)!important;
-    gap:12px!important;
-    padding:22px 16px!important
+    grid-template-columns:26px minmax(0,1fr);
+    gap:12px;
+    padding:22px 16px
   }
   .reco-dash{
     width:24px;
     height:24px
   }
 }
-</style><style id="foebeIndexVerticalRhythmFix">
-/* Rythme vertical rééquilibré :
-   une respiration nette entre les sections, sans grands vides cumulés. */
 
-/* Fin du premier grand ensemble : moins de vide après les outils. */
+/* ==================================================
+   6. Rythme vertical des sections
+   ================================================== */
 .home-start-section{
-  padding-bottom:clamp(62px,6.8vw,92px)!important
+  padding-bottom:clamp(62px,6.8vw,92px)
 }
 .home-secondary-intro{
-  margin-top:32px!important
+  margin-top:32px
 }
-.vocab-clarity{
-  margin-top:42px!important
+.home-vocab{
+  margin-top:42px
 }
-
-/* Sections éditoriales principales. */
 .reco-section,
 .founder-section,
 .section--accompagnement{
-  padding-top:clamp(58px,6.3vw,84px)!important;
-  padding-bottom:clamp(58px,6.3vw,84px)!important
+  padding-top:clamp(58px,6.3vw,84px);
+  padding-bottom:clamp(58px,6.3vw,84px)
 }
-
-/* Espaces internes légèrement resserrés, sans compacter la lecture. */
 .reco-inner{
-  gap:clamp(28px,4vw,42px)!important
+  gap:clamp(28px,4vw,42px)
 }
 .editorial-bridge{
-  margin-top:0!important
+  margin-top:0
 }
 .founder-ctas{
-  margin-top:22px!important
+  margin-top:22px
 }
 .accompagnement-desc{
-  margin-top:16px!important
+  margin-top:16px
 }
-
-/* Tablette : cadence régulière et plus courte. */
 @media(min-width:681px) and (max-width:1023px){
   .home-start-section{
-    padding-bottom:72px!important
+    padding-bottom:72px
   }
   .reco-section,
-  .founder-section,
-  .section--accompagnement{
-    padding-top:62px!important;
-    padding-bottom:62px!important
+.founder-section,
+.section--accompagnement{
+    padding-top:62px;
+    padding-bottom:62px
   }
-  .vocab-clarity{
-    margin-top:36px!important
+  .home-vocab{
+    margin-top:36px
   }
 }
-
-/* Mobile portrait : éviter l'impression de longs écrans vides. */
 @media(max-width:680px){
   .home-start-section{
-    padding-bottom:58px!important
+    padding-bottom:58px
   }
   .home-secondary-intro{
-    margin-top:28px!important
+    margin-top:28px
   }
-  .vocab-clarity{
-    margin-top:32px!important
+  .home-vocab{
+    margin-top:32px
   }
   .reco-section,
-  .founder-section,
-  .section--accompagnement{
-    padding-top:52px!important;
-    padding-bottom:52px!important
+.founder-section,
+.section--accompagnement{
+    padding-top:52px;
+    padding-bottom:52px
   }
   .reco-inner{
-    gap:26px!important
+    gap:26px
   }
   .founder-ctas{
-    margin-top:20px!important
+    margin-top:20px
   }
 }
-
-/* Très petits écrans. */
 @media(max-width:380px){
   .home-start-section{
-    padding-bottom:52px!important
+    padding-bottom:52px
   }
   .reco-section,
-  .founder-section,
-  .section--accompagnement{
-    padding-top:48px!important;
-    padding-bottom:48px!important
+.founder-section,
+.section--accompagnement{
+    padding-top:48px;
+    padding-bottom:48px
   }
 }
-
-/* Paysage compact : priorité à la continuité de lecture. */
 @media(orientation:landscape) and (max-height:700px) and (min-width:700px){
   .home-start-section{
-    padding-bottom:48px!important
+    padding-bottom:48px
   }
   .reco-section,
-  .founder-section,
-  .section--accompagnement{
-    padding-top:48px!important;
-    padding-bottom:48px!important
+.founder-section,
+.section--accompagnement{
+    padding-top:48px;
+    padding-bottom:48px
   }
-  .vocab-clarity{
-    margin-top:30px!important
-  }
-}
-</style><style id="foebeIndexBreathSmoothDayPinkNodes">
-/* Respiration : cycle fluide synchronisé avec
-   Inspire 4 s · pause 2 s · Expire 4 s · pause 2 s. */
-.home-breath-circle{
-  transform-origin:50% 50%;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  will-change:transform;
-  animation:homeBreatheSmooth 12s linear infinite!important
-}
-.home-visual--respiration::before,
-.home-visual--respiration::after{
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  will-change:transform,opacity;
-  animation-name:homeBreathFieldSmooth!important;
-  animation-duration:12s!important;
-  animation-timing-function:linear!important;
-  animation-iteration-count:infinite!important
-}
-.home-visual--respiration::after{
-  animation-delay:-2s!important
-}
-.home-breath-label{
-  will-change:opacity;
-  transition:opacity .34s ease!important
-}
-
-@keyframes homeBreatheSmooth{
-  0%{
-    transform:translate3d(0,0,0) scale(.78);
-    animation-timing-function:cubic-bezier(.37,0,.63,1)
-  }
-  33.333%{
-    transform:translate3d(0,0,0) scale(1.08);
-    animation-timing-function:linear
-  }
-  50%{
-    transform:translate3d(0,0,0) scale(1.08);
-    animation-timing-function:cubic-bezier(.37,0,.63,1)
-  }
-  83.333%{
-    transform:translate3d(0,0,0) scale(.78);
-    animation-timing-function:linear
-  }
-  100%{
-    transform:translate3d(0,0,0) scale(.78)
+  .home-vocab{
+    margin-top:30px
   }
 }
 
-@keyframes homeBreathFieldSmooth{
-  0%{
-    transform:translate3d(-50%,-50%,0) scale(.78);
-    opacity:.25;
-    animation-timing-function:cubic-bezier(.37,0,.63,1)
-  }
-  33.333%{
-    transform:translate3d(-50%,-50%,0) scale(1.05);
-    opacity:.72;
-    animation-timing-function:linear
-  }
-  50%{
-    transform:translate3d(-50%,-50%,0) scale(1.05);
-    opacity:.72;
-    animation-timing-function:cubic-bezier(.37,0,.63,1)
-  }
-  83.333%{
-    transform:translate3d(-50%,-50%,0) scale(.78);
-    opacity:.25;
-    animation-timing-function:linear
-  }
-  100%{
-    transform:translate3d(-50%,-50%,0) scale(.78);
-    opacity:.25
-  }
-}
-
-/* Constellation :
-   jour = intérieur crème + simple contour rose pâle ;
-   nuit = points blancs existants, inchangés. */
+/* ==================================================
+   7. Constellation des zones en mode jour
+   ================================================== */
 [data-theme="day"] .foebe-zone-node-map i{
-  background:#F0EAE7!important;
-  border:2px solid rgba(196,82,121,.48)!important;
-  box-shadow:none!important
+  background:#F0EAE7;
+  border:2px solid rgba(196,82,121,.48);
+  box-shadow:none
 }
 
-@media(prefers-reduced-motion:reduce){
-  .home-breath-circle,
-  .home-visual--respiration::before,
-  .home-visual--respiration::after{
-    animation:none!important;
-    transform:none!important
-  }
-}
-</style><style id="foebeIndexBreathNoJumpFix">
-/* Respiration V10 :
-   seul le cercle central respire.
-   Les anneaux extérieurs restent fixes pour supprimer tout saut visuel. */
-.home-visual--respiration::before,
-.home-visual--respiration::after{
-  animation:none!important;
-  transform:translate3d(-50%,-50%,0)!important;
-  will-change:auto!important;
-  backface-visibility:visible!important;
-  -webkit-backface-visibility:visible!important
-}
-
-.home-visual--respiration::before{
-  opacity:.42!important
-}
-.home-visual--respiration::after{
-  opacity:.24!important
-}
-
-/* Le cercle central conserve le cycle fluide. */
-.home-breath-circle{
-  animation:homeBreatheSmooth 12s linear infinite!important;
-  transform-origin:50% 50%;
-  will-change:transform;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden
-}
-
-@media(prefers-reduced-motion:reduce){
-  .home-breath-circle{
-    animation:none!important;
-    transform:none!important
-  }
-}
-</style><style id="foebeIndexFinalAnimationRebuild">
-/* ═════════════════════════════════════════════
-   RESPIRATION — reconstruction simple et fluide
-   Un seul cercle. Aucun anneau. Aucun box-shadow
-   expansif. Aucun élément décalé autour.
-═════════════════════════════════════════════ */
-.home-visual--respiration::before,
-.home-visual--respiration::after{
-  content:none!important;
-  display:none!important;
-  animation:none!important
-}
-
-.home-breath-circle{
+/* ==================================================
+   8. Animation de la balance
+   ================================================== */
+.home-visual--echelle-anim{
   position:relative;
-  z-index:2;
-  width:clamp(88px,36%,118px)!important;
-  height:auto!important;
-  aspect-ratio:1;
   display:grid;
   place-items:center;
-  border-radius:50%;
-  border:1px solid rgba(240,234,231,.78)!important;
-  background:
-    radial-gradient(circle at 34% 28%,rgba(240,234,231,.30),transparent 36%),
-    linear-gradient(145deg,#C45279,#C34234)!important;
-  box-shadow:0 12px 28px rgba(78,41,31,.16)!important;
-  transform-origin:center center;
-  will-change:transform;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  animation:foebeBreathSingleCircle 12s linear infinite!important
-}
-
-@keyframes foebeBreathSingleCircle{
-  /* Inspire : 4s → 0% à 33.3% */
-  0%   { transform:translateZ(0) scale(.78) }
-  4%   { transform:translateZ(0) scale(.81) }
-  9%   { transform:translateZ(0) scale(.87) }
-  16%  { transform:translateZ(0) scale(.94) }
-  24%  { transform:translateZ(0) scale(1.02) }
-  33.3%{ transform:translateZ(0) scale(1.08) }
-  /* Pause haute : 1s → 33.3% à 41.7% */
-  41.7%{ transform:translateZ(0) scale(1.08) }
-  /* Expire : 6s → 41.7% à 91.7% */
-  50%  { transform:translateZ(0) scale(1.04) }
-  60%  { transform:translateZ(0) scale(.95) }
-  70%  { transform:translateZ(0) scale(.87) }
-  80%  { transform:translateZ(0) scale(.81) }
-  91.7%{ transform:translateZ(0) scale(.78) }
-  /* Pause basse : 1s → 91.7% à 100% */
-  100% { transform:translateZ(0) scale(.78) }
-}
-
-.home-breath-label{
-  color:#F0EAE7!important;
-  text-shadow:0 1px 8px rgba(78,41,31,.22);
-  transition:opacity .28s ease!important
-}
-
-/* Mode jour : même animation, contraste propre. */
-[data-theme="day"] .home-breath-circle{
-  border-color:rgba(240,234,231,.96)!important;
-  background:
-    radial-gradient(circle at 34% 28%,rgba(240,234,231,.34),transparent 36%),
-    linear-gradient(145deg,#C45279,#C34234)!important;
-  box-shadow:0 10px 24px rgba(78,41,31,.12)!important
-}
-
-
-/* ═════════════════════════════════════════════
-   ME SITUER — cycle naturel vue du dessus
-   Cycle 7s : impact → 8 ondes → court silence
-═════════════════════════════════════════════ */
-.home-visual--echelle-anim{
-  position:relative!important;
-  display:grid!important;
-  place-items:center!important;
-  padding:0!important;
-  overflow:hidden!important;
-  background:
-    radial-gradient(circle at 50% 52%, rgba(187,126,96,.16), transparent 66%),
-    linear-gradient(160deg, rgba(58,26,16,.80), rgba(44,20,14,.96))!important
-}
-
-.ripple-lake-scene{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center
-}
-
-.ripple-lake-dot{
-  position:absolute;
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:#F0EAE7;
-  box-shadow:
-    0 0 0 5px rgba(240,234,231,.18),
-    0 0 22px rgba(240,234,231,.36);
-  opacity:0;
-  animation:rippleDotFlash 7s linear infinite
-}
-
-.ripple-ring{
-  position:absolute;
-  border-radius:50%;
-  width:280px;
-  height:280px;
-  border:1.5px solid rgba(240,234,231,.88);
-  opacity:0;
-  animation:rippleWave 7s linear infinite
-}
-.ripple-ring--1{ animation-delay:  0s }
-.ripple-ring--2{ animation-delay: .6s;  border-color:rgba(240,234,231,.78) }
-.ripple-ring--3{ animation-delay:1.2s;  border-color:rgba(240,234,231,.64) }
-.ripple-ring--4{ animation-delay:1.8s;  border-color:rgba(240,234,231,.50) }
-.ripple-ring--5{ animation-delay:2.4s;  border-color:rgba(240,234,231,.36) }
-.ripple-ring--6{ animation-delay:3.0s;  border-color:rgba(240,234,231,.24) }
-.ripple-ring--7{ animation-delay:3.6s;  border-color:rgba(240,234,231,.14) }
-.ripple-ring--8{ animation-delay:4.2s;  border-color:rgba(240,234,231,.07) }
-
-@keyframes rippleDotFlash{
-  0%    { opacity:0;   transform:scale(.5) }
-  1%    { opacity:1;   transform:scale(1) }
-  4%    { opacity:.38; transform:scale(2.4) }
-  7%    { opacity:0;   transform:scale(3.2) }
-  100%  { opacity:0;   transform:scale(3.2) }
-}
-
-@keyframes rippleWave{
-  0%    { opacity:0;   transform:scale(.02) }
-  2%    { opacity:.90; transform:scale(.04) }
-  52%   { opacity:.18; transform:scale(.86) }
-  64%   { opacity:0;   transform:scale(1) }
-  100%  { opacity:0;   transform:scale(1) }
-}
-
-/* Mode jour */
-[data-theme="day"] .home-visual--echelle-anim{
-  background:
-    radial-gradient(circle at 50% 52%, rgba(187,126,96,.18), transparent 64%),
-    linear-gradient(160deg, rgba(240,234,231,.90), rgba(224,213,208,.98))!important
-}
-[data-theme="day"] .ripple-ring{      border-color:rgba(142,91,67,.86) }
-[data-theme="day"] .ripple-ring--2{   border-color:rgba(142,91,67,.74) }
-[data-theme="day"] .ripple-ring--3{   border-color:rgba(142,91,67,.60) }
-[data-theme="day"] .ripple-ring--4{   border-color:rgba(142,91,67,.46) }
-[data-theme="day"] .ripple-ring--5{   border-color:rgba(142,91,67,.34) }
-[data-theme="day"] .ripple-ring--6{   border-color:rgba(142,91,67,.22) }
-[data-theme="day"] .ripple-ring--7{   border-color:rgba(142,91,67,.12) }
-[data-theme="day"] .ripple-ring--8{   border-color:rgba(142,91,67,.06) }
-[data-theme="day"] .ripple-lake-dot{
-  background:#8E5B43;
-  box-shadow:
-    0 0 0 5px rgba(142,91,67,.14),
-    0 0 22px rgba(142,91,67,.30)
-}
-
-/* Responsive */
-@media(max-width:680px){
-  .home-visual--echelle-anim{ min-height:130px!important }
-  .ripple-ring{ width:210px; height:210px }
-}
-
-/* Accessibilité mouvement */
-@media(prefers-reduced-motion:reduce){
-  .ripple-ring,
-  .ripple-lake-dot{ animation:none!important }
-  .ripple-ring--1{ opacity:.62; transform:scale(.10) }
-  .ripple-ring--2{ opacity:.52; transform:scale(.24) }
-  .ripple-ring--3{ opacity:.42; transform:scale(.38) }
-  .ripple-ring--4{ opacity:.32; transform:scale(.52) }
-  .ripple-ring--5{ opacity:.22; transform:scale(.66) }
-  .ripple-ring--6{ opacity:.14; transform:scale(.78) }
-  .ripple-ring--7{ opacity:.08; transform:scale(.88) }
-  .ripple-ring--8{ opacity:.04; transform:scale(.96) }
-  .ripple-lake-dot{ opacity:.80 }
-}
-</style><style id="foebeIndexBalanceAnimation">
-/* ═════════════════════════════════════════════
-   ME SITUER — balance animée
-   Cette couche remplace uniquement l’animation
-   du premier outil. La respiration est intacte.
-═════════════════════════════════════════════ */
-.home-visual--echelle-anim{
-  position:relative!important;
-  display:grid!important;
-  place-items:center!important;
-  padding:12px 16px 10px!important;
-  overflow:hidden!important;
+  padding:6px 8px;
+  overflow:hidden;
   background:
     radial-gradient(ellipse 72% 70% at 50% 52%,rgba(187,126,96,.16),transparent 72%),
-    linear-gradient(150deg,rgba(58,26,16,.76),rgba(44,20,14,.96))!important
+    linear-gradient(150deg,rgba(58,26,16,.76),rgba(44,20,14,.96))
 }
 
 .foebe-balance-scene{
-  width:min(100%,310px);
+  width:min(100%,350px);
   height:100%;
-  min-height:138px;
+  min-height:148px;
   display:grid;
-  grid-template-rows:minmax(0,1fr) auto;
+  grid-template-rows:minmax(0,1fr);
   align-items:center;
   justify-items:center;
-  gap:2px;
+  gap:0;
   overflow:hidden
 }
 
 .foebe-balance-svg{
   width:100%;
   height:100%;
-  min-height:118px;
-  max-height:180px;
+  min-height:132px;
+  max-height:194px;
   overflow:visible;
   display:block
 }
@@ -1836,7 +1441,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 }
 .foebe-balance-weight--light{
   fill:#F0EAE7;
-  opacity:.84
+  opacity:1
 }
 .foebe-balance-weight--one{
   fill:#BB7E60
@@ -1852,66 +1457,57 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   animation:foebeBalanceWeightThree 7.2s ease-in-out infinite
 }
 
-.foebe-balance-labels{
-  width:92%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  color:rgba(240,234,231,.82);
-  font-size:9.5px;
-  font-weight:800;
-  line-height:1.25;
-  letter-spacing:.10em;
-  text-transform:uppercase
-}
-.foebe-balance-labels span:last-child{
-  text-align:right;
-  color:#F0EAE7
-}
-
 @keyframes foebeBalanceTilt{
-  0%,12%{
+  0%,
+12%{
     transform:rotate(0deg)
   }
   28%{
     transform:rotate(2deg)
   }
-  48%,72%{
+  48%,
+72%{
     transform:rotate(8deg)
   }
-  88%,100%{
+  88%,
+100%{
     transform:rotate(0deg)
   }
 }
 
 @keyframes foebeBalanceWeightTwo{
-  0%,20%,88%,100%{
+  0%,
+20%,
+88%,
+100%{
     opacity:0;
     transform:translateY(-14px) scale(.72)
   }
-  31%,78%{
+  31%,
+78%{
     opacity:1;
     transform:translateY(0) scale(1)
   }
 }
 
 @keyframes foebeBalanceWeightThree{
-  0%,34%,88%,100%{
+  0%,
+34%,
+88%,
+100%{
     opacity:0;
     transform:translateY(-16px) scale(.72)
   }
-  45%,78%{
+  45%,
+78%{
     opacity:1;
     transform:translateY(0) scale(1)
   }
 }
-
-/* Jour : contraste brun/terracotta sur fond clair. */
 [data-theme="day"] .home-visual--echelle-anim{
   background:
     radial-gradient(ellipse 72% 70% at 50% 52%,rgba(187,126,96,.11),transparent 72%),
-    rgba(255,255,255,.42)!important
+    rgba(255,255,255,.42)
 }
 [data-theme="day"] .foebe-balance-base,
 [data-theme="day"] .foebe-balance-stem,
@@ -1934,51 +1530,33 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   stroke-width:2.5;
   opacity:1
 }
-[data-theme="day"] .foebe-balance-labels{
-  color:rgba(78,41,31,.68)
-}
-[data-theme="day"] .foebe-balance-labels span:last-child{
-  color:#4E291F
-}
-
-/* Tablette : balance agrandie dans le panneau latéral. */
 @media(min-width:681px) and (max-width:1023px){
   .foebe-balance-scene{
-    width:min(100%,360px);
-    min-height:176px
+    width:min(100%,390px);
+    min-height:184px
   }
   .foebe-balance-svg{
-    min-height:150px;
-    max-height:210px
+    min-height:162px;
+    max-height:224px
   }
 }
-
-/* Mobile : proportions compactes et aucun débordement. */
 @media(max-width:680px){
   .home-visual--echelle-anim{
-    min-height:130px!important;
-    padding:8px 10px 7px!important
+    min-height:130px;
+    padding:8px 10px 7px
   }
   .foebe-balance-scene{
-    width:min(100%,270px);
-    min-height:112px
+    width:min(100%,292px);
+    min-height:116px
   }
   .foebe-balance-svg{
-    min-height:96px;
-    max-height:128px
-  }
-  .foebe-balance-labels{
-    width:94%;
-    gap:10px;
-    font-size:8.5px;
-    letter-spacing:.075em
+    min-height:102px;
+    max-height:136px
   }
 }
-
-/* Paysage compact : garder l’animation lisible sans étirer la carte. */
 @media(orientation:landscape) and (max-height:700px) and (min-width:700px){
   .home-visual--echelle-anim{
-    padding:6px 12px 5px!important
+    padding:6px 12px 5px
   }
   .foebe-balance-scene{
     min-height:112px
@@ -1988,43 +1566,31 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
     max-height:126px
   }
 }
-
-/* Très petits écrans. */
 @media(max-width:360px){
   .foebe-balance-scene{
     width:100%
   }
-  .foebe-balance-labels{
-    font-size:7.8px
-  }
 }
-
-/* Réduction du mouvement : balance fixe mais message conservé. */
 @media(prefers-reduced-motion:reduce){
   .foebe-balance-rock{
-    animation:none!important;
-    transform:rotate(7deg)!important
+    animation:none;
+    transform:rotate(7deg)
   }
   .foebe-balance-weight--two,
-  .foebe-balance-weight--three{
-    animation:none!important;
-    opacity:1!important;
-    transform:none!important
+.foebe-balance-weight--three{
+    animation:none;
+    opacity:1;
+    transform:none
   }
 }
-</style><style id="foebeIndexMobileZonesWavesFix">
-/* ═════════════════════════════════════════════
-   PORTE 03 — vagues mobiles plus visibles
-   Le SVG dépasse volontairement du cadre :
-   aucun espace vide ne peut apparaître aux bords.
-   La respiration n'est pas concernée.
-═════════════════════════════════════════════ */
 
-/* Base sûre : la scène couvre toujours tout le panneau. */
+/* ==================================================
+   9. Vagues des zones et adaptations responsive
+   ================================================== */
 .home-visual--zones-anim{
-  position:relative!important;
+  position:relative;
   isolation:isolate;
-  overflow:hidden!important
+  overflow:hidden
 }
 .home-visual--zones-anim .zones-wave-svg{
   pointer-events:none;
@@ -2038,150 +1604,756 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   transform-origin:center center;
   will-change:transform
 }
-
-/* Mobile portrait. */
 @media(max-width:680px){
   .home-visual--zones-anim{
-    min-height:130px!important;
+    min-height:130px;
     background:
       radial-gradient(ellipse 82% 78% at 50% 48%,rgba(196,82,121,.18),transparent 72%),
-      linear-gradient(145deg,rgba(196,82,121,.18),rgba(187,126,96,.10))!important
+      linear-gradient(145deg,rgba(196,82,121,.18),rgba(187,126,96,.10))
   }
-
-  /* Débordement volontaire de 18 % de chaque côté et de 10 % en hauteur. */
   .home-visual--zones-anim .zones-wave-svg{
-    inset:-10% -18% -12%!important;
-    width:136%!important;
-    height:122%!important;
-    max-width:none!important;
-    animation:foebeMobileWaveField 8.6s ease-in-out infinite!important
+    inset:-10% -18% -12%;
+    width:136%;
+    height:122%;
+    max-width:none;
+    animation:foebeMobileWaveField 8.6s ease-in-out infinite
   }
-
-  /* Trois vitesses et amplitudes différentes, nettement perceptibles. */
   .home-visual--zones-anim .wave-path-1{
-    fill:rgba(187,126,96,.27)!important;
-    animation:foebeMobileWaveOne 5.4s ease-in-out infinite!important
+    fill:rgba(187,126,96,.27);
+    animation:foebeMobileWaveOne 5.4s ease-in-out infinite
   }
   .home-visual--zones-anim .wave-path-2{
-    fill:rgba(196,82,121,.19)!important;
-    animation:foebeMobileWaveTwo 7.1s ease-in-out infinite reverse!important
+    fill:rgba(196,82,121,.19);
+    animation:foebeMobileWaveTwo 7.1s ease-in-out infinite reverse
   }
   .home-visual--zones-anim .wave-path-3{
-    fill:rgba(240,234,231,.13)!important;
-    animation:foebeMobileWaveThree 9.2s ease-in-out infinite!important
+    fill:rgba(240,234,231,.13);
+    animation:foebeMobileWaveThree 9.2s ease-in-out infinite
   }
-
-  /* La constellation accompagne doucement les vagues. */
   .home-visual--zones-anim .foebe-zone-node-map{
-    width:84%!important;
-    height:74%!important;
-    animation:foebeMobileNodesFloat 5.8s ease-in-out infinite!important
+    width:84%;
+    height:74%;
+    animation:foebeMobileNodesFloat 5.8s ease-in-out infinite
   }
   .home-visual--zones-anim .foebe-zone-node-map i{
-    animation-duration:2.8s!important
+    animation-duration:2.8s
   }
 }
-
-/* Mode jour : vagues visibles sur #F0EAE7 sans devenir lourdes. */
 @media(max-width:680px){
   [data-theme="day"] .home-visual--zones-anim{
     background:
       radial-gradient(ellipse 84% 78% at 50% 48%,rgba(196,82,121,.10),transparent 72%),
-      rgba(255,255,255,.38)!important
+      rgba(255,255,255,.38)
   }
   [data-theme="day"] .home-visual--zones-anim .wave-path-1{
-    fill:rgba(187,126,96,.22)!important
+    fill:rgba(187,126,96,.22)
   }
   [data-theme="day"] .home-visual--zones-anim .wave-path-2{
-    fill:rgba(196,82,121,.15)!important
+    fill:rgba(196,82,121,.15)
   }
   [data-theme="day"] .home-visual--zones-anim .wave-path-3{
-    fill:rgba(142,91,67,.075)!important
+    fill:rgba(142,91,67,.075)
   }
 }
-
-/* Très petits mobiles : même couverture, mouvement légèrement contenu. */
 @media(max-width:380px){
   .home-visual--zones-anim .zones-wave-svg{
-    inset:-10% -22% -12%!important;
-    width:144%!important
+    inset:-10% -22% -12%;
+    width:144%
   }
   .home-visual--zones-anim .foebe-zone-node-map{
-    width:82%!important;
-    height:72%!important
+    width:82%;
+    height:72%
   }
 }
-
-/* Mobile et petite tablette en paysage. */
 @media(orientation:landscape) and (max-height:700px) and (min-width:560px) and (max-width:1023px){
   .home-visual--zones-anim .zones-wave-svg{
-    inset:-14% -14% -16%!important;
-    width:128%!important;
-    height:130%!important;
-    max-width:none!important;
-    animation:foebeMobileWaveField 7.8s ease-in-out infinite!important
+    inset:-14% -14% -16%;
+    width:128%;
+    height:130%;
+    max-width:none;
+    animation:foebeMobileWaveField 7.8s ease-in-out infinite
   }
   .home-visual--zones-anim .wave-path-1{
-    fill:rgba(187,126,96,.25)!important;
-    animation:foebeMobileWaveOne 5.2s ease-in-out infinite!important
+    fill:rgba(187,126,96,.25);
+    animation:foebeMobileWaveOne 5.2s ease-in-out infinite
   }
   .home-visual--zones-anim .wave-path-2{
-    fill:rgba(196,82,121,.18)!important;
-    animation:foebeMobileWaveTwo 6.8s ease-in-out infinite reverse!important
+    fill:rgba(196,82,121,.18);
+    animation:foebeMobileWaveTwo 6.8s ease-in-out infinite reverse
   }
   .home-visual--zones-anim .wave-path-3{
-    fill:rgba(240,234,231,.12)!important;
-    animation:foebeMobileWaveThree 8.8s ease-in-out infinite!important
+    fill:rgba(240,234,231,.12);
+    animation:foebeMobileWaveThree 8.8s ease-in-out infinite
   }
   .home-visual--zones-anim .foebe-zone-node-map{
-    width:80%!important;
-    height:76%!important;
-    animation:foebeMobileNodesFloat 5.4s ease-in-out infinite!important
+    width:80%;
+    height:76%;
+    animation:foebeMobileNodesFloat 5.4s ease-in-out infinite
   }
 }
 
 @keyframes foebeMobileWaveField{
-  0%,100%{transform:translate3d(-1.8%,0,0) scaleX(1.02)}
+  0%,
+100%{transform:translate3d(-1.8%,0,0) scaleX(1.02)}
   50%{transform:translate3d(1.8%,-1.5%,0) scaleX(1.05)}
 }
 @keyframes foebeMobileWaveOne{
-  0%,100%{transform:translate3d(-7%,1%,0) scaleX(1.16) scaleY(.98)}
+  0%,
+100%{transform:translate3d(-7%,1%,0) scaleX(1.16) scaleY(.98)}
   50%{transform:translate3d(7%,-3%,0) scaleX(1.20) scaleY(1.05)}
 }
 @keyframes foebeMobileWaveTwo{
-  0%,100%{transform:translate3d(6%,-1%,0) scaleX(1.18) scaleY(1.03)}
+  0%,
+100%{transform:translate3d(6%,-1%,0) scaleX(1.18) scaleY(1.03)}
   50%{transform:translate3d(-6%,3%,0) scaleX(1.22) scaleY(.97)}
 }
 @keyframes foebeMobileWaveThree{
-  0%,100%{transform:translate3d(-5%,2%,0) scaleX(1.20) scaleY(.96)}
+  0%,
+100%{transform:translate3d(-5%,2%,0) scaleX(1.20) scaleY(.96)}
   50%{transform:translate3d(5%,-2%,0) scaleX(1.24) scaleY(1.04)}
 }
 @keyframes foebeMobileNodesFloat{
-  0%,100%{transform:translate3d(0,2px,0) rotate(-1deg)}
+  0%,
+100%{transform:translate3d(0,2px,0) rotate(-1deg)}
   50%{transform:translate3d(0,-4px,0) rotate(1deg)}
 }
-
-/* Réduction du mouvement : couverture complète maintenue, animations coupées. */
 @media(prefers-reduced-motion:reduce){
   .home-visual--zones-anim .zones-wave-svg,
-  .home-visual--zones-anim .wave-path-1,
-  .home-visual--zones-anim .wave-path-2,
-  .home-visual--zones-anim .wave-path-3,
-  .home-visual--zones-anim .foebe-zone-node-map{
-    animation:none!important
+.home-visual--zones-anim .wave-path-1,
+.home-visual--zones-anim .wave-path-2,
+.home-visual--zones-anim .wave-path-3,
+.home-visual--zones-anim .foebe-zone-node-map{
+    animation:none
   }
   .home-visual--zones-anim .zones-wave-svg{
-    transform:none!important
+    transform:none
   }
   .home-visual--zones-anim .wave-path-1,
-  .home-visual--zones-anim .wave-path-2,
-  .home-visual--zones-anim .wave-path-3{
-    transform:scaleX(1.18)!important
+.home-visual--zones-anim .wave-path-2,
+.home-visual--zones-anim .wave-path-3{
+    transform:scaleX(1.18)
   }
 }
-</style></head>
-<body class="page-index" data-page-version="index-editorial-premium-2026">
-<!-- Navigation fallback critique — remplacée/masquée par Foébé Shell si disponible -->
+
+/* ==================================================
+   10. Hero plein écran et section des portes
+   ================================================== */
+:root{--foebe-index-first-screen:100vh}
+@supports (height:100svh){:root{--foebe-index-first-screen:100svh}}
+.home-start-section{
+  min-height:var(--foebe-index-first-screen);
+  padding:var(--foebe-nav-height) clamp(18px,5vw,56px) 0;
+  display:flex;
+  background:
+    radial-gradient(ellipse 58% 38% at 10% 8%,rgba(187,126,96,.18),transparent 72%),
+    radial-gradient(ellipse 48% 34% at 92% 15%,rgba(196,82,121,.085),transparent 72%),
+    radial-gradient(ellipse 42% 34% at 72% 96%,rgba(195,66,52,.045),transparent 74%),
+    linear-gradient(180deg,var(--bg) 0%,var(--bg) 70%,var(--bg2) 100%);
+}
+.home-start-section>.home-start-inner{
+  width:100%;
+  min-height:calc(var(--foebe-index-first-screen) - var(--foebe-nav-height));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.home-start-head{
+  width:100%;
+  min-height:0;
+  max-width:940px;
+  padding:0;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transform:translateY(clamp(-48px,-4.8vh,-24px));
+}
+.home-start-eyebrow{margin-left:auto;margin-right:auto}
+.home-start-title{margin-top:clamp(18px,2.5vh,26px)}
+.home-start-signature{margin-top:clamp(20px,3vh,28px)}
+.home-entry-section{
+  position:relative;
+  isolation:isolate;
+  padding:clamp(66px,8vw,108px) clamp(18px,5vw,56px) clamp(82px,9vw,126px);
+  border-top:1px solid var(--border);
+  background:
+    radial-gradient(ellipse 44% 28% at 86% 2%,rgba(196,82,121,.045),transparent 72%),
+    var(--bg2);
+}
+[data-theme="day"] .home-entry-section{background:#F0EAE7}
+.home-entry-section>.home-start-inner{display:block;min-height:0}
+
+.home-capacity-guide{
+  width:100%;
+  max-width:980px;
+  margin:0 auto;
+}
+.home-capacity-title{
+  max-width:760px;
+  margin:0 auto clamp(24px,3vw,34px);
+  color:var(--text);
+  font-family:'Lora',serif;
+  font-size:clamp(25px,3.2vw,38px);
+  font-weight:400;
+  line-height:1.2;
+  text-align:center;
+  text-wrap:balance;
+}
+.home-capacity-path{
+  width:100%;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:var(--panel);
+  box-shadow:0 18px 48px rgba(0,0,0,.08);
+  list-style:none;
+  counter-reset:foebe-capacity;
+}
+[data-theme="day"] .home-capacity-path{box-shadow:0 14px 34px rgba(78,41,31,.06)}
+.home-capacity-path li{
+  min-width:0;
+  min-height:142px;
+  padding:clamp(20px,2.4vw,28px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:12px;
+  border-right:1px solid var(--border);
+  color:var(--read);
+  font-family:'Lora',serif;
+  font-size:clamp(15px,1.1vw,17px);
+  line-height:1.58;
+  text-align:left;
+  counter-increment:foebe-capacity;
+}
+.home-capacity-path li:last-child{border-right:0}
+.home-capacity-path li::before{
+  content:"0" counter(foebe-capacity);
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border:1px solid rgba(187,126,96,.42);
+  border-radius:50%;
+  background:rgba(187,126,96,.09);
+  color:#BB7E60;
+  font-family:'Poppins',sans-serif;
+  font-size:9.5px;
+  font-weight:800;
+  line-height:1;
+}
+
+.home-entry-section .home-choice-guide{
+  width:100%;
+  max-width:900px;
+  margin:clamp(42px,6vw,72px) auto 0;
+  padding:clamp(19px,2.4vw,27px) clamp(18px,3vw,30px);
+}
+.home-choice-kicker{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  font-size:11px;
+  line-height:1.3;
+}
+.home-entry-section .home-explore-note{
+  margin-top:8px;
+  font-size:14.5px;
+  line-height:1.6;
+}
+.home-start-grid{margin-top:clamp(20px,2.5vw,30px)}
+@media(min-width:681px) and (max-width:1023px){
+  .home-capacity-path{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-capacity-path li{min-height:126px}
+  .home-capacity-path li:nth-child(1),
+.home-capacity-path li:nth-child(2){border-bottom:1px solid var(--border)}
+  .home-capacity-path li:nth-child(2),
+.home-capacity-path li:nth-child(4){border-right:0}
+  .home-capacity-path li:nth-child(3){border-right:1px solid var(--border)}
+}
+@media(max-width:680px){
+  .home-start-section{padding:var(--foebe-nav-height) 18px 0}
+  .home-start-head{
+    max-width:560px;
+    align-items:flex-start;
+    text-align:left;
+    transform:translateY(clamp(-34px,-4vh,-18px));
+  }
+  .home-start-eyebrow{margin-left:0;margin-right:0}
+  .home-start-title{margin-top:18px}
+  .home-start-signature{margin-top:20px}
+
+  .home-entry-section{
+    padding:64px 18px 78px;
+  }
+  .home-capacity-title{
+    margin-bottom:24px;
+    font-size:clamp(26px,8.2vw,35px);
+    text-align:left;
+  }
+  .home-capacity-path{grid-template-columns:1fr;border-radius:21px}
+  .home-capacity-path li{
+    min-height:0;
+    padding:20px 18px;
+    flex-direction:row;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:12px;
+    border-right:0;
+    border-bottom:1px solid var(--border);
+    font-size:15.5px;
+    line-height:1.55;
+  }
+  .home-capacity-path li:last-child{border-bottom:0}
+  .home-entry-section .home-choice-guide{
+    margin-top:42px;
+    padding:18px;
+  }
+  .home-entry-section .home-explore-note{font-size:14px}
+  .home-start-grid{margin-top:22px}
+}
+
+@media(max-width:360px){
+  .home-start-section{padding-left:15px;padding-right:15px}
+  .home-entry-section{padding-left:15px;padding-right:15px}
+  .home-capacity-path li{padding:18px 15px;font-size:15px}
+}
+@media(orientation:landscape) and (max-height:700px){
+  .home-start-head{
+    max-width:980px;
+    transform:translateY(-10px);
+  }
+  .home-start-eyebrow{min-height:27px;padding:5px 11px;font-size:10.5px}
+  .home-start-title{margin-top:11px;font-size:clamp(32px,5vw,56px);line-height:1.03}
+  .home-start-signature{margin-top:12px;font-size:clamp(14.5px,1.45vw,17.5px);line-height:1.48}
+  .home-entry-section{padding-top:52px}
+  .home-capacity-title{margin-bottom:20px;font-size:clamp(23px,3.2vw,32px)}
+  .home-capacity-path li{min-height:104px;padding:17px 19px;font-size:14.5px;line-height:1.48}
+  .home-entry-section .home-choice-guide{margin-top:34px;padding:15px 18px}
+}
+@media(min-width:1800px) and (min-height:900px){
+  .home-start-head{max-width:1080px;transform:translateY(-5vh)}
+  .home-start-title{font-size:clamp(76px,4.35vw,94px)}
+  .home-start-signature{max-width:840px;font-size:22px}
+  .home-capacity-guide{max-width:1120px}
+  .home-entry-section .home-choice-guide{max-width:980px}
+}
+@media(max-height:480px){
+  .home-start-section{min-height:100vh}
+  .home-start-section>.home-start-inner{min-height:calc(100vh - var(--foebe-nav-height))}
+  .home-start-head{transform:none}
+  .home-start-title{margin-top:8px}
+  .home-start-signature{margin-top:8px}
+}
+
+[data-theme="day"] .home-start-title .foebe-word--warm{color:#8E5B43}
+[data-theme="day"] .home-capacity-path li::before{color:#7A4A38}
+[data-theme="night"] .home-capacity-path li::before{color:#D4A080}
+
+@media(prefers-contrast:more){
+  .home-capacity-path,
+.home-choice-guide{border-color:currentColor;box-shadow:none}
+  .home-capacity-path li{color:var(--text)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-start-section::before,
+.home-start-section::after{animation:none}
+}
+
+/* ==================================================
+   11. Écran de capacité d’action
+   ================================================== */
+.home-capacity-section{
+  position:relative;
+  isolation:isolate;
+  min-height:var(--foebe-index-first-screen);
+  padding:var(--foebe-nav-height) clamp(18px,5vw,56px) 0;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-top:1px solid var(--border);
+  background:
+    radial-gradient(ellipse 46% 34% at 16% 14%,rgba(187,126,96,.12),transparent 72%),
+    radial-gradient(ellipse 42% 32% at 88% 82%,rgba(196,82,121,.07),transparent 72%),
+    var(--bg2);
+}
+[data-theme="day"] .home-capacity-section{background:#F0EAE7}
+.home-capacity-section::before,
+.home-capacity-section::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:clamp(240px,34vw,560px);
+  aspect-ratio:1;
+  border:1px solid rgba(187,126,96,.12);
+  border-radius:50%;
+  pointer-events:none;
+  animation:capacityAmbient 16s ease-in-out infinite;
+}
+.home-capacity-section::before{left:clamp(-250px,-13vw,-92px);top:10%}
+.home-capacity-section::after{right:clamp(-260px,-14vw,-100px);bottom:4%;animation-delay:-8s}
+.home-capacity-inner{
+  width:100%;
+  max-width:1180px;
+  min-height:calc(var(--foebe-index-first-screen) - var(--foebe-nav-height));
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(44px,7vh,80px) 0;
+}
+.home-capacity-guide{max-width:1060px}
+.home-capacity-eyebrow{
+  width:max-content;
+  max-width:100%;
+  min-height:30px;
+  margin:0 auto 20px;
+  padding:7px 13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(187,126,96,.38);
+  border-radius:999px;
+  background:rgba(187,126,96,.14);
+  color:var(--text);
+  font-family:'Poppins',sans-serif;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:1.2px;
+  text-align:center;
+  text-transform:uppercase;
+}
+.home-capacity-title{
+  max-width:880px;
+  margin:0 auto clamp(34px,5vw,56px);
+  font-size:clamp(31px,4.4vw,54px);
+  line-height:1.14;
+}
+.home-capacity-title em{font-style:italic;color:#BB7E60}
+.home-capacity-path{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  gap:clamp(12px,1.7vw,20px);
+}
+.home-capacity-path::before,
+.home-capacity-path::after{
+  content:"";
+  position:absolute;
+  display:none;
+  pointer-events:none;
+}
+@media(min-width:1024px){
+  .home-capacity-path::before{
+    display:block;
+    z-index:-2;
+    left:6.5%;
+    right:6.5%;
+    top:50%;
+    height:2px;
+    transform:translateY(-50%);
+    background:linear-gradient(90deg,rgba(187,126,96,.18),rgba(196,82,121,.28),rgba(195,66,52,.24),rgba(187,126,96,.18));
+  }
+  .home-capacity-path::after{
+    display:block;
+    z-index:-1;
+    top:50%;
+    left:6.5%;
+    width:18%;
+    height:3px;
+    transform:translateY(-50%);
+    border-radius:999px;
+    background:linear-gradient(90deg,transparent,#F0EAE7 42%,#BB7E60 70%,transparent);
+    filter:drop-shadow(0 0 8px rgba(187,126,96,.55));
+    animation:capacityFlow 7.2s ease-in-out infinite;
+  }
+}
+.home-capacity-path li{
+  position:relative;
+  min-height:174px;
+  padding:clamp(24px,2.6vw,32px);
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  box-shadow:0 18px 42px rgba(0,0,0,.07);
+  text-align:center;
+}
+[data-theme="night"] .home-capacity-path li{background:linear-gradient(145deg,#5A3025,#4E291F)}
+[data-theme="day"] .home-capacity-path li{background:linear-gradient(145deg,#F8F3F1,#F0EAE7);box-shadow:0 14px 32px rgba(78,41,31,.055)}
+.home-capacity-path li::before{
+  position:relative;
+  z-index:2;
+  width:38px;
+  height:38px;
+  border-width:1px;
+  font-size:10px;
+}
+[data-theme="night"] .home-capacity-path li::before{
+  color:#F0EAE7;
+  background:#8E5B43;
+  border-color:#BB7E60;
+  box-shadow:0 0 0 7px rgba(187,126,96,.10);
+}
+[data-theme="day"] .home-capacity-path li::before{
+  color:#7A4A38;
+  background:rgba(187,126,96,.12);
+  border-color:rgba(187,126,96,.40);
+  box-shadow:none;
+}
+.home-capacity-path li span{max-width:190px}
+.home-entry-section{
+  min-height:auto;
+  padding-top:clamp(74px,9vw,118px);
+}
+.home-entry-section .home-choice-guide{margin-top:0}
+
+@keyframes capacityFlow{
+  0%{left:6.5%;opacity:0}
+  10%{opacity:1}
+  82%{opacity:1}
+  100%{left:75.5%;opacity:0}
+}
+@keyframes capacityAmbient{
+  0%,
+100%{transform:translate3d(0,0,0) scale(.96);opacity:.5}
+  50%{transform:translate3d(0,-14px,0) scale(1.04);opacity:.9}
+}
+/* Animation chiffres constellation — 2 colonnes uniquement */
+@keyframes capacityNumPulse{
+  0%,70%,100%{opacity:.5;box-shadow:0 0 0 5px transparent}
+  35%{opacity:1;box-shadow:0 0 0 7px var(--num-glow,rgba(187,126,96,.18))}
+}
+[data-theme="day"] .home-capacity-path li::before{--num-glow:rgba(78,41,31,.09)}
+@media(min-width:681px) and (max-width:1180px){
+  html.foebe-index-motion-ready .home-capacity-guide[data-index-motion],
+  html.foebe-index-motion-ready .home-capacity-guide[data-index-motion].is-visible{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+  .home-capacity-inner{padding:58px 0}
+  .home-capacity-path{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-capacity-path::before,
+  .home-capacity-path::after{display:none;animation:none}
+  .home-capacity-section::before,
+  .home-capacity-section::after{animation:none}
+  .home-capacity-path li{
+    min-height:148px;
+    animation:none;
+  }
+  .home-capacity-path li::before{
+    animation:capacityNumPulse 12s ease-in-out infinite;
+  }
+  .home-capacity-path li:nth-child(2)::before{animation-delay:-9s}
+  .home-capacity-path li:nth-child(3)::before{animation-delay:-6s}
+  .home-capacity-path li:nth-child(4)::before{animation-delay:-3s}
+}
+@media(max-width:680px){
+  .home-capacity-section{padding:var(--foebe-nav-height) 18px 0}
+  .home-capacity-inner{
+    min-height:calc(var(--foebe-index-first-screen) - var(--foebe-nav-height));
+    padding:clamp(42px,7vh,64px) 0;
+  }
+  .home-capacity-eyebrow{margin-left:0;margin-right:0;justify-content:flex-start;text-align:left}
+  .home-capacity-title{
+    margin:0 0 30px;
+    font-size:clamp(29px,9vw,40px);
+    text-align:left;
+  }
+  .home-capacity-path{grid-template-columns:1fr;gap:12px}
+  .home-capacity-path::before{
+    display:block;
+    z-index:-2;
+    left:19px;right:auto;top:30px;bottom:30px;
+    width:2px;height:auto;transform:none;
+    background:linear-gradient(180deg,rgba(187,126,96,.18),rgba(196,82,121,.27),rgba(195,66,52,.23),rgba(187,126,96,.18));
+  }
+  .home-capacity-path::after{
+    display:block;
+    z-index:-1;
+    left:18px;right:auto;top:30px;
+    width:4px;height:22%;transform:none;
+    border-radius:999px;
+    background:linear-gradient(180deg,transparent 0%,#F0EAE7 38%,#BB7E60 68%,transparent 100%);
+    filter:drop-shadow(0 0 9px rgba(187,126,96,.68));
+    animation:capacityFlowVertical 7.2s ease-in-out infinite;
+  }
+  .home-capacity-path li{
+    min-height:0;
+    padding:18px 17px 18px 58px;
+    display:block;
+    text-align:left;
+    animation:capacityCardGlow 7.2s ease-in-out infinite;
+  }
+  .home-capacity-path li::before{
+    position:absolute;left:0;top:50%;transform:translateY(-50%);
+    width:40px;height:40px;
+  }
+  .home-capacity-path li span{display:block;max-width:none}
+  .home-entry-section{padding-top:68px}
+}
+
+@keyframes capacityFlowVertical{
+  0%{top:30px;opacity:0}
+  10%{opacity:1}
+  82%{opacity:1}
+  100%{top:calc(78% - 18px);opacity:0}
+}
+@keyframes capacityCardGlow{
+  0%,
+100%{border-color:var(--border);box-shadow:0 12px 28px rgba(0,0,0,.05)}
+  50%{border-color:rgba(187,126,96,.50);box-shadow:0 16px 34px rgba(187,126,96,.10)}
+}
+@media(orientation:landscape) and (max-height:700px){
+  .home-capacity-section{min-height:auto}
+  .home-capacity-inner{min-height:auto;padding:46px 0 54px}
+  .home-capacity-eyebrow{margin-bottom:12px}
+  .home-capacity-title{margin-bottom:24px;font-size:clamp(27px,4vw,43px)}
+  .home-capacity-path li{min-height:118px;padding:18px}
+}
+
+@media(min-width:1800px) and (min-height:900px){
+  .home-capacity-guide{max-width:1240px}
+  .home-capacity-title{max-width:980px;font-size:clamp(48px,3.2vw,66px)}
+  .home-capacity-path li{min-height:196px;font-size:18px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-capacity-section::before,
+.home-capacity-section::after,
+.home-capacity-path::after,
+.home-capacity-path li{animation:none}
+  .home-capacity-path li{will-change:auto}
+}
+
+/* ==================================================
+   12. Finitions responsive et thèmes
+   ================================================== */
+.home-start-eyebrow{
+  margin-bottom:clamp(10px,1.7vh,18px);
+}
+.home-start-title{
+  margin-top:0;
+}
+.home-start-signature{
+  max-width:800px;
+  margin-top:clamp(28px,4.2vh,42px);
+  font-size:clamp(18px,1.45vw,22px);
+  line-height:1.82;
+}
+.home-start-title{font-size:clamp(40px,6.2vw,78px)}
+@media(min-width:1800px){
+  .home-start-title{font-size:clamp(76px,4.25vw,96px)}
+  .home-start-signature{font-size:clamp(21px,1.05vw,24px);max-width:900px}
+}
+@media(min-width:2560px){
+  .home-start-head{max-width:1240px}
+  .home-start-title{font-size:clamp(88px,3.4vw,108px)}
+  .home-start-signature{font-size:24px;max-width:960px}
+}
+@media(max-width:680px){
+  .home-start-eyebrow{margin-bottom:13px}
+  .home-start-title{font-size:clamp(37px,10.8vw,52px)}
+  .home-start-signature{margin-top:28px;font-size:clamp(17px,4.6vw,19px);line-height:1.78}
+}
+@media(orientation:landscape) and (max-height:700px){
+  .home-start-eyebrow{margin-bottom:8px}
+  .home-start-signature{margin-top:17px;font-size:clamp(15px,1.55vw,18px);line-height:1.58}
+}
+.home-capacity-path::before{z-index:-3}
+.home-capacity-path::after{z-index:-2}
+@media(min-width:1024px){
+  .home-capacity-path::after{height:4px}
+}
+.home-capacity-path li::after{display:none}
+[data-theme="night"] .home-vocab-item{
+  background:color-mix(in srgb,var(--vocab-accent) 14%,#4E291F);
+  border-color:color-mix(in srgb,var(--vocab-accent) 58%,transparent)
+}
+[data-theme="night"] .home-vocab-trigger::before{
+  background:var(--vocab-accent);
+  color:#F0EAE7
+}
+[data-theme="night"] .home-vocab-trigger::after{
+  background:var(--vocab-accent);
+  color:#F0EAE7
+}
+[data-theme="night"] .home-vocab-panel{
+  background:color-mix(in srgb,var(--vocab-accent) 18%,#4E291F);
+  border-color:var(--vocab-accent)
+}
+[data-theme="night"] .home-vocab-panel::before{color:#F0EAE7}
+[data-theme="night"] .foebe-highlight--warm{--hl:rgba(187,126,96,.52);color:#F0EAE7}
+[data-theme="night"] .foebe-highlight--rose{--hl:rgba(196,82,121,.50);color:#F0EAE7}
+[data-theme="night"] .foebe-highlight--red{--hl:rgba(195,66,52,.50);color:#F0EAE7}
+[data-theme="night"] .reco-section .foebe-highlight{
+  background:linear-gradient(180deg,transparent 12%,var(--hl) 12% 91%,transparent 91%)
+}
+[data-theme="night"] .reco-grid .foebe-color{
+  --signal-hl:rgba(187,126,96,.52);
+  padding:0 .10em .035em;
+  border-radius:.14em;
+  color:#F0EAE7;
+  background:linear-gradient(180deg,transparent 12%,var(--signal-hl) 12% 91%,transparent 91%);
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone
+}
+[data-theme="night"] .reco-grid .foebe-color--warm{--signal-hl:rgba(187,126,96,.52)}
+[data-theme="night"] .reco-grid .foebe-color--rose{--signal-hl:rgba(196,82,121,.50)}
+[data-theme="night"] .reco-grid .foebe-color--red{--signal-hl:rgba(195,66,52,.50)}
+.home-entry-section .home-choice-guide{padding-block:clamp(22px,2.5vw,30px)}
+.home-choice-kicker{font-size:clamp(12px,.55vw + 10px,14px);letter-spacing:.15em}
+.home-choice-guide p:not(.home-explore-note){font-size:clamp(17px,1.15vw,19px)}
+.home-entry-section .home-explore-note{margin-top:10px;font-size:clamp(14.5px,.8vw,16px)}
+@media(min-width:2200px){
+  .home-capacity-guide{max-width:1380px}
+  .home-capacity-path li{min-height:220px;font-size:19px}
+  .home-entry-section>.home-start-inner{max-width:1480px}
+  .home-start-grid{gap:24px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-capacity-path::after{display:none}
+}
+
+/* ==================================================
+   13. Finitions des petits écrans
+   ================================================== */
+@media(max-width:680px){
+  .home-start-eyebrow{
+    max-width:100%;
+    padding-inline:11px;
+    font-size:10.25px;
+    letter-spacing:.78px;
+    white-space:nowrap;
+  }
+}
+@media(max-width:350px){
+  .home-start-eyebrow{font-size:9.5px;letter-spacing:.58px;padding-inline:9px}
+}
+</style>
+
+
+
+
+
+
+</head>
+<body class="page-index">
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -2191,61 +2363,85 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 <a href="/zones.html">7 zones</a>
 <a href="/dictionnaire.html">Dictionnaire</a>
 </div>
-</nav><div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+</nav>
+<div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
 <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
-</div><noscript><style>.foebe-scroll-progress--fallback{display:block!important}.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}</style></noscript>
-<!-- Barre locale de secours : le Shell conserve sa propre barre globale -->
+</div>
 <noscript>
+<style>
+.foebe-scroll-progress--fallback{display:block!important}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}
+.home-vocab-panel{
+  max-height:none!important;
+  overflow:visible!important;
+  opacity:1!important;
+  margin-top:7px!important;
+  padding:17px 18px 19px!important;
+  border-width:1px!important;
+  border-left-width:3px!important;
+}
+</style>
 </noscript>
+
 <main id="mainContent" tabindex="-1">
-<!-- ══════════════════════════════════════════
-     ACCUEIL — Bienvenue + portes visuelles
-══════════════════════════════════════════ -->
+
 <section aria-labelledby="home-start-title" class="home-start-section home-start-hero" id="commencer">
 <div class="home-start-inner">
 <div class="home-start-head index-motion-intro" data-index-motion="intro">
-<span class="home-start-eyebrow">Bienvenue à Maison Foébé</span>
+<span class="home-start-eyebrow">Maison Foébé te souhaite la bienvenue ✨</span>
 <h1 class="home-start-title" id="home-start-title">Tu <span class="foebe-word foebe-word--warm">fonctionnes</span>, mais tu ne récupères <span class="foebe-word foebe-word--rose">plus vraiment.</span></h1>
 <p class="home-start-signature">Ici, le <span class="foebe-highlight foebe-highlight--warm">self-care</span> devient une compétence : apprendre à <span class="foebe-highlight foebe-highlight--rose">se lire</span>, <span class="foebe-highlight foebe-highlight--red">se réguler</span>, puis <span class="foebe-highlight foebe-highlight--warm">avancer</span> avec plus de douceur.</p>
-<p class="home-explore-note">Commence par ce qui te parle. Il n'y a pas d'ordre précis.</p>
 </div>
+</div>
+</section>
+<section aria-labelledby="home-capacity-title" class="home-capacity-section" id="capacite-action">
+<div class="home-capacity-inner">
+<div class="home-capacity-guide index-motion-panel" data-index-motion="panel">
+<span class="home-capacity-eyebrow">Le self-care comme compétence</span>
+<h2 class="home-capacity-title" id="home-capacity-title">Foébé t’aide à retrouver ta <em>capacité d’action</em> dans ton self-care.</h2>
+<ul aria-label="Les quatre capacités que Maison Foébé aide à retrouver" class="home-capacity-path">
+<li><span>Reconnaître tes signaux</span></li>
+<li><span>Comprendre ce qui se déséquilibre</span></li>
+<li><span>Choisir un geste adapté à ta réalité</span></li>
+<li><span>Réévaluer sans te juger</span></li>
+</ul>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="section-fade section-fade-down fade-capacity-entry"></div>
+<section aria-labelledby="home-entry-title" class="home-entry-section" id="portes-entree">
+<div class="home-start-inner">
 <div aria-label="Trois portes pour commencer" class="home-choice-guide">
-<span class="home-choice-kicker">Trois portes d’entrée</span>
-<p>Commence par <span class="foebe-color foebe-color--warm">te situer</span>, <span class="foebe-color foebe-color--red">redescendre</span> ou <span class="foebe-color foebe-color--rose">comprendre ce qui se joue</span>.</p>
-</div><div aria-label="Choisir par où commencer dans Maison Foébé" class="home-start-grid home-start-grid--primary">
+<h2 class="home-choice-kicker" id="home-entry-title">Trois portes d’entrée</h2>
+<p>Pour <span class="foebe-color foebe-color--warm">te situer</span>, <span class="foebe-color foebe-color--red">redescendre</span> ou <span class="foebe-color foebe-color--rose">comprendre ce qui se joue</span>.</p>
+<p class="home-explore-note">Commence par ce qui te parle le plus, il n'y a pas d'ordre précis.</p>
+</div>
+<div aria-label="Choisir par où commencer dans Maison Foébé" class="home-start-grid home-start-grid--primary">
 <a aria-label="Faire l’Échelle Foébé" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="echelle-foebe.html">
 <div aria-hidden="true" class="home-visual home-visual--echelle-anim">
-<span class="foebe-balance-scene" aria-hidden="true">
-  <svg class="foebe-balance-svg" viewBox="0 0 320 168" role="presentation" focusable="false">
-    <g class="foebe-balance-stand">
-      <path class="foebe-balance-base" d="M112 147 H208"/>
-      <path class="foebe-balance-stem" d="M160 55 V147"/>
-      <circle class="foebe-balance-pivot" cx="160" cy="55" r="9"/>
-    </g>
-
-    <g class="foebe-balance-rock">
-      <path class="foebe-balance-beam" d="M68 55 H252"/>
-
-      <g class="foebe-balance-side foebe-balance-side--left">
-        <path class="foebe-balance-cord" d="M90 55 V103"/>
-        <path class="foebe-balance-pan" d="M58 103 Q90 122 122 103"/>
-        <circle class="foebe-balance-weight foebe-balance-weight--light" cx="90" cy="95" r="8"/>
-      </g>
-
-      <g class="foebe-balance-side foebe-balance-side--right">
-        <path class="foebe-balance-cord" d="M230 55 V103"/>
-        <path class="foebe-balance-pan" d="M198 103 Q230 122 262 103"/>
-        <circle class="foebe-balance-weight foebe-balance-weight--one" cx="230" cy="95" r="8"/>
-        <circle class="foebe-balance-weight foebe-balance-weight--two" cx="218" cy="91" r="8"/>
-        <circle class="foebe-balance-weight foebe-balance-weight--three" cx="242" cy="91" r="8"/>
-      </g>
-    </g>
-  </svg>
-
-  <span class="foebe-balance-labels">
-    <span>Léger</span>
-    <span>Ce qui pèse le plus</span>
-  </span>
+<span aria-hidden="true" class="foebe-balance-scene">
+<svg class="foebe-balance-svg" focusable="false" role="presentation" viewbox="38 34 244 122">
+<g class="foebe-balance-stand">
+<path class="foebe-balance-base" d="M112 147 H208"></path>
+<path class="foebe-balance-stem" d="M160 55 V147"></path>
+<circle class="foebe-balance-pivot" cx="160" cy="55" r="9"></circle>
+</g>
+<g class="foebe-balance-rock">
+<path class="foebe-balance-beam" d="M68 55 H252"></path>
+<g class="foebe-balance-side foebe-balance-side--left">
+<path class="foebe-balance-cord" d="M90 55 V103"></path>
+<path class="foebe-balance-pan" d="M58 103 Q90 122 122 103"></path>
+<circle class="foebe-balance-weight foebe-balance-weight--light" cx="90" cy="95" r="8"></circle>
+</g>
+<g class="foebe-balance-side foebe-balance-side--right">
+<path class="foebe-balance-cord" d="M230 55 V103"></path>
+<path class="foebe-balance-pan" d="M198 103 Q230 122 262 103"></path>
+<circle class="foebe-balance-weight foebe-balance-weight--one" cx="230" cy="95" r="8"></circle>
+<circle class="foebe-balance-weight foebe-balance-weight--two" cx="218" cy="91" r="8"></circle>
+<circle class="foebe-balance-weight foebe-balance-weight--three" cx="242" cy="91" r="8"></circle>
+</g>
+</g>
+</svg>
 </span>
 </div>
 <span class="home-start-num">01 · Me situer</span>
@@ -2254,8 +2450,13 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 <span class="home-start-link">Commencer l’Échelle Foébé →</span>
 </a>
 <a aria-label="Lancer la respiration guidée" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="respiration.html">
-<div aria-hidden="true" class="home-visual home-visual--respiration">
-<span class="home-breath-circle" id="breathCircle">
+<div aria-hidden="true" class="home-visual home-visual--respiration" id="breathPreview">
+<span class="home-breath-preview">
+<span aria-hidden="true" class="home-breath-direction">↑</span>
+<span class="home-breath-track">
+<span class="home-breath-ball" id="breathBall"></span>
+</span>
+<span aria-hidden="true" class="home-breath-direction">↓</span>
 <span class="home-breath-label" id="breathLabel">Inspire</span>
 </span>
 </div>
@@ -2308,40 +2509,40 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 <span aria-hidden="true" class="home-secondary-arrow">→</span>
 </a>
 </div>
-<div aria-labelledby="vocab-clarity-title" class="vocab-clarity reveal reveal-delay-1 index-motion-panel" data-index-motion="panel">
-<span class="vocab-clarity-kicker">Quatre mots à distinguer</span>
-<h2 class="vocab-clarity-title" id="vocab-clarity-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
-<p class="vocab-clarity-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
-<div aria-label="Définitions rapides" class="vocab-tags vocab-accordion">
-<div class="vocab-item">
-<button aria-controls="vocab-selfcare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-selfcare" type="button">
+<div aria-labelledby="home-vocab-title" class="home-vocab reveal reveal-delay-1 index-motion-panel" data-index-motion="panel">
+<span class="home-vocab-kicker">Quatre mots à distinguer</span>
+<h2 class="home-vocab-title" id="home-vocab-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
+<p class="home-vocab-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
+<div aria-label="Définitions rapides" class="home-vocab-list">
+<div class="home-vocab-item">
+<button aria-controls="vocab-selfcare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-selfcare" type="button">
 <span>Self-care</span>
 </button>
-<div aria-hidden="true" aria-label="Définition du self-care" class="vocab-panel" id="vocab-selfcare" role="region">
+<div aria-label="Définition du self-care" class="home-vocab-panel" id="vocab-selfcare" role="region">
             La manière dont tu prends soin de ton équilibre : corps, mental, émotions, énergie, environnement, relations et sens.
           </div>
 </div>
-<div class="vocab-item">
-<button aria-controls="vocab-skincare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-skincare" type="button">
+<div class="home-vocab-item">
+<button aria-controls="vocab-skincare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-skincare" type="button">
 <span>Skincare</span>
 </button>
-<div aria-hidden="true" aria-label="Définition du skincare" class="vocab-panel" id="vocab-skincare" role="region">
+<div aria-label="Définition du skincare" class="home-vocab-panel" id="vocab-skincare" role="region">
             Les gestes et actifs liés à la peau : barrière cutanée, hydratation, exfoliation, sensibilité, texture, confort.
           </div>
 </div>
-<div class="vocab-item">
-<button aria-controls="vocab-bodycare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-bodycare" type="button">
+<div class="home-vocab-item">
+<button aria-controls="vocab-bodycare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-bodycare" type="button">
 <span>Bodycare</span>
 </button>
-<div aria-hidden="true" aria-label="Définition du bodycare" class="vocab-panel" id="vocab-bodycare" role="region">
+<div aria-label="Définition du bodycare" class="home-vocab-panel" id="vocab-bodycare" role="region">
             Les gestes liés au corps : nettoyage, hydratation, nutrition, exfoliation, confort, toucher et relation au corps.
           </div>
 </div>
-<div class="vocab-item">
-<button aria-controls="vocab-haircare" aria-expanded="false" class="vocab-tag" data-vocab-target="vocab-haircare" type="button">
+<div class="home-vocab-item">
+<button aria-controls="vocab-haircare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-haircare" type="button">
 <span>Haircare</span>
 </button>
-<div aria-hidden="true" aria-label="Définition du haircare" class="vocab-panel" id="vocab-haircare" role="region">
+<div aria-label="Définition du haircare" class="home-vocab-panel" id="vocab-haircare" role="region">
             Les gestes liés aux cheveux et au cuir chevelu : hydratation, porosité, casse, clarification, protection, routine.
           </div>
 </div>
@@ -2350,15 +2551,13 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 </div>
 </section>
 <div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
-<!-- ══════════════════════════════════════════
-     RECONNAISSANCE
-══════════════════════════════════════════ -->
-<section aria-label="Reconnaissance" class="reco-section" id="decouvrir">
+
+<section aria-labelledby="reco-title" class="reco-section" id="decouvrir">
 <div class="reco-inner">
 <div class="reco-header reveal index-motion-panel" data-index-motion="panel">
 <p class="section-step"><span>01</span></p>
 <span class="section-eyebrow">Tu reconnais cette situation ?</span>
-<h2 class="reco-title">
+<h2 class="reco-title" id="reco-title">
       Tu peux <span class="foebe-highlight foebe-highlight--warm">continuer à fonctionner</span><br/>
       tout en commençant à <span class="foebe-highlight foebe-highlight--red">t’épuiser.</span>
 </h2>
@@ -2413,7 +2612,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 </div>
 <div class="accompagnement-right">
 <form action="https://formspree.io/f/mnnqbjrl" class="newsletter-form accompagnement-form" method="POST">
-<input aria-label="Votre adresse email" class="newsletter-input" name="email" placeholder="votre@email.fr" required="" type="email"/>
+<input aria-label="Votre adresse email" autocomplete="email" class="newsletter-input" name="email" placeholder="votre@email.fr" required="" type="email"/>
 <button class="newsletter-btn" type="submit">Me tenir informé·e</button>
 </form>
 <p class="newsletter-note">Sans engagement · Pas de spam</p>
@@ -2422,302 +2621,345 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 </div>
 </section>
 </main>
-<!-- newsletter fusionnée dans section accompagnement -->
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  var revealEls = document.querySelectorAll('.reveal');
 
-  if (!('IntersectionObserver' in window)) {
-    revealEls.forEach(function(el){ el.classList.add('visible'); });
-    return;
-  }
 
-  var observer = new IntersectionObserver(function(entries, obs){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
 
-  revealEls.forEach(function(el){ observer.observe(el); });
-});
-</script>
-<script>
-(function(){
-  var label = document.getElementById('breathLabel');
-  if(!label) return;
-  var phases = [
-    { text:'Inspire',  dur:4000  },
-    { text:'···',      dur:1000  },
-    { text:'Expire',   dur:6000  },
-    { text:'···',      dur:1000  }
-  ];
-  var total = phases.reduce(function(s,p){ return s+p.dur; }, 0);
-  function getPhase(t){
-    var elapsed = t % total;
-    for(var i=0;i<phases.length;i++){
-      elapsed -= phases[i].dur;
-      if(elapsed < 0) return phases[i].text;
-    }
-    return phases[0].text;
-  }
-  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if(mq && mq.matches) { label.textContent = 'Respirer'; return; }
-  var start = null;
-  var current = '';
-  var fadeTimer = 0;
-  function tick(ts){
-    if(!start) start = ts;
-    var t = ts - start;
-    var phase = getPhase(t);
-    if(phase !== current){
-      current = phase;
-      window.clearTimeout(fadeTimer);
-      label.style.opacity = '0';
-      fadeTimer = window.setTimeout(function(){
-        label.textContent = current;
-        label.style.opacity = '.88';
-      }, 180);
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-})();
-</script>
-<script>
-(function(){
-  var el = document.getElementById('bibliotype');
-  if(!el) return;
-  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if(mq && mq.matches) return;
 
-  var words = ["Acide","Sérum","Corps","Repos","Geste","Signal","Stress","Mental","Besoin","Rituel"];
 
-  var wi = 0;
-  var ci = 0;
-  var deleting = false;
-  var pauseFrames = 0;
-  var PAUSE_AFTER_TYPE = 52;   // ~1.3s à 25ms
-  var PAUSE_AFTER_DEL  = 14;   // ~350ms avant le mot suivant
 
-  function tick() {
-    var word = words[wi];
 
-    if(pauseFrames > 0) {
-      pauseFrames--;
-      setTimeout(tick, 25);
-      return;
-    }
 
-    if(!deleting) {
-      ci++;
-      el.textContent = word.slice(0, ci);
-      if(ci >= word.length) {
-        deleting = true;
-        pauseFrames = PAUSE_AFTER_TYPE;
-        setTimeout(tick, 25);
-      } else {
-        setTimeout(tick, 68 + Math.random() * 40);
-      }
+<script id="foebeIndexScript">
+(function () {
+  "use strict";
+
+  function onReady(callback) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", callback, { once: true });
     } else {
-      ci--;
-      el.textContent = word.slice(0, ci);
-      if(ci <= 0) {
-        deleting = false;
-        wi = (wi + 1) % words.length;
-        pauseFrames = PAUSE_AFTER_DEL;
-        setTimeout(tick, 25);
-      } else {
-        setTimeout(tick, 38 + Math.random() * 20);
-      }
+      callback();
     }
   }
 
-  setTimeout(tick, 900);
-})();
-</script>
-<script>
-(function(){
-  var root = document.querySelector('.vocab-clarity');
-  if (!root) return;
-  var buttons = Array.prototype.slice.call(root.querySelectorAll('.vocab-tag[data-vocab-target]'));
-  if (!buttons.length) return;
-
-  function getPanel(btn){
-    var id = btn.getAttribute('data-vocab-target');
-    return id ? document.getElementById(id) : null;
-  }
-
-  function measuredHeight(panel){
-    return Math.ceil(panel.scrollHeight + 28) + 'px';
-  }
-
-  function closeButton(btn){
-    var panel = getPanel(btn);
-    btn.setAttribute('aria-expanded', 'false');
-    if (!panel) return;
-
-    if (panel.classList.contains('is-open')) {
-      panel.style.maxHeight = panel.scrollHeight + 'px';
-      panel.offsetHeight;
+  function prefersReducedMotion() {
+    try {
+      return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (error) {
+      return false;
     }
-
-    panel.classList.remove('is-open');
-    panel.setAttribute('aria-hidden', 'true');
-    panel.style.maxHeight = '0px';
   }
 
-  function openButton(btn){
-    var panel = getPanel(btn);
-    btn.setAttribute('aria-expanded', 'true');
-    if (!panel) return;
+  function initReveals() {
+    var root = document.documentElement;
+    var elements = Array.prototype.slice.call(document.querySelectorAll(".reveal:not([data-index-motion])"));
+    if (!elements.length) return;
 
-    panel.classList.add('is-open');
-    panel.setAttribute('aria-hidden', 'false');
-    panel.style.maxHeight = '0px';
-
-    window.requestAnimationFrame(function(){
-      panel.style.maxHeight = measuredHeight(panel);
-    });
-  }
-
-  function activeButton(){
-    return buttons.find(function(btn){ return btn.getAttribute('aria-expanded') === 'true'; }) || null;
-  }
-
-  buttons.forEach(function(btn){
-    var panel = getPanel(btn);
-    if (panel) {
-      panel.style.maxHeight = '0px';
-      panel.addEventListener('transitionend', function(e){
-        if (e.propertyName !== 'max-height') return;
-        if (panel.classList.contains('is-open')) panel.style.maxHeight = 'none';
+    function revealAll() {
+      elements.forEach(function (element) {
+        element.classList.add("visible");
       });
     }
 
-    btn.addEventListener('click', function(){
-      var current = activeButton();
-      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+    if (!("IntersectionObserver" in window) || prefersReducedMotion()) {
+      revealAll();
+      return;
+    }
 
-      if (isOpen) {
-        closeButton(btn);
+    try {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+
+      root.classList.add("foebe-reveal-ready");
+      elements.forEach(function (element) {
+        observer.observe(element);
+      });
+    } catch (error) {
+      root.classList.remove("foebe-reveal-ready");
+      revealAll();
+    }
+  }
+
+  function initGuidedMotion() {
+    var root = document.documentElement;
+    var items = Array.prototype.slice.call(document.querySelectorAll("[data-index-motion]"));
+    if (!items.length) return;
+
+    function revealAll() {
+      items.forEach(function (element) {
+        element.classList.add("is-visible");
+      });
+    }
+
+    if (prefersReducedMotion() || !("IntersectionObserver" in window) || window.innerWidth <= 767) {
+      root.classList.add("foebe-index-no-motion");
+      revealAll();
+      return;
+    }
+
+    try {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+
+      root.classList.add("foebe-index-motion-ready");
+      items.forEach(function (element) {
+        observer.observe(element);
+      });
+    } catch (error) {
+      root.classList.remove("foebe-index-motion-ready");
+      root.classList.add("foebe-index-no-motion");
+      revealAll();
+    }
+  }
+
+  function initBreathPreview() {
+    var visual = document.getElementById("breathPreview");
+    var label = document.getElementById("breathLabel");
+    if (!visual || !label) return;
+
+    if (prefersReducedMotion()) {
+      label.textContent = "Respirer";
+      return;
+    }
+
+    var phases = [
+      { text: "Inspire", duration: 4000 },
+      { text: "Pause", duration: 1000 },
+      { text: "Expire", duration: 6000 },
+      { text: "Pause", duration: 1000 }
+    ];
+    var totalDuration = phases.reduce(function (total, phase) {
+      return total + phase.duration;
+    }, 0);
+    var startTime = null;
+    var currentPhase = "Inspire";
+    var fadeTimer = 0;
+
+    function phaseAt(time) {
+      var elapsed = time % totalDuration;
+      for (var index = 0; index < phases.length; index += 1) {
+        elapsed -= phases[index].duration;
+        if (elapsed < 0) return phases[index].text;
+      }
+      return phases[0].text;
+    }
+
+    function tick(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      var nextPhase = phaseAt(timestamp - startTime);
+
+      if (nextPhase !== currentPhase) {
+        currentPhase = nextPhase;
+        window.clearTimeout(fadeTimer);
+        label.style.opacity = "0";
+        fadeTimer = window.setTimeout(function () {
+          label.textContent = currentPhase;
+          label.style.opacity = ".88";
+        }, 180);
+      }
+
+      window.requestAnimationFrame(tick);
+    }
+
+    visual.classList.add("is-running");
+    window.requestAnimationFrame(tick);
+  }
+
+  function initDictionaryTyping() {
+    var element = document.getElementById("bibliotype");
+    if (!element || prefersReducedMotion()) return;
+
+    var words = ["Acide", "Sérum", "Corps", "Repos", "Geste", "Signal", "Stress", "Mental", "Besoin", "Rituel"];
+    var wordIndex = 0;
+    var characterIndex = 0;
+    var deleting = false;
+    var pauseFrames = 0;
+
+    function tick() {
+      var word = words[wordIndex];
+
+      if (pauseFrames > 0) {
+        pauseFrames -= 1;
+        window.setTimeout(tick, 25);
         return;
       }
 
-      buttons.forEach(function(other){ closeButton(other); });
-
-      /* Légère respiration : on voit l'ancien panneau se fermer avant l'ouverture du suivant. */
-      window.setTimeout(function(){ openButton(btn); }, current ? 115 : 0);
-    });
-  });
-
-  window.addEventListener('resize', function(){
-    var current = activeButton();
-    if (current) {
-      var panel = getPanel(current);
-      if (panel && panel.classList.contains('is-open')) {
-        panel.style.maxHeight = measuredHeight(panel);
-        window.setTimeout(function(){
-          if (panel.classList.contains('is-open')) panel.style.maxHeight = 'none';
-        }, 420);
+      if (!deleting) {
+        characterIndex += 1;
+        element.textContent = word.slice(0, characterIndex);
+        if (characterIndex >= word.length) {
+          deleting = true;
+          pauseFrames = 52;
+          window.setTimeout(tick, 25);
+        } else {
+          window.setTimeout(tick, 68 + Math.random() * 40);
+        }
+        return;
       }
-    }
-  }, { passive:true });
 
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') buttons.forEach(function(btn){ closeButton(btn); });
-  });
-})();
-</script>
-<script id="foebeIndexGuidedMotionV1Script">
-(function(){
-  function ready(fn){
-    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, { once:true });
-    else fn();
-  }
-
-  ready(function(){
-    var root = document.documentElement;
-    var items = Array.prototype.slice.call(document.querySelectorAll('[data-index-motion]'));
-    var reduce = false;
-    try { reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
-
-    function revealAll(){
-      items.forEach(function(el){ el.classList.add('is-visible'); });
-    }
-
-    try{
-      if(items.length && !reduce && 'IntersectionObserver' in window && window.innerWidth > 767){
-        var observer = new IntersectionObserver(function(entries){
-          entries.forEach(function(entry){
-            if(entry.isIntersecting){
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold:.14, rootMargin:'0px 0px -6% 0px' });
-
-        items.forEach(function(el){ observer.observe(el); });
-        root.classList.add('foebe-index-motion-ready');
+      characterIndex -= 1;
+      element.textContent = word.slice(0, characterIndex);
+      if (characterIndex <= 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        pauseFrames = 14;
+        window.setTimeout(tick, 25);
       } else {
-        root.classList.add('foebe-index-no-motion');
-        revealAll();
+        window.setTimeout(tick, 38 + Math.random() * 20);
       }
-    } catch(error){
-      root.classList.remove('foebe-index-motion-ready');
-      root.classList.add('foebe-index-no-motion');
-      revealAll();
     }
+
+    window.setTimeout(tick, 900);
+  }
+
+  function initVocabularyAccordion() {
+    var root = document.querySelector(".home-vocab");
+    if (!root) return;
+
+    var buttons = Array.prototype.slice.call(root.querySelectorAll(".home-vocab-trigger[data-home-vocab-target]"));
+    if (!buttons.length) return;
+
+    function panelFor(button) {
+      var id = button.getAttribute("data-home-vocab-target");
+      return id ? document.getElementById(id) : null;
+    }
+
+    function measuredHeight(panel) {
+      return Math.ceil(panel.scrollHeight + 28) + "px";
+    }
+
+    function close(button) {
+      var panel = panelFor(button);
+      button.setAttribute("aria-expanded", "false");
+      if (!panel) return;
+
+      if (panel.classList.contains("is-open")) {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.offsetHeight;
+      }
+
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+      panel.style.maxHeight = "0px";
+    }
+
+    function open(button) {
+      var panel = panelFor(button);
+      button.setAttribute("aria-expanded", "true");
+      if (!panel) return;
+
+      panel.classList.add("is-open");
+      panel.setAttribute("aria-hidden", "false");
+      panel.style.maxHeight = "0px";
+      window.requestAnimationFrame(function () {
+        panel.style.maxHeight = measuredHeight(panel);
+      });
+    }
+
+    function activeButton() {
+      return buttons.find(function (button) {
+        return button.getAttribute("aria-expanded") === "true";
+      }) || null;
+    }
+
+    buttons.forEach(function (button) {
+      var panel = panelFor(button);
+      if (panel) {
+        button.setAttribute("aria-expanded", "false");
+        panel.setAttribute("aria-hidden", "true");
+        panel.style.maxHeight = "0px";
+        panel.addEventListener("transitionend", function (event) {
+          if (event.propertyName === "max-height" && panel.classList.contains("is-open")) {
+            panel.style.maxHeight = "none";
+          }
+        });
+      }
+
+      button.addEventListener("click", function () {
+        var current = activeButton();
+        if (button.getAttribute("aria-expanded") === "true") {
+          close(button);
+          return;
+        }
+
+        buttons.forEach(close);
+        window.setTimeout(function () {
+          open(button);
+        }, current ? 115 : 0);
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      var current = activeButton();
+      var panel = current ? panelFor(current) : null;
+      if (!panel || !panel.classList.contains("is-open")) return;
+
+      panel.style.maxHeight = measuredHeight(panel);
+      window.setTimeout(function () {
+        if (panel.classList.contains("is-open")) panel.style.maxHeight = "none";
+      }, 420);
+    }, { passive: true });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") buttons.forEach(close);
+    });
+  }
+
+  function initFallbackProgress() {
+    var root = document.documentElement;
+    var bar = document.getElementById("foebeScrollProgressFallbackBar");
+    if (!bar) return;
+
+    function progressIsOff() {
+      return root.getAttribute("data-foebe-progress") === "off" ||
+        (document.body && document.body.getAttribute("data-foebe-progress") === "off");
+    }
+
+    function update() {
+      if (progressIsOff() || !root.classList.contains("foebe-shell-failed")) return;
+
+      var documentElement = document.documentElement;
+      var body = document.body || documentElement;
+      var scrollTop = window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;
+      var fullHeight = Math.max(
+        documentElement.scrollHeight,
+        documentElement.offsetHeight,
+        documentElement.clientHeight,
+        body.scrollHeight || 0,
+        body.offsetHeight || 0
+      );
+      var maxScroll = Math.max(0, fullHeight - window.innerHeight);
+      var progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+      bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
+    }
+
+    window.addEventListener("foebe:shell-failed", update);
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    window.addEventListener("orientationchange", update, { passive: true });
+    window.addEventListener("load", update);
+    window.addEventListener("pageshow", update);
+    update();
+  }
+
+  onReady(function () {
+    initReveals();
+    initGuidedMotion();
+    initBreathPreview();
+    initDictionaryTyping();
+    initVocabularyAccordion();
+    initFallbackProgress();
   });
 })();
-</script>
-<script id="foebeProgressFallbackScript">
-(function () {
-  var root = document.documentElement;
-  var bar = document.getElementById("foebeScrollProgressFallbackBar");
-  if (!bar) return;
-
-  function progressIsOff() {
-    var body = document.body;
-    return root.getAttribute("data-foebe-progress") === "off" ||
-      (body && body.getAttribute("data-foebe-progress") === "off");
-  }
-
-  function updateFallbackProgress() {
-    if (progressIsOff() || !root.classList.contains("foebe-shell-failed")) return;
-
-    var doc = document.documentElement;
-    var body = document.body || doc;
-    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    var fullHeight = Math.max(
-      doc.scrollHeight,
-      doc.offsetHeight,
-      doc.clientHeight,
-      body.scrollHeight || 0,
-      body.offsetHeight || 0
-    );
-    var maxScroll = Math.max(0, fullHeight - window.innerHeight);
-    var progress = maxScroll > 0
-      ? Math.min(1, Math.max(0, scrollTop / maxScroll))
-      : 0;
-
-    bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
-  }
-
-  window.addEventListener("foebe:shell-failed", updateFallbackProgress);
-  window.addEventListener("scroll", updateFallbackProgress, { passive: true });
-  window.addEventListener("resize", updateFallbackProgress, { passive: true });
-  window.addEventListener("orientationchange", updateFallbackProgress, { passive: true });
-  window.addEventListener("load", updateFallbackProgress);
-  window.addEventListener("pageshow", updateFallbackProgress);
-  updateFallbackProgress();
-})();
-</script>
-<script src="/foebe-shell.js"></script>
+</script><script src="/foebe-shell.js"></script>
 </body>
 </html>
