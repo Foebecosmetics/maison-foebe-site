@@ -1068,6 +1068,8 @@ if (fallbackNav) {
       }
     }
 
+    var hasShownInitialTeaser = false;
+
     function enableForCurrentViewport() {
       var root = document.documentElement;
       injectCss();
@@ -1085,6 +1087,16 @@ if (fallbackNav) {
       if (isImmersiveStoryPage() && !menuIsOpen()) {
         clearHideTimer();
         root.classList.remove(menuOpenClass);
+        /* Teaser d'apparition : au tout premier chargement, on laisse la nav
+           visible un court instant pour que la personne l'enregistre, avant
+           qu'elle ne se range selon le rythme habituel. Les appels suivants
+           (resize, rotation, retour d'onglet…) ne répètent pas le teaser. */
+        if (!hasShownInitialTeaser) {
+          hasShownInitialTeaser = true;
+          root.classList.remove(hiddenClass);
+          hideTimer = window.setTimeout(hideNav, 2200);
+          return;
+        }
         root.classList.add(hiddenClass);
         return;
       }
@@ -1110,9 +1122,10 @@ if (fallbackNav) {
         return;
       }
 
-      /* Sur les stories, un toucher dans les 76 px supérieurs rappelle le Shell.
-         Un toucher ailleurs continue la story sans casser l'immersion. */
-      if (pointerStartY !== null && pointerStartY <= 24) {
+      /* Sur les stories, un toucher dans les 64 px supérieurs (zone #navWakeZone
+         dédiée côté page) rappelle le Shell. Un toucher ailleurs continue la
+         story sans casser l'immersion. */
+      if (pointerStartY !== null && pointerStartY <= 64) {
         showNav();
       }
     }
