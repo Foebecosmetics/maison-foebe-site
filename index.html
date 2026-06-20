@@ -2012,6 +2012,173 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
     transform:none!important
   }
 }
+</style><style id="foebeIndexMobileZonesWavesFix">
+/* ═════════════════════════════════════════════
+   PORTE 03 — vagues mobiles plus visibles
+   Le SVG dépasse volontairement du cadre :
+   aucun espace vide ne peut apparaître aux bords.
+   La respiration n'est pas concernée.
+═════════════════════════════════════════════ */
+
+/* Base sûre : la scène couvre toujours tout le panneau. */
+.home-visual--zones-anim{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden!important
+}
+.home-visual--zones-anim .zones-wave-svg{
+  pointer-events:none;
+  transform-origin:center center;
+  will-change:transform
+}
+.home-visual--zones-anim .wave-path-1,
+.home-visual--zones-anim .wave-path-2,
+.home-visual--zones-anim .wave-path-3{
+  transform-box:fill-box;
+  transform-origin:center center;
+  will-change:transform
+}
+
+/* Mobile portrait. */
+@media(max-width:680px){
+  .home-visual--zones-anim{
+    min-height:130px!important;
+    background:
+      radial-gradient(ellipse 82% 78% at 50% 48%,rgba(196,82,121,.18),transparent 72%),
+      linear-gradient(145deg,rgba(196,82,121,.18),rgba(187,126,96,.10))!important
+  }
+
+  /* Débordement volontaire de 18 % de chaque côté et de 10 % en hauteur. */
+  .home-visual--zones-anim .zones-wave-svg{
+    inset:-10% -18% -12%!important;
+    width:136%!important;
+    height:122%!important;
+    max-width:none!important;
+    animation:foebeMobileWaveField 8.6s ease-in-out infinite!important
+  }
+
+  /* Trois vitesses et amplitudes différentes, nettement perceptibles. */
+  .home-visual--zones-anim .wave-path-1{
+    fill:rgba(187,126,96,.27)!important;
+    animation:foebeMobileWaveOne 5.4s ease-in-out infinite!important
+  }
+  .home-visual--zones-anim .wave-path-2{
+    fill:rgba(196,82,121,.19)!important;
+    animation:foebeMobileWaveTwo 7.1s ease-in-out infinite reverse!important
+  }
+  .home-visual--zones-anim .wave-path-3{
+    fill:rgba(240,234,231,.13)!important;
+    animation:foebeMobileWaveThree 9.2s ease-in-out infinite!important
+  }
+
+  /* La constellation accompagne doucement les vagues. */
+  .home-visual--zones-anim .foebe-zone-node-map{
+    width:84%!important;
+    height:74%!important;
+    animation:foebeMobileNodesFloat 5.8s ease-in-out infinite!important
+  }
+  .home-visual--zones-anim .foebe-zone-node-map i{
+    animation-duration:2.8s!important
+  }
+}
+
+/* Mode jour : vagues visibles sur #F0EAE7 sans devenir lourdes. */
+@media(max-width:680px){
+  [data-theme="day"] .home-visual--zones-anim{
+    background:
+      radial-gradient(ellipse 84% 78% at 50% 48%,rgba(196,82,121,.10),transparent 72%),
+      rgba(255,255,255,.38)!important
+  }
+  [data-theme="day"] .home-visual--zones-anim .wave-path-1{
+    fill:rgba(187,126,96,.22)!important
+  }
+  [data-theme="day"] .home-visual--zones-anim .wave-path-2{
+    fill:rgba(196,82,121,.15)!important
+  }
+  [data-theme="day"] .home-visual--zones-anim .wave-path-3{
+    fill:rgba(142,91,67,.075)!important
+  }
+}
+
+/* Très petits mobiles : même couverture, mouvement légèrement contenu. */
+@media(max-width:380px){
+  .home-visual--zones-anim .zones-wave-svg{
+    inset:-10% -22% -12%!important;
+    width:144%!important
+  }
+  .home-visual--zones-anim .foebe-zone-node-map{
+    width:82%!important;
+    height:72%!important
+  }
+}
+
+/* Mobile et petite tablette en paysage. */
+@media(orientation:landscape) and (max-height:700px) and (min-width:560px) and (max-width:1023px){
+  .home-visual--zones-anim .zones-wave-svg{
+    inset:-14% -14% -16%!important;
+    width:128%!important;
+    height:130%!important;
+    max-width:none!important;
+    animation:foebeMobileWaveField 7.8s ease-in-out infinite!important
+  }
+  .home-visual--zones-anim .wave-path-1{
+    fill:rgba(187,126,96,.25)!important;
+    animation:foebeMobileWaveOne 5.2s ease-in-out infinite!important
+  }
+  .home-visual--zones-anim .wave-path-2{
+    fill:rgba(196,82,121,.18)!important;
+    animation:foebeMobileWaveTwo 6.8s ease-in-out infinite reverse!important
+  }
+  .home-visual--zones-anim .wave-path-3{
+    fill:rgba(240,234,231,.12)!important;
+    animation:foebeMobileWaveThree 8.8s ease-in-out infinite!important
+  }
+  .home-visual--zones-anim .foebe-zone-node-map{
+    width:80%!important;
+    height:76%!important;
+    animation:foebeMobileNodesFloat 5.4s ease-in-out infinite!important
+  }
+}
+
+@keyframes foebeMobileWaveField{
+  0%,100%{transform:translate3d(-1.8%,0,0) scaleX(1.02)}
+  50%{transform:translate3d(1.8%,-1.5%,0) scaleX(1.05)}
+}
+@keyframes foebeMobileWaveOne{
+  0%,100%{transform:translate3d(-7%,1%,0) scaleX(1.16) scaleY(.98)}
+  50%{transform:translate3d(7%,-3%,0) scaleX(1.20) scaleY(1.05)}
+}
+@keyframes foebeMobileWaveTwo{
+  0%,100%{transform:translate3d(6%,-1%,0) scaleX(1.18) scaleY(1.03)}
+  50%{transform:translate3d(-6%,3%,0) scaleX(1.22) scaleY(.97)}
+}
+@keyframes foebeMobileWaveThree{
+  0%,100%{transform:translate3d(-5%,2%,0) scaleX(1.20) scaleY(.96)}
+  50%{transform:translate3d(5%,-2%,0) scaleX(1.24) scaleY(1.04)}
+}
+@keyframes foebeMobileNodesFloat{
+  0%,100%{transform:translate3d(0,2px,0) rotate(-1deg)}
+  50%{transform:translate3d(0,-4px,0) rotate(1deg)}
+}
+
+/* Réduction du mouvement : couverture complète maintenue, animations coupées. */
+@media(prefers-reduced-motion:reduce){
+  .home-visual--zones-anim .zones-wave-svg,
+  .home-visual--zones-anim .wave-path-1,
+  .home-visual--zones-anim .wave-path-2,
+  .home-visual--zones-anim .wave-path-3,
+  .home-visual--zones-anim .foebe-zone-node-map{
+    animation:none!important
+  }
+  .home-visual--zones-anim .zones-wave-svg{
+    transform:none!important
+  }
+  .home-visual--zones-anim .wave-path-1,
+  .home-visual--zones-anim .wave-path-2,
+  .home-visual--zones-anim .wave-path-3{
+    transform:scaleX(1.18)!important
+  }
+}
 </style></head>
 <body class="page-index" data-page-version="index-editorial-premium-2026">
 <!-- Navigation fallback critique — remplacée/masquée par Foébé Shell si disponible -->
