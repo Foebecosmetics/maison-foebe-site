@@ -20,12 +20,24 @@
 </script><script id="foebe-shell-fallback-guard">
 (function(){
   var h = document.documentElement;
-  h.classList.add('foebe-shell-loading');
-  window.setTimeout(function(){
-    if (!h.classList.contains('foebe-shell-ready')) {
-      h.classList.add('foebe-shell-failed');
+  var failedDispatched = false;
+
+  function markFailed(){
+    if (h.classList.contains('foebe-shell-ready')) return;
+    h.classList.remove('foebe-shell-loading');
+    h.classList.add('foebe-shell-failed');
+    if (!failedDispatched) {
+      failedDispatched = true;
+      try { window.dispatchEvent(new CustomEvent('foebe:shell-failed')); } catch(e) {}
     }
-  }, 2500);
+  }
+
+  h.classList.add('foebe-shell-loading');
+  window.addEventListener('foebe:shell-ready', function(){
+    h.classList.remove('foebe-shell-loading', 'foebe-shell-failed');
+    h.classList.add('foebe-shell-ready');
+  }, { once:true });
+  window.setTimeout(markFailed, 3000);
 })();
 </script>
 <script>document.documentElement.classList.add('js-ready');</script>
@@ -33,12 +45,12 @@
 <title>La Boussole · Lire les situations · Maison Foébé</title>
 <meta name="description" content="La Boussole Foébé aide à lire des scènes du quotidien pour reconnaître les 7 dimensions du self-care avec des repères simples et concrets.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://maisonfoebe.fr/boussole/scenarios/">
+<link rel="canonical" href="https://maisonfoebe.fr/boussole-scenarios.html">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:type" content="website">
 <meta property="og:title" content="La Boussole · Lire les situations · Maison Foébé">
 <meta property="og:description" content="Apprends à lire des scènes du quotidien, à reconnaître les zones Foébé et à distinguer le signal qui organise la situation.">
-<meta property="og:url" content="https://maisonfoebe.fr/boussole/scenarios/">
+<meta property="og:url" content="https://maisonfoebe.fr/boussole-scenarios.html">
 <meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -52,7 +64,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Boussole — Maison Foébé","description":"Scénarios de discernement pour apprendre à reconnaître les 7 dimensions du self-care selon Maison Foébé.","url":"https://maisonfoebe.fr/boussole/scenarios/","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Boussole — Maison Foébé","description":"Scénarios de discernement pour apprendre à reconnaître les 7 dimensions du self-care selon Maison Foébé.","url":"https://maisonfoebe.fr/boussole-scenarios.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -503,39 +515,6 @@ body > nav#fallbackNav.fallback-nav .fallback-logo:focus-visible{
 }
 </style>
 
-<style id="foebeScrollProgressCss">
-.foebe-scroll-progress {
-  position: fixed;
-  top: var(--nav-offset, 60px);
-  left: 0;
-  right: 0;
-  z-index: 940;
-  height: 3px;
-  background: rgba(187, 126, 96, .16);
-  pointer-events: none;
-}
-.foebe-scroll-progress__bar {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(0);
-  transform-origin: left center;
-  background: linear-gradient(90deg, #BB7E60, #C45279, #C34234);
-  box-shadow: 0 0 14px rgba(187, 126, 96, .34);
-  will-change: transform;
-}
-[data-theme="day"] .foebe-scroll-progress {
-  background: rgba(78, 41, 31, .10);
-}
-@media (max-width: 720px) {
-  .foebe-scroll-progress { height: 2px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .foebe-scroll-progress__bar { transition: none !important; }
-}
-</style>
-
-
 <style id="foebeBoussoleScenariosFallbacks">
 /* Fallbacks Boussole Scénarios — aucun contenu essentiel ne reste invisible si JS échoue. */
 html:not(.js-ready) .question-block,
@@ -683,8 +662,79 @@ html:not(.js-ready) .hero {
 }
 </style>
 
+
+<style id="foebeProgressFallbackCss">
+:root{
+  --foebe-nav-height:60px;
+  --foebe-progress-gradient:linear-gradient(90deg,#BB7E60,#C45279,#C34234);
+}
+.foebe-skip-link{
+  position:fixed;
+  top:8px;
+  left:8px;
+  z-index:999999;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  padding:9px 14px;
+  border:2px solid #F0EAE7;
+  border-radius:999px;
+  background:#4E291F;
+  color:#F0EAE7;
+  font-family:"Poppins",sans-serif;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  transform:translateY(-200%);
+  transition:transform .2s ease;
+}
+.foebe-skip-link:focus,
+.foebe-skip-link:focus-visible{
+  transform:translateY(0);
+  outline:2px solid #BB7E60;
+  outline-offset:2px;
+}
+.foebe-scroll-progress--fallback{
+  display:none;
+  position:fixed;
+  top:var(--foebe-nav-height);
+  left:0;
+  right:0;
+  z-index:940;
+  height:3px;
+  background:rgba(187,126,96,.16);
+  pointer-events:none;
+}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:var(--foebe-progress-gradient);
+  box-shadow:0 0 12px rgba(187,126,96,.28);
+  will-change:transform;
+}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block;}
+html.foebe-shell-loading:not(.foebe-shell-failed) .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+[data-theme="day"] .foebe-scroll-progress--fallback{background:rgba(78,41,31,.10);}
+@media(max-width:640px){
+  :root{--foebe-nav-height:58px;}
+  body > nav#fallbackNav.fallback-nav{height:58px!important;min-height:58px!important;}
+  .foebe-scroll-progress--fallback{height:2px;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important;}
+  .foebe-skip-link{transition:none!important;}
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important;}
+}
+</style>
+
 </head>
-<body data-foebe-breadcrumb="force">
+<body data-foebe-breadcrumb="force" data-foebe-progress="off">
+<a class="foebe-skip-link" href="#mainContent" id="foebeSkipLink">Aller au contenu</a>
 <noscript>
   <section class="noscript-panel" aria-label="Information JavaScript">
     <h2>La Boussole est interactive</h2>
@@ -699,7 +749,7 @@ html:not(.js-ready) .hero {
 
 <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
   <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-  <div class="fallback-links">
+  <div class="fallback-links" aria-label="Liens rapides">
     <a href="/comprendre.html">Comprendre</a>
     <a href="/methode.html">Méthode</a>
     <a href="/echelle-foebe.html">Échelle Foébé</a>
@@ -707,10 +757,18 @@ html:not(.js-ready) .hero {
     <a href="/dictionnaire.html">Dictionnaire</a>
   </div>
 </nav>
-
-<div class="foebe-scroll-progress" aria-hidden="true">
-  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressBar"></span>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
 </div>
+<noscript>
+  <style>
+    .foebe-scroll-progress--fallback{display:block!important;opacity:.42!important;}
+    body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+    #foebeScrollProgressFallbackBar{transform:scaleX(1)!important;}
+  </style>
+</noscript>
+
+
 
 
 <main class="site" id="mainContent" tabindex="-1">
@@ -1361,30 +1419,80 @@ loadScenario(0);
 </script>
 
 
-<script id="foebeScrollProgressScript">
+<script id="foebeScrollProgressFallbackScript">
 (function(){
-  var bar = document.getElementById('foebeScrollProgressBar');
+  var root = document.documentElement;
+  var bar = document.getElementById('foebeScrollProgressFallbackBar');
   if (!bar) return;
+
+  var active = false;
   var ticking = false;
+
+  function progressIsDisabled(){
+    return !!(document.body && document.body.getAttribute('data-foebe-progress') === 'off');
+  }
+
   function update(){
+    if (!active || progressIsDisabled()) {
+      ticking = false;
+      return;
+    }
     var doc = document.documentElement;
     var body = document.body || doc;
     var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    var max = Math.max(doc.scrollHeight, body.scrollHeight, doc.offsetHeight, body.offsetHeight, doc.clientHeight) - window.innerHeight;
+    var fullHeight = Math.max(
+      doc.scrollHeight, body.scrollHeight,
+      doc.offsetHeight, body.offsetHeight,
+      doc.clientHeight
+    );
+    var max = Math.max(0, fullHeight - window.innerHeight);
     var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
     bar.style.transform = 'scaleX(' + progress + ')';
     ticking = false;
   }
+
   function requestUpdate(){
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
+    if (!active || ticking) return;
+    ticking = true;
+    if (window.requestAnimationFrame) window.requestAnimationFrame(update);
+    else window.setTimeout(update, 16);
   }
-  window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate);
-  window.addEventListener('load', requestUpdate);
-  update();
+
+  function activate(){
+    if (active || progressIsDisabled()) return;
+    active = true;
+    window.addEventListener('scroll', requestUpdate, { passive:true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate);
+    requestUpdate();
+  }
+
+  function deactivate(){
+    if (!active) return;
+    active = false;
+    window.removeEventListener('scroll', requestUpdate);
+    window.removeEventListener('resize', requestUpdate);
+    window.removeEventListener('load', requestUpdate);
+    bar.style.transform = 'scaleX(0)';
+    ticking = false;
+  }
+
+  function syncWithShell(){
+    if (root.classList.contains('foebe-shell-failed')) activate();
+    else deactivate();
+  }
+
+  window.addEventListener('foebe:shell-failed', syncWithShell);
+  window.addEventListener('foebe:shell-ready', syncWithShell);
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(syncWithShell).observe(root, {
+      attributes:true,
+      attributeFilter:['class']
+    });
+  }
+
+  syncWithShell();
 })();
 </script>
 
