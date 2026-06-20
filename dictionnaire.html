@@ -20,12 +20,24 @@
 </script><script id="foebe-shell-fallback-guard">
 (function(){
   var h = document.documentElement;
-  h.classList.add('foebe-shell-loading');
-  window.setTimeout(function(){
-    if (!h.classList.contains('foebe-shell-ready')) {
-      h.classList.add('foebe-shell-failed');
+  var failedDispatched = false;
+
+  function markFailed(){
+    if (h.classList.contains('foebe-shell-ready')) return;
+    h.classList.remove('foebe-shell-loading');
+    h.classList.add('foebe-shell-failed');
+    if (!failedDispatched) {
+      failedDispatched = true;
+      try { window.dispatchEvent(new CustomEvent('foebe:shell-failed')); } catch(e) {}
     }
-  }, 2500);
+  }
+
+  h.classList.add('foebe-shell-loading');
+  window.addEventListener('foebe:shell-ready', function(){
+    h.classList.remove('foebe-shell-loading', 'foebe-shell-failed');
+    h.classList.add('foebe-shell-ready');
+  }, { once:true });
+  window.setTimeout(markFailed, 3000);
 })();
 </script>
 <script>document.documentElement.classList.add('js-ready');</script>
@@ -1255,24 +1267,98 @@ body.focus-mode .mobile-summary{display:none!important;}
 }
 
 </style>
+
+<style id="foebeProgressFallbackCss">
+:root{
+  --foebe-nav-height:60px;
+  --foebe-progress-gradient:linear-gradient(90deg,#BB7E60,#C45279,#C34234);
+}
+.foebe-skip-link{
+  position:fixed;
+  top:8px;
+  left:8px;
+  z-index:999999;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  padding:9px 14px;
+  border:2px solid #F0EAE7;
+  border-radius:999px;
+  background:#4E291F;
+  color:#F0EAE7;
+  font-family:"Poppins",sans-serif;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  transform:translateY(-200%);
+  transition:transform .2s ease;
+}
+.foebe-skip-link:focus,
+.foebe-skip-link:focus-visible{
+  transform:translateY(0);
+  outline:2px solid #BB7E60;
+  outline-offset:2px;
+}
+.foebe-scroll-progress--fallback{
+  display:none;
+  position:fixed;
+  top:var(--foebe-nav-height);
+  left:0;
+  right:0;
+  z-index:940;
+  height:3px;
+  background:rgba(187,126,96,.16);
+  pointer-events:none;
+}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:var(--foebe-progress-gradient);
+  box-shadow:0 0 12px rgba(187,126,96,.28);
+  will-change:transform;
+}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block;}
+html.foebe-shell-loading:not(.foebe-shell-failed) .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important;}
+[data-theme="day"] .foebe-scroll-progress--fallback{background:rgba(78,41,31,.10);}
+@media(max-width:640px){
+  :root{--foebe-nav-height:58px;--nav-h:58px;}
+  body > nav#fallbackNav.fallback-nav{height:58px!important;min-height:58px!important;}
+  .foebe-scroll-progress--fallback{height:2px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .foebe-skip-link{transition:none!important;}
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important;}
+}
+</style>
+
 </head>
 <body>
+<a class="foebe-skip-link" href="#mainContent" id="foebeSkipLink">Aller au contenu</a>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-<div class="fallback-links">
-<a href="/index.html">Accueil</a>
+<div class="fallback-links" aria-label="Liens rapides">
 <a href="/comprendre.html">Comprendre</a>
-<a href="/a-propos.html">À propos</a>
 <a href="/methode.html">Méthode</a>
-<a href="/pratiquer.html">Pratiquer</a>
-<a href="/test.html">Échelle Foébé</a>
-<a href="/foebe-zones-cadre.html">Les 7 zones</a>
-<a href="/respiration.html">Respiration</a>
-<a href="/boussole-accueil-foebe.html">La Boussole</a>
-<a href="/stories.html">Lexique Foébé</a>
+<a href="/echelle-foebe.html">Échelle Foébé</a>
+<a href="/zones.html">7 zones</a>
 <a aria-current="page" href="/dictionnaire.html">Dictionnaire</a>
 </div>
 </nav>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>
+    .foebe-scroll-progress--fallback{display:block!important;opacity:.42!important;}
+    #foebeScrollProgressFallbackBar{transform:scaleX(1)!important;}
+  </style>
+</noscript>
+
 <header class="dict-hero"><p class="dict-hero-eyebrow">Maison Foébé</p><h1>Dictionnaire Foébé</h1><p class="dict-hero-sub">Définitions · Repères · Premiers gestes</p><span class="dict-count">Chercher un mot · Observer un signal · Choisir un geste</span></header>
 <section aria-label="Note Foébé" class="dict-note">
   <div class="dict-context-grid">
@@ -3906,6 +3992,84 @@ window.addEventListener('load',()=>{if(location.hash&&location.hash.length>1){co
   if(fab&&back) fab.addEventListener('click',function(){ back.click(); });
 })();
 </script>
+
+<script id="foebeScrollProgressFallbackScript">
+(function(){
+  var root = document.documentElement;
+  var bar = document.getElementById('foebeScrollProgressFallbackBar');
+  if (!bar) return;
+
+  var active = false;
+  var ticking = false;
+
+  function progressIsDisabled(){
+    return !!(document.body && document.body.getAttribute('data-foebe-progress') === 'off');
+  }
+
+  function update(){
+    if (!active || progressIsDisabled()) {
+      ticking = false;
+      return;
+    }
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var fullHeight = Math.max(
+      doc.scrollHeight, body.scrollHeight,
+      doc.offsetHeight, body.offsetHeight,
+      doc.clientHeight
+    );
+    var max = Math.max(0, fullHeight - window.innerHeight);
+    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+    bar.style.transform = 'scaleX(' + progress + ')';
+    ticking = false;
+  }
+
+  function requestUpdate(){
+    if (!active || ticking) return;
+    ticking = true;
+    if (window.requestAnimationFrame) window.requestAnimationFrame(update);
+    else window.setTimeout(update, 16);
+  }
+
+  function activate(){
+    if (active || progressIsDisabled()) return;
+    active = true;
+    window.addEventListener('scroll', requestUpdate, { passive:true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate);
+    requestUpdate();
+  }
+
+  function deactivate(){
+    if (!active) return;
+    active = false;
+    window.removeEventListener('scroll', requestUpdate);
+    window.removeEventListener('resize', requestUpdate);
+    window.removeEventListener('load', requestUpdate);
+    bar.style.transform = 'scaleX(0)';
+    ticking = false;
+  }
+
+  function syncWithShell(){
+    if (root.classList.contains('foebe-shell-failed')) activate();
+    else deactivate();
+  }
+
+  window.addEventListener('foebe:shell-failed', syncWithShell);
+  window.addEventListener('foebe:shell-ready', syncWithShell);
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(syncWithShell).observe(root, {
+      attributes:true,
+      attributeFilter:['class']
+    });
+  }
+
+  syncWithShell();
+})();
+</script>
+
 <script src="/foebe-shell.js"></script>
 </body>
 </html>
