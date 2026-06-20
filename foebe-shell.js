@@ -1,6 +1,6 @@
 /**
  * foebe-shell.js — Maison Foébé
- * Version V9.1 — menu actif nettoyé + navigation contextuelle stable
+ * Version V10.0 — navigation hiérarchisée stable + Dictionnaire standard
  *
  * À déposer à la racine du site, au même niveau que index.html.
  * Appel recommandé avant </body> : <script src="/foebe-shell.js"></script>
@@ -98,6 +98,22 @@
     ".nav-link[aria-current='page']::before{opacity:0!important;transform:scale(1)!important;}",
         ".nav-link[aria-current='page']:hover{background:#BB7E60!important;color:#F0EAE7!important;padding-left:14px!important;transform:translateX(1px)!important;}",
     ".nav-link:focus-visible{outline:2px solid #BB7E60!important;outline-offset:3px!important;}",
+    ".nav-branch{display:block!important;min-width:0!important;}",
+    ".nav-branch-head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:6px!important;min-width:0!important;}",
+    ".nav-parent-link{min-width:0!important;}",
+    ".nav-parent-link.is-branch-current{color:#BB7E60!important;font-weight:700!important;}",
+    ".nav-parent-link.is-branch-current::before{opacity:1!important;transform:scale(1)!important;}",
+    ".nav-branch-toggle{display:none!important;appearance:none!important;-webkit-appearance:none!important;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(187,126,96,.30)!important;border-radius:999px!important;background:rgba(187,126,96,.08)!important;color:#BB7E60!important;font-family:'Poppins',sans-serif!important;font-size:16px!important;font-weight:800!important;line-height:1!important;cursor:pointer!important;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease!important;}",
+    ".nav-branch-toggle:hover,.nav-branch-toggle:focus-visible{background:#BB7E60!important;border-color:#BB7E60!important;color:#F0EAE7!important;outline:none!important;}",
+    ".nav-branch-toggle:focus-visible{box-shadow:0 0 0 2px var(--bg,#F0EAE7),0 0 0 4px #BB7E60!important;}",
+    ".nav-branch-toggle__icon{display:block!important;transform:rotate(0deg)!important;transition:transform .18s ease!important;}",
+    ".nav-branch.is-open .nav-branch-toggle__icon{transform:rotate(180deg)!important;}",
+    ".nav-children{display:flex!important;flex-wrap:wrap!important;gap:6px!important;padding:2px 8px 10px 12px!important;}",
+    ".nav-child-link{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:34px!important;padding:7px 10px!important;border:1px solid rgba(187,126,96,.28)!important;border-radius:999px!important;background:rgba(187,126,96,.055)!important;color:var(--text,#F0EAE7)!important;font-family:'Poppins',sans-serif!important;font-size:11.5px!important;font-weight:600!important;line-height:1.2!important;text-decoration:none!important;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease!important;}",
+    ".nav-child-link:hover,.nav-child-link:focus-visible{background:rgba(187,126,96,.16)!important;border-color:#BB7E60!important;color:#BB7E60!important;transform:translateY(-1px)!important;outline:none!important;}",
+    ".nav-child-link[aria-current='page']{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;box-shadow:0 8px 18px rgba(196,82,121,.18)!important;}",
+    ".nav-child-link[aria-current='page']:hover,.nav-child-link[aria-current='page']:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;}",
+    ".nav-children[hidden]{display:none!important;}",
 
     "footer{background:#2C1A12!important;color:#F0EAE7!important;padding:60px 24px 40px!important;border-top:1px solid rgba(187,126,96,.28)!important;text-align:center!important;}",
     "[data-theme='day'] footer{background:#DDD0CB!important;color:#4E291F!important;border-top-color:rgba(78,41,31,.18)!important;}",
@@ -122,6 +138,7 @@
     "@media(max-width:767px){html.foebe-has-shell-context #mainNav .nav-logo{display:none!important;}#mainNav{grid-template-columns:minmax(68px,auto) minmax(0,1fr) auto!important;gap:8px!important;}.nav-left{gap:0!important;min-width:0!important;}.shell-context-back{max-width:92px!important;min-height:42px!important;padding:0 2px!important;font-size:11px!important;}.shell-context-back::after{left:22px!important;right:2px!important;bottom:7px!important;}.shell-page-current{max-width:100%!important;font-size:11px!important;letter-spacing:.035em!important;padding-inline:0!important;}.shell-page-current::after{left:18%!important;right:18%!important;}.nav-right{gap:7px!important;}}",
     "@media(max-width:380px){#mainNav{padding-inline:12px!important;grid-template-columns:minmax(62px,auto) minmax(0,1fr) auto!important;gap:6px!important;}.shell-context-back{max-width:78px!important;font-size:10.5px!important;}.shell-page-current{font-size:10.5px!important;letter-spacing:.02em!important;}.nav-right{gap:5px!important;}}",
     "@media(max-width:640px){#mainNav{height:58px!important;padding:0 16px!important;}#navMenu{top:58px!important;max-height:calc(100vh - 58px)!important;}#navOverlay{top:58px!important;}.nav-panel-inner{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;}.nav-pole{border-bottom:1px solid rgba(187,126,96,.25)!important;padding:15px 18px 12px!important;}.nav-pole:last-child{border-bottom:none!important;}.nav-pole-label{font-size:10px!important;margin-bottom:6px!important;padding-bottom:10px!important;}.nav-link{font-size:14px!important;min-height:46px!important;padding:12px 10px!important;border-radius:10px!important;}.nav-link:hover,.nav-link[aria-current='page']{padding-left:14px!important;}footer{padding:42px 18px 30px!important;}.footer-inner{gap:14px!important;}.footer-links{gap:6px 16px!important;}.footer-link{font-size:12.5px!important;}}",
+    "@media(max-width:640px){.nav-branch{border-radius:12px!important;}.nav-branch-head{grid-template-columns:minmax(0,1fr) 42px!important;gap:4px!important;}.nav-branch-toggle{display:inline-flex!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;}.nav-parent-link{width:100%!important;}.nav-parent-link.is-branch-current{background:rgba(187,126,96,.10)!important;color:#BB7E60!important;}.nav-children{display:grid!important;grid-template-columns:1fr!important;gap:6px!important;padding:4px 4px 10px 18px!important;}.nav-child-link{width:100%!important;min-height:42px!important;justify-content:flex-start!important;padding:10px 12px!important;border-radius:10px!important;font-size:13px!important;background:rgba(187,126,96,.05)!important;}.nav-child-link:hover,.nav-child-link:focus-visible{transform:none!important;}.nav-children[hidden]{display:none!important;}}",
     "@media(max-width:380px){.nav-logo{font-size:17px!important;}#menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}.theme-toggle{width:36px!important;height:36px!important;}.nav-panel-inner{padding-bottom:8px!important;}}",
     ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
     ".foebe-page-respiration .tech-card::after{content:'Choisir cet exercice →'!important;position:absolute!important;left:18px!important;right:18px!important;bottom:16px!important;min-height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:999px!important;background:#BB7E60!important;color:#F0EAE7!important;font-family:'Poppins',sans-serif!important;font-size:12px!important;font-weight:800!important;letter-spacing:.2px!important;}",
@@ -131,7 +148,7 @@
     "",
     "",
     "",
-    "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,#menuToggle,.theme-toggle,.social-icon,.shell-context-back::after,#foebeReadingProgressBar{transition:none!important;}}"
+    "@media(prefers-reduced-motion:reduce){#navMenu,#navOverlay,.nav-link,.nav-link::before,.nav-link::after,.nav-child-link,.nav-branch-toggle,.nav-branch-toggle__icon,#menuToggle,.theme-toggle,.social-icon,.shell-context-back::after,#foebeReadingProgressBar{transition:none!important;}}"
   ].join("\n");
 
   var oldStyle = document.getElementById("foebe-shell-css");
@@ -293,7 +310,6 @@
   var shellPathForMode = String(currentPath || window.location.pathname || "/").toLowerCase();
   var shellIsStoryImmersive = (
     currentFile === "lexique.html" ||
-    currentFile === "dictionnaire.html" ||
     currentFile === "stories.html" ||
     shellPathForMode.indexOf("/stories/") !== -1 ||
     shellPathForMode.indexOf("/lexique/") !== -1 ||
@@ -317,12 +333,30 @@
       { href: "methode.html",    label: "La méthode Foébé" }
     ]},
     { pole: "Pratiquer", links: [
-      { href: "pratiquer.html",          label: "4 outils" },
-      { href: "echelle-foebe.html",      label: "Échelle Foébé" },
-      { href: "zones.html",              label: "7 zones", activeWhenZones: true },
-      { href: "respiration.html",        label: "Respiration guidée" },
-      { href: "boussole.html",           label: "Boussole" },
-      { href: "boussole-scenarios.html",     label: "Scénarios" }
+      { href: "pratiquer.html",     label: "4 outils" },
+      { href: "echelle-foebe.html", label: "Échelle Foébé" },
+      {
+        href: "zones.html",
+        label: "7 zones",
+        activeWhenZones: true,
+        children: [
+          { href: "zone-corps.html",        label: "Corps" },
+          { href: "zone-mental.html",       label: "Mental" },
+          { href: "zone-energie.html",      label: "Énergie" },
+          { href: "zone-emotions.html",     label: "Émotions" },
+          { href: "zone-environnement.html",label: "Environnement" },
+          { href: "zone-relations.html",    label: "Relations" },
+          { href: "zone-sens.html",         label: "Sens" }
+        ]
+      },
+      { href: "respiration.html", label: "Respiration guidée" },
+      {
+        href: "boussole.html",
+        label: "Boussole",
+        children: [
+          { href: "boussole-scenarios.html", label: "Scénarios" }
+        ]
+      }
     ]},
     { pole: "Ressources", links: [
       { href: "lexique.html",      label: "Lexique Foébé" },
@@ -331,17 +365,48 @@
   ];
 
   function isCurrentLink(link) {
-    var linkFile = normalizeCurrentFile(link.href);
-    return linkFile === currentFile || (link.activeWhenZones && zonesFiles[currentFile]);
+    return normalizeCurrentFile(link.href) === currentFile;
+  }
+
+  function isBranchActive(link) {
+    if (isCurrentLink(link)) return true;
+    if (link.activeWhenZones && zonesFiles[currentFile]) return true;
+    return Array.isArray(link.children) && link.children.some(function (child) {
+      return isCurrentLink(child);
+    });
   }
 
   function buildNavHTML() {
-    return NAV_STRUCTURE.map(function (pole) {
-      var links = pole.links.map(function (l) {
-        return '<a class="nav-link" href="' + l.href + '"' +
-          (isCurrentLink(l) ? ' aria-current="page"' : '') + '>' + l.label + '</a>';
+    return NAV_STRUCTURE.map(function (pole, poleIndex) {
+      var links = pole.links.map(function (link, linkIndex) {
+        var parentCurrent = isCurrentLink(link);
+        var hasChildren = Array.isArray(link.children) && link.children.length > 0;
+
+        if (!hasChildren) {
+          return '<a class="nav-link" href="' + shellEscapeHtml(link.href) + '"' +
+            (parentCurrent ? ' aria-current="page"' : '') + '>' + shellEscapeHtml(link.label) + '</a>';
+        }
+
+        var branchActive = isBranchActive(link);
+        var branchId = 'foebeNavChildren-' + poleIndex + '-' + linkIndex;
+        var childLinks = link.children.map(function (child) {
+          return '<a class="nav-child-link" href="' + shellEscapeHtml(child.href) + '"' +
+            (isCurrentLink(child) ? ' aria-current="page"' : '') + '>' + shellEscapeHtml(child.label) + '</a>';
+        }).join("");
+
+        return '<div class="nav-branch' + (branchActive ? ' is-open' : '') + '" data-nav-branch>' +
+          '<div class="nav-branch-head">' +
+            '<a class="nav-link nav-parent-link' + (!parentCurrent && branchActive ? ' is-branch-current' : '') + '" href="' + shellEscapeHtml(link.href) + '"' +
+              (parentCurrent ? ' aria-current="page"' : '') + '>' + shellEscapeHtml(link.label) + '</a>' +
+            '<button class="nav-branch-toggle" type="button" aria-controls="' + branchId + '" aria-expanded="' + (branchActive ? 'true' : 'false') + '" aria-label="' +
+              (branchActive ? 'Masquer' : 'Afficher') + ' les sous-pages de ' + shellEscapeHtml(link.label) + '">' +
+              '<span class="nav-branch-toggle__icon" aria-hidden="true">⌄</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="nav-children" id="' + branchId + '">' + childLinks + '</div>' +
+        '</div>';
       }).join("");
-      return '<div class="nav-pole"><span class="nav-pole-label">' + pole.pole + '</span>' + links + '</div>';
+      return '<div class="nav-pole"><span class="nav-pole-label">' + shellEscapeHtml(pole.pole) + '</span>' + links + '</div>';
     }).join("");
   }
 
@@ -390,6 +455,66 @@
   navMenu.className = "";
   navMenu.innerHTML = '<div class="nav-panel-inner">' + buildNavHTML() + '</div>';
 
+  /* Sous-navigation : boutons visibles sur desktop, accordéons accessibles sur mobile. */
+  (function initNavBranches() {
+    var mobileBranches = window.matchMedia ? window.matchMedia("(max-width: 640px)") : null;
+    var branches = Array.prototype.slice.call(navMenu.querySelectorAll("[data-nav-branch]"));
+    if (!branches.length) return;
+
+    function isMobileBranchMode() {
+      return mobileBranches ? mobileBranches.matches : window.innerWidth <= 640;
+    }
+
+    function setBranchOpen(branch, open) {
+      var button = branch.querySelector(".nav-branch-toggle");
+      var children = branch.querySelector(".nav-children");
+      if (!button || !children) return;
+
+      branch.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+      button.setAttribute(
+        "aria-label",
+        (open ? "Masquer" : "Afficher") + " les sous-pages de " +
+        ((branch.querySelector(".nav-parent-link") || {}).textContent || "cette rubrique").trim()
+      );
+
+      if (isMobileBranchMode()) {
+        children.hidden = !open;
+      } else {
+        children.hidden = false;
+      }
+    }
+
+    function syncBranches() {
+      branches.forEach(function (branch) {
+        setBranchOpen(branch, branch.classList.contains("is-open"));
+      });
+    }
+
+    branches.forEach(function (branch) {
+      var button = branch.querySelector(".nav-branch-toggle");
+      if (!button) return;
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (!isMobileBranchMode()) return;
+
+        var willOpen = !branch.classList.contains("is-open");
+        branches.forEach(function (otherBranch) {
+          if (otherBranch !== branch) setBranchOpen(otherBranch, false);
+        });
+        setBranchOpen(branch, willOpen);
+      });
+    });
+
+    syncBranches();
+    if (mobileBranches && mobileBranches.addEventListener) {
+      mobileBranches.addEventListener("change", syncBranches);
+    } else {
+      window.addEventListener("resize", syncBranches, { passive: true });
+    }
+  })();
+
   var navOverlay = document.getElementById("navOverlay");
   if (!navOverlay) {
     navOverlay = document.createElement("div");
@@ -436,11 +561,10 @@
       var path = String(currentPath || window.location.pathname || "").toLowerCase();
       var immersiveNoScroll = (
         currentFile === "lexique.html" ||
-        currentFile === "dictionnaire.html" ||
         currentFile === "stories.html" ||
-        path.indexOf("/stories") !== -1 ||
-        path.indexOf("/lexique") !== -1 ||
-        path.indexOf("/dictionnaire") !== -1
+        path.indexOf("/stories/") !== -1 ||
+        path.indexOf("/lexique/") !== -1 ||
+        path.indexOf("/dictionnaire/") !== -1
       );
 
       var progressMode = String(
@@ -791,7 +915,7 @@ if (fallbackNav) {
 /* FOEBE CLEANUP UNIFIÉ — START
      Compatibilité après suppression du fil d’Ariane global.
      - masque/supprime les anciens breadcrumbs éventuellement présents dans les pages ;
-     - préserve le mode immersif Lexique/Dictionnaire/Stories ;
+     - préserve le mode immersif Lexique/Stories ;
      - retire les anciennes barres de progression de lecture devenues redondantes ;
      - un seul MutationObserver, borné à 3 secondes. */
   (function () {
@@ -806,12 +930,11 @@ if (fallbackNav) {
       var parts = path.split("/").filter(Boolean);
       var file = parts.length ? parts[parts.length - 1] : "index.html";
       return (
-        file === "dictionnaire.html" ||
         file === "lexique.html" ||
         file === "stories.html" ||
-        path.indexOf("/stories") !== -1 ||
-        path.indexOf("/lexique") !== -1 ||
-        path.indexOf("/dictionnaire") !== -1
+        path.indexOf("/stories/") !== -1 ||
+        path.indexOf("/lexique/") !== -1 ||
+        path.indexOf("/dictionnaire/") !== -1
       );
     }
 
@@ -914,7 +1037,7 @@ if (fallbackNav) {
      Toutes les pages mobiles : la navigation s'efface après une courte inactivité
      et revient dès que la personne interagit.
 
-     Variante Lexique / Dictionnaire / Stories : les appuis servant à avancer une
+     Variante Lexique / Stories : les appuis servant à avancer une
      story ne rappellent pas la navigation. Elle revient par la zone haute, par un
      geste vers le bas depuis le haut, par le clavier, ou lorsque le menu est ouvert.
 
@@ -944,7 +1067,6 @@ if (fallbackNav) {
       var parts = path.split("/").filter(Boolean);
       var file = parts.length ? parts[parts.length - 1] : "index.html";
       return (
-        file === "dictionnaire.html" ||
         file === "lexique.html" ||
         file === "stories.html" ||
         path.indexOf("/stories/") !== -1 ||
