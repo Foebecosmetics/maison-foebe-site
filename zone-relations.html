@@ -18,14 +18,17 @@
   document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
 })();
 </script><script id="foebe-shell-fallback-guard">
-(function(){
-  var h = document.documentElement;
-  h.classList.add('foebe-shell-loading');
-  window.setTimeout(function(){
-    if (!h.classList.contains('foebe-shell-ready')) {
-      h.classList.add('foebe-shell-failed');
+(function () {
+  var root = document.documentElement;
+  root.classList.add("foebe-shell-loading");
+
+  window.__foebeShellWatchdog = window.setTimeout(function () {
+    if (!root.classList.contains("foebe-shell-ready")) {
+      root.classList.remove("foebe-shell-loading");
+      root.classList.add("foebe-shell-failed");
+      try { window.dispatchEvent(new CustomEvent("foebe:shell-failed")); } catch (e) {}
     }
-  }, 2500);
+  }, 3000);
 })();
 </script>
 <script>
@@ -5607,49 +5610,65 @@ body.state-active .ici-card {
 }
 </style>
 
-<style id="foebeZoneProgressStableCss">
-/* Correctif progression — pages zones HTML plates.
-   Calé sur le Shell : 60px desktop/tablette, 58px mobile Shell.
-   Z-index haut pour ne plus disparaître derrière la nav. */
-#pageProgress{
+<style id="foebeZoneProgressFallbackCss">
+/* Barre locale : secours uniquement si le Shell échoue. */
+:root {
+  --foebe-progress-gradient:
+    linear-gradient(
+      90deg,
+      #4E291F 0%,
+      #BB7E60 28%,
+      #C45279 50%,
+      #F0EAE7 64%,
+      #C34234 80%,
+      #4E291F 100%
+    );
+  --foebe-nav-height:60px;
+}
+.foebe-scroll-progress--fallback{
+  display:none!important;
   position:fixed!important;
-  top:60px!important;
+  top:var(--foebe-nav-height)!important;
   left:0!important;
   right:0!important;
-  z-index:100020!important;
   height:3px!important;
-  background:rgba(187,126,96,.16)!important;
-  pointer-events:none!important;
+  z-index:100020!important;
   overflow:hidden!important;
+  pointer-events:none!important;
+  background:rgba(187,126,96,.12)!important;
 }
-#pageProgressFill{
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
   display:block!important;
+  width:100%!important;
   height:100%!important;
-  width:0%;
-  background:linear-gradient(90deg,var(--z-mid,#BB7E60),#BB7E60,#C45279,#C34234)!important;
-  box-shadow:0 0 14px rgba(187,126,96,.34)!important;
-  transition:width .12s linear!important;
-  will-change:width!important;
+  background:var(--foebe-progress-gradient)!important;
+  transform:scaleX(0);
+  transform-origin:left center!important;
+  will-change:transform!important;
+  box-shadow:0 1px 4px rgba(187,126,96,.18)!important;
 }
-[data-theme="day"] #pageProgress{
-  background:rgba(78,41,31,.10)!important;
-}
+html.foebe-shell-loading .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block!important}
+html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
 @media(max-width:640px){
-  #pageProgress{
-    top:58px!important;
-    height:2px!important;
-  }
+  :root{--foebe-nav-height:58px}
+  .foebe-scroll-progress--fallback{height:2px!important}
 }
 @media(prefers-reduced-motion:reduce){
-  #pageProgressFill{transition:none!important;}
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
 }
 </style>
 
 </head>
 <body>
-<div id="pageProgress">
-<div id="pageProgressFill"></div>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
 </div>
+<noscript>
+  <style>.foebe-scroll-progress--fallback{display:block!important}</style>
+</noscript>
 <button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
 <div id="stateOverlay"></div>
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
@@ -6266,26 +6285,36 @@ body.state-active .ici-card {
             if (btn) btn.textContent = document.documentElement.getAttribute('data-theme') === 'night' ? '☀️ Mode jour' : '🌙 Mode nuit';
         })();
         (function() {
-            var fill = document.getElementById("pageProgressFill"),
-                btn = document.getElementById("backToTop");
-            window.addEventListener("scroll", function() {
-                var s = window.scrollY,
-                    m = document.documentElement.scrollHeight - window.innerHeight,
-                    p = m > 0 ? Math.round((s / m) * 100) : 0;
-                fill.style.width = p + "%";
-                if (s > 400) btn.classList.add("visible");
-                else btn.classList.remove("visible");
-            }, {
-                passive: true
-            });
+            var bar = document.getElementById("foebeScrollProgressFallbackBar");
+            var btn = document.getElementById("backToTop");
+
+            function updateFallbackProgress() {
+                if (!bar || !document.documentElement.classList.contains("foebe-shell-failed")) return;
+                var max = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+                bar.style.transform = "scaleX(" + progress + ")";
+            }
+
+            function updateScrollUi() {
+                var s = window.scrollY;
+                updateFallbackProgress();
+                if (btn) {
+                    if (s > 400) btn.classList.add("visible");
+                    else btn.classList.remove("visible");
+                }
+            }
+
+            window.addEventListener("foebe:shell-failed", updateFallbackProgress);
+            window.addEventListener("scroll", updateScrollUi, { passive: true });
+            window.addEventListener("resize", updateFallbackProgress);
+            updateScrollUi();
+
             var mainNav = document.getElementById("mainNav");
             if (mainNav) {
                 mainNav.classList.toggle("scrolled", window.scrollY > 40);
                 window.addEventListener("scroll", function() {
                     mainNav.classList.toggle("scrolled", window.scrollY > 40);
-                }, {
-                    passive: true
-                });
+                }, { passive: true });
             }
         })();
         (function() {
