@@ -115,29 +115,42 @@
     ".nav-child-link[aria-current='page']:hover,.nav-child-link[aria-current='page']:focus-visible{background:#C45279!important;border-color:#C45279!important;color:#F0EAE7!important;}",
     ".nav-children[hidden]{display:none!important;}",
 
-    "footer{background:#2C1A12!important;color:#F0EAE7!important;padding:60px 24px 40px!important;border-top:1px solid rgba(187,126,96,.28)!important;text-align:center!important;}",
-    "[data-theme='day'] footer{background:#DDD0CB!important;color:#4E291F!important;border-top-color:rgba(78,41,31,.18)!important;}",
-    "[data-theme='night'] footer{background:#2C1A12!important;color:#F0EAE7!important;border-top-color:rgba(187,126,96,.28)!important;}",
-    ".footer-inner{max-width:720px!important;margin:0 auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:18px!important;}",
-    ".footer-logo{font-family:'Montserrat',sans-serif!important;font-weight:700!important;font-size:26px!important;letter-spacing:-.06em!important;text-decoration:none!important;line-height:1!important;display:block!important;}",
+    "footer{position:relative!important;overflow:hidden!important;background:#2C1A12!important;color:#F0EAE7!important;padding:clamp(52px,6vw,78px) clamp(20px,4vw,44px) 30px!important;border-top:1px solid rgba(187,126,96,.30)!important;text-align:left!important;}",
+    "footer::before{content:''!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:radial-gradient(circle at 12% 0%,rgba(187,126,96,.13),transparent 34%),radial-gradient(circle at 88% 100%,rgba(196,82,121,.07),transparent 30%)!important;}",
+    "[data-theme='day'] footer{background:#E3D8D3!important;color:#4E291F!important;border-top-color:rgba(78,41,31,.18)!important;}",
+    "[data-theme='day'] footer::before{background:radial-gradient(circle at 12% 0%,rgba(187,126,96,.16),transparent 34%),radial-gradient(circle at 88% 100%,rgba(196,82,121,.06),transparent 30%)!important;}",
+    "[data-theme='night'] footer{background:#2C1A12!important;color:#F0EAE7!important;border-top-color:rgba(187,126,96,.30)!important;}",
+    ".footer-inner{position:relative!important;z-index:1!important;max-width:1180px!important;margin:0 auto!important;display:grid!important;grid-template-columns:minmax(240px,1.35fr) repeat(4,minmax(130px,.72fr))!important;gap:clamp(28px,4vw,58px)!important;align-items:start!important;}",
+    ".footer-brand{display:flex!important;min-width:0!important;flex-direction:column!important;align-items:flex-start!important;gap:16px!important;}",
+    ".footer-logo{font-family:'Montserrat',sans-serif!important;font-weight:700!important;font-size:clamp(28px,2.5vw,34px)!important;letter-spacing:-.06em!important;text-decoration:none!important;line-height:1!important;display:inline-flex!important;align-items:center!important;min-height:44px!important;}",
     "[data-theme='night'] .footer-logo span{color:#F0EAE7!important;}",
     "[data-theme='day'] .footer-logo span:nth-child(1),[data-theme='day'] .footer-logo span:nth-child(5){color:#4E291F!important;}",
     "[data-theme='day'] .footer-logo span:nth-child(2){color:#BB7E60!important;}[data-theme='day'] .footer-logo span:nth-child(3){color:#C45279!important;}[data-theme='day'] .footer-logo span:nth-child(4){color:#C34234!important;}",
-    ".footer-sub{font-family:'Poppins',sans-serif!important;font-size:13px!important;line-height:1.5!important;opacity:.86!important;color:currentColor!important;}",
-    ".footer-social{display:flex!important;justify-content:center!important;gap:12px!important;}",
-    ".social-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:40px!important;height:40px!important;border-radius:999px!important;color:currentColor!important;border:1px solid rgba(187,126,96,.38)!important;background:rgba(187,126,96,.10)!important;text-decoration:none!important;transition:background .2s,border-color .2s,color .2s,transform .2s,box-shadow .2s!important;}",
-    ".social-icon:hover,.social-icon:focus-visible{color:#F0EAE7!important;background:#BB7E60!important;border-color:#BB7E60!important;transform:translateY(-1px)!important;box-shadow:0 12px 24px rgba(187,126,96,.22)!important;}",
-    ".footer-links{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:12px 20px!important;}",
-    ".footer-link{display:inline-flex!important;align-items:center!important;min-height:40px!important;font-family:'Poppins',sans-serif!important;font-size:13px!important;font-weight:500!important;color:currentColor!important;text-decoration:none!important;position:relative!important;transition:color .22s!important;opacity:.78!important;}",
-    ".footer-link::after{content:''!important;position:absolute!important;left:0!important;bottom:-3px!important;width:100%!important;height:1px!important;background:currentColor!important;transform:scaleX(0)!important;transform-origin:left!important;transition:transform .22s ease!important;opacity:.55!important;}",
-    ".footer-link:hover,.footer-link:focus-visible{color:#BB7E60!important;opacity:1!important;}",
+    ".footer-description{max-width:34ch!important;margin:0!important;font-family:'Lora',serif!important;font-size:clamp(14.5px,1vw,16px)!important;line-height:1.75!important;color:currentColor!important;opacity:.84!important;}",
+    ".footer-social{display:flex!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:10px!important;margin-top:2px!important;}",
+    ".social-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:42px!important;height:42px!important;border-radius:999px!important;color:currentColor!important;border:1px solid rgba(187,126,96,.40)!important;background:rgba(187,126,96,.10)!important;text-decoration:none!important;transition:background .2s,border-color .2s,color .2s,transform .2s,box-shadow .2s!important;}",
+    ".social-icon:hover,.social-icon:focus-visible{color:#F0EAE7!important;background:#7A4A28!important;border-color:#7A4A28!important;transform:translateY(-2px)!important;box-shadow:0 12px 24px rgba(187,126,96,.22)!important;outline:none!important;}",
+    "[data-theme='day'] .social-icon:hover,[data-theme='day'] .social-icon:focus-visible{background:#4E291F!important;border-color:#4E291F!important;color:#F0EAE7!important;}",
+    ".footer-column{display:flex!important;min-width:0!important;flex-direction:column!important;align-items:flex-start!important;gap:4px!important;}",
+    ".footer-heading{display:block!important;width:100%!important;margin:0 0 10px!important;padding-bottom:10px!important;border-bottom:1px solid rgba(187,126,96,.28)!important;color:#BB7E60!important;font-family:'Poppins',sans-serif!important;font-size:10.5px!important;font-weight:800!important;letter-spacing:1.9px!important;line-height:1.3!important;text-transform:uppercase!important;}",
+    ".footer-link{display:inline-flex!important;align-items:center!important;min-height:38px!important;max-width:100%!important;padding:4px 0!important;font-family:'Poppins',sans-serif!important;font-size:12.5px!important;font-weight:500!important;line-height:1.45!important;color:currentColor!important;text-decoration:none!important;position:relative!important;transition:color .2s,transform .2s!important;opacity:.78!important;}",
+    ".footer-link::after{content:''!important;position:absolute!important;left:0!important;right:0!important;bottom:4px!important;height:1px!important;background:#BB7E60!important;transform:scaleX(0)!important;transform-origin:left!important;transition:transform .2s ease!important;opacity:.72!important;}",
+    ".footer-link:hover,.footer-link:focus-visible{color:#BB7E60!important;opacity:1!important;transform:translateX(2px)!important;outline:none!important;}",
+    "[data-theme='day'] .footer-heading{color:#A03A2E!important;border-bottom-color:rgba(195,66,52,.40)!important;}",
+    "[data-theme='day'] .footer-signature{color:#C45279!important;font-size:clamp(18.75px,1.25vw,20px)!important;font-weight:700!important;}",
+    "[data-theme='day'] .footer-link:hover,[data-theme='day'] .footer-link:focus-visible{color:#7A4A28!important;}",
     ".footer-link:hover::after,.footer-link:focus-visible::after{transform:scaleX(1)!important;}",
-    ".footer-note{font-family:'Poppins',sans-serif!important;font-size:12px!important;color:currentColor!important;line-height:1.5!important;opacity:.68!important;}",
+    ".footer-bottom{position:relative!important;z-index:1!important;max-width:1180px!important;margin:clamp(34px,5vw,52px) auto 0!important;padding-top:22px!important;border-top:1px solid rgba(187,126,96,.24)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;}",
+    ".footer-signature{margin:0!important;color:#BB7E60!important;font-family:'Lora',serif!important;font-size:clamp(14px,1vw,16px)!important;font-style:italic!important;font-weight:600!important;line-height:1.5!important;}",
+    ".footer-note{margin:0!important;font-family:'Poppins',sans-serif!important;font-size:11.5px!important;color:currentColor!important;line-height:1.5!important;opacity:.62!important;text-align:right!important;}",
 
     "@media(max-width:900px){.nav-panel-inner{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px 30px!important;padding:26px 22px 30px!important;}.nav-pole:last-child{grid-column:1/-1!important;}.nav-pole:last-child .nav-link{display:inline-flex!important;margin-right:10px!important;}}",
+    "@media(max-width:1100px){.footer-inner{grid-template-columns:minmax(240px,1.15fr) repeat(2,minmax(150px,.85fr))!important;}.footer-brand{grid-row:span 2!important;}.footer-column:nth-child(4),.footer-column:nth-child(5){margin-top:4px!important;}.footer-bottom{padding-right:68px!important;}}",
+    "@media(max-width:760px){footer{padding:48px 22px 28px!important;}.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:30px 26px!important;}.footer-brand{grid-column:1/-1!important;grid-row:auto!important;max-width:620px!important;}.footer-description{max-width:52ch!important;}.footer-bottom{align-items:flex-start!important;flex-direction:column!important;gap:8px!important;margin-top:34px!important;}.footer-note{text-align:left!important;}}",
+    "@media(max-width:480px){footer{padding:44px 18px 26px!important;}.footer-inner{grid-template-columns:1fr!important;gap:26px!important;}.footer-brand{grid-column:auto!important;}.footer-logo{font-size:29px!important;}.footer-description{font-size:14.5px!important;}.footer-column{padding-top:2px!important;}.footer-heading{margin-bottom:6px!important;}.footer-link{min-height:42px!important;font-size:13px!important;}.footer-bottom{margin-top:30px!important;padding-top:18px!important;padding-right:54px!important;}.footer-signature{font-size:14.5px!important;}}",
     "@media(max-width:767px){html.foebe-has-shell-context #mainNav .nav-logo{display:none!important;}#mainNav{grid-template-columns:minmax(68px,auto) minmax(0,1fr) auto!important;gap:8px!important;}.nav-left{gap:0!important;min-width:0!important;}.shell-context-back{max-width:92px!important;min-height:42px!important;padding:0 2px!important;font-size:11px!important;}.shell-context-back::after{left:22px!important;right:2px!important;bottom:7px!important;}.shell-page-current{max-width:100%!important;font-size:11px!important;letter-spacing:.035em!important;padding-inline:0!important;}.shell-page-current::after{left:18%!important;right:18%!important;}.nav-right{gap:7px!important;}}",
     "@media(max-width:380px){#mainNav{padding-inline:12px!important;grid-template-columns:minmax(62px,auto) minmax(0,1fr) auto!important;gap:6px!important;}.shell-context-back{max-width:78px!important;font-size:10.5px!important;}.shell-page-current{font-size:10.5px!important;letter-spacing:.02em!important;}.nav-right{gap:5px!important;}}",
-    "@media(max-width:640px){#mainNav{height:58px!important;padding:0 16px!important;}#navMenu{top:58px!important;max-height:calc(100vh - 58px)!important;}#navOverlay{top:58px!important;}.nav-panel-inner{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;}.nav-pole{border-bottom:1px solid rgba(187,126,96,.25)!important;padding:15px 18px 12px!important;}.nav-pole:last-child{border-bottom:none!important;}.nav-pole-label{font-size:10px!important;margin-bottom:6px!important;padding-bottom:10px!important;}.nav-link{font-size:14px!important;min-height:46px!important;padding:12px 10px!important;border-radius:10px!important;}.nav-link:hover,.nav-link[aria-current='page']{padding-left:14px!important;}footer{padding:42px 18px 30px!important;}.footer-inner{gap:14px!important;}.footer-links{gap:6px 16px!important;}.footer-link{font-size:12.5px!important;}}",
+    "@media(max-width:640px){#mainNav{height:58px!important;padding:0 16px!important;}#navMenu{top:58px!important;max-height:calc(100vh - 58px)!important;}#navOverlay{top:58px!important;}.nav-panel-inner{display:flex!important;flex-direction:column!important;gap:0!important;padding:0!important;}.nav-pole{border-bottom:1px solid rgba(187,126,96,.25)!important;padding:15px 18px 12px!important;}.nav-pole:last-child{border-bottom:none!important;}.nav-pole-label{font-size:10px!important;margin-bottom:6px!important;padding-bottom:10px!important;}.nav-link{font-size:14px!important;min-height:46px!important;padding:12px 10px!important;border-radius:10px!important;}.nav-link:hover,.nav-link[aria-current='page']{padding-left:14px!important;}}",
     "@media(max-width:640px){.nav-branch{border-radius:12px!important;}.nav-branch-head{grid-template-columns:minmax(0,1fr) 42px!important;gap:4px!important;}.nav-branch-toggle{display:inline-flex!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;}.nav-parent-link{width:100%!important;}.nav-parent-link.is-branch-current{background:rgba(187,126,96,.10)!important;color:#BB7E60!important;}.nav-children{display:grid!important;grid-template-columns:1fr!important;gap:6px!important;padding:4px 4px 10px 18px!important;}.nav-child-link{width:100%!important;min-height:42px!important;justify-content:flex-start!important;padding:10px 12px!important;border-radius:10px!important;font-size:13px!important;background:rgba(187,126,96,.05)!important;}.nav-child-link:hover,.nav-child-link:focus-visible{transform:none!important;}.nav-children[hidden]{display:none!important;}}",
     "@media(max-width:380px){.nav-logo{font-size:17px!important;}#menuToggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;}.theme-toggle{width:36px!important;height:36px!important;}.nav-panel-inner{padding-bottom:8px!important;}}",
     ".foebe-page-respiration .tech-card{padding-bottom:58px!important;}",
@@ -328,7 +341,7 @@
       { href: "index.html", label: "Accueil" }
     ]},
     { pole: "Découvrir", links: [
-      { href: "comprendre.html", label: "Comprendre" },
+      { href: "comprendre.html", label: "Comprendre Maison Foébé" },
       { href: "a-propos.html",   label: "À propos"   },
       { href: "methode.html",    label: "La méthode Foébé" }
     ]},
@@ -657,23 +670,44 @@
 
   footerEl.innerHTML =
     '<div class="footer-inner">' +
-      '<a aria-label="Retour accueil Maison Foébé" class="footer-logo" href="index.html">' +
-        '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
-      '</a>' +
-      '<p class="footer-sub">Maison Foébé · Espace structuré du self-care</p>' +
-      '<div class="footer-social">' +
-        '<a aria-label="Pinterest Maison Foébé" class="social-icon" href="https://fr.pinterest.com/maisonfoebe/" rel="noopener noreferrer" target="_blank">' + PINTEREST_SVG + '</a>' +
-        '<a aria-label="Instagram Maison Foébé" class="social-icon" href="https://www.instagram.com/maisonfoebe/" rel="noopener noreferrer" target="_blank">' + INSTA_SVG + '</a>' +
-        '<a aria-label="TikTok Maison Foébé" class="social-icon" href="https://www.tiktok.com/@maisonfoebe" rel="noopener noreferrer" target="_blank">' + TIKTOK_SVG + '</a>' +
-        '<a aria-label="Envoyer un email à Maison Foébé" class="social-icon" href="mailto:contact@maisonfoebe.fr">' + EMAIL_SVG + '</a>' +
+      '<div class="footer-brand">' +
+        '<a aria-label="Retour accueil Maison Foébé" class="footer-logo" href="index.html">' +
+          '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
+        '</a>' +
+        '<p class="footer-description">Un espace structuré du self-care pour apprendre à se lire, se réguler et avancer avec un peu plus de douceur.</p>' +
+        '<div class="footer-social" aria-label="Réseaux sociaux Maison Foébé">' +
+          '<a aria-label="Pinterest Maison Foébé" class="social-icon" href="https://fr.pinterest.com/maisonfoebe/" rel="noopener noreferrer" target="_blank">' + PINTEREST_SVG + '</a>' +
+          '<a aria-label="Instagram Maison Foébé" class="social-icon" href="https://www.instagram.com/maisonfoebe/" rel="noopener noreferrer" target="_blank">' + INSTA_SVG + '</a>' +
+          '<a aria-label="TikTok Maison Foébé" class="social-icon" href="https://www.tiktok.com/@maisonfoebe" rel="noopener noreferrer" target="_blank">' + TIKTOK_SVG + '</a>' +
+          '<a aria-label="Envoyer un email à Maison Foébé" class="social-icon" href="mailto:contact@maisonfoebe.fr">' + EMAIL_SVG + '</a>' +
+        '</div>' +
       '</div>' +
-      '<div class="footer-links">' +
-        '<a class="footer-link" href="mentions-legales.html">Mentions légales</a>' +
-        '<a class="footer-link" href="comprendre.html">Comprendre</a>' +
-        '<a class="footer-link" href="pratiquer.html">Pratiquer</a>' +
+      '<nav class="footer-column" aria-label="Découvrir Maison Foébé">' +
+        '<span class="footer-heading">Découvrir</span>' +
+        '<a class="footer-link" href="comprendre.html">Comprendre Maison Foébé</a>' +
         '<a class="footer-link" href="a-propos.html">À propos</a>' +
-        '<a class="footer-link" href="methode.html">Méthode</a>' +
-      '</div>' +
+        '<a class="footer-link" href="methode.html">La méthode Foébé</a>' +
+      '</nav>' +
+      '<nav class="footer-column" aria-label="Pratiquer avec Maison Foébé">' +
+        '<span class="footer-heading">Pratiquer</span>' +
+        '<a class="footer-link" href="pratiquer.html">Les 4 outils</a>' +
+        '<a class="footer-link" href="echelle-foebe.html">Échelle Foébé</a>' +
+        '<a class="footer-link" href="zones.html">Les 7 zones</a>' +
+        '<a class="footer-link" href="respiration.html">Respiration guidée</a>' +
+        '<a class="footer-link" href="boussole.html">La Boussole</a>' +
+      '</nav>' +
+      '<nav class="footer-column" aria-label="Ressources Maison Foébé">' +
+        '<span class="footer-heading">Ressources</span>' +
+        '<a class="footer-link" href="lexique.html">Lexique Foébé</a>' +
+        '<a class="footer-link" href="dictionnaire.html">Dictionnaire</a>' +
+      '</nav>' +
+      '<nav class="footer-column" aria-label="Informations légales Maison Foébé">' +
+        '<span class="footer-heading">Légal</span>' +
+        '<a class="footer-link" href="mentions-legales.html">Mentions légales</a>' +
+      '</nav>' +
+    '</div>' +
+    '<div class="footer-bottom">' +
+      '<p class="footer-signature">Le self-care comme compétence.</p>' +
       '<p class="footer-note">© 2026 Maison Foébé · Tous droits réservés</p>' +
     '</div>';
 
