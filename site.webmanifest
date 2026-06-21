@@ -1,0 +1,25 @@
+{
+  "name": "Maison Foébé",
+  "short_name": "Foébé",
+  "lang": "fr",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#4E291F",
+  "theme_color": "#4E291F",
+  "icons": [
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
