@@ -1,0 +1,16 @@
+{
+  "name": "maison-foebe-site-public",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "audit": "node scripts/audit-built-site.mjs",
+    "validate": "npm run build && npm run audit"
+  },
+  "dependencies": {
+    "astro": "6.4.8"
+  }
+}
