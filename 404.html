@@ -1,0 +1,469 @@
+<!doctype html>
+<html data-theme="night" data-foebe-breadcrumb="force" lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("foebeTheme");
+          if (saved === "day" || saved === "night") {
+            document.documentElement.setAttribute("data-theme", saved);
+            return;
+          }
+        } catch (e) {}
+        var prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+        document.documentElement.setAttribute("data-theme", prefersLight ? "day" : "night");
+      })();
+    </script>
+    <script id="foebe-shell-fallback-guard">
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("foebe-shell-loading");
+        window.__foebeShellWatchdog = window.setTimeout(function () {
+          if (!root.classList.contains("foebe-shell-ready")) {
+            root.classList.remove("foebe-shell-loading");
+            root.classList.add("foebe-shell-failed");
+            try {
+              window.dispatchEvent(new CustomEvent("foebe:shell-failed"));
+            } catch (e) {}
+          }
+        }, 3000);
+      })();
+    </script>
+
+    <title>404 · Maison Foébé</title>
+    <meta
+      content="La page demandée n’existe pas ou a changé d’adresse. Revenir à l’accueil Maison Foébé, explorer Comprendre Maison Foébé, les 7 zones ou l’Échelle Foébé."
+      name="description"
+    />
+    <meta content="noindex,follow" name="robots" />
+    <link href="https://maisonfoebe.fr/404.html" rel="canonical" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/site.webmanifest" rel="manifest" />
+    <meta content="404 · Maison Foébé" property="og:title" />
+    <meta
+      content="Cette page s’est éloignée du chemin. Revenir à l’accueil ou rejoindre un repère Maison Foébé."
+      property="og:description"
+    />
+    <meta content="website" property="og:type" />
+    <meta content="https://maisonfoebe.fr/404.html" property="og:url" />
+    <meta content="https://maisonfoebe.fr/images/og-foebe.jpg" property="og:image" />
+    <meta content="Maison Foébé" property="og:site_name" />
+    <meta content="fr_FR" property="og:locale" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="404 · Maison Foébé" name="twitter:title" />
+    <meta
+      content="Cette page s’est éloignée du chemin. Revenir à l’accueil ou rejoindre un repère Maison Foébé."
+      name="twitter:description"
+    />
+    <meta content="https://maisonfoebe.fr/images/og-foebe.jpg" name="twitter:image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "404 · Maison Foébé",
+        "description": "La page demandée n’existe pas ou a changé d’adresse.",
+        "url": "https://maisonfoebe.fr/404.html",
+        "inLanguage": "fr",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://maisonfoebe.fr/#website",
+          "name": "Maison Foébé"
+        }
+      }
+    </script>
+    <script
+      data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"
+      defer=""
+      src="https://cloud.umami.is/script.js"
+    ></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --foebe-progress-gradient: linear-gradient(90deg, var(--brown) 0%, var(--warm) 28%, var(--rose) 50%, var(--cream) 64%, var(--red) 80%, var(--brown) 100%);
+        --foebe-nav-height: 60px;
+        --warm: #bb7e60;
+        --brown: #4e291f;
+        --red: #c34234;
+        --rose: #c45279;
+        --cream: #f0eae7;
+      }
+
+      [data-theme="night"] {
+        --bg: var(--brown);
+        --bg2: #3a1a10;
+        --text: var(--cream);
+        --read: rgba(240, 234, 231, 0.94);
+        --read-soft: rgba(240, 234, 231, 0.82);
+        --border: rgba(187, 126, 96, 0.28);
+        --panel: rgba(240, 234, 231, 0.055);
+        --panel-strong: rgba(240, 234, 231, 0.09);
+        --shadow: rgba(0, 0, 0, 0.24);
+      }
+
+      [data-theme="day"] {
+        --bg: var(--cream);
+        --bg2: #e8ddd8;
+        --text: var(--brown);
+        --read: rgba(78, 41, 31, 0.92);
+        --read-soft: rgba(78, 41, 31, 0.76);
+        --border: rgba(78, 41, 31, 0.16);
+        --panel: rgba(255, 255, 255, 0.46);
+        --panel-strong: rgba(255, 255, 255, 0.78);
+        --shadow: rgba(78, 41, 31, 0.11);
+      }
+
+      html { scroll-behavior: smooth; min-height: 100%; overflow-x: hidden; }
+      body {
+        min-width: 320px;
+        min-height: 100%;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at top left, rgba(187,126,96,.16), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(196,82,121,.11), transparent 24%),
+          var(--bg);
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      a { color: inherit; }
+      #mainContent:focus { outline: none; }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--warm);
+        outline-offset: 4px;
+      }
+
+      html.foebe-shell-loading:not(.foebe-shell-failed) .fallback-nav,
+      html.foebe-shell-ready .fallback-nav { display: none !important; }
+      .fallback-nav {
+        position: fixed;
+        top: 0; left: 0; right: 0; z-index: 99988;
+        min-height: 60px; height: 60px;
+        padding: 0 clamp(14px, 3vw, 28px);
+        display: flex; align-items: center; justify-content: space-between; gap: 18px;
+        background: rgba(78, 41, 31, 0.95);
+        border-bottom: 1px solid rgba(187, 126, 96, 0.3);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.16);
+      }
+      [data-theme="day"] .fallback-nav {
+        background: rgba(240, 234, 231, 0.95);
+        border-bottom-color: rgba(78, 41, 31, 0.14);
+        box-shadow: 0 2px 14px rgba(78, 41, 31, 0.08);
+      }
+      .fallback-logo {
+        min-height: 44px; display: inline-flex; align-items: center; flex: 0 0 auto; max-width: 42vw;
+        white-space: nowrap; text-decoration: none; font-family: "Montserrat", sans-serif;
+        font-size: 18px; font-weight: 700; letter-spacing: -0.06em; line-height: 1;
+      }
+      [data-theme="night"] .fallback-logo span { color: var(--cream); }
+      [data-theme="day"] .fallback-logo span:nth-child(1),
+      [data-theme="day"] .fallback-logo span:nth-child(5) { color: var(--brown); }
+      [data-theme="day"] .fallback-logo span:nth-child(2) { color: var(--warm); }
+      [data-theme="day"] .fallback-logo span:nth-child(3) { color: var(--rose); }
+      [data-theme="day"] .fallback-logo span:nth-child(4) { color: var(--red); }
+      .fallback-links {
+        display: flex; align-items: center; gap: 10px; min-width: 0; overflow-x: auto; white-space: nowrap;
+        scrollbar-width: none; -ms-overflow-style: none;
+      }
+      .fallback-links::-webkit-scrollbar { display: none; }
+      .fallback-links a {
+        min-height: 40px; display: inline-flex; align-items: center; justify-content: center;
+        padding: 8px 12px; border-radius: 999px; text-decoration: none; font-size: 13px;
+        font-weight: 600; color: var(--read-soft); border: 1px solid transparent;
+      }
+      .fallback-links a:hover, .fallback-links a:focus-visible, .fallback-links a[aria-current="page"] {
+        color: var(--text); border-color: var(--border); background: var(--panel);
+      }
+
+      .foebe-scroll-progress--fallback {
+        position: fixed; top: 60px; left: 0; width: 100%; height: 3px; z-index: 99987;
+        background: rgba(187,126,96,.14); transform-origin: left center;
+      }
+      html.foebe-shell-loading:not(.foebe-shell-failed) .foebe-scroll-progress--fallback,
+      html.foebe-shell-ready .foebe-scroll-progress--fallback { display:none!important; }
+      .foebe-scroll-progress__bar {
+        display: block; width: 100%; height: 100%; transform-origin: left center; transform: scaleX(0);
+        background: var(--foebe-progress-gradient);
+      }
+
+      .page-shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding-top: clamp(92px, 11vw, 132px);
+        padding-bottom: clamp(56px, 8vw, 90px);
+      }
+
+      .error-hero {
+        min-height: calc(100vh - 110px);
+        display: grid;
+        align-items: center;
+      }
+      .error-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr);
+        align-items: center;
+        gap: clamp(28px, 5vw, 76px);
+      }
+      .hero-copy { max-width: 640px; }
+      .hero-eyebrow {
+        display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;
+        font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--warm);
+      }
+      .hero-eyebrow::before {
+        content: ""; width: 44px; height: 1px; background: currentColor; opacity: .8;
+      }
+      .hero-title {
+        font-family: "Lora", serif; font-size: clamp(42px, 6.3vw, 76px); line-height: .98; font-weight: 400;
+        letter-spacing: -.035em;
+      }
+      .foebe-text--warm { color: var(--warm); }
+      .hero-rule {
+        display: block; width: clamp(86px, 14vw, 124px); height: 1px; margin: 24px 0 22px;
+        background: linear-gradient(90deg, var(--warm), transparent);
+      }
+      .hero-intro {
+        max-width: 58ch; font-size: clamp(17px, 2vw, 19px); line-height: 1.8; color: var(--read);
+      }
+      .hero-intro strong { color: var(--text); }
+      .hero-note {
+        margin-top: 18px; max-width: 60ch; color: var(--read-soft); line-height: 1.72; font-size: 15.5px;
+      }
+      .action-row {
+        display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px;
+      }
+      .action-btn {
+        min-height: 50px; padding: 0 18px; border-radius: 999px; text-decoration: none; font-weight: 600;
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      }
+      .action-btn--primary {
+        background: var(--warm); color: #fff; box-shadow: 0 12px 26px rgba(187,126,96,.25);
+      }
+      .action-btn--secondary {
+        border: 1px solid var(--border); background: var(--panel); color: var(--text);
+      }
+      [data-theme="day"] .action-btn--primary { color: #fff; }
+      .action-btn:hover, .action-btn:focus-visible { transform: translateY(-1px); }
+
+      .quick-links {
+        margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px;
+      }
+      .quick-link {
+        display: flex; gap: 12px; align-items: flex-start; padding: 16px 16px 15px; text-decoration: none;
+        border-radius: 22px; border: 1px solid var(--border); background: var(--panel);
+        box-shadow: 0 14px 30px var(--shadow);
+      }
+      .quick-link:hover, .quick-link:focus-visible {
+        border-color: rgba(187,126,96,.44); transform: translateY(-1px);
+      }
+      .quick-link-mark {
+        flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+        background: rgba(187,126,96,.16); color: var(--warm); font-weight: 700; font-size: 13px;
+      }
+      .quick-link strong { display:block; font-size:15px; line-height:1.3; color: var(--text); }
+      .quick-link span { display:block; margin-top:4px; font-size:13.5px; line-height:1.55; color: var(--read-soft); }
+
+      .orbit-card {
+        position: relative; padding: clamp(18px, 3vw, 28px); border-radius: 34px;
+        border: 1px solid var(--border); background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+        box-shadow: 0 26px 54px var(--shadow);
+      }
+      .orbit-stage {
+        position: relative; width: min(100%, 460px); margin: 0 auto; aspect-ratio: 1; display: grid; place-items: center; isolation: isolate;
+      }
+      .orbit-stage::before {
+        content: ""; position: absolute; inset: 12%; border-radius: 50%;
+        background: radial-gradient(circle, rgba(187,126,96,.19), rgba(196,82,121,.055) 44%, transparent 70%);
+        filter: blur(8px); animation: orbitBreathe 5.8s ease-in-out infinite;
+      }
+      .orbit-ring { position: absolute; border-radius: 50%; pointer-events: none; }
+      .orbit-ring::before {
+        content: ""; position: absolute; inset: 0; border-radius: inherit;
+        background: conic-gradient(from 18deg, transparent 0 14%, #BB7E60 17% 30%, transparent 34% 51%, #C45279 55% 68%, transparent 72% 86%, #C34234 90% 96%, transparent 100%);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 0);
+        mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 0);
+        opacity: .72;
+      }
+      .orbit-ring--outer { inset: 2%; animation: orbitSpin 28s linear infinite; }
+      .orbit-ring--middle { inset: 15%; animation: orbitSpinReverse 36s linear infinite; }
+      .orbit-ring--middle::before { opacity: .47; }
+      .orbit-ring--inner { inset: 29%; animation: orbitSpin 22s linear infinite; }
+      .orbit-ring--inner::before { opacity: .36; }
+      .orbit-core {
+        position: relative; z-index: 2; width: 40%; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+        background: linear-gradient(145deg, rgba(240,234,231,.14), rgba(187,126,96,.06));
+        border: 1px solid rgba(240,234,231,.14); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 20px 46px rgba(0,0,0,.16), 0 0 0 12px rgba(187,126,96,.045);
+      }
+      [data-theme="day"] .orbit-core {
+        background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(187,126,96,.11));
+        border-color: rgba(78,41,31,.08);
+        box-shadow: 0 20px 46px rgba(78,41,31,.10), 0 0 0 12px rgba(187,126,96,.045);
+      }
+      .orbit-core strong {
+        font-family: "Montserrat", sans-serif; font-size: clamp(34px, 5vw, 58px); line-height: .95; letter-spacing: -.08em; color: var(--text);
+      }
+      .orbit-node {
+        position: absolute; z-index: 2; min-width: 104px; padding: 8px 10px; border-radius: 18px;
+        border: 1px solid var(--border); background: rgba(78,41,31,.34); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 12px 26px rgba(0,0,0,.16); text-align: center;
+      }
+      [data-theme="day"] .orbit-node { background: rgba(240,234,231,.84); box-shadow: 0 12px 26px rgba(78,41,31,.09); }
+      .orbit-node strong { display:block; font-size:11px; line-height:1.2; color:var(--text); }
+      .orbit-node span { display:block; margin-top:2px; font-family:"Lora", serif; font-size:12px; line-height:1.3; color:var(--read-soft); }
+      .node-home { top: 3%; left: 50%; transform: translateX(-50%); }
+      .node-read { right: 0; top: 50%; transform: translateY(-50%); }
+      .node-breathe { bottom: 4%; left: 50%; transform: translateX(-50%); }
+      .node-reorient { left: 0; top: 50%; transform: translateY(-50%); }
+      .orbit-caption {
+        margin-top: 18px; text-align: center; font-size: 14px; line-height: 1.65; color: var(--read-soft);
+      }
+
+      @keyframes orbitSpin { to { transform: rotate(360deg); } }
+      @keyframes orbitSpinReverse { to { transform: rotate(-360deg); } }
+      @keyframes orbitBreathe { 0%,100% { transform: scale(.96); opacity:.62; } 50% { transform: scale(1.05); opacity:1; } }
+
+      @media (max-width: 980px) {
+        .error-grid { grid-template-columns: 1fr; gap: 28px; }
+        .hero-copy { max-width: none; }
+        .orbit-card { max-width: 560px; margin: 0 auto; }
+      }
+      @media (max-width: 720px) {
+        .page-shell { width: min(100% - 28px, 1180px); padding-top: 88px; }
+        .quick-links { grid-template-columns: 1fr; }
+        .hero-rule { margin: 22px 0 18px; }
+        .action-row { flex-direction: column; align-items: stretch; }
+        .action-btn { width: 100%; }
+        .orbit-node { min-width: 92px; padding: 7px 9px; }
+        .orbit-node strong { font-size: 10px; }
+        .orbit-node span { font-size: 11px; }
+      }
+      @media (max-width: 580px) {
+        .fallback-nav { gap: 10px; }
+        .fallback-logo { font-size: 16px; max-width: 36vw; }
+        .fallback-links { gap: 8px; }
+        .fallback-links a { padding: 8px 10px; font-size: 12px; }
+        .hero-title { font-size: clamp(36px, 12vw, 54px); }
+        .hero-intro { font-size: 16px; line-height: 1.74; }
+        .orbit-stage { width: min(100%, 360px); }
+        .orbit-card { border-radius: 28px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+      <div class="fallback-links">
+        <a href="comprendre.html">Comprendre</a>
+        <a href="methode.html">Méthode</a>
+        <a href="echelle-foebe.html">Échelle Foébé</a>
+        <a href="zones.html">7 zones</a>
+        <a href="dictionnaire.html">Dictionnaire</a>
+      </div>
+    </nav>
+    <div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+      <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+    </div>
+    <noscript>
+      <style>
+        .foebe-scroll-progress--fallback { display: block !important; }
+      </style>
+    </noscript>
+
+    <main id="mainContent" tabindex="-1">
+      <div class="page-shell">
+        <section aria-labelledby="error-title" class="error-hero">
+          <div class="error-grid">
+            <div class="hero-copy">
+              <span class="hero-eyebrow">Repère perdu</span>
+              <h1 class="hero-title" id="error-title">
+                Cette page<br />
+                <span class="foebe-text--warm">s’est éloignée du chemin.</span>
+              </h1>
+              <span aria-hidden="true" class="hero-rule"></span>
+              <p class="hero-intro">
+                Le lien a peut-être changé, la page n’existe plus, ou l’adresse contient une erreur.
+                <strong>Tu peux revenir à l’accueil</strong> ou rejoindre directement un repère Maison Foébé.
+              </p>
+              <p class="hero-note">
+                Si tu étais en train de chercher un point d’entrée, commence par <strong>Comprendre Maison Foébé</strong>,
+                l’<strong>Échelle Foébé</strong> ou les <strong>7 zones</strong>.
+              </p>
+              <div class="action-row">
+                <a class="action-btn action-btn--primary" href="index.html">Retour à l’accueil <span aria-hidden="true">→</span></a>
+                <a class="action-btn action-btn--secondary" href="pratiquer.html">Voir les outils <span aria-hidden="true">→</span></a>
+              </div>
+              <div class="quick-links" aria-label="Repères recommandés">
+                <a class="quick-link" href="comprendre.html">
+                  <span aria-hidden="true" class="quick-link-mark">01</span>
+                  <span><strong>Comprendre Maison Foébé</strong><span>Reprendre le cadre et les repères de base.</span></span>
+                </a>
+                <a class="quick-link" href="echelle-foebe.html">
+                  <span aria-hidden="true" class="quick-link-mark">02</span>
+                  <span><strong>Échelle Foébé</strong><span>Te situer rapidement avant d’aller plus loin.</span></span>
+                </a>
+                <a class="quick-link" href="zones.html">
+                  <span aria-hidden="true" class="quick-link-mark">03</span>
+                  <span><strong>Les 7 zones</strong><span>Explorer une dimension précise de ton équilibre.</span></span>
+                </a>
+                <a class="quick-link" href="dictionnaire.html">
+                  <span aria-hidden="true" class="quick-link-mark">04</span>
+                  <span><strong>Dictionnaire</strong><span>Retrouver un mot, une définition ou un guide.</span></span>
+                </a>
+              </div>
+            </div>
+
+            <figure class="orbit-card" aria-labelledby="orbit404-caption">
+              <div aria-hidden="true" class="orbit-stage">
+                <div class="orbit-ring orbit-ring--outer"></div>
+                <div class="orbit-ring orbit-ring--middle"></div>
+                <div class="orbit-ring orbit-ring--inner"></div>
+                <div class="orbit-core"><strong>404</strong></div>
+                <div class="orbit-node node-home"><strong>Accueil</strong><span>Revenir</span></div>
+                <div class="orbit-node node-read"><strong>Comprendre</strong><span>Maison Foébé</span></div>
+                <div class="orbit-node node-breathe"><strong>Respirer</strong><span>Repartir</span></div>
+                <div class="orbit-node node-reorient"><strong>Repères</strong><span>S’orienter</span></div>
+              </div>
+              <figcaption class="orbit-caption" id="orbit404-caption">
+                Un détour n’est pas une impasse : Foébé te ramène vers un point d’entrée plus lisible.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script id="foebeFallbackProgressScript">
+      (function () {
+        var bar = document.getElementById("foebeScrollProgressFallbackBar");
+        if (!bar) return;
+        function updateFallbackProgress() {
+          if (!document.documentElement.classList.contains("foebe-shell-failed")) return;
+          var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = documentHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / documentHeight)) : 0;
+          bar.style.transform = "scaleX(" + progress + ")";
+        }
+        window.addEventListener("foebe:shell-failed", updateFallbackProgress);
+        window.addEventListener("scroll", updateFallbackProgress, { passive: true });
+        window.addEventListener("resize", updateFallbackProgress);
+      })();
+    </script>
+    <script src="/foebe-shell.js"></script>
+  </body>
+</html>
