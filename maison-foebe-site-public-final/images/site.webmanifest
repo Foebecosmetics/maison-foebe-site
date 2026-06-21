@@ -1,0 +1,20 @@
+{
+  "name": "Maison Foébé · L'Observatoire",
+  "short_name": "Foébé",
+  "icons": [
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F5EFE8",
+  "background_color": "#F5EFE8",
+  "display": "standalone",
+  "start_url": "/"
+}

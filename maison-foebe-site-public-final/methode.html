@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+<html data-theme="night" lang="fr">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><!-- Anti-FOUC thème — NE PAS MODIFIER --><script>
+(function(){
+  try {
+    var saved = localStorage.getItem('foebeTheme');
+    if (saved === 'day' || saved === 'night') {
+      document.documentElement.setAttribute('data-theme', saved);
+      return;
+    }
+  } catch(e) {}
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script><script id="foebe-shell-fallback-guard">
+(function () {
+  var root = document.documentElement;
+  root.classList.add("foebe-shell-loading");
+
+  window.__foebeShellWatchdog = window.setTimeout(function () {
+    if (!root.classList.contains("foebe-shell-ready")) {
+      root.classList.remove("foebe-shell-loading");
+      root.classList.add("foebe-shell-failed");
+      try { window.dispatchEvent(new CustomEvent("foebe:shell-failed")); } catch (e) {}
+    }
+  }, 3000);
+})();
+</script><script>
+document.documentElement.classList.add('js-ready');
+</script>
+<title>La Méthode · Maison Foébé</title>
+<meta content="Sur quoi repose la lecture Foébé. Les modèles utilisés, la posture non clinique, ce que la méthode permet de voir que d'autres approches ne montrent pas." name="description"/>
+<meta content="La Méthode — Maison Foébé" property="og:title"/>
+<meta content="Sur quoi repose la lecture Foébé. Les modèles utilisés, la posture non clinique, ce que la méthode permet de voir." property="og:description"/>
+<meta content="website" property="og:type"/>
+<script data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f" defer="" src="https://cloud.umami.is/script.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&amp;family=Poppins:wght@400;500;600;700&amp;family=Montserrat:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://maisonfoebe.fr/methode.html" rel="canonical"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="https://maisonfoebe.fr/methode.html" property="og:url"/>
+<meta content="https://maisonfoebe.fr/images/og-methode.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Maison Foébé" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="La Méthode — Maison Foébé" name="twitter:title"/>
+<meta content="Sur quoi repose la lecture Foébé. Les modèles utilisés, la posture non clinique, ce que la méthode permet de voir." name="twitter:description"/>
+<meta content="https://maisonfoebe.fr/images/og-methode.png" name="twitter:image"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"La Méthode — Maison Foébé","description":"Sur quoi repose la lecture Foébé. Les modèles utilisés, la posture non clinique, ce que la méthode permet de voir.","url":"https://maisonfoebe.fr/methode.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}</script>
+<style id="foebeMethodEditorialCss">
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#BB7E60 28%,#C45279 50%,#F0EAE7 64%,#C34234 80%,#4E291F 100%);
+  --foebe-nav-height:60px;
+  --brown:#4E291F;
+  --brown-soft:#8E5B43;
+  --warm:#BB7E60;
+  --rose:#C45279;
+  --red:#C34234;
+  --cream:#F0EAE7;
+}
+
+[data-theme="night"]{
+  --bg:#4E291F;
+  --bg2:#3A1A10;
+  --bg3:#2C1A12;
+  --text:#F0EAE7;
+  --read:rgba(240,234,231,.94);
+  --read-soft:rgba(240,234,231,.78);
+  --border:rgba(187,126,96,.28);
+  --panel:rgba(240,234,231,.052);
+  --panel-strong:rgba(240,234,231,.078);
+  --shadow:rgba(0,0,0,.25);
+}
+
+[data-theme="day"]{
+  --bg:#F0EAE7;
+  --bg2:#E8DDD8;
+  --bg3:#DDD0CB;
+  --text:#4E291F;
+  --read:rgba(78,41,31,.92);
+  --read-soft:rgba(78,41,31,.76);
+  --border:rgba(78,41,31,.16);
+  --panel:rgba(255,255,255,.48);
+  --panel-strong:rgba(255,255,255,.66);
+  --shadow:rgba(78,41,31,.11);
+}
+
+html{min-height:100%;overflow-x:hidden;scroll-behavior:smooth}
+body{
+  min-width:320px;min-height:100%;overflow-x:hidden;
+  background:var(--bg);color:var(--text);
+  font-family:'Poppins',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility
+}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--warm);outline-offset:4px}
+#mainContent:focus{outline:none}
+
+/* Navigation locale : secours uniquement si le Shell échoue. */
+html.foebe-shell-loading:not(.foebe-shell-failed) body>nav#fallbackNav,
+html.foebe-shell-ready body>nav#fallbackNav{display:none!important}
+html.foebe-shell-failed body>nav#fallbackNav{display:flex!important}
+
+body>nav#fallbackNav{
+  position:fixed;inset:0 0 auto 0;z-index:99988;
+  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:rgba(78,41,31,.95);
+  border-bottom:1px solid rgba(187,126,96,.30);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 2px 14px rgba(0,0,0,.16)
+}
+[data-theme="day"] body>nav#fallbackNav{
+  background:rgba(240,234,231,.95);
+  border-bottom-color:rgba(78,41,31,.14)
+}
+.fallback-logo{
+  min-height:44px;display:inline-flex;align-items:center;flex:0 0 auto;
+  max-width:42vw;white-space:nowrap;text-decoration:none;
+  font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;
+  letter-spacing:-.06em;line-height:1
+}
+[data-theme="night"] .fallback-logo span{color:#F0EAE7}
+[data-theme="day"] .fallback-logo span:nth-child(1),
+[data-theme="day"] .fallback-logo span:nth-child(5){color:#4E291F}
+[data-theme="day"] .fallback-logo span:nth-child(2){color:#BB7E60}
+[data-theme="day"] .fallback-logo span:nth-child(3){color:#C45279}
+[data-theme="day"] .fallback-logo span:nth-child(4){color:#C34234}
+.fallback-links{
+  display:flex;flex:1 1 auto;min-width:0;justify-content:flex-end;
+  align-items:center;gap:6px;overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;white-space:nowrap
+}
+.fallback-links::-webkit-scrollbar{display:none}
+.fallback-links a{
+  min-height:38px;padding:0 11px;display:inline-flex;align-items:center;
+  justify-content:center;flex:0 0 auto;border:1px solid transparent;
+  border-radius:999px;color:var(--text);font-size:12.5px;
+  font-weight:600;text-decoration:none
+}
+.fallback-links a:hover,.fallback-links a:focus-visible,
+.fallback-links a[aria-current="page"]{
+  background:#BB7E60;border-color:#BB7E60;color:#F0EAE7;outline:none
+}
+
+/* Barre locale : secours uniquement si le Shell échoue. */
+.foebe-scroll-progress--fallback{
+  display:none;position:fixed;top:var(--foebe-nav-height);
+  left:0;right:0;height:3px;z-index:99987;
+  overflow:hidden;pointer-events:none;background:rgba(187,126,96,.12)
+}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;width:100%;height:100%;
+  background:var(--foebe-progress-gradient);
+  transform:scaleX(0);transform-origin:left center;
+  will-change:transform;box-shadow:0 1px 7px rgba(187,126,96,.28)
+}
+html.foebe-shell-loading .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block}
+html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
+
+/* TYPOGRAPHIE ÉDITORIALE */
+.hero-title,.section-title,.modele-name,.etape-title,
+.posture-card h3,.conclusion-quote{
+  font-family:'Lora',serif;font-weight:400;color:var(--text)
+}
+.hero-title em,.section-title em,.modele-name em,.etape-title em,
+.conclusion-quote em{font-style:italic;color:#BB7E60}
+.hero-body,.hero-benefit,.section-body,.modele-desc,.etape-desc,
+.etape-plus,.posture-not,.posture-is,.method-proof-quote{
+  font-family:'Lora',serif;color:var(--read)
+}
+.section-eyebrow{
+  display:inline-flex;align-items:center;width:max-content;max-width:100%;
+  min-height:30px;padding:7px 13px;margin-bottom:20px;
+  border:1px solid rgba(187,126,96,.40);border-radius:999px;
+  background:rgba(187,126,96,.17);color:#F0EAE7;
+  font-size:12px;font-weight:700;line-height:1.2;
+  letter-spacing:1.25px;text-transform:uppercase
+}
+[data-theme="day"] .section-eyebrow{
+  color:#4E291F;background:rgba(187,126,96,.14);
+  border-color:rgba(78,41,31,.15)
+}
+
+/* HERO MÉTHODE */
+.hero{
+  min-height:clamp(720px,94svh,960px);
+  padding:calc(var(--foebe-nav-height) + clamp(54px,8svh,92px))
+          clamp(20px,5vw,56px)
+          clamp(62px,8svh,92px);
+  display:flex;align-items:center;position:relative;
+  isolation:isolate;overflow:hidden;
+  background:
+    radial-gradient(ellipse 62% 46% at 8% 14%,rgba(187,126,96,.18),transparent 68%),
+    radial-gradient(ellipse 46% 40% at 90% 20%,rgba(196,82,121,.10),transparent 70%),
+    radial-gradient(ellipse 42% 32% at 72% 92%,rgba(195,66,52,.055),transparent 72%),
+    linear-gradient(180deg,#4E291F 0%,rgba(78,41,31,.97) 100%)
+}
+[data-theme="day"] .hero{
+  background:
+    radial-gradient(ellipse 62% 46% at 8% 14%,rgba(187,126,96,.17),transparent 68%),
+    radial-gradient(ellipse 46% 40% at 90% 20%,rgba(196,82,121,.075),transparent 70%),
+    radial-gradient(ellipse 42% 32% at 72% 92%,rgba(195,66,52,.045),transparent 72%),
+    linear-gradient(180deg,#F0EAE7 0%,rgba(240,234,231,.97) 100%)
+}
+.method-hero-grid{
+  width:100%;max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+  gap:clamp(44px,7vw,98px);align-items:center;position:relative;z-index:2
+}
+.method-hero-copy{max-width:720px}
+.hero-title{
+  max-width:760px;margin-bottom:22px;
+  font-size:clamp(40px,5.6vw,66px);
+  line-height:1.07;letter-spacing:-.018em;text-wrap:balance
+}
+.hero-rule{
+  display:block;width:78px;height:2px;margin:0 0 24px;
+  background:linear-gradient(90deg,#BB7E60,#C45279,#C34234)
+}
+.hero-body{
+  max-width:680px;margin-bottom:17px;
+  font-size:clamp(18px,1.35vw,20.5px);line-height:1.78
+}
+.hero-benefit{
+  max-width:660px;margin:0 0 25px;padding-left:17px;
+  border-left:2px solid rgba(187,126,96,.48);
+  font-size:clamp(15.5px,.55vw + 13.5px,17px);
+  font-style:italic;line-height:1.74;color:var(--read-soft)
+}
+.hero-not{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+
+/* Les définitions interactives sont conservées sans réécriture. */
+.hero-chip{
+  appearance:none;-webkit-appearance:none;
+  min-height:31px;padding:6px 10px;display:inline-flex;
+  align-items:center;justify-content:center;
+  border:1px solid rgba(187,126,96,.34);border-radius:999px;
+  background:rgba(187,126,96,.11);color:var(--read-soft);
+  font-family:'Poppins',sans-serif;font-size:11.5px;
+  line-height:1.35;font-weight:700;text-transform:uppercase;
+  letter-spacing:.45px;cursor:pointer;touch-action:manipulation
+}
+.hero-chip::after{
+  content:'?';width:16px;height:16px;margin-left:6px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;background:rgba(240,234,231,.20);
+  color:#F0EAE7;font-size:10px;line-height:1;font-weight:700
+}
+[data-theme="day"] .hero-chip::after{background:rgba(78,41,31,.13);color:#4E291F}
+.hero-chip:hover,.hero-chip:focus-visible{
+  border-color:#BB7E60;background:rgba(187,126,96,.19);color:var(--text)
+}
+
+/* Animation : 4 mouvements reliés autour du cadre Foébé. */
+.method-visual{
+  width:min(100%,480px);justify-self:center;
+  display:grid;place-items:center
+}
+.method-stage{
+  position:relative;width:100%;aspect-ratio:1;
+  display:grid;place-items:center;isolation:isolate
+}
+.method-stage::before{
+  content:"";position:absolute;inset:19%;border-radius:50%;
+  background:radial-gradient(circle,rgba(187,126,96,.20),
+    rgba(196,82,121,.06) 48%,transparent 72%);
+  filter:blur(9px);animation:methodBreathe 5.6s ease-in-out infinite
+}
+.method-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.method-track{
+  fill:none;stroke:rgba(187,126,96,.22);stroke-width:1.6;
+  stroke-dasharray:4 8
+}
+.method-track--inner{stroke:rgba(196,82,121,.16);stroke-dasharray:2 10}
+.method-flow{
+  fill:none;stroke:url(#methodGradient);stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:18 13;animation:methodDash 11s linear infinite
+}
+.method-orbit-dot{
+  fill:#F0EAE7;filter:drop-shadow(0 0 7px rgba(187,126,96,.80));
+  transform-origin:200px 200px;animation:methodSpin 10s linear infinite
+}
+.method-core{
+  position:relative;z-index:4;width:29%;aspect-ratio:1;
+  border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(187,126,96,.48);
+  background:linear-gradient(145deg,rgba(240,234,231,.13),rgba(187,126,96,.11));
+  box-shadow:0 22px 58px rgba(0,0,0,.18),0 0 0 13px rgba(187,126,96,.035)
+}
+[data-theme="day"] .method-core{
+  background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(187,126,96,.11));
+  box-shadow:0 20px 46px rgba(78,41,31,.10),0 0 0 13px rgba(187,126,96,.045)
+}
+.method-core strong{
+  font-family:'Montserrat',sans-serif;font-size:clamp(40px,5vw,64px);
+  line-height:.95;letter-spacing:-.08em;color:var(--text)
+}
+.method-node{
+  position:absolute;z-index:5;width:58px;height:58px;
+  display:grid;place-items:center;border-radius:50%;
+  border:1px solid rgba(187,126,96,.40);
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 12px 30px rgba(0,0,0,.14);
+  color:var(--text);font-size:12px;font-weight:800;
+  letter-spacing:.08em;animation:methodFloat 5.2s ease-in-out infinite
+}
+[data-theme="day"] .method-node{
+  background:rgba(240,234,231,.88);
+  box-shadow:0 12px 26px rgba(78,41,31,.09)
+}
+.method-node--1{top:3%;left:50%;transform:translateX(-50%)}
+.method-node--2{right:3%;top:50%;transform:translateY(-50%);animation-delay:-1.3s}
+.method-node--3{bottom:3%;left:50%;transform:translateX(-50%);animation-delay:-2.6s}
+.method-node--4{left:3%;top:50%;transform:translateY(-50%);animation-delay:-3.9s}
+
+@keyframes methodDash{to{stroke-dashoffset:-124}}
+@keyframes methodSpin{to{transform:rotate(360deg)}}
+@keyframes methodBreathe{0%,100%{transform:scale(.96);opacity:.62}50%{transform:scale(1.05);opacity:1}}
+@keyframes methodFloat{0%,100%{margin-top:0}50%{margin-top:-7px}}
+
+/* SECTIONS */
+.section,.posture-section,.conclusion-section{
+  padding-left:clamp(20px,5vw,48px);padding-right:clamp(20px,5vw,48px)
+}
+.section,.posture-section{padding-top:clamp(76px,9vw,118px);padding-bottom:clamp(76px,9vw,118px)}
+.section-inner,.posture-inner,.conclusion-inner{width:100%;max-width:1120px;margin:0 auto}
+.bg2{background:var(--bg2)}
+.bg3{
+  background:
+    radial-gradient(ellipse 48% 38% at 50% 0%,rgba(187,126,96,.11),transparent 68%),
+    var(--bg3)
+}
+.section-title{
+  max-width:760px;margin-bottom:18px;
+  font-size:clamp(31px,4.3vw,49px);
+  line-height:1.12;letter-spacing:-.012em;text-wrap:balance
+}
+.section-body{
+  max-width:740px;font-size:clamp(16.5px,.65vw + 14px,18px);
+  line-height:1.82
+}
+
+/* Trois modèles : un seul parcours éditorial continu. */
+.modeles-grid{
+  margin-top:52px;display:grid;gap:16px;overflow:visible;border:0;
+  border-radius:0;background:transparent;box-shadow:none
+}
+.modele-item{
+  --accent:#BB7E60;position:relative;
+  display:grid;grid-template-columns:150px minmax(0,1fr) auto;
+  column-gap:clamp(22px,4vw,48px);row-gap:10px;align-items:start;
+  padding:clamp(30px,4vw,46px) clamp(24px,4.6vw,52px);
+  border:1px solid var(--border);border-radius:26px;background:var(--panel);
+  box-shadow:0 18px 46px var(--shadow);overflow:hidden
+}
+.modele-item:nth-child(2){--accent:#C45279}
+.modele-item:nth-child(3){--accent:#C34234}
+.modele-item:last-child{border-bottom:0}
+.modele-item::before{
+  content:"";position:absolute;top:22px;bottom:22px;left:0;width:4px;
+  border-radius:0 999px 999px 0;background:var(--accent)
+}
+.modele-num{
+  grid-column:1;grid-row:1/5;
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)
+}
+.modele-name{
+  grid-column:2;font-size:clamp(22px,2.6vw,32px);
+  line-height:1.17
+}
+.modele-rule{
+  grid-column:2;width:46px;height:2px;
+  background:var(--accent);opacity:.72
+}
+.modele-desc{
+  grid-column:2;max-width:760px;font-size:16px;line-height:1.76
+}
+.modele-link,.modele-links{
+  grid-column:3;grid-row:1/5;align-self:center;justify-self:end
+}
+.modele-links{display:flex}
+.modele-link,.btn-cta,.btn-outline{
+  min-height:48px;padding:0 18px;display:inline-flex;align-items:center;
+  justify-content:center;gap:8px;border-radius:999px;
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;
+  text-decoration:none;white-space:nowrap;
+  transition:background .2s,border-color .2s,color .2s,gap .2s,transform .2s
+}
+.modele-link,.btn-cta{
+  background:#BB7E60;border:1px solid #BB7E60;color:#F0EAE7
+}
+.modele-item:nth-child(2) .modele-link{background:#C45279;border-color:#C45279}
+.modele-item:nth-child(3) .modele-link{background:#C34234;border-color:#C34234}
+.modele-link:hover,.modele-link:focus-visible,
+.btn-cta:hover,.btn-cta:focus-visible{
+  background:#C45279;border-color:#C45279;color:#F0EAE7;
+  gap:11px;transform:translateY(-1px);outline:none
+}
+
+/* Quatre mouvements : progression claire, non décorative. */
+.etapes-list{
+  margin-top:52px;overflow:hidden;border:1px solid var(--border);
+  border-radius:30px;background:var(--panel);
+  box-shadow:0 28px 72px var(--shadow)
+}
+.etape{
+  --accent:#BB7E60;position:relative;
+  display:grid;grid-template-columns:92px minmax(0,1fr);
+  border-bottom:1px solid var(--border)
+}
+.etape:nth-child(2){--accent:#C45279}
+.etape:nth-child(3){--accent:#C34234}
+.etape:nth-child(4){--accent:#8E5B43}
+.etape:last-child{border-bottom:0}
+.etape-num-col{
+  display:flex;justify-content:center;padding-top:31px;
+  border-right:1px solid var(--border)
+}
+.etape-num{
+  width:48px;height:48px;display:grid;place-items:center;
+  border-radius:999px;background:var(--accent);
+  color:#F0EAE7;font-size:11px;font-weight:800;letter-spacing:.08em;
+  box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 10%,transparent)
+}
+.etape-content{padding:29px clamp(24px,4vw,42px) 31px}
+.etape-title{font-size:clamp(22px,2.7vw,32px);line-height:1.17;margin-bottom:10px}
+.etape-title em{color:var(--accent)}
+/* Mode nuit uniquement : surlignage crème très pâle des quatre mouvements. */
+[data-theme="night"] .etape-title em{
+  display:inline;
+  padding:.05em .24em .08em;
+  border-radius:.22em;
+  background:rgba(240,234,231,.14);
+  color:#F0EAE7;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+.etape-desc{font-size:16.5px;line-height:1.78}
+.etape-plus{
+  margin-top:15px;padding-left:16px;
+  border-left:2px solid color-mix(in srgb,var(--accent) 62%,transparent);
+  font-size:15.5px;line-height:1.76;color:var(--read-soft)
+}
+
+/* Posture : quatre cartes calmes, contrastées et cohérentes. */
+.posture-grid{
+  margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px
+}
+.posture-card{
+  --accent:#BB7E60;position:relative;padding:32px 28px;
+  border:1px solid var(--border);border-radius:24px;
+  background:var(--panel);box-shadow:0 16px 42px rgba(0,0,0,.10);
+  overflow:hidden
+}
+.posture-card:nth-child(2){--accent:#C45279}
+.posture-card:nth-child(3){--accent:#C34234}
+.posture-card:nth-child(4){--accent:#8E5B43}
+.posture-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent)
+}
+.posture-tag{
+  display:inline-flex;min-height:28px;align-items:center;padding:5px 10px;
+  margin-bottom:18px;border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 17%,transparent);
+  color:var(--text);font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase
+}
+.posture-not,.posture-is{font-size:16px;line-height:1.76}
+.posture-is{margin-top:15px;padding-top:15px;border-top:1px solid var(--border);color:var(--read-soft)}
+
+/* Preuve de méthode. */
+.bg3 .section-inner{max-width:820px;text-align:center}
+.bg3 .section-title{margin-left:auto;margin-right:auto}
+.method-proof-box{
+  max-width:720px;margin:38px auto 0;padding:clamp(28px,4vw,42px);
+  border:1px solid rgba(187,126,96,.34);border-radius:26px;
+  background:linear-gradient(145deg,rgba(240,234,231,.075),rgba(187,126,96,.075));
+  box-shadow:0 24px 62px rgba(0,0,0,.16)
+}
+.method-proof-quote{font-size:clamp(17px,1.3vw,20px);line-height:1.8;font-style:italic}
+.method-proof-source{
+  display:block;margin-top:20px;color:#BB7E60;
+  font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase
+}
+[data-theme="day"] .bg3{
+  background:
+    radial-gradient(ellipse 54% 45% at 50% 0%,rgba(240,234,231,.17),transparent 70%),
+    #BB7E60
+}
+[data-theme="day"] .bg3 .section-eyebrow{
+  background:#4E291F;border-color:#4E291F;color:#F0EAE7
+}
+[data-theme="day"] .bg3 .section-title,
+[data-theme="day"] .bg3 .section-title em,
+[data-theme="day"] .bg3 .method-proof-quote,
+[data-theme="day"] .bg3 .method-proof-source{color:#F0EAE7}
+[data-theme="day"] .bg3 .method-proof-box{
+  background:rgba(240,234,231,.10);
+  border-color:rgba(240,234,231,.42);box-shadow:none
+}
+
+/* Conclusion */
+.conclusion-section{
+  padding-top:clamp(84px,10vw,132px);
+  padding-bottom:clamp(94px,11vw,144px);
+  text-align:center;
+  background:
+    radial-gradient(ellipse 52% 42% at 50% 0%,rgba(187,126,96,.12),transparent 70%),
+    var(--bg3)
+}
+.conclusion-inner{max-width:760px}
+.conclusion-quote{
+  font-size:clamp(28px,4.3vw,45px);
+  line-height:1.25;font-style:italic;text-wrap:balance
+}
+.conclusion-actions{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+  margin-top:clamp(44px,5vw,58px)
+}
+.btn-outline{
+  background:transparent;border:1px solid rgba(187,126,96,.48);color:var(--text)
+}
+.btn-outline:hover,.btn-outline:focus-visible{
+  background:#C45279;border-color:#C45279;color:#F0EAE7;
+  transform:translateY(-1px);outline:none
+}
+
+/* Modal des définitions. */
+.chip-modal-backdrop{
+  position:fixed;inset:0;z-index:1200;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(20px,4vw,42px);
+  background:rgba(44,26,18,.58);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .22s ease,visibility .22s ease
+}
+[data-theme="day"] .chip-modal-backdrop{background:rgba(78,41,31,.28)}
+.chip-modal-backdrop.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.chip-modal{
+  position:relative;width:min(100%,500px);padding:clamp(24px,3vw,32px);
+  border:1px solid rgba(240,234,231,.30);border-radius:24px;
+  background:#4E291F;color:#F0EAE7;
+  box-shadow:0 24px 70px rgba(0,0,0,.34);
+  transform:translateY(8px) scale(.98);transition:transform .22s ease
+}
+.chip-modal-backdrop.is-open .chip-modal{transform:none}
+[data-theme="day"] .chip-modal{background:#BB7E60;border-color:rgba(78,41,31,.20)}
+.chip-modal-title{
+  margin:0 42px 14px 0;font-family:'Lora',serif;
+  font-size:clamp(22px,2.8vw,30px);font-weight:400;
+  line-height:1.18;color:#F0EAE7
+}
+.chip-modal-text{
+  font-family:'Lora',serif;font-size:clamp(16px,1.05vw,17px);
+  line-height:1.78;color:#F0EAE7
+}
+.chip-modal-close{
+  position:absolute;top:14px;right:14px;width:36px;height:36px;
+  border:1px solid rgba(240,234,231,.42);border-radius:999px;
+  background:rgba(240,234,231,.10);color:#F0EAE7;
+  font-size:20px;line-height:1;cursor:pointer
+}
+.chip-modal-close:hover,.chip-modal-close:focus-visible{
+  background:#C45279;border-color:#C45279;color:#F0EAE7
+}
+body.chip-modal-open{overflow:hidden}
+
+/* Contenu jamais invisible si JS ou IntersectionObserver échoue. */
+.reveal{opacity:1;transform:none;visibility:visible}
+@media(min-width:768px) and (prefers-reduced-motion:no-preference){
+  .js-ready .reveal{
+    opacity:0;transform:translateY(18px);
+    transition:opacity .62s ease,transform .62s cubic-bezier(.16,1,.3,1)
+  }
+  .js-ready .reveal.visible{opacity:1;transform:none}
+  .reveal-delay-1{transition-delay:.08s!important}
+  .reveal-delay-2{transition-delay:.16s!important}
+  .reveal-delay-3{transition-delay:.24s!important}
+}
+
+/* Tablette et petits desktops. */
+@media(max-width:980px){
+  .hero{min-height:auto;padding-top:calc(var(--foebe-nav-height) + 58px)}
+  .method-hero-grid{grid-template-columns:1fr;max-width:820px;gap:38px}
+  .method-hero-copy{max-width:760px}
+  .method-visual{width:min(72vw,420px)}
+  .modele-item{grid-template-columns:130px minmax(0,1fr)}
+  .modele-link,.modele-links{grid-column:2;grid-row:auto;justify-self:start;margin-top:7px}
+}
+
+/* Mobile portrait : animation conservée et réellement visible. */
+@media(max-width:680px){
+  body>nav#fallbackNav{padding:0 10px;gap:10px}
+  .fallback-logo{font-size:16px;max-width:36vw}
+  .fallback-links{justify-content:flex-start}
+  .fallback-links a{min-height:36px;font-size:11.5px;padding:0 9px}
+
+  .hero{padding:calc(var(--foebe-nav-height) + 36px) 18px 50px}
+  .method-hero-grid{gap:28px}
+  .hero-title{font-size:clamp(34px,10.4vw,46px)}
+  .hero-body{font-size:17px;line-height:1.74}
+  .hero-benefit{font-size:15.5px}
+  .hero-chip{font-size:10.5px;padding:5px 8px}
+  .method-visual{width:min(82vw,310px)}
+  .method-node{width:48px;height:48px;font-size:10.5px}
+
+  .section,.posture-section{padding:64px 18px}
+  .section-title{font-size:clamp(29px,9vw,39px)}
+  .modeles-grid,.etapes-list{margin-top:38px}
+  .modeles-grid{gap:14px}
+  .modele-item{grid-template-columns:1fr;gap:11px;padding:28px 22px;border-radius:22px}
+  .modele-num,.modele-name,.modele-rule,.modele-desc,
+  .modele-link,.modele-links{grid-column:1;grid-row:auto}
+  .modele-link,.modele-links{width:100%;justify-self:stretch}
+  .modele-link{width:100%}
+
+  .etape{grid-template-columns:58px minmax(0,1fr);align-items:start}
+  .etape-num-col{
+    justify-content:flex-start;padding:24px 0 0 16px;
+    border-right:0;border-bottom:0
+  }
+  .etape-num{width:42px;height:42px}
+  .etape-content{padding:24px 18px 28px 12px}
+
+  .posture-grid{grid-template-columns:1fr;margin-top:38px}
+  .posture-card{padding:28px 22px}
+  .method-proof-box{padding:28px 22px}
+
+  .conclusion-section{padding:76px 18px 92px}
+  .conclusion-actions{
+    flex-direction:column;align-items:stretch;
+    margin-top:38px
+  }
+  .btn-cta,.btn-outline{width:100%}
+}
+
+/* Très petits mobiles. */
+@media(max-width:380px){
+  .hero{padding-left:16px;padding-right:16px}
+  .hero-title{font-size:clamp(31px,10vw,39px)}
+  .hero-body{font-size:16px}
+  .method-visual{width:min(86vw,280px)}
+  .method-node{width:43px;height:43px;font-size:10px}
+}
+
+/* Paysage compact : deux colonnes, animation maintenue sans clip. */
+@media(orientation:landscape) and (max-height:700px) and (min-width:700px){
+  .hero{
+    min-height:auto;
+    padding-top:calc(var(--foebe-nav-height) + 24px);
+    padding-bottom:26px
+  }
+  .method-hero-grid{
+    grid-template-columns:minmax(0,1.18fr) minmax(245px,.82fr);
+    gap:36px;max-width:1080px
+  }
+  .hero-title{font-size:clamp(34px,4.8vw,49px);margin-bottom:14px}
+  .hero-rule{margin-bottom:15px}
+  .hero-body{font-size:15.5px;line-height:1.58;margin-bottom:10px}
+  .hero-benefit{font-size:14px;line-height:1.54;margin-bottom:13px}
+  .hero-not{gap:5px}
+  .hero-chip{min-height:25px;font-size:9.8px;padding:4px 7px}
+  .method-visual{width:min(35vw,300px)}
+  .method-node{width:43px;height:43px;font-size:9.8px}
+}
+
+/* Très grands écrans / 4K. */
+@media(min-width:1800px){
+  .method-hero-grid{max-width:1320px}
+  .section-inner,.posture-inner{max-width:1220px}
+  .hero-title{font-size:72px}
+  .method-visual{width:min(100%,540px)}
+}
+
+/* Accessibilité animation. */
+
+/* Barre fallback officielle Maison Foébé. */
+@media(max-width:640px){
+  :root{--foebe-nav-height:58px}
+  body>nav#fallbackNav{height:58px;min-height:58px}
+  .foebe-scroll-progress--fallback{height:2px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important
+  }
+  .method-stage::before,.method-flow,.method-orbit-dot,.method-node{
+    animation:none!important
+  }
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+    transition:none!important
+  }
+}
+</style></head>
+<body class="page-methode"><nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div class="fallback-links">
+<a href="/comprendre.html">Comprendre</a>
+<a aria-current="page" href="/methode.html">Méthode</a>
+<a href="/echelle-foebe.html">Échelle Foébé</a>
+<a href="/zones.html">7 zones</a>
+<a href="/dictionnaire.html">Dictionnaire</a>
+</div>
+</nav><div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+<span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div><noscript>
+  <style>
+    .foebe-scroll-progress--fallback{display:block!important}
+  </style>
+</noscript><main id="mainContent" tabindex="-1"><section class="hero">
+<div class="method-hero-grid"><div class="method-hero-copy">
+<h1 class="hero-title reveal reveal-delay-1">
+      Sur quoi repose<br/><em>la lecture Foébé</em>
+</h1>
+<span class="hero-rule reveal reveal-delay-2"></span>
+<p class="hero-body reveal reveal-delay-2">Foébé propose une lecture structurée du self-care à partir du vécu réel.</p><p class="hero-benefit reveal reveal-delay-3">L’objectif est simple : aider à lire plus clairement son propre self-care et à mieux comprendre son fonctionnement.</p>
+<div aria-label="Repères de posture Foébé" class="hero-not reveal reveal-delay-3">
+<button class="hero-chip" data-chip-text="Foébé ne te pousse pas à performer, à devenir meilleure ou à atteindre des objectifs. La méthode aide d’abord à lire ce qui coûte, ce qui se répète, puis à choisir un geste tenable." data-chip-title="Pas du coaching" type="button">Pas du coaching</button>
+<button class="hero-chip" data-chip-text="Foébé ne pose pas de diagnostic et ne remplace pas un suivi thérapeutique. C’est un espace d’observation pour mieux nommer son fonctionnement et repérer où commencer." data-chip-title="Pas de la thérapie" type="button">Pas de la thérapie</button>
+<button class="hero-chip" data-chip-text="Foébé ne propose pas une routine miracle ou des conseils universels. Elle part des signaux, de la charge, du contexte réel et transforme le flou en repères concrets." data-chip-title="Pas du wellness générique" type="button">Pas du wellness générique</button>
+<button class="hero-chip" data-chip-text="Foébé organise le self-care comme une compétence : observer, comprendre, structurer, stabiliser. Le but n’est pas de tout changer, mais de savoir où regarder en premier." data-chip-title="Un espace structuré du self-care" type="button">Un espace structuré du self-care</button>
+</div>
+</div><figure aria-hidden="true" class="method-visual reveal reveal-delay-1">
+<div class="method-stage">
+<svg class="method-svg" focusable="false" viewbox="0 0 400 400">
+<defs>
+<lineargradient id="methodGradient" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#BB7E60"></stop>
+<stop offset="52%" stop-color="#C45279"></stop>
+<stop offset="100%" stop-color="#C34234"></stop>
+</lineargradient>
+</defs>
+<circle class="method-track" cx="200" cy="200" r="150"></circle>
+<circle class="method-track method-track--inner" cx="200" cy="200" r="100"></circle>
+<path class="method-flow" d="M200 50 C285 50 350 115 350 200 C350 285 285 350 200 350 C115 350 50 285 50 200 C50 115 115 50 200 50 Z"></path>
+<circle class="method-orbit-dot" cx="200" cy="50" r="6"></circle>
+</svg>
+<div class="method-core"><strong>F</strong></div>
+<span class="method-node method-node--1">01</span>
+<span class="method-node method-node--2">02</span>
+<span class="method-node method-node--3">03</span>
+<span class="method-node method-node--4">04</span>
+</div>
+</figure></div>
+</section><section class="section bg2">
+<div class="section-inner">
+<div class="reveal">
+<span class="section-eyebrow">Fondements scientifiques</span>
+<h2 class="section-title">Trois repères.<br/><em>Une lecture intégrée.</em></h2>
+<p class="section-body">Foébé s’appuie sur trois modèles de lecture complémentaires pour relier ce qui se vit, ce qui se répète et ce qui devient coûteux.</p>
+</div>
+<div class="modeles-grid reveal reveal-delay-1">
+<div class="modele-item">
+<span class="modele-num">Modèle 01</span>
+<h3 class="modele-name">Big Five<br/><em>Costa &amp; McCrae (1985)</em></h3>
+<span class="modele-rule"></span>
+<p class="modele-desc">
+     Le modèle des cinq grands traits de personnalité situe le fonctionnement d'une personne sur cinq dimensions relativement stables : ouverture, conscienciosité, extraversion, agréabilité, névrosisme.<br/><br/>
+<strong>Ce qu'il permet de voir :</strong> les tendances de fond, plutôt que les états passagers ; ce qui structure la manière dont une personne répond au stress, à la charge et aux relations.
+  </p>
+<a class="modele-link" href="https://www.psychomedia.qc.ca/lexique/definition/modele-des-cinq-facteurs-de-la-personnalite" rel="noopener noreferrer" target="_blank">En savoir plus</a>
+</div>
+<div class="modele-item">
+<span class="modele-num">Modèle 02</span>
+<h3 class="modele-name">Théorie des valeurs<br/><em>Schwartz (1992)</em></h3>
+<span class="modele-rule"></span>
+<p class="modele-desc">
+       Une théorie des dix valeurs fondamentales, organisées selon des relations de compatibilité et de tension, et structurées autour de grands axes comme ouverture au changement versus conservation, et transcendance de soi versus affirmation de soi.<br/><br/>
+<strong>Ce qu'il permet de voir :</strong> les motivations profondes, les tensions entre valeurs et les écarts possibles entre ce qu'une personne valorise et ce qu'elle vit au quotidien.
+  </p>
+<a class="modele-link" href="https://shs.cairn.info/revue-les-cahiers-internationaux-de-psychologie-sociale-2016-4-page-427?lang=fr" rel="noopener noreferrer" target="_blank">En savoir plus</a>
+</div>
+<div class="modele-item">
+<span class="modele-num">Modèle 03</span>
+<h3 class="modele-name">Charge cognitive<br/> <em>Sweller (1988)</em></h3>
+<span class="modele-rule"></span>
+<p class="modele-desc">
+    Une lecture du fonctionnement à partir de l'effort mental, des ressources attentionnelles, des contraintes situationnelles et des ajustements mis en place pour tenir dans la durée.<br/><br/>
+<strong>Ce qu'il permet de voir :</strong> où la charge devient coûteuse, comment la personne compense, et à quel moment les ressources disponibles ne suffisent plus.
+  </p>
+<div class="modele-links">
+<a class="modele-link" href="https://portaildocumentaire.inrs.fr/Default/doc/SYRACUSE/82847/une-approche-de-l-ergonomie-cognitive-1re-partie-2e-partie-methodes-psychologiques-en-ergonomie-3e-p?_lg=fr-FR" rel="noopener noreferrer" target="_blank">En savoir plus</a>
+</div>
+</div>
+</div>
+</div>
+</section><section class="section">
+<div class="section-inner">
+<div class="reveal">
+<span class="section-eyebrow">Les quatre mouvements</span>
+<h2 class="section-title">Comment la méthode<br/><em>fonctionne concrètement ?</em></h2>
+<p class="section-body">La méthode Foébé ne cherche pas une cause unique. Elle observe, relie, puis structure ce qui se passe pour rendre la lecture plus claire.
+
+</p>
+</div>
+<div class="etapes-list mouvements-list reveal reveal-delay-1">
+<div class="etape mouvement-etape">
+<div class="etape-num-col"><span class="etape-num">01</span></div>
+<div class="etape-content">
+<h3 class="etape-title"><em>Observer</em></h3>
+<p class="etape-desc">Observer, ce n'est pas seulement repérer un symptôme. C'est voir où l'énergie se perd, où le corps insiste, où le mental compense, où la relation à soi devient mécanique.</p>
+<p class="etape-plus">La méthode transforme une sensation floue en signaux lisibles. Ce qui ressemblait à "juste de la fatigue" devient une information située.</p>
+</div>
+</div>
+<div class="etape mouvement-etape">
+<div class="etape-num-col"><span class="etape-num">02</span></div>
+<div class="etape-content">
+<h3 class="etape-title"><em>Comprendre</em></h3>
+<p class="etape-desc">Comprendre, ce n'est pas chercher une cause unique. C'est relier les rythmes, les contraintes, les valeurs, les automatismes et les zones qui se répondent.</p>
+<p class="etape-plus">La lecture Foébé évite le raccourci. Elle identifie ce qui déclenche le déséquilibre et ce qui l'entretient, sans réduire la personne à un profil figé.</p>
+</div>
+</div>
+<div class="etape mouvement-etape">
+<div class="etape-num-col"><span class="etape-num">03</span></div>
+<div class="etape-content">
+<h3 class="etape-title"><em>Structurer</em></h3>
+<p class="etape-desc">Structurer, ce n'est pas imposer une routine idéale. C'est construire des repères qui tiennent dans la vraie vie, avec l'énergie disponible, le contexte réel et la manière de fonctionner de la personne.</p>
+<p class="etape-plus">La méthode propose des leviers concrets, classés et hiérarchisés, pour passer d'une prise de conscience à un cadre utilisable.</p>
+</div>
+</div>
+<div class="etape mouvement-etape">
+<div class="etape-num-col"><span class="etape-num">04</span></div>
+<div class="etape-content">
+<h3 class="etape-title"><em>Stabiliser</em></h3>
+<p class="etape-desc">Stabiliser, ce n'est pas tout résoudre. C'est installer des appuis simples et répétables, pour ne pas repartir de zéro à chaque difficulté rencontrée.</p>
+<p class="etape-plus">La méthode cherche moins l'effet immédiat que la continuité : ce qui aide à revenir à soi, à récupérer, puis à maintenir un équilibre plus lisible.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section class="posture-section bg2">
+<div class="posture-inner">
+<div class="reveal">
+<span class="section-eyebrow">Ce que Foébé s'engage à ne pas faire</span>
+<h2 class="section-title">Ce que Foébé<br/><em>n'est pas</em></h2>
+<p class="section-body">Foébé pose un cadre clair : ne pas diagnostiquer, ne pas promettre une transformation instantanée, ne pas créer de dépendance. La méthode sert à comprendre, structurer et rendre les repères utilisables.</p>
+</div>
+<div class="posture-grid reveal reveal-delay-1">
+<div class="posture-card">
+<span class="posture-tag">Pas de la thérapie</span>
+<p class="posture-not"><strong>Ce n'est pas :</strong> un suivi thérapeutique, un traitement, un diagnostic clinique.</p>
+<p class="posture-is"><em>Mais, un espace d'observation structurée pour des personnes fonctionnelles.</em></p>
+</div>
+<div class="posture-card">
+<span class="posture-tag">Pas du coaching</span>
+<p class="posture-not"><strong>Ce n'est pas :</strong> des objectifs à atteindre, une motivation à entretenir, un accompagnement vers la performance.</p>
+<p class="posture-is"><em> Mais, une lecture de ce qui se passe. Comprendre d'abord, agir ensuite.</em></p>
+</div>
+<div class="posture-card">
+<span class="posture-tag">Pas du wellness générique</span>
+<p class="posture-not"><strong>Ce n'est pas :</strong> des conseils universels, des routines miracles, des injonctions à prendre soin de soi.</p>
+<p class="posture-is"><em> Mais, une grille de lecture personnalisée, fondée sur des modèles validés.</em></p>
+</div>
+<div class="posture-card">
+<span class="posture-tag">Pas un test de personnalité</span>
+<p class="posture-not"><strong>Ce n'est pas :</strong> une étiquette, une case, un résultat figé.</p>
+<p class="posture-is"><em> Mais, une lecture située du fonctionnement, ici et maintenant.</em></p>
+</div>
+</div>
+</div>
+</section><section class="section bg3">
+<div class="section-inner">
+<div class="reveal">
+<span class="section-eyebrow">Ce que la méthode produit</span>
+<h2 class="section-title">Pas un score.<br/><em>Une lecture.</em></h2>
+</div>
+<div class="reveal reveal-delay-1 method-proof-box">
+<p class="method-proof-quote">
+          "Les questionnaires Foébé ne sont pas des instruments de diagnostic clinique. Ce sont des grilles de lecture non pathologisantes, conçues pour des personnes fonctionnelles souhaitant mieux comprendre leur propre rapport au self-care."
+        </p>
+<p class="method-proof-source">La fondatrice · Docteure en psychologie et ergonome</p>
+</div>
+</div>
+</section><section class="conclusion-section">
+<div class="conclusion-inner">
+<p class="conclusion-quote reveal">L'objectif n'est pas de tout résoudre d'un coup, mais de savoir <em>où regarder en premier.</em></p>
+<div class="reveal reveal-delay-1 conclusion-actions"><a class="btn-cta" href="echelle-foebe.html">Faire l'Échelle Foébé</a><a class="btn-outline" href="zones.html">Explorer les 7 zones →</a></div>
+</div>
+</section></main><div aria-hidden="true" class="chip-modal-backdrop" id="heroChipModal">
+<section aria-labelledby="chipModalTitle" aria-modal="true" class="chip-modal" role="dialog">
+<button aria-label="Fermer la définition" class="chip-modal-close" type="button">×</button>
+<h2 class="chip-modal-title" id="chipModalTitle"></h2>
+<p class="chip-modal-text" id="chipModalText"></p>
+</section>
+</div><script>
+(function(){
+  var revealEls = document.querySelectorAll('.reveal');
+
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+
+  revealEls.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+<script>
+
+(function(){
+  var modal = document.getElementById('heroChipModal');
+  if(!modal) return;
+  var title = document.getElementById('chipModalTitle');
+  var text = document.getElementById('chipModalText');
+  var close = modal.querySelector('.chip-modal-close');
+  var chips = document.querySelectorAll('.hero-chip');
+  var lastTrigger = null;
+
+  function openChip(chip){
+    lastTrigger = chip;
+    title.textContent = chip.getAttribute('data-chip-title') || chip.textContent;
+    text.textContent = chip.getAttribute('data-chip-text') || '';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('chip-modal-open');
+    window.setTimeout(function(){ close.focus(); }, 30);
+  }
+  function closeChip(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('chip-modal-open');
+    if(lastTrigger) lastTrigger.focus();
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){ openChip(chip); });
+  });
+  close.addEventListener('click', closeChip);
+  modal.addEventListener('click', function(event){
+    if(event.target === modal) closeChip();
+  });
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape' && modal.classList.contains('is-open')) closeChip();
+  });
+})();
+</script>
+<script id="foebeFallbackProgressScript">
+(function () {
+  var root = document.documentElement;
+  var bar = document.getElementById("foebeScrollProgressFallbackBar");
+  if (!bar) return;
+
+  function updateFallbackProgress() {
+    if (!root.classList.contains("foebe-shell-failed")) return;
+
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var fullHeight = Math.max(
+      doc.scrollHeight,
+      doc.offsetHeight,
+      doc.clientHeight,
+      body.scrollHeight || 0,
+      body.offsetHeight || 0
+    );
+    var maxScroll = Math.max(0, fullHeight - window.innerHeight);
+    var progress = maxScroll > 0
+      ? Math.min(1, Math.max(0, scrollTop / maxScroll))
+      : 0;
+
+    bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
+  }
+
+  window.addEventListener("foebe:shell-failed", updateFallbackProgress);
+  window.addEventListener("scroll", updateFallbackProgress, { passive: true });
+  window.addEventListener("resize", updateFallbackProgress, { passive: true });
+  window.addEventListener("orientationchange", updateFallbackProgress, { passive: true });
+  window.addEventListener("load", updateFallbackProgress);
+  window.addEventListener("pageshow", updateFallbackProgress);
+  updateFallbackProgress();
+})();
+</script><script src="/foebe-shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="night">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Anti-FOUC thème — NE PAS MODIFIER -->
+  <script>
+(function(){
+  try {
+    var saved = localStorage.getItem('foebeTheme');
+    if (saved === 'day' || saved === 'night') {
+      document.documentElement.setAttribute('data-theme', saved);
+      return;
+    }
+  } catch(e) {}
+  var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+})();
+</script><script id="foebe-shell-fallback-guard">
+(function(){
+  var h = document.documentElement;
+  var failedDispatched = false;
+
+  function markFailed(){
+    if (h.classList.contains('foebe-shell-ready')) return;
+    h.classList.remove('foebe-shell-loading');
+    h.classList.add('foebe-shell-failed');
+    if (!failedDispatched) {
+      failedDispatched = true;
+      try { window.dispatchEvent(new CustomEvent('foebe:shell-failed')); } catch(e) {}
+    }
+  }
+
+  h.classList.add('foebe-shell-loading');
+  window.addEventListener('foebe:shell-ready', function(){
+    h.classList.remove('foebe-shell-loading', 'foebe-shell-failed');
+    h.classList.add('foebe-shell-ready');
+  }, { once:true });
+  window.setTimeout(markFailed, 3000);
+})();
+</script>
+  <script>document.documentElement.classList.add('js-ready');</script>
+
+  <title>Sas de la Boussole · Se situer avant d'entrer — Maison Foébé</title>
+  <meta name="description" content="Un sas Maison Foébé pour te situer, choisir une piste d’attention et entrer dans la Boussole avec un premier repère de lecture.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://maisonfoebe.fr/boussole.html">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta property="og:title" content="Sas de la Boussole · Se situer avant d'entrer — Maison Foébé">
+  <meta property="og:description" content="Deux gestes simples avant la Boussole : reconnaître comment tu arrives, puis choisir ce qui attire ton attention.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maisonfoebe.fr/boussole.html">
+  <meta property="og:image" content="https://maisonfoebe.fr/images/og-boussole.png">
+  <meta property="og:image:alt" content="Sas de la Boussole — Maison Foébé">
+  <meta property="og:site_name" content="Maison Foébé">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sas de la Boussole · Maison Foébé">
+  <meta name="twitter:description" content="Deux gestes pour te situer et entrer dans la Boussole avec un premier repère de lecture.">
+  <meta name="twitter:image" content="https://maisonfoebe.fr/images/og-boussole.png">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Sas de la Boussole · Se situer avant d'entrer — Maison Foébé",
+    "description":"Un sas Maison Foébé pour te situer, choisir une piste d’attention et entrer dans la Boussole avec un premier repère de lecture.",
+    "url":"https://maisonfoebe.fr/boussole.html",
+    "inLanguage":"fr",
+    "isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}
+  }
+  </script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+  <style id="fallbackNavCritical">
+/* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
+   Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
+html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
+html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
+  display:none!important;
+}
+
+      /* FALLBACK NAV CRITIQUE — alignée sur Zone Relations, indépendante du CSS de page */
+      body > nav#fallbackNav.fallback-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 950 !important;
+        min-height: 60px !important;
+        height: 60px !important;
+        padding: 0 clamp(14px, 3vw, 28px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        background: rgba(78, 41, 31, .94) !important;
+        border-bottom: 1px solid rgba(187, 126, 96, .34) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        box-shadow: 0 2px 14px rgba(0,0,0,.16) !important;
+        font-family: "Poppins", sans-serif !important;
+        box-sizing: border-box !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav {
+        background: rgba(240, 234, 231, .94) !important;
+        border-bottom-color: rgba(78, 41, 31, .16) !important;
+        box-shadow: 0 2px 14px rgba(78,41,31,.08) !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-logo {
+        font-family: "Montserrat", sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        letter-spacing: -.06em !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        min-height: 44px !important;
+        flex: 0 0 auto !important;
+        max-width: 42vw !important;
+        white-space: nowrap !important;
+      }
+
+      [data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span {
+        color: #F0EAE7 !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5) {
+        color: #4E291F !important;
+      }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2) { color: #BB7E60 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3) { color: #C45279 !important; }
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4) { color: #C34234 !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        white-space: nowrap !important;
+      }
+      body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar { display: none !important; }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a {
+        min-height: 38px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 11px !important;
+        border-radius: 999px !important;
+        color: var(--text, #F0EAE7) !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        text-decoration: none !important;
+        border: 1px solid transparent !important;
+        opacity: .92 !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+      }
+
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #4E291F !important;
+        background: #F0EAE7 !important;
+        border-color: #F0EAE7 !important;
+        opacity: 1 !important;
+        outline: none !important;
+      }
+
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
+      [data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible {
+        color: #F0EAE7 !important;
+        background: #4E291F !important;
+        border-color: #4E291F !important;
+      }
+
+      @media(max-width:720px) {
+        body > nav#fallbackNav.fallback-nav {
+          padding: 0 12px !important;
+          gap: 12px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 17px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links {
+          justify-content: flex-start !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          font-size: 12px !important;
+          padding: 0 10px !important;
+        }
+      }
+
+      @media(max-width:420px) {
+        body > nav#fallbackNav.fallback-nav {
+          gap: 10px !important;
+          padding: 0 10px !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-logo {
+          font-size: 16px !important;
+          max-width: 36vw !important;
+        }
+        body > nav#fallbackNav.fallback-nav .fallback-links > a {
+          min-height: 38px !important;
+          font-size: 12px !important;
+          padding: 0 10px !important;
+        }
+      }
+    </style>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --bg:#4E291F;
+      --bg2:#3A1A10;
+      --bg3:#2C1A12;
+      --text:#F0EAE7;
+      --sub:rgba(240,234,231,.78);
+      --dim:rgba(240,234,231,.58);
+      --warm:#BB7E60;
+      --rose:#C45279;
+      --red:#C34234;
+      --cream:#F0EAE7;
+      --border:rgba(187,126,96,.28);
+      --surface:rgba(187,126,96,.10);
+      --card:rgba(240,234,231,.055);
+      --shadow:rgba(0,0,0,.30);
+    }
+    [data-theme="day"]{
+      --bg:#F0EAE7;
+      --bg2:#E8DDD8;
+      --bg3:#DDD0CB;
+      --text:#4E291F;
+      --sub:rgba(78,41,31,.72);
+      --dim:rgba(78,41,31,.52);
+      --border:rgba(78,41,31,.18);
+      --surface:rgba(187,126,96,.14);
+      --card:rgba(78,41,31,.045);
+      --shadow:rgba(78,41,31,.13);
+    }
+    html{scroll-behavior:smooth;}
+    body{
+      min-height:100vh;
+      font-family:"Poppins",sans-serif;
+      background:radial-gradient(circle at top left, rgba(187,126,96,.16), transparent 32%),
+                 linear-gradient(180deg,var(--bg),var(--bg2) 62%,var(--bg3));
+      color:var(--text);
+      overflow-x:hidden;
+      transition:background .35s,color .35s;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:radial-gradient(circle, rgba(240,234,231,.18) 1px, transparent 1.5px);
+      background-size:68px 68px;
+      opacity:.13;
+      z-index:0;
+    }
+    a{color:inherit;text-decoration:none;}
+
+    /* ── Layout ── */
+    .page{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:108px 24px 100px;}
+
+    /* ── Hero ── */
+    .hero{max-width:760px;margin:0 auto 40px;text-align:center;}
+    .hero-mark{font-size:40px;line-height:1;margin-bottom:16px;display:block;filter:drop-shadow(0 10px 26px rgba(0,0,0,.18));transform-origin:center;animation:foebeCompassNeedle 7.2s ease-in-out infinite;will-change:transform;}
+    @keyframes foebeCompassNeedle{
+      0%,100%{transform:rotate(0deg) scale(1);}
+      18%{transform:rotate(-7deg) scale(1.015);}
+      38%{transform:rotate(5deg) scale(1);}
+      58%{transform:rotate(-3deg) scale(1.01);}
+      76%{transform:rotate(2deg) scale(1);}
+    }
+    .hero-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 14px;
+      border-radius:999px;
+      background:rgba(187,126,96,.14);
+      border:1px solid rgba(187,126,96,.34);
+      font-family:"Poppins",sans-serif;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:var(--warm);
+      margin-bottom:18px;
+    }
+    [data-theme="night"] .hero-eyebrow{color:#F0EAE7;background:rgba(187,126,96,.22);border-color:rgba(187,126,96,.46);}
+    .hero-title{
+      font-family:"Lora",serif;
+      font-size:clamp(32px,7vw,56px);
+      font-weight:400;
+      line-height:1.1;
+      letter-spacing:-.02em;
+      margin:0 auto 20px;
+    }
+    .hero-title em{font-style:italic;color:var(--warm);}
+    .hero-sub{
+      font-family:"Lora",serif;
+      font-size:clamp(17px,2vw,20px);
+      line-height:1.8;
+      color:var(--sub);
+      max-width:640px;
+      margin:0 auto 28px;
+    }
+
+
+    /* ── Route strip ── */
+    .route-strip{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:0;
+      max-width:680px;
+      margin:0 auto;
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--card);
+    }
+    .route-step{
+      padding:16px 14px;
+      border-right:1px solid var(--border);
+      text-align:center;
+    }
+    .route-step:last-child{border-right:0;}
+    .route-num{
+      display:block;
+      font-family:"Montserrat",sans-serif;
+      font-size:13px;
+      font-weight:700;
+      color:var(--warm);
+      opacity:.8;
+      margin-bottom:6px;
+      letter-spacing:.5px;
+    }
+    .route-step strong{
+      display:block;
+      font-family:"Lora",serif;
+      font-size:15px;
+      font-weight:400;
+      line-height:1.3;
+      color:var(--text);
+    }
+
+    /* ── Sections ── */
+    .section{
+      scroll-margin-top:82px;
+      margin-top:30px;
+      padding:28px;
+      border:1px solid var(--border);
+      border-radius:24px;
+      background:var(--card);
+      box-shadow:0 12px 36px var(--shadow);
+    }
+    .section-header{margin-bottom:22px;}
+    .section-num{
+      display:block;
+      font-family:"Montserrat",sans-serif;
+      font-size:22px;
+      font-weight:700;
+      color:var(--warm);
+      opacity:.75;
+      margin-bottom:10px;
+    }
+    .section-title{
+      font-family:"Lora",serif;
+      font-size:clamp(24px,4vw,36px);
+      font-weight:400;
+      line-height:1.2;
+      margin:0 0 10px;
+    }
+    .section-title em{font-style:italic;color:var(--warm);}
+    .section-intro{
+      font-family:"Lora",serif;
+      font-size:16px;
+      line-height:1.75;
+      color:var(--sub);
+      max-width:640px;
+    }
+
+    /* ── Choice cards (shared: state + word) ── */
+    .choice-card{
+      border:1.5px solid var(--border);
+      border-radius:20px;
+      background:rgba(240,234,231,.045);
+      color:var(--text);
+      cursor:pointer;
+      font-family:"Poppins",sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      -webkit-tap-highlight-color:transparent;
+      transition:border-color .2s, background .2s, transform .18s, box-shadow .2s;
+    }
+    [data-theme="day"] .choice-card{background:rgba(255,255,255,.28);}
+    .choice-card:hover,.choice-card:focus-visible{
+      border-color:rgba(187,126,96,.70);
+      background:rgba(187,126,96,.13);
+      transform:translateY(-1px);
+      outline:none;
+    }
+    .choice-card.selected{
+      border-color:var(--warm);
+      background:rgba(187,126,96,.18);
+      box-shadow:0 0 0 3px rgba(187,126,96,.14);
+    }
+
+    /* ── State grid ── */
+    .state-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .state-card{
+      min-height:120px;
+      padding:16px 12px;
+      gap:9px;
+    }
+    .state-emoji{font-size:26px;line-height:1;}
+    .state-label{font-size:15px;font-weight:700;line-height:1.25;}
+    .state-hint{font-family:"Lora",serif;font-size:13px;line-height:1.5;color:var(--sub);}
+
+    /* ── Word grid ── */
+    .word-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;}
+    .word-card{
+      min-height:0;
+      aspect-ratio:1/1;
+      padding:12px 8px;
+      gap:8px;
+      border-radius:24px;
+      position:relative;
+      overflow:hidden;
+    }
+    .word-card::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:18px;
+      border:1px solid rgba(187,126,96,.16);
+      pointer-events:none;
+      opacity:.75;
+    }
+    .word-card.selected .word-symbol{background:#C45279;border-color:rgba(240,234,231,.36);}
+    .word-symbol{
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:#BB7E60;
+      border:1px solid rgba(240,234,231,.28);
+      color:#F0EAE7;
+      font-size:20px;
+      line-height:1;
+      box-shadow:0 8px 20px rgba(0,0,0,.14);
+    }
+    [data-theme="day"] .word-symbol{border-color:rgba(78,41,31,.12);box-shadow:0 6px 16px rgba(78,41,31,.10);}
+    .word-label{font-size:12px;font-weight:700;letter-spacing:.2px;position:relative;z-index:1;}
+
+    /* ── Lock state ── */
+    .lock-note{margin-top:14px;font-family:"Lora",serif;font-size:15px;line-height:1.7;color:var(--dim);font-style:italic;}
+    .section.locked{opacity:.55;}
+    .section.locked .choice-card{pointer-events:none;}
+
+    /* ── Feedback boxes (shared) ── */
+    .feedback-box{
+      margin-top:18px;
+      border:1px solid rgba(187,126,96,.34);
+      border-left:4px solid var(--warm);
+      border-radius:0 18px 18px 0;
+      background:rgba(187,126,96,.09);
+      padding:20px;
+    }
+    .feedback-box[hidden]{display:none;}
+    .kicker{
+      font-family:"Poppins",sans-serif;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:1.6px;
+      text-transform:uppercase;
+      color:var(--warm);
+      margin-bottom:8px;
+    }
+    .feedback-title{font-family:"Lora",serif;font-size:21px;font-weight:400;line-height:1.3;margin-bottom:8px;}
+    .feedback-text{font-family:"Lora",serif;font-size:16px;line-height:1.78;color:var(--sub);}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+
+    /* ── Synthesis dormant (section 03 avant activation) ── */
+    .synthesis-dormant{
+      border-left-color:var(--border);
+      background:rgba(240,234,231,.025);
+      border-color:var(--border);
+    }
+    .synthesis-dormant .synthesis-empty{color:var(--dim);}
+
+    /* ── Synthesis ── */
+    .synthesis{
+      margin-top:18px;
+      border:1px solid rgba(187,126,96,.34);
+      border-left:4px solid var(--warm);
+      border-radius:0 18px 18px 0;
+      background:rgba(187,126,96,.09);
+      padding:24px;
+    }
+    .synthesis[hidden]{display:none;}
+    .synthesis-empty{font-family:"Lora",serif;font-size:16px;line-height:1.75;color:var(--dim);font-style:italic;}
+    .synthesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0;}
+    .synthesis-chip{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      background:rgba(240,234,231,.045);
+    }
+    .synthesis-chip span{
+      display:block;
+      font-family:"Poppins",sans-serif;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:1.2px;
+      color:var(--warm);
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .synthesis-chip strong{font-family:"Lora",serif;font-size:19px;font-weight:400;line-height:1.3;}
+    .synthesis-copy{font-family:"Lora",serif;font-size:16px;line-height:1.78;color:var(--sub);}
+    .synthesis-copy strong{font-weight:600;color:var(--text);}
+    .question-box{
+      margin-top:16px;
+      padding:16px 18px;
+      border-radius:16px;
+      background:rgba(78,41,31,.24);
+      border:1px solid rgba(187,126,96,.28);
+    }
+    [data-theme="day"] .question-box{background:rgba(187,126,96,.13);}
+    .question-box p{font-family:"Lora",serif;font-size:17px;line-height:1.75;color:var(--text);font-style:italic;}
+
+    /* ── Buttons ── */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 20px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      font-family:"Poppins",sans-serif;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:background .2s,border-color .2s,color .2s,transform .18s;
+      text-decoration:none;
+    }
+    .btn-primary{background:var(--warm);border-color:var(--warm);color:#F0EAE7;}
+    .btn-primary:hover,.btn-primary:focus-visible{background:#C45279;border-color:#C45279;color:#F0EAE7;outline:none;transform:translateY(-1px);}
+    .btn-secondary{background:transparent;color:var(--text);}
+    .btn-secondary:hover,.btn-secondary:focus-visible{border-color:var(--warm);color:var(--warm);outline:none;}
+
+    /* ── Back to top ── */
+    #backToTop{
+      position:fixed;right:18px;bottom:20px;z-index:900;
+      width:44px;height:44px;border-radius:999px;
+      border:1px solid rgba(187,126,96,.42);
+      background:var(--warm);color:#F0EAE7;
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;
+      transition:opacity .25s, transform .25s;
+      cursor:pointer;
+      box-shadow:0 8px 22px var(--shadow);
+      font-size:18px;
+    }
+    #backToTop.visible{opacity:1;pointer-events:auto;}
+    #backToTop:hover{transform:translateY(-2px);}
+
+    /* ── Reveal animation ── */
+    .reveal{opacity:1;transform:none;visibility:visible;}
+    .js-ready .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1);}
+    .js-ready .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* ── Responsive ── */
+    @media(max-width:760px){
+      .page{padding:90px 18px 80px;}
+      .route-strip{grid-template-columns:1fr;}
+      .route-step{border-right:0;border-bottom:1px solid var(--border);}
+      .route-step:last-child{border-bottom:0;}
+      .section{padding:22px 18px;border-radius:20px;}
+      .state-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+      .word-grid{grid-template-columns:repeat(4,1fr);gap:8px;max-width:440px;margin:0 auto;}
+      .word-card{border-radius:20px;}
+      .word-symbol{width:36px;height:36px;font-size:18px;}
+      .synthesis-grid{grid-template-columns:1fr;}
+      .actions{flex-direction:column;}
+      .btn{width:100%;}
+    }
+    @media(max-width:420px){
+      .state-grid{grid-template-columns:1fr;}
+      .word-grid{grid-template-columns:repeat(3,1fr);}
+      .hero-title{font-size:30px;}
+    }
+
+    /* ── Ajustements responsive premium — très petits écrans + confort tactile ── */
+    @media(max-width:560px){
+      .page{padding-left:16px;padding-right:16px;}
+      .hero{margin-bottom:32px;}
+      .hero-mark{font-size:36px;margin-bottom:14px;}
+      .hero-sub{font-size:16px;line-height:1.78;}
+      .section{margin-top:24px;padding:22px 16px;}
+      .section-num{font-size:20px;}
+      .section-title{font-size:clamp(24px,8vw,30px);}
+      .section-intro,
+      .feedback-text,
+      .synthesis-copy,
+      .synthesis-empty{font-size:15px;line-height:1.76;}
+      .question-box p{font-size:16px;line-height:1.72;}
+      .word-grid{grid-template-columns:repeat(3, minmax(0,1fr));gap:9px;}
+      .word-card{min-height:102px;aspect-ratio:auto;padding:12px 8px;}
+      .word-symbol{width:38px;height:38px;font-size:19px;}
+      .word-label{font-size:12.5px;}
+      .state-card{min-height:118px;}
+      .state-hint{font-size:14px;}
+    }
+
+    @media(max-width:390px){
+      .page{padding:86px 14px 76px;}
+      .hero-title{font-size:29px;}
+      .route-step{padding:14px 12px;}
+      .section{padding:20px 14px;border-radius:18px;}
+      .state-grid{grid-template-columns:1fr;}
+      .state-card{min-height:104px;padding:15px 12px;}
+      .word-grid{grid-template-columns:repeat(2, minmax(0,1fr));gap:10px;}
+      .word-card{min-height:104px;border-radius:20px;}
+      .word-card::before{inset:8px;border-radius:16px;}
+      .synthesis{padding:20px 16px;}
+      .feedback-box{padding:18px 16px;}
+    }
+
+    @media(min-width:761px) and (max-width:980px){
+      .page{max-width:900px;padding-left:28px;padding-right:28px;}
+      .word-grid{grid-template-columns:repeat(7, minmax(82px,1fr));}
+    }
+
+    @media(prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto !important;}
+      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+      .js-ready .reveal{opacity:1 !important;transform:none !important;}
+      .hero-mark{animation:none !important;will-change:auto !important;}
+    }
+
+
+    /* Correctif final — eyebrow Foébé */
+    .hero-eyebrow{
+      font-size:13px !important;
+      min-height:30px !important;
+      padding:7px 13px !important;
+    }
+
+    [data-theme="day"] .hero-eyebrow{
+      color:#4E291F !important;
+    }
+</style>
+
+<style id="foebeProgressFallbackCss">
+:root{
+  --foebe-nav-height:60px;
+  --foebe-progress-gradient:linear-gradient(90deg,#BB7E60,#C45279,#C34234);
+}
+.foebe-skip-link{
+  position:fixed;
+  top:8px;
+  left:8px;
+  z-index:999999;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  padding:9px 14px;
+  border:2px solid #F0EAE7;
+  border-radius:999px;
+  background:#4E291F;
+  color:#F0EAE7;
+  font-family:"Poppins",sans-serif;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  transform:translateY(-200%);
+  transition:transform .2s ease;
+}
+.foebe-skip-link:focus,
+.foebe-skip-link:focus-visible{
+  transform:translateY(0);
+  outline:2px solid #BB7E60;
+  outline-offset:2px;
+}
+.foebe-scroll-progress--fallback{
+  display:none;
+  position:fixed;
+  top:var(--foebe-nav-height);
+  left:0;
+  right:0;
+  z-index:940;
+  height:3px;
+  background:rgba(187,126,96,.16);
+  pointer-events:none;
+}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:var(--foebe-progress-gradient);
+  box-shadow:0 0 12px rgba(187,126,96,.28);
+  will-change:transform;
+}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block;}
+html.foebe-shell-loading:not(.foebe-shell-failed) .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+[data-theme="day"] .foebe-scroll-progress--fallback{background:rgba(78,41,31,.10);}
+@media(max-width:640px){
+  :root{--foebe-nav-height:58px;}
+  body > nav#fallbackNav.fallback-nav{height:58px!important;min-height:58px!important;}
+  .foebe-scroll-progress--fallback{height:2px;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important;}
+  .foebe-skip-link{transition:none!important;}
+  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important;}
+}
+</style>
+
+</head>
+<body data-foebe-progress="off">
+<a class="foebe-skip-link" href="#mainContent" id="foebeSkipLink">Aller au contenu</a>
+  <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+  <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+  <div class="fallback-links" aria-label="Liens rapides">
+    <a href="/comprendre.html">Comprendre</a>
+    <a href="/methode.html">Méthode</a>
+    <a href="/echelle-foebe.html">Échelle Foébé</a>
+    <a href="/zones.html">7 zones</a>
+    <a href="/dictionnaire.html">Dictionnaire</a>
+  </div>
+</nav>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>
+    .foebe-scroll-progress--fallback{display:block!important;opacity:.42!important;}
+    body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+    #foebeScrollProgressFallbackBar{transform:scaleX(1)!important;}
+  </style>
+</noscript>
+
+  
+
+  <main class="page" id="mainContent" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="hero reveal" aria-labelledby="hero-title">
+      <span class="hero-mark" aria-hidden="true">🧭</span>
+      <span class="hero-eyebrow">Sas de la Boussole</span>
+      <h1 id="hero-title" class="hero-title">Avant d'entrer, <em>commence par te situer.</em></h1>
+
+      <p class="hero-sub">
+  <strong><em>Le sas te permet de partir de ton état du moment.</em></strong><br>
+  Tu choisis ce qui ressemble le plus à ce que tu vis, puis le mot qui attire ton attention. À partir de là, tu entres dans la Boussole avec un premier repère pour lire les scénarios.
+</p>
+
+      <div class="route-strip" aria-label="Déroulé du sas" role="list">
+        <div class="route-step" role="listitem"><span class="route-num">01</span><strong>Ton point de départ</strong></div>
+        <div class="route-step" role="listitem"><span class="route-num">02</span><strong>Ce qui t'appelle</strong></div>
+        <div class="route-step" role="listitem"><span class="route-num">03</span><strong>Ton premier repère </strong></div>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 01 -->
+    <section id="etape-01" class="section reveal" aria-labelledby="step1-title">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 id="step1-title" class="section-title">Dans quel état <em>arrives-tu ?</em></h2>
+        <p class="section-intro">Choisis la carte qui ressemble le plus à ce que tu vis maintenant.</p>
+      </div>
+
+      <div class="state-grid" role="group" aria-label="Choisir ton état du moment">
+        <button class="choice-card state-card" type="button" data-state="energie" aria-pressed="false">
+          <span class="state-emoji">🪫</span>
+          <span class="state-label">À plat</span>
+          <span class="state-hint">Je n’ai plus beaucoup de marge.</span>
+        </button>
+        <button class="choice-card state-card" type="button" data-state="mental" aria-pressed="false">
+          <span class="state-emoji">🌀</span>
+          <span class="state-label">Tête pleine</span>
+          <span class="state-hint">Trop d’éléments se mélangent.</span>
+        </button>
+        <button class="choice-card state-card" type="button" data-state="emotions" aria-pressed="false">
+          <span class="state-emoji">😶</span>
+          <span class="state-label">Coupé·e</span>
+          <span class="state-hint">Je ne sais plus bien ce que je ressens.</span>
+        </button>
+        <button class="choice-card state-card" type="button" data-state="corps" aria-pressed="false">
+          <span class="state-emoji">🔥</span>
+          <span class="state-label">À bout</span>
+          <span class="state-hint">Tout semble trop demandé.</span>
+        </button>
+        <button class="choice-card state-card" type="button" data-state="sens" aria-pressed="false">
+          <span class="state-emoji">🌫️</span>
+          <span class="state-label">Perdu·e</span>
+          <span class="state-hint">Je ne sais plus bien où aller.</span>
+        </button>
+        <button class="choice-card state-card" type="button" data-state="ouverture" aria-pressed="false">
+          <span class="state-emoji">🌱</span>
+          <span class="state-label">Curieux·se</span>
+          <span class="state-hint">Je suis disponible pour explorer.</span>
+        </button>
+      </div>
+
+      <div id="stateMirror" class="feedback-box" hidden>
+        <p class="kicker">D'où tu pars</p>
+        <p id="stateTitle" class="feedback-title"></p>
+        <p id="stateText" class="feedback-text"></p>
+        <div class="actions">
+          <button class="btn btn-primary" type="button" data-scroll-target="etape-02">Continuer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 02 -->
+    <section id="etape-02" class="section reveal locked" aria-labelledby="step2-title">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 id="step2-title" class="section-title">Choisis un mot, <em>sans trop réfléchir.</em></h2>
+        <p class="section-intro">Laisse venir celui qui attire ton attention, même si tu ne sais pas encore pourquoi.</p>
+      </div>
+
+      <p id="lockNote" class="lock-note">Commence par te situer à l’étape 01.</p>
+
+      <div class="word-grid" role="group" aria-label="Choisir une piste d'attention">
+        <button class="choice-card word-card" type="button" data-word="repos" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">😴</span>
+          <span class="word-label">Repos</span>
+        </button>
+        <button class="choice-card word-card" type="button" data-word="signal" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">🔔</span>
+          <span class="word-label">Signal</span>
+        </button>
+        <button class="choice-card word-card" type="button" data-word="clarte" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">🕯️</span>
+          <span class="word-label">Clarté</span>
+        </button>
+        <button class="choice-card word-card" type="button" data-word="vague" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">🌊</span>
+          <span class="word-label">Vague</span>
+        </button>
+        <button class="choice-card word-card" type="button" data-word="espace" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">🍃</span>
+          <span class="word-label">Espace</span>
+        </button>
+        <button class="choice-card word-card" type="button" data-word="lien" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">🤝</span>
+          <span class="word-label">Lien</span>
+        </button>
+        <button class="choice-card word-card" type="button" data-word="nord" aria-pressed="false">
+          <span class="word-symbol" aria-hidden="true">🧭</span>
+          <span class="word-label">Nord</span>
+        </button>
+      </div>
+
+      <div id="wordResult" class="feedback-box" hidden>
+        <p class="kicker">Ce que ça appelle</p>
+        <p id="wordTitle" class="feedback-title"></p>
+        <p id="wordText" class="feedback-text"></p>
+        <div class="actions">
+          <button class="btn btn-primary" type="button" data-scroll-target="etape-03">Voir ma première piste</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 03 -->
+    <section id="etape-03" class="section reveal locked" aria-labelledby="step3-title">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 id="step3-title" class="section-title"><em>Ton premier repère</em></h2>
+      </div>
+
+      <div id="synthesisEmpty" class="synthesis synthesis-dormant">
+        <p class="synthesis-empty">Elle se dessine à partir de tes deux choix et t’aide à lire les scénarios de la Boussole avec un premier repère.</p>
+      </div>
+
+      <div id="synthesisBox" class="synthesis" hidden>
+        <div class="synthesis-grid">
+          <div class="synthesis-chip"><span>Tu arrives avec</span><strong id="synState"></strong></div>
+          <div class="synthesis-chip"><span>Ce qui t'appelle</span><strong id="synWord"></strong></div>
+        </div>
+        <p id="synCopy" class="synthesis-copy"></p>
+        <div class="question-box"><p id="synQuestion"></p></div>
+        <div class="actions" style="margin-top:20px;">
+          <a id="synZoneLink" class="btn btn-primary" href="#">Explorer la zone liée</a>
+          <a class="btn btn-secondary" href="boussole-scenarios.html">Entrer dans la Boussole</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <button id="backToTop" type="button" aria-label="Retour en haut">↑</button>
+
+  <script>
+  (function(){
+    const stateData = {
+      energie:{label:"À plat", zone:"Zone Énergie", url:"zone-energie.html", title:"Tu sembles arriver à plat, avec peu de marge.", text:"Ici, le premier repère n’est pas d’en faire plus, mais de reconnaître ce qui pèse déjà trop et de voir ce qui peut être allégé.", question:"Qu’est-ce qui pèse déjà trop et que je pourrais alléger, même légèrement ?"},
+      mental:{label:"Tête pleine", zone:"Zone Mental", url:"zone-mental.html", title:"Tu sembles arriver avec trop de choses en tête.", text:"Quand tout se mélange, le premier repère n’est pas de trancher tout de suite, mais de poser ce qui prend trop de place pour retrouver un peu de clarté.", question:"Qu’est-ce qui tourne en boucle et pourrait être posé ailleurs que dans ma tête ?"},
+      emotions:{label:"Coupé·e", zone:"Zone Émotions", url:"zone-emotions.html", title:"Tu sembles arriver avec peu d’accès à ce que tu ressens.", text:"Le premier repère peut être très simple : ne pas forcer une réponse et commencer par remarquer ce qui est là, même si c’est encore flou.", question:"Qu’est-ce que je ressens, même vaguement, si je n’essaie pas d’être précis·e ?"},
+      corps:{label:"À bout", zone:"Zone Corps", url:"zone-corps.html", title:"Tu sembles arriver à bout, avec une charge déjà trop forte.", text:"Quand c’est déjà trop, le premier repère n’est pas de tenir encore, mais de repérer ce qui peut être allégé maintenant : le rythme, une demande, une contrainte, une priorité.", question:"Quel signal concret mérite d’être pris au sérieux avant que je continue ?"},
+      sens:{label:"Perdu·e", zone:"Zone Sens", url:"zone-sens.html", title:"Tu sembles arriver avec une direction devenue moins lisible.", text:"Quand on ne sait plus très bien où l’on va, le premier repère n’est pas de tout redéfinir, mais de retrouver une direction assez juste pour aujourd’hui.", question:"Qu’est-ce qui compte encore assez pour me donner une direction aujourd’hui ?"},
+      ouverture:{label:"Curieux·se", zone:"La Boussole", url:"boussole-scenarios.html", title:"Tu sembles arriver avec de l’ouverture et de la curiosité.", text:"Tu n’arrives pas forcément avec quelque chose à réparer. C’est peut-être simplement un bon moment pour explorer, en observant ce qui résonne plutôt que ce qu’il faudrait corriger.", question:"Qu'est-ce que j'ai envie de mieux comprendre chez moi en ce moment ?"}
+    };
+    const wordData = {
+      repos:{label:"Repos", zone:"Zone Énergie", url:"zone-energie.html", title:"Repos ne veut pas dire tout arrêter.", text:"Ce mot peut indiquer un besoin de vraie marge : moins de sollicitations, moins d’effort, moins de choses à porter en même temps.", gesture:"Créer dix minutes sans écran, sans tâche et sans justification."},
+      signal:{label:"Signal", zone:"Zone Corps", url:"zone-corps.html", title:"Un signal n’est pas un détail à balayer.", text:"Ce mot peut indiquer qu’un indice est déjà là dans ton humeur, ton rythme ou ta façon de réagir. Le but n’est pas de dramatiser : c’est de le repérer plus tôt.", gesture:"Nommer un indice concret : fatigue, agitation, lourdeur, évitement, irritation."},
+      clarte:{label:"Clarté", zone:"Zone Mental", url:"zone-mental.html", title:"La clarté revient souvent après avoir déchargé un peu.", text:"Ce mot peut indiquer un besoin de simplifier ce qui tourne dans ta tête. Pas tout résoudre, seulement rendre plus visible ce qui prend trop de place.", gesture:"Écrire trois lignes : ce qui pèse, ce qui est urgent, ce qui peut attendre."},
+      vague:{label:"Vague", zone:"Zone Émotions", url:"zone-emotions.html", title:"Une vague peut être observée sans tout comprendre tout de suite.", text:"Ce mot peut indiquer une émotion ou une réaction qui demande à être mieux ressentie. Le premier repère n’est pas de tout expliquer, mais de commencer à nommer ce qui se passe.", gesture:"Chercher le mot émotionnel le plus proche, même s’il reste imparfait."},
+      espace:{label:"Espace", zone:"Zone Environnement", url:"zone-environnement.html", title:"L’espace autour de toi change la façon dont tu t’orientes.", text:"Ce mot peut indiquer un besoin de diminuer la pression autour de toi : objets, bruit, demandes, lumière, proximité, interruptions.", gesture:"Retirer une sollicitation de ton environnement pendant cinq minutes."},
+      lien:{label:"Lien", zone:"Zone Relations", url:"zone-relations.html", title:"Le lien peut soutenir ou épuiser.", text:"Ce mot peut indiquer quelque chose à regarder dans tes relations : ce que tu donnes, ce que tu retiens, ce que tu n'oses pas demander, ou ce qui manque.", gesture:"Identifier une personne ou une limite qui changerait un peu ton niveau de charge aujourd'hui."},
+      nord:{label:"Nord", zone:"Zone Sens", url:"zone-sens.html", title:"Trouver le nord n’a pas besoin d’être parfait.", text:"Ce mot peut indiquer un besoin de retrouver un fil : ce qui compte, ce qui appelle, ce que tu ne veux plus voir disparaître dans l’urgence.", gesture:"Choisir un geste minuscule qui respecte mieux ce qui compte pour toi."}
+    };
+
+    let selectedState = null;
+    let selectedWord  = null;
+
+    document.querySelectorAll('#etape-02 .word-card').forEach(btn => {
+      btn.disabled = true;
+      btn.setAttribute('aria-disabled','true');
+    });
+
+    const $ = (id) => document.getElementById(id);
+    function scrollToId(id){ const el=$(id); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
+
+    document.querySelectorAll('[data-scroll-target]').forEach(btn =>
+      btn.addEventListener('click', () => scrollToId(btn.dataset.scrollTarget))
+    );
+
+    function unlockStep2(){
+      const s2   = $('etape-02');
+      const note = $('lockNote');
+      if(s2) s2.classList.remove('locked');
+      if(note) note.textContent = 'Tu peux maintenant choisir le mot qui t’appelle le plus.';
+      document.querySelectorAll('#etape-02 .word-card').forEach(btn => {
+        btn.disabled = false;
+        btn.removeAttribute('aria-disabled');
+      });
+    }
+
+    function updateSynthesis(){
+      if(!selectedState || !selectedWord) return;
+
+      const st   = stateData[selectedState];
+      const wd   = wordData[selectedWord];
+      const same = st.url === wd.url;
+
+      // Déverrouiller la section 03
+      const s3 = $('etape-03');
+      if(s3) s3.classList.remove('locked');
+
+      $('synthesisEmpty').hidden = true;
+      $('synthesisBox').hidden   = false;
+
+      $('synState').textContent = st.label;
+      $('synWord').textContent  = wd.label;
+
+      $('synCopy').innerHTML = same
+        ? `Ton état et ton mot pointent vers la même direction : ${wd.zone}. Cela ne veut pas dire que tout se joue là, mais c’est une bonne porte d’entrée pour aujourd’hui. Premier geste : <strong>${wd.gesture}</strong>`
+        : `Ton état pointe vers ${st.zone}, tandis que ton mot attire ton attention vers ${wd.zone}. Ce n’est pas la même chose, et c’est utile. Commence par le plus simple : <strong>${wd.gesture}</strong>`;
+
+      $('synQuestion').textContent = st.question;
+
+      $('synZoneLink').href = wd.url;
+      $('synZoneLink').textContent = `Explorer ${wd.zone}`;
+    }
+
+    document.querySelectorAll('.state-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.state-card').forEach(c => {
+          c.classList.remove('selected');
+          c.setAttribute('aria-pressed','false');
+        });
+        card.classList.add('selected');
+        card.setAttribute('aria-pressed','true');
+        selectedState = card.dataset.state;
+        const st = stateData[selectedState];
+        $('stateMirror').hidden = false;
+        $('stateTitle').textContent = st.title;
+        $('stateText').textContent  = st.text;
+        // stateZoneLink supprimé du HTML (v2)
+        unlockStep2();
+        updateSynthesis();
+      });
+    });
+
+    document.querySelectorAll('.word-card').forEach(card => {
+      card.addEventListener('click', () => {
+        if(!selectedState){ scrollToId('etape-01'); return; }
+        document.querySelectorAll('.word-card').forEach(c => {
+          c.classList.remove('selected');
+          c.setAttribute('aria-pressed','false');
+        });
+        card.classList.add('selected');
+        card.setAttribute('aria-pressed','true');
+        selectedWord = card.dataset.word;
+        const wd = wordData[selectedWord];
+        $('wordResult').hidden = false;
+        $('wordTitle').textContent = wd.title;
+        $('wordText').textContent  = wd.text;
+        updateSynthesis();
+      });
+    });
+
+    /* Reveal on scroll */
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){
+      revealEls.forEach(el => el.classList.add('visible'));
+    } else {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){ entry.target.classList.add('visible'); io.unobserve(entry.target); }
+        });
+      }, {threshold:.1});
+      revealEls.forEach(el => io.observe(el));
+    }
+/* Back to top */
+    const back = $('backToTop');
+    if(back){
+      window.addEventListener('scroll', () => back.classList.toggle('visible', window.scrollY > 380), {passive:true});
+      back.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    }
+  })();
+  </script>
+  <script id="foebeScrollProgressFallbackScript">
+(function(){
+  var root = document.documentElement;
+  var bar = document.getElementById('foebeScrollProgressFallbackBar');
+  if (!bar) return;
+
+  var active = false;
+  var ticking = false;
+
+  function progressIsDisabled(){
+    return !!(document.body && document.body.getAttribute('data-foebe-progress') === 'off');
+  }
+
+  function update(){
+    if (!active || progressIsDisabled()) {
+      ticking = false;
+      return;
+    }
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var fullHeight = Math.max(
+      doc.scrollHeight, body.scrollHeight,
+      doc.offsetHeight, body.offsetHeight,
+      doc.clientHeight
+    );
+    var max = Math.max(0, fullHeight - window.innerHeight);
+    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+    bar.style.transform = 'scaleX(' + progress + ')';
+    ticking = false;
+  }
+
+  function requestUpdate(){
+    if (!active || ticking) return;
+    ticking = true;
+    if (window.requestAnimationFrame) window.requestAnimationFrame(update);
+    else window.setTimeout(update, 16);
+  }
+
+  function activate(){
+    if (active || progressIsDisabled()) return;
+    active = true;
+    window.addEventListener('scroll', requestUpdate, { passive:true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate);
+    requestUpdate();
+  }
+
+  function deactivate(){
+    if (!active) return;
+    active = false;
+    window.removeEventListener('scroll', requestUpdate);
+    window.removeEventListener('resize', requestUpdate);
+    window.removeEventListener('load', requestUpdate);
+    bar.style.transform = 'scaleX(0)';
+    ticking = false;
+  }
+
+  function syncWithShell(){
+    if (root.classList.contains('foebe-shell-failed')) activate();
+    else deactivate();
+  }
+
+  window.addEventListener('foebe:shell-failed', syncWithShell);
+  window.addEventListener('foebe:shell-ready', syncWithShell);
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(syncWithShell).observe(root, {
+      attributes:true,
+      attributeFilter:['class']
+    });
+  }
+
+  syncWithShell();
+})();
+</script>
+
+<script src="/foebe-shell.js"></script>
+</body>
+</html>
