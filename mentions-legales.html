@@ -18,13 +18,23 @@
 })();
 </script><script id="foebe-shell-fallback-guard">
 (function(){
-  var h = document.documentElement;
-  h.classList.add('foebe-shell-loading');
-  window.setTimeout(function(){
-    if (!h.classList.contains('foebe-shell-ready')) {
-      h.classList.add('foebe-shell-failed');
+  var h=document.documentElement;
+  var failedDispatched=false;
+  function markFailed(){
+    if(h.classList.contains('foebe-shell-ready')) return;
+    h.classList.remove('foebe-shell-loading');
+    h.classList.add('foebe-shell-failed');
+    if(!failedDispatched){
+      failedDispatched=true;
+      try{window.dispatchEvent(new CustomEvent('foebe:shell-failed'));}catch(e){}
     }
-  }, 2500);
+  }
+  h.classList.add('foebe-shell-loading');
+  window.addEventListener('foebe:shell-ready',function(){
+    h.classList.remove('foebe-shell-loading','foebe-shell-failed');
+    h.classList.add('foebe-shell-ready');
+  },{once:true});
+  window.setTimeout(markFailed,3000);
 })();
 </script>
   <script>document.documentElement.classList.add('js-ready');</script>
@@ -32,7 +42,7 @@
   <title>Informations légales — Maison Foébé</title>
   <meta name="description" content="Mentions légales, informations d’hébergement, données personnelles et contact de Maison Foébé.">
   <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="https://maisonfoebe.fr/mentions.html">
+  <link rel="canonical" href="https://maisonfoebe.fr/mentions-legales.html">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -45,7 +55,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Informations légales — Maison Foébé">
   <meta property="og:description" content="Mentions légales, informations d’hébergement, données personnelles et contact de Maison Foébé.">
-  <meta property="og:url" content="https://maisonfoebe.fr/mentions.html">
+  <meta property="og:url" content="https://maisonfoebe.fr/mentions-legales.html">
   <meta property="og:image" content="https://maisonfoebe.fr/images/og-foebe.jpg">
   <meta property="og:image:alt" content="Aperçu visuel de Maison Foébé">
   <meta name="twitter:card" content="summary_large_image">
@@ -54,7 +64,7 @@
   <meta name="twitter:image" content="https://maisonfoebe.fr/images/og-foebe.jpg">
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebPage","name":"Informations légales — Maison Foébé","url":"https://maisonfoebe.fr/mentions.html","description":"Mentions légales, informations d’hébergement, données personnelles et contact de Maison Foébé.","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}
+  {"@context":"https://schema.org","@type":"WebPage","name":"Informations légales — Maison Foébé","url":"https://maisonfoebe.fr/mentions-legales.html","description":"Mentions légales, informations d’hébergement, données personnelles et contact de Maison Foébé.","inLanguage":"fr","isPartOf":{"@type":"WebSite","@id":"https://maisonfoebe.fr/#website","name":"Maison Foébé"}}
   </script>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="f25f1f6a-c967-4466-a744-e78fa7f4932f"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -105,8 +115,6 @@ ul{margin:8px 0 14px 22px;}
 li{padding-left:2px;margin-bottom:5px;}
 .note{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin:18px 0;box-shadow:0 12px 34px var(--shadow);}
 .note .p{margin-bottom:0;}
-#pageProgress{position:fixed;top:0;left:0;right:0;height:3px;z-index:99991;background:transparent;pointer-events:none;}
-#pageProgressFill{height:100%;width:0%;background:linear-gradient(to right,var(--warm),var(--text));transition:width .15s ease;}
 #backToTop{position:fixed;right:18px;bottom:20px;z-index:900;width:44px;height:44px;border-radius:999px;border:1px solid rgba(187,126,96,.42);background:var(--warm);color:#F0EAE7;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;cursor:pointer;box-shadow:0 8px 22px var(--shadow);font-size:18px;}
 #backToTop.visible{opacity:1;pointer-events:auto;}
 #backToTop:hover,#backToTop:focus-visible{transform:translateY(-2px);outline:2px solid var(--warm);outline-offset:3px;}
@@ -115,26 +123,51 @@ footer{min-height:1px;}
 @media(max-width:390px){.container{padding-left:16px;padding-right:16px;}.p,ul{font-size:15px;}.h3{font-size:11.5px;}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 </style>
+
+<style id="foebeProgressFallbackCss">
+:root{
+  --foebe-nav-height:60px;
+  --foebe-progress-gradient:linear-gradient(90deg,#4E291F 0%,#8E5B43 24%,#BB7E60 48%,#C45279 74%,#C34234 100%);
+}
+.foebe-scroll-progress--fallback{
+  display:none;position:fixed;top:var(--foebe-nav-height);left:0;right:0;
+  height:3px;z-index:99987;overflow:hidden;pointer-events:none;background:rgba(187,126,96,.12)
+}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
+  display:block;width:100%;height:100%;background:var(--foebe-progress-gradient);
+  transform:scaleX(0);transform-origin:left center;will-change:transform;
+  box-shadow:0 1px 4px rgba(187,126,96,.18)
+}
+html.foebe-shell-loading .foebe-scroll-progress--fallback,
+html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
+html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block}
+html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
+body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
+[data-theme="day"] .foebe-scroll-progress--fallback{background:rgba(78,41,31,.10)}
+@media(max-width:640px){:root{--foebe-nav-height:58px}.foebe-scroll-progress--fallback{height:2px}}
+@media(prefers-reduced-motion:reduce){.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}}
+</style>
 </head>
 <body>
 
-<div id="pageProgress"><div id="pageProgressFill"></div></div>
+<div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>
+    body>nav#fallbackNav.fallback-nav{display:flex!important}
+    .foebe-scroll-progress--fallback{display:block!important}
+  </style>
+</noscript>
 <button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
 <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
   <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/index.html"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-  <div class="fallback-links">
-    <a href="/index.html">Accueil</a>
+  <div class="fallback-links" aria-label="Liens rapides">
     <a href="/comprendre.html">Comprendre</a>
-    <a href="/a-propos.html">À propos</a>
     <a href="/methode.html">Méthode</a>
-    <a href="/pratiquer.html">Pratiquer</a>
-    <a href="/test.html">Échelle Foébé</a>
-    <a href="/foebe-zones-cadre.html">Les 7 zones</a>
-    <a href="/respiration.html">Respiration</a>
-    <a href="/boussole-accueil-foebe.html">La Boussole</a>
-    <a href="/stories.html">Lexique Foébé</a>
+    <a href="/echelle-foebe.html">Échelle Foébé</a>
+    <a href="/zones.html">7 zones</a>
     <a href="/dictionnaire.html">Dictionnaire</a>
-    <a href="/mentions.html" aria-current="page">Mentions légales</a>
   </div>
 </nav>
 
@@ -169,7 +202,7 @@ footer{min-height:1px;}
     <h2 class="h2">Hébergement & services tiers</h2>
 
     <h3 class="h3">Hébergement</h3>
-    <p class="p"><strong>Netlify, Inc.</strong> — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis. Le site est hébergé sur l'infrastructure Netlify avec CDN mondial. Les informations de contact de l’hébergeur sont disponibles sur le site officiel de Netlify.</p>
+    <p class="p"><strong>Cloudflare, Inc.</strong> — 101 Townsend St, San Francisco, CA 94107, États-Unis. Le site est hébergé et diffusé via l’infrastructure Cloudflare. Téléphone : +1 (650) 319-8930.</p>
 
     <h3 class="h3">Analyse d'audience</h3>
     <p class="p"><strong>Umami Analytics</strong> — outil de mesure d'audience utilisé de manière agrégée, sans cookie de suivi publicitaire. Les données consultées servent uniquement à comprendre l’usage du site et à améliorer les contenus Maison Foébé.</p>
@@ -227,18 +260,44 @@ footer{min-height:1px;}
 
 <script>
 (function(){
-  var fill=document.getElementById('pageProgressFill');
   var btn=document.getElementById('backToTop');
-  function update(){
-    var s=window.scrollY;
-    var m=document.documentElement.scrollHeight-window.innerHeight;
-    var p=m>0?Math.round((s/m)*100):0;
-    if(fill) fill.style.width=p+'%';
-    if(btn) btn.classList.toggle('visible',s>400);
+  function updateBackToTop(){
+    if(btn) btn.classList.toggle('visible',window.scrollY>400);
   }
-  window.addEventListener('scroll',update,{passive:true});
-  update();
+  window.addEventListener('scroll',updateBackToTop,{passive:true});
+  updateBackToTop();
   if(btn){btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+})();
+</script>
+<script id="foebeProgressFallbackJs">
+(function(){
+  var root=document.documentElement;
+  var bar=document.getElementById('foebeScrollProgressFallbackBar');
+  var active=false;
+  function update(){
+    if(!active||!bar) return;
+    var max=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
+    var ratio=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;
+    bar.style.transform='scaleX('+ratio+')';
+  }
+  function activate(){
+    if(active||!bar) return;
+    active=true;
+    update();
+    window.addEventListener('scroll',update,{passive:true});
+    window.addEventListener('resize',update,{passive:true});
+  }
+  function deactivate(){
+    if(!active) return;
+    active=false;
+    window.removeEventListener('scroll',update);
+    window.removeEventListener('resize',update);
+    if(bar) bar.style.transform='scaleX(0)';
+  }
+  if(root.classList.contains('foebe-shell-failed')) activate();
+  window.addEventListener('foebe:shell-failed',activate);
+  window.addEventListener('foebe:shell-ready',deactivate);
+  window.setTimeout(function(){if(root.classList.contains('foebe-shell-failed')) activate();},3100);
 })();
 </script>
 <script src="/foebe-shell.js"></script>

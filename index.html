@@ -2354,6 +2354,34 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 @media(max-width:350px){
   .home-start-eyebrow{font-size:9.5px;letter-spacing:.58px;padding-inline:9px}
 }
+
+.home-vocab-list-title{
+  margin:32px 0 16px;
+  font-family:'Lora',serif;
+  font-size:clamp(20px,2.4vw,26px);
+  font-weight:400;
+  line-height:1.35;
+  color:var(--text);
+}
+
+/* Mode nuit */
+[data-theme="night"] .home-vocab-list-title{
+  color:#F0EAE7;
+}
+
+/* Mode jour */
+[data-theme="day"] .home-vocab-list-title{
+  color:#4E291F;
+}
+
+@media(max-width:680px){
+  .home-vocab-list-title{
+    margin-top:27px;
+    margin-bottom:14px;
+    font-size:21px;
+  }
+}
+
 </style>
 
 
@@ -2408,7 +2436,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 <div class="home-capacity-inner">
 <div class="home-capacity-guide index-motion-panel" data-index-motion="panel">
 <span class="home-capacity-eyebrow">Le self-care comme compétence</span>
-<h2 class="home-capacity-title" id="home-capacity-title">Foébé t’aide à retrouver ta <em>capacité d’action</em> dans ton self-care.</h2>
+<h2 class="home-capacity-title" id="home-capacity-title">Foébé t’aide à retrouver une <em>marge d’action</em> dans ton self-care.</h2>
 <ul aria-label="Les quatre capacités que Maison Foébé aide à retrouver" class="home-capacity-path">
 <li><span>Reconnaître tes signaux</span></li>
 <li><span>Comprendre ce qui se déséquilibre</span></li>
@@ -2522,43 +2550,109 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 <div aria-labelledby="home-vocab-title" class="home-vocab reveal reveal-delay-1 index-motion-panel" data-index-motion="panel">
 <span class="home-vocab-kicker">Quatre mots à distinguer</span>
 <h2 class="home-vocab-title" id="home-vocab-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
-<p class="home-vocab-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
-<div aria-label="Définitions rapides" class="home-vocab-list vocab-accordion">
-<div class="home-vocab-item">
-<button aria-controls="vocab-selfcare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-selfcare" type="button">
-<span>Self-care</span>
-</button>
-<div aria-hidden="true" aria-label="Définition du self-care" class="home-vocab-panel" id="vocab-selfcare" role="region">
-            La manière dont tu prends soin de ton équilibre : corps, mental, émotions, énergie, environnement, relations et sens.
-          </div>
+
+<p class="home-vocab-intro">
+  Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.
+</p>
+
+<h3 class="home-vocab-list-title" id="home-vocab-list-title">
+  Quatre mots pour mieux se repérer
+</h3>
+
+<div
+  aria-labelledby="home-vocab-list-title"
+  class="home-vocab-list vocab-accordion"
+>
+  <div class="home-vocab-item">
+    <button
+      aria-controls="vocab-selfcare"
+      aria-expanded="false"
+      class="home-vocab-trigger"
+      data-home-vocab-target="vocab-selfcare"
+      type="button"
+    >
+      <span>Self-care</span>
+    </button>
+
+    <div
+      aria-hidden="true"
+      aria-label="Définition du self-care"
+      class="home-vocab-panel"
+      id="vocab-selfcare"
+      role="region"
+    >
+      La manière dont tu prends soin de ton équilibre : corps, mental, émotions, énergie, environnement, relations et sens.
+    </div>
+  </div>
+
+  <div class="home-vocab-item">
+    <button
+      aria-controls="vocab-skincare"
+      aria-expanded="false"
+      class="home-vocab-trigger"
+      data-home-vocab-target="vocab-skincare"
+      type="button"
+    >
+      <span>Skincare</span>
+    </button>
+
+    <div
+      aria-hidden="true"
+      aria-label="Définition du skincare"
+      class="home-vocab-panel"
+      id="vocab-skincare"
+      role="region"
+    >
+      Les gestes et actifs liés à la peau : barrière cutanée, hydratation, exfoliation, sensibilité, texture et confort.
+    </div>
+  </div>
+
+  <div class="home-vocab-item">
+    <button
+      aria-controls="vocab-bodycare"
+      aria-expanded="false"
+      class="home-vocab-trigger"
+      data-home-vocab-target="vocab-bodycare"
+      type="button"
+    >
+      <span>Bodycare</span>
+    </button>
+
+    <div
+      aria-hidden="true"
+      aria-label="Définition du bodycare"
+      class="home-vocab-panel"
+      id="vocab-bodycare"
+      role="region"
+    >
+      Les gestes liés au corps : nettoyage, hydratation, nutrition, exfoliation, confort, toucher et relation au corps.
+    </div>
+  </div>
+
+  <div class="home-vocab-item">
+    <button
+      aria-controls="vocab-haircare"
+      aria-expanded="false"
+      class="home-vocab-trigger"
+      data-home-vocab-target="vocab-haircare"
+      type="button"
+    >
+      <span>Haircare</span>
+    </button>
+
+    <div
+      aria-hidden="true"
+      aria-label="Définition du haircare"
+      class="home-vocab-panel"
+      id="vocab-haircare"
+      role="region"
+    >
+      Les gestes liés aux cheveux et au cuir chevelu : hydratation, porosité, casse, clarification, protection et routine.
+    </div>
+  </div>
 </div>
-<div class="home-vocab-item">
-<button aria-controls="vocab-skincare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-skincare" type="button">
-<span>Skincare</span>
-</button>
-<div aria-hidden="true" aria-label="Définition du skincare" class="home-vocab-panel" id="vocab-skincare" role="region">
-            Les gestes et actifs liés à la peau : barrière cutanée, hydratation, exfoliation, sensibilité, texture, confort.
-          </div>
-</div>
-<div class="home-vocab-item">
-<button aria-controls="vocab-bodycare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-bodycare" type="button">
-<span>Bodycare</span>
-</button>
-<div aria-hidden="true" aria-label="Définition du bodycare" class="home-vocab-panel" id="vocab-bodycare" role="region">
-            Les gestes liés au corps : nettoyage, hydratation, nutrition, exfoliation, confort, toucher et relation au corps.
-          </div>
-</div>
-<div class="home-vocab-item">
-<button aria-controls="vocab-haircare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-haircare" type="button">
-<span>Haircare</span>
-</button>
-<div aria-hidden="true" aria-label="Définition du haircare" class="home-vocab-panel" id="vocab-haircare" role="region">
-            Les gestes liés aux cheveux et au cuir chevelu : hydratation, porosité, casse, clarification, protection, routine.
-          </div>
-</div>
-</div>
-</div>
-</div>
+
+
 </section>
 <div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
 
@@ -2617,8 +2711,17 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 <div class="accompagnement-card reveal index-motion-panel" data-index-motion="panel">
 <div class="accompagnement-left">
 <span class="porte3-soon-badge">Bientôt disponible</span>
-<h2 class="accompagnement-title" id="accompagnement-title">Un <span class="foebe-word foebe-word--rose">accompagnement</span>,<br/><em>quand un outil seul ne suffit plus.</em></h2>
-<p class="accompagnement-desc">Les accompagnements Foébé ouvriront progressivement, pour les moments où <span class="foebe-color foebe-color--rose">un repère ne suffit plus</span> et où tu as besoin d’un cadre humain.</p>
+<h2 class="accompagnement-title" id="accompagnement-title">
+  Un <span class="foebe-word foebe-word--rose">accompagnement</span>,<br/>
+  <em>quand un outil seul ne suffit plus.</em>
+</h2>
+
+<p class="accompagnement-desc">
+  Les accompagnements Foébé ouvriront progressivement, pour les moments où tu as besoin de ne plus avancer sans soutien, de retrouver des 
+  <span class="foebe-color foebe-color--rose">repères concrets</span> et une capacité d’action adaptée à ta réalité.
+</p>
+
+
 </div>
 <div class="accompagnement-right">
 <form action="https://formspree.io/f/mnnqbjrl" aria-describedby="newsletterNote newsletterStatus" class="newsletter-form accompagnement-form" id="newsletterForm" method="POST">
