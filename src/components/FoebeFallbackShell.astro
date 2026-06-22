@@ -1,0 +1,49 @@
+---
+const links = [
+  { href: "/comprendre.html", label: "Comprendre" },
+  { href: "/methode.html", label: "Méthode" },
+  { href: "/echelle-foebe.html", label: "Échelle Foébé" },
+  { href: "/zones.html", label: "7 zones" },
+  { href: "/dictionnaire.html", label: "Dictionnaire" },
+];
+---
+
+<nav
+  aria-label="Navigation de secours Maison Foébé"
+  class="fallback-nav"
+  id="fallbackNav"
+>
+  <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/">
+    <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+  </a>
+
+  <div class="fallback-links">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </div>
+</nav>
+
+<div
+  aria-hidden="true"
+  class="foebe-scroll-progress foebe-scroll-progress--fallback"
+>
+  <span
+    class="foebe-scroll-progress__bar"
+    id="foebeScrollProgressFallbackBar"
+  ></span>
+</div>
+
+<noscript>
+  <style is:inline>
+    .foebe-scroll-progress--fallback{display:block!important}
+    .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}
+    .home-vocab-panel{
+      max-height:none!important;
+      overflow:visible!important;
+      opacity:1!important;
+      margin-top:7px!important;
+      padding:17px 18px 19px!important;
+      border-width:1px!important;
+      border-left-width:3px!important;
+    }
+  </style>
+</noscript>

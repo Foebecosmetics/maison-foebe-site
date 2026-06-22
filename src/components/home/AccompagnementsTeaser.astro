@@ -1,0 +1,82 @@
+---
+import { accompagnementsHub } from "../../config/accompagnements";
+
+const phase = accompagnementsHub.enabled ? "open" : "planned";
+---
+
+<!--
+  Le contenu public reste volontairement en phase « bientôt disponible ».
+  La future route /accompagnements/ est réservée dans la configuration,
+  sans être exposée ni liée avant validation.
+-->
+<section
+  aria-labelledby="accompagnement-title"
+  class="section section--accompagnement"
+  id="portes"
+  data-accompagnements-phase={phase}
+>
+  <div class="section-inner">
+    <div
+      class="accompagnement-card reveal index-motion-panel"
+      data-index-motion="panel"
+    >
+      <div class="accompagnement-left">
+        <span class="porte3-soon-badge">Bientôt disponible</span>
+        <h2 class="accompagnement-title" id="accompagnement-title">
+          Un <span class="foebe-word foebe-word--rose">accompagnement</span>,<br />
+          <em>quand un outil seul ne suffit plus.</em>
+        </h2>
+
+        <p class="accompagnement-desc">
+          Les accompagnements Foébé ouvriront progressivement, pour les moments où tu as besoin de ne plus avancer sans soutien, de retrouver des
+          <span class="foebe-color foebe-color--warm">repères</span>, une
+          <span class="foebe-color foebe-color--rose">direction</span> et un cadre adapté à ta réalité.
+        </p>
+      </div>
+
+      <div class="accompagnement-right">
+        <form
+          action="https://formspree.io/f/mnnqbjrl"
+          aria-describedby="newsletterNote newsletterStatus"
+          class="newsletter-form accompagnement-form"
+          id="newsletterForm"
+          method="POST"
+        >
+          <input
+            aria-label="Votre adresse email"
+            autocomplete="email"
+            class="newsletter-input"
+            id="newsletterEmail"
+            name="email"
+            placeholder="votre@email.fr"
+            required
+            type="email"
+          />
+          <button class="newsletter-btn" id="newsletterSubmit" type="submit">
+            Me tenir informé·e
+          </button>
+        </form>
+
+        <p class="newsletter-note" id="newsletterNote">
+          Sans engagement · Pas de spam
+        </p>
+        <p aria-live="polite" class="newsletter-status" id="newsletterStatus"></p>
+
+        <div
+          aria-live="polite"
+          class="newsletter-success"
+          hidden
+          id="newsletterSuccess"
+          role="status"
+          tabindex="-1"
+        >
+          <span aria-hidden="true" class="newsletter-success-mark">✓</span>
+          <strong>C’est bien envoyé.</strong>
+          <p>
+            Merci, ton adresse a bien été transmise à Maison Foébé. À très bientôt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
