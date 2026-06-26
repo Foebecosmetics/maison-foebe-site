@@ -1,0 +1,371 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+---
+
+<ZoneLayout
+  z="#1A4060"
+  zMid="#2E7BB5"
+  zLite="#6AB4E8"
+  zoneName="Émotions"
+  zoneSlug="Émotions"
+  zoneNumber="03"
+  zoneEmoji="🌊"
+  title="Zone Émotions · Maison Foébé"
+  description="Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l’accumulation silencieuse et la platitude émotionnelle, faire le mini-test et choisir un premier geste concret."
+  canonical="https://maisonfoebe.fr/zone-emotions/"
+  ogTitle="Zone Émotions · Maison Foébé"
+  ogDesc="Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l’accumulation silencieuse et la platitude émotionnelle, faire le mini-test et choisir un premier geste concret."
+  ogImage="https://maisonfoebe.fr/images/zones/og-zone-emotions.png"
+  twitterTitle="Zone Émotions · Maison Foébé"
+  twitterDesc="Comprendre les émotions qui débordent, la platitude émotionnelle et retrouver un premier espace de régulation."
+  twitterImage="https://maisonfoebe.fr/images/zones/og-zone-emotions.png"
+>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>.foebe-scroll-progress--fallback{display:block!important}</style>
+</noscript>
+<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div class="fallback-links">
+<a href="/comprendre/">Comprendre</a>
+<a href="/methode/">Méthode</a>
+<a href="/echelle-foebe/">Échelle Foébé</a>
+<a href="/zones/" aria-current="page">7 zones</a>
+<a href="/dictionnaire/">Dictionnaire</a>
+</div>
+</nav>
+<div class="zone-hero">
+<div class="zone-hero-waves" aria-hidden="true">
+<svg class="zone-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<path class="zone-wave-path-1" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-2" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-3" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"/>
+</svg>
+</div>
+<span class="hero-num" id="heroNum">04</span>
+<span class="hero-emoji" id="heroEmoji">🌊</span>
+<h1 class="hero-title" id="heroTitle">Émotions</h1>
+</div>
+<main id="main-content" tabindex="-1">
+<div class="page">
+<div class="zone-intro-block">
+<p class="zone-intro-text" id="zoneIntroText">La zone <strong>Émotions</strong> dans ton self-care concerne ta capacité à reconnaître ce que tu ressens et à ne pas en être débordé·e. Quand cette zone se dérègle, ce n'est pas toujours spectaculaire. Ce sont souvent des réactions que tu n'avais pas prévues, une platitude qui s'installe, ou une intensité émotionnelle qui dépasse ce que tu voulais montrer. Ce n'est pas une question de sensibilité ni de fragilité. C'est une question de régulation.</p>
+<aside class="warning-foebe" id="zoneWarning" style="display:none"></aside>
+</div>
+<div class="page-pitch" id="pagePitch">
+<div class="pitch-item"><span class="pitch-icon">🔍</span><div><p class="pitch-label">Cette zone concerne</p><p class="pitch-val">Ta capacité à reconnaître ce que tu ressens, à ne pas être submergé·e par les émotions et à revenir à un équilibre émotionnel sans trop d'effort.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">⚠️</span><div><p class="pitch-label">Prioritaire si tu observes</p><p class="pitch-val">Des réactions émotionnelles disproportionnées, une platitude émotionnelle persistante, un retour au calme de plus en plus difficile, ou des émotions que tu n'arrives pas à identifier.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">🗺️</span><div><p class="pitch-label">Sur cette page</p><p class="pitch-val">Tu vas comprendre comment la dérégulation émotionnelle s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter dans l'équilibre de ton self-care, puis choisir un premier geste concret.</p></div></div>
+</div>
+<div class="ici-section">
+<div class="ici-card">
+<div class="ici-card-header">
+<span class="ici-card-header-icon" id="iciIcon">🌊</span>
+<div>
+<p class="ici-card-title" id="iciCardTitle">Pour mieux te situer</p>
+</div>
+</div>
+<div class="ici-zones-wrap" id="iciZonesWrap">
+<button aria-label="Voir les zones précédentes" class="ici-scroll-btn ici-scroll-btn-left" id="iciScrollLeft" type="button">‹</button>
+<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0">
+<a href="/zone-energie/" class="ici-zone-dot"><div class="ici-dot-circle">⚡</div><span class="ici-dot-label">Énergie</span></a>
+<a href="/zone-corps/" class="ici-zone-dot"><div class="ici-dot-circle">🧘</div><span class="ici-dot-label">Corps</span></a>
+<a href="/zone-mental/" class="ici-zone-dot"><div class="ici-dot-circle">🧠</div><span class="ici-dot-label">Mental</span></a>
+<div class="ici-zone-dot active"><div class="ici-dot-circle">🌊</div><span class="ici-dot-label">Émotions</span></div>
+<a href="/zone-environnement/" class="ici-zone-dot"><div class="ici-dot-circle">🌍</div><span class="ici-dot-label">Environnement</span></a>
+<a href="/zone-relations/" class="ici-zone-dot"><div class="ici-dot-circle">🤝</div><span class="ici-dot-label">Relations</span></a>
+<a href="/zone-sens/" class="ici-zone-dot"><div class="ici-dot-circle">✨</div><span class="ici-dot-label">Sens</span></a>
+</div>
+<button aria-label="Voir les zones suivantes" class="ici-scroll-btn ici-scroll-btn-right" id="iciScrollRight" type="button">›</button>
+</div>
+<p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="/echelle-foebe/">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
+<div class="ici-states">
+<button class="ici-state-tag sol" data-state="sol" type="button"><span class="ici-state-dot"></span>Solide</button>
+<button class="ici-state-tag nour" data-state="nour" type="button"><span class="ici-state-dot"></span>À nourrir</button>
+<button class="ici-state-tag frag" data-state="frag" type="button"><span class="ici-state-dot"></span>Fragile</button>
+<button class="ici-state-tag prior" data-state="prior" type="button"><span class="ici-state-dot"></span>Priorité</button>
+</div>
+<div class="state-def-box" id="stateDefBox">
+<p class="state-def-title" id="stateDefTitle"></p>
+<p class="state-def-text" id="stateDefText"></p>
+</div>
+</div>
+</div>
+<!-- Navigation aller-à — repère doux juste avant la première section -->
+<nav aria-label="Navigation dans la page" class="aller-a">
+<p class="aller-a-label">Aller à</p>
+<div class="aller-a-links">
+<a class="aller-a-link" href="#comprendreSection">Comprendre</a>
+<a class="aller-a-link" href="#miniTestSection">Mini-test</a>
+<a class="aller-a-link" href="#impactsSection">Effets en cascade</a>
+<a class="aller-a-link" href="#gestesSection">Gestes</a>
+</div>
+</nav>
+<div class="section-break"></div>
+<div class="venn-section" id="comprendreSection">
+<div class="section-chapter">
+<span class="chapter-num" id="comprendreNum">01</span>
+<div>
+<span class="chapter-eyebrow" id="comprendreEyebrow">Ce qui se passe vraiment</span>
+<h2 class="chapter-title" id="comprendreTitle">Comprendre la zone Émotions</h2>
+</div>
+</div>
+<p class="venn-intro" id="vennIntro">La dérégulation émotionnelle ne commence pas par une crise. Elle s'installe progressivement, souvent à force d'ignorer ou d'étouffer ce qui se passe.</p>
+<div class="facteurs-list" id="facteursList">
+<div class="facteur-item"><div class="facteur-icon">🫙</div><div><p class="facteur-name">L'accumulation silencieuse</p><p class="facteur-desc">Les émotions non reconnues ne disparaissent pas toujours. Elles peuvent s’accumuler. Ce qui n'a pas été nommé, ressenti ou traité peut rester présent en arrière-plan et finir par remonter. Parfois, au mauvais moment, avec plus d'intensité que prévu.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">🔇</div><div><p class="facteur-name">La mise à distance systématique</p><p class="facteur-desc">À force de fonctionner, de relativiser, de ne pas s'arrêter sur ce qu'on ressent, le lien avec ses propres émotions s'émousse. On cesse de les sentir clairement avant qu'elles soient très fortes.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">⚡</div><div><p class="facteur-name">Le seuil qui s'abaisse</p><p class="facteur-desc">Quand les ressources générales sont basses pour gérer le quotidien (par ex : énergie, sommeil, concentration), la tolérance aux émotions difficiles peut diminuer. Ce qui était gérable devient soudain trop lourd. Non pas parce que l'émotion a changé, mais parce que les ressources ont diminué.</p></div></div>
+</div>
+<div class="venn-arrow"><span>Ce que ça produit</span></div>
+<div class="venn-result" id="vennResult">
+<span class="vr-icon" id="vrIcon">🌊</span>
+<div>
+<p class="vr-title" id="vrTitle">Résultat : des vagues qu'on ne voit pas venir</p>
+<p class="vr-note" id="vrNote">Le signe d'une dérégulation émotionnelle installée, ce n'est pas de réagir trop fort. C'est de ne plus savoir pourquoi tu réagis comme ça, ni comment retrouver ton calme.</p>
+</div>
+</div>
+<aside class="warning-foebe" style="margin-top:28px;">Ces repères s’inscrivent dans un contexte de mieux-être ordinaire. Si un symptôme persiste, s’aggrave ou t’inquiète, demande un avis médical ou professionnel adapté.</aside>
+</div>
+<div class="section-break"></div>
+<div class="obs-section" id="miniTestSection">
+<div class="section-chapter">
+<span class="chapter-num" id="miniNum">02</span>
+<div>
+<span class="chapter-eyebrow" id="miniEyebrow">Auto-observation</span>
+<h2 class="chapter-title" id="miniTitle">Mini-test · 5 questions</h2>
+</div>
+</div>
+<p class="obs-intro" id="obsIntro">
+                   Si tu n'as pas encore fait le test complet, ces <strong> 5 questions permettent de vérifier si cette zone est potentiellement prioritaire pour toi.</strong> Réponds selon ce qui se passe régulièrement, pas de façon exceptionnelle. <strong>2 réponses positives</strong> ou plus indiquent que cette zone mérite ton attention.
+                </p>
+<div class="obs-progress-bar">
+<div class="obs-progress-fill" id="obsProgress" style="width:0%"></div>
+</div>
+<div class="obs-swipe-hint">
+<span class="obs-hint-left">← Pas moi</span>
+<span class="obs-hint-right">Exactement moi →</span>
+</div>
+<p class="obs-help">
+  Glisse la carte vers la droite si tu te reconnais, vers la gauche si ce n’est pas le cas. Tu peux aussi utiliser les boutons juste en dessous.
+</p>
+<div class="obs-stack" id="obsStack">
+<div class="obs-card obs-active" data-card="0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 1 sur 5</span>
+<p class="obs-card-q">Tu réagis parfois plus fort que tu ne le voudrais (irritation, larmes, fermeture) et tu n'arrives pas bien à expliquer pourquoi.</p>
+<p class="obs-card-sub">C'est souvent le signal que quelque chose s'est accumulé sans avoir été traité.</p>
+</div>
+<div class="obs-card" data-card="1" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 2 sur 5</span>
+<p class="obs-card-q">Tu as du mal à nommer précisément ce que tu ressens. Tu sais que quelque chose se passe, mais l'émotion reste floue.</p>
+<p class="obs-card-sub">Mettre un mot sur ce qu’on ressent est une compétence. Quand elle devient difficile, c'est souvent le signe d'une saturation du système.</p>
+</div>
+<div class="obs-card" data-card="2" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 3 sur 5</span>
+<p class="obs-card-q">Après une réaction émotionnelle forte, il te faut beaucoup de temps pour revenir à un état stable. Le retour au calme devient long et épuisant.</p>
+<p class="obs-card-sub">La vitesse de récupération émotionnelle donne souvent un indice sur la capacité de régulation disponible.</p>
+</div>
+<div class="obs-card" data-card="3" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 4 sur 5</span>
+<p class="obs-card-q">Tu remarques une platitude : plus grand-chose ne te touche vraiment, ni le positif ni le négatif. Tu te sens comme un peu anesthésié·e.</p>
+<p class="obs-card-sub">La platitude émotionnelle peut aussi être une réponse de protection. Le système semble parfois réduire sa sensibilité pour se préserver.</p>
+</div>
+<div class="obs-card" data-card="4" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 5 sur 5</span>
+<p class="obs-card-q">Tu anticipes certaines situations ou interactions parce que tu sais qu'elles risquent de te faire réagir fort. Tu gères par évitement.</p>
+<p class="obs-card-sub">L'évitement émotionnel est une stratégie à court terme. Il réduit le déclencheur mais maintient la sensibilité intacte.</p>
+</div>
+</div>
+<div class="obs-buttons-bar" id="obsButtonsBar">
+<button class="obs-btn obs-btn-no" data-answer="false" type="button">Pas moi</button>
+<button class="obs-btn obs-btn-yes" data-answer="true" type="button">Oui, c'est mon cas</button>
+</div>
+<div aria-atomic="true" aria-live="polite" class="obs-result-panel" id="obsResultPanel">
+<div class="obs-result-inner">
+<div class="obs-result-score-wrap">
+<span class="obs-result-num" id="obsResultNum">0</span>
+<span class="obs-result-denom">/5</span>
+</div>
+<p class="obs-result-label">signaux identifiés</p>
+<div class="obs-result-body">
+<p class="obs-result-title" id="obsResultTitle"></p>
+<p class="obs-result-text" id="obsResultText"></p>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+</div>
+<div class="obs-result-actions">
+<button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
+<button class="obs-btn-secondary" id="obsResetBtn" type="button">Recommencer</button>
+</div>
+</div>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="impacts-section" id="impactsSection">
+<div class="section-chapter">
+<span class="chapter-num" id="impactsNum">03</span>
+<div>
+<span class="chapter-eyebrow" id="impactsEyebrow">Comment ça se propage</span>
+<h2 class="chapter-title" id="impactsTitle">Effets en cascade</h2>
+</div>
+</div>
+<p class="impacts-intro" id="impactsIntro">Une dérégulation émotionnelle ne reste pas cantonnée aux moments de réaction. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.</p>
+<div class="impacts-timeline" id="impactsTimeline">
+<div class="impact-item primary" data-impact="0">
+<div class="impact-left"><div class="impact-dot primary">🌊</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim">Émotions</span><span class="impact-tag primary">Point de départ</span></div><p class="impact-desc">Les émotions s'accumulent ou se court-circuitent. Le retour à l'équilibre coûte plus, le seuil de tolérance baisse.</p></div>
+</div>
+<div class="impact-item" data-impact="1">
+<div class="impact-left"><div class="impact-dot">🧠</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-mental/" class="impact-dim-link">Mental</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Les émotions intenses mobilisent beaucoup de ressources cognitives. Quand elles sont fréquentes, la clarté mentale en pâtit : décisions plus difficiles, concentration plus fragile.</p></div>
+</div>
+<div class="impact-item" data-impact="2">
+<div class="impact-left"><div class="impact-dot">🤝</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-relations/" class="impact-dim-link">Relations</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Ce qu'on ressent colore ce qu'on exprime. Une dérégulation émotionnelle peut se voir dans les interactions : distance, surréaction, difficulté à écouter sans projeter.</p></div>
+</div>
+<div class="impact-item" data-impact="3">
+<div class="impact-left"><div class="impact-dot">🧘</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-corps/" class="impact-dim-link">Corps</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Les émotions peuvent aussi passer par le corps : tension, sommeil plus fragile, digestion perturbée ou difficulté à se poser. Le corps peut devenir le lieu où ce qui n'a pas été régulé continue de se manifester.</p></div>
+</div>
+<div class="impact-item" data-impact="4">
+<div class="impact-left"><div class="impact-dot">⚡</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-energie/" class="impact-dim-link">Énergie</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Réguler des émotions intenses demande des ressources. Une journée émotionnellement chargée peut laisser une fatigue réelle, même sans effort physique important.</p></div>
+</div>
+<div class="impact-item" data-impact="5">
+<div class="impact-left"><div class="impact-dot">✨</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-sens/" class="impact-dim-link">Sens</a></span><span class="impact-tag deep">Impact profond</span></div><p class="impact-desc">Ce qu'on ressent guide souvent ce qui compte vraiment. Quand les émotions sont brouillées ou inaccessibles, le fil vers ce qui a du sens se distend.</p></div>
+</div>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="gestes-section" id="gestesSection">
+<div class="section-chapter">
+<span class="chapter-num" id="gestesNum">04</span>
+<div>
+<span class="chapter-eyebrow" id="gestesEyebrow">Des gestes pour commencer</span>
+<h2 class="chapter-title" id="gestesTitle">Rituels Foébé</h2>
+</div>
+</div>
+<div class="gestes-header">
+<span class="gestes-eyebrow" id="gestesHeaderEyebrow">Des gestes pour commencer</span>
+<p class="gestes-name" id="gestesName">Pour réguler ce qui déborde</p>
+<p class="gestes-sub" id="gestesSub">Trois gestes simples pour retrouver un peu d'espace émotionnel</p>
+</div>
+<div class="gestes-grid" id="gestesGrid">
+<div class="geste-card geste-1">
+<p class="geste-type">🏷️ Nommer l'émotion précisément</p>
+<div class="geste-meta"><span>⏱ 2 min</span><span>Effort bas</span></div>
+<p class="geste-text">Arrête-toi. Pose une main sur la poitrine. Demande-toi : qu'est-ce que je ressens là, précisément ? Pas un terme générique (ça va pas, je suis stressé·e, etc.), mais quelque chose de plus précis que tu ressens physiquement, puis essaie de l'analyser : est-ce de la déception? Colère? Inquiétude? Tristesse?</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Mettre une émotion en mots peut aider à la rendre plus lisible et à diminuer l'impression de débordement. Le but n'est pas de l'analyser parfaitement, mais de créer un premier espace entre toi et ce que tu ressens.</div>
+<p class="geste-sensoriel">Si tu n'arrives pas à nommer précisément l'émotion, ce n'est pas un problème. Même 'je ne sais pas exactement' est déjà une information valide.</p></div>
+<div class="geste-card geste-2">
+<p class="geste-type">✍️ Trois lignes sur ce qui se passe</p>
+<div class="geste-meta"><span>⏱ 3 min</span><span>Effort bas</span></div>
+<p class="geste-text">Prends un papier ou ton téléphone. Écris en trois phrases ce que tu ressens, sans chercher à l'expliquer ou à le justifier. Juste décrire.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>L'écriture externalise ce qui est en boucle interne. Ce qui est posé sur papier peut prendre un peu moins de place à l’intérieur.</div>
+</div>
+<div class="geste-card geste-3">
+<p class="geste-type">🌊 Laisser l'émotion être là sans l'éviter</p>
+<div class="geste-meta"><span>⏱ 5 min</span><span>Effort moyen</span></div>
+<p class="geste-text">Au lieu de changer de sujet, de te distraire ou de relativiser : reste avec ce que tu ressens. Sans y plonger, sans le fuir. Juste le laisser être là quelques minutes.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Une émotion peut souvent évoluer quand on cesse de la combattre ou de l'éviter immédiatement. La laisser exister quelques minutes peut déjà modifier la place qu'elle prend.</div>
+<p class="geste-sensoriel">Ce geste peut sembler contre-intuitif. On est souvent conditionné·e à faire autre chose quand quelque chose est inconfortable.</p></div>
+</div>
+<div class="gestes-freq" id="gestesFreq">
+<span class="freq-icon">📅</span><p>Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques une tension émotionnelle ou une réaction qui t’a surpris·e.</p>
+</div>
+<div class="gestes-intention-wrap">
+<p class="gestes-intention-text" id="gestesIntention">Ces trois gestes ne traitent pas des émotions enfouies depuis longtemps. Mais ils créent un espace où quelque chose peut se poser, au lieu de continuer à tourner en boucle dans ta tête.</p>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="pour-aller-plus-loin">
+<div class="palp-header">
+<span class="palp-eyebrow">Outils Foébé</span>
+<p class="palp-title">Deux outils pour prolonger ce geste</p>
+</div>
+<div class="palp-grid">
+<a class="palp-card" href="/respiration/">
+<p class="palp-label">Outil guidé</p>
+<p class="palp-name">Exercice de respiration</p>
+<p class="palp-desc">Un exercice guidé pour relâcher les tensions stockées et revenir dans les sensations du corps.</p>
+<span class="palp-cta">Ouvrir l'exercice →</span>
+</a>
+<a class="palp-card palp-card-right" href="/boussole/">
+<p class="palp-label">Outil d'exploration</p>
+<p class="palp-name">La Boussole Foébé</p>
+<p class="palp-desc">Elle t'aide à comprendre ton self-care à travers des cas concrets. Elle t'entraîne à repérer les signaux, déséquilibres et les liens entre les zones.</p>
+<span class="palp-cta">Entrer dans la Boussole →</span>
+</a>
+</div>
+<div class="palp-note">
+<span>Ces ressources sont gratuites et disponibles sans inscription.</span>
+</div>
+</div>
+<div class="signature-foebe">
+<div class="sig-line"></div>
+<p class="sig-text">
+                    Chez Foébé,<br/>on n'améliore pas un symptôme.<br/>
+<strong>On comprend un fonctionnement.</strong>
+</p>
+<p class="sig-brand">Maison Foébé</p>
+</div>
+<div class="accomp-section">
+<div class="accomp-top">
+<span class="accomp-badge">🧠 Maison Foébé</span>
+<h2 class="accomp-title">Une lecture qui ouvre la suite.</h2>
+<div class="accomp-pitch">
+<p>Chaque page zone t'aide à reconnaître ce qui se dérègle. Les prochaines ouvertures iront plus loin, avec des cadres plus complets pour lire ton fonctionnement et ajuster ton self-care dans la vraie vie.</p>
+</div>
+<p class="accomp-note-finale">
+      Foébé est un espace structuré du self-care. Pour celles et ceux qui réfléchissent beaucoup, avancent souvent sans filet, vivent en surcharge intérieure et veulent se comprendre en profondeur.
+    </p>
+</div>
+<div class="accomp-email">
+<p class="accomp-email-title">Être prévenu·e des prochaines ouvertures</p>
+<p class="accomp-email-sub">Si tu veux être informé·e quand les nouveaux espaces ouvrent, laisse ton email.</p>
+<form action="https://formspree.io/f/mnnqbjrl" id="waitlistForm" method="POST" novalidate="">
+<input id="formZoneField" name="zone" type="hidden" value=""/>
+<input name="_subject" type="hidden" value="Maison Foébé · Zone page · Liste d’attente"/>
+<input name="source" type="hidden" value="zone-page"/>
+<div id="emailFormWrap">
+<div class="email-form">
+<input aria-label="Ton adresse email" aria-required="true" autocomplete="email" class="email-input" id="emailInput" name="email" placeholder="ton@email.com" required="" type="email"/>
+<button class="email-submit" id="emailSubmitBtn" type="submit">Me tenir au courant →</button>
+</div>
+<p class="email-note">Sans engagement · Pas de spam · <a class="email-privacy-link" href="/mentions-legales/">Politique de confidentialité</a></p>
+<p aria-live="polite" class="email-error" id="emailError" role="alert"></p>
+</div>
+</form>
+<div aria-live="polite" class="email-confirm" id="emailConfirm">
+      ✓ Noté. Tu seras contacté·e en priorité à l'ouverture.
+    </div>
+</div>
+</div>
+<div class="zones-nav">
+<span class="zones-nav-label">Les 7 dimensions du self-care Foébé</span>
+<div class="zones-chips" id="zonesChips">
+<a href="/zone-energie/" class="zone-chip">⚡ Énergie</a>
+<a href="/zone-corps/" class="zone-chip">🧘 Corps</a>
+<a href="/zone-mental/" class="zone-chip">🧠 Mental</a>
+<a href="/zone-emotions/" class="zone-chip active">🌊 Émotions</a>
+<a href="/zone-environnement/" class="zone-chip">🌍 Environnement</a>
+<a href="/zone-relations/" class="zone-chip">🤝 Relations</a>
+<a href="/zone-sens/" class="zone-chip">✨ Sens</a>
+</div>
+</div>
+</div>
+</main>
+<script src="/scripts/foebe-zone.js" is:inline></script>
+</ZoneLayout>

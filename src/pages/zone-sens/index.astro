@@ -1,0 +1,371 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+---
+
+<ZoneLayout
+  z="#3A2260"
+  zMid="#6A4AA8"
+  zLite="#A68FD8"
+  zoneName="Sens"
+  zoneSlug="Sens"
+  zoneNumber="07"
+  zoneEmoji="✨"
+  title="Zone Sens · Maison Foébé"
+  description="Zone Sens · Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur avec Maison Foébé."
+  canonical="https://maisonfoebe.fr/zone-sens/"
+  ogTitle="Zone Sens · Maison Foébé"
+  ogDesc="Zone Sens · Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur avec Maison Foébé."
+  ogImage="https://maisonfoebe.fr/images/zones/og-zone-sens.png"
+  twitterTitle="Zone Sens · Maison Foébé"
+  twitterDesc="Comprendre la perte de sens, le décalage entre valeurs et actions, et retrouver un premier fil directeur."
+  twitterImage="https://maisonfoebe.fr/images/zones/og-zone-sens.png"
+>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>.foebe-scroll-progress--fallback{display:block!important}</style>
+</noscript>
+<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div class="fallback-links">
+<a href="/comprendre/">Comprendre</a>
+<a href="/methode/">Méthode</a>
+<a href="/echelle-foebe/">Échelle Foébé</a>
+<a href="/zones/" aria-current="page">7 zones</a>
+<a href="/dictionnaire/">Dictionnaire</a>
+</div>
+</nav>
+<div class="zone-hero">
+<div class="zone-hero-waves" aria-hidden="true">
+<svg class="zone-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<path class="zone-wave-path-1" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-2" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-3" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"/>
+</svg>
+</div>
+<span class="hero-num" id="heroNum">07</span>
+<span class="hero-emoji" id="heroEmoji">✨</span>
+<h1 class="hero-title" id="heroTitle">Sens</h1>
+</div>
+<main id="main-content" tabindex="-1">
+<div class="page">
+<div class="zone-intro-block">
+<p class="zone-intro-text" id="zoneIntroText">La zone <strong>Sens</strong> dans ton self-care concerne ce qui te donne l'impression que ça en vaut la peine. Lorsque cette zone se déséquilibre, cela ne se manifeste pas toujours de manière spectaculaire. Il s'agit généralement d'une perte de repères graduelle, d'un sentiment de faire les choses sans véritablement être présent·e, ou encore d'une fatigue existentielle. Il ne s'agit ni de philosophie, ni de grandes ambitions. Il s'agit de se connecter à ce qui a véritablement de l'importance pour toi.</p>
+<aside class="warning-foebe" id="zoneWarning" style="display:none"></aside>
+</div>
+<div class="page-pitch" id="pagePitch">
+<div class="pitch-item"><span class="pitch-icon">🔍</span><div><p class="pitch-label">Cette zone concerne</p><p class="pitch-val">Ta capacité à rester connecté·e à ce qui compte vraiment pour toi, à sentir que tes actions ont une direction et à trouver quelque chose de nourrissant dans ce que tu fais.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">⚠️</span><div><p class="pitch-label">Prioritaire si tu observes</p><p class="pitch-val">Un sentiment de vide malgré une vie remplie, une difficulté à identifier ce qui compte vraiment, ou une fatigue qui n'est pas physique mais existentielle.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">🗺️</span><div><p class="pitch-label">Sur cette page</p><p class="pitch-val">Tu vas comprendre comment la perte de sens s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret.</p></div></div>
+</div>
+<div class="ici-section">
+<div class="ici-card">
+<div class="ici-card-header">
+<span class="ici-card-header-icon" id="iciIcon">✨</span>
+<div>
+<p class="ici-card-title" id="iciCardTitle">Pour mieux te situer</p>
+</div>
+</div>
+<div class="ici-zones-wrap" id="iciZonesWrap">
+<button aria-label="Voir les zones précédentes" class="ici-scroll-btn ici-scroll-btn-left" id="iciScrollLeft" type="button">‹</button>
+<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0">
+<a href="/zone-energie/" class="ici-zone-dot"><div class="ici-dot-circle">⚡</div><span class="ici-dot-label">Énergie</span></a>
+<a href="/zone-corps/" class="ici-zone-dot"><div class="ici-dot-circle">🧘</div><span class="ici-dot-label">Corps</span></a>
+<a href="/zone-mental/" class="ici-zone-dot"><div class="ici-dot-circle">🧠</div><span class="ici-dot-label">Mental</span></a>
+<a href="/zone-emotions/" class="ici-zone-dot"><div class="ici-dot-circle">🌊</div><span class="ici-dot-label">Émotions</span></a>
+<a href="/zone-environnement/" class="ici-zone-dot"><div class="ici-dot-circle">🌍</div><span class="ici-dot-label">Environnement</span></a>
+<a href="/zone-relations/" class="ici-zone-dot"><div class="ici-dot-circle">🤝</div><span class="ici-dot-label">Relations</span></a>
+<div class="ici-zone-dot active"><div class="ici-dot-circle">✨</div><span class="ici-dot-label">Sens</span></div>
+</div>
+<button aria-label="Voir les zones suivantes" class="ici-scroll-btn ici-scroll-btn-right" id="iciScrollRight" type="button">›</button>
+</div>
+<p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="/echelle-foebe/">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
+<div class="ici-states">
+<button class="ici-state-tag sol" data-state="sol" type="button"><span class="ici-state-dot"></span>Solide</button>
+<button class="ici-state-tag nour" data-state="nour" type="button"><span class="ici-state-dot"></span>À nourrir</button>
+<button class="ici-state-tag frag" data-state="frag" type="button"><span class="ici-state-dot"></span>Fragile</button>
+<button class="ici-state-tag prior" data-state="prior" type="button"><span class="ici-state-dot"></span>Priorité</button>
+</div>
+<div class="state-def-box" id="stateDefBox">
+<p class="state-def-title" id="stateDefTitle"></p>
+<p class="state-def-text" id="stateDefText"></p>
+</div>
+</div>
+</div>
+<!-- Navigation aller-à — repère doux juste avant la première section -->
+<nav aria-label="Navigation dans la page" class="aller-a">
+<p class="aller-a-label">Aller à</p>
+<div class="aller-a-links">
+<a class="aller-a-link" href="#comprendreSection">Comprendre</a>
+<a class="aller-a-link" href="#miniTestSection">Mini-test</a>
+<a class="aller-a-link" href="#impactsSection">Effets en cascade</a>
+<a class="aller-a-link" href="#gestesSection">Gestes</a>
+</div>
+</nav>
+<div class="section-break"></div>
+<div class="venn-section" id="comprendreSection">
+<div class="section-chapter">
+<span class="chapter-num" id="comprendreNum">01</span>
+<div>
+<span class="chapter-eyebrow" id="comprendreEyebrow">Ce qui se passe vraiment</span>
+<h2 class="chapter-title" id="comprendreTitle">Comprendre la zone Sens</h2>
+</div>
+</div>
+<p class="venn-intro" id="vennIntro">La perte de sens ne commence pas par une crise existentielle. Elle s’installe progressivement, à force de faire passer le reste avant ce qui compte vraiment.</p>
+<div class="facteurs-list" id="facteursList">
+<div class="facteur-item"><div class="facteur-icon">📅</div><div><p class="facteur-name">L'urgence qui écrase l'essentiel</p><p class="facteur-desc">Quand le quotidien est dominé par l'urgence, ce qui compte vraiment n'a plus de place. On fait ce qui est immédiat, ce qui est attendu, ce qui est urgent. Ce qu'on aime, ce qui nous ressemble, ce qu'on voudrait construire passe après.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">🎭</div><div><p class="facteur-name">Le décalage entre qui on est et ce qu'on fait</p><p class="facteur-desc">Faire des choses qui ne nous ressemblent pas, longtemps, a un coût. Même subtil. Même quand c'est rationnel. Quand l'écart entre ses valeurs et ses actions grandit, un fond de malaise s'installe, sans qu'on puisse toujours le nommer facilement.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">🔭</div><div><p class="facteur-name">L'absence de cap qui oriente</p><p class="facteur-desc">Sans direction, chaque effort reste isolé. On fait des choses, on travaille, on avance, mais sans ligne directrice claire. L'accumulation de tâches sans y mettre du sens finit par produire une fatigue existentielle, différente de la fatigue physique.</p></div></div>
+</div>
+<div class="venn-arrow"><span>Ce que ça produit</span></div>
+<div class="venn-result" id="vennResult">
+<span class="vr-icon" id="vrIcon">✨</span>
+<div>
+<p class="vr-title" id="vrTitle">Résultat : une vie pleine qui semble vide</p>
+<p class="vr-note" id="vrNote">Le paradoxe de la perte de sens, c'est qu'elle arrive souvent quand on est le plus occupé. Une vie remplie d'activités, mais vide de ce qui compte vraiment.</p>
+</div>
+</div>
+<aside class="warning-foebe" style="margin-top:28px;">Ces repères s’inscrivent dans un contexte de mieux-être ordinaire. Si un symptôme persiste, s’aggrave ou t’inquiète, demande un avis médical ou professionnel adapté.</aside>
+</div>
+<div class="section-break"></div>
+<div class="obs-section" id="miniTestSection">
+<div class="section-chapter">
+<span class="chapter-num" id="miniNum">02</span>
+<div>
+<span class="chapter-eyebrow" id="miniEyebrow">Auto-observation</span>
+<h2 class="chapter-title" id="miniTitle">Mini-test · 5 questions</h2>
+</div>
+</div>
+<p class="obs-intro" id="obsIntro">
+                   Si tu n'as pas encore fait le test complet, ces <strong> 5 questions permettent de vérifier si cette zone est potentiellement prioritaire pour toi.</strong> Réponds selon ce qui se passe régulièrement, pas de façon exceptionnelle. <strong>2 réponses positives</strong> ou plus indiquent que cette zone mérite ton attention.
+                </p>
+<div class="obs-progress-bar">
+<div class="obs-progress-fill" id="obsProgress" style="width:0%"></div>
+</div>
+<div class="obs-swipe-hint">
+<span class="obs-hint-left">← Pas moi</span>
+<span class="obs-hint-right">Exactement moi →</span>
+</div>
+<p class="obs-help">
+  Glisse la carte vers la droite si tu te reconnais, vers la gauche si ce n’est pas le cas. Tu peux aussi utiliser les boutons juste en dessous.
+</p>
+<div class="obs-stack" id="obsStack">
+<div class="obs-card obs-active" data-card="0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 1 sur 5</span>
+<p class="obs-card-q">Tu as du mal à répondre à la question : qu'est-ce qui compte vraiment pour moi ? Pas parce que tu n'as rien, mais parce que cela te semble flou ou lointain.</p>
+<p class="obs-card-sub">La difficulté à identifier ce qui compte est souvent le premier signal d'une déconnexion au sens.</p>
+</div>
+<div class="obs-card" data-card="1" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 2 sur 5</span>
+<p class="obs-card-q">Tu fais des choses (travail, social, obligations) en mode automatique, sans vraiment être là. Tu exécutes sans ressentir.</p>
+<p class="obs-card-sub">Ce pilote automatique protège. Il permet de fonctionner. Mais il coupe aussi l'accès à ce qui nourrit vraiment.</p>
+</div>
+<div class="obs-card" data-card="2" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 3 sur 5</span>
+<p class="obs-card-q">Même quand les choses se passent bien objectivement, tu n'arrives pas vraiment à t'en réjouir. La satisfaction est plate ou absente.</p>
+<p class="obs-card-sub">L'anesthésie de la satisfaction est souvent le signe que le sens n'est plus assez présent pour colorer ce qui arrive.</p>
+</div>
+<div class="obs-card" data-card="3" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 4 sur 5</span>
+<p class="obs-card-q">Tu te demandes parfois à quoi ça sert : ce que tu fais, la direction que tu prends, les efforts que tu fournis.</p>
+<p class="obs-card-sub">Ce questionnement n'est pas du nihilisme. C'est souvent le signe qu'une direction a besoin d'être réajustée.</p>
+</div>
+<div class="obs-card" data-card="4" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 5 sur 5</span>
+<p class="obs-card-q">Tu as des envies ou des projets qui te tiennent à cœur, mais qui restent toujours dans la liste 'pour plus tard'. Et le plus tard ne vient pas.</p>
+<p class="obs-card-sub">Ce report systématique de ce qui compte est l'un des signaux les plus clairs d'une zone Sens en déficit.</p>
+</div>
+</div>
+<div class="obs-buttons-bar" id="obsButtonsBar">
+<button class="obs-btn obs-btn-no" data-answer="false" type="button">Pas moi</button>
+<button class="obs-btn obs-btn-yes" data-answer="true" type="button">Oui, c'est mon cas</button>
+</div>
+<div aria-atomic="true" aria-live="polite" class="obs-result-panel" id="obsResultPanel">
+<div class="obs-result-inner">
+<div class="obs-result-score-wrap">
+<span class="obs-result-num" id="obsResultNum">0</span>
+<span class="obs-result-denom">/5</span>
+</div>
+<p class="obs-result-label">signaux identifiés</p>
+<div class="obs-result-body">
+<p class="obs-result-title" id="obsResultTitle"></p>
+<p class="obs-result-text" id="obsResultText"></p>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+</div>
+<div class="obs-result-actions">
+<button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
+<button class="obs-btn-secondary" id="obsResetBtn" type="button">Recommencer</button>
+</div>
+</div>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="impacts-section" id="impactsSection">
+<div class="section-chapter">
+<span class="chapter-num" id="impactsNum">03</span>
+<div>
+<span class="chapter-eyebrow" id="impactsEyebrow">Comment ça se propage</span>
+<h2 class="chapter-title" id="impactsTitle">Effets en cascade</h2>
+</div>
+</div>
+<p class="impacts-intro" id="impactsIntro">Une déconnexion au sens ne reste pas cantonnée au domaine existentiel. Concrètement, elle finit par peser sur le reste de ton self-care de façon de plus en plus visible.</p>
+<div class="impacts-timeline" id="impactsTimeline">
+<div class="impact-item primary" data-impact="0">
+<div class="impact-left"><div class="impact-dot primary">✨</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim">Sens</span><span class="impact-tag primary">Point de départ</span></div><p class="impact-desc">La direction n'est plus claire. Les actions s'accumulent sans ligne directrice. Malgré un agenda plein, le vide reste là.</p></div>
+</div>
+<div class="impact-item" data-impact="1">
+<div class="impact-left"><div class="impact-dot">🌊</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-emotions/" class="impact-dim-link">Émotions</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Le sens est un régulateur émotionnel puissant. Quand il manque, même les bonnes choses perdent leur couleur. La platitude émotionnelle accompagne souvent la perte de sens.</p></div>
+</div>
+<div class="impact-item" data-impact="2">
+<div class="impact-left"><div class="impact-dot">⚡</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-energie/" class="impact-dim-link">Énergie</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Faire des choses qui ont du sens ressource. Faire des choses qui n'en ont pas épuise. Le manque de sens crée une fuite d'énergie chronique, même sans effort physique supplémentaire.</p></div>
+</div>
+<div class="impact-item" data-impact="3">
+<div class="impact-left"><div class="impact-dot">🧠</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-mental/" class="impact-dim-link">Mental</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Le mental cherche du sens par défaut. Quand il n'en trouve pas, il tourne. Les boucles de questionnement, les ruminations sur la direction à prendre dans la vie, les “à quoi bon” : il compense le vide de sens. Le lien joue aussi un rôle central.</p></div>
+</div>
+<div class="impact-item" data-impact="4">
+<div class="impact-left"><div class="impact-dot">🤝</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-relations/" class="impact-dim-link">Relations</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Quand on est déconnecté de ce qui compte pour soi, il devient difficile d'être vraiment présent pour les autres. Les relations s'appauvrissent à mesure que le sens s'efface.</p></div>
+</div>
+<div class="impact-item" data-impact="5">
+<div class="impact-left"><div class="impact-dot">🧘</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-corps/" class="impact-dim-link">Corps</a></span><span class="impact-tag deep">Impact profond</span></div><p class="impact-desc">La perte de sens a aussi une traduction physique. Un corps sans direction peut perdre de sa vitalité. La recherche autour du sens, du stress et de la santé suggère des liens avec la vitalité, la récupération et la manière dont le corps traverse la charge.</p></div>
+</div>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="gestes-section" id="gestesSection">
+<div class="section-chapter">
+<span class="chapter-num" id="gestesNum">04</span>
+<div>
+<span class="chapter-eyebrow" id="gestesEyebrow">Des gestes pour commencer</span>
+<h2 class="chapter-title" id="gestesTitle">Rituels Foébé</h2>
+</div>
+</div>
+<div class="gestes-header">
+<span class="gestes-eyebrow" id="gestesHeaderEyebrow">Des gestes pour commencer</span>
+<p class="gestes-name" id="gestesName">Pour retrouver un fil directeur</p>
+<p class="gestes-sub" id="gestesSub">Trois gestes simples pour commencer à se reconnecter à ce qui compte</p>
+</div>
+<div class="gestes-grid" id="gestesGrid">
+<div class="geste-card geste-1">
+<p class="geste-type">✍️ Trois choses qui ont compté cette semaine</p>
+<div class="geste-meta"><span>⏱ 5 min</span><span>Effort bas</span></div>
+<p class="geste-text">Prends un papier. Note trois moments de cette semaine qui t’ont marqué autrement : quelque chose qui t’a touché, qui t’a paru juste, ou qui t’a fait te sentir à ta place.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Le sens ne se joue pas seulement dans les grandes décisions. Il se repère souvent dans de petits moments qui résonnent. Les identifier aide à les retrouver plus souvent.</div>
+<p class="geste-sensoriel">Si les trois moments ne viennent pas facilement, commence par un. Et si aucun ne vient, c'est aussi une information importante.</p></div>
+<div class="geste-card geste-2">
+<p class="geste-type">🔭 Une chose que tu voulais faire et que tu as reportée</p>
+<div class="geste-meta"><span>⏱ 10 min</span><span>Effort bas</span></div>
+<p class="geste-text">Pense à quelque chose que tu voulais faire, pas une obligation, quelque chose que tu voulais vraiment. Fais-en maintenant une toute petite partie. Dix minutes suffisent.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Reprendre contact avec ce qui compte, même en tout petit, réactive le circuit du sens. Ce n'est pas la quantité qui compte. C'est le signal envoyé au système.</div>
+<p class="geste-sensoriel">La résistance à commencer est souvent plus forte que la résistance à continuer. La première minute est la plus difficile.</p></div>
+<div class="geste-card geste-3">
+<p class="geste-type">🧭 Une valeur, un geste</p>
+<div class="geste-meta"><span>⏱ 5 min</span><span>Effort moyen</span></div>
+<p class="geste-text">Identifie une valeur qui compte pour toi (honnêteté, créativité, présence, liberté, connexion, etc.). Identifie un geste concret aujourd’hui qui correspond à cette valeur.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Agir en cohérence avec ses valeurs, même ponctuellement, réduit l'écart entre ce qu'on est et ce qu'on fait. Cet écart est la source principale de la fatigue de sens.</div>
+</div>
+</div>
+<div class="gestes-freq" id="gestesFreq">
+<span class="freq-icon">📅</span><p>Quand faire ces gestes ? Une fois aujourd'hui, de préférence dans un moment calme où tu peux vraiment y penser. Pas à planifier avec un agenda : à déclencher quand tu as quelques minutes.</p>
+</div>
+<div class="gestes-intention-wrap">
+<p class="gestes-intention-text" id="gestesIntention">Ces trois gestes ne redéfinissent pas un sens de vie. Mais ils rappellent que ce qui compte est encore là, et qu'il suffit parfois de lui redonner quelques minutes.</p>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="pour-aller-plus-loin">
+<div class="palp-header">
+<span class="palp-eyebrow">Outils Foébé</span>
+<p class="palp-title">Deux outils pour prolonger ce geste</p>
+</div>
+<div class="palp-grid">
+<a class="palp-card" href="/respiration/">
+<p class="palp-label">Outil guidé</p>
+<p class="palp-name">Exercice de respiration</p>
+<p class="palp-desc">Un exercice guidé pour relâcher les tensions stockées et revenir dans les sensations du corps.</p>
+<span class="palp-cta">Ouvrir l'exercice →</span>
+</a>
+<a class="palp-card palp-card-right" href="/boussole/">
+<p class="palp-label">Outil d'exploration</p>
+<p class="palp-name">La Boussole Foébé</p>
+<p class="palp-desc">Elle t'aide à comprendre ton self-care à travers des cas concrets. Elle t'entraîne à repérer les signaux, déséquilibres et les liens entre les zones.</p>
+<span class="palp-cta">Entrer dans la Boussole →</span>
+</a>
+</div>
+<div class="palp-note">
+<span>Ces ressources sont gratuites et disponibles sans inscription.</span>
+</div>
+</div>
+<div class="signature-foebe">
+<div class="sig-line"></div>
+<p class="sig-text">
+                    Chez Foébé,<br/>on n'améliore pas un symptôme.<br/>
+<strong>On comprend un fonctionnement.</strong>
+</p>
+<p class="sig-brand">Maison Foébé</p>
+</div>
+<div class="accomp-section">
+<div class="accomp-top">
+<span class="accomp-badge">🧠 Maison Foébé</span>
+<h2 class="accomp-title">Une lecture qui ouvre la suite.</h2>
+<div class="accomp-pitch">
+<p>Chaque page zone t'aide à reconnaître ce qui se dérègle. Les prochaines ouvertures iront plus loin, avec des cadres plus complets pour lire ton fonctionnement et ajuster ton self-care dans la vraie vie.</p>
+</div>
+<p class="accomp-note-finale">
+      Foébé est un espace structuré du self-care. Pour celles et ceux qui réfléchissent beaucoup, avancent souvent sans filet, vivent en surcharge intérieure et veulent se comprendre en profondeur.
+    </p>
+</div>
+<div class="accomp-email">
+<p class="accomp-email-title">Être prévenu·e des prochaines ouvertures</p>
+<p class="accomp-email-sub">Si tu veux être informé·e quand les nouveaux espaces ouvrent, laisse ton email.</p>
+<form action="https://formspree.io/f/mnnqbjrl" id="waitlistForm" method="POST" novalidate="">
+<input id="formZoneField" name="zone" type="hidden" value=""/>
+<input name="_subject" type="hidden" value="Maison Foébé · Zone page · Liste d’attente"/>
+<input name="source" type="hidden" value="zone-page"/>
+<div id="emailFormWrap">
+<div class="email-form">
+<input aria-label="Ton adresse email" aria-required="true" autocomplete="email" class="email-input" id="emailInput" name="email" placeholder="ton@email.com" required="" type="email"/>
+<button class="email-submit" id="emailSubmitBtn" type="submit">Me tenir au courant →</button>
+</div>
+<p class="email-note">Sans engagement · Pas de spam · <a class="email-privacy-link" href="/mentions-legales/">Politique de confidentialité</a></p>
+<p aria-live="polite" class="email-error" id="emailError" role="alert"></p>
+</div>
+</form>
+<div aria-live="polite" class="email-confirm" id="emailConfirm">
+      ✓ Noté. Tu seras contacté·e en priorité à l'ouverture.
+    </div>
+</div>
+</div>
+<div class="zones-nav">
+<span class="zones-nav-label">Les 7 dimensions du self-care Foébé</span>
+<div class="zones-chips" id="zonesChips">
+<a href="/zone-energie/" class="zone-chip">⚡ Énergie</a>
+<a href="/zone-corps/" class="zone-chip">🧘 Corps</a>
+<a href="/zone-mental/" class="zone-chip">🧠 Mental</a>
+<a href="/zone-emotions/" class="zone-chip">🌊 Émotions</a>
+<a href="/zone-environnement/" class="zone-chip">🌍 Environnement</a>
+<a href="/zone-relations/" class="zone-chip">🤝 Relations</a>
+<a href="/zone-sens/" class="zone-chip active">✨ Sens</a>
+</div>
+</div>
+</div>
+</main>
+<script src="/scripts/foebe-zone.js" is:inline></script>
+</ZoneLayout>

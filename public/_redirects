@@ -1,0 +1,42 @@
+# Maison Foébé — anciennes URLs HTML vers les routes Astro propres
+/index.html / 301
+/comprendre.html /comprendre/ 301
+/methode.html /methode/ 301
+/pratiquer.html /pratiquer/ 301
+/zones.html /zones/ 301
+/echelle-foebe.html /echelle-foebe/ 301
+/respiration.html /respiration/ 301
+/boussole.html /boussole/ 301
+/boussole-scenarios.html /boussole-scenarios/ 301
+/lexique.html /lexique/ 301
+/dictionnaire.html /dictionnaire/ 301
+/a-propos.html /a-propos/ 301
+/mentions-legales.html /mentions-legales/ 301
+/zone-corps.html /zone-corps/ 301
+/zone-energie.html /zone-energie/ 301
+/zone-emotions.html /zone-emotions/ 301
+/zone-mental.html /zone-mental/ 301
+/zone-environnement.html /zone-environnement/ 301
+/zone-relations.html /zone-relations/ 301
+/zone-sens.html /zone-sens/ 301
+
+# Alias historiques du site précédent
+/test /echelle-foebe/ 301
+/test.html /echelle-foebe/ 301
+/foebe-zones-cadre /zones/ 301
+/foebe-zones-cadre.html /zones/ 301
+/stories /lexique/ 301
+/stories.html /lexique/ 301
+/boussole-accueil-foebe /boussole/ 301
+/boussole-accueil-foebe.html /boussole/ 301
+/mentions /mentions-legales/ 301
+/mentions.html /mentions-legales/ 301
+
+# Ancienne arborescence des zones testée pendant la migration
+/zones/zone-corps/ /zone-corps/ 301
+/zones/zone-energie/ /zone-energie/ 301
+/zones/zone-emotions/ /zone-emotions/ 301
+/zones/zone-mental/ /zone-mental/ 301
+/zones/zone-environnement/ /zone-environnement/ 301
+/zones/zone-relations/ /zone-relations/ 301
+/zones/zone-sens/ /zone-sens/ 301

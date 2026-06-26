@@ -1,0 +1,371 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+---
+
+<ZoneLayout
+  z="#8E5B43"
+  zMid="#BB7E60"
+  zLite="#D9B6A3"
+  zoneName="Énergie"
+  zoneSlug="Énergie"
+  zoneNumber="01"
+  zoneEmoji="⚡"
+  title="Zone Énergie · Maison Foébé"
+  description="Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, faire le mini-test et choisir un premier geste concret."
+  canonical="https://maisonfoebe.fr/zone-energie/"
+  ogTitle="Zone Énergie · Maison Foébé"
+  ogDesc="Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, faire le mini-test et choisir un premier geste concret."
+  ogImage="https://maisonfoebe.fr/images/zones/og-zone-energie.png"
+  twitterTitle="Zone Énergie · Maison Foébé"
+  twitterDesc="Comprendre la fatigue persistante, la récupération insuffisante et poser un premier geste de recharge avec Maison Foébé."
+  twitterImage="https://maisonfoebe.fr/images/zones/og-zone-energie.png"
+>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>.foebe-scroll-progress--fallback{display:block!important}</style>
+</noscript>
+<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div class="fallback-links">
+<a href="/comprendre/">Comprendre</a>
+<a href="/methode/">Méthode</a>
+<a href="/echelle-foebe/">Échelle Foébé</a>
+<a href="/zones/" aria-current="page">7 zones</a>
+<a href="/dictionnaire/">Dictionnaire</a>
+</div>
+</nav>
+<div class="zone-hero">
+<div class="zone-hero-waves" aria-hidden="true">
+<svg class="zone-wave-svg" viewBox="0 0 360 136" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<path class="zone-wave-path-1" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-2" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z"/>
+<path class="zone-wave-path-3" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z"/>
+</svg>
+</div>
+<span class="hero-num" id="heroNum">01</span>
+<span class="hero-emoji" id="heroEmoji">⚡</span>
+<h1 class="hero-title" id="heroTitle">Énergie</h1>
+</div>
+<main id="main-content" tabindex="-1">
+<div class="page">
+<div class="zone-intro-block">
+<p class="zone-intro-text" id="zoneIntroText">La zone <strong>Énergie</strong> dans ton self-care concerne ta capacité à recharger, pas seulement à tenir. Quand cette zone se dérègle, ce n'est pas toujours une fatigue spectaculaire. C'est souvent une réserve qui se vide plus vite qu'elle ne se remplit, un effort qui coûte de plus en plus, une récupération qui ne suffit plus. Ce n'est pas un manque de motivation ni de volonté. C'est une question de ressource.</p>
+<aside class="warning-foebe" id="zoneWarning" style="display:none"></aside>
+</div>
+<div class="page-pitch" id="pagePitch">
+<div class="pitch-item"><span class="pitch-icon">🔍</span><div><p class="pitch-label">Cette zone concerne</p><p class="pitch-val">Ta capacité à récupérer réellement, à recharger entre deux efforts et à ne pas fonctionner uniquement sur les réserves.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">⚠️</span><div><p class="pitch-label">Prioritaire si tu observes</p><p class="pitch-val">Une fatigue qui persiste malgré le repos, un effort qui coûte de plus en plus, un réveil déjà épuisé avant d'avoir commencé.</p></div></div>
+<div class="pitch-item"><span class="pitch-icon">🗺️</span><div><p class="pitch-label">Sur cette page</p><p class="pitch-val">Tu vas comprendre comment le déficit énergétique s'installe, repérer si cette zone mérite ton attention, voir comment elle peut impacter l'équilibre de ton self-care.</p></div></div>
+</div>
+<div class="ici-section">
+<div class="ici-card">
+<div class="ici-card-header">
+<span class="ici-card-header-icon" id="iciIcon">⚡</span>
+<div>
+<p class="ici-card-title" id="iciCardTitle">Pour mieux te situer</p>
+</div>
+</div>
+<div class="ici-zones-wrap" id="iciZonesWrap">
+<button aria-label="Voir les zones précédentes" class="ici-scroll-btn ici-scroll-btn-left" id="iciScrollLeft" type="button">‹</button>
+<div aria-label="Navigation horizontale des zones" class="ici-zones-bar" id="iciZonesBar" tabindex="0">
+<div class="ici-zone-dot active"><div class="ici-dot-circle">⚡</div><span class="ici-dot-label">Énergie</span></div>
+<a href="/zone-corps/" class="ici-zone-dot"><div class="ici-dot-circle">🧘</div><span class="ici-dot-label">Corps</span></a>
+<a href="/zone-mental/" class="ici-zone-dot"><div class="ici-dot-circle">🧠</div><span class="ici-dot-label">Mental</span></a>
+<a href="/zone-emotions/" class="ici-zone-dot"><div class="ici-dot-circle">🌊</div><span class="ici-dot-label">Émotions</span></a>
+<a href="/zone-environnement/" class="ici-zone-dot"><div class="ici-dot-circle">🌍</div><span class="ici-dot-label">Environnement</span></a>
+<a href="/zone-relations/" class="ici-zone-dot"><div class="ici-dot-circle">🤝</div><span class="ici-dot-label">Relations</span></a>
+<a href="/zone-sens/" class="ici-zone-dot"><div class="ici-dot-circle">✨</div><span class="ici-dot-label">Sens</span></a>
+</div>
+<button aria-label="Voir les zones suivantes" class="ici-scroll-btn ici-scroll-btn-right" id="iciScrollRight" type="button">›</button>
+</div>
+<p class="ici-states-guide">Si tu as déjà fait le test complet, repère l’étiquette associée à cette zone dans tes résultats. Sinon, <a class="ici-guide-link" href="/echelle-foebe/">commence ici: </a> ce sera le point de départ le plus simple pour savoir où tu en es.</p>
+<div class="ici-states">
+<button class="ici-state-tag sol" data-state="sol" type="button"><span class="ici-state-dot"></span>Solide</button>
+<button class="ici-state-tag nour" data-state="nour" type="button"><span class="ici-state-dot"></span>À nourrir</button>
+<button class="ici-state-tag frag" data-state="frag" type="button"><span class="ici-state-dot"></span>Fragile</button>
+<button class="ici-state-tag prior" data-state="prior" type="button"><span class="ici-state-dot"></span>Priorité</button>
+</div>
+<div class="state-def-box" id="stateDefBox">
+<p class="state-def-title" id="stateDefTitle"></p>
+<p class="state-def-text" id="stateDefText"></p>
+</div>
+</div>
+</div>
+<!-- Navigation aller-à — repère doux juste avant la première section -->
+<nav aria-label="Navigation dans la page" class="aller-a">
+<p class="aller-a-label">Aller à</p>
+<div class="aller-a-links">
+<a class="aller-a-link" href="#comprendreSection">Comprendre</a>
+<a class="aller-a-link" href="#miniTestSection">Mini-test</a>
+<a class="aller-a-link" href="#impactsSection">Effets en cascade</a>
+<a class="aller-a-link" href="#gestesSection">Gestes</a>
+</div>
+</nav>
+<div class="section-break"></div>
+<div class="venn-section" id="comprendreSection">
+<div class="section-chapter">
+<span class="chapter-num" id="comprendreNum">01</span>
+<div>
+<span class="chapter-eyebrow" id="comprendreEyebrow">Ce qui se passe vraiment</span>
+<h2 class="chapter-title" id="comprendreTitle">Comprendre la zone Énergie</h2>
+</div>
+</div>
+<p class="venn-intro" id="vennIntro">Le déficit énergétique ne commence pas par un effondrement. Il s'installe par accumulation, souvent sans qu'on puisse le voir venir.</p>
+<div class="facteurs-list" id="facteursList">
+<div class="facteur-item"><div class="facteur-icon">🔋</div><div><p class="facteur-name">La réserve qui s'entame</p><p class="facteur-desc">Chaque effort non récupéré laisse une trace. Le corps compense d’abord, puis les marges peuvent se réduire, jusqu’à ce que le quotidien demande beaucoup plus d’effort qu’avant. La réserve s’entame silencieusement quand le quotidien ne laisse pas assez de place à une vraie recharge.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">⏰</div><div><p class="facteur-name">Le repos qui ne restaure pas</p><p class="facteur-desc">S'arrêter ne suffit pas si le repos n'est pas de qualité. Une soirée sur écran après une journée chargée n’offre pas toujours une vraie récupération. Le système a souvent besoin d’un calme plus réel, pas seulement d’une absence d’effort visible.</p></div></div>
+<div class="facteur-item"><div class="facteur-icon">📈</div><div><p class="facteur-name">Le seuil qui remonte</p><p class="facteur-desc">Quand le niveau de base baisse, faire la même chose que d'habitude demande plus. Ce que tu faisais avant sans avoir à y penser devient maintenant un effort conscient. Ce glissement est subtil mais cumulatif.</p></div></div>
+</div>
+<div class="venn-arrow"><span>Ce que ça produit</span></div>
+<div class="venn-result" id="vennResult">
+<span class="vr-icon" id="vrIcon">⚡</span>
+<div>
+<p class="vr-title" id="vrTitle">Résultat : un système qui tourne à vide</p>
+<p class="vr-note" id="vrNote">Le signe de l'épuisement énergétique n'est pas l'effondrement. C'est plutôt l'effort croissant pour maintenir ce qui semblait aller de soi, qui est le réel signe d'une baisse énergétique.</p>
+</div>
+</div>
+<aside class="warning-foebe" style="margin-top:28px;">Ces repères s’inscrivent dans un contexte de mieux-être ordinaire. Si un symptôme persiste, s’aggrave ou t’inquiète, demande un avis médical ou professionnel adapté.</aside>
+</div>
+<div class="section-break"></div>
+<div class="obs-section" id="miniTestSection">
+<div class="section-chapter">
+<span class="chapter-num" id="miniNum">02</span>
+<div>
+<span class="chapter-eyebrow" id="miniEyebrow">Auto-observation</span>
+<h2 class="chapter-title" id="miniTitle">Mini-test · 5 questions</h2>
+</div>
+</div>
+<p class="obs-intro" id="obsIntro">
+                   Si tu n'as pas encore fait le test complet, ces <strong> 5 questions permettent de vérifier si cette zone est potentiellement prioritaire pour toi.</strong> Réponds selon ce qui se passe régulièrement, pas de façon exceptionnelle. <strong>2 réponses positives</strong> ou plus indiquent que cette zone mérite ton attention.
+                </p>
+<div class="obs-progress-bar">
+<div class="obs-progress-fill" id="obsProgress" style="width:0%"></div>
+</div>
+<div class="obs-swipe-hint">
+<span class="obs-hint-left">← Pas moi</span>
+<span class="obs-hint-right">Exactement moi →</span>
+</div>
+<p class="obs-help">
+  Glisse la carte vers la droite si tu te reconnais, vers la gauche si ce n’est pas le cas. Tu peux aussi utiliser les boutons juste en dessous.
+</p>
+<div class="obs-stack" id="obsStack">
+<div class="obs-card obs-active" data-card="0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 1 sur 5</span>
+<p class="obs-card-q">Tu te réveilles fatigué·e, même après une nuit correcte. Le repos ne suffit pas à effacer la veille.</p>
+<p class="obs-card-sub">Ce décalage entre temps de sommeil et la récupération réelle est souvent le premier signal d'un déficit installé.</p>
+</div>
+<div class="obs-card" data-card="1" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 2 sur 5</span>
+<p class="obs-card-q">Après un effort habituel, il te faut plus longtemps qu'avant pour récupérer. Ce que tu faisais machinalement avant, te coûte beaucoup plus maintenant.</p>
+<p class="obs-card-sub">Pas une baisse de forme passagère. Un seuil de récupération qui a remonté.</p>
+</div>
+<div class="obs-card" data-card="2" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 3 sur 5</span>
+<p class="obs-card-q">En milieu de journée, tu ressens une chute d'énergie marquée. Tu continues, mais avec moins de ressources disponibles.</p>
+<p class="obs-card-sub">Ce creux régulier signale que la réserve est entamée dès le départ, elle n'est pas construite au fil de la journée.</p>
+</div>
+<div class="obs-card" data-card="3" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 4 sur 5</span>
+<p class="obs-card-q">Tu évites des choses que tu aimais, non par désintérêt, mais parce que tu n'as plus l'énergie de les mettre en place.</p>
+<p class="obs-card-sub">Ce n'est pas un manque d'envie. C'est un budget énergétique insuffisant pour aller au-delà de l'essentiel.</p>
+</div>
+<div class="obs-card" data-card="4" style="opacity:0">
+<span class="obs-swipe-label label-no">✕ Pas moi</span>
+<span class="obs-swipe-label label-yes">Moi ✓</span>
+<span class="obs-card-num">Signal 5 sur 5</span>
+<p class="obs-card-q">Tu anticipes les efforts à venir avec une forme d'appréhension. Même les choses positives semblent coûteuses avant même de commencer.</p>
+<p class="obs-card-sub">L'anticipation de la dépense énergétique est souvent plus révélatrice que la fatigue elle-même.</p>
+</div>
+</div>
+<div class="obs-buttons-bar" id="obsButtonsBar">
+<button class="obs-btn obs-btn-no" data-answer="false" type="button">Pas moi</button>
+<button class="obs-btn obs-btn-yes" data-answer="true" type="button">Oui, c'est mon cas</button>
+</div>
+<div aria-atomic="true" aria-live="polite" class="obs-result-panel" id="obsResultPanel">
+<div class="obs-result-inner">
+<div class="obs-result-score-wrap">
+<span class="obs-result-num" id="obsResultNum">0</span>
+<span class="obs-result-denom">/5</span>
+</div>
+<p class="obs-result-label">signaux identifiés</p>
+<div class="obs-result-body">
+<p class="obs-result-title" id="obsResultTitle"></p>
+<p class="obs-result-text" id="obsResultText"></p>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+</div>
+<div class="obs-result-actions">
+<button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
+<button class="obs-btn-secondary" id="obsResetBtn" type="button">Recommencer</button>
+</div>
+</div>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="impacts-section" id="impactsSection">
+<div class="section-chapter">
+<span class="chapter-num" id="impactsNum">03</span>
+<div>
+<span class="chapter-eyebrow" id="impactsEyebrow">Comment ça se propage</span>
+<h2 class="chapter-title" id="impactsTitle">Effets en cascade</h2>
+</div>
+</div>
+<p class="impacts-intro" id="impactsIntro">Une énergie en déficit ne reste pas cantonnée à la fatigue physique. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.</p>
+<div class="impacts-timeline" id="impactsTimeline">
+<div class="impact-item primary" data-impact="0">
+<div class="impact-left"><div class="impact-dot primary">⚡</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim">Énergie</span><span class="impact-tag primary">Point de départ</span></div><p class="impact-desc">La réserve se vide plus vite qu'elle ne se recharge. L'effort basal augmente, la capacité à s'investir ailleurs diminue.</p></div>
+</div>
+<div class="impact-item" data-impact="1">
+<div class="impact-left"><div class="impact-dot">🧠</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-mental/" class="impact-dim-link">Mental</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Quand l’énergie est basse, la clarté mentale peut devenir plus fragile. Les décisions deviennent plus lourdes, la concentration plus fragile, les erreurs plus fréquentes.</p></div>
+</div>
+<div class="impact-item" data-impact="2">
+<div class="impact-left"><div class="impact-dot">🌊</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-emotions/" class="impact-dim-link">Émotions</a></span><span class="impact-tag secondary">Impact direct</span></div><p class="impact-desc">Quand l'énergie est basse, la régulation émotionnelle coûte plus cher. Les réactions sont plus vives, les ressources pour revenir au calme moins disponibles.</p></div>
+</div>
+<div class="impact-item" data-impact="3">
+<div class="impact-left"><div class="impact-dot">🧘</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-corps/" class="impact-dim-link">Corps</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Une fatigue qui dure peut fragiliser le corps : tensions, sommeil moins réparateur, récupération plus lente. Le corps finit par porter le coût d’une réserve trop basse.</p></div>
+</div>
+<div class="impact-item" data-impact="4">
+<div class="impact-left"><div class="impact-dot">🤝</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-relations/" class="impact-dim-link">Relations</a></span><span class="impact-tag secondary">Impact indirect</span></div><p class="impact-desc">Quand l'énergie manque, la disponibilité pour les autres diminue. Ce n'est pas un désintérêt. C'est un budget qui ne permet plus les extras relationnels.</p></div>
+</div>
+<div class="impact-item" data-impact="5">
+<div class="impact-left"><div class="impact-dot">✨</div></div>
+<div class="impact-right"><div class="impact-header"><span class="impact-dim"><a href="/zone-sens/" class="impact-dim-link">Sens</a></span><span class="impact-tag deep">Impact profond</span></div><p class="impact-desc">Ce qui donne sens demande de la disponibilité. En déficit énergétique, ce qui compte vraiment passe après l'urgence, puis après le repos, puis après demain.</p></div>
+</div>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="gestes-section" id="gestesSection">
+<div class="section-chapter">
+<span class="chapter-num" id="gestesNum">04</span>
+<div>
+<span class="chapter-eyebrow" id="gestesEyebrow">Des gestes pour commencer</span>
+<h2 class="chapter-title" id="gestesTitle">Rituels Foébé</h2>
+</div>
+</div>
+<div class="gestes-header">
+<span class="gestes-eyebrow" id="gestesHeaderEyebrow">Des gestes pour commencer</span>
+<p class="gestes-name" id="gestesName">Pour recharger vraiment</p>
+<p class="gestes-sub" id="gestesSub">Trois gestes simples pour commencer à reconstruire la réserve</p>
+</div>
+<div class="gestes-grid" id="gestesGrid">
+<div class="geste-card geste-1">
+<p class="geste-type">🛑 Poser une vraie limite d'arrêt</p>
+<div class="geste-meta"><span>⏱ À définir maintenant</span><span>Effort minimal</span></div>
+<p class="geste-text">Décide d'une heure ce soir à laquelle tu arrêtes vraiment. Pas d'exception. Pas de 'encore cinq minutes'. Traite cet arrêt comme un rendez-vous non négociable.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Un signal d’arrêt clair peut aider le corps à passer plus facilement vers la récupération. Quand la fin reste floue, le système continue souvent à se préparer à tenir.</div>
+<p class="geste-sensoriel">Les premières fois, l'arrêt volontaire peut sembler inconfortable. C'est souvent le signe que le système n'est plus habitué à recevoir la permission de s'arrêter.</p></div>
+<div class="geste-card geste-2">
+<p class="geste-type">😴 Ajouter dix minutes de sommeil ce soir</p>
+<div class="geste-meta"><span>⏱ Ce soir</span><span>Effort bas</span></div>
+<p class="geste-text">Couche-toi dix minutes plus tôt que d'habitude. Sans objectif, sans vérification de téléphone avant. Juste dix minutes de marge supplémentaire.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>La récupération se reconstruit souvent progressivement. Dix minutes régulières peuvent créer un signal plus stable qu’une grande recharge occasionnelle.</div>
+</div>
+<div class="geste-card geste-3">
+<p class="geste-type">🍃 Pause sans écran de dix minutes</p>
+<div class="geste-meta"><span>⏱ 10 min</span><span>Effort bas</span></div>
+<p class="geste-text">Lève-toi. Sors dehors ou près d'une fenêtre. Laisse le corps faire ce qu'il veut sans lui imposer de stimulus. Ni podcast, ni musique, ni scroll.</p>
+<div class="geste-why"><strong>Ce que ça fait</strong>Une pause sans écran peut réduire la charge sensorielle et offrir au corps un vrai changement de rythme. Même dix minutes peuvent créer une micro-récupération.</div>
+</div>
+</div>
+<div class="gestes-freq" id="gestesFreq">
+<span class="freq-icon">📅</span><p>Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques la chute d'énergie. Pas à planifier pour plus tard, mais à déclencher dès maintenant.</p>
+</div>
+<div class="gestes-intention-wrap">
+<p class="gestes-intention-text" id="gestesIntention">Ces trois gestes ne reconstituent pas une réserve épuisée. Mais ils allègent la pression immédiate et créent les conditions d'une vraie récupération.</p>
+</div>
+</div>
+<div class="section-break"></div>
+<div class="pour-aller-plus-loin">
+<div class="palp-header">
+<span class="palp-eyebrow">Outils Foébé</span>
+<p class="palp-title">Deux outils pour prolonger ce geste</p>
+</div>
+<div class="palp-grid">
+<a class="palp-card" href="/respiration/">
+<p class="palp-label">Outil guidé</p>
+<p class="palp-name">Exercice de respiration</p>
+<p class="palp-desc">Un exercice guidé pour relâcher les tensions stockées et revenir dans les sensations du corps.</p>
+<span class="palp-cta">Ouvrir l'exercice →</span>
+</a>
+<a class="palp-card palp-card-right" href="/boussole/">
+<p class="palp-label">Outil d'exploration</p>
+<p class="palp-name">La Boussole Foébé</p>
+<p class="palp-desc">Elle t'aide à comprendre ton self-care à travers des cas concrets. Elle t'entraîne à repérer les signaux, déséquilibres et les liens entre les zones.</p>
+<span class="palp-cta">Entrer dans la Boussole →</span>
+</a>
+</div>
+<div class="palp-note">
+<span>Ces ressources sont gratuites et disponibles sans inscription.</span>
+</div>
+</div>
+<div class="signature-foebe">
+<div class="sig-line"></div>
+<p class="sig-text">
+                    Chez Foébé,<br/>on n'améliore pas un symptôme.<br/>
+<strong>On comprend un fonctionnement.</strong>
+</p>
+<p class="sig-brand">Maison Foébé</p>
+</div>
+<div class="accomp-section">
+<div class="accomp-top">
+<span class="accomp-badge">🧠 Maison Foébé</span>
+<h2 class="accomp-title">Une lecture qui ouvre la suite.</h2>
+<div class="accomp-pitch">
+<p>Chaque page zone t'aide à reconnaître ce qui se dérègle. Les prochaines ouvertures iront plus loin, avec des cadres plus complets pour lire ton fonctionnement et ajuster ton self-care dans la vraie vie.</p>
+</div>
+<p class="accomp-note-finale">
+      Foébé est un espace structuré du self-care. Pour celles et ceux qui réfléchissent beaucoup, avancent souvent sans filet, vivent en surcharge intérieure et veulent se comprendre en profondeur.
+    </p>
+</div>
+<div class="accomp-email">
+<p class="accomp-email-title">Être prévenu·e des prochaines ouvertures</p>
+<p class="accomp-email-sub">Si tu veux être informé·e quand les nouveaux espaces ouvrent, laisse ton email.</p>
+<form action="https://formspree.io/f/mnnqbjrl" id="waitlistForm" method="POST" novalidate="">
+<input id="formZoneField" name="zone" type="hidden" value=""/>
+<input name="_subject" type="hidden" value="Maison Foébé · Zone page · Liste d’attente"/>
+<input name="source" type="hidden" value="zone-page"/>
+<div id="emailFormWrap">
+<div class="email-form">
+<input aria-label="Ton adresse email" aria-required="true" autocomplete="email" class="email-input" id="emailInput" name="email" placeholder="ton@email.com" required="" type="email"/>
+<button class="email-submit" id="emailSubmitBtn" type="submit">Me tenir au courant →</button>
+</div>
+<p class="email-note">Sans engagement · Pas de spam · <a class="email-privacy-link" href="/mentions-legales/">Politique de confidentialité</a></p>
+<p aria-live="polite" class="email-error" id="emailError" role="alert"></p>
+</div>
+</form>
+<div aria-live="polite" class="email-confirm" id="emailConfirm">
+      ✓ Noté. Tu seras contacté·e en priorité à l'ouverture.
+    </div>
+</div>
+</div>
+<div class="zones-nav">
+<span class="zones-nav-label">Les 7 dimensions du self-care Foébé</span>
+<div class="zones-chips" id="zonesChips">
+<a href="/zone-energie/" class="zone-chip active">⚡ Énergie</a>
+<a href="/zone-corps/" class="zone-chip">🧘 Corps</a>
+<a href="/zone-mental/" class="zone-chip">🧠 Mental</a>
+<a href="/zone-emotions/" class="zone-chip">🌊 Émotions</a>
+<a href="/zone-environnement/" class="zone-chip">🌍 Environnement</a>
+<a href="/zone-relations/" class="zone-chip">🤝 Relations</a>
+<a href="/zone-sens/" class="zone-chip">✨ Sens</a>
+</div>
+</div>
+</div>
+</main>
+<script src="/scripts/foebe-zone.js" is:inline></script>
+</ZoneLayout>

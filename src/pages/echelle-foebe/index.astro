@@ -1,0 +1,1523 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Échelle Foébé · 7 dimensions du self-care · Maison Foébé"
+  description="Explore les 7 dimensions de ton self-care en 21 affirmations, à partir des 7 derniers jours. Refais l’Échelle Foébé quand tu en ressens le besoin pour comparer tes passages dans le temps."
+  canonical="https://maisonfoebe.fr/echelle-foebe/"
+  ogTitle="Échelle Foébé · Maison Foébé"
+  ogDesc="21 affirmations pour faire le point sur les 7 derniers jours et suivre, passage après passage, l’évolution de tes 7 dimensions de self-care."
+  ogImage="https://maisonfoebe.fr/images/og-test.png"
+>
+<a class="foebe-skip-link" href="#mainContent" id="foebeSkipLink">Aller au contenu</a>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
+  <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+  <div class="fallback-links" aria-label="Liens rapides">
+    <a href="/comprendre/">Comprendre</a>
+    <a href="/methode/">Méthode</a>
+    <a href="/echelle-foebe/" aria-current="page">Échelle Foébé</a>
+    <a href="/zones/">7 zones</a>
+    <a href="/dictionnaire/">Dictionnaire</a>
+  </div>
+</nav>
+<div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
+  <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+  <style>
+    .foebe-scroll-progress--fallback{display:block!important;opacity:.42!important;}
+    body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+    #foebeScrollProgressFallbackBar{transform:scaleX(1)!important;}
+    .btn-start{display:none!important;}
+  </style>
+</noscript>
+
+<main id="mainContent" tabindex="-1">
+
+<!-- ══ INTRO ══ -->
+<div class="screen active" id="screenIntro" aria-hidden="false">
+  <div class="intro-wrap">
+    <span class="eyebrow">Maison Foébé · Échelle Foébé</span>
+    <h1 class="intro-title">
+      Comment tu prends soin<br>
+      <em>de toi, vraiment ?</em>
+    </h1>
+    <div class="divider"></div>
+    <p class="intro-text">
+      Pas ce que tu fais pour les autres.<br>
+      Pas ce que tu crois devoir faire.<br>
+      Ce que tu vis, toi, en ce moment.
+    </p>
+    <div class="intro-consigne">
+      Pour chaque affirmation, réponds en pensant <strong>aux 7 derniers jours de ta semaine</strong>,
+      honnêtement et sans te juger.
+    </div>
+    <div class="intro-guidance-grid" aria-label="Repères d'utilisation">
+      <p class="intro-note">
+        <em>Cette échelle explore 7 dimensions de ton self-care.</em>
+      </p>
+      <p class="intro-repeat-note"><em>Tu peux refaire l’Échelle Foébé quand tu en ressens le besoin, toujours en répondant à partir des 7 derniers jours. Chaque passage sera daté pour te permettre d’observer ton évolution dans le temps.</em></p>
+    </div>
+
+    <details class="results-method intro-method">
+      <summary>Comment l’Échelle t’accompagne dans le temps ?</summary>
+      <div class="results-method-content intro-method-content">
+        <p><strong>Comment elle mesure.</strong> Les 21 affirmations sont réparties entre 7 dimensions du self-care. Chaque dimension est observée à travers trois situations concrètes, afin de faire ressortir ce qui semble soutenu et ce qui mérite davantage d’attention cette semaine.</p>
+        <p><strong>Pourquoi les 7 derniers jours.</strong> Une seule journée peut être exceptionnellement bonne ou difficile. Sept jours donnent assez de recul pour repérer ce qui se répète, tout en restant proches de ce que tu vis maintenant. Répondre toujours sur cette même période rend les passages plus comparables.</p>
+        <p><strong>À quoi sert le suivi d’évolution.</strong> Si tu consens à participer à la recherche Foébé, tes passages datés sont conservés localement sur cet appareil et ton suivi d’évolution devient accessible. Elle ne donne pas une note à réussir : elle aide à voir ce qui se recharge, ce qui reste fragile et où concentrer ton énergie sans tout changer à la fois.</p>
+        <p><strong>Pourquoi une recherche Foébé.</strong> Les réponses envoyées de façon pseudonymisée servent à mieux comprendre comment les 7 dimensions évoluent chez les personnes qui continuent à fonctionner alors que leur capacité de récupération diminue. L’objectif est d’améliorer l’Échelle, les repères et les ressources proposées. Si tu ne consens pas, tu verras ton résultat immédiat, mais aucun historique ni aucun suivi comparatif ne seront activés.</p>
+      </div>
+    </details>
+
+    <div class="intro-pills">
+      <span class="pill">21 affirmations</span>
+      <span class="pill">Environ 5 minutes</span>
+      <span class="pill">Pas de bonne ou mauvaise réponse</span>
+      <span class="pill">Résultats personnalisés</span>
+    </div>
+    <button type="button" class="btn-start" onclick="startTest()">Je commence</button>
+    <noscript>
+      <p class="foebe-js-required" role="status">Cette expérience interactive nécessite JavaScript. Active-le pour répondre aux 21 affirmations et afficher tes résultats. La navigation générale de Maison Foébé reste disponible au-dessus.</p>
+    </noscript>
+  </div>
+</div>
+
+<!-- ══ QUESTION ══ -->
+<div class="screen" id="screenQuestion" aria-hidden="true">
+  <div class="question-wrap">
+    <!-- Progression : proche de la navigation, toujours repérable -->
+    <div class="q-progress">
+      <div class="progress-dots" id="progressDots"></div>
+      <span class="q-counter" id="qCounter"></span>
+    </div>
+    <!-- Lecture : affirmation au centre, précision juste dessous -->
+    <div class="q-center">
+      <p class="q-text" id="qText" aria-live="polite" aria-atomic="true"></p>
+      <p class="q-hint" id="qHint"></p>
+    </div>
+    <!-- Réponse : échelle dans la partie basse de l’écran -->
+    <div class="q-bottom">
+      <p class="response-label" id="responseLabel">Ta réponse</p>
+      <div class="likert-extremes">
+        <span>Pas du tout</span>
+        <span>Tout à fait</span>
+      </div>
+      <div class="likert" id="likertBtns" role="radiogroup" aria-label="Réponse à la question en cours" aria-describedby="likertScaleHelp likertMobileFeedback"></div>
+      <div class="likert-scale-help" id="likertScaleHelp">
+        <span>Pas du tout</span>
+        <span>Plutôt non</span>
+        <span>Ça dépend</span>
+        <span>Plutôt oui</span>
+        <span>Tout à fait</span>
+      </div>
+      <div class="likert-mobile-feedback" id="likertMobileFeedback" aria-live="polite" aria-atomic="true">
+        <span data-value="1">Pas du tout</span>
+        <span data-value="2">Plutôt non</span>
+        <span data-value="3">Ça dépend</span>
+        <span data-value="4">Plutôt oui</span>
+        <span data-value="5">Tout à fait</span>
+      </div>
+      <button type="button" class="btn-back" id="btnBack" onclick="goBack()">← Précédent</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TROP RAPIDE ══ -->
+<div class="screen" id="screenTooFast" aria-hidden="true">
+  <div class="too-fast-wrap">
+    <span class="eyebrow">Un instant</span>
+    <p id="tooFastText"></p>
+    <p class="too-fast-body">
+      Ici, la vitesse n’est ni une réussite ni une erreur : elle peut simplement être un indice de ton rythme actuel.<br><br>
+      Pour que le résultat te ressemble davantage, vérifie que tu as répondu à partir de ce que tu as réellement vécu au cours des 7 derniers jours.<br><br>
+      Tu peux relire tes réponses, prendre une respiration, ou afficher ton résultat si tes réponses te semblent justes.
+    </p>
+    <div class="btn-group">
+      <button type="button" class="btn-primary" onclick="reviewAnswers()">Relire mes réponses</button>
+      <button type="button" onclick="openBreathPopup()">Respirer un moment</button>
+      <button type="button" onclick="continueToResults()">Afficher mon résultat</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POPUP RESPIRATION ══ -->
+<div id="breathPopup" class="breath-popup" role="dialog" aria-modal="true" aria-labelledby="breathPopupTitle" aria-hidden="true">
+  <p class="breath-popup-title" id="breathPopupTitle">Respiration · Foébé</p>
+
+  <p id="popupCountdown" class="breath-popup-countdown"></p>
+  <p id="popupPhase" class="breath-popup-phase"></p>
+  <p id="popupCount" class="breath-popup-count"></p>
+
+  <div class="breath-popup-visual">
+    <span class="breath-popup-arrow">↑</span>
+    <div id="popupTrack" class="breath-popup-track">
+      <div id="popupBall" class="breath-popup-ball"></div>
+    </div>
+    <span class="breath-popup-arrow">↓</span>
+  </div>
+
+  <p id="popupCycles" class="breath-popup-cycles"></p>
+
+  <button type="button" id="breathPopupClose" onclick="closeBreathPopup()" class="breath-popup-close">
+    Terminer et reprendre l’Échelle
+  </button>
+</div>
+
+<!-- ══ DERNIER REPÈRE SITUATIONNEL ══ -->
+<div class="screen" id="screenTieBreak" aria-hidden="true">
+  <div class="tie-break-wrap">
+    <span class="eyebrow">Un dernier repère</span>
+    <h2 class="tie-break-title">Imagine la fin<br><em>d’une journée chargée.</em></h2>
+    <p class="tie-break-copy">Laquelle de ces scènes te ressemble le plus souvent ces derniers jours ? Ne choisis pas celle qui paraît la plus grave, mais celle dans laquelle tu te reconnais vraiment.</p>
+    <div class="tie-break-options" id="tieBreakOptions" role="group" aria-label="Choisir la scène qui me ressemble le plus"></div>
+  </div>
+</div>
+
+<!-- ══ CONSENTEMENT ══ -->
+<div class="screen" id="screenConsent" aria-hidden="true">
+  <div class="consent-wrap">
+    <span class="eyebrow">Avant tes résultats</span>
+    <h2 class="consent-title">
+      Tu veux contribuer à<br>
+      <em>la recherche Foébé ?</em>
+    </h2>
+    <div class="divider"></div>
+
+    <!-- Message si déjà connu — caché par défaut -->
+    <div id="alreadyContributedMsg" class="consent-evolution-badge" hidden>
+      <strong>Tu as déjà contribué — merci.</strong>
+      Tes nouvelles réponses seront sauvegardées. Tu pourras voir ton évolution dans tes résultats.
+    </div>
+
+    <p class="consent-text">
+      Foébé construit une étude francophone sur le self-care des personnes qui fonctionnent et s'épuisent. Tes réponses pseudonymisées nous aident à mieux comprendre et à créer des ressources pour toute la communauté.
+    </p>
+    <p class="consent-privacy-note">
+      Certaines questions touchent à des dimensions personnelles sensibles. Tu peux choisir “Préfère ne pas répondre”. Si tu refuses de contribuer, tu verras le résultat de ce passage, mais il ne sera ni enregistré ni comparé aux passages suivants.
+    </p>
+
+    <!-- Message sur l'évolution — visible seulement si pas encore contribué -->
+    <div id="evolutionPromo" class="consent-box consent-evolution-promo">
+      <p class="consent-box-title">Suis ton évolution dans le temps</p>
+      <p class="consent-evolution-copy">
+        En disant oui, tu consens à la contribution pseudonymisée et tu actives le suivi d’évolution sur cet appareil. En refaisant l’Échelle <strong>quand tu en ressens le besoin</strong>, tu verras comment ton self-care évolue : dimension par dimension, passage après passage, avec la date réelle de chaque réponse. Sans participation, aucun suivi comparatif n’est accessible.
+      </p>
+    </div>
+
+    <div class="consent-box">
+      <p class="consent-box-title">Les données collectées, de façon pseudonymisée</p>
+      <ul class="consent-list">
+        <li>Quelques infos démographiques (genre, âge, statut, pays)</li>
+        <li>Ton profil self-care et tes scores par dimension</li>
+        <li>Un commentaire libre si tu le souhaites</li>
+      </ul>
+      <p class="consent-rgpd">🔒 Données pseudonymisées · Jamais revendues · Stockées en Europe · Utilisées uniquement pour améliorer les ressources Foébé · En contribuant, tu consens à l’envoi des réponses et à l’enregistrement local nécessaire au suivi. Tu peux refuser : le résultat immédiat reste visible, sans historique ni suivi d’évolution. Les données locales disparaissent si tu effaces les données de ce navigateur.</p>
+    </div>
+
+    <p class="demo-form-guidance">
+      <strong>Pour valider ta contribution, réponds aux 6 questions ci-dessous.</strong><br>
+      Tu peux choisir « Préfère ne pas répondre » lorsqu’il est proposé. Le commentaire libre reste optionnel.
+    </p>
+    <div class="demo-completion-status" id="demoCompletionStatus" aria-live="polite">
+      <span>Complète les informations nécessaires à la recherche.</span>
+      <strong id="demoCompletionCount">0 / 6</strong>
+    </div>
+    <div class="demo-validation-error" id="demoValidationError" role="alert" tabindex="-1"></div>
+
+    <div class="demo-questions" id="demoQuestions">
+      <div class="demo-q" data-required-field="genre">
+        <p class="demo-label" id="demoGenreLabel">Genre</p>
+        <div class="demo-options" id="demoGenre" role="radiogroup" aria-labelledby="demoGenreLabel">
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('genre','Femme',this)">Femme</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('genre','Homme',this)">Homme</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('genre','Non-binaire',this)">Non-binaire</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('genre','Préfère ne pas répondre',this)">Préfère ne pas répondre</button>
+        </div>
+      </div>
+      <div class="demo-q" data-required-field="age">
+        <p class="demo-label" id="demoAgeLabel">Tranche d'âge</p>
+        <div class="demo-options" id="demoAge" role="radiogroup" aria-labelledby="demoAgeLabel">
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('age','18-24',this)">18-24</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('age','25-34',this)">25-34</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('age','35-44',this)">35-44</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('age','45-54',this)">45-54</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('age','55+',this)">55+</button>
+        </div>
+      </div>
+      <div class="demo-q" data-required-field="statut">
+        <p class="demo-label" id="demoStatutLabel">Statut professionnel</p>
+        <div class="demo-options" id="demoStatut" role="radiogroup" aria-labelledby="demoStatutLabel">
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('statut','Salarié·e',this)">Salarié·e</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('statut','Indépendant·e',this)">Indépendant·e</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('statut','Étudiant·e',this)">Étudiant·e</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('statut','Sans emploi',this)">Sans emploi</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('statut','Autre',this)">Autre</button>
+        </div>
+      </div>
+      <div class="demo-q" data-required-field="pays">
+        <p class="demo-label" id="demoPaysLabel">Pays / région</p>
+        <div class="demo-options" id="demoPays" role="radiogroup" aria-labelledby="demoPaysLabel">
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','France métropolitaine',this)">France métro</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','DOM-TOM',this)">DOM-TOM</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','Belgique',this)">Belgique</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','Suisse',this)">Suisse</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','Canada',this)">Canada</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','Maghreb',this)">Maghreb</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('pays','Autre',this)">Autre</button>
+        </div>
+      </div>
+      <div class="demo-q" data-required-field="enfants">
+        <p class="demo-label" id="demoEnfantsLabel">Tu as des enfants à charge ?</p>
+        <div class="demo-options" id="demoEnfants" role="radiogroup" aria-labelledby="demoEnfantsLabel">
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('enfants','Oui',this)">Oui</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('enfants','Non',this)">Non</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('enfants','Préfère ne pas répondre',this)">Préfère ne pas répondre</button>
+        </div>
+      </div>
+      <div class="demo-q" data-required-field="professionnel_sante">
+        <p class="demo-label" id="demoProLabel">Tu as déjà consulté un professionnel de santé mentale ?</p>
+        <div class="demo-options" id="demoPro" role="radiogroup" aria-labelledby="demoProLabel">
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('professionnel_sante','Oui',this)">Oui</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('professionnel_sante','Non',this)">Non</button>
+          <button type="button" class="demo-btn" role="radio" aria-checked="false" onclick="selectDemo('professionnel_sante','Préfère ne pas répondre',this)">Préfère ne pas répondre</button>
+        </div>
+      </div>
+      <div class="demo-q">
+        <label class="demo-label" for="demoVerbatim">Un mot sur ton expérience du self-care ? <span class="demo-optional">(optionnel)</span></label>
+        <textarea class="demo-textarea" id="demoVerbatim" placeholder="Ce que tu vis, ce que tu cherches, ce dont tu aurais besoin..."></textarea>
+      </div>
+    </div>
+
+    <div class="consent-actions">
+      <button type="button" class="btn-consent-yes" id="btnConsentYes" onclick="submitConsent()" disabled aria-disabled="true">Contribuer à la recherche Foébé →</button>
+      <button type="button" class="btn-consent-no" onclick="skipConsent()">Non merci, voir mon résultat sans suivi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RÉSULTATS ══ -->
+<div class="screen" id="screenResults" aria-hidden="true">
+  <div class="results-wrap">
+
+    <div class="priority-box">
+      <span class="priority-label" id="priorityLabel">Ton point de départ cette semaine</span>
+      <h3 class="priority-title" id="priorityTitle"></h3>
+      <p class="priority-text" id="priorityText"></p>
+      <div class="priority-actions" id="priorityActions">
+        <a class="btn-priority" id="priorityBtn" href="#">Explorer cette dimension →</a>
+      </div>
+      <button type="button" class="btn-sec btn-retest-inline" onclick="restartTest()">Refaire l’Échelle</button>
+    </div>
+
+    <div class="global-shimmer">
+      <span class="gs-eyebrow">Ton équilibre global cette semaine</span>
+      <h2 class="gs-title" id="gsTitle"></h2>
+      <p class="gs-desc" id="gsDesc"></p>
+    </div>
+
+    <details class="results-method">
+      <summary>Comment lire tes résultats ?</summary>
+      <div class="results-method-content">
+        <p>Cette Échelle Foébé résume ce que tu as déclaré à propos des 7 derniers jours. Chaque dimension repose sur trois affirmations, dont certaines sont formulées en sens inverse afin de limiter les réponses automatiques.</p>
+        <p>Les seuils Foébé sont des repères simples d’accompagnement. Ils ne constituent ni un diagnostic ni une norme clinique. Leur intérêt principal est de t’aider à identifier un point de départ et à observer ton évolution d’un passage à l’autre.</p>
+      </div>
+    </details>
+
+    <!-- Suivi d’évolution — visible seulement si au moins 2 passages comparables -->
+    <section class="evolution-section" id="evolutionSection" aria-labelledby="evolutionTitle" hidden>
+      <p class="evolution-title" id="evolutionTitle">Ton évolution dans le temps</p>
+      <p class="evolution-subtitle" id="evolutionSubtitle">Chaque point correspond à un passage réellement daté.</p>
+      <div class="evolution-toolbar">
+        <label for="evolutionMetric">Afficher</label>
+        <select class="evolution-select" id="evolutionMetric" aria-label="Choisir la dimension à afficher"></select>
+      </div>
+      <p class="evolution-overview" id="evolutionOverview" aria-live="polite"></p>
+      <div class="evolution-chart-shell">
+        <div id="evolutionComparison" role="img" aria-label="Évolution datée de tes passages à l’Échelle Foébé"></div>
+      </div>
+      <p class="evolution-note" id="evolutionNote"><strong>Comment lire :</strong> chaque point représente un passage daté. Une ligne stable peut déjà montrer qu’un équilibre tient. Le but n’est pas de faire monter le score, mais de repérer ce qui t’aide à préserver ou retrouver de la capacité d’action dans ton self-care.</p>
+    </section>
+
+    <div class="history-version-notice" id="historyVersionNotice" hidden>
+      <strong>Nouvelle version de l’Échelle</strong>
+      <p>Les anciennes données restent conservées sur ton appareil, mais les comparaisons redémarrent avec cette version afin de ne pas mélanger deux questionnaires différents.</p>
+    </div>
+
+    <div class="radar-section">
+      <p class="radar-title">Tes 7 dimensions explorées</p>
+      <div class="axes-list" id="axesList"></div>
+    </div>
+
+    <div class="results-reminder">
+      <p><strong>Chaque passage est daté.</strong> Tu peux refaire l’Échelle quand tu en ressens le besoin. Réponds toujours à partir des 7 derniers jours : si deux passages sont rapprochés, leurs périodes se recouvrent en partie, mais ils peuvent quand même t’aider à observer ce qui bouge pour toi.</p>
+    </div>
+
+    <div class="actions">
+      <a class="btn-sec" href="/">← Retour à l'accueil</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ══════════════════════════════════════════════════════
+// DONNÉES
+// ══════════════════════════════════════════════════════
+const SUPABASE_URL = 'https://fnupyfszaubbzjlerkgy.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_nXHFJ7C3BPTa_pKkHczMiA_Diua4oqk';
+const MIN_TIME_SECONDS = 60;
+const RESPONSE_LABELS = ['Pas du tout','Plutôt non','Ça dépend','Plutôt oui','Tout à fait'];
+const QUESTIONNAIRE_VERSION = 3;
+const QUESTIONNAIRE_VERSION_LABEL = 'echelle-foebe-v3';
+
+const questions = [
+  {text:"Je perçois les signaux de mon corps avant qu'ils s'intensifient.",hint:"Douleur, tension, fatigue, inconfort...",axe:0,inv:false},
+  {text:"Je continue à avancer même quand mon corps m'a clairement dit qu'il avait besoin de s'arrêter.",hint:"Continuer à travailler, scroller, m'occuper, ignorer la douleur...",axe:0,inv:true},
+  {text:"Je prends soin de mon corps de façon consciente et régulière.",hint:"Sommeil, alimentation, mouvement, soins...",axe:0,inv:false},
+
+  {text:"Quand je me repose sans avoir l'impression de l'avoir mérité, je ressens de la culpabilité ou de l'inconfort.",hint:"Sensation de perdre du temps, besoin de me justifier...",axe:1,inv:true},
+  {text:"Le repos a une place réelle et intentionnelle dans ma vie.",hint:"Pas seulement quand je n'ai plus le choix...",axe:1,inv:false},
+  {text:"Je remarque quand mon énergie baisse et j'adapte mon rythme avant d'être à bout.",hint:"Ralentir, reporter, alléger, faire une vraie pause...",axe:1,inv:false},
+
+  {text:"Quand quelque chose m'émeut, je sais généralement identifier ce que je ressens et pourquoi.",hint:"Nommer l'émotion, comprendre le déclencheur...",axe:2,inv:false},
+  {text:"Je mets de côté ce que je ressens pour continuer à fonctionner, car c'est plus simple que de m'y arrêter.",hint:"Faire comme si, minimiser, repousser à plus tard...",axe:2,inv:true},
+  {text:"Je peux traverser une émotion difficile sans me juger ni me forcer à aller mieux tout de suite.",hint:"Me laisser ressentir, ralentir, chercher un appui adapté...",axe:2,inv:false},
+
+  {text:"Même quand je veux me poser, mes pensées continuent de tourner.",hint:"Je rumine, j'anticipe, je planifie...",axe:3,inv:true},
+  {text:"Face à une situation stressante, je distingue ce qui dépend de moi de ce qui ne dépend pas de moi.",hint:"Lâcher prise sur ce qui m'échappe, agir sur ce qui m'appartient...",axe:3,inv:false},
+  {text:"Mes obligations et responsabilités occupent mon espace mental, même pendant mes moments de détente.",hint:"Listes mentales, inquiétudes, planification constante...",axe:3,inv:true},
+
+  {text:"Mon environnement quotidien me laisse suffisamment d'espace pour souffler et récupérer.",hint:"Lieu de vie, travail, rythme, espace disponible...",axe:4,inv:false},
+  {text:"Le bruit, le désordre, les notifications ou les interruptions m'épuisent plus que je ne le reconnais.",hint:"Sollicitations visuelles, sonores, numériques...",axe:4,inv:true},
+  {text:"Quand mon cadre ajoute de la charge, je peux l'ajuster ou demander qu'il soit ajusté.",hint:"Réorganiser, réduire les sollicitations, poser une limite...",axe:4,inv:false},
+
+  {text:"Prendre du temps pour moi, sans me justifier, me semble naturel.",hint:"Annuler, refuser, choisir de préserver mon énergie...",axe:5,inv:false},
+  {text:"Je mets mes besoins de côté pour répondre à ceux des autres, même quand je suis à bout.",hint:"Famille, amis, collègues, partenaire...",axe:5,inv:true},
+  {text:"Dans mes relations, je peux demander du soutien et poser une limite sans craindre de perdre le lien.",hint:"Recevoir de l'aide, dire non, exprimer un besoin...",axe:5,inv:false},
+
+  {text:"Mes choix du quotidien sont cohérents avec ce qui compte vraiment pour moi.",hint:"Valeurs, priorités, ce qui donne du sens...",axe:6,inv:false},
+  {text:"J'ai parfois la sensation de vivre selon les attentes des autres plutôt que selon mes propres valeurs.",hint:"Famille, société, milieu professionnel...",axe:6,inv:true},
+  {text:"Même dans les moments difficiles, je retrouve du sens à ce que je fais et à qui je suis.",hint:"Un fil conducteur, une raison d'avancer...",axe:6,inv:false},
+];
+
+const axes = [
+  {id:"corps",         name:"Corps & Signaux",             page:"/zone-corps/",         zoneName:"la zone Corps"},
+  {id:"energie",       name:"Énergie & Récupération",      page:"/zone-energie/",       zoneName:"la zone Énergie"},
+  {id:"emotions",      name:"Émotions & Expression",       page:"/zone-emotions/",      zoneName:"la zone Émotions"},
+  {id:"mental",        name:"Mental & Clarté",             page:"/zone-mental/",        zoneName:"la zone Mental"},
+  {id:"environnement", name:"Environnement & Cadre",       page:"/zone-environnement/", zoneName:"la zone Environnement"},
+  {id:"relations",     name:"Relations & Priorité de soi", page:"/zone-relations/",     zoneName:"la zone Relations"},
+  {id:"sens",          name:"Sens & Identité",             page:"/zone-sens/",          zoneName:"la zone Sens"},
+];
+
+const tieBreakSituations = [
+  "Tu enlèves enfin tes chaussures et tu réalises que tu as ignoré une douleur, une tension ou un inconfort pendant une grande partie de la journée.",
+  "Tu t’assois enfin, mais tu te relèves presque aussitôt pour terminer encore une chose avant de t’autoriser à souffler.",
+  "Un détail t’a touché·e plus que prévu, mais tu l’as rangé quelque part en toi pour pouvoir continuer comme si de rien n’était.",
+  "La journée est terminée, mais ta tête continue à refaire ce qui s’est passé, anticiper demain ou organiser ce qu’il reste à faire.",
+  "Tu voudrais redescendre, mais le bruit, le désordre, les notifications ou les interruptions t’empêchent réellement de retrouver du calme.",
+  "Quelqu’un te sollicite encore et tu dis oui presque automatiquement, avant même de vérifier si tu as encore l’énergie ou l’envie.",
+  "Tu as fait ce qu’il fallait et répondu aux attentes, mais une petite voix te demande ce que cette journée avait vraiment de juste ou d’important pour toi."
+];
+
+const axeInsights = [
+  ["Ton corps est une ressource que tu ménages avec soin.","Tu perçois tes signaux, mais tu ne les écoutes pas encore pleinement.","Ton corps t'envoie des messages que tu mets souvent de côté.","Ton corps parle, il attend que tu t'arrêtes pour l'entendre."],
+  ["Ton énergie et ta récupération trouvent une place réelle dans ton rythme.","Tu récupères par moments, mais souvent après avoir trop tiré sur tes ressources.","Ton rythme dépasse régulièrement ce que ton énergie peut soutenir.","Ta marge de récupération paraît actuellement très réduite."],
+  ["Tu identifies ce que tu ressens et tu lui laisses une place.","Tu reconnais tes émotions, mais les exprimer reste parfois difficile.","Tes émotions ont souvent peu de place pour exister.","Tu sembles fonctionner souvent à distance de ce que tu ressens."],
+  ["Ton espace mental est plutôt clair et disponible.","Quelques pensées persistent, mais tu arrives à prendre du recul.","Ton mental tourne beaucoup, même au repos.","Ton espace mental paraît très chargé en ce moment."],
+  ["Ton cadre quotidien soutient plutôt bien ton équilibre.","Ton environnement te ressource par moments, mais certaines sollicitations pèsent.","Ton cadre ajoute régulièrement de la charge à ce que tu portes déjà.","Ton environnement semble actuellement laisser très peu d'espace à la récupération."],
+  ["Tu sais te prioriser tout en restant en lien avec les autres.","Tu oscilles entre tes besoins et ceux des autres.","Les autres passent souvent avant toi, même quand tu es à bout.","Tu sembles t'oublier très souvent pour préserver les liens ou répondre aux attentes."],
+  ["Tes choix et tes valeurs sont globalement alignés.","Tu ressens parfois un décalage entre ce que tu vis et ce qui compte.","Le sens de ce que tu fais te questionne régulièrement.","Tu sembles vivre actuellement à distance de ce qui compte vraiment pour toi."],
+];
+
+const priorityMessages = [
+  "Ton corps mérite d'être entendu avant que les signaux s'intensifient. Un geste doux peut suffire pour commencer.",
+  "Ta récupération mérite une place avant l'épuisement, pas seulement quand tu n'as plus le choix.",
+  "Ce que tu ressens mérite un espace où exister, sans devoir être minimisé pour continuer à fonctionner.",
+  "Ton espace mental a besoin de retrouver un peu de disponibilité. Un repère simple peut déjà alléger la charge.",
+  "Ton cadre quotidien ajoute peut-être de la charge. Modifier une seule sollicitation peut constituer un premier appui.",
+  "Te prioriser ne détruit pas le lien. Cela peut au contraire rendre tes relations plus soutenables.",
+  "Le fil de ce qui compte pour toi mérite d'être retrouvé, doucement et sans pression.",
+];
+
+const profiles = [
+  {range:[85,105],title:"Un self-care <em>ancré</em>",      desc:"Tu as construit un rapport conscient et cohérent à toi-même. Tu t’écoutes, tu te priorises, tu récupères. Ce n’est pas la perfection, mais quelque chose de plus précieux : une présence réelle à toi-même."},
+  {range:[63,84], title:"Un self-care <em>en construction</em>",desc:"Tu as des ressources solides, mais certaines dimensions méritent plus d’attention. Tu fonctionnes bien, mais tu pourrais récupérer davantage en faisant plus de place à des besoins que tu remets souvent à plus tard."},
+  {range:[42,62], title:"Un self-care <em>fragmenté</em>",   desc:"Tu avances, tu tiens, mais tu ne récupères pas vraiment. Plusieurs dimensions de ton self-care sont en tension. Ce n’est pas un manque de volonté. C’est un équilibre qui a besoin d’attention et de repères."},
+  {range:[21,41], title:"Un self-care <em>en veille</em>",   desc:"Tes réponses suggèrent que ta marge de récupération est actuellement très réduite. Plusieurs dimensions méritent une attention particulière. Tu n’es pas cassé·e : tu sembles porter plus que ce que tes ressources peuvent soutenir en ce moment."},
+];
+
+// ══════════════════════════════════════════════════════
+// ÉTAT GLOBAL
+// ══════════════════════════════════════════════════════
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+let startTime = null;
+let ignoreTooFast = false;
+let demoData = { genre:'', age:'', statut:'', pays:'', enfants:'', professionnel_sante:'' };
+let selectedPriorityIndex = null;
+let pendingPriorityCandidates = [];
+let answerAdvanceTimer = null;
+let consentSubmitting = false;
+
+// ══════════════════════════════════════════════════════
+// LOCALSTORAGE — helpers
+// ══════════════════════════════════════════════════════
+function lsGet(key){ try{ return localStorage.getItem(key); }catch(e){ return null; } }
+function lsSet(key, val){ try{ localStorage.setItem(key, val); }catch(e){} }
+function lsGetJSON(key){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):null; }catch(e){ return null; } }
+function lsSetJSON(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+// ══════════════════════════════════════════════════════
+// USER ID — stable, créé une seule fois
+// ══════════════════════════════════════════════════════
+function getUserId(){
+  let uid = lsGet('foebe_user_id');
+  if(!uid){
+    uid = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : 'anon_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    lsSet('foebe_user_id', uid);
+  }
+  return uid;
+}
+
+// ══════════════════════════════════════════════════════
+// HISTORIQUE LOCAL — tableau de passages
+// Les anciennes entrées restent conservées, mais seules les entrées de même
+// version sont comparées afin de ne pas mélanger deux questionnaires différents.
+// ══════════════════════════════════════════════════════
+function getHistory(){
+  const history = lsGetJSON('foebe_history');
+  return Array.isArray(history) ? history : [];
+}
+function isComparableHistoryEntry(entry){
+  return !!(
+    entry &&
+    entry.version === QUESTIONNAIRE_VERSION &&
+    Number.isFinite(Date.parse(entry.date)) &&
+    Array.isArray(entry.scores) &&
+    entry.scores.length === axes.length &&
+    entry.scores.every(score => Number.isFinite(Number(score))) &&
+    Number.isFinite(Number(entry.total))
+  );
+}
+function getComparableHistory(history = getHistory()){
+  return history.filter(isComparableHistoryEntry);
+}
+function hasLegacyHistory(history = getHistory()){
+  return history.some(entry => !isComparableHistoryEntry(entry));
+}
+function savePassage(axeScores, total, profileLabel){
+  const history = getHistory();
+  history.push({
+    version: QUESTIONNAIRE_VERSION,
+    versionLabel: QUESTIONNAIRE_VERSION_LABEL,
+    date: new Date().toISOString(),
+    scores: [...axeScores],
+    total: total,
+    profile: profileLabel
+  });
+  lsSetJSON('foebe_history', history);
+}
+function hasContributed(){
+  return lsGet('foebe_contributed') === 'true';
+}
+
+// ══════════════════════════════════════════════════════
+// NAVIGATION ÉCRANS
+// ══════════════════════════════════════════════════════
+function prefersReducedMotion(){
+  return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+}
+
+function clearAnswerAdvance(){
+  if(answerAdvanceTimer !== null){
+    window.clearTimeout(answerAdvanceTimer);
+    answerAdvanceTimer = null;
+  }
+}
+
+function resetScreenViewport(){
+  const root = document.documentElement;
+  const body = document.body;
+  const rootScrollBehavior = root.style.scrollBehavior;
+  const bodyScrollBehavior = body.style.scrollBehavior;
+
+  // Une navigation entre écrans ne doit jamais ressembler à un scroll de page.
+  // On neutralise temporairement le scroll fluide, on replace le viewport avant
+  // le prochain rendu, puis on restaure les styles existants.
+  root.style.scrollBehavior = 'auto';
+  body.style.scrollBehavior = 'auto';
+  root.scrollTop = 0;
+  body.scrollTop = 0;
+  window.scrollTo(0, 0);
+
+  window.requestAnimationFrame(() => {
+    root.style.scrollBehavior = rootScrollBehavior;
+    body.style.scrollBehavior = bodyScrollBehavior;
+  });
+}
+
+function showScreen(id){
+  const target = document.getElementById(id);
+  if(!target) return;
+  document.querySelectorAll('.screen').forEach(screen => {
+    const active = screen === target;
+    screen.classList.toggle('active', active);
+    screen.setAttribute('aria-hidden', active ? 'false' : 'true');
+  });
+  resetScreenViewport();
+  target.setAttribute('tabindex','-1');
+  window.requestAnimationFrame(() => {
+    try{ target.focus({preventScroll:true}); }catch(e){ target.focus(); }
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// TEST — démarrage, navigation, calcul
+// ══════════════════════════════════════════════════════
+function startTest(){
+  clearAnswerAdvance();
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+  ignoreTooFast = false;
+  consentSubmitting = false;
+  startTime = Date.now();
+  showScreen('screenQuestion');
+  buildDots();
+  renderQ(0);
+ }
+
+function buildDots(){
+  const wrap = document.getElementById('progressDots');
+  wrap.innerHTML = '';
+  questions.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'dot'; d.id = 'dot'+i;
+    wrap.appendChild(d);
+  });
+}
+
+function updateDots(idx){
+  questions.forEach((_,i) => {
+    const d = document.getElementById('dot'+i);
+    if(!d) return;
+    d.className = 'dot' + (i < idx ? ' done' : i === idx ? ' current' : '');
+  });
+}
+
+function updateLikertFeedback(value){
+  const feedback = document.getElementById('likertMobileFeedback');
+  if(!feedback) return;
+  feedback.querySelectorAll('[data-value]').forEach((item) => {
+    item.classList.toggle('is-visible', Number(item.dataset.value) === Number(value));
+  });
+}
+
+function renderQ(idx){
+  const q = questions[idx];
+  document.getElementById('qCounter').textContent = `${idx+1} / ${questions.length}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qHint').textContent = q.hint;
+  const likert = document.getElementById('likertBtns');
+  likert.setAttribute('role', 'radiogroup');
+  likert.setAttribute('aria-label', 'Réponse à la question en cours');
+  likert.setAttribute('aria-describedby', 'likertScaleHelp likertMobileFeedback');
+  likert.innerHTML = '';
+  for(let v=1; v<=5; v++){
+    const btn = document.createElement('button');
+    btn.className = 'likert-btn' + (answers[idx] === v ? ' selected' : '');
+    btn.textContent = v;
+    btn.type = 'button';
+    btn.setAttribute('aria-label', `${v} sur 5 — ${RESPONSE_LABELS[v-1]}`);
+    btn.title = `${v} sur 5 — ${RESPONSE_LABELS[v-1]}`;
+    btn.setAttribute('role', 'radio');
+    btn.setAttribute('aria-checked', answers[idx] === v ? 'true' : 'false');
+    btn.addEventListener('pointerdown', event => {
+      if(event.pointerType === 'mouse' && event.button !== 0) return;
+      document.querySelectorAll('.likert-btn').forEach((item,i) => {
+        item.classList.toggle('is-pressing', i+1 === v);
+      });
+    });
+    btn.addEventListener('pointercancel', () => {
+      document.querySelectorAll('.likert-btn').forEach(item => item.classList.remove('is-pressing'));
+    });
+    btn.onclick = () => selectAnswer(idx, v);
+    likert.appendChild(btn);
+  }
+  updateLikertFeedback(answers[idx] || null);
+  const backButton = document.getElementById('btnBack');
+  const canGoBack = idx > 0;
+  backButton.setAttribute('aria-hidden', canGoBack ? 'false' : 'true');
+  backButton.disabled = !canGoBack;
+  backButton.tabIndex = canGoBack ? 0 : -1;
+  updateDots(idx);
+  resetScreenViewport();
+}
+
+function selectAnswer(idx, value){
+  selectedPriorityIndex = null;
+  pendingPriorityCandidates = [];
+  answers[idx] = value;
+  document.querySelectorAll('.likert-btn').forEach((btn,i) => {
+    btn.classList.remove('is-pressing');
+    btn.classList.toggle('selected', i+1 === value);
+    btn.setAttribute('aria-checked', i+1 === value ? 'true' : 'false');
+  });
+  updateLikertFeedback(value);
+  const phoneLayout = window.matchMedia && window.matchMedia('(max-width:599px), (max-height:599px) and (orientation:landscape)').matches;
+  clearAnswerAdvance();
+  answerAdvanceTimer = window.setTimeout(() => {
+    answerAdvanceTimer = null;
+    if(current !== idx) return;
+    if(idx < questions.length - 1){
+      current = idx + 1;
+      renderQ(current);
+    } else {
+      finishTest();
+    }
+  }, phoneLayout ? 520 : 220);
+}
+
+function goBack(){
+  clearAnswerAdvance();
+  if(current > 0){ current--; renderQ(current); }
+}
+
+function computeScores(){
+  const axeScores = [0,0,0,0,0,0,0];
+  const axeCount  = [0,0,0,0,0,0,0];
+  const axeItemScores = [[],[],[],[],[],[],[]];
+  let total = 0;
+  questions.forEach((q,i) => {
+    const raw = answers[i] || 3;
+    const score = q.inv ? (6-raw) : raw;
+    axeScores[q.axe] += score;
+    axeCount[q.axe]++;
+    axeItemScores[q.axe].push(score);
+    total += score;
+  });
+  const normalized = axeScores.map((s,i) => Math.round((s/(axeCount[i]*5))*15));
+  return { axeScores: normalized, axeItemScores, total };
+}
+
+function resolvePriority(axeScores, axeItemScores, previousScores = null){
+  const minScore = Math.min(...axeScores);
+  const initialCandidates = axeScores.reduce((acc, score, index) => {
+    if(score === minScore) acc.push(index);
+    return acc;
+  }, []);
+
+  if(initialCandidates.length <= 1){
+    return { primaryIndexes: initialCandidates, allMinimumIndexes: initialCandidates, usedTieBreak: false };
+  }
+
+  // Départage uniquement à partir des réponses : davantage d'items très bas,
+  // item le plus bas, puis éventuelle dégradation depuis le passage précédent.
+  const ranked = initialCandidates.map(index => {
+    const items = axeItemScores[index] || [];
+    return {
+      index,
+      criticalCount: items.filter(value => value === 1).length,
+      lowCount: items.filter(value => value <= 2).length,
+      minimumItem: items.length ? Math.min(...items) : 5,
+      decline: Array.isArray(previousScores) && Number.isFinite(previousScores[index])
+        ? previousScores[index] - axeScores[index]
+        : 0
+    };
+  });
+
+  const bestCritical = Math.max(...ranked.map(item => item.criticalCount));
+  let finalists = ranked.filter(item => item.criticalCount === bestCritical);
+  const bestLow = Math.max(...finalists.map(item => item.lowCount));
+  finalists = finalists.filter(item => item.lowCount === bestLow);
+  const lowestItem = Math.min(...finalists.map(item => item.minimumItem));
+  finalists = finalists.filter(item => item.minimumItem === lowestItem);
+  const biggestDecline = Math.max(...finalists.map(item => item.decline));
+  finalists = finalists.filter(item => item.decline === biggestDecline);
+
+  return {
+    primaryIndexes: finalists.map(item => item.index),
+    allMinimumIndexes: initialCandidates,
+    usedTieBreak: finalists.length < initialCandidates.length
+  };
+}
+
+// ══════════════════════════════════════════════════════
+// FIN DU TEST — décision du flow
+// ══════════════════════════════════════════════════════
+function finishTest(){
+  const elapsed = startTime ? (Date.now() - startTime) / 1000 : 999;
+  if(elapsed < MIN_TIME_SECONDS && !ignoreTooFast){
+    showTooFastScreen(elapsed);
+    return;
+  }
+  resolveSinglePriorityBeforeResults();
+}
+
+function resolveSinglePriorityBeforeResults(){
+  const { axeScores, axeItemScores } = computeScores();
+  const resolution = resolvePriority(axeScores, axeItemScores);
+  const candidates = resolution.primaryIndexes;
+
+  if(candidates.length === 1){
+    selectedPriorityIndex = candidates[0];
+    pendingPriorityCandidates = [];
+    proceedAfterPriorityChoice();
+    return;
+  }
+
+  // Si les réponses actuelles restent strictement indécidables, on ne montre
+  // jamais les noms des zones. La personne choisit une scène concrète, toutes
+  // les scènes étant formulées dans le même contexte de fin de journée.
+  selectedPriorityIndex = null;
+  pendingPriorityCandidates = [...candidates];
+  const options = document.getElementById('tieBreakOptions');
+  options.innerHTML = candidates.map(index =>
+    `<button type="button" class="tie-break-btn" onclick="choosePriority(${index})">${tieBreakSituations[index]}</button>`
+  ).join('');
+  showScreen('screenTieBreak');
+}
+
+function choosePriority(index){
+  if(!pendingPriorityCandidates.includes(index)) return;
+  selectedPriorityIndex = index;
+  pendingPriorityCandidates = [];
+  proceedAfterPriorityChoice();
+}
+
+function proceedAfterPriorityChoice(){
+  if(hasContributed()){
+    renderResults();
+    showScreen('screenResults');
+    setTimeout(() => animateBars(), 100);
+  } else {
+    showConsentScreen();
+  }
+}
+
+function continueToResults(){
+  // Depuis l'écran "trop rapide" — on force et on reprend le flow normal
+  ignoreTooFast = true;
+  finishTest();
+}
+
+function reviewAnswers(){
+  // Relire sans effacer les réponses déjà données.
+  clearAnswerAdvance();
+  ignoreTooFast = true;
+  current = 0;
+  showScreen('screenQuestion');
+  buildDots();
+  renderQ(0);
+}
+
+function resumeTest(){
+  clearAnswerAdvance();
+  ignoreTooFast = true;
+  showScreen('screenQuestion');
+  renderQ(current);
+}
+
+// ══════════════════════════════════════════════════════
+// ÉCRAN TROP RAPIDE
+// ══════════════════════════════════════════════════════
+function showTooFastScreen(elapsed){
+  showScreen('screenTooFast');
+  const seconds = Math.round(elapsed);
+  document.getElementById('tooFastText').innerHTML =
+    `Tu as répondu en <strong>${seconds} secondes</strong>.<br>Avant de continuer, prends un instant pour vérifier si ce rythme correspond bien à ton vécu.`;
+}
+
+// ══════════════════════════════════════════════════════
+// CONSENTEMENT
+// ══════════════════════════════════════════════════════
+const REQUIRED_DEMO_FIELDS = ['genre','age','statut','pays','enfants','professionnel_sante'];
+
+function getMissingDemoFields(){
+  return REQUIRED_DEMO_FIELDS.filter(field => !String(demoData[field] || '').trim());
+}
+
+function updateConsentCompletionState(){
+  const missing = getMissingDemoFields();
+  const completed = REQUIRED_DEMO_FIELDS.length - missing.length;
+  const button = document.getElementById('btnConsentYes');
+  const status = document.getElementById('demoCompletionStatus');
+  const count = document.getElementById('demoCompletionCount');
+  const error = document.getElementById('demoValidationError');
+
+  if(count) count.textContent = `${completed} / ${REQUIRED_DEMO_FIELDS.length}`;
+  if(status){
+    status.classList.toggle('is-complete', missing.length === 0);
+    const text = status.querySelector('span');
+    if(text){
+      text.textContent = missing.length === 0
+        ? 'Les informations nécessaires sont complètes. Tu peux valider ta contribution.'
+        : `Il reste ${missing.length} réponse${missing.length > 1 ? 's' : ''} à renseigner pour contribuer.`;
+    }
+  }
+  if(button){
+    button.disabled = missing.length !== 0;
+    button.setAttribute('aria-disabled', missing.length !== 0 ? 'true' : 'false');
+  }
+  if(error && missing.length === 0){
+    error.classList.remove('visible');
+    error.textContent = '';
+  }
+
+  document.querySelectorAll('.demo-q[data-required-field]').forEach(block => {
+    const field = block.getAttribute('data-required-field');
+    block.setAttribute('aria-invalid', missing.includes(field) ? 'true' : 'false');
+  });
+  return missing;
+}
+
+function validateConsentForm(){
+  const missing = getMissingDemoFields();
+  if(missing.length === 0) return true;
+
+  const labels = {
+    genre:'le genre', age:"la tranche d’âge", statut:'le statut professionnel',
+    pays:'le pays ou la région', enfants:'la situation familiale',
+    professionnel_sante:'la question sur le recours à un professionnel'
+  };
+  const error = document.getElementById('demoValidationError');
+  if(error){
+    error.textContent = `Pour contribuer, complète encore : ${missing.map(field => labels[field]).join(', ')}.`;
+    error.classList.add('visible');
+  }
+
+  document.querySelectorAll('.demo-q[data-required-field]').forEach(block => {
+    const field = block.getAttribute('data-required-field');
+    block.classList.toggle('is-missing', missing.includes(field));
+    block.setAttribute('aria-invalid', missing.includes(field) ? 'true' : 'false');
+  });
+
+  const first = document.querySelector(`.demo-q[data-required-field="${missing[0]}"]`);
+  if(first){
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    first.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+    window.setTimeout(() => first.querySelector('.demo-btn')?.focus(), reduce ? 0 : 250);
+  }
+  return false;
+}
+
+function showConsentScreen(){
+  // Si déjà contribué, montrer le message de retour et cacher le promo évolution
+  if(hasContributed()){
+    document.getElementById('alreadyContributedMsg').hidden = false;
+    document.getElementById('evolutionPromo').hidden = true;
+    prefillConsentForm();
+  } else {
+    document.getElementById('alreadyContributedMsg').hidden = true;
+    document.getElementById('evolutionPromo').hidden = false;
+  }
+  updateConsentCompletionState();
+  showScreen('screenConsent');
+}
+
+function selectDemo(field, value, btn){
+  demoData[field] = value;
+  btn.closest('.demo-options').querySelectorAll('.demo-btn').forEach(b => {
+    b.classList.remove('selected');
+    b.setAttribute('aria-checked','false');
+  });
+  btn.classList.add('selected');
+  btn.setAttribute('aria-checked','true');
+  const block = btn.closest('.demo-q');
+  if(block) block.classList.remove('is-missing');
+  updateConsentCompletionState();
+}
+
+function prefillConsentForm(){
+  const saved = lsGetJSON('foebe_demo');
+  if(!saved) return;
+  Object.keys(saved).forEach(k => { if(demoData.hasOwnProperty(k)) demoData[k] = saved[k]; });
+  const mapping = {
+    genre:'demoGenre', age:'demoAge', statut:'demoStatut',
+    pays:'demoPays', enfants:'demoEnfants', professionnel_sante:'demoPro'
+  };
+  Object.entries(mapping).forEach(([field, containerId]) => {
+    const val = demoData[field];
+    if(!val) return;
+    const container = document.getElementById(containerId);
+    if(!container) return;
+    container.querySelectorAll('.demo-btn').forEach(btn => {
+      if(btn.textContent.trim() === val || btn.getAttribute('onclick')?.includes(`'${val}'`)){
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked','true');
+      }
+    });
+  });
+  updateConsentCompletionState();
+}
+
+function buildResearchPayload(axeScores, total, profileLabel, verbatim = null, useLegacySchema = false){
+  const savedDemo = lsGetJSON('foebe_demo') || demoData || {};
+  const base = {
+    user_id: getUserId(),
+    genre: savedDemo.genre || null,
+    age: savedDemo.age || null,
+    statut: savedDemo.statut || null,
+    pays: savedDemo.pays || null,
+    enfants: savedDemo.enfants || null,
+    professionnel_sante: savedDemo.professionnel_sante || null,
+    profil: profileLabel,
+    score_global: total,
+    score_corps: axeScores[0],
+    score_repos: axeScores[1],
+    score_emotions: axeScores[2],
+    score_mental: axeScores[3],
+    score_relations: axeScores[5],
+    score_sens: axeScores[6],
+    verbatim: verbatim || null,
+  };
+
+  if(useLegacySchema){
+    const marker = '[Échelle Foébé v2 — axe 7 stocké dans score_performance = Environnement]';
+    base.score_performance = axeScores[4];
+    base.verbatim = verbatim ? `${marker} ${verbatim}` : marker;
+  } else {
+    base.score_environnement = axeScores[4];
+    base.questionnaire_version = QUESTIONNAIRE_VERSION_LABEL;
+  }
+  return base;
+}
+
+async function postResearchPayload(axeScores, total, profileLabel, verbatim = null){
+  const endpoint = `${SUPABASE_URL}/rest/v1/reponses_test`;
+  const headers = {
+    'Content-Type':'application/json',
+    'apikey': SUPABASE_KEY,
+    'Authorization': `Bearer ${SUPABASE_KEY}`,
+    'Prefer':'return=minimal'
+  };
+
+  try{
+    const response = await fetch(endpoint, {
+      method:'POST',
+      headers,
+      keepalive:true,
+      body: JSON.stringify(buildResearchPayload(axeScores, total, profileLabel, verbatim, false))
+    });
+    if(response.ok) return true;
+  }catch(e){}
+
+  // Compatibilité avec la table historique si les nouvelles colonnes Supabase
+  // n'ont pas encore été créées. L'expérience utilisateur reste non bloquante.
+  try{
+    const legacyResponse = await fetch(endpoint, {
+      method:'POST',
+      headers,
+      keepalive:true,
+      body: JSON.stringify(buildResearchPayload(axeScores, total, profileLabel, verbatim, true))
+    });
+    return legacyResponse.ok;
+  }catch(e){
+    return false;
+  }
+}
+
+async function submitConsent(){
+  // La contribution n'est valide que lorsque les 6 réponses obligatoires sont complètes.
+  if(consentSubmitting || !validateConsentForm()) return;
+  consentSubmitting = true;
+  const consentButton = document.getElementById('btnConsentYes');
+  if(consentButton){
+    consentButton.disabled = true;
+    consentButton.setAttribute('aria-disabled','true');
+  }
+
+  // 1. Sauvegarder le consentement localement
+  lsSet('foebe_contributed', 'true');
+  lsSetJSON('foebe_demo', demoData);
+
+  // 2. Calculer les scores
+  const { axeScores, total } = computeScores();
+  const profile = profiles.find(p => total >= p.range[0] && total <= p.range[1]) || profiles[3];
+  const profileLabels = ['Self-care ancré','Self-care en construction','Self-care fragmenté','Self-care en veille'];
+  const profileLabel = profileLabels[profiles.indexOf(profile)] || 'Inconnu';
+
+  // 3. Sauvegarder ce passage dans l'historique local
+  savePassage(axeScores, total, profileLabel);
+
+  // 4. Envoyer à Supabase en arrière-plan (non bloquant)
+  const verbatim = document.getElementById('demoVerbatim')?.value?.trim() || null;
+  postResearchPayload(axeScores, total, profileLabel, verbatim);
+
+  // 5. Afficher les résultats
+  renderResults();
+  showScreen('screenResults');
+  setTimeout(() => animateBars(), 100);
+}
+
+function skipConsent(){
+  // La personne refuse — on affiche les résultats sans sauvegarder
+  renderResults(true); // true = pas de sauvegarde historique
+  showScreen('screenResults');
+  setTimeout(() => animateBars(), 100);
+}
+
+// ══════════════════════════════════════════════════════
+// AFFICHAGE RÉSULTATS
+// ══════════════════════════════════════════════════════
+function renderResults(skipHistory = false){
+  const { axeScores, axeItemScores, total } = computeScores();
+  const historyEnabled = hasContributed() && !skipHistory;
+  const profile = profiles.find(p => total >= p.range[0] && total <= p.range[1]) || profiles[3];
+  const profileLabels = ['Self-care ancré','Self-care en construction','Self-care fragmenté','Self-care en veille'];
+  const profileLabel = profileLabels[profiles.indexOf(profile)] || 'Inconnu';
+
+  // Historique, comparaison et envoi réservés aux personnes ayant consenti.
+  if(historyEnabled){
+    const history = getHistory();
+    // Éviter les doublons si on appelle renderResults plusieurs fois
+    const lastEntry = history[history.length - 1];
+    const now = Date.now();
+    const lastDate = lastEntry ? new Date(lastEntry.date).getTime() : 0;
+    if(now - lastDate > 10000){ // plus de 10 secondes d'écart = nouveau passage
+      savePassage(axeScores, total, profileLabel);
+      // Envoyer aussi à Supabase pour les passages suivants
+      sendToSupabase(axeScores, total, profileLabel);
+    }
+  }
+
+  // Carte profil
+  document.getElementById('gsTitle').innerHTML = profile.title;
+  document.getElementById('gsDesc').textContent = profile.desc;
+
+  // Sauvegarder pour animateBars
+  window._axeScores = axeScores;
+
+  // Les courbes et comparaisons ne sont calculées qu'après consentement.
+  const allHistory = historyEnabled ? getHistory() : [];
+  const history = historyEnabled ? getComparableHistory(allHistory) : [];
+  const versionNotice = document.getElementById('historyVersionNotice');
+  versionNotice.hidden = !(historyEnabled && hasLegacyHistory(allHistory));
+
+  if(historyEnabled && history.length >= 2){
+    document.getElementById('evolutionSection').hidden = false;
+    renderEvolutionChart(history);
+  } else {
+    document.getElementById('evolutionSection').hidden = true;
+  }
+
+  // Barres par axe
+  const axesList = document.getElementById('axesList');
+  axesList.innerHTML = '';
+  const prevScores = historyEnabled && history.length >= 2 ? history[history.length - 2].scores : null;
+
+  axeScores.forEach((score, i) => {
+    const pct = Math.round((score/15)*100);
+    const cls = pct >= 75 ? 'fort' : pct >= 50 ? 'moyen' : pct >= 30 ? 'fragile' : 'critique';
+    const labels = {fort:'Solide', moyen:'À nourrir', fragile:'Fragile', critique:'Priorité'};
+    const insightIdx = pct >= 75 ? 0 : pct >= 50 ? 1 : pct >= 30 ? 2 : 3;
+
+    // Badge delta
+    let deltaHtml = '';
+    if(prevScores){
+      const diff = score - prevScores[i];
+      if(Math.abs(diff) <= 1){
+        deltaHtml = `<span class="axe-delta same" title="Écart de ${diff} point : globalement stable" aria-label="Globalement stable">stable</span>`;
+      } else if(diff > 1){
+        deltaHtml = `<span class="axe-delta up" title="Évolution à observer : plus ${diff} points" aria-label="Évolution à observer : plus ${diff} points">+${diff}</span>`;
+      } else {
+        deltaHtml = `<span class="axe-delta down" title="Évolution à observer : ${diff} points" aria-label="Évolution à observer : ${diff} points">${diff}</span>`;
+      }
+    }
+
+    axesList.innerHTML += `
+      <div class="axe-row">
+        <div class="axe-header">
+          <span class="axe-name">${axes[i].name}${deltaHtml}</span>
+          <span class="axe-tag ${cls}">${labels[cls]}</span>
+        </div>
+        <div class="axe-bar-bg">
+          <div class="axe-bar-fill ${cls}" id="axebar${i}" style="--delay:${0.2+i*0.12}s"></div>
+        </div>
+        <p class="axe-insight">${axeInsights[i][insightIdx]}</p>
+      </div>`;
+  });
+
+  // Une seule zone prioritaire est affichée. Le calcul départage d'abord les
+  // totaux et le détail des réponses. Une égalité parfaite a déjà été résolue
+  // par la micro-question de vécu, jamais par hasard ni par ordre fixe.
+  const priorityResolution = resolvePriority(axeScores, axeItemScores);
+  const validPriority = Number.isInteger(selectedPriorityIndex) &&
+    selectedPriorityIndex >= 0 && selectedPriorityIndex < axes.length &&
+    priorityResolution.primaryIndexes.includes(selectedPriorityIndex);
+  const priorityIdx = validPriority
+    ? selectedPriorityIndex
+    : (priorityResolution.primaryIndexes.length === 1 ? priorityResolution.primaryIndexes[0] : null);
+
+  const priorityActions = document.getElementById('priorityActions');
+  const priorityTitle = document.getElementById('priorityTitle');
+  const priorityText = document.getElementById('priorityText');
+  const priorityLabel = document.getElementById('priorityLabel');
+
+  priorityActions.innerHTML = '';
+  priorityActions.classList.remove('is-multiple');
+
+  if(priorityIdx === null){
+    // Garde-fou : en cas d'appel direct imprévu, on ne fabrique jamais une
+    // priorité arbitraire. On redemande le départage avant d'afficher le résultat.
+    resolveSinglePriorityBeforeResults();
+    return;
+  }
+
+  const priorityAxe = axes[priorityIdx];
+  priorityLabel.textContent = 'Ton point de départ cette semaine';
+  priorityTitle.textContent = priorityAxe.name;
+  priorityText.textContent = priorityMessages[priorityIdx];
+  priorityActions.innerHTML = `<a class="btn-priority" id="priorityBtn" href="${priorityAxe.page}">Explorer ${priorityAxe.zoneName} →</a>`;
+}
+
+function animateBars(){
+  const axeScores = window._axeScores || [];
+  setTimeout(() => {
+    axeScores.forEach((score, i) => {
+      const el = document.getElementById('axebar'+i);
+      if(el) el.style.width = Math.round((score/15)*100) + '%';
+    });
+  }, 300);
+}
+
+// ══════════════════════════════════════════════════════
+// GRAPHIQUE ÉVOLUTION
+// ══════════════════════════════════════════════════════
+function renderEvolutionChart(history){
+  const chart = document.getElementById('evolutionComparison');
+  const overview = document.getElementById('evolutionOverview');
+  const subtitle = document.getElementById('evolutionSubtitle');
+  const select = document.getElementById('evolutionMetric');
+  if(!chart || !overview || !subtitle || !select || !Array.isArray(history) || history.length < 2) return;
+
+  const ordered = history
+    .filter(isComparableHistoryEntry)
+    .slice()
+    .sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .slice(-12);
+  if(ordered.length < 2) return;
+
+  window._evolutionHistory = ordered;
+  if(!select.dataset.ready){
+    select.innerHTML = '<option value="global">Équilibre global</option>' + axes.map((axe,index) => `<option value="axe-${index}">${axe.name}</option>`).join('');
+    select.value = 'global';
+    select.addEventListener('change', () => drawEvolutionMetric(window._evolutionHistory || [], select.value));
+    select.dataset.ready = 'true';
+  }
+  drawEvolutionMetric(ordered, select.value || 'global');
+}
+
+function drawEvolutionMetric(history, metricKey){
+  const chart = document.getElementById('evolutionComparison');
+  const overview = document.getElementById('evolutionOverview');
+  const subtitle = document.getElementById('evolutionSubtitle');
+  if(!chart || !overview || !subtitle || !Array.isArray(history) || history.length < 2) return;
+
+  const isGlobal = metricKey === 'global';
+  const axeIndex = isGlobal ? -1 : Math.max(0,Math.min(axes.length - 1,Number(String(metricKey).replace('axe-','')) || 0));
+  const label = isGlobal ? 'Équilibre global' : axes[axeIndex].name;
+  const minScore = isGlobal ? 21 : 3;
+  const maxScore = isGlobal ? 105 : 15;
+  const stableThreshold = isGlobal ? 3 : 1;
+  const values = history.map(entry => {
+    const total = Number.isFinite(Number(entry.total)) ? Number(entry.total) : entry.scores.reduce((sum,value) => sum + (Number(value) || 0),0);
+    const value = isGlobal ? total : Number(entry.scores[axeIndex]);
+    return {...entry,value:Math.max(minScore,Math.min(maxScore,value))};
+  });
+
+  const previous = values[values.length - 2];
+  const latest = values[values.length - 1];
+  const delta = latest.value - previous.value;
+  const trend = delta > stableThreshold ? 'up' : delta < -stableThreshold ? 'down' : 'same';
+  const trendText = trend === 'up' ? `Plus soutenu (+${delta})` : trend === 'down' ? `Moins soutenu (−${Math.abs(delta)})` : 'Repère stable';
+
+  const formatMoment = (iso,withTime=false) => {
+    const date = new Date(iso);
+    const dateText = date.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+    return withTime ? `${dateText} · ${date.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}` : dateText;
+  };
+  const dayCounts = values.reduce((acc,entry) => {
+    const key = new Date(entry.date).toISOString().slice(0,10);
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  },{});
+  const labels = values.map(entry => {
+    const key = new Date(entry.date).toISOString().slice(0,10);
+    return formatMoment(entry.date,dayCounts[key] > 1);
+  });
+
+  subtitle.textContent = `${label} · ${values.length} passage${values.length>1?'s':''} daté${values.length>1?'s':''}${history.length > 12 ? ' (12 plus récents)' : ''}.`;
+  overview.innerHTML = `<span class="${trend}">${trendText}</span> depuis le ${formatMoment(previous.date,true)}.`;
+
+  const width = 680;
+  const height = 300;
+  const margin = {top:34,right:24,bottom:62,left:58};
+  const plotW = width - margin.left - margin.right;
+  const plotH = height - margin.top - margin.bottom;
+  const x = index => margin.left + (values.length === 1 ? plotW/2 : index * (plotW/(values.length-1)));
+  const y = value => margin.top + (maxScore-value) * (plotH/(maxScore-minScore));
+  const points = values.map((entry,index) => ({...entry,x:x(index),y:y(entry.value),label:labels[index]}));
+  const linePath = points.map((point,index) => `${index===0?'M':'L'} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(' ');
+  const areaPath = `${linePath} L ${points[points.length-1].x.toFixed(1)} ${(margin.top+plotH).toFixed(1)} L ${points[0].x.toFixed(1)} ${(margin.top+plotH).toFixed(1)} Z`;
+  const guideValues = [maxScore,Math.round((maxScore+minScore)/2),minScore];
+  const maxDateLabels = window.innerWidth < 600 ? 4 : 6;
+  const labelStep = Math.max(1,Math.ceil(values.length/maxDateLabels));
+
+  const guides = guideValues.map((value,index) => `
+    <line class="evolution-grid-line" x1="${margin.left}" y1="${y(value).toFixed(1)}" x2="${width-margin.right}" y2="${y(value).toFixed(1)}"></line>
+    <text class="evolution-y-label" x="8" y="${(y(value)+4).toFixed(1)}">${index===0?'Plus soutenu':index===2?'Plus fragile':value}</text>`).join('');
+  const pointSvg = points.map((point,index) => {
+    const latestClass = index === points.length-1 ? ' latest' : '';
+    const showDate = index === 0 || index === points.length-1 || index % labelStep === 0;
+    const showValue = values.length <= 8 || index === points.length-1 || index === 0;
+    return `
+      <g>
+        <title>${point.label} : ${point.value}/${maxScore}</title>
+        <circle class="evolution-point${latestClass}" cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="${index===points.length-1?7:5}"></circle>
+        ${showValue ? `<text class="evolution-value" x="${point.x.toFixed(1)}" y="${(point.y-13).toFixed(1)}">${point.value}</text>` : ''}
+        ${showDate ? `<text class="evolution-date${index===0?' first':index===points.length-1?' last':''}" x="${point.x.toFixed(1)}" y="${height-22}">${point.label}</text>` : ''}
+      </g>`;
+  }).join('');
+
+  chart.setAttribute('aria-label',`${label} : évolution sur ${values.length} passages, du ${labels[0]} au ${labels[labels.length-1]}. Dernière variation : ${trendText.toLowerCase()}.`);
+  chart.innerHTML = `
+    <svg class="evolution-svg" viewBox="0 0 ${width} ${height}" role="presentation" aria-hidden="true">
+      <defs>
+        <linearGradient id="evolutionAreaGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#C45279" stop-opacity=".22"></stop>
+          <stop offset="100%" stop-color="#C45279" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      ${guides}
+      <path class="evolution-area" d="${areaPath}"></path>
+      <path class="evolution-line" d="${linePath}"></path>
+      ${pointSvg}
+    </svg>`;
+}
+
+// ══════════════════════════════════════════════════════
+// SUPABASE — envoi pour les passages suivants
+// ══════════════════════════════════════════════════════
+function sendToSupabase(axeScores, total, profileLabel){
+  postResearchPayload(axeScores, total, profileLabel, null);
+}
+
+// ══════════════════════════════════════════════════════
+// RESTART
+// ══════════════════════════════════════════════════════
+function restartTest(){
+  clearAnswerAdvance();
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+  selectedPriorityIndex = null;
+  pendingPriorityCandidates = [];
+  ignoreTooFast = false;
+  consentSubmitting = false;
+  startTime = null;
+  demoData = { genre:'', age:'', statut:'', pays:'', enfants:'', professionnel_sante:'' };
+  showScreen('screenIntro');
+}
+
+// ══════════════════════════════════════════════════════
+// POPUP RESPIRATION
+// ══════════════════════════════════════════════════════
+let popupTimer = null, popupCountdownTimer = null, popupRunning = false;
+const POPUP_CYCLES = 4;
+const POPUP_PHASES = [
+  { name:'Inspire', dur:5, ballPos:'top',    color:'#BB7E60' },
+  { name:'Expire',  dur:5, ballPos:'bottom', color:'#4A7C59' },
+];
+let popupCycle = 0, popupPhaseIdx = 0;
+const POPUP_TRACK_H = 180, POPUP_BALL_D = 48;
+
+function popupSetBall(pos, duration){
+  const ball = document.getElementById('popupBall');
+  const topPx    = -POPUP_BALL_D/2;
+  const bottomPx = POPUP_TRACK_H - POPUP_BALL_D/2;
+  ball.style.transition = duration > 0 ? `top ${duration}s linear` : 'none';
+  ball.style.top = (pos === 'top' ? topPx : bottomPx) + 'px';
+}
+
+function openBreathPopup(){
+  if(popupRunning) return;
+  const popup = document.getElementById('breathPopup');
+  popup.style.display = 'flex';
+  popup.style.visibility = 'visible';
+  popup.style.opacity = '1';
+  popup.setAttribute('aria-hidden','false');
+  popupRunning = true;
+  popupCycle = 0;
+  popupPhaseIdx = 0;
+  popupSetBall('bottom', 0);
+  document.getElementById('popupPhase').style.opacity = '0';
+  document.getElementById('popupCount').style.opacity = '0';
+  document.getElementById('popupCycles').textContent = '';
+  const cd = document.getElementById('popupCountdown');
+  cd.style.opacity = '1';
+  let n = 3;
+  cd.textContent = n;
+  window.requestAnimationFrame(() => document.getElementById('breathPopupClose')?.focus());
+  popupCountdownTimer = window.setInterval(() => {
+    n--;
+    if(n > 0){ cd.textContent = n; }
+    else{
+      window.clearInterval(popupCountdownTimer);
+      popupCountdownTimer = window.setTimeout(() => {
+        popupCountdownTimer = null;
+        if(!popupRunning) return;
+        cd.style.opacity = '0';
+        cd.textContent = '';
+        runPopupPhase();
+      }, 400);
+    }
+  }, 1000);
+}
+
+function runPopupPhase(){
+  if(!popupRunning) return;
+  if(popupCycle >= POPUP_CYCLES){ closeBreathPopup(); return; }
+  const phase = POPUP_PHASES[popupPhaseIdx];
+  const prevPhase = popupPhaseIdx > 0 ? POPUP_PHASES[popupPhaseIdx-1] : POPUP_PHASES[POPUP_PHASES.length-1];
+  document.getElementById('popupBall').style.background = phase.color;
+  document.getElementById('popupBall').style.boxShadow = `0 0 28px 8px ${phase.color}44`;
+  if(prevPhase.ballPos !== phase.ballPos) popupSetBall(phase.ballPos, phase.dur);
+  const pl = document.getElementById('popupPhase');
+  pl.style.opacity = '0';
+  setTimeout(() => { pl.textContent = phase.name; pl.style.opacity = '1'; }, 200);
+  document.getElementById('popupCycles').textContent = `Cycle ${popupCycle + 1} sur ${POPUP_CYCLES}`;
+  const cl = document.getElementById('popupCount');
+  cl.style.opacity = '0.6';
+  cl.textContent = phase.dur;
+  const start = Date.now();
+  function tick(){
+    if(!popupRunning) return;
+    const remaining = phase.dur - Math.floor((Date.now()-start)/1000);
+    if(remaining > 0){
+      cl.textContent = remaining;
+      popupTimer = setTimeout(tick, 1000 - ((Date.now()-start)%1000));
+    } else {
+      cl.textContent = '';
+      popupPhaseIdx++;
+      if(popupPhaseIdx >= POPUP_PHASES.length){ popupPhaseIdx = 0; popupCycle++; }
+      popupTimer = setTimeout(() => runPopupPhase(), 400);
+    }
+  }
+  popupTimer = setTimeout(tick, 1000);
+}
+
+function closeBreathPopup(){
+  if(!popupRunning && document.getElementById('breathPopup')?.style.display === 'none') return;
+  popupRunning = false;
+  if(popupTimer){ window.clearTimeout(popupTimer); popupTimer = null; }
+  if(popupCountdownTimer){
+    window.clearTimeout(popupCountdownTimer);
+    window.clearInterval(popupCountdownTimer);
+    popupCountdownTimer = null;
+  }
+  const popup = document.getElementById('breathPopup');
+  popup.style.display = 'none';
+  popup.setAttribute('aria-hidden','true');
+  resumeTest();
+}
+
+document.addEventListener('keydown', event => {
+  if(!popupRunning) return;
+  if(event.key === 'Escape'){
+    event.preventDefault();
+    closeBreathPopup();
+    return;
+  }
+  if(event.key === 'Tab'){
+    event.preventDefault();
+    document.getElementById('breathPopupClose')?.focus();
+  }
+});
+
+</script>
+
+<script id="foebeScrollProgressFallbackScript">
+(function(){
+  var root = document.documentElement;
+  var bar = document.getElementById('foebeScrollProgressFallbackBar');
+  if (!bar) return;
+
+  var active = false;
+  var ticking = false;
+
+  function progressIsDisabled(){
+    return !!(document.body && document.body.getAttribute('data-foebe-progress') === 'off');
+  }
+
+  function update(){
+    if (!active || progressIsDisabled()) {
+      ticking = false;
+      return;
+    }
+    var doc = document.documentElement;
+    var body = document.body || doc;
+    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    var fullHeight = Math.max(
+      doc.scrollHeight, body.scrollHeight,
+      doc.offsetHeight, body.offsetHeight,
+      doc.clientHeight
+    );
+    var max = Math.max(0, fullHeight - window.innerHeight);
+    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+    bar.style.transform = 'scaleX(' + progress + ')';
+    ticking = false;
+  }
+
+  function requestUpdate(){
+    if (!active || ticking) return;
+    ticking = true;
+    if (window.requestAnimationFrame) window.requestAnimationFrame(update);
+    else window.setTimeout(update, 16);
+  }
+
+  function activate(){
+    if (active || progressIsDisabled()) return;
+    active = true;
+    window.addEventListener('scroll', requestUpdate, { passive:true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate);
+    requestUpdate();
+  }
+
+  function deactivate(){
+    if (!active) return;
+    active = false;
+    window.removeEventListener('scroll', requestUpdate);
+    window.removeEventListener('resize', requestUpdate);
+    window.removeEventListener('load', requestUpdate);
+    bar.style.transform = 'scaleX(0)';
+    ticking = false;
+  }
+
+  function syncWithShell(){
+    if (root.classList.contains('foebe-shell-failed')) activate();
+    else deactivate();
+  }
+
+  window.addEventListener('foebe:shell-failed', syncWithShell);
+  window.addEventListener('foebe:shell-ready', syncWithShell);
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(syncWithShell).observe(root, {
+      attributes:true,
+      attributeFilter:['class']
+    });
+  }
+
+  syncWithShell();
+})();
+</script>
+</BaseLayout>

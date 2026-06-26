@@ -1,0 +1,160 @@
+---
+/**
+ * BaseLayout.astro — Maison Foébé
+ * Layout de base commun à toutes les pages.
+ * Gère : <head>, anti-FOUC, shell guard, Google Fonts, foebe-shell.js
+ *
+ * Props requises :
+ *   title       : string  — <title> de la page
+ *   description : string  — meta description
+ *   canonical   : string  — URL canonique complète
+ *   ogTitle     : string  — og:title (si différent de title)
+ *   ogDesc      : string  — og:description
+ *   ogImage     : string  — URL absolue de l'image OG
+ *   ogType?     : string  — "website" par défaut
+ *   twitterTitle? : string
+ *   twitterDesc?  : string
+ *   twitterImage? : string
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle?: string;
+  ogDesc?: string;
+  ogImage?: string;
+  ogType?: string;
+  twitterTitle?: string;
+  twitterDesc?: string;
+  twitterImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogTitle,
+  ogDesc,
+  ogImage = 'https://maisonfoebe.fr/images/og-foebe.jpg',
+  ogType = 'website',
+  twitterTitle,
+  twitterDesc,
+  twitterImage,
+} = Astro.props;
+
+// Umami Analytics actif par défaut pour Maison Foébé.
+// La variable Cloudflare peut toujours remplacer cet ID si nécessaire.
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID?.trim() || 'f25f1f6a-c967-4466-a744-e78fa7f4932f';
+---
+
+<!DOCTYPE html>
+<html data-theme="night" lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+
+  <!-- Anti-FOUC thème — NE PAS MODIFIER -->
+  <script is:inline>
+  (function(){
+    try {
+      var saved = localStorage.getItem('foebeTheme');
+      if (saved === 'day' || saved === 'night') {
+        document.documentElement.setAttribute('data-theme', saved);
+        return;
+      }
+    } catch(e) {}
+    var p = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    document.documentElement.setAttribute('data-theme', p ? 'day' : 'night');
+  })();
+  </script>
+
+  <script id="foebe-shell-fallback-guard" is:inline>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add("foebe-shell-loading");
+    window.__foebeShellWatchdog = window.setTimeout(function () {
+      if (!root.classList.contains("foebe-shell-ready")) {
+        root.classList.remove("foebe-shell-loading");
+        root.classList.add("foebe-shell-failed");
+        try { window.dispatchEvent(new CustomEvent("foebe:shell-failed")); } catch (e) {}
+      }
+    }, 3000);
+  })();
+  </script>
+
+  <script is:inline>document.documentElement.classList.add('js-ready');</script>
+
+  <meta content="index, follow" name="robots" />
+
+  <title>{title}</title>
+
+  <!-- Favicon -->
+  <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+  <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="/images/site.webmanifest" rel="manifest" />
+
+  <!-- SEO -->
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={ogTitle ?? title} />
+  <meta property="og:description" content={ogDesc ?? description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={twitterTitle ?? ogTitle ?? title} />
+  <meta name="twitter:description" content={twitterDesc ?? ogDesc ?? description} />
+  <meta name="twitter:image" content={twitterImage ?? ogImage} />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Slot pour CSS page-spécifique (JSON-LD, styles supplémentaires) -->
+  <slot name="head" />
+</head>
+
+<body>
+  <!-- Overlay chargement Shell -->
+  <div id="stateOverlay"></div>
+
+  <!-- Contenu principal de la page -->
+  <slot />
+
+  <!-- Fallback reveal si IntersectionObserver absent -->
+  <script id="foebeRevealFallback" is:inline>
+  (function(){
+    var items = document.querySelectorAll('.reveal, .impact-item, .geste-card');
+    if (!items.length) return;
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function(item){
+        item.classList.add('visible');
+        item.classList.add('lit');
+      });
+    }
+  })();
+  </script>
+
+  <!-- Umami Analytics — actif sur toutes les pages via le layout commun -->
+  {umamiWebsiteId && (
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id={umamiWebsiteId}
+    ></script>
+  )}
+
+  <!-- Shell Foébé — à charger en dernier -->
+  <script is:inline src="/foebe-shell.js"></script>
+</body>
+</html>

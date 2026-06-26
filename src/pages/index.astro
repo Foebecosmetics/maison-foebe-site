@@ -1,0 +1,681 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Maison Foébé · Le self-care comme compétence"
+  description="Maison Foébé est un espace structuré du self-care pour comprendre ce qui s’épuise, repérer ce qui déborde et choisir un geste concret."
+  canonical="https://maisonfoebe.fr/"
+  ogTitle="Maison Foébé · Espace du self-care structuré"
+  ogDesc="Maison Foébé est un espace structuré du self-care pour comprendre ce qui s’épuise, repérer ce qui déborde et choisir un geste concret."
+  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
+>
+<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+<div class="fallback-links">
+<a href="/comprendre/">Comprendre</a>
+<a href="/methode/">Méthode</a>
+<a href="/echelle-foebe/">Échelle Foébé</a>
+<a href="/zones/">7 zones</a>
+<a href="/dictionnaire/">Dictionnaire</a>
+</div>
+</nav>
+<div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+<span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+</div>
+<noscript>
+<style>
+.foebe-scroll-progress--fallback{display:block!important}
+.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}
+.home-vocab-panel{
+  max-height:none!important;
+  overflow:visible!important;
+  opacity:1!important;
+  margin-top:7px!important;
+  padding:17px 18px 19px!important;
+  border-width:1px!important;
+  border-left-width:3px!important;
+}
+</style>
+</noscript>
+
+<main id="mainContent" tabindex="-1">
+
+<section aria-labelledby="home-start-title" class="home-start-section home-start-hero" id="commencer">
+<div class="home-start-inner">
+<div class="home-start-head index-motion-intro" data-index-motion="intro">
+<span class="home-start-eyebrow">Maison Foébé te souhaite la bienvenue ✨</span>
+<h1 class="home-start-title" id="home-start-title">Tu <span class="foebe-word foebe-word--warm">fonctionnes</span>, mais tu ne récupères <span class="foebe-word foebe-word--rose">plus vraiment.</span></h1>
+<p class="home-start-signature">Ici, le <span class="foebe-highlight foebe-highlight--warm">self-care</span> devient une compétence : apprendre à <span class="foebe-highlight foebe-highlight--rose">se lire</span>, <span class="foebe-highlight foebe-highlight--red">se réguler</span>, puis <span class="foebe-highlight foebe-highlight--warm">avancer</span> avec plus de douceur.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="home-capacity-title" class="home-capacity-section" id="capacite-action">
+<div class="home-capacity-inner">
+<div class="home-capacity-guide index-motion-panel" data-index-motion="panel">
+<span class="home-capacity-eyebrow">Le self-care comme compétence</span>
+<h2 class="home-capacity-title" id="home-capacity-title">Foébé t’aide à retrouver ta <em>capacité d’action</em> dans ton self-care.</h2>
+<ul aria-label="Les quatre capacités que Maison Foébé aide à retrouver" class="home-capacity-path">
+<li><span>Reconnaître tes signaux</span></li>
+<li><span>Comprendre ce qui se déséquilibre</span></li>
+<li><span>Choisir un geste adapté à ta réalité</span></li>
+<li><span>Réévaluer sans te juger</span></li>
+</ul>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="section-fade section-fade-down fade-capacity-entry"></div>
+<section aria-labelledby="home-entry-title" class="home-entry-section" id="portes-entree">
+<div class="home-start-inner">
+<div aria-label="Trois portes pour commencer" class="home-choice-guide">
+<h2 class="home-choice-kicker" id="home-entry-title">Trois portes d’entrée</h2>
+<p>Pour <span class="foebe-color foebe-color--warm">te situer</span>, <span class="foebe-color foebe-color--red">redescendre</span> ou <span class="foebe-color foebe-color--rose">comprendre ce qui se joue</span>.</p>
+<p class="home-explore-note">Commence par ce qui te parle le plus, il n'y a pas d'ordre précis.</p>
+</div>
+<div aria-label="Choisir par où commencer dans Maison Foébé" class="home-start-grid home-start-grid--primary">
+<a aria-label="Faire l’Échelle Foébé" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="/echelle-foebe/">
+<div aria-hidden="true" class="home-visual home-visual--echelle-anim">
+<span aria-hidden="true" class="foebe-balance-scene">
+<svg class="foebe-balance-svg" focusable="false" role="presentation" viewbox="38 34 244 122">
+<g class="foebe-balance-stand">
+<path class="foebe-balance-base" d="M112 147 H208"></path>
+<path class="foebe-balance-stem" d="M160 55 V147"></path>
+<circle class="foebe-balance-pivot" cx="160" cy="55" r="9"></circle>
+</g>
+<g class="foebe-balance-rock">
+<path class="foebe-balance-beam" d="M68 55 H252"></path>
+<g class="foebe-balance-side foebe-balance-side--left">
+<path class="foebe-balance-cord" d="M90 55 V103"></path>
+<path class="foebe-balance-pan" d="M58 103 Q90 122 122 103"></path>
+<circle class="foebe-balance-weight foebe-balance-weight--light" cx="90" cy="95" r="8"></circle>
+</g>
+<g class="foebe-balance-side foebe-balance-side--right">
+<path class="foebe-balance-cord" d="M230 55 V103"></path>
+<path class="foebe-balance-pan" d="M198 103 Q230 122 262 103"></path>
+<circle class="foebe-balance-weight foebe-balance-weight--one" cx="230" cy="95" r="8"></circle>
+<circle class="foebe-balance-weight foebe-balance-weight--two" cx="218" cy="91" r="8"></circle>
+<circle class="foebe-balance-weight foebe-balance-weight--three" cx="242" cy="91" r="8"></circle>
+</g>
+</g>
+</svg>
+</span>
+</div>
+<span class="home-start-num">01 · Me situer</span>
+<h3>Je ne sais pas <span class="foebe-color foebe-color--warm">ce qui me pèse</span> le plus…</h3>
+<p>21 affirmations pour repérer les zones qui demandent ton attention en ce moment.</p>
+<span class="home-start-link">Commencer l’Échelle Foébé →</span>
+</a>
+<a aria-label="Lancer la respiration guidée" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="/respiration/">
+<div aria-hidden="true" class="home-visual home-visual--respiration" id="breathPreview">
+<span class="home-breath-preview">
+<span aria-hidden="true" class="home-breath-direction">↑</span>
+<span class="home-breath-track">
+<span class="home-breath-ball" id="breathBall"></span>
+</span>
+<span aria-hidden="true" class="home-breath-direction">↓</span>
+<span class="home-breath-label" id="breathLabel">Inspire</span>
+</span>
+</div>
+<span class="home-start-num">02 · Me recentrer</span>
+<h3>J’ai besoin de <span class="foebe-color foebe-color--red">redescendre maintenant.</span></h3>
+<p>Des exercices courts de respiration guidée pour retrouver un peu d’appui.</p>
+<span class="home-start-link">Me recentrer maintenant →</span>
+</a>
+<a aria-label="Explorer les 7 zones du self-care" class="home-start-card home-start-card--primary index-motion-card" data-index-motion="card" href="/zones/">
+<div aria-hidden="true" class="home-visual home-visual--zones-anim">
+<svg class="zones-wave-svg" preserveaspectratio="none" viewbox="0 0 360 136" xmlns="http://www.w3.org/2000/svg">
+<path class="wave-path-1" d="M0,60 C60,35 120,85 180,60 C240,35 300,85 360,60 L360,136 L0,136 Z" fill="rgba(187,126,96,.14)"></path>
+<path class="wave-path-2" d="M0,80 C50,55 110,100 180,78 C240,58 300,100 360,80 L360,136 L0,136 Z" fill="rgba(187,126,96,.09)"></path>
+<path class="wave-path-3" d="M0,96 C70,76 130,110 200,96 C270,82 320,108 360,96 L360,136 L0,136 Z" fill="rgba(240,234,231,.07)"></path>
+</svg>
+<span aria-hidden="true" class="foebe-zone-node-map">
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</span>
+</div>
+<span class="home-start-num">03 · Explorer les zones</span>
+<h3>Je veux <span class="foebe-color foebe-color--warm">comprendre ce qui se joue.</span></h3>
+<p>Corps, mental, énergie, émotions, environnement, relations, sens. Commence par la zone qui te parle.</p>
+<span class="home-start-link">Explorer les zones →</span>
+</a>
+</div>
+<p class="home-secondary-intro">Pour aller plus loin dans ta lecture.</p>
+<div aria-label="Accès complémentaires Maison Foébé" class="home-secondary-access">
+<a aria-label="Explorer la Boussole Foébé" class="home-secondary-card index-motion-card" data-index-motion="card" href="/boussole/">
+<span aria-hidden="true" class="home-secondary-icon">
+<span class="boussole-wrap">
+<span class="boussole-arrow"></span>
+</span>
+</span>
+<span class="home-secondary-content">
+<span class="home-secondary-kicker">Parcours guidé</span>
+<strong>Explorer la Boussole</strong>
+<span>Pour reconnaître une situation précise et choisir une direction.</span>
+</span>
+<span aria-hidden="true" class="home-secondary-arrow">→</span>
+</a>
+<a aria-label="Ouvrir le Dictionnaire Foébé" class="home-secondary-card index-motion-card" data-index-motion="card" href="/dictionnaire/">
+<span aria-hidden="true" class="home-secondary-icon home-secondary-icon--biblio">
+<span class="biblio-line"><span id="bibliotype"></span><span class="biblio-cursor"></span></span>
+</span>
+<span class="home-secondary-content">
+<span class="home-secondary-kicker">Ressource</span>
+<strong>Dictionnaire Foébé</strong>
+<span>Pour mettre des mots précis sur le soin, le corps et le self-care.</span>
+</span>
+<span aria-hidden="true" class="home-secondary-arrow">→</span>
+</a>
+</div>
+<div aria-labelledby="home-vocab-title" class="home-vocab reveal reveal-delay-1 index-motion-panel" data-index-motion="panel">
+<span class="home-vocab-kicker">Quatre mots à distinguer</span>
+<h2 class="home-vocab-title" id="home-vocab-title">Self-care, skincare, bodycare et haircare <em>n’ont pas le même rôle.</em></h2>
+<p class="home-vocab-intro">Foébé parle de self-care, de peau, de corps et de cheveux, mais ces mots ne désignent pas la même chose. Elle relie ces dimensions sans les confondre : le soin devient un point d’entrée pour mieux se lire, pas une injonction à se corriger.</p>
+<div aria-label="Définitions rapides" class="home-vocab-list vocab-accordion">
+<div class="home-vocab-item">
+<button aria-controls="vocab-selfcare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-selfcare" type="button">
+<span>Self-care</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du self-care" class="home-vocab-panel" id="vocab-selfcare" role="region">
+            La manière dont tu prends soin de ton équilibre : corps, mental, émotions, énergie, environnement, relations et sens.
+          </div>
+</div>
+<div class="home-vocab-item">
+<button aria-controls="vocab-skincare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-skincare" type="button">
+<span>Skincare</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du skincare" class="home-vocab-panel" id="vocab-skincare" role="region">
+            Les gestes et actifs liés à la peau : barrière cutanée, hydratation, exfoliation, sensibilité, texture, confort.
+          </div>
+</div>
+<div class="home-vocab-item">
+<button aria-controls="vocab-bodycare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-bodycare" type="button">
+<span>Bodycare</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du bodycare" class="home-vocab-panel" id="vocab-bodycare" role="region">
+            Les gestes liés au corps : nettoyage, hydratation, nutrition, exfoliation, confort, toucher et relation au corps.
+          </div>
+</div>
+<div class="home-vocab-item">
+<button aria-controls="vocab-haircare" aria-expanded="false" class="home-vocab-trigger" data-home-vocab-target="vocab-haircare" type="button">
+<span>Haircare</span>
+</button>
+<div aria-hidden="true" aria-label="Définition du haircare" class="home-vocab-panel" id="vocab-haircare" role="region">
+            Les gestes liés aux cheveux et au cuir chevelu : hydratation, porosité, casse, clarification, protection, routine.
+          </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="section-fade section-fade-down fade-home-start-reco"></div>
+
+<section aria-labelledby="reco-title" class="reco-section" id="decouvrir">
+<div class="reco-inner">
+<div class="reco-header reveal index-motion-panel" data-index-motion="panel">
+<p class="section-step"><span>01</span></p>
+<span class="section-eyebrow">Tu reconnais cette situation ?</span>
+<h2 class="reco-title" id="reco-title">
+      Tu peux <span class="foebe-highlight foebe-highlight--warm">continuer à fonctionner</span><br/>
+      tout en commençant à <span class="foebe-highlight foebe-highlight--red">t’épuiser.</span>
+</h2>
+<p class="reco-intro">On le voit chez des personnes qui continuent à fonctionner : elles organisent, livrent, tiennent. Concrètement, cela peut se reconnaître à ces signaux.</p>
+</div>
+<div class="reco-grid reveal reveal-delay-1">
+<div class="reco-item index-motion-signal" data-index-motion="signal">
+<span aria-hidden="true" class="reco-dash">—</span>
+<p>Une <span class="foebe-color foebe-color--warm">fatigue chronique</span> que le repos ne résout pas vraiment.</p>
+</div>
+<div class="reco-item index-motion-signal" data-index-motion="signal">
+<span aria-hidden="true" class="reco-dash">—</span>
+<p>Un <span class="foebe-color foebe-color--rose">mental qui ne s’arrête plus</span>, même dans les moments calmes.</p>
+</div>
+<div class="reco-item index-motion-signal" data-index-motion="signal">
+<span aria-hidden="true" class="reco-dash">—</span>
+<p>Une adaptation si ancienne qu’on ne sait plus <span class="foebe-color foebe-color--red">ce dont on a besoin.</span></p>
+</div>
+<div class="reco-item index-motion-signal" data-index-motion="signal">
+<span aria-hidden="true" class="reco-dash">—</span>
+<p>Le sentiment que <span class="foebe-color foebe-color--rose">quelque chose ne va pas</span>, sans pouvoir nommer quoi.</p>
+</div>
+</div>
+<p class="editorial-bridge">Tu n’as pas besoin d’attendre de t’effondrer pour <span class="foebe-highlight foebe-highlight--warm">prendre au sérieux ce que tu ressens.</span></p>
+</div>
+</section>
+<section aria-labelledby="founder-title" class="founder-section reveal index-motion-panel" data-index-motion="panel" id="pourquoi-foebe">
+<div class="founder-inner">
+<p class="section-step"><span>02</span></p>
+<span class="section-eyebrow">Pourquoi Foébé</span>
+<h2 class="section-title" id="founder-title">
+      Un cadre né du <span class="foebe-word foebe-word--warm">terrain.</span>
+</h2>
+<div class="founder-copy">
+<p>Foébé part d’un constat simple : on peut <span class="foebe-color foebe-color--warm">continuer à fonctionner</span> longtemps tout en commençant déjà à s’épuiser.</p>
+<p>La méthode transforme ce constat en repères concrets : <span class="foebe-highlight foebe-highlight--rose">lire ses signaux</span>, <span class="foebe-color foebe-color--red">comprendre ses besoins</span> et retrouver un self-care plus stable.</p>
+<p>Elle a été conçue par une docteure en psychologie et ergonome, spécialisée en <span class="foebe-color foebe-color--warm">santé au travail.</span></p>
+</div>
+<div class="founder-ctas">
+<a class="btn-founder-primary" href="/methode/">Découvrir la méthode →</a>
+<a class="btn-founder-secondary" href="/a-propos/">À propos →</a>
+</div>
+</div>
+</section>
+<section aria-labelledby="accompagnement-title" class="section section--accompagnement" id="portes">
+<div class="section-inner">
+<div class="accompagnement-card reveal index-motion-panel" data-index-motion="panel">
+<div class="accompagnement-left">
+<span class="porte3-soon-badge">Bientôt disponible</span>
+<h2 class="accompagnement-title" id="accompagnement-title">Un <span class="foebe-word foebe-word--rose">accompagnement</span>,<br/><em>quand un outil seul ne suffit plus.</em></h2>
+<p class="accompagnement-desc">Les accompagnements Foébé ouvriront progressivement, pour les moments où <span class="foebe-color foebe-color--rose">un repère ne suffit plus</span> et où tu as besoin d’un cadre humain.</p>
+</div>
+<div class="accompagnement-right">
+<form action="https://formspree.io/f/mnnqbjrl" aria-describedby="newsletterNote newsletterStatus" class="newsletter-form accompagnement-form" id="newsletterForm" method="POST">
+<input aria-label="Votre adresse email" autocomplete="email" class="newsletter-input" id="newsletterEmail" name="email" placeholder="votre@email.fr" required="" type="email"/>
+<button class="newsletter-btn" id="newsletterSubmit" type="submit">Me tenir informé·e</button>
+</form>
+<p class="newsletter-note" id="newsletterNote">Sans engagement · Pas de spam</p>
+<p aria-live="polite" class="newsletter-status" id="newsletterStatus"></p>
+<div aria-live="polite" class="newsletter-success" hidden="" id="newsletterSuccess" role="status" tabindex="-1">
+<span aria-hidden="true" class="newsletter-success-mark">✓</span>
+<strong>C’est bien envoyé.</strong>
+<p>Merci, ton adresse a bien été transmise à Maison Foébé. À très bientôt.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+
+
+
+
+
+
+
+<script id="foebeIndexScript">
+(function () {
+  "use strict";
+
+  function onReady(callback) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function prefersReducedMotion() {
+    try {
+      return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function initReveals() {
+    var root = document.documentElement;
+    var elements = Array.prototype.slice.call(document.querySelectorAll(".reveal:not([data-index-motion])"));
+    if (!elements.length) return;
+
+    function revealAll() {
+      elements.forEach(function (element) {
+        element.classList.add("visible");
+      });
+    }
+
+    if (!("IntersectionObserver" in window) || prefersReducedMotion()) {
+      revealAll();
+      return;
+    }
+
+    try {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+
+      root.classList.add("foebe-reveal-ready");
+      elements.forEach(function (element) {
+        observer.observe(element);
+      });
+    } catch (error) {
+      root.classList.remove("foebe-reveal-ready");
+      revealAll();
+    }
+  }
+
+  function initGuidedMotion() {
+    var root = document.documentElement;
+    var items = Array.prototype.slice.call(document.querySelectorAll("[data-index-motion]"));
+    if (!items.length) return;
+
+    function revealAll() {
+      items.forEach(function (element) {
+        element.classList.add("is-visible");
+      });
+    }
+
+    if (prefersReducedMotion() || !("IntersectionObserver" in window) || window.innerWidth <= 767) {
+      root.classList.add("foebe-index-no-motion");
+      revealAll();
+      return;
+    }
+
+    try {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+
+      root.classList.add("foebe-index-motion-ready");
+      items.forEach(function (element) {
+        observer.observe(element);
+      });
+    } catch (error) {
+      root.classList.remove("foebe-index-motion-ready");
+      root.classList.add("foebe-index-no-motion");
+      revealAll();
+    }
+  }
+
+  function initBreathPreview() {
+    var visual = document.getElementById("breathPreview");
+    var label = document.getElementById("breathLabel");
+    if (!visual || !label) return;
+
+    if (prefersReducedMotion()) {
+      label.textContent = "Respirer";
+      return;
+    }
+
+    var phases = [
+      { text: "Inspire", duration: 4000 },
+      { text: "Pause", duration: 1000 },
+      { text: "Expire", duration: 6000 },
+      { text: "Pause", duration: 1000 }
+    ];
+    var totalDuration = phases.reduce(function (total, phase) {
+      return total + phase.duration;
+    }, 0);
+    var startTime = null;
+    var currentPhase = "Inspire";
+    var fadeTimer = 0;
+
+    function phaseAt(time) {
+      var elapsed = time % totalDuration;
+      for (var index = 0; index < phases.length; index += 1) {
+        elapsed -= phases[index].duration;
+        if (elapsed < 0) return phases[index].text;
+      }
+      return phases[0].text;
+    }
+
+    function tick(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      var nextPhase = phaseAt(timestamp - startTime);
+
+      if (nextPhase !== currentPhase) {
+        currentPhase = nextPhase;
+        window.clearTimeout(fadeTimer);
+        label.style.opacity = "0";
+        fadeTimer = window.setTimeout(function () {
+          label.textContent = currentPhase;
+          label.style.opacity = ".88";
+        }, 180);
+      }
+
+      window.requestAnimationFrame(tick);
+    }
+
+    visual.classList.add("is-running");
+    window.requestAnimationFrame(tick);
+  }
+
+  function initDictionaryTyping() {
+    var element = document.getElementById("bibliotype");
+    if (!element || prefersReducedMotion()) return;
+
+    var words = ["Acide", "Sérum", "Corps", "Repos", "Geste", "Signal", "Stress", "Mental", "Besoin", "Rituel"];
+    var wordIndex = 0;
+    var characterIndex = 0;
+    var deleting = false;
+    var pauseFrames = 0;
+
+    function tick() {
+      var word = words[wordIndex];
+
+      if (pauseFrames > 0) {
+        pauseFrames -= 1;
+        window.setTimeout(tick, 40);
+        return;
+      }
+
+      if (!deleting) {
+        characterIndex += 1;
+        element.textContent = word.slice(0, characterIndex);
+        if (characterIndex >= word.length) {
+          deleting = true;
+          pauseFrames = 40;
+          window.setTimeout(tick, 40);
+        } else {
+          window.setTimeout(tick, 120 + Math.random() * 50);
+        }
+        return;
+      }
+
+      characterIndex -= 1;
+      element.textContent = word.slice(0, characterIndex);
+      if (characterIndex <= 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        pauseFrames = 10;
+        window.setTimeout(tick, 40);
+      } else {
+        window.setTimeout(tick, 70 + Math.random() * 25);
+      }
+    }
+
+    window.setTimeout(tick, 900);
+  }
+
+  function initVocabularyAccordion() {
+    var root = document.querySelector(".home-vocab");
+    if (!root) return;
+
+    var buttons = Array.prototype.slice.call(root.querySelectorAll(".home-vocab-trigger[data-home-vocab-target]"));
+    if (!buttons.length) return;
+
+    function panelFor(button) {
+      var id = button.getAttribute("data-home-vocab-target");
+      return id ? document.getElementById(id) : null;
+    }
+
+    function measuredHeight(panel) {
+      return Math.ceil(panel.scrollHeight + 28) + "px";
+    }
+
+    function close(button) {
+      var panel = panelFor(button);
+      button.setAttribute("aria-expanded", "false");
+      if (!panel) return;
+
+      if (panel.classList.contains("is-open")) {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.offsetHeight;
+      }
+
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+      panel.style.maxHeight = "0px";
+    }
+
+    function open(button) {
+      var panel = panelFor(button);
+      button.setAttribute("aria-expanded", "true");
+      if (!panel) return;
+
+      panel.classList.add("is-open");
+      panel.setAttribute("aria-hidden", "false");
+      panel.style.maxHeight = "0px";
+      window.requestAnimationFrame(function () {
+        panel.style.maxHeight = measuredHeight(panel);
+      });
+    }
+
+    function activeButton() {
+      return buttons.find(function (button) {
+        return button.getAttribute("aria-expanded") === "true";
+      }) || null;
+    }
+
+    buttons.forEach(function (button) {
+      var panel = panelFor(button);
+      if (panel) {
+        panel.style.maxHeight = "0px";
+        panel.addEventListener("transitionend", function (event) {
+          if (event.propertyName === "max-height" && panel.classList.contains("is-open")) {
+            panel.style.maxHeight = "none";
+          }
+        });
+      }
+
+      button.addEventListener("click", function () {
+        var current = activeButton();
+        if (button.getAttribute("aria-expanded") === "true") {
+          close(button);
+          return;
+        }
+
+        buttons.forEach(close);
+        window.setTimeout(function () {
+          open(button);
+        }, current ? 115 : 0);
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      var current = activeButton();
+      var panel = current ? panelFor(current) : null;
+      if (!panel || !panel.classList.contains("is-open")) return;
+
+      panel.style.maxHeight = measuredHeight(panel);
+      window.setTimeout(function () {
+        if (panel.classList.contains("is-open")) panel.style.maxHeight = "none";
+      }, 420);
+    }, { passive: true });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") buttons.forEach(close);
+    });
+  }
+
+  function initNewsletterFeedback() {
+    var form = document.getElementById("newsletterForm");
+    var input = document.getElementById("newsletterEmail");
+    var button = document.getElementById("newsletterSubmit");
+    var note = document.getElementById("newsletterNote");
+    var status = document.getElementById("newsletterStatus");
+    var success = document.getElementById("newsletterSuccess");
+
+    if (!form || !input || !button || !status || !success || !("fetch" in window) || !("FormData" in window)) {
+      return;
+    }
+
+    var defaultLabel = button.textContent;
+
+    function setLoading(isLoading) {
+      button.disabled = isLoading;
+      button.setAttribute("aria-busy", isLoading ? "true" : "false");
+      button.textContent = isLoading ? "Envoi en cours…" : defaultLabel;
+    }
+
+    form.addEventListener("submit", function (event) {
+      if (!form.checkValidity()) return;
+
+      event.preventDefault();
+      setLoading(true);
+      status.textContent = "";
+      status.classList.remove("is-error");
+
+      window.fetch(form.action, {
+        method: form.method || "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      }).then(function (response) {
+        if (!response.ok) {
+          var error = new Error("Formspree submission failed");
+          error.status = response.status;
+          throw error;
+        }
+
+        form.reset();
+        form.hidden = true;
+        if (note) note.hidden = true;
+        status.hidden = true;
+        success.hidden = false;
+        success.focus({ preventScroll: true });
+      }).catch(function (error) {
+        setLoading(false);
+        status.hidden = false;
+        status.classList.add("is-error");
+        status.textContent = error && error.status === 429
+          ? "Trop de tentatives rapprochées. Attends un instant puis réessaie."
+          : "L’envoi n’a pas abouti. Ton adresse est restée dans le champ : tu peux réessayer.";
+      });
+    });
+  }
+
+  function initFallbackProgress() {
+    var root = document.documentElement;
+    var bar = document.getElementById("foebeScrollProgressFallbackBar");
+    if (!bar) return;
+
+    function progressIsOff() {
+      return root.getAttribute("data-foebe-progress") === "off" ||
+        (document.body && document.body.getAttribute("data-foebe-progress") === "off");
+    }
+
+    function update() {
+      if (progressIsOff() || !root.classList.contains("foebe-shell-failed")) return;
+
+      var documentElement = document.documentElement;
+      var body = document.body || documentElement;
+      var scrollTop = window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;
+      var fullHeight = Math.max(
+        documentElement.scrollHeight,
+        documentElement.offsetHeight,
+        documentElement.clientHeight,
+        body.scrollHeight || 0,
+        body.offsetHeight || 0
+      );
+      var maxScroll = Math.max(0, fullHeight - window.innerHeight);
+      var progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+      bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
+    }
+
+    window.addEventListener("foebe:shell-failed", update);
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    window.addEventListener("orientationchange", update, { passive: true });
+    window.addEventListener("load", update);
+    window.addEventListener("pageshow", update);
+    update();
+  }
+
+  onReady(function () {
+    initReveals();
+    initGuidedMotion();
+    initBreathPreview();
+    initDictionaryTyping();
+    initVocabularyAccordion();
+    initNewsletterFeedback();
+    initFallbackProgress();
+  });
+})();
+</script>
+</BaseLayout>

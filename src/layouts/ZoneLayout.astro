@@ -1,0 +1,183 @@
+---
+/**
+ * ZoneLayout.astro — Maison Foébé
+ * Layout spécifique aux 7 pages de zone.
+ * Gère : injection de la palette de couleurs, ZONE_CONFIG, ZONES_NAV,
+ *         CSS partagé des zones, meta SEO.
+ *
+ * Pour ajouter une nouvelle zone :
+ *   1. Créer src/pages/zones/ma-zone.astro
+ *   2. Importer ZoneLayout et passer les props ci-dessous
+ *   3. Écrire le contenu HTML dans le slot
+ *
+ * Props de palette (couleurs hex) :
+ *   z       : couleur principale de la zone  ex. "#7A4A28"
+ *   zMid    : couleur intermédiaire           ex. "#BB7E60"
+ *   zLite   : couleur claire                  ex. "#DEB08A"
+ *   (les valeurs RGB --z-r/g/b sont calculées automatiquement)
+ *
+ * Props SEO identiques à BaseLayout :
+ *   title, description, canonical, ogTitle, ogDesc, ogImage,
+ *   twitterTitle, twitterDesc, twitterImage
+ *
+ * Props ZONE_CONFIG :
+ *   zoneName   : "Corps"
+ *   zoneSlug   : "Corps"
+ *   zoneNumber : "02"
+ *   zoneEmoji  : "🧘"
+ *   zoneActive : slug de la zone active dans la nav latérale
+ */
+
+import BaseLayout from './BaseLayout.astro';
+import '../styles/foebe-zone-shared.css';
+
+interface Props {
+  // Palette
+  z: string;
+  zMid: string;
+  zLite: string;
+  // Zone config
+  zoneName: string;
+  zoneSlug: string;
+  zoneNumber: string;
+  zoneEmoji: string;
+  // SEO
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle?: string;
+  ogDesc?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDesc?: string;
+  twitterImage?: string;
+  // JSON-LD
+  jsonLdHeadline?: string;
+  jsonLdDesc?: string;
+}
+
+const {
+  z, zMid, zLite,
+  zoneName, zoneSlug, zoneNumber, zoneEmoji,
+  title, description, canonical,
+  ogTitle, ogDesc, ogImage,
+  twitterTitle, twitterDesc, twitterImage,
+  jsonLdHeadline, jsonLdDesc,
+} = Astro.props;
+
+// Convertit un hex "#RRGGBB" en { r, g, b }
+function hexToRgb(hex: string) {
+  const h = hex.replace('#', '');
+  return {
+    r: parseInt(h.substring(0, 2), 16),
+    g: parseInt(h.substring(2, 4), 16),
+    b: parseInt(h.substring(4, 6), 16),
+  };
+}
+
+const zRgb    = hexToRgb(z);
+const zMidRgb = hexToRgb(zMid);
+const zLiteRgb = hexToRgb(zLite);
+
+// Variables CSS injectées en inline style sur <html>
+const paletteVars = `
+  --z: ${z};
+  --z-mid: ${zMid};
+  --z-lite: ${zLite};
+  --z-dim: rgba(${zMidRgb.r},${zMidRgb.g},${zMidRgb.b},.13);
+  --z-r: ${zRgb.r};
+  --z-g: ${zRgb.g};
+  --z-b: ${zRgb.b};
+  --z-mid-r: ${zMidRgb.r};
+  --z-mid-g: ${zMidRgb.g};
+  --z-mid-b: ${zMidRgb.b};
+  --z-lite-r: ${zLiteRgb.r};
+  --z-lite-g: ${zLiteRgb.g};
+  --z-lite-b: ${zLiteRgb.b};
+  --bordeaux: #4E291F;
+  --warm: #BB7E60;
+  --warm-dark: #7A4A28;
+  --warm-mid: #9A5C35;
+  --cream: #F0EAE7;
+  --rose: #C45279;
+  --rose-dark: #922054;
+  --red: #C34234;
+`.trim();
+
+// ZONES_NAV — commun à toutes les zones, "active" dynamique
+const ZONES_NAV = [
+  { emoji: "⚡", label: "Énergie",      url: "/zone-energie/",      slug: "Énergie" },
+  { emoji: "🧘", label: "Corps",        url: "/zone-corps/",        slug: "Corps" },
+  { emoji: "🧠", label: "Mental",       url: "/zone-mental/",       slug: "Mental" },
+  { emoji: "🌊", label: "Émotions",     url: "/zone-emotions/",     slug: "Émotions" },
+  { emoji: "🌍", label: "Environnement",url: "/zone-environnement/",slug: "Environnement" },
+  { emoji: "🤝", label: "Relations",    url: "/zone-relations/",    slug: "Relations" },
+  { emoji: "✨", label: "Sens",         url: "/zone-sens/",         slug: "Sens" },
+];
+
+const zonesNavWithActive = ZONES_NAV.map(z => ({
+  ...z,
+  active: z.slug === zoneSlug,
+}));
+
+// JSON-LD
+const jsonLd = jsonLdHeadline ? {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": jsonLdHeadline,
+  "description": jsonLdDesc ?? description,
+  "url": canonical,
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Maison Foébé",
+    "url": "https://maisonfoebe.fr"
+  }
+} : null;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={ogTitle}
+  ogDesc={ogDesc}
+  ogImage={ogImage}
+  twitterTitle={twitterTitle}
+  twitterDesc={twitterDesc}
+  twitterImage={twitterImage}
+>
+  <!-- Injection palette + ZONE_CONFIG en head -->
+  <Fragment slot="head">
+    <style is:inline set:html={`:root { ${paletteVars} }`}></style>
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd, null, 2)}></script>
+    )}
+
+    <script is:inline define:vars={{ zoneName, zoneSlug, zoneNumber, zoneEmoji, canonical, title, description, ogTitle, ogDesc, ogImage, z, zMid, zLite, zRgb, zMidRgb, zLiteRgb, zonesNavWithActive }}>
+      var ZONE_CONFIG = {
+        name: zoneName,
+        slug: zoneSlug,
+        number: zoneNumber,
+        emoji: zoneEmoji,
+        title: title,
+        metaDesc: description,
+        canonicalUrl: canonical,
+        ogTitle: ogTitle || title,
+        ogDesc: ogDesc || description,
+        palette: {
+          z: z,
+          zR: zRgb.r, zG: zRgb.g, zB: zRgb.b,
+          zMid: zMid,
+          zMidR: zMidRgb.r, zMidG: zMidRgb.g, zMidB: zMidRgb.b,
+          zLite: zLite,
+          zLiteR: zLiteRgb.r, zLiteG: zLiteRgb.g, zLiteB: zLiteRgb.b,
+        }
+      };
+      var ZONES_NAV = zonesNavWithActive;
+    </script>
+  </Fragment>
+
+  <!-- Contenu de la page zone -->
+  <slot />
+</BaseLayout>

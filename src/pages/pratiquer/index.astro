@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Pratiquer · Maison Foébé"
+  description="Les outils Maison Foébé : Échelle Foébé, 7 zones, respiration guidée et Boussole. Choisir un point d’entrée selon son besoin du moment."
+  canonical="https://maisonfoebe.fr/pratiquer/"
+  ogTitle="Pratiquer · Maison Foébé"
+  ogDesc="Quatre outils Foébé pour se situer, comprendre, se réguler ou explorer selon son besoin du moment."
+  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
+>
+<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"
+        ><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a
+      >
+      <div class="fallback-links">
+        <a href="/comprendre/">Comprendre</a>
+        <a href="/methode/">Méthode</a>
+        <a href="/echelle-foebe/">Échelle Foébé</a>
+        <a href="/zones/">7 zones</a>
+        <a href="/dictionnaire/">Dictionnaire</a>
+      </div>
+    </nav>
+    <div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+      <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+    </div>
+    <noscript>
+      <style>
+        .foebe-scroll-progress--fallback {
+          display: block !important;
+        }
+      </style>
+    </noscript>
+    <main id="mainContent" tabindex="-1">
+      <section aria-labelledby="pratiquer-title" class="practice-hero">
+        <div class="practice-hero-grid">
+          <div class="hero-copy reveal">
+            <span class="hero-eyebrow">Choisir sans se surcharger</span>
+            <h1 class="hero-title" id="pratiquer-title">
+              Quatre portes,<br /><span class="foebe-text foebe-text--warm">un point de départ.</span>
+            </h1>
+            <span aria-hidden="true" class="hero-rule"></span>
+            <p class="hero-intro">
+              Tu n’as pas besoin de suivre tout un parcours. Chaque outil répond à un moment précis :
+              <span class="foebe-highlight foebe-highlight--warm">te situer</span>,
+              <span class="foebe-highlight foebe-highlight--warm">comprendre</span> ce qui se joue,
+              <span class="foebe-highlight foebe-highlight--rose">retrouver</span> un peu de calme ou
+              <span class="foebe-highlight foebe-highlight--red">approfondir</span> ta lecture.
+            </p>
+            <p class="hero-reassurance">
+              Le bon outil est celui qui réduit le flou sans ajouter une nouvelle obligation.
+            </p>
+          </div>
+          <aside aria-labelledby="need-map-title" class="need-map reveal reveal-delay-1">
+            <span class="need-map-kicker">Ton besoin maintenant</span>
+            <h2 class="need-map-title" id="need-map-title">Choisis par l’état présent, pas par la performance.</h2>
+            <p class="need-map-copy">
+              Ces quatre repères t’emmènent directement vers l’outil qui correspond le mieux à ce que tu cherches
+              aujourd’hui.
+            </p>
+            <div class="need-list">
+              <a class="need-item need-item--warm" href="#outil-echelle">
+                <span class="need-index">01</span>
+                <span class="need-copy"><strong>Me situer</strong><small>Voir où la tension se concentre.</small></span>
+                <span aria-hidden="true" class="need-arrow">↓</span>
+              </a>
+              <a class="need-item need-item--rose" href="#outil-zones">
+                <span class="need-index">02</span>
+                <span class="need-copy"
+                  ><strong>Comprendre</strong><small>Lire une dimension plus en profondeur.</small></span
+                >
+                <span aria-hidden="true" class="need-arrow">↓</span>
+              </a>
+              <a class="need-item need-item--red" href="#outil-respiration">
+                <span class="need-index">03</span>
+                <span class="need-copy"><strong>Me réguler</strong><small>Revenir au corps et ralentir.</small></span>
+                <span aria-hidden="true" class="need-arrow">↓</span>
+              </a>
+              <a class="need-item need-item--brown" href="#outil-boussole">
+                <span class="need-index">04</span>
+                <span class="need-copy"
+                  ><strong>Explorer</strong><small>Affiner ma compréhension du self-care avec un scénario.</small></span
+                >
+                <span aria-hidden="true" class="need-arrow">↓</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section aria-labelledby="tools-title" class="tools-section">
+        <div class="tools-shell reveal">
+          <header class="tools-heading">
+            <div>
+              <span class="section-eyebrow">Les outils Foébé</span>
+              <h2 class="section-title" id="tools-title">
+                Une porte différente pour <span class="foebe-text foebe-text--rose">chaque besoin</span>.
+              </h2>
+            </div>
+            <p class="tools-heading-copy">
+              L’Échelle donne une vue d’ensemble. Les Zones expliquent. La Respiration aide à redescendre. La Boussole
+              permet d’explorer une situation sans la simplifier.
+            </p>
+          </header>
+          <div class="tool-list">
+            <a class="tool-row tool-row--warm" href="/echelle-foebe/" id="outil-echelle">
+              <span class="tool-index">01</span>
+              <div class="tool-copy">
+                <div class="tool-topline">
+                  <span class="tool-label">Me situer</span><span class="tool-badge">Entrée recommandée</span>
+                </div>
+                <h3 class="tool-title">L’<span class="foebe-text foebe-text--warm">Échelle Foébé</span></h3>
+                <p class="tool-desc">
+                  21 affirmations couvrent les sept zones du self-care. Tu obtiens une première lecture de la zone où la
+                  tension se concentre.
+                </p>
+                <p class="tool-meta">5 minutes · sans inscription · résultat immédiat</p>
+              </div>
+              <span class="tool-action">Faire l’Échelle <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="tool-row tool-row--rose" href="/zones/" id="outil-zones">
+              <span class="tool-index">02</span>
+              <div class="tool-copy">
+                <div class="tool-topline"><span class="tool-label">Comprendre</span></div>
+                <h3 class="tool-title">Les <span class="foebe-text foebe-text--rose">7 zones</span></h3>
+                <p class="tool-desc">
+                  Chaque zone présente ses signaux, ses mécanismes et ses effets en cascade. Tu peux y entrer après
+                  l’Échelle Foébé ou directement lorsque tu sais déjà quelle dimension mérite ton attention.
+                </p>
+                <p class="tool-meta">7 dimensions · mini-tests · gestes concrets</p>
+              </div>
+              <span class="tool-action">Explorer les zones <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="tool-row tool-row--red" href="/respiration/" id="outil-respiration">
+              <span class="tool-index">03</span>
+              <div class="tool-copy">
+                <div class="tool-topline"><span class="tool-label">Me réguler</span></div>
+                <h3 class="tool-title">La <span class="foebe-text foebe-text--red">respiration guidée</span></h3>
+                <p class="tool-desc">
+                  Trois rythmes simples pour l’apaisement, la cohérence cardiaque ou l’ancrage mental. L’objectif n’est
+                  pas de réussir un exercice, mais d’offrir au système un signal de ralentissement.
+                </p>
+                <p class="tool-meta">Apaiser · stabiliser · revenir au corps</p>
+              </div>
+              <span class="tool-action">Choisir un rythme <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="tool-row tool-row--brown" href="/boussole/" id="outil-boussole">
+              <span class="tool-index">04</span>
+              <div class="tool-copy">
+                <div class="tool-topline"><span class="tool-label">Explorer</span></div>
+                <h3 class="tool-title">La Boussole</h3>
+                <p class="tool-desc">
+                  Des scénarios pour reconnaître les signaux d’une situation, distinguer le self-care réel de la
+                  performance déguisée et trouver les mots qui rendent le vécu plus lisible.
+                </p>
+                <p class="tool-meta">Scénarios · repères · vocabulaire Foébé</p>
+              </div>
+              <span class="tool-action">Ouvrir la Boussole <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+          <div class="practice-note">
+            <span aria-hidden="true" class="practice-note-mark">F</span>
+            <p>
+              <strong>Un seul outil suffit pour commencer.</strong> Reviens aux autres seulement lorsqu’ils peuvent
+              réellement t’aider à mieux lire ce que tu vis.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var revealEls = document.querySelectorAll(".reveal");
+
+        if (!revealEls.length || !("IntersectionObserver" in window)) {
+          return;
+        }
+
+        try {
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.1,
+              rootMargin: "0px 0px -6% 0px",
+            },
+          );
+
+          root.classList.add("foebe-reveal-ready");
+          revealEls.forEach(function (element) {
+            observer.observe(element);
+          });
+        } catch (error) {
+          root.classList.remove("foebe-reveal-ready");
+          revealEls.forEach(function (element) {
+            element.classList.add("visible");
+          });
+        }
+      })();
+    </script>
+    <script id="foebeFallbackProgressScript">
+      (function () {
+        var bar = document.getElementById("foebeScrollProgressFallbackBar");
+        if (!bar) return;
+
+        function updateFallbackProgress() {
+          if (!document.documentElement.classList.contains("foebe-shell-failed")) {
+            return;
+          }
+
+          var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = documentHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / documentHeight)) : 0;
+
+          bar.style.transform = "scaleX(" + progress + ")";
+        }
+
+        window.addEventListener("foebe:shell-failed", updateFallbackProgress);
+        window.addEventListener("scroll", updateFallbackProgress, { passive: true });
+        window.addEventListener("resize", updateFallbackProgress);
+      })();
+    </script>
+</BaseLayout>
