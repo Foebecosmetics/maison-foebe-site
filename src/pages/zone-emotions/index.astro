@@ -10,14 +10,14 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
   zoneSlug="Émotions"
   zoneNumber="03"
   zoneEmoji="🌊"
-  title="Zone Émotions · Maison Foébé"
-  description="Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l’accumulation silencieuse et la platitude émotionnelle, faire le mini-test et choisir un premier geste concret."
+  title="Zone Émotions · Régulation et accumulation émotionnelle · Foébé"
+  description="Comprendre l’accumulation silencieuse, la platitude ou la dérégulation émotionnelle, faire un mini-test et choisir un premier geste."
   canonical="https://maisonfoebe.fr/zone-emotions/"
-  ogTitle="Zone Émotions · Maison Foébé"
-  ogDesc="Zone Émotions · Maison Foébé : comprendre la dérégulation émotionnelle, l’accumulation silencieuse et la platitude émotionnelle, faire le mini-test et choisir un premier geste concret."
+  ogTitle="Zone Émotions · Régulation et accumulation émotionnelle"
+  ogDesc="Repérer ce qui déborde ou s’éteint émotionnellement, faire le mini-test et choisir un premier geste Foébé."
   ogImage="https://maisonfoebe.fr/images/zones/og-zone-emotions.png"
-  twitterTitle="Zone Émotions · Maison Foébé"
-  twitterDesc="Comprendre les émotions qui débordent, la platitude émotionnelle et retrouver un premier espace de régulation."
+  twitterTitle="Zone Émotions · Régulation émotionnelle"
+  twitterDesc="Comprendre l’accumulation émotionnelle, la platitude et choisir un premier geste de régulation."
   twitterImage="https://maisonfoebe.fr/images/zones/og-zone-emotions.png"
 >
 <div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
@@ -26,7 +26,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <noscript>
   <style>.foebe-scroll-progress--fallback{display:block!important}</style>
 </noscript>
-<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -202,7 +202,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink">Voir l’Échelle Foébé →</a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -367,5 +367,231 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 </div>
 </div>
 </main>
+
+<script is:inline data-zone-dataset>
+var ZONE_INTRO = {
+            text: "La zone <strong>Émotions</strong> dans ton self-care concerne ta capacité à reconnaître ce que tu ressens et à ne pas en être débordé·e. Quand cette zone se dérègle, ce n'est pas toujours spectaculaire. Ce sont souvent des réactions que tu n'avais pas prévues, une platitude qui s'installe, ou une intensité émotionnelle qui dépasse ce que tu voulais montrer. Ce n'est pas une question de sensibilité ni de fragilité. C'est une question de régulation.",
+            warning: null
+        };
+        var PITCH_DATA = [{
+                icon: "🔍",
+                label: "Cette zone concerne",
+                val: "Ta capacité à reconnaître ce que tu ressens, à ne pas être submergé·e par les émotions et à revenir à un équilibre émotionnel sans trop d'effort."
+            },
+            {
+                icon: "⚠️",
+                label: "Prioritaire si tu observes",
+                val: "Des réactions émotionnelles disproportionnées, une platitude émotionnelle persistante, un retour au calme de plus en plus difficile, ou des émotions que tu n'arrives pas à identifier."
+            },
+            {
+                icon: "🗺️",
+                label: "Sur cette page",
+                val: "Tu vas comprendre comment la dérégulation émotionnelle s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter dans l'équilibre de ton self-care, puis choisir un premier geste concret."
+            }
+        ];
+        var STATE_DEFS = {
+            sol: {
+                title: "Solide",
+                text: "Tu reconnais ce que tu ressens sans en être dominé·e. Le retour à l'équilibre après une émotion forte est accessible. La régulation émotionnelle ne va pas de soi. Elle se soutient."
+            },
+            nour: {
+                title: "À nourrir",
+                text: "Quelque chose signale dans tes réactions. Une irritabilité légère, des émotions qui surprennent. Le moment de les écouter avant que l'intensité augmente."
+            },
+            frag: {
+                title: "Fragile",
+                text: "Les réactions émotionnelles coûtent davantage. Le retour au calme est plus lent, l'intensité moins prévisible. Tu gères, mais cela a un coût. Les gestes ci-dessous parlent directement à ce stade."
+            },
+            prior: {
+                title: "Priorité",
+                text: "La dérégulation est présente et répétée. Les émotions prennent de la place au-delà de ce que tu peux gérer seul·e. À ce stade, il devient important de recréer de la ressource émotionnelle, même simple, sans attendre la prochaine période calme."
+            }
+        };
+        var POSIT_RESULTS = {
+            sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+            nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
+            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
+            prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
+        };
+        var COMPRENDRE = {
+            intro: "La dérégulation émotionnelle ne commence pas par une crise. Elle s'installe progressivement, souvent à force d'ignorer ou d'étouffer ce qui se passe.",
+            facteurs: [{
+                    icon: "🫙",
+                    name: "L'accumulation silencieuse",
+                    desc: "Les émotions non reconnues ne disparaissent pas toujours. Elles peuvent s’accumuler. Ce qui n'a pas été nommé, ressenti ou traité peut rester présent en arrière-plan et finir par remonter. Parfois, au mauvais moment, avec plus d'intensité que prévu."
+                },
+                {
+                    icon: "🔇",
+                    name: "La mise à distance systématique",
+                    desc: "À force de fonctionner, de relativiser, de ne pas s'arrêter sur ce qu'on ressent, le lien avec ses propres émotions s'émousse. On cesse de les sentir clairement avant qu'elles soient très fortes."
+                },
+                {
+                    icon: "⚡",
+                    name: "Le seuil qui s'abaisse",
+                    desc: "Quand les ressources générales sont basses pour gérer le quotidien (par ex : énergie, sommeil, concentration), la tolérance aux émotions difficiles peut diminuer. Ce qui était gérable devient soudain trop lourd. Non pas parce que l'émotion a changé, mais parce que les ressources ont diminué."
+                }
+            ],
+            vrIcon: "🌊",
+            vrTitle: "Résultat : des vagues qu'on ne voit pas venir",
+            vrNote: "Le signe d'une dérégulation émotionnelle installée, ce n'est pas de réagir trop fort. C'est de ne plus savoir pourquoi tu réagis comme ça, ni comment retrouver ton calme."
+        };
+        var OBS_QUESTIONS = [{
+                q: "Tu réagis parfois plus fort que tu ne le voudrais (irritation, larmes, fermeture) et tu n'arrives pas bien à expliquer pourquoi.",
+                sub: "C'est souvent le signal que quelque chose s'est accumulé sans avoir été traité."
+            },
+            {
+                q: "Tu as du mal à nommer précisément ce que tu ressens. Tu sais que quelque chose se passe, mais l'émotion reste floue.",
+                sub: "Mettre un mot sur ce qu’on ressent est une compétence. Quand elle devient difficile, c'est souvent le signe d'une saturation du système."
+            },
+            {
+                q: "Après une réaction émotionnelle forte, il te faut beaucoup de temps pour revenir à un état stable. Le retour au calme devient long et épuisant.",
+                sub: "La vitesse de récupération émotionnelle donne souvent un indice sur la capacité de régulation disponible."
+            },
+            {
+                q: "Tu remarques une platitude : plus grand-chose ne te touche vraiment, ni le positif ni le négatif. Tu te sens comme un peu anesthésié·e.",
+                sub: "La platitude émotionnelle peut aussi être une réponse de protection. Le système semble parfois réduire sa sensibilité pour se préserver."
+            },
+            {
+                q: "Tu anticipes certaines situations ou interactions parce que tu sais qu'elles risquent de te faire réagir fort. Tu gères par évitement.",
+                sub: "L'évitement émotionnel est une stratégie à court terme. Il réduit le déclencheur mais maintient la sensibilité intacte."
+            }
+        ];
+        var OBS_DATA = [{
+                cls: "s0",
+                title: "Aucun signal identifié",
+                text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vue sur les 7 zones de ton self-care.",
+                crossLink: {
+                    label: "Explorer les 7 zones →",
+                    url: "/echelle-foebe/"
+                }
+            },
+            {
+                cls: "s1",
+                title: "1 signal sur 5 · à surveiller",
+                text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+            },
+            {
+                cls: "s2",
+                title: "2 signaux sur 5 · seuil d'attention",
+                text: "Deux signaux identifiés. C'est le bon moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour t'aider."
+            },
+            {
+                cls: "s3",
+                title: "3 signaux sur 5 · zone à prioriser",
+                text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+            },
+            {
+                cls: "s4",
+                title: "4 signaux sur 5 · priorité élevée",
+                text: "Quatre signaux présents. La dérégulation est active. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
+            },
+            {
+                cls: "s5",
+                title: "5 signaux sur 5 · priorité immédiate",
+                text: "Tous les signaux sont là. Commence par les gestes de régulation dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
+            }
+        ];
+        var IMPACTS_INTRO = "Une dérégulation émotionnelle ne reste pas cantonnée aux moments de réaction. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.";
+        var IMPACTS_DATA = [{
+                emoji: "🌊",
+                dim: "Émotions",
+                tag: "primary",
+                tagLabel: "Point de départ",
+                url: null,
+                desc: "Les émotions s'accumulent ou se court-circuitent. Le retour à l'équilibre coûte plus, le seuil de tolérance baisse."
+            },
+            {
+                emoji: "🧠",
+                dim: "Mental",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-mental/",
+                desc: "Les émotions intenses mobilisent beaucoup de ressources cognitives. Quand elles sont fréquentes, la clarté mentale en pâtit : décisions plus difficiles, concentration plus fragile."
+            },
+            {
+                emoji: "🤝",
+                dim: "Relations",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-relations/",
+                desc: "Ce qu'on ressent colore ce qu'on exprime. Une dérégulation émotionnelle peut se voir dans les interactions : distance, surréaction, difficulté à écouter sans projeter."
+            },
+            {
+                emoji: "🧘",
+                dim: "Corps",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-corps/",
+                desc: "Les émotions peuvent aussi passer par le corps : tension, sommeil plus fragile, digestion perturbée ou difficulté à se poser. Le corps peut devenir le lieu où ce qui n'a pas été régulé continue de se manifester."
+            },
+            {
+                emoji: "⚡",
+                dim: "Énergie",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-energie/",
+                desc: "Réguler des émotions intenses demande des ressources. Une journée émotionnellement chargée peut laisser une fatigue réelle, même sans effort physique important."
+            },
+            {
+                emoji: "✨",
+                dim: "Sens",
+                tag: "deep",
+                tagLabel: "Impact profond",
+                url: "/zone-sens/",
+                desc: "Ce qu'on ressent guide souvent ce qui compte vraiment. Quand les émotions sont brouillées ou inaccessibles, le fil vers ce qui a du sens se distend."
+            }
+        ];
+        var GESTES_META = {
+            name: "Pour réguler ce qui déborde",
+            sub: "Trois gestes simples pour retrouver un peu d'espace émotionnel",
+            freqIcon: "📅",
+            freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques une tension émotionnelle ou une réaction qui t’a surpris·e.",
+            intention: "Ces trois gestes ne traitent pas des émotions enfouies depuis longtemps. Mais ils créent un espace où quelque chose peut se poser, au lieu de continuer à tourner en boucle dans ta tête."
+        };
+        var GESTES_DATA = [{
+                type: "🏷️ Nommer l'émotion précisément",
+                meta: ["⏱ 2 min", "Effort bas"],
+                text: "Arrête-toi. Pose une main sur la poitrine. Demande-toi : qu'est-ce que je ressens là, précisément ? Pas un terme générique (ça va pas, je suis stressé·e, etc.), mais quelque chose de plus précis que tu ressens physiquement, puis essaie de l'analyser : est-ce de la déception? Colère? Inquiétude? Tristesse?",
+                why: "Mettre une émotion en mots peut aider à la rendre plus lisible et à diminuer l'impression de débordement. Le but n'est pas de l'analyser parfaitement, mais de créer un premier espace entre toi et ce que tu ressens.",
+                sensoriel: "Si tu n'arrives pas à nommer précisément l'émotion, ce n'est pas un problème. Même 'je ne sais pas exactement' est déjà une information valide."
+            },
+            {
+                type: "✍️ Trois lignes sur ce qui se passe",
+                meta: ["⏱ 3 min", "Effort bas"],
+                text: "Prends un papier ou ton téléphone. Écris en trois phrases ce que tu ressens, sans chercher à l'expliquer ou à le justifier. Juste décrire.",
+                why: "L'écriture externalise ce qui est en boucle interne. Ce qui est posé sur papier peut prendre un peu moins de place à l’intérieur.",
+                sensoriel: null
+            },
+            {
+                type: "🌊 Laisser l'émotion être là sans l'éviter",
+                meta: ["⏱ 5 min", "Effort moyen"],
+                text: "Au lieu de changer de sujet, de te distraire ou de relativiser : reste avec ce que tu ressens. Sans y plonger, sans le fuir. Juste le laisser être là quelques minutes.",
+                why: "Une émotion peut souvent évoluer quand on cesse de la combattre ou de l'éviter immédiatement. La laisser exister quelques minutes peut déjà modifier la place qu'elle prend.",
+                sensoriel: "Ce geste peut sembler contre-intuitif. On est souvent conditionné·e à faire autre chose quand quelque chose est inconfortable."
+            }
+        ];
+        var SECTIONS_META = {
+            comprendre: {
+                num: "01",
+                eyebrow: "Ce qui se passe vraiment",
+                title: "Comprendre la zone Émotions"
+            },
+            minitest: {
+                num: "02",
+                eyebrow: "Auto-observation",
+                title: "Mini-test · 5 questions"
+            },
+            impacts: {
+                num: "03",
+                eyebrow: "Comment ça se propage",
+                title: "Effets en cascade"
+            },
+            gestes: {
+                num: "04",
+                eyebrow: "Des gestes pour commencer",
+                title: "Rituels Foébé"
+            }
+        };
+</script>
 <script src="/scripts/foebe-zone.js" is:inline></script>
 </ZoneLayout>

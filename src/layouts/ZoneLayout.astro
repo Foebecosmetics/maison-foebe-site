@@ -51,9 +51,6 @@ interface Props {
   twitterTitle?: string;
   twitterDesc?: string;
   twitterImage?: string;
-  // JSON-LD
-  jsonLdHeadline?: string;
-  jsonLdDesc?: string;
 }
 
 const {
@@ -62,7 +59,6 @@ const {
   title, description, canonical,
   ogTitle, ogDesc, ogImage,
   twitterTitle, twitterDesc, twitterImage,
-  jsonLdHeadline, jsonLdDesc,
 } = Astro.props;
 
 // Convertit un hex "#RRGGBB" en { r, g, b }
@@ -120,19 +116,24 @@ const zonesNavWithActive = ZONES_NAV.map(z => ({
   active: z.slug === zoneSlug,
 }));
 
-// JSON-LD
-const jsonLd = jsonLdHeadline ? {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": jsonLdHeadline,
-  "description": jsonLdDesc ?? description,
-  "url": canonical,
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Maison Foébé",
-    "url": "https://maisonfoebe.fr"
-  }
-} : null;
+const zoneConfig = {
+  name: zoneName,
+  slug: zoneSlug,
+  number: zoneNumber,
+  emoji: zoneEmoji,
+  title,
+  metaDesc: description,
+  canonicalUrl: canonical,
+  ogTitle: ogTitle || title,
+  ogDesc: ogDesc || description,
+  palette: {
+    z, zR: zRgb.r, zG: zRgb.g, zB: zRgb.b,
+    zMid, zMidR: zMidRgb.r, zMidG: zMidRgb.g, zMidB: zMidRgb.b,
+    zLite, zLiteR: zLiteRgb.r, zLiteG: zLiteRgb.g, zLiteB: zLiteRgb.b,
+  },
+};
+
+
 ---
 
 <BaseLayout
@@ -142,40 +143,19 @@ const jsonLd = jsonLdHeadline ? {
   ogTitle={ogTitle}
   ogDesc={ogDesc}
   ogImage={ogImage}
+  ogImageAlt={`Illustration de la zone ${zoneName} de la méthode Maison Foébé`}
   twitterTitle={twitterTitle}
   twitterDesc={twitterDesc}
   twitterImage={twitterImage}
+  schemaType="WebPage"
+  pageName={`Zone ${zoneName} · Maison Foébé`}
+  pageAbout={`Zone ${zoneName} du modèle de self-care Maison Foébé`}
 >
   <!-- Injection palette + ZONE_CONFIG en head -->
   <Fragment slot="head">
     <style is:inline set:html={`:root { ${paletteVars} }`}></style>
 
-    {jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd, null, 2)}></script>
-    )}
-
-    <script is:inline define:vars={{ zoneName, zoneSlug, zoneNumber, zoneEmoji, canonical, title, description, ogTitle, ogDesc, ogImage, z, zMid, zLite, zRgb, zMidRgb, zLiteRgb, zonesNavWithActive }}>
-      var ZONE_CONFIG = {
-        name: zoneName,
-        slug: zoneSlug,
-        number: zoneNumber,
-        emoji: zoneEmoji,
-        title: title,
-        metaDesc: description,
-        canonicalUrl: canonical,
-        ogTitle: ogTitle || title,
-        ogDesc: ogDesc || description,
-        palette: {
-          z: z,
-          zR: zRgb.r, zG: zRgb.g, zB: zRgb.b,
-          zMid: zMid,
-          zMidR: zMidRgb.r, zMidG: zMidRgb.g, zMidB: zMidRgb.b,
-          zLite: zLite,
-          zLiteR: zLiteRgb.r, zLiteG: zLiteRgb.g, zLiteB: zLiteRgb.b,
-        }
-      };
-      var ZONES_NAV = zonesNavWithActive;
-    </script>
+    <script is:inline set:html={`window.ZONE_CONFIG = ${JSON.stringify(zoneConfig)}; window.ZONES_NAV = ${JSON.stringify(zonesNavWithActive)};`}></script>
   </Fragment>
 
   <!-- Contenu de la page zone -->

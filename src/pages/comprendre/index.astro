@@ -1,14 +1,26 @@
 ---
+import GuidedNextSteps from '../../components/GuidedNextSteps.astro';
+import GuidedFaq from '../../components/GuidedFaq.astro';
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/pages/comprendre.css';
+
+const comprendreFaq = [
+  { question: 'Dois-je déjà savoir ce qui ne va pas ?', answer: 'Non. Foébé sert justement à transformer un ressenti diffus en repères plus lisibles. Tu peux commencer avec une fatigue, une surcharge ou l’impression de ne plus récupérer sans avoir d’explication complète.' },
+  { question: 'Que signifie « épuisement fonctionnel » ?', answer: 'C’est une manière de décrire le décalage entre le fait de continuer à fonctionner et l’érosion progressive des ressources. Ce terme aide à observer une expérience, mais ne constitue pas un diagnostic médical.' },
+  { question: 'Foébé pose-t-elle un diagnostic ?', answer: 'Non. Le cadre Foébé soutient la compréhension et l’auto-observation. Une fatigue persistante, une détresse importante ou une perte de fonctionnement nécessite un avis professionnel adapté.' },
+];
 ---
 
 <BaseLayout
-  title="Comprendre le cadre — Maison Foébé"
-  description="La méthode Foébé, ses fondements en psychologie et ergonomie cognitive, et qui tient le cadre. Pour comprendre l'approche avant d'entrer."
+  title="Comprendre Maison Foébé · Self-care et épuisement fonctionnel"
+  description="Comprendre l’approche Foébé : surcharge mentale, récupération, 7 dimensions du self-care, cadre non clinique et posture scientifique."
   canonical="https://maisonfoebe.fr/comprendre/"
-  ogTitle="Comprendre le cadre — Maison Foébé"
-  ogDesc="La méthode Foébé, ses fondements en psychologie et ergonomie cognitive, et qui tient le cadre. Pour comprendre l'approche avant d'entrer."
-  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
+  ogTitle="Comprendre Maison Foébé"
+  ogDesc="Un cadre pour relier surcharge mentale, fatigue persistante, récupération et 7 dimensions du self-care sans poser de diagnostic."
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
 >
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
@@ -25,10 +37,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <div class="hero-inner">
 <span class="hero-eyebrow reveal d1">Comprendre avant d’agir</span>
 <h1 class="hero-title reveal d1">
-  Comprendre <span class="foebe-text foebe-text--warm">Foébé.</span>
+  Comprendre <span class="foebe-text foebe-text--warm">son self-care.</span>
   <br>
   <span class="hero-title-second">
-    Des <span class="foebe-text foebe-text--rose">repères</span> pour mieux te situer.
+    Des <span class="foebe-text foebe-text--rose">repères Foébé</span> pour mieux te situer.
   </span>
 </h1>
 <span class="hero-rule reveal d2"></span>
@@ -91,68 +103,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <p class="reveal conclusion-quote">Le cadre posé,<br/>tout se relit <span class="foebe-text foebe-text--rose">autrement</span>.</p>
 <div class="reveal d1 conclusion-actions">
 <a class="btn-primary" href="/pratiquer/">Explorer les outils →</a>
+<a class="btn-primary btn-primary--secondary" href="/lexique/">Clarifier les mots du self-care →</a>
 </div>
 </div>
-</section></main><script>
-(function(){
-  var revealEls = document.querySelectorAll('.reveal');
+</section>
+<GuidedFaq
+  id="comprendre-faq"
+  compact
+  title="Les réponses utiles avant d’aller plus loin."
+  intro="Trois repères pour comprendre le cadre sans avoir à parcourir tout le site."
+  items={comprendreFaq}
+/>
+<GuidedNextSteps
+  id="comprendre-next"
+  title="Choisis la suite qui répond à ta question."
+  links={[
+    { href: '/methode/', kicker: 'Le fonctionnement', label: 'Lire la méthode', description: 'Comprendre les fondements, la posture et la logique de lecture Foébé.' },
+    { href: '/pratiquer/', kicker: 'Passer à l’expérience', label: 'Choisir un outil gratuit', description: 'Te situer, explorer une zone ou revenir au calme sans parcours imposé.' },
+    { href: '/faq/', kicker: 'Le projet', label: 'Consulter la FAQ générale', description: 'Vérifier ce qu’est Foébé, ses limites et son évolution future.' },
+  ]}
+/>
+</main>
 
-  if (!('IntersectionObserver' in window)) {
-    revealEls.forEach(function(el){ el.classList.add('visible'); });
-    return;
-  }
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
-
-  revealEls.forEach(function(el){ observer.observe(el); });
-})();
-</script>
-<script id="foebeScrollProgressFallbackScript">
-(function () {
-  var bar = document.getElementById("foebeScrollProgressFallbackBar");
-
-  if (!bar) return;
-
-  function updateFallbackProgress() {
-    if (!document.documentElement.classList.contains("foebe-shell-failed")) {
-      return;
-    }
-
-    var documentHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-
-    var progress =
-      documentHeight > 0
-        ? Math.min(1, Math.max(0, window.scrollY / documentHeight))
-        : 0;
-
-    bar.style.transform = "scaleX(" + progress + ")";
-  }
-
-  window.addEventListener(
-    "foebe:shell-failed",
-    updateFallbackProgress
-  );
-
-  window.addEventListener(
-    "scroll",
-    updateFallbackProgress,
-    { passive: true }
-  );
-
-  window.addEventListener(
-    "resize",
-    updateFallbackProgress
-  );
-
-  updateFallbackProgress();
-})();
-</script>
+<script is:inline src="/scripts/pages/comprendre.js"></script>
 </BaseLayout>

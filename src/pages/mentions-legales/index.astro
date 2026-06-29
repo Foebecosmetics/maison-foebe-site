@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/pages/mentions-legales.css';
+
 ---
 
 <BaseLayout
@@ -8,10 +10,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   canonical="https://maisonfoebe.fr/mentions-legales/"
   ogTitle="Informations légales — Maison Foébé"
   ogDesc="Mentions légales, informations d’hébergement, données personnelles et contact de Maison Foébé."
-  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
->
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
+
+  robots="noindex, follow"
+  schemaType="WebPage"
+  pageName="Informations légales de Maison Foébé">
 <div id="pageProgress"><div id="pageProgressFill"></div></div>
-<button id="backToTop" aria-label="Retour en haut de page" type="button">↑</button>
+
 <nav id="fallbackNav" class="fallback-nav" aria-label="Navigation de secours Maison Foébé">
   <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
   <div class="fallback-links">
@@ -117,20 +124,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <footer></footer>
 
-<script>
-(function(){
-  var fill=document.getElementById('pageProgressFill');
-  var btn=document.getElementById('backToTop');
-  function update(){
-    var s=window.scrollY;
-    var m=document.documentElement.scrollHeight-window.innerHeight;
-    var p=m>0?Math.round((s/m)*100):0;
-    if(fill) fill.style.width=p+'%';
-    if(btn) btn.classList.toggle('visible',s>400);
-  }
-  window.addEventListener('scroll',update,{passive:true});
-  update();
-  if(btn){btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
-})();
-</script>
+
+<script is:inline src="/scripts/pages/mentions-legales.js"></script>
 </BaseLayout>

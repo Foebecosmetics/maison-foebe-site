@@ -10,14 +10,14 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
   zoneSlug="Sens"
   zoneNumber="07"
   zoneEmoji="✨"
-  title="Zone Sens · Maison Foébé"
-  description="Zone Sens · Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur avec Maison Foébé."
+  title="Zone Sens · Perte de direction et besoin de cohérence · Foébé"
+  description="Comprendre la perte de direction, le vide malgré une vie remplie et le besoin de cohérence, puis retrouver un premier fil directeur."
   canonical="https://maisonfoebe.fr/zone-sens/"
-  ogTitle="Zone Sens · Maison Foébé"
-  ogDesc="Zone Sens · Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur avec Maison Foébé."
+  ogTitle="Zone Sens · Perte de direction et besoin de cohérence"
+  ogDesc="Repérer ce qui a perdu du sens, faire le mini-test Foébé et retrouver un premier fil directeur."
   ogImage="https://maisonfoebe.fr/images/zones/og-zone-sens.png"
-  twitterTitle="Zone Sens · Maison Foébé"
-  twitterDesc="Comprendre la perte de sens, le décalage entre valeurs et actions, et retrouver un premier fil directeur."
+  twitterTitle="Zone Sens · Direction et cohérence"
+  twitterDesc="Comprendre la perte de direction, le vide malgré une vie remplie et retrouver un premier fil directeur."
   twitterImage="https://maisonfoebe.fr/images/zones/og-zone-sens.png"
 >
 <div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
@@ -26,7 +26,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <noscript>
   <style>.foebe-scroll-progress--fallback{display:block!important}</style>
 </noscript>
-<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -202,7 +202,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink">Voir l’Échelle Foébé →</a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -367,5 +367,229 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 </div>
 </div>
 </main>
+
+<script is:inline data-zone-dataset>
+var ZONE_INTRO = {
+            text: "La zone <strong>Sens</strong> dans ton self-care concerne ce qui te donne l'impression que ça en vaut la peine. Lorsque cette zone se déséquilibre, cela ne se manifeste pas toujours de manière spectaculaire. Il s'agit généralement d'une perte de repères graduelle, d'un sentiment de faire les choses sans véritablement être présent·e, ou encore d'une fatigue existentielle. Il ne s'agit ni de philosophie, ni de grandes ambitions. Il s'agit de se connecter à ce qui a véritablement de l'importance pour toi.",
+            warning: null
+        };
+        var PITCH_DATA = [{
+                icon: "🔍",
+                label: "Cette zone concerne",
+                val: "Ta capacité à rester connecté·e à ce qui compte vraiment pour toi, à sentir que tes actions ont une direction et à trouver quelque chose de nourrissant dans ce que tu fais."
+            },
+            {
+                icon: "⚠️",
+                label: "Prioritaire si tu observes",
+                val: "Un sentiment de vide malgré une vie remplie, une difficulté à identifier ce qui compte vraiment, ou une fatigue qui n'est pas physique mais existentielle."
+            },
+            {
+                icon: "🗺️",
+                label: "Sur cette page",
+                val: "Tu vas comprendre comment la perte de sens s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret."
+            }
+        ];
+        var STATE_DEFS = {
+            sol: {
+                title: "Solide",
+                text: "Tu sais globalement pourquoi tu fais ce que tu fais. Il y a une direction, même si elle n'est pas parfaitement claire. Ce que tu fais résonne avec ce qui te ressemble. Une direction, ça demande à être réaffirmée régulièrement. Pas réinventée, mais maintenue."
+            },
+            nour: {
+                title: "À nourrir",
+                text: "Quelque chose semble un peu déconnecté. Tu fais les choses, mais sans vraiment sentir ni comprendre pourquoi. Peu à peu, tu perds le fil, et l’ignorer accentue encore cet état."
+            },
+            frag: {
+                title: "Fragile",
+                text: "La perte de sens commence à se faire sentir. Les journées se ressemblent sans que tu saches vraiment vers quoi tu avances. Tu continues, mais dans une forme de brouillard. Les gestes ci-dessous peuvent t’aider à retrouver un peu d’orientation."
+            },
+            prior: {
+                title: "Priorité",
+                text: "La déconnexion au sens est marquée et répétée. Le vide ou la fatigue existentielle pèsent sur l’ensemble de ton self-care. Il devient important de recréer un premier fil directeur dès maintenant, pas à la prochaine période calme."
+            }
+        };
+        var POSIT_RESULTS = {
+            sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+            nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
+            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
+            prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
+        };
+        var COMPRENDRE = {
+            intro: "La perte de sens ne commence pas par une crise existentielle. Elle s’installe progressivement, à force de faire passer le reste avant ce qui compte vraiment.",
+           facteurs: [{
+    icon: "📅",
+    name: "L'urgence qui écrase l'essentiel",
+    desc: "Quand le quotidien est dominé par l'urgence, ce qui compte vraiment n'a plus de place. On fait ce qui est immédiat, ce qui est attendu, ce qui est urgent. Ce qu'on aime, ce qui nous ressemble, ce qu'on voudrait construire passe après."
+},
+{
+    icon: "🎭",
+    name: "Le décalage entre qui on est et ce qu'on fait",
+    desc: "Faire des choses qui ne nous ressemblent pas, longtemps, a un coût. Même subtil. Même quand c'est rationnel. Quand l'écart entre ses valeurs et ses actions grandit, un fond de malaise s'installe, sans qu'on puisse toujours le nommer facilement."
+},
+{
+    icon: "🔭",
+    name: "L'absence de cap qui oriente",
+    desc: "Sans direction, chaque effort reste isolé. On fait des choses, on travaille, on avance, mais sans ligne directrice claire. L'accumulation de tâches sans y mettre du sens finit par produire une fatigue existentielle, différente de la fatigue physique."
+}],
+            vrIcon: "✨",
+            vrTitle: "Résultat : une vie pleine qui semble vide",
+            vrNote: "Le paradoxe de la perte de sens, c'est qu'elle arrive souvent quand on est le plus occupé. Une vie remplie d'activités, mais vide de ce qui compte vraiment."
+        };
+        var OBS_QUESTIONS = [{
+    q: "Tu as du mal à répondre à la question : qu'est-ce qui compte vraiment pour moi ? Pas parce que tu n'as rien, mais parce que cela te semble flou ou lointain.",
+    sub: "La difficulté à identifier ce qui compte est souvent le premier signal d'une déconnexion au sens."
+},
+{
+    q: "Tu fais des choses (travail, social, obligations) en mode automatique, sans vraiment être là. Tu exécutes sans ressentir.",
+    sub: "Ce pilote automatique protège. Il permet de fonctionner. Mais il coupe aussi l'accès à ce qui nourrit vraiment."
+},
+{
+    q: "Même quand les choses se passent bien objectivement, tu n'arrives pas vraiment à t'en réjouir. La satisfaction est plate ou absente.",
+    sub: "L'anesthésie de la satisfaction est souvent le signe que le sens n'est plus assez présent pour colorer ce qui arrive."
+},
+{
+    q: "Tu te demandes parfois à quoi ça sert : ce que tu fais, la direction que tu prends, les efforts que tu fournis.",
+    sub: "Ce questionnement n'est pas du nihilisme. C'est souvent le signe qu'une direction a besoin d'être réajustée."
+},
+{
+    q: "Tu as des envies ou des projets qui te tiennent à cœur, mais qui restent toujours dans la liste 'pour plus tard'. Et le plus tard ne vient pas.",
+    sub: "Ce report systématique de ce qui compte est l'un des signaux les plus clairs d'une zone Sens en déficit."
+}];
+        var OBS_DATA = [{
+                cls: "s0",
+                title: "Aucun signal identifié",
+                text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vue d'ensemble sur les 7 dimensions (zones) de ton self-care.",
+                crossLink: {
+                    label: "Explorer les 7 zones →",
+                    url: "/echelle-foebe/"
+                }
+            },
+            {
+                cls: "s1",
+                title: "1 signal sur 5 · à surveiller",
+                text: "Un signal isolé. Cette zone n'est pas en alerte. Toutefois, les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+            },
+            {
+                cls: "s2",
+                title: "2 signaux sur 5 · seuil d'attention",
+                text: "Deux signaux identifiés. C'est le bon moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour ça."
+            },
+            {
+                cls: "s3",
+                title: "3 signaux sur 5 · zone à prioriser",
+                text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+            },
+            {
+                cls: "s4",
+                title: "4 signaux sur 5 · priorité élevée",
+                text: "Quatre signaux présents. La déconnexion au sens est active. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
+            },
+            {
+                cls: "s5",
+                title: "5 signaux sur 5 · priorité immédiate",
+                text: "Tous les signaux sont là. Commence par les gestes de reconnexion maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel sur cette dimension de ton self-care."
+            }
+        ];
+        var IMPACTS_INTRO = "Une déconnexion au sens ne reste pas cantonnée au domaine existentiel. Concrètement, elle finit par peser sur le reste de ton self-care de façon de plus en plus visible.";
+        var IMPACTS_DATA = [{
+                emoji: "✨",
+                dim: "Sens",
+                tag: "primary",
+                tagLabel: "Point de départ",
+                url: null,
+                desc: "La direction n'est plus claire. Les actions s'accumulent sans ligne directrice. Malgré un agenda plein, le vide reste là."
+            },
+            {
+                emoji: "🌊",
+                dim: "Émotions",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-emotions/",
+                desc: "Le sens est un régulateur émotionnel puissant. Quand il manque, même les bonnes choses perdent leur couleur. La platitude émotionnelle accompagne souvent la perte de sens."
+            },
+            {
+                emoji: "⚡",
+                dim: "Énergie",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-energie/",
+                desc: "Faire des choses qui ont du sens ressource. Faire des choses qui n'en ont pas épuise. Le manque de sens crée une fuite d'énergie chronique, même sans effort physique supplémentaire."
+            },
+            {
+                emoji: "🧠",
+                dim: "Mental",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-mental/",
+                desc: "Le mental cherche du sens par défaut. Quand il n'en trouve pas, il tourne. Les boucles de questionnement, les ruminations sur la direction à prendre dans la vie, les “à quoi bon” : il compense le vide de sens. Le lien joue aussi un rôle central."
+            },
+            {
+                emoji: "🤝",
+                dim: "Relations",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-relations/",
+                desc: "Quand on est déconnecté de ce qui compte pour soi, il devient difficile d'être vraiment présent pour les autres. Les relations s'appauvrissent à mesure que le sens s'efface."
+            },
+            {
+                emoji: "🧘",
+                dim: "Corps",
+                tag: "deep",
+                tagLabel: "Impact profond",
+                url: "/zone-corps/",
+                desc: "La perte de sens a aussi une traduction physique. Un corps sans direction peut perdre de sa vitalité. La recherche autour du sens, du stress et de la santé suggère des liens avec la vitalité, la récupération et la manière dont le corps traverse la charge."
+            }
+        ];
+        var GESTES_META = {
+            name: "Pour retrouver un fil directeur",
+            sub: "Trois gestes simples pour commencer à se reconnecter à ce qui compte",
+            freqIcon: "📅",
+            freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence dans un moment calme où tu peux vraiment y penser. Pas à planifier avec un agenda : à déclencher quand tu as quelques minutes.",
+            intention: "Ces trois gestes ne redéfinissent pas un sens de vie. Mais ils rappellent que ce qui compte est encore là, et qu'il suffit parfois de lui redonner quelques minutes."
+        };
+        var GESTES_DATA = [{
+                type: "✍️ Trois choses qui ont compté cette semaine",
+                meta: ["⏱ 5 min", "Effort bas"],
+                text: "Prends un papier. Note trois moments de cette semaine qui t’ont marqué autrement : quelque chose qui t’a touché, qui t’a paru juste, ou qui t’a fait te sentir à ta place.",
+                why: "Le sens ne se joue pas seulement dans les grandes décisions. Il se repère souvent dans de petits moments qui résonnent. Les identifier aide à les retrouver plus souvent.",
+                sensoriel: "Si les trois moments ne viennent pas facilement, commence par un. Et si aucun ne vient, c'est aussi une information importante."
+            },
+            {
+                type: "🔭 Une chose que tu voulais faire et que tu as reportée",
+                meta: ["⏱ 10 min", "Effort bas"],
+                text: "Pense à quelque chose que tu voulais faire, pas une obligation, quelque chose que tu voulais vraiment. Fais-en maintenant une toute petite partie. Dix minutes suffisent.",
+                why: "Reprendre contact avec ce qui compte, même en tout petit, réactive le circuit du sens. Ce n'est pas la quantité qui compte. C'est le signal envoyé au système.",
+                sensoriel: "La résistance à commencer est souvent plus forte que la résistance à continuer. La première minute est la plus difficile."
+            },
+            {
+                type: "🧭 Une valeur, un geste",
+                meta: ["⏱ 5 min", "Effort moyen"],
+                text: "Identifie une valeur qui compte pour toi (honnêteté, créativité, présence, liberté, connexion, etc.). Identifie un geste concret aujourd’hui qui correspond à cette valeur.",
+                why: "Agir en cohérence avec ses valeurs, même ponctuellement, réduit l'écart entre ce qu'on est et ce qu'on fait. Cet écart est la source principale de la fatigue de sens.",
+                sensoriel: null
+            }
+        ];
+        var SECTIONS_META = {
+            comprendre: {
+                num: "01",
+                eyebrow: "Ce qui se passe vraiment",
+                title: "Comprendre la zone Sens"
+            },
+            minitest: {
+                num: "02",
+                eyebrow: "Auto-observation",
+                title: "Mini-test · 5 questions"
+            },
+            impacts: {
+                num: "03",
+                eyebrow: "Comment ça se propage",
+                title: "Effets en cascade"
+            },
+            gestes: {
+                num: "04",
+                eyebrow: "Des gestes pour commencer",
+                title: "Rituels Foébé"
+            }
+        };
+</script>
 <script src="/scripts/foebe-zone.js" is:inline></script>
 </ZoneLayout>

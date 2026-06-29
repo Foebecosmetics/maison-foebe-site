@@ -1,15 +1,29 @@
 ---
+import GuidedFaq from '../../components/GuidedFaq.astro';
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/pages/zones.css';
+
+const zonesFaq = [
+  { question: 'Puis-je me reconnaître dans plusieurs zones ?', answer: 'Oui. Les sept zones se répondent. L’objectif n’est pas de te ranger dans une case, mais de repérer celle qui mérite le plus d’attention aujourd’hui.' },
+  { question: 'Comment choisir la zone prioritaire ?', answer: 'Commence par le signal le plus présent, le plus coûteux ou celui qui limite le plus ta récupération. Tu peux aussi faire l’Échelle Foébé pour obtenir une vue d’ensemble.' },
+  { question: 'Une zone déséquilibrée indique-t-elle un trouble ?', answer: 'Non. Les zones sont des repères de self-care, pas des catégories médicales. Un symptôme persistant, intense ou inquiétant mérite un avis professionnel.' },
+];
 ---
 
 <BaseLayout
-  title="Les 7 zones · Maison Foébé"
-  description="Comprendre les 7 zones Foébé : mental, corps, énergie, émotions, relations, environnement et sens. Un cadre clair pour repérer ce qui s'épuise et choisir par où commencer."
+  title="Les 7 zones du self-care · Maison Foébé"
+  description="Explorer les 7 zones du self-care : mental, corps, énergie, émotions, environnement, relations et sens, puis choisir par où commencer."
   canonical="https://maisonfoebe.fr/zones/"
-  ogTitle="Les 7 zones · Maison Foébé"
-  ogDesc="Les 7 zones du self-care Foébé : ce qu'elles couvrent, comment les lire, et comment choisir par où commencer."
-  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
->
+  ogTitle="Les 7 zones du self-care · Maison Foébé"
+  ogDesc="Un cadre clair pour repérer ce qui s’épuise et choisir une première zone d’attention sans chercher à tout corriger."
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
+
+  schemaType="CollectionPage"
+  pageName="Les 7 zones du self-care"
+  pageAbout="Corps, mental, énergie, émotions, environnement, relations et sens">
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div aria-label="Liens rapides" class="fallback-links">
@@ -97,42 +111,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </span>
 </a></nav></div></section>
 <section aria-labelledby="test-heading" class="section test-section entry-section"><div class="section-inner"><div class="section-center narrow reveal"><span class="test-eyebrow">Point d'entrée</span><h2 class="test-title" id="test-heading">Choisir la bonne <em>porte d'entrée</em></h2><p class="section-sub entry-sub">Tu peux partir d'une zone qui te parle déjà, ou laisser le test repérer celle qui demande le plus d'attention en ce moment.</p></div><div class="entry-grid reveal"><article class="entry-card entry-primary"><span class="entry-label">Orientation guidée</span><h3 class="entry-title">L’Échelle Foébé</h3><p class="entry-copy">21 affirmations, 7 dimensions, une direction claire. Tu arrives avec une impression vague, tu repars avec une <mark class="foebe-highlight foebe-highlight--red">zone prioritaire</mark> et un premier repère concret.</p><div class="test-specs entry-specs"><p class="test-spec"><span aria-hidden="true" class="test-spec-dot"></span><span>5 minutes, gratuit, sans compte</span></p><p class="test-spec"><span aria-hidden="true" class="test-spec-dot"></span><span>21 affirmations · 7 zones analysées</span></p><p class="test-spec"><span aria-hidden="true" class="test-spec-dot"></span><span>Un profil personnalisé, sans injonction</span></p></div><a class="btn-test" href="/echelle-foebe/">Faire l’Échelle Foébé <span aria-hidden="true">→</span></a></article><aside class="entry-card entry-secondary"><span class="entry-label">Repères</span><h3 class="entry-title">Dictionnaire Foébé</h3><p class="entry-copy">Des définitions simples pour mettre des mots sur les signaux, comprendre les mécanismes et mieux lire les zones avant d'agir.</p><a class="btn-soft" href="/dictionnaire/">Ouvrir le dictionnaire <span aria-hidden="true">→</span></a></aside></div></div></section>
+
+<GuidedFaq
+  id="zones-faq"
+  compact
+  title="Questions fréquentes sur les 7 zones."
+  intro="Les zones servent à orienter ton regard, pas à t’enfermer dans une catégorie."
+  items={zonesFaq}
+/>
 </main>
-<script>
-(function(){
-  var revealItems=document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){revealItems.forEach(function(el){el.classList.add('visible');});return;}
-  var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-  revealItems.forEach(function(el){observer.observe(el);});
-})();
-</script>
-<script id="foebeFallbackProgressScript">
-(function () {
-  var root = document.documentElement;
-  var bar = document.getElementById("foebeScrollProgressFallbackBar");
-  if (!bar) return;
 
-  function updateFallbackProgress() {
-    if (!root.classList.contains("foebe-shell-failed")) return;
-    var doc = document.documentElement;
-    var body = document.body || doc;
-    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    var fullHeight = Math.max(
-      doc.scrollHeight, doc.offsetHeight, doc.clientHeight,
-      body.scrollHeight || 0, body.offsetHeight || 0
-    );
-    var maxScroll = Math.max(0, fullHeight - window.innerHeight);
-    var progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
-    bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
-  }
 
-  window.addEventListener("foebe:shell-failed", updateFallbackProgress);
-  window.addEventListener("scroll", updateFallbackProgress, { passive: true });
-  window.addEventListener("resize", updateFallbackProgress, { passive: true });
-  window.addEventListener("orientationchange", updateFallbackProgress, { passive: true });
-  window.addEventListener("load", updateFallbackProgress);
-  window.addEventListener("pageshow", updateFallbackProgress);
-  updateFallbackProgress();
-})();
-</script>
+<script is:inline src="/scripts/pages/zones.js"></script>
 </BaseLayout>

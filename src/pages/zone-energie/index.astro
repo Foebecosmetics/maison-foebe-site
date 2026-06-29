@@ -10,14 +10,14 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
   zoneSlug="Énergie"
   zoneNumber="01"
   zoneEmoji="⚡"
-  title="Zone Énergie · Maison Foébé"
-  description="Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, faire le mini-test et choisir un premier geste concret."
+  title="Zone Énergie · Fatigue persistante et récupération · Foébé"
+  description="Comprendre la fatigue persistante et la récupération insuffisante, faire un mini-test et choisir un premier geste adapté à son énergie."
   canonical="https://maisonfoebe.fr/zone-energie/"
-  ogTitle="Zone Énergie · Maison Foébé"
-  ogDesc="Zone Énergie · Maison Foébé : comprendre le déficit énergétique, les signaux de fatigue persistante et la récupération insuffisante, faire le mini-test et choisir un premier geste concret."
+  ogTitle="Zone Énergie · Fatigue persistante et récupération"
+  ogDesc="Repérer ce qui vide l’énergie, faire le mini-test Foébé et choisir un premier geste de récupération."
   ogImage="https://maisonfoebe.fr/images/zones/og-zone-energie.png"
-  twitterTitle="Zone Énergie · Maison Foébé"
-  twitterDesc="Comprendre la fatigue persistante, la récupération insuffisante et poser un premier geste de recharge avec Maison Foébé."
+  twitterTitle="Zone Énergie · Fatigue et récupération"
+  twitterDesc="Comprendre la fatigue persistante, la récupération insuffisante et choisir un premier geste Foébé."
   twitterImage="https://maisonfoebe.fr/images/zones/og-zone-energie.png"
 >
 <div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
@@ -26,7 +26,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <noscript>
   <style>.foebe-scroll-progress--fallback{display:block!important}</style>
 </noscript>
-<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -202,7 +202,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink">Voir l’Échelle Foébé →</a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -367,5 +367,231 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 </div>
 </div>
 </main>
+
+<script is:inline data-zone-dataset>
+var ZONE_INTRO = {
+            text: "La zone <strong>Énergie</strong> dans ton self-care concerne ta capacité à recharger, pas seulement à tenir. Quand cette zone se dérègle, ce n'est pas toujours une fatigue spectaculaire. C'est souvent une réserve qui se vide plus vite qu'elle ne se remplit, un effort qui coûte de plus en plus, une récupération qui ne suffit plus. Ce n'est pas un manque de motivation ni de volonté. C'est une question de ressource.",
+            warning: null
+        };
+        var PITCH_DATA = [{
+                icon: "🔍",
+                label: "Cette zone concerne",
+                val: "Ta capacité à récupérer réellement, à recharger entre deux efforts et à ne pas fonctionner uniquement sur les réserves."
+            },
+            {
+                icon: "⚠️",
+                label: "Prioritaire si tu observes",
+                val: "Une fatigue qui persiste malgré le repos, un effort qui coûte de plus en plus, un réveil déjà épuisé avant d'avoir commencé."
+            },
+            {
+                icon: "🗺️",
+                label: "Sur cette page",
+                val: "Tu vas comprendre comment le déficit énergétique s'installe, repérer si cette zone mérite ton attention, voir comment elle peut impacter l'équilibre de ton self-care."
+            }
+        ];
+        var STATE_DEFS = {
+            sol: {
+                title: "Solide",
+                text: "Ton énergie se recharge entre les efforts. Tu récupères sans y penser et tu peux t'investir sans devoir le payer trop cher le lendemain. Quelques gestes réguliers suffisent à tenir cet équilibre."
+            },
+            nour: {
+                title: "À nourrir",
+                text: "La réserve est entamée. Tu arrives à fonctionner, mais tu remarques que ça coûte davantage. C'est le bon moment d'agir maintenant."
+            },
+            frag: {
+                title: "Fragile",
+                text: "La fatigue est perceptible. La récupération ne suffit plus à compenser l'effort fourni. Tu gères, mais au prix d'un niveau de base déjà bas. Les gestes ci-dessous te parlent directement à ce stade."
+            },
+            prior: {
+                title: "Priorité",
+                text: "Ton énergie est en déficit chronique. Les signaux se répètent et se renforcent. À ce stade, il devient important de recréer des espaces de récupération réels, même petits, sans attendre la prochaine période calme."
+            }
+        };
+        var POSIT_RESULTS = {
+            sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut le confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+            nour: "Un signal à surveiller. Cette zone mérite de l'attention. Les 5 questions ci-dessous vont préciser où tu en es.",
+            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation. Cela va confirmer et t'orienter vers les bons gestes.",
+            prior: "Ton ressenti est une donnée valide. Les gestes ci-dessous sont là pour commencer à créer de l'espace dès maintenant."
+        };
+        var COMPRENDRE = {
+            intro: "Le déficit énergétique ne commence pas par un effondrement. Il s'installe par accumulation, souvent sans qu'on puisse le voir venir.",
+            facteurs: [{
+                    icon: "🔋",
+                    name: "La réserve qui s'entame",
+                    desc: "Chaque effort non récupéré laisse une trace. Le corps compense d’abord, puis les marges peuvent se réduire, jusqu’à ce que le quotidien demande beaucoup plus d’effort qu’avant. La réserve s’entame silencieusement quand le quotidien ne laisse pas assez de place à une vraie recharge."
+                },
+                {
+                    icon: "⏰",
+                    name: "Le repos qui ne restaure pas",
+                    desc: "S'arrêter ne suffit pas si le repos n'est pas de qualité. Une soirée sur écran après une journée chargée n’offre pas toujours une vraie récupération. Le système a souvent besoin d’un calme plus réel, pas seulement d’une absence d’effort visible."
+                },
+                {
+                    icon: "📈",
+                    name: "Le seuil qui remonte",
+                    desc: "Quand le niveau de base baisse, faire la même chose que d'habitude demande plus. Ce que tu faisais avant sans avoir à y penser devient maintenant un effort conscient. Ce glissement est subtil mais cumulatif."
+                }
+            ],
+            vrIcon: "⚡",
+            vrTitle: "Résultat : un système qui tourne à vide",
+            vrNote: "Le signe de l'épuisement énergétique n'est pas l'effondrement. C'est plutôt l'effort croissant pour maintenir ce qui semblait aller de soi, qui est le réel signe d'une baisse énergétique."
+        };
+        var OBS_QUESTIONS = [{
+                q: "Tu te réveilles fatigué·e, même après une nuit correcte. Le repos ne suffit pas à effacer la veille.",
+                sub: "Ce décalage entre temps de sommeil et la récupération réelle est souvent le premier signal d'un déficit installé."
+            },
+            {
+                q: "Après un effort habituel, il te faut plus longtemps qu'avant pour récupérer. Ce que tu faisais machinalement avant, te coûte beaucoup plus maintenant.",
+                sub: "Pas une baisse de forme passagère. Un seuil de récupération qui a remonté."
+            },
+            {
+                q: "En milieu de journée, tu ressens une chute d'énergie marquée. Tu continues, mais avec moins de ressources disponibles.",
+                sub: "Ce creux régulier signale que la réserve est entamée dès le départ, elle n'est pas construite au fil de la journée."
+            },
+            {
+                q: "Tu évites des choses que tu aimais, non par désintérêt, mais parce que tu n'as plus l'énergie de les mettre en place.",
+                sub: "Ce n'est pas un manque d'envie. C'est un budget énergétique insuffisant pour aller au-delà de l'essentiel."
+            },
+            {
+                q: "Tu anticipes les efforts à venir avec une forme d'appréhension. Même les choses positives semblent coûteuses avant même de commencer.",
+                sub: "L'anticipation de la dépense énergétique est souvent plus révélatrice que la fatigue elle-même."
+            }
+        ];
+        var OBS_DATA = [{
+                cls: "s0",
+                title: "Aucun signal identifié",
+                text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vue sur les 7 dimensions de ton self-care.",
+                crossLink: {
+                    label: "Explorer les 7 zones →",
+                    url: "/echelle-foebe/"
+                }
+            },
+            {
+                cls: "s1",
+                title: "1 signal sur 5 · à surveiller",
+                text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+            },
+            {
+                cls: "s2",
+                title: "2 signaux sur 5 · seuil d'attention",
+                text: "Deux signaux identifiés. C'est le bon moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour ça."
+            },
+            {
+                cls: "s3",
+                title: "3 signaux sur 5 · zone à prioriser",
+                text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+            },
+            {
+                cls: "s4",
+                title: "4 signaux sur 5 · priorité élevée",
+                text: "Quatre signaux présents. L'énergie est en déficit actif. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
+            },
+            {
+                cls: "s5",
+                title: "5 signaux sur 5 · priorité immédiate",
+                text: "Tous les signaux sont là. Commence par les gestes de récupération dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
+            }
+        ];
+        var IMPACTS_INTRO = "Une énergie en déficit ne reste pas cantonnée à la fatigue physique. Concrètement, elle finit par peser sur le reste de ton self-care de façon visible.";
+        var IMPACTS_DATA = [{
+                emoji: "⚡",
+                dim: "Énergie",
+                tag: "primary",
+                tagLabel: "Point de départ",
+                url: null,
+                desc: "La réserve se vide plus vite qu'elle ne se recharge. L'effort basal augmente, la capacité à s'investir ailleurs diminue."
+            },
+            {
+                emoji: "🧠",
+                dim: "Mental",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-mental/",
+                desc: "Quand l’énergie est basse, la clarté mentale peut devenir plus fragile. Les décisions deviennent plus lourdes, la concentration plus fragile, les erreurs plus fréquentes."
+            },
+            {
+                emoji: "🌊",
+                dim: "Émotions",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-emotions/",
+                desc: "Quand l'énergie est basse, la régulation émotionnelle coûte plus cher. Les réactions sont plus vives, les ressources pour revenir au calme moins disponibles."
+            },
+            {
+                emoji: "🧘",
+                dim: "Corps",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-corps/",
+                desc: "Une fatigue qui dure peut fragiliser le corps : tensions, sommeil moins réparateur, récupération plus lente. Le corps finit par porter le coût d’une réserve trop basse."
+            },
+            {
+                emoji: "🤝",
+                dim: "Relations",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-relations/",
+                desc: "Quand l'énergie manque, la disponibilité pour les autres diminue. Ce n'est pas un désintérêt. C'est un budget qui ne permet plus les extras relationnels."
+            },
+            {
+                emoji: "✨",
+                dim: "Sens",
+                tag: "deep",
+                tagLabel: "Impact profond",
+                url: "/zone-sens/",
+                desc: "Ce qui donne sens demande de la disponibilité. En déficit énergétique, ce qui compte vraiment passe après l'urgence, puis après le repos, puis après demain."
+            }
+        ];
+        var GESTES_META = {
+            name: "Pour recharger vraiment",
+            sub: "Trois gestes simples pour commencer à reconstruire la réserve",
+            freqIcon: "📅",
+            freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques la chute d'énergie. Pas à planifier pour plus tard, mais à déclencher dès maintenant.",
+            intention: "Ces trois gestes ne reconstituent pas une réserve épuisée. Mais ils allègent la pression immédiate et créent les conditions d'une vraie récupération."
+        };
+        var GESTES_DATA = [{
+                type: "🛑 Poser une vraie limite d'arrêt",
+                meta: ["⏱ À définir maintenant", "Effort minimal"],
+                text: "Décide d'une heure ce soir à laquelle tu arrêtes vraiment. Pas d'exception. Pas de 'encore cinq minutes'. Traite cet arrêt comme un rendez-vous non négociable.",
+                why: "Un signal d’arrêt clair peut aider le corps à passer plus facilement vers la récupération. Quand la fin reste floue, le système continue souvent à se préparer à tenir.",
+                sensoriel: "Les premières fois, l'arrêt volontaire peut sembler inconfortable. C'est souvent le signe que le système n'est plus habitué à recevoir la permission de s'arrêter."
+            },
+            {
+                type: "😴 Ajouter dix minutes de sommeil ce soir",
+                meta: ["⏱ Ce soir", "Effort bas"],
+                text: "Couche-toi dix minutes plus tôt que d'habitude. Sans objectif, sans vérification de téléphone avant. Juste dix minutes de marge supplémentaire.",
+                why: "La récupération se reconstruit souvent progressivement. Dix minutes régulières peuvent créer un signal plus stable qu’une grande recharge occasionnelle.",
+                sensoriel: null
+            },
+            {
+                type: "🍃 Pause sans écran de dix minutes",
+                meta: ["⏱ 10 min", "Effort bas"],
+                text: "Lève-toi. Sors dehors ou près d'une fenêtre. Laisse le corps faire ce qu'il veut sans lui imposer de stimulus. Ni podcast, ni musique, ni scroll.",
+                why: "Une pause sans écran peut réduire la charge sensorielle et offrir au corps un vrai changement de rythme. Même dix minutes peuvent créer une micro-récupération.",
+                sensoriel: null
+            }
+        ];
+        var SECTIONS_META = {
+            comprendre: {
+                num: "01",
+                eyebrow: "Ce qui se passe vraiment",
+                title: "Comprendre la zone Énergie"
+            },
+            minitest: {
+                num: "02",
+                eyebrow: "Auto-observation",
+                title: "Mini-test · 5 questions"
+            },
+            impacts: {
+                num: "03",
+                eyebrow: "Comment ça se propage",
+                title: "Effets en cascade"
+            },
+            gestes: {
+                num: "04",
+                eyebrow: "Des gestes pour commencer",
+                title: "Rituels Foébé"
+            }
+        };
+</script>
 <script src="/scripts/foebe-zone.js" is:inline></script>
 </ZoneLayout>

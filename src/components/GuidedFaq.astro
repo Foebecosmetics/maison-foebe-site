@@ -1,0 +1,47 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  items: FaqItem[];
+  compact?: boolean;
+}
+
+const {
+  id,
+  eyebrow = 'Questions fréquentes',
+  title,
+  intro,
+  items,
+  compact = false,
+} = Astro.props;
+---
+
+<section class:list={['foebe-guided-faq', compact && 'foebe-guided-faq--compact']} aria-labelledby={`${id}-title`}>
+  <div class="foebe-guided-faq__inner">
+    <header class="foebe-guided-faq__header">
+      <span class="foebe-guided-faq__eyebrow">{eyebrow}</span>
+      <h2 class="foebe-guided-faq__title" id={`${id}-title`}>{title}</h2>
+      {intro && <p class="foebe-guided-faq__intro">{intro}</p>}
+    </header>
+    <div class="foebe-guided-faq__list">
+      {items.map((item) => (
+        <details class="foebe-guided-faq__item">
+          <summary class="foebe-guided-faq__question">
+            <span>{item.question}</span>
+            <span class="foebe-guided-faq__icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="foebe-guided-faq__answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

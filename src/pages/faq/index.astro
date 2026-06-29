@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GuidedNextSteps from '../../components/GuidedNextSteps.astro';
+import '../../styles/pages/faq.css';
+
+const faqGroups = [
+  {
+    id: 'comprendre-foebe',
+    index: '01 · Comprendre',
+    title: 'Ce qu’est Maison Foébé.',
+    intro: 'Quelques repères pour savoir rapidement si cet espace correspond à ce que tu cherches.',
+    items: [
+      {
+        question: 'Qu’est-ce que Maison Foébé ?',
+        answer: 'Maison Foébé est un espace structuré du self-care. Il aide à observer ce qui s’épuise, à relier les signaux du corps, du mental, des émotions, de l’énergie, de l’environnement, des relations et du sens, puis à choisir un premier geste réaliste.',
+      },
+      {
+        question: 'Que signifie « le self-care comme compétence » ?',
+        answer: 'Ici, prendre soin de soi ne signifie pas réussir une routine parfaite. C’est apprendre à reconnaître ses signaux, comprendre ses besoins, ajuster ses habitudes et retrouver une capacité d’action, même quand l’énergie ou la clarté manquent.',
+      },
+      {
+        question: 'À qui s’adresse Foébé ?',
+        answer: 'Foébé s’adresse notamment aux personnes qui continuent à fonctionner, mais récupèrent mal, vivent une surcharge mentale, une fatigue persistante ou un décalage entre ce qu’elles accomplissent et ce qu’elles ressentent.',
+      },
+      {
+        question: 'Pourquoi Foébé parle-t-elle aussi de skincare, haircare et bodycare ?',
+        answer: 'Parce que les gestes de soin de la peau, des cheveux et du corps peuvent devenir des points d’entrée concrets vers le self-care. Foébé les relie à l’expérience globale sans réduire le bien-être à l’apparence ni transformer le soin en obligation.',
+      },
+    ],
+  },
+  {
+    id: 'utiliser-le-site',
+    index: '02 · S’orienter',
+    title: 'Utiliser le site sans se surcharger.',
+    intro: 'Tu n’as pas besoin de tout lire ni de tout faire. Une seule porte peut suffire pour commencer.',
+    items: [
+      {
+        question: 'Par où commencer sur Maison Foébé ?',
+        answer: 'Choisis selon ton besoin du moment : l’Échelle pour te situer, les 7 zones pour comprendre un déséquilibre, la Respiration pour redescendre, ou la Boussole pour lire une situation concrète.',
+      },
+      {
+        question: 'Faut-il faire tous les outils ?',
+        answer: 'Non. Foébé n’est pas une nouvelle liste de tâches. Commence par une question, un outil ou un mot. Tu pourras revenir plus tard si un autre besoin apparaît.',
+      },
+      {
+        question: 'À quoi servent le Lexique et le Dictionnaire ?',
+        answer: 'Le Lexique clarifie rapidement les mots liés au self-care et à l’épuisement fonctionnel. Le Dictionnaire va plus loin avec des repères sur la récupération, la charge mentale, la régulation émotionnelle, la peau, les cheveux et le corps.',
+      },
+      {
+        question: 'Les ressources actuelles sont-elles gratuites ?',
+        answer: 'Oui. Les pages publiques, les outils et les repères actuellement disponibles sont accessibles gratuitement. Les futurs accompagnements seront présentés séparément lorsqu’ils seront prêts.',
+      },
+    ],
+  },
+  {
+    id: 'cadre-et-securite',
+    index: '03 · Le cadre',
+    title: 'Ce que Foébé fait — et ne fait pas.',
+    intro: 'La clarté du cadre est essentielle, surtout lorsque l’on parle de fatigue, de santé mentale et de récupération.',
+    items: [
+      {
+        question: 'Foébé est-elle une thérapie, un coaching ou un diagnostic ?',
+        answer: 'Non. Maison Foébé propose des repères de compréhension et d’auto-observation. Elle ne pose pas de diagnostic, ne remplace pas une thérapie ou un suivi médical, et ne repose pas sur une logique de coaching ou de performance.',
+      },
+      {
+        question: 'Foébé peut-elle dire si je fais un burnout ?',
+        answer: 'Non. Les notions d’épuisement fonctionnel ou de surcharge peuvent aider à mettre des mots sur une expérience, mais elles ne permettent pas de conclure à un burnout, une dépression, un trouble anxieux ou une autre situation clinique.',
+      },
+      {
+        question: 'Que faire si ma fatigue dure, s’aggrave ou m’inquiète ?',
+        answer: 'Une fatigue persistante — et plus encore ce qui ressemble à une fatigue chronique — mérite un avis médical. De même, une souffrance psychique intense, une perte importante de fonctionnement ou un danger immédiat nécessitent un professionnel ou un service d’urgence adapté.',
+      },
+      {
+        question: 'Foébé donne-t-elle des règles d’hygiène de vie ?',
+        answer: 'Non. Le sommeil, l’alimentation, le mouvement ou les habitudes de soin peuvent être évoqués comme repères, mais Foébé ne propose pas de programme universel. L’objectif est de comprendre ce qui est soutenable pour toi, pas d’ajouter une norme.',
+      },
+    ],
+  },
+  {
+    id: 'evolution',
+    index: '04 · La suite',
+    title: 'Comment Maison Foébé va évoluer.',
+    intro: 'Le site public constitue le socle gratuit. Les espaces d’accompagnement seront ajoutés progressivement, sans transformer chaque page en argumentaire commercial.',
+    items: [
+      {
+        question: 'Quels accompagnements sont prévus ?',
+        answer: 'Maison Foébé prépare des espaces plus structurés pour les moments où un outil gratuit ne suffit plus : comprendre son fonctionnement, organiser ses repères et retrouver une marge d’action avec un cadre humain.',
+      },
+      {
+        question: 'Quand ouvriront-ils ?',
+        answer: 'Les premières ouvertures sont préparées pour octobre 2026, puis l’offre évoluera progressivement. Les dates, formats et conditions seront annoncés uniquement lorsqu’ils seront réellement prêts.',
+      },
+      {
+        question: 'Les ressources gratuites vont-elles disparaître ?',
+        answer: 'L’intention est de conserver un socle public utile : comprendre, se situer et expérimenter un premier geste. Les accompagnements apporteront davantage de profondeur, de personnalisation et de continuité, sans rendre les pages gratuites artificiellement incomplètes.',
+      },
+      {
+        question: 'Comment être informé·e ou travailler avec la fondatrice plus tard ?',
+        answer: 'Tu peux laisser ton adresse email depuis l’accueil ou les pages Zones. Elle sert à t’informer des prochaines ouvertures. La future page Accompagnements présentera clairement les formats lorsqu’ils seront disponibles.',
+      },
+    ],
+  },
+];
+
+const faqItems = faqGroups.flatMap((group) => group.items);
+---
+
+<BaseLayout
+  title="FAQ Maison Foébé · Self-care, outils et accompagnements"
+  description="Toutes les réponses pour comprendre Maison Foébé : self-care structuré, épuisement fonctionnel, outils gratuits, cadre non clinique et futurs accompagnements."
+  canonical="https://maisonfoebe.fr/faq/"
+  ogTitle="FAQ Maison Foébé · Comprendre avant de commencer"
+  ogDesc="Ce qu’est Foébé, à qui l’espace s’adresse, comment utiliser les outils gratuits et comment les accompagnements évolueront."
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
+  schemaType="FAQPage"
+  pageName="Questions fréquentes sur Maison Foébé"
+  pageAbout="Self-care structuré, épuisement fonctionnel, outils gratuits et futurs accompagnements"
+  faqItems={faqItems}
+>
+  <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+    <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+    <div class="fallback-links">
+      <a href="/comprendre/">Comprendre</a>
+      <a href="/methode/">Méthode</a>
+      <a href="/faq/" aria-current="page">FAQ</a>
+      <a href="/zones/">7 zones</a>
+      <a href="/dictionnaire/">Dictionnaire</a>
+    </div>
+  </nav>
+  <div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
+    <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
+  </div>
+
+  <main class="faq-page" id="mainContent" tabindex="-1">
+    <section class="faq-hero" aria-labelledby="faq-title">
+      <div class="faq-hero__inner">
+        <span class="faq-hero__eyebrow">Questions fréquentes · Maison Foébé</span>
+        <h1 id="faq-title">FAQ Maison Foébé<br><em>Comprendre sans avoir à tout lire.</em></h1>
+        <p class="faq-hero__lead">Vérifie rapidement ce qu’est cet espace, ce qu’il ne promet pas, comment utiliser les ressources gratuites et ce qui arrivera ensuite.</p>
+        <nav class="faq-jump" aria-label="Accès rapide aux catégories de questions">
+          <a href="#comprendre-foebe"><strong>Je découvre Foébé</strong><span>Positionnement, public et self-care</span></a>
+          <a href="#utiliser-le-site"><strong>Je veux savoir par où commencer</strong><span>Outils, rythme et ressources gratuites</span></a>
+          <a href="#evolution"><strong>Je veux connaître la suite</strong><span>Accompagnements et prochaines ouvertures</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="faq-groups" aria-label="Réponses aux questions fréquentes">
+      <div class="faq-groups__inner">
+        {faqGroups.map((group) => (
+          <section class="faq-group" id={group.id} aria-labelledby={`${group.id}-title`}>
+            <header class="faq-group__header">
+              <span class="faq-group__index">{group.index}</span>
+              <h2 id={`${group.id}-title`}>{group.title}</h2>
+              <p>{group.intro}</p>
+            </header>
+            <div class="faq-list">
+              {group.items.map((item) => (
+                <details class="faq-item">
+                  <summary>
+                    <span>{item.question}</span>
+                    <span class="faq-item__plus" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="faq-item__answer"><p>{item.answer}</p></div>
+                </details>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="faq-future" aria-labelledby="faq-future-title">
+      <div class="faq-future__inner">
+        <div>
+          <h2 id="faq-future-title">Tu n’as pas besoin d’attendre pour commencer.</h2>
+          <p>Les accompagnements viendront plus tard. Aujourd’hui, tu peux déjà te situer, explorer une zone ou choisir un geste simple. Et si tu souhaites travailler avec Maison Foébé à l’ouverture, tu peux laisser ton email depuis l’accueil.</p>
+        </div>
+        <div class="faq-future__actions">
+          <a class="faq-future__primary" href="/#portes">Être informé·e des ouvertures</a>
+          <a class="faq-future__secondary" href="/pratiquer/">Choisir un outil gratuit</a>
+        </div>
+      </div>
+    </section>
+
+    <GuidedNextSteps
+      id="faq-next"
+      title="Choisis seulement la prochaine étape utile."
+      intro="Pas de parcours obligatoire : une seule porte suffit pour continuer."
+      links={[
+        { href: '/comprendre/', kicker: 'Le cadre', label: 'Comprendre Maison Foébé', description: 'Voir la logique, la posture et ce que l’espace cherche à rendre lisible.' },
+        { href: '/echelle-foebe/', kicker: 'Se situer', label: 'Faire l’Échelle Foébé', description: 'Observer les 7 dimensions de ton self-care en quelques minutes.' },
+        { href: '/a-propos/', kicker: 'La fondatrice', label: 'Découvrir qui tient le cadre', description: 'Comprendre le parcours scientifique et l’intention derrière Foébé.' },
+      ]}
+    />
+  </main>
+</BaseLayout>

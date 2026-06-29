@@ -1,0 +1,167 @@
+/* Phase B — blocs éditoriaux partagés, sobres et accessibles. */
+.foebe-guided-faq,
+.foebe-next-steps{
+  position:relative;
+  padding:clamp(58px,8vw,96px) clamp(20px,5vw,56px);
+  color:var(--text,#F0EAE7);
+  background:var(--bg,#2C1A12);
+}
+[data-theme='day'] .foebe-guided-faq,
+[data-theme='day'] .foebe-next-steps{
+  color:#4E291F;
+  background:#F0EAE7;
+}
+.foebe-guided-faq::before,
+.foebe-next-steps::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 8% 0%,rgba(196,82,121,.08),transparent 32%),radial-gradient(circle at 92% 100%,rgba(187,126,96,.10),transparent 34%);
+}
+.foebe-guided-faq__inner,
+.foebe-next-steps__inner{
+  position:relative;
+  z-index:1;
+  max-width:1080px;
+  margin:0 auto;
+}
+.foebe-guided-faq__header,
+.foebe-next-steps__header{
+  max-width:760px;
+  margin-bottom:clamp(26px,4vw,42px);
+}
+.foebe-guided-faq__eyebrow,
+.foebe-next-steps__eyebrow,
+.foebe-next-steps__kicker{
+  display:block;
+  margin-bottom:10px;
+  color:#BB7E60;
+  font:700 10px/1.4 'Poppins',sans-serif;
+  letter-spacing:2.1px;
+  text-transform:uppercase;
+}
+.foebe-guided-faq__title,
+.foebe-next-steps__title{
+  margin:0;
+  color:inherit;
+  font:600 clamp(30px,5vw,54px)/1.08 'Lora',serif;
+  letter-spacing:-.03em;
+}
+.foebe-guided-faq__intro,
+.foebe-next-steps__intro{
+  max-width:700px;
+  margin:18px 0 0;
+  color:inherit;
+  opacity:.78;
+  font:400 clamp(15px,1.8vw,18px)/1.75 'Poppins',sans-serif;
+}
+.foebe-guided-faq__list{
+  display:grid;
+  gap:12px;
+  max-width:900px;
+}
+.foebe-guided-faq__item{
+  overflow:hidden;
+  border:1px solid rgba(187,126,96,.26);
+  border-radius:18px;
+  background:rgba(240,234,231,.035);
+  box-shadow:0 14px 34px rgba(0,0,0,.08);
+}
+[data-theme='day'] .foebe-guided-faq__item{
+  background:rgba(255,255,255,.54);
+  box-shadow:0 14px 34px rgba(78,41,31,.07);
+}
+.foebe-guided-faq__question{
+  min-height:62px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:18px;
+  padding:18px clamp(18px,3vw,28px);
+  color:inherit;
+  cursor:pointer;
+  list-style:none;
+  font:600 clamp(15px,1.8vw,17px)/1.45 'Poppins',sans-serif;
+}
+.foebe-guided-faq__question::-webkit-details-marker{display:none}
+.foebe-guided-faq__question:focus-visible{
+  outline:2px solid #BB7E60;
+  outline-offset:-3px;
+}
+.foebe-guided-faq__icon{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(187,126,96,.38);
+  border-radius:999px;
+  color:#BB7E60;
+  font:500 20px/1 'Poppins',sans-serif;
+  transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.foebe-guided-faq__item[open] .foebe-guided-faq__icon{
+  transform:rotate(45deg);
+  background:#BB7E60;
+  color:#F0EAE7;
+}
+.foebe-guided-faq__answer{
+  padding:0 clamp(18px,3vw,28px) 22px;
+  color:inherit;
+  opacity:.8;
+  font:400 15px/1.75 'Poppins',sans-serif;
+}
+.foebe-guided-faq__answer p{margin:0;max-width:760px}
+.foebe-guided-faq--compact{padding-block:clamp(48px,7vw,76px)}
+.foebe-guided-faq--compact .foebe-guided-faq__title{font-size:clamp(28px,4.2vw,44px)}
+.foebe-next-steps__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.foebe-next-steps__card{
+  position:relative;
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:24px 54px 24px 24px;
+  border:1px solid rgba(187,126,96,.26);
+  border-radius:20px;
+  color:inherit;
+  background:rgba(240,234,231,.035);
+  text-decoration:none;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+[data-theme='day'] .foebe-next-steps__card{background:rgba(255,255,255,.54)}
+.foebe-next-steps__card:hover,
+.foebe-next-steps__card:focus-visible{
+  transform:translateY(-3px);
+  border-color:#BB7E60;
+  background:rgba(187,126,96,.09);
+  outline:none;
+}
+.foebe-next-steps__card:focus-visible{box-shadow:0 0 0 3px rgba(187,126,96,.28)}
+.foebe-next-steps__card strong{
+  display:block;
+  margin-bottom:10px;
+  font:600 19px/1.3 'Lora',serif;
+}
+.foebe-next-steps__card > span:not(.foebe-next-steps__kicker):not(.foebe-next-steps__arrow){
+  opacity:.75;
+  font:400 13.5px/1.65 'Poppins',sans-serif;
+}
+.foebe-next-steps__arrow{
+  position:absolute;
+  right:22px;
+  bottom:22px;
+  color:#BB7E60;
+  font-size:22px;
+}
+@media(max-width:780px){
+  .foebe-next-steps__grid{grid-template-columns:1fr}
+  .foebe-next-steps__card{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .foebe-guided-faq__icon,.foebe-next-steps__card{transition:none}
+}

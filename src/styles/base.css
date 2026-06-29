@@ -1,0 +1,11 @@
+/* Socle minimal commun. Les styles de chaque univers restent chargés par page. */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0;min-width:320px}
+img,svg,video,canvas{max-width:100%}
+img{height:auto}
+button,input,select,textarea{font:inherit}
+.foebe-skip-link{position:fixed;z-index:100000;left:12px;top:12px;transform:translateY(-180%);padding:10px 14px;border-radius:10px;background:#f0eae7;color:#4e291f;font:600 13px/1.2 Poppins,sans-serif}
+.foebe-skip-link:focus{transform:translateY(0)}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

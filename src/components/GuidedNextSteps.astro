@@ -1,0 +1,44 @@
+---
+interface LinkItem {
+  href: string;
+  label: string;
+  description: string;
+  kicker?: string;
+}
+
+interface Props {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  links: LinkItem[];
+}
+
+const {
+  id,
+  eyebrow = 'Pour continuer sans te disperser',
+  title,
+  intro,
+  links,
+} = Astro.props;
+---
+
+<section class="foebe-next-steps" aria-labelledby={`${id}-title`}>
+  <div class="foebe-next-steps__inner">
+    <header class="foebe-next-steps__header">
+      <span class="foebe-next-steps__eyebrow">{eyebrow}</span>
+      <h2 class="foebe-next-steps__title" id={`${id}-title`}>{title}</h2>
+      {intro && <p class="foebe-next-steps__intro">{intro}</p>}
+    </header>
+    <div class="foebe-next-steps__grid">
+      {links.map((link) => (
+        <a class="foebe-next-steps__card" href={link.href}>
+          {link.kicker && <span class="foebe-next-steps__kicker">{link.kicker}</span>}
+          <strong>{link.label}</strong>
+          <span>{link.description}</span>
+          <span class="foebe-next-steps__arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

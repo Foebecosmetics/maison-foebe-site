@@ -10,14 +10,14 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
   zoneSlug="Mental"
   zoneNumber="04"
   zoneEmoji="🧠"
-  title="Zone Mental · Maison Foébé"
-  description="Zone Mental · Maison Foébé : comprendre la surcharge cognitive, les pensées en boucle et la difficulté à décrocher, puis choisir un premier geste de récupération mentale."
+  title="Zone Mental · Surcharge mentale et pensées en boucle · Foébé"
+  description="Comprendre la surcharge mentale, les pensées en boucle et la difficulté à décrocher, puis choisir un premier geste de récupération cognitive."
   canonical="https://maisonfoebe.fr/zone-mental/"
-  ogTitle="Zone Mental · Maison Foébé"
-  ogDesc="Zone Mental · Maison Foébé : comprendre la surcharge cognitive, les pensées en boucle et la difficulté à décrocher, puis choisir un premier geste de récupération mentale."
+  ogTitle="Zone Mental · Surcharge mentale et pensées en boucle"
+  ogDesc="Repérer la surcharge cognitive, faire le mini-test Foébé et choisir un premier geste pour alléger le mental."
   ogImage="https://maisonfoebe.fr/images/zones/og-zone-mental.png"
-  twitterTitle="Zone Mental · Maison Foébé"
-  twitterDesc="Comprendre la surcharge cognitive, les pensées en boucle et retrouver un premier espace mental."
+  twitterTitle="Zone Mental · Surcharge mentale"
+  twitterDesc="Comprendre la surcharge cognitive, les pensées en boucle et choisir un premier geste de récupération mentale."
   twitterImage="https://maisonfoebe.fr/images/zones/og-zone-mental.png"
 >
 <div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
@@ -26,7 +26,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <noscript>
   <style>.foebe-scroll-progress--fallback{display:block!important}</style>
 </noscript>
-<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -202,7 +202,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink">Voir l’Échelle Foébé →</a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -367,5 +367,232 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 </div>
 </div>
 </main>
+
+<script is:inline data-zone-dataset>
+var ZONE_INTRO = {
+            text: "La zone <strong>Mental</strong> dans ton self-care concerne tes pensées, tes décisions et ta manière de percevoir ce qui t'arrive. Quand cette zone est surchargée, ce n'est pas toujours spectaculaire. Ce sont souvent les mêmes pensées qui reviennent, l'attention qui se fragmente, l'impression de ne jamais vraiment décrocher. Ce n'est pas une question d'intelligence ni de volonté. C'est une question de charge.",
+            warning: null
+        };
+        var PITCH_DATA = [{
+                icon: "🔍",
+                label: "Cette zone concerne",
+                val: "La capacité à récupérer mentalement, à orienter ton attention, à sortir d'une boucle et à retrouver un peu d'espace intérieur."
+            },
+            {
+                icon: "⚠️",
+                label: "Prioritaire si tu observes",
+                val: "Des pensées qui tournent, une concentration plus fragile, un cerveau qui continue même quand ton corps essaie déjà de ralentir."
+            },
+            {
+                icon: "🗺️",
+                label: "Sur cette page",
+                val: "Tu vas comprendre comment la surcharge cognitive s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret."
+            }
+        ];
+        var STATE_DEFS = {
+            sol: {
+                title: "Solide",
+                text: "Ton mental sait se mettre en pause. Tu arrives à te concentrer et à décrocher quand tu en as besoin. Quelques gestes réguliers permettent de le maintenir dans cet état."
+            },
+            nour: {
+                title: "À nourrir",
+                text: "Quelque chose tourne en fond. Des pensées reviennent, parfois négatives. Une légère difficulté à lâcher prise. C'est le bon moment d'écouter le signal avant qu'il s'installe."
+            },
+            frag: {
+                title: "Fragile",
+                text: "La surcharge est perceptible. Ta concentration est réduite, une présence totale dans les tâches que tu fais est de plus en plus difficile. Tu gères, mais cela a un coût. Les gestes ci-dessous sont faits pour t'aider."
+            },
+            prior: {
+                title: "Priorité",
+                text: "Ton mental est en surcharge. Les signaux se répètent et deviennent visibles au quotidien. À ce stade, il devient important de recréer un premier espace mental, même petit, pour que la charge ne repose pas uniquement sur l'effort ou le contrôle."
+            }
+        };
+        var POSIT_RESULTS = {
+            sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+            nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
+            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
+            prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
+        };
+        var COMPRENDRE = {
+            intro: "La surcharge mentale ne commence pas par un effondrement. Elle s'installe par accumulation, souvent sans qu'on la voie venir.",
+            facteurs: [{
+                    icon: "🔁",
+                    name: "La boucle sans sortie",
+                    desc: "Ton cerveau rejoue un problème non résolu encore et encore, parce qu'il cherche une issue. C'est un mécanisme de traitement normal. Sauf que sans nouvelles données, la boucle ne trouve pas de sortie. Elle consomme de l'énergie en permanence, même en arrière-plan."
+                },
+                {
+                    icon: "📶",
+                    name: "Trop à trier, pas assez de filtre",
+                    desc: "Quand le volume d'informations devient trop dense, le cerveau peut rester en mode tri : surveiller, évaluer, classer, même quand rien n'est vraiment urgent. Peu à peu, ce bruit devient le fond de la journée."
+                },
+                {
+                    icon: "🌫",
+                    name: "Le repos qui ne restaure pas",
+                    desc: "Le mental récupère aussi dans les phases où l'attention n'est pas dirigée volontairement : rêverie, ennui, marche sans destination. Quand ces moments disparaissent, la fatigue cognitive peut s'accumuler en silence. Changer d'écran n'est pas toujours une vraie coupure."
+                }
+            ],
+            vrIcon: "🧠",
+            vrTitle: "Résultat : un cerveau toujours allumé",
+            vrNote: "Le signe d'épuisement mental n'est pas la panne sèche. C'est le bruit de fond constant, cette sensation que ton cerveau continue de tourner même quand tu essaies de te poser."
+        };
+        var OBS_QUESTIONS = [{
+                q: "Tu ressasses régulièrement les mêmes pensées sans avancer : le soir, ou en plein milieu d'autre chose.",
+                sub: "Pas une réflexion productive. Une boucle qui tourne sans trouver de sortie."
+            },
+            {
+                q: "Rester concentré·e sur une seule chose est devenu difficile. Tu passes à autre chose avant d'avoir terminé.",
+                sub: "Ce n'est pas de la flemme. C'est un système de filtrage surchargé qui cherche à s'alléger."
+            },
+            {
+                q: "En fin de journée, tu n'arrives pas à décrocher même quand tu es épuisé·e. Le corps réclame du repos, mais le mental continue.",
+                sub: "Ce décalage corps-mental signale une surcharge installée. L'un est à plat, l'autre n'a pas reçu l'autorisation de s'arrêter."
+            },
+            {
+                q: "Tu oublies des choses simples : un rendez-vous, l'endroit où tu viens de poser un objet, une étape d'une tâche que tu fais pourtant régulièrement.",
+                sub: "C'est souvent le signe que ta mémoire de travail est déjà pleine d'autres choses."
+            },
+            {
+                q: "Penser à tout ce que tu as à faire te fatigue avant même d'avoir commencé.",
+                sub: "L'anticipation coûte parfois autant que l'action elle-même. Ce n'est pas un manque de motivation."
+            }
+        ];
+        var OBS_DATA = [{
+                cls: "s0",
+                title: "Aucun signal identifié",
+                text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vue sur les 7 dimensions de ton self-care.",
+                crossLink: {
+                    label: "Explorer les 7 zones →",
+                    url: "/echelle-foebe/"
+                }
+            },
+            {
+                cls: "s1",
+                title: "1 signal sur 5 · à surveiller",
+                text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+            },
+            {
+                cls: "s2",
+                title: "2 signaux sur 5 · seuil d'attention",
+                text: "Deux signaux identifiés. C'est le bon moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour t'aider."
+            },
+            {
+                cls: "s3",
+                title: "3 signaux sur 5 · zone à prioriser",
+                text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+            },
+            {
+                cls: "s4",
+                title: "4 signaux sur 5 · priorité élevée",
+                text: "Quatre signaux présents. Le mental est en surcharge active. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
+            },
+            {
+                cls: "s5",
+                title: "5 signaux sur 5 · priorité immédiate",
+                text: "Tous les signaux sont là. Commence par les gestes de récupération dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
+            }
+        ];
+        var IMPACTS_INTRO = "Un mental surchargé ne reste pas seulement dans la tête. Concrètement, il finit par peser sur le reste de ton self-care de façon visible.";
+        var IMPACTS_DATA = [{
+                emoji: "🧠",
+                dim: "Mental",
+                tag: "primary",
+                tagLabel: "Point de départ",
+                url: null,
+                desc: "Le bruit cognitif s'installe. Attention fragmentée, pensées en boucle, difficulté à prioriser ce qui compte vraiment."
+            },
+            {
+                emoji: "🧘",
+                dim: "Corps",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-corps/",
+                desc: "Un cerveau souvent en alerte peut maintenir le corps dans une tension de fond : muscles contractés, sommeil plus fragile, fatigue difficile à expliquer clairement."
+            },
+            {
+                emoji: "⚡",
+                dim: "Énergie",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-energie/",
+                desc: "Le fonctionnement mental mobilise déjà beaucoup de ressources. En vigilance prolongée, la récupération peut devenir moins fluide et la réserve plus difficile à reconstituer."
+            },
+            {
+                emoji: "🌊",
+                dim: "Émotions",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-emotions/",
+                desc: "Quand les réserves cognitives sont basses, réguler ce que tu ressens devient plus difficile. Tu réagis parfois plus vite, plus fort, ou avec moins de recul."
+            },
+            {
+                emoji: "🤝",
+                dim: "Relations",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-relations/",
+                desc: "Un mental surchargé est un mental ailleurs. Tu peux être présent·e physiquement dans une conversation et complètement absent·e mentalement."
+            },
+            {
+                emoji: "✨",
+                dim: "Sens",
+                tag: "deep",
+                tagLabel: "Impact profond",
+                url: "/zone-sens/",
+                desc: "Les décisions importantes demandent de la disponibilité mentale. En surcharge, cette place se réduit. L'urgence prend le dessus et ce qui compte vraiment passe après."
+            }
+        ];
+        
+        var GESTES_META = {
+            name: "Pour relâcher la charge mentale",
+            sub: "Trois gestes simples pour retrouver un peu d'espace",
+            freqIcon: "📅",
+            freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence quand tu remarques des pertes de concentration, de la rumination.",
+            intention: "Ces trois gestes ne règlent pas le problème de fond. Mais ils réduisent un peu la pression immédiate et redonnent un premier appui pour repartir sereinement."
+        };
+        var GESTES_DATA = [{
+                type: "🌀  Ne rien faire, vraiment.",
+                meta: ["⏱ 10 min", "Effort minimal"],
+                text: "Fais quelque chose sans objectif et sans écran : marcher sans direction, regarder par la fenêtre, laisser l'esprit aller où il veut. Pas de podcast. Pas de liste en tête.",
+                why: "Les moments sans objectif peuvent aider le mental à trier, relâcher et retrouver de l'espace. Ce n'est pas forcément du temps perdu : c'est parfois là que la pression baisse.",
+                sensoriel: "Les premières minutes peuvent sembler inhabituelles ou vides. Ce n'est pas un problème. Dans cette zone, le plus difficile est justement d'accepter un moment sans objectif."
+            },
+            {
+                type: "📝 Vider sur papier",
+                meta: ["⏱ 5 min", "Effort bas"],
+                text: "Écris tout ce qui tourne dans ta tête, sans relire, sans corriger, sans chercher à en faire quelque chose. Tu peux jeter la feuille après.",
+                why: "Ce qui est écrit demande souvent moins d'être maintenu actif dans la tête. L'externalisation peut libérer un peu de capacité mentale immédiatement.",
+                sensoriel: null
+            },
+            {
+                type: "✅ Une tâche jusqu'au bout",
+                meta: ["⏱ 25 min", "Effort moyen"],
+                text: "Choisis une chose. Ferme tout le reste. Fais-la jusqu'au bout, même imparfaitement. Puis arrête-toi vraiment.",
+                why: "Retrouver l'expérience de finir quelque chose peut réactiver une satisfaction simple, souvent brouillée par le multitâche chronique. Un geste qui rappelle au mental qu'une tâche peut avoir une fin.",
+                sensoriel: "Le but n'est pas de faire beaucoup. Le but est de recréer un point d'arrêt net, pour que ton cerveau enregistre qu'une action a commencé, s'est faite, puis s'est terminée."
+            }
+        ];
+        var SECTIONS_META = {
+            comprendre: {
+                num: "01",
+                eyebrow: "Ce qui se passe vraiment",
+                title: "Comprendre la zone Mental"
+            },
+            minitest: {
+                num: "02",
+                eyebrow: "Auto-observation",
+                title: "Mini-test · 5 questions"
+            },
+            impacts: {
+                num: "03",
+                eyebrow: "Comment ça se propage",
+                title: "Effets en cascade"
+            },
+            gestes: {
+                num: "04",
+                eyebrow: "Des gestes pour commencer",
+                title: "Rituels Foébé"
+            }
+        };
+</script>
 <script src="/scripts/foebe-zone.js" is:inline></script>
 </ZoneLayout>

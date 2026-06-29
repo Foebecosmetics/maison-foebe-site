@@ -1,14 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/pages/respiration.css';
+
 ---
 
 <BaseLayout
-  title="Respiration — Maison Foébé"
-  description="Trois exercices de respiration guidée pour revenir à soi — apaisement profond, cohérence cardiaque, ancrage mental. Maison Foébé."
+  title="Respiration guidée · 3 exercices pour revenir au calme"
+  description="Trois exercices de respiration guidée pour relâcher la tension, retrouver un ancrage mental ou revenir au calme sans forcer le souffle."
   canonical="https://maisonfoebe.fr/respiration/"
-  ogTitle="Respiration guidée — Maison Foébé"
-  ogDesc="Trois exercices de respiration guidée pour revenir au corps avec douceur, si la respiration reste confortable. Guidé par une balle animée."
+  ogTitle="Respiration guidée · Maison Foébé"
+  ogDesc="Trois rythmes guidés pour revenir au corps avec douceur, lorsque la respiration reste confortable."
   ogImage="https://maisonfoebe.fr/images/og-respiration.png"
+
+  ogImageAlt="Illustration d’une personne assise pour la respiration guidée Maison Foébé"
 >
 <a class="foebe-skip-link" href="#stateIntro" id="foebeSkipLink">Aller au contenu</a>
 <div class="bg-orb bg-orb-1"></div>
@@ -35,7 +39,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </noscript>
 <div class="state active" id="stateIntro" tabindex="-1">
   <span class="eyebrow">Maison Foébé · Respiration</span>
-  <h1 class="intro-title">Reviens à toi.<br><em>En quelques souffles.</em></h1>
+  <h1 class="intro-title">Respiration guidée.<br><em>Reviens à toi en quelques souffles.</em></h1>
   <div class="divider"></div>
   <p class="safety-note">
     <span class="safety-symbol" aria-hidden="true">⚠️</span>
@@ -75,110 +79,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <button class="btn-secondary" type="button" data-restart><span class="cta-kicker">Si tu veux rester ici</span><strong class="cta-title">Choisir un autre exercice</strong></button>
   </div>
 </div>
-<script>
-const TECH={apaisement:{label:'Apaisement profond',cycles:4,phases:[{name:'Inspire',dur:4,pos:'top',color:'#BB7E60'},{name:'Retiens',dur:6,pos:'top',color:'#C45279'},{name:'Expire',dur:8,pos:'bottom',color:'#4A7C59'}]},coherence:{label:'Cohérence cardiaque',cycles:6,phases:[{name:'Inspire',dur:5,pos:'top',color:'#BB7E60'},{name:'Expire',dur:5,pos:'bottom',color:'#4A7C59'}]},ancrage:{label:'Ancrage mental',cycles:5,phases:[{name:'Inspire',dur:4,pos:'top',color:'#BB7E60'},{name:'Retiens',dur:4,pos:'top',color:'#C45279'},{name:'Expire',dur:6,pos:'bottom',color:'#4A7C59'},{name:'Pause',dur:2,pos:'bottom',color:'#8C6A5A'}]}};
-let running=false,timer=null,currentTech=null,cycle=0,phaseIdx=0,trackH=0;const BALL_DIAM=52;
-function showState(id){document.querySelectorAll('.state').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
-function begin(key){currentTech=TECH[key];cycle=0;phaseIdx=0;running=true;const vh=window.innerHeight;trackH=Math.min(Math.max(vh*0.35,180),280);document.getElementById('track').style.height=trackH+'px';setBallPos('bottom',0);document.getElementById('phaseLabel').textContent='';document.getElementById('countLabel').textContent='';updateCyclesLabel();showState('stateExercise');const pl=document.getElementById('phaseLabel');const cl=document.getElementById('countLabel');pl.style.opacity='1';cl.style.opacity='0';let countdown=3;pl.textContent=countdown;pl.style.fontSize='52px';pl.style.color='var(--text-dim)';const cdTimer=setInterval(()=>{countdown--;if(countdown>0){pl.textContent=countdown;}else{clearInterval(cdTimer);pl.textContent='';pl.style.fontSize='';pl.style.color='';cl.style.opacity='0.5';setTimeout(()=>runPhase(),200);}},1000);}
-function setBallPos(pos,duration){const ball=document.getElementById('ball');const topPos=-BALL_DIAM/2;const bottomPos=trackH-BALL_DIAM/2;ball.style.transition=duration>0?`top ${duration}s linear`:'none';ball.style.top=(pos==='top'?topPos:bottomPos)+'px';}
-function setBallColor(color){const ball=document.getElementById('ball');ball.style.background=color;ball.style.boxShadow=`0 0 32px 8px ${color}44`;}
-function updateCyclesLabel(){const total=currentTech.cycles;document.getElementById('cyclesLabel').textContent=cycle<total?`Cycle ${cycle+1} sur ${total}`:'';}
-function runPhase(){if(!running)return;const tech=currentTech;if(cycle>=tech.cycles){finish();return;}const phase=tech.phases[phaseIdx];const prevPhase=phaseIdx>0?tech.phases[phaseIdx-1]:tech.phases[tech.phases.length-1];const moving=prevPhase.pos!==phase.pos;setBallColor(phase.color);const pl=document.getElementById('phaseLabel');pl.style.opacity='0';setTimeout(()=>{pl.textContent=phase.name;pl.style.opacity='1';},200);if(moving){setBallPos(phase.pos,phase.dur);}let count=phase.dur;const cl=document.getElementById('countLabel');cl.textContent=count;cl.style.opacity='0.5';const start=Date.now();function tick(){if(!running)return;const elapsed=Math.floor((Date.now()-start)/1000);const remaining=phase.dur-elapsed;if(remaining>0){cl.textContent=remaining;timer=setTimeout(tick,1000-((Date.now()-start)%1000));}else{cl.textContent='';phaseIdx++;if(phaseIdx>=tech.phases.length){phaseIdx=0;cycle++;updateCyclesLabel();}setTimeout(()=>runPhase(),300);}}timer=setTimeout(tick,1000);}
-function stop(){running=false;if(timer)clearTimeout(timer);showState('stateIntro');}
-function finish(){running=false;document.getElementById('phaseLabel').style.opacity='0';document.getElementById('countLabel').style.opacity='0';setTimeout(()=>showState('stateDone'),800);}
-window.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('[data-tech]').forEach(btn=>{
-    btn.addEventListener('click',()=>begin(btn.dataset.tech));
-  });
-  document.querySelectorAll('[data-stop]').forEach(btn=>{
-    btn.addEventListener('click',stop);
-  });
-  function bindRestart(){
-    document.querySelectorAll('[data-restart]').forEach(btn=>{
-      btn.addEventListener('click',()=>showState('stateIntro'));
-    });
-  }
-  const from=new URLSearchParams(window.location.search).get('from');
-  if(from==='test'){
-    document.getElementById('doneActions').innerHTML=`<a href="/echelle-foebe/" class="btn-primary cta-main"><span class="cta-kicker">Si tu veux te lire</span><strong class="cta-title">Faire l’Échelle Foébé</strong></a><a href="/boussole/" class="btn-secondary"><span class="cta-kicker">Si tu veux juste te situer</span><strong class="cta-title">Ouvrir le Sas</strong></a><a href="/zones/" class="btn-secondary"><span class="cta-kicker">Si tu veux comprendre</span><strong class="cta-title">Voir les 7 zones</strong></a><a href="/boussole-scenarios/" class="btn-secondary"><span class="cta-kicker">Si tu veux t’entraîner</span><strong class="cta-title">Lire une situation</strong></a><button class="btn-secondary" type="button" data-restart><span class="cta-kicker">Si tu veux rester ici</span><strong class="cta-title">Recommencer</strong></button>`;
-  }
-  bindRestart();
-});
-</script>
-<script id="foebeScrollProgressFallbackScript">
-(function(){
-  var root = document.documentElement;
-  var bar = document.getElementById('foebeScrollProgressFallbackBar');
-  if (!bar) return;
 
-  var active = false;
-  var ticking = false;
 
-  function progressIsDisabled(){
-    return !!(document.body && document.body.getAttribute('data-foebe-progress') === 'off');
-  }
-
-  function update(){
-    if (!active || progressIsDisabled()) {
-      ticking = false;
-      return;
-    }
-    var doc = document.documentElement;
-    var body = document.body || doc;
-    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    var fullHeight = Math.max(
-      doc.scrollHeight, body.scrollHeight,
-      doc.offsetHeight, body.offsetHeight,
-      doc.clientHeight
-    );
-    var max = Math.max(0, fullHeight - window.innerHeight);
-    var progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
-    bar.style.transform = 'scaleX(' + progress + ')';
-    ticking = false;
-  }
-
-  function requestUpdate(){
-    if (!active || ticking) return;
-    ticking = true;
-    if (window.requestAnimationFrame) window.requestAnimationFrame(update);
-    else window.setTimeout(update, 16);
-  }
-
-  function activate(){
-    if (active || progressIsDisabled()) return;
-    active = true;
-    window.addEventListener('scroll', requestUpdate, { passive:true });
-    window.addEventListener('resize', requestUpdate);
-    window.addEventListener('load', requestUpdate);
-    requestUpdate();
-  }
-
-  function deactivate(){
-    if (!active) return;
-    active = false;
-    window.removeEventListener('scroll', requestUpdate);
-    window.removeEventListener('resize', requestUpdate);
-    window.removeEventListener('load', requestUpdate);
-    bar.style.transform = 'scaleX(0)';
-    ticking = false;
-  }
-
-  function syncWithShell(){
-    if (root.classList.contains('foebe-shell-failed')) activate();
-    else deactivate();
-  }
-
-  window.addEventListener('foebe:shell-failed', syncWithShell);
-  window.addEventListener('foebe:shell-ready', syncWithShell);
-
-  if ('MutationObserver' in window) {
-    new MutationObserver(syncWithShell).observe(root, {
-      attributes:true,
-      attributeFilter:['class']
-    });
-  }
-
-  syncWithShell();
-})();
-</script>
+<script is:inline src="/scripts/pages/respiration.js"></script>
 </BaseLayout>

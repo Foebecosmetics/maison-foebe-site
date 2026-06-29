@@ -1,14 +1,25 @@
 ---
+import GuidedFaq from '../../components/GuidedFaq.astro';
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/pages/pratiquer.css';
+
+const pratiquerFaq = [
+  { question: 'Quel outil choisir en premier ?', answer: 'L’Échelle pour te situer, les Zones pour comprendre un déséquilibre, la Respiration pour revenir au calme, et la Boussole pour lire une situation concrète.' },
+  { question: 'Dois-je utiliser les quatre outils ?', answer: 'Non. Choisis seulement la porte qui répond à ton besoin du moment. Revenir plus tard est toujours possible.' },
+  { question: 'Que faire si un outil augmente mon inconfort ?', answer: 'Arrête, reviens à quelque chose de familier et ne force pas. Si l’inconfort persiste ou t’inquiète, demande un avis médical ou psychologique adapté.' },
+];
 ---
 
 <BaseLayout
-  title="Pratiquer · Maison Foébé"
-  description="Les outils Maison Foébé : Échelle Foébé, 7 zones, respiration guidée et Boussole. Choisir un point d’entrée selon son besoin du moment."
+  title="Pratiquer le self-care · 4 outils gratuits Maison Foébé"
+  description="Choisir entre l’Échelle Foébé, les 7 zones, la respiration guidée et la Boussole selon son besoin : se situer, comprendre ou revenir au calme."
   canonical="https://maisonfoebe.fr/pratiquer/"
-  ogTitle="Pratiquer · Maison Foébé"
-  ogDesc="Quatre outils Foébé pour se situer, comprendre, se réguler ou explorer selon son besoin du moment."
-  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
+  ogTitle="Pratiquer le self-care avec 4 outils gratuits"
+  ogDesc="Quatre portes pour se situer, comprendre ce qui se joue, revenir au calme ou lire une situation sans se surcharger."
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
 >
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
       <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"
@@ -38,7 +49,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="hero-copy reveal">
             <span class="hero-eyebrow">Choisir sans se surcharger</span>
             <h1 class="hero-title" id="pratiquer-title">
-              Quatre portes,<br /><span class="foebe-text foebe-text--warm">un point de départ.</span>
+              Quatre outils de self-care,<br /><span class="foebe-text foebe-text--warm">un seul point de départ.</span>
             </h1>
             <span aria-hidden="true" class="hero-rule"></span>
             <p class="hero-intro">
@@ -167,63 +178,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </div>
       </section>
-    </main>
-    <script>
-      (function () {
-        var root = document.documentElement;
-        var revealEls = document.querySelectorAll(".reveal");
-
-        if (!revealEls.length || !("IntersectionObserver" in window)) {
-          return;
-        }
-
-        try {
-          var observer = new IntersectionObserver(
-            function (entries) {
-              entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            {
-              threshold: 0.1,
-              rootMargin: "0px 0px -6% 0px",
-            },
-          );
-
-          root.classList.add("foebe-reveal-ready");
-          revealEls.forEach(function (element) {
-            observer.observe(element);
-          });
-        } catch (error) {
-          root.classList.remove("foebe-reveal-ready");
-          revealEls.forEach(function (element) {
-            element.classList.add("visible");
-          });
-        }
-      })();
-    </script>
-    <script id="foebeFallbackProgressScript">
-      (function () {
-        var bar = document.getElementById("foebeScrollProgressFallbackBar");
-        if (!bar) return;
-
-        function updateFallbackProgress() {
-          if (!document.documentElement.classList.contains("foebe-shell-failed")) {
-            return;
-          }
-
-          var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-          var progress = documentHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / documentHeight)) : 0;
-
-          bar.style.transform = "scaleX(" + progress + ")";
-        }
-
-        window.addEventListener("foebe:shell-failed", updateFallbackProgress);
-        window.addEventListener("scroll", updateFallbackProgress, { passive: true });
-        window.addEventListener("resize", updateFallbackProgress);
-      })();
-    </script>
+    
+<GuidedFaq
+  id="pratiquer-faq"
+  compact
+  title="Tu peux choisir sans chercher le parcours parfait."
+  intro="Ces outils sont des portes d’entrée, pas une nouvelle routine à réussir."
+  items={pratiquerFaq}
+/>
+</main>
+    
+    
+<script is:inline src="/scripts/pages/pratiquer.js"></script>
 </BaseLayout>

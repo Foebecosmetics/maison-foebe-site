@@ -12,6 +12,7 @@
 /dictionnaire.html /dictionnaire/ 301
 /a-propos.html /a-propos/ 301
 /mentions-legales.html /mentions-legales/ 301
+/faq.html /faq/ 301
 /zone-corps.html /zone-corps/ 301
 /zone-energie.html /zone-energie/ 301
 /zone-emotions.html /zone-emotions/ 301
@@ -40,3 +41,13 @@
 /zones/zone-environnement/ /zone-environnement/ 301
 /zones/zone-relations/ /zone-relations/ 301
 /zones/zone-sens/ /zone-sens/ 301
+
+# Ressources et sitemap historiques
+/sitemap-maison-foebe-cloudflare.xml /sitemap.xml 301
+/favicon-96.png /images/favicon-96x96.png 301
+/favicon-512.png /images/favicon-512.png 301
+
+# Anciennes images sociales — noms rendus descriptifs en Phase B
+/images/og-foebe.jpg /images/og-maison-foebe-self-care.jpg 301
+/images/og-test.png /images/og-echelle-foebe.png 301
+/images/og-story.jpg /images/og-lexique-self-care.jpg 301

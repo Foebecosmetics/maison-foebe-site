@@ -10,14 +10,14 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
   zoneSlug="Environnement"
   zoneNumber="05"
   zoneEmoji="🌍"
-  title="Zone Environnement · Maison Foébé"
-  description="Zone Environnement · Comprendre l’impact de l’espace, du désordre et des stimuli sur ton self-care."
+  title="Zone Environnement · Espace, stimuli et charge invisible · Foébé"
+  description="Comprendre comment l’espace, le désordre et les stimuli influencent le self-care, puis choisir un premier ajustement soutenable."
   canonical="https://maisonfoebe.fr/zone-environnement/"
-  ogTitle="Zone Environnement · Maison Foébé"
-  ogDesc="Comprendre l’impact de ton espace sur ton self-care, faire le mini-test et choisir un premier geste pour alléger ton environnement."
+  ogTitle="Zone Environnement · Espace, stimuli et charge invisible"
+  ogDesc="Repérer l’effet de l’espace et des stimuli sur ton état, faire le mini-test et choisir un ajustement réaliste."
   ogImage="https://maisonfoebe.fr/images/zones/og-zone-environnement.png"
-  twitterTitle="Zone Environnement · Maison Foébé"
-  twitterDesc="Comprendre l’impact de l’espace, du désordre et des stimuli sur ton self-care."
+  twitterTitle="Zone Environnement · Espace et stimuli"
+  twitterDesc="Comprendre l’impact du désordre, des stimuli et de l’environnement sur ton self-care."
   twitterImage="https://maisonfoebe.fr/images/zones/og-zone-environnement.png"
 >
 <div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
@@ -26,7 +26,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <noscript>
   <style>.foebe-scroll-progress--fallback{display:block!important}</style>
 </noscript>
-<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -202,7 +202,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink">Voir l’Échelle Foébé →</a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -367,5 +367,231 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 </div>
 </div>
 </main>
+
+<script is:inline data-zone-dataset>
+var ZONE_INTRO = {
+            text: "La zone <strong>Environnement</strong> dans ton self-care concerne l'espace dans lequel tu vis et travailles. Quand cette zone se dérègle, ce n'est pas toujours spectaculaire. Cela provient souvent d'un désordre qui s'accumule, un espace qui ne ressource plus, une surexposition à des stimuli qui finissent par peser sans qu'on le remarque vraiment. Ce n'est pas une question d'ordre ni d'esthétique. C'est une question d'impact réel sur ton état.",
+            warning: null
+        };
+        var PITCH_DATA = [{
+                icon: "🔍",
+                label: "Cette zone concerne",
+                val: "Ta capacité à créer et maintenir un environnement qui te ressource plutôt qu'il ne te draine, et à reconnaître l'impact réel de ton espace sur ton état."
+            },
+            {
+                icon: "⚠️",
+                label: "Prioritaire si tu observes",
+                val: "Un espace qui génère de la tension plutôt que du calme, une surexposition aux écrans ou aux bruits, une incapacité à récupérer dans tes espaces habituels."
+            },
+            {
+                icon: "🗺️",
+                label: "Sur cette page",
+                val: "Tu vas comprendre comment l'environnement influence ton self-care, souvent de façon invisible, tu vas pouvoir repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton self-care, puis choisir un premier geste concret."
+            }
+        ];
+        var STATE_DEFS = {
+            sol: {
+                title: "Solide",
+                text: "Tes espaces te ressourcent plus qu'ils ne te drainent. Tu remarques l'impact de l'environnement sur ton état et tu peux agir dessus. Un environnement qui ressource, ça se construit et ça s'entretient."
+            },
+            nour: {
+                title: "À nourrir",
+                text: "L'espace a un léger effet drainant. Quelque chose pèse sans être clairement identifié. Le moment d'agir avant que l'accumulation s'installe."
+            },
+            frag: {
+                title: "Fragile",
+                text: "L'environnement est source de tension perceptible. Le désordre, le bruit, la surexposition numérique ont un impact réel sur ton état. Tu gères, mais dans un cadre qui ne t'aide pas. Les gestes ci-dessous parlent directement à ce stade."
+            },
+            prior: {
+                title: "Priorité",
+                text: "Ton environnement contribue activement à ton état de surcharge. À ce stade, il devient important de recréer un premier espace ressourçant, même petit, sans attendre que tout le reste soit réglé."
+            }
+        };
+        var POSIT_RESULTS = {
+            sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+            nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
+            frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
+            prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
+        };
+        var COMPRENDRE = {
+            intro: "L’environnement n’agit pas seulement comme un décor. Il influence l’attention, la tension, la récupération et la sensation de calme, souvent plus qu’on ne le remarque.",
+            facteurs: [{
+                    icon: "📱",
+                    name: "La surexposition aux stimuli",
+                    desc: "Le cerveau traite en permanence ce qui l’entoure : bruits, lumières, notifications, désordre visuel. Chaque stimulus peut demander un micro-traitement, même discret, et finir par ajouter du bruit à l’arrière-plan."
+                },
+                {
+                    icon: "🗂️",
+                    name: "Le désordre comme charge cognitive",
+                    desc: "Un espace en désordre n'est pas juste inesthétique. Il génère une charge cognitive permanente. Des tâches non terminées signalées visuellement, des décisions remises à plus tard, forment un fond de tension qui ne se relâche pas."
+                },
+                {
+                    icon: "🌳",
+                    name: "L'absence de nature et de calme sensoriel",
+                    desc: "Les environnements naturels ou simplement calmes peuvent aider l’attention à se relâcher. Le but n’est pas la performance : juste offrir au système un autre type de stimulation."
+                }
+            ],
+            vrIcon: "🌿",
+            vrTitle: "Résultat : un espace qui ne ressource plus",
+            vrNote: "L’environnement influence l’état intérieur plus qu’on ne le remarque : attention, tension, récupération, sensation de calme. Et quand l’espace ne soutient plus, la charge finit par devenir difficile à ignorer."
+        };
+        var OBS_QUESTIONS = [{
+                q: "Tu entres chez toi et tu ressens une légère tension plutôt qu'un relâchement. L'espace ne t'accueille pas vraiment.",
+                sub: "L'espace de vie peut devenir un lieu de régulation. Quand ce n'est pas le cas, le corps peut garder une forme d'alerte même au repos."
+            },
+            {
+                q: "Tu passes plusieurs heures sans vraie coupure d'écran. Les transitions entre applications, réseaux ou contenus se font sans pause.",
+                sub: "La surexposition numérique peut maintenir le système de traitement en alerte continue, sans lui offrir de vraie coupure."
+            },
+            {
+                q: "Un désordre ou une tâche visible dans ton environnement continue de peser mentalement même quand tu n'y travailles pas.",
+                sub: "Les tâches incomplètes et visibles peuvent occuper de la place mentale. Le désordre n'est pas seulement un problème d'organisation."
+            },
+            {
+                q: "Tu n'as pas de rituel de transition entre les espaces ou les temps de ta journée. Tout se fond dans tout.",
+                sub: "L'absence de transition peut rendre plus difficile le passage d'un mode à l'autre. Tout reste dans le même registre."
+            },
+            {
+                q: "Tu as du mal à récupérer dans tes espaces habituels. La détente reste de surface même quand tu t'y accordes du temps.",
+                sub: "Quand l'espace lui-même est drainant, le repos peut rester difficile même avec du temps disponible."
+            }
+        ];
+        var OBS_DATA = [{
+                cls: "s0",
+                title: "Aucun signal identifié",
+                text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vue d'ensemble sur les 7 dimensions de ton self-care.",
+                crossLink: {
+                    label: "Explorer les 7 zones →",
+                    url: "/echelle-foebe/"
+                }
+            },
+            {
+                cls: "s1",
+                title: "1 signal sur 5 · à surveiller",
+                text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+            },
+            {
+                cls: "s2",
+                title: "2 signaux sur 5 · seuil d'attention",
+                text: "Deux signaux identifiés. C'est le bon moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour t'aider."
+            },
+            {
+                cls: "s3",
+                title: "3 signaux sur 5 · zone à prioriser",
+                text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+            },
+            {
+                cls: "s4",
+                title: "4 signaux sur 5 · priorité élevée",
+                text: "Quatre signaux présents. L'environnement draine activement. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t’aider à aller plus loin."
+            },
+            {
+                cls: "s5",
+                title: "5 signaux sur 5 · priorité immédiate",
+                text: "Tous les signaux sont là. Commence par créer un espace ressourçant dès maintenant. Si ce schéma dure, un accompagnement structuré peut t’aider à mieux comprendre et réajuster cette dimension de ton self-care."
+            }
+        ];
+        var IMPACTS_INTRO = "Un environnement drainant ne reste pas cantonné à l'espace physique. Concrètement, il finit par peser sur le reste de ton self-care de façon visible.";
+        var IMPACTS_DATA = [{
+                emoji: "🌿",
+                dim: "Environnement",
+                tag: "primary",
+                tagLabel: "Point de départ",
+                url: null,
+                desc: "L'espace génère de la tension plutôt que du calme. La surexposition aux stimuli maintient le système en vigilance continue."
+            },
+            {
+                emoji: "🧠",
+                dim: "Mental",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-mental/",
+                desc: "Un environnement désorganisé ou surchargé fragmente l'attention. La concentration demande plus d'effort quand le contexte visuel ou sonore est chargé."
+            },
+            {
+                emoji: "⚡",
+                dim: "Énergie",
+                tag: "secondary",
+                tagLabel: "Impact direct",
+                url: "/zone-energie/",
+                desc: "Composer avec un environnement surchargé peut consommer de l'énergie. La récupération devient souvent moins fluide quand l'espace n'est pas propice au calme."
+            },
+            {
+                emoji: "🧘",
+                dim: "Corps",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-corps/",
+                desc: "L'environnement parle aussi au corps. Un espace en désordre ou bruyant peut maintenir une légère tension et rendre la respiration moins profonde."
+            },
+            {
+                emoji: "🌊",
+                dim: "Émotions",
+                tag: "secondary",
+                tagLabel: "Impact indirect",
+                url: "/zone-emotions/",
+                desc: "L'espace peut refléter et amplifier l'état émotionnel. Un environnement qu'on ne maîtrise pas peut donner une sensation de perte de contrôle qui affecte la régulation émotionnelle."
+            },
+            {
+                emoji: "✨",
+                dim: "Sens",
+                tag: "deep",
+                tagLabel: "Impact profond",
+                url: "/zone-sens/",
+                desc: "L'espace que tu crées dit quelque chose de ce qui compte pour toi. Quand il est en désaccord avec tes valeurs, un fond de malaise peut s'installer."
+            }
+        ];
+        var GESTES_META = {
+            name: "Pour créer un espace qui ressource",
+            sub: "Trois gestes simples pour réduire la charge environnementale",
+            freqIcon: "📅",
+            freqText: "Quand mettre en place ces gestes ? Une fois aujourd'hui, de préférence dans l'espace où tu passes le plus de temps.",
+            intention: "Ces trois gestes ne transforment pas un espace du jour au lendemain. Mais un environnement qui commence à ressourcer, même partiellement, change l'état dans lequel on se trouve."
+        };
+        var GESTES_DATA = [{
+                type: "📵 Coupure numérique de quinze minutes",
+                meta: ["⏱ 15 min", "Effort bas"],
+                text: "Pose ton téléphone dans une autre pièce. Coupe les notifications. Reste dans l'espace physique sans aucun écran pendant quinze minutes.",
+                why: "L’absence de stimulus numérique peut aider le système à changer de registre. Quinze minutes ne règlent pas tout, mais elles peuvent créer une première vraie coupure.",
+                sensoriel: "Les premières minutes peuvent générer un réflexe de vérification. Ce réflexe lui-même peut devenir un indicateur de l'habitude prise avec les stimuli."
+            },
+            {
+                type: "🧹 Un seul espace dégagé",
+                meta: ["⏱ 10 min", "Effort bas"],
+                text: "Choisis un endroit précis : ton bureau, ta table de nuit, ton plan de travail. Dégage-le complètement. Un seul espace, pas tout l'appartement.",
+                why: "Un espace dégagé peut réduire le bruit visuel et offrir un point d’appui. Même un seul endroit plus clair peut servir d’ancrage au calme dans un contexte chargé.",
+                sensoriel: null
+            },
+            {
+                type: "🌿 Dix minutes dehors sans objectif",
+                meta: ["⏱ 10 min", "Effort minimal"],
+                text: "Sors. Sans écouteurs, sans liste, sans destination précise. Marche ou reste assis·e dehors. Laisse l'environnement naturel faire son effet.",
+                why: "Les environnements naturels ou simplement calmes peuvent aider l’attention à se relâcher. Le but n’est pas la performance : juste offrir au système un autre type de stimulation.",
+                sensoriel: null
+            }
+        ];
+        var SECTIONS_META = {
+            comprendre: {
+                num: "01",
+                eyebrow: "Ce qui se passe vraiment",
+                title: "Comprendre la zone Environnement"
+            },
+            minitest: {
+                num: "02",
+                eyebrow: "Auto-observation",
+                title: "Mini-test · 5 questions"
+            },
+            impacts: {
+                num: "03",
+                eyebrow: "Comment ça se propage",
+                title: "Effets en cascade"
+            },
+            gestes: {
+                num: "04",
+                eyebrow: "Des gestes pour commencer",
+                title: "Rituels Foébé"
+            }
+        };
+</script>
 <script src="/scripts/foebe-zone.js" is:inline></script>
 </ZoneLayout>

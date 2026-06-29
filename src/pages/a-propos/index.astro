@@ -1,15 +1,29 @@
 ---
+import GuidedNextSteps from '../../components/GuidedNextSteps.astro';
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/pages/a-propos.css';
+
+const aboutNextLinks = [
+  { href: '/methode/', kicker: 'Le cadre', label: 'Comprendre la méthode', description: 'Voir comment psychologie, ergonomie et self-care sont reliés.' },
+  { href: '/faq/', kicker: 'Questions fréquentes', label: 'Vérifier ce qu’est Foébé', description: 'Le cadre, les limites, les ressources gratuites et la suite du projet.' },
+  { href: '/#portes', kicker: 'Prochaines ouvertures', label: 'Être tenu·e informé·e', description: 'Laisser ton email pour recevoir les informations lorsque les accompagnements seront prêts.' },
+];
 ---
 
 <BaseLayout
-  title="À propos · Maison Foébé — Qui tient le cadre"
-  description="La fondatrice, son parcours académique et l’intention derrière Maison Foébé : un espace structuré par une docteure en psychologie et ergonome."
+  title="À propos de Maison Foébé · Psychologie et ergonomie"
+  description="Découvrir la fondatrice de Maison Foébé, son doctorat en psychologie, son expertise en ergonomie et l’origine d’un self-care structuré."
   canonical="https://maisonfoebe.fr/a-propos/"
-  ogTitle="À propos — Maison Foébé"
-  ogDesc="La fondatrice, le parcours académique et l’intention derrière Maison Foébé."
-  ogImage="https://maisonfoebe.fr/images/og-foebe.jpg"
->
+  ogTitle="À propos de Maison Foébé"
+  ogDesc="Le parcours scientifique, l’expertise en santé au travail et l’intention derrière Maison Foébé."
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
+
+  schemaType="ProfilePage"
+  pageName="À propos de Maison Foébé et de sa fondatrice"
+  pageAbout="Psychologie du travail, ergonomie, facteurs humains et santé au travail">
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -33,7 +47,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <div class="about-hero-grid">
 <div class="hero-copy reveal">
 <span class="hero-eyebrow">Qui tient le cadre</span>
-<h1 class="hero-title" id="about-title">La recherche comme socle.<br/><span class="foebe-warm">Le vécu comme point de départ.</span></h1>
+<h1 class="hero-title" id="about-title">À propos de Maison Foébé.<br/><span class="foebe-warm">La recherche comme socle. Le vécu comme point de départ.</span></h1>
 <span aria-hidden="true" class="hero-rule"></span>
 <p class="hero-intro">Maison Foébé est un espace structuré de self-care, construit pour rendre lisible ce qui s’épuise chez des personnes qui continuent pourtant à fonctionner.</p>
 <p class="hero-reassurance">Ici, la psychologie, l’ergonomie et les facteurs humains ne servent pas à réduire l’expérience : ils offrent un cadre pour mieux la comprendre.</p>
@@ -174,63 +188,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </div>
 </div>
 </section>
+
+<GuidedNextSteps
+  id="about-next"
+  title="Comprendre le cadre, puis choisir ta prochaine étape."
+  intro="Tu peux approfondir la méthode, vérifier les questions fréquentes ou simplement être informé·e de la suite."
+  links={aboutNextLinks}
+/>
 </main>
-<script>
-(function(){
-  var revealEls = document.querySelectorAll('.reveal');
-  if (!revealEls.length) return;
 
-  if (!('IntersectionObserver' in window)) {
-    revealEls.forEach(function(el){ el.classList.add('visible'); });
-    return;
-  }
 
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.10, rootMargin:'0px 0px -6% 0px'});
-
-  revealEls.forEach(function(el){ observer.observe(el); });
-})();
-</script>
-<script id="foebeFallbackProgressScript">
-(function () {
-  var root = document.documentElement;
-  var bar = document.getElementById("foebeScrollProgressFallbackBar");
-  if (!bar) return;
-
-  function updateFallbackProgress() {
-    if (!root.classList.contains("foebe-shell-failed")) return;
-
-    var doc = document.documentElement;
-    var body = document.body || doc;
-    var scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    var fullHeight = Math.max(
-      doc.scrollHeight,
-      doc.offsetHeight,
-      doc.clientHeight,
-      body.scrollHeight || 0,
-      body.offsetHeight || 0
-    );
-    var maxScroll = Math.max(0, fullHeight - window.innerHeight);
-    var progress = maxScroll > 0
-      ? Math.min(1, Math.max(0, scrollTop / maxScroll))
-      : 0;
-
-    bar.style.transform = "scaleX(" + progress.toFixed(4) + ")";
-  }
-
-  window.addEventListener("foebe:shell-failed", updateFallbackProgress);
-  window.addEventListener("scroll", updateFallbackProgress, { passive: true });
-  window.addEventListener("resize", updateFallbackProgress, { passive: true });
-  window.addEventListener("orientationchange", updateFallbackProgress, { passive: true });
-  window.addEventListener("load", updateFallbackProgress);
-  window.addEventListener("pageshow", updateFallbackProgress);
-  updateFallbackProgress();
-})();
-</script>
+<script is:inline src="/scripts/pages/a-propos.js"></script>
 </BaseLayout>

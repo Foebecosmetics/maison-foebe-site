@@ -20,27 +20,8 @@
         }
 
         function initMeta() {
-            var z = ZONE_CONFIG;
-            document.getElementById("pageTitle").textContent = z.title;
-            document.getElementById("metaDesc").setAttribute("content", z.metaDesc);
-            document.getElementById("canonical").setAttribute("href", z.canonicalUrl);
-            document.getElementById("ogTitle").setAttribute("content", z.ogTitle);
-            document.getElementById("ogDesc").setAttribute("content", z.ogDesc);
-            document.getElementById("ogUrl").setAttribute("content", z.canonicalUrl);
-            document.getElementById("jsonLd").textContent = JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "name": z.title,
-                "description": z.metaDesc,
-                "url": z.canonicalUrl,
-                "inLanguage": "fr",
-                "isPartOf": {
-                    "@type": "WebSite",
-                    "@id": "https://maisonfoebe.fr/#website",
-                    "name": "Maison Foébé"
-                }
-            });
-            document.getElementById("formZoneField").value = z.slug;
+            var formZone = document.getElementById("formZoneField");
+            if (formZone) formZone.value = ZONE_CONFIG.slug;
         }
 
         function initHero() {
@@ -272,7 +253,6 @@
         })();
         (function() {
             var bar = document.getElementById("foebeScrollProgressFallbackBar");
-            var btn = document.getElementById("backToTop");
 
             function updateFallbackProgress() {
                 if (!bar || !document.documentElement.classList.contains("foebe-shell-failed")) return;
@@ -284,10 +264,6 @@
             function updateScrollUi() {
                 var s = window.scrollY;
                 updateFallbackProgress();
-                if (btn) {
-                    if (s > 400) btn.classList.add("visible");
-                    else btn.classList.remove("visible");
-                }
             }
 
             window.addEventListener("foebe:shell-failed", updateFallbackProgress);
@@ -302,15 +278,6 @@
                     mainNav.classList.toggle("scrolled", window.scrollY > 40);
                 }, { passive: true });
             }
-        })();
-        (function() {
-            var btn = document.getElementById('backToTop');
-            if (btn) btn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
         })();
 
         /* =========================================================

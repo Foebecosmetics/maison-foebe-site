@@ -10,14 +10,14 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
   zoneSlug="Relations"
   zoneNumber="06"
   zoneEmoji="🤝"
-  title="Zone Relations · Maison Foébé"
-  description="Zone Relations · Comprendre le déséquilibre dans les liens, l'isolement progressif et poser un premier geste avec Maison Foébé."
+  title="Zone Relations · Liens, isolement et limites · Foébé"
+  description="Comprendre le déséquilibre dans les liens, l’isolement progressif et la difficulté à poser des limites, puis choisir un premier geste."
   canonical="https://maisonfoebe.fr/zone-relations/"
-  ogTitle="Zone Relations · Maison Foébé"
-  ogDesc="Zone Relations · Comprendre le déséquilibre dans les liens, l'isolement progressif et poser un premier geste avec Maison Foébé."
+  ogTitle="Zone Relations · Liens, isolement et limites"
+  ogDesc="Repérer ce qui déséquilibre les relations, faire le mini-test Foébé et choisir un premier geste relationnel."
   ogImage="https://maisonfoebe.fr/images/zones/og-zone-relations.png"
-  twitterTitle="Zone Mental · Maison Foébé"
-  twitterDesc="Comprendre la surcharge cognitive, les pensées en boucle et retrouver un premier espace mental."
+  twitterTitle="Zone Relations · Liens et limites"
+  twitterDesc="Comprendre le déséquilibre dans les liens, l’isolement progressif et choisir un premier geste."
   twitterImage="https://maisonfoebe.fr/images/zones/og-zone-relations.png"
 >
 <div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
@@ -26,7 +26,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <noscript>
   <style>.foebe-scroll-progress--fallback{display:block!important}</style>
 </noscript>
-<button aria-label="Retour en haut de page" id="backToTop" type="button">↑</button>
+
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -202,7 +202,7 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 <div class="obs-result-body">
 <p class="obs-result-title" id="obsResultTitle"></p>
 <p class="obs-result-text" id="obsResultText"></p>
-<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink"></a>
+<a class="obs-cross-link" href="/echelle-foebe/" id="obsCrossLink">Voir l’Échelle Foébé →</a>
 </div>
 <div class="obs-result-actions">
 <button class="obs-btn-primary" id="obsCtaGestes" type="button">Voir les gestes concrets →</button>
@@ -367,5 +367,231 @@ import ZoneLayout from '../../layouts/ZoneLayout.astro';
 </div>
 </div>
 </main>
+
+<script is:inline data-zone-dataset>
+var ZONE_INTRO = {
+                    text: "La zone <strong>Relations</strong> dans ton self-care concerne la qualité de tes liens, pas leur quantité. Quand cette zone se dérègle, on observe souvent un isolement qui s'installe progressivement, des interactions qui drainent plus qu'elles ne ressourcent, ou une tendance à tout donner sans pouvoir recevoir. Ce n'est pas une question de sociabilité ni de générosité. C'est une question d'équilibre.",
+                    warning: null
+                };
+        var PITCH_DATA = [{
+                        icon: "🔍",
+                        label: "Cette zone concerne",
+                        val: "Ta capacité à entretenir des liens qui te ressourcent, à poser des limites sans culpabilité et à ne pas t'oublier dans tes relations."
+                    },
+                    {
+                        icon: "⚠️",
+                        label: "Prioritaire si tu observes",
+                        val: "Des interactions qui drainent plus qu'elles ne ressourcent, un isolement qui s'installe, une tendance à tout donner sans pouvoir recevoir, ou des limites difficiles à poser."
+                    },
+                    {
+                        icon: "🗺️",
+                        label: "Sur cette page",
+                        val: "Tu vas comprendre comment le déséquilibre relationnel s'installe, repérer si cette zone mérite ton attention, voir ce qu'elle peut impacter ailleurs dans ton équilibre, puis choisir un premier geste concret."
+                    }
+                ];
+        var STATE_DEFS = {
+                    sol: {
+                        title: "Solide",
+                        text: "Globalement, tes relations te ressourcent. Tu arrives à poser des limites sans trop de culpabilité et à demander ce dont tu as besoin. Un équilibre dans les liens, ça se remarque et ça se cultive."
+                    },
+                    nour: {
+                        title: "À nourrir",
+                        text: "Quelque chose dans la balance relationnelle est légèrement déséquilibré. Tu donnes plus que tu reçois, ou bien tu observes un isolement qui commence. C'est le moment d'agir avant que la distance s'installe."
+                    },
+                    frag: {
+                        title: "Fragile",
+                        text: "Les interactions sont plus souvent drainantes que ressourçantes. Poser des limites est difficile et générateur de culpabilité. Tu gères, mais dans un déséquilibre qui coûte. Les gestes ci-dessous parlent directement à ce stade."
+                    },
+                    prior: {
+                        title: "Priorité",
+                        text: "Le déséquilibre relationnel est marqué et répété. L'isolement ou la surcharge relationnelle pèse sur l'ensemble de ton quotidien. À ce stade, il devient important de recréer un premier espace de rééquilibrage, même petit, pour que le lien ne repose pas uniquement sur l'effort ou l'isolement."
+                    }
+                };
+        var POSIT_RESULTS = {
+                    sol: "Ok, cette zone fonctionne. L'auto-observation ci-dessous peut confirmer. Les gestes restent utiles pour maintenir cet équilibre.",
+                    nour: "Un signal à surveiller. Cette zone mérite de l'attention, pas de l'urgence. Les 5 questions ci-dessous vont préciser où tu en es.",
+                    frag: "Plusieurs signaux sont probablement présents. Prends le temps de faire l'auto-observation : ça va confirmer et t'orienter vers les bons gestes.",
+                    prior: "Ton ressenti est une donnée valide. L'auto-observation va confirmer, et les gestes ci-dessous sont là pour commencer à créer de l'espace maintenant."
+                };
+        var COMPRENDRE = {
+                    intro: "Le déséquilibre dans les relations ne commence pas par une rupture. Il s'impose peu à peu, souvent par petits compromis accumulés.",
+                    facteurs: [{
+                            icon: "⚖️",
+                            name: "La balance donner-recevoir",
+                            desc: "Donner plus que l'on reçoit de façon chronique épuise. Non parce que donner est mauvais, mais parce qu'en l'absence d'alimentation réciproque, la réserve relationnelle s'efface. Et une fois déserte, elle ne peut plus entretenir les liens."
+                        },
+                        {
+                            icon: "🚧",
+                            name: "Les limites non posées",
+                            desc: "Ne pas fixer de limites n'est pas un acte de générosité. Il s'agit fréquemment d'une tactique pour éviter le conflit ou la culpabilité. Cela finit par créer de la frustration, du ressentiment et des relations qui se chargent."
+                        },
+                        {
+                            icon: "🏝️",
+                            name: "L'isolement progressif",
+                            desc: "Quand les ressources baissent, les liens sont souvent les premiers à se rétrécir : on repousse, on décline, on se protège. Jusqu’au moment où l’isolement s’installe et où retrouver une connexion devient de nouveau un défi."
+                        }
+                    ],
+                    vrIcon: "🤝",
+                    vrTitle: "Résultat : des liens qui coûtent plus qu'ils ne nourrissent",
+                    vrNote: "Le souci ne réside pas dans le fait d'entretenir des relations compliquées. C'est l'absence d'espace pour cultiver celles qui ont véritablement de l'importance."
+                };
+        var OBS_QUESTIONS = [{
+                        q: "Suite à certaines interactions, tu te sens plus épuisé·e qu'auparavant. La conversation t'a pris quelque chose sans vraiment te donner en retour.",
+                        sub: "Il n'est pas nécessaire que toutes les relations soient équilibrées. Toutefois, lorsque la plupart des interactions suscitent ce sentiment, c'est un indicateur."
+                    },
+                    {
+                        q: "Tu as du mal à demander de l'aide ou à accepter qu'on te la propose. Tu préfères te débrouiller seul·e.",
+                        sub: "La difficulté à recevoir est souvent aussi coûteuse que la surabondance à donner. Elle maintient un déséquilibre dans le lien."
+                    },
+                    {
+                        q: "Tu dis oui à des sollicitations alors que tu aurais voulu dire non. Et tu portes cette frustration seul·e.",
+                        sub: "Ce n'est pas de la générosité. C'est souvent de la difficulté à nommer ses besoins ou à accepter la réaction de l'autre."
+                    },
+                    {
+                        q: "Tu remarques un rétrécissement de ton cercle. Les gens que tu vois vraiment, régulièrement, se comptent sur les doigts d'une main.",
+                        sub: "Ce n'est pas forcément un problème. Mais si ce rétrécissement n'est pas un choix, c'est souvent un signal d'isolement qui s'installe."
+                    },
+                    {
+                        q: "En présence des autres, tu es là physiquement, mais ailleurs mentalement. Tu n'arrives pas vraiment à te connecter à la conversation.",
+                        sub: "Cette absence dans la présence est souvent le signe que les ressources disponibles pour le lien sont basses."
+                    }
+                ];
+        var OBS_DATA = [{
+                        cls: "s0",
+                        title: "Aucun signal identifié",
+                        text: "Cette zone n'est pas prioritaire en ce moment. Le test complet te donnera une vision globale des 7 dimensions de ton self-care.",
+                        crossLink: {
+                            label: "Explorer les 7 zones →",
+                            url: "/echelle-foebe/"
+                        }
+                    },
+                    {
+                        cls: "s1",
+                        title: "1 signal sur 5 · à surveiller",
+                        text: "Un signal isolé. Cette zone n'est pas en alerte. Les gestes préventifs ci-dessous restent utiles pour maintenir un bon équilibre."
+                    },
+                    {
+                        cls: "s2",
+                        title: "2 signaux sur 5 · seuil d'attention",
+                        text: "Deux signaux identifiés. C'est le moment d'y prêter attention avant que la charge s'accumule davantage. Les gestes ci-dessous sont là pour ça."
+                    },
+                    {
+                        cls: "s3",
+                        title: "3 signaux sur 5 · zone à prioriser",
+                        text: "Trois signaux confirmés. Cette zone demande une réponse concrète. Commence par les gestes ci-dessous, un à la fois."
+                    },
+                    {
+                        cls: "s4",
+                        title: "4 signaux sur 5 · priorité élevée",
+                        text: "Quatre signaux présents. Le déséquilibre relationnel est actif. Les gestes ci-dessous sont un premier espace à créer. Un accompagnement structuré peut t'aider à aller plus loin."
+                    },
+                    {
+                        cls: "s5",
+                        title: "5 signaux sur 5 · priorité immédiate",
+                        text: "Tous les signaux sont là. Commence par les gestes de rééquilibrage dès maintenant. Si ce schéma dure, un accompagnement structuré aura un impact réel sur cette dimension de ton self-care."
+                    }
+                ];
+        var IMPACTS_INTRO = "Un déséquilibre dans les relations ne se limite pas à la sphère sociale. En pratique, cela finit par avoir un impact de plus en plus évident sur le reste de ton self-care.";
+        var IMPACTS_DATA = [{
+                        emoji: "🤝",
+                        dim: "Relations",
+                        tag: "primary",
+                        tagLabel: "Point de départ",
+                        url: null,
+                        desc: "La balance donner-recevoir est déséquilibrée. Les liens ressourcent moins, l'isolement ou la surcharge relationnelle s'installe."
+                    },
+                    {
+                        emoji: "🌊",
+                        dim: "Émotions",
+                        tag: "secondary",
+                        tagLabel: "Impact direct",
+                        url: "/zone-emotions/",
+                        desc: "Les relations sont un régulateur émotionnel majeur. Quand elles manquent ou qu'elles drainent, la régulation émotionnelle perd un appui central."
+                    },
+                    {
+                        emoji: "✨",
+                        dim: "Sens",
+                        tag: "secondary",
+                        tagLabel: "Impact direct",
+                        url: "/zone-sens/",
+                        desc: "Le sens passe souvent par le lien. Ce qu'on fait pour les autres, avec les autres, grâce aux autres. Quand le lien s'appauvrit, le sens peut se fragiliser avec lui."
+                    },
+                    {
+                        emoji: "🧠",
+                        dim: "Mental",
+                        tag: "secondary",
+                        tagLabel: "Impact indirect",
+                        url: "/zone-mental/",
+                        desc: "Les conflits relationnels non résolus ou les liens insatisfaisants occupent beaucoup de place dans le mental. La rumination relationnelle est l'une des boucles cognitives les plus fréquentes."
+                    },
+                    {
+                        emoji: "⚡",
+                        dim: "Énergie",
+                        tag: "secondary",
+                        tagLabel: "Impact indirect",
+                        url: "/zone-energie/",
+                        desc: "Les interactions drainantes consomment des ressources. Un cercle relationnel déséquilibré entame la réserve énergétique régulièrement, sans la reconstituer."
+                    },
+                    {
+                        emoji: "🧘",
+                        dim: "Corps",
+                        tag: "deep",
+                        tagLabel: "Impact profond",
+                        url: "/zone-corps/",
+                        desc: "L’isolement peut aussi se traduire dans le corps : sommeil plus fragile, stress plus présent, récupération moins fluide. La connexion sociale n’est pas un détail : elle participe à notre régulation."
+                    }
+                ];
+        var GESTES_META = {
+                    name: "Pour rééquilibrer ce qui se passe dans tes liens",
+                    sub: "Trois gestes simples pour commencer à réajuster la balance",
+                    freqIcon: "📅",
+                    freqText: "Quand faire ces gestes ? Une fois aujourd'hui, de préférence en choisissant la personne ou le geste qui te vient naturellement en tête. Pas à planifier : à déclencher.",
+                    intention: "Ces trois gestes ne réparent pas des liens complexes. Mais ils remettent quelque chose en mouvement, et souvent c'est le mouvement lui-même qui compte."
+                };
+        var GESTES_DATA = [{
+                        type: "💬 Un message à quelqu'un qui compte",
+                        meta: ["⏱ 5 min", "Effort bas"],
+                        text: "Pense à une personne que tu apprécies et que tu as peu contactée ces derniers temps. Envoie-lui un message court : pas une excuse, pas une longue explication. Juste un signe de vie.",
+                        why: "Reprendre contact est souvent plus simple qu'on ne le craint. Et le lien, même mis en veille, retrouve souvent sa qualité initiale rapidement.",
+                        sensoriel: "La résistance à reprendre contact est souvent plus grande que la difficulté réelle de le faire."
+                    },
+                    {
+                        type: "🚧 Un non qui protège quelque chose",
+                        meta: ["⏱ Immédiat", "Effort moyen"],
+                        text: "Identifie une sollicitation à venir à laquelle tu aurais envie de dire non. Prépare une réponse courte, sans justification excessive. Puis, si la situation se présente, essaie de la poser simplement.",
+                        why: "Poser une limite claire protège la relation à long terme. Ce qu'on ne dit pas finit par creuser un ressentiment qui fragilise le lien davantage qu'un “non” honnête.",
+                        sensoriel: "Le malaise lié au 'non' vient souvent de l'anticipation, pas de la réaction réelle de l'autre."
+                    },
+                    {
+                        type: "🫂 Demander quelque chose à quelqu'un",
+                        meta: ["⏱ 5 min", "Effort moyen"],
+                        text: "Identifie une chose concrète dont tu aurais besoin. Demande-la à quelqu'un de confiance. Sans minimiser, sans sur-justifier.",
+                        why: "Demander de l'aide crée du lien. Cela permet à l'autre d'exister dans la relation autrement que comme récepteur de tes ressources.",
+                        sensoriel: null
+                    }
+                ];
+        var SECTIONS_META = {
+                    comprendre: {
+                        num: "01",
+                        eyebrow: "Ce qui se passe vraiment",
+                        title: "Comprendre la zone Relations"
+                    },
+                    minitest: {
+                        num: "02",
+                        eyebrow: "Auto-observation",
+                        title: "Mini-test · 5 questions"
+                    },
+                    impacts: {
+                        num: "03",
+                        eyebrow: "Comment ça se propage",
+                        title: "Effets en cascade"
+                    },
+                    gestes: {
+                        num: "04",
+                        eyebrow: "Des gestes pour commencer",
+                        title: "Rituels Foébé"
+                    }
+                };
+</script>
 <script src="/scripts/foebe-zone.js" is:inline></script>
 </ZoneLayout>
