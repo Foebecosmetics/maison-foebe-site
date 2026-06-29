@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "Maison Foébé",
+  "short_name": "Foébé",
+  "description": "Le self-care comme compétence : comprendre ses signaux, se réguler et retrouver une capacité d’action.",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#1b0d0a",
+  "background_color": "#f5efe8",
+  "icons": [
+    { "src": "/images/favicon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/images/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

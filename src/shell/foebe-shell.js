@@ -60,6 +60,7 @@
     if (file === "pratiquer" || file.indexOf("pratiquer") === 0) return "pratiquer.html";
     if (file === "methode" || file === "méthode" || file.indexOf("methode") === 0 || file.indexOf("méthode") === 0) return "methode.html";
     if (file === "a-propos" || file.indexOf("a-propos") === 0 || file.indexOf("apropos") === 0) return "a-propos.html";
+    if (file === "cadre-editorial" || file.indexOf("cadre-editorial") === 0 || file.indexOf("charte-editoriale") === 0) return "cadre-editorial.html";
 
     if (file === "test" || file.indexOf("test") === 0 || file.indexOf("testpratiquer") === 0 || file.indexOf("echelle") === 0 || file.indexOf("échelle") === 0) return "echelle-foebe.html";
     if (file === "zones" || file.indexOf("zones") === 0) return "zones.html";
@@ -135,6 +136,7 @@
       "comprendre.html": { href: "/", backLabel: "Accueil", currentLabel: "Comprendre", aria: "Retour à l’accueil" },
       "a-propos.html": { href: "/", backLabel: "Accueil", currentLabel: "À propos", aria: "Retour à l’accueil" },
       "faq.html": { href: "/", backLabel: "Accueil", currentLabel: "Questions fréquentes", aria: "Retour à l’accueil" },
+      "cadre-editorial.html": { href: "/a-propos/", backLabel: "À propos", currentLabel: "Cadre éditorial", aria: "Retour à la page À propos" },
       "methode.html": { href: "/", backLabel: "Accueil", currentLabel: "La méthode Foébé", aria: "Retour à l’accueil" },
       "pratiquer.html": { href: "/", backLabel: "Accueil", currentLabel: "4 outils", aria: "Retour à l’accueil" },
       "echelle-foebe.html": { href: "/pratiquer/", backLabel: "4 outils", currentLabel: "Échelle Foébé", aria: "Retour aux 4 outils" },
@@ -201,6 +203,7 @@
     { pole: "Découvrir", links: [
       { href: "/comprendre/", label: "Comprendre Maison Foébé" },
       { href: "/a-propos/",   label: "À propos"   },
+      { href: "/cadre-editorial/", label: "Cadre éditorial & sources" },
       { href: "/methode/",    label: "La méthode Foébé" },
       { href: "/faq/",        label: "Questions fréquentes" }
     ]},
@@ -545,6 +548,7 @@
         '<span class="footer-heading">Découvrir</span>' +
         '<a class="footer-link" href="/comprendre/">Comprendre Maison Foébé</a>' +
         '<a class="footer-link" href="/a-propos/">À propos</a>' +
+        '<a class="footer-link" href="/cadre-editorial/">Cadre éditorial & sources</a>' +
         '<a class="footer-link" href="/methode/">La méthode Foébé</a>' +
         '<a class="footer-link" href="/faq/">Questions fréquentes</a>' +
       '</nav>' +

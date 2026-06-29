@@ -1,0 +1,15 @@
+# npm audit report
+
+esbuild  0.27.3 - 0.28.0
+esbuild allows arbitrary file read when running the development server on Windows - https://github.com/advisories/GHSA-g7r4-m6w7-qqqr
+fix available via `npm audit fix --force`
+Will install esbuild@0.28.1, which is a breaking change
+node_modules/esbuild
+  astro  5.17.3 - 7.0.0-beta.6
+  Depends on vulnerable versions of esbuild
+  node_modules/astro
+
+2 low severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force

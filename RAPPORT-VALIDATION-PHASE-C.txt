@@ -1,0 +1,29 @@
+Maison Foébé — Validation Phase C
+Date : 29 juin 2026
+
+npm ci : réussi
+npm run validate : réussi
+Astro : 31 pages HTML générées
+Pages indexables : 29
+Sitemap : 29 URL avec lastmod
+Audit A+B+C : zéro incohérence bloquante
+Wrangler dry-run : 126 fichiers depuis dist
+Route /cadre-editorial/ : HTTP 200
+URL inconnue : HTTP 404
+Alias /charte-editoriale : HTTP 301 vers /cadre-editorial/
+
+Non-régression :
+- echelle-foebe.js : identique bit à bit à la Phase B
+- foebe-zone.js : identique bit à bit à la Phase B
+- boussole.js : identique bit à bit à la Phase B
+- respiration.js : identique bit à bit à la Phase B
+- lexique.js : identique bit à bit à la Phase B
+
+Contrôles Phase C :
+- trois références scientifiques vérifiables présentes
+- anciennes affirmations non documentées absentes
+- page Cadre éditorial présente dans menu et footer
+- publishingPrinciples présent dans le JSON-LD
+- dateModified et author présents sur les pages indexables
+- diplôme et domaines d’expertise présents dans Person
+- Cloudflare remplace Netlify dans les mentions légales

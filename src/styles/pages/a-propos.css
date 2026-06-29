@@ -523,3 +523,14 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 
 
     .foebe-scroll-progress--fallback{display:block!important}
+
+
+/* Phase C — références vérifiables et présence publique sobre. */
+.research-links{display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+.research-link--secondary{font-size:11px!important;opacity:.72}
+.research-verification{max-width:860px;margin:22px 0 0;padding:15px 18px;border-left:3px solid #BB7E60;border-radius:0 14px 14px 0;background:rgba(187,126,96,.07);font:400 12.5px/1.7 'Poppins',sans-serif;opacity:.78}
+.about-section--presence{background:linear-gradient(145deg,rgba(196,82,121,.09),rgba(187,126,96,.055));border-block:1px solid rgba(187,126,96,.18)}
+.presence-layout{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:clamp(36px,7vw,92px);align-items:start}
+.presence-copy p{margin:0 0 18px;max-width:720px;font:400 15.5px/1.82 'Poppins',sans-serif;opacity:.82}
+.presence-link{display:inline-flex;margin-top:8px;color:#BB7E60;font:700 12.5px/1.4 'Poppins',sans-serif;text-decoration-thickness:1px;text-underline-offset:5px}
+@media(max-width:820px){.presence-layout{grid-template-columns:1fr}.research-links{align-items:flex-start}}

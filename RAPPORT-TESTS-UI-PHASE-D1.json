@@ -1,0 +1,207 @@
+[
+  {
+    "name": "mobile: 29 questions",
+    "ok": true,
+    "detail": "29"
+  },
+  {
+    "name": "mobile: 6 sections",
+    "ok": true,
+    "detail": "6"
+  },
+  {
+    "name": "mobile: 4 portes",
+    "ok": true,
+    "detail": "4"
+  },
+  {
+    "name": "mobile: 29 sorties guidées",
+    "ok": true,
+    "detail": "29"
+  },
+  {
+    "name": "mobile: une flèche shell",
+    "ok": true,
+    "detail": "1"
+  },
+  {
+    "name": "mobile: FAQ dans menu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: FAQ dans footer",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: aucun débordement horizontal",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: question récupération trouvée",
+    "ok": true,
+    "detail": "1"
+  },
+  {
+    "name": "mobile: question récupération ouverte",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: sortie Zone Énergie",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: lien données",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: aucune erreur JavaScript",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: 29 questions",
+    "ok": true,
+    "detail": "29"
+  },
+  {
+    "name": "desktop: 6 sections",
+    "ok": true,
+    "detail": "6"
+  },
+  {
+    "name": "desktop: 4 portes",
+    "ok": true,
+    "detail": "4"
+  },
+  {
+    "name": "desktop: 29 sorties guidées",
+    "ok": true,
+    "detail": "29"
+  },
+  {
+    "name": "desktop: une flèche shell",
+    "ok": true,
+    "detail": "1"
+  },
+  {
+    "name": "desktop: FAQ dans menu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: FAQ dans footer",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: aucun débordement horizontal",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: question récupération trouvée",
+    "ok": true,
+    "detail": "1"
+  },
+  {
+    "name": "desktop: question récupération ouverte",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: sortie Zone Énergie",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: lien données",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "desktop: aucune erreur JavaScript",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /echelle-foebe/: contenu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /echelle-foebe/: une flèche shell",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /echelle-foebe/: pas overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /zone-corps/: contenu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /zone-corps/: une flèche shell",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /zone-corps/: pas overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /boussole/: contenu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /boussole/: une flèche shell",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /boussole/: pas overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /dictionnaire/: contenu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /dictionnaire/: une flèche shell",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /dictionnaire/: pas overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /respiration/: contenu",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /respiration/: une flèche shell",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "smoke /respiration/: pas overflow",
+    "ok": true,
+    "detail": ""
+  }
+]

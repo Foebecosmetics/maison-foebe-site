@@ -6,6 +6,7 @@
  */
 import '../styles/base.css';
 import '../styles/phase-b.css';
+import pageLastmod from '../data/page-lastmod.json';
 
 interface Props {
   title: string;
@@ -78,6 +79,7 @@ const routeLabels: Record<string, string> = {
   '/dictionnaire/self-care/': 'Self-care',
   '/a-propos/': 'À propos',
   '/faq/': 'Questions fréquentes',
+  '/cadre-editorial/': 'Cadre éditorial et sources',
   '/mentions-legales/': 'Informations légales',
   '/zone-energie/': 'Zone Énergie',
   '/zone-corps/': 'Zone Corps',
@@ -121,6 +123,13 @@ const organization = {
     height: 500,
   },
   founder: { '@id': PERSON_ID },
+  publishingPrinciples: `${SITE_URL}/cadre-editorial/`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'information',
+    email: 'contact@maisonfoebe.fr',
+    availableLanguage: ['fr'],
+  },
   sameAs: [
     'https://www.instagram.com/maisonfoebe/',
     'https://www.tiktok.com/@maisonfoebe',
@@ -134,6 +143,20 @@ const founder = {
   name: 'Fondatrice de Maison Foébé',
   jobTitle: 'Docteure en psychologie et ergonome',
   description: 'Fondatrice de Maison Foébé, spécialisée en psychologie du travail, ergonomie, facteurs humains et santé au travail.',
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'Doctorat',
+    name: 'Doctorat en psychologie',
+  },
+  knowsAbout: [
+    'Psychologie du travail',
+    'Ergonomie',
+    'Facteurs humains',
+    'Santé au travail',
+    'Charge mentale',
+    'Récupération',
+    'Self-care structuré',
+  ],
   worksFor: { '@id': ORG_ID },
   url: `${SITE_URL}/a-propos/`,
 };
@@ -146,6 +169,7 @@ const website = {
   description: 'Un espace structuré du self-care pour apprendre à se lire, se réguler et retrouver une capacité d’action.',
   inLanguage: 'fr-FR',
   publisher: { '@id': ORG_ID },
+  publishingPrinciples: `${SITE_URL}/cadre-editorial/`,
 };
 
 const breadcrumb = crumbs.length > 1 ? {
@@ -153,6 +177,9 @@ const breadcrumb = crumbs.length > 1 ? {
   '@id': `${normalizedCanonical}#breadcrumb`,
   itemListElement: crumbs,
 } : null;
+
+const lastmodByRoute = pageLastmod as Record<string, string>;
+const pageDateModified = lastmodByRoute[pathname];
 
 const pageNode: Record<string, unknown> = {
   '@type': schemaType,
@@ -164,6 +191,9 @@ const pageNode: Record<string, unknown> = {
   inLanguage: 'fr-FR',
   isPartOf: { '@id': SITE_ID },
   publisher: { '@id': ORG_ID },
+  author: { '@id': PERSON_ID },
+  creator: { '@id': PERSON_ID },
+  publishingPrinciples: `${SITE_URL}/cadre-editorial/`,
   primaryImageOfPage: {
     '@type': 'ImageObject',
     url: ogImage,
@@ -174,6 +204,7 @@ const pageNode: Record<string, unknown> = {
   },
   image: ogImage,
 };
+if (pageDateModified) pageNode.dateModified = pageDateModified;
 if (breadcrumb) pageNode.breadcrumb = { '@id': `${normalizedCanonical}#breadcrumb` };
 if (pageAbout) pageNode.about = pageAbout;
 if (schemaType === 'ProfilePage') pageNode.mainEntity = { '@id': PERSON_ID };
@@ -238,6 +269,7 @@ const structuredData = {
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="robots" content={robots} />
+  <!-- TODO identité publique : si le mode nominatif est activé un jour, remplacer ici "Maison Foébé" par le nom public retenu et aligner Person/author dans le JSON-LD. -->
   <meta name="author" content="Maison Foébé" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="theme-color" content="#1b0d0a" media="(prefers-color-scheme: dark)" />

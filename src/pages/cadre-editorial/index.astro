@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GuidedNextSteps from '../../components/GuidedNextSteps.astro';
+import '../../styles/pages/cadre-editorial.css';
+
+const principles = [
+  {
+    index: '01',
+    title: 'Rendre lisible, sans diagnostiquer.',
+    text: 'Maison Foébé traduit des connaissances issues de la psychologie, de l’ergonomie, des facteurs humains et du self-care en repères accessibles. Le site aide à observer et à comprendre ; il ne remplace ni un diagnostic, ni un suivi médical ou psychologique.',
+  },
+  {
+    index: '02',
+    title: 'Distinguer les connaissances du cadre Foébé.',
+    text: 'Les faits généraux sont reliés à des sources identifiables lorsque le sujet le nécessite. Les schémas, outils et parcours Foébé constituent une synthèse éditoriale originale : ils organisent les repères, mais ne se présentent pas comme une nouvelle vérité scientifique.',
+  },
+  {
+    index: '03',
+    title: 'Soutenir l’autonomie, pas la dépendance.',
+    text: 'Un contenu Foébé doit permettre de repartir avec une compréhension, une question plus claire ou un premier geste soutenable. La fondatrice n’est pas placée au centre de l’expérience : le cadre doit rester utile même sans présence permanente de sa part.',
+  },
+];
+
+const methodItems = [
+  {
+    title: 'Hiérarchie des sources',
+    body: 'Les sources primaires, publications scientifiques, institutions publiques, recommandations professionnelles et documentations officielles sont privilégiées. Les contenus généralistes servent uniquement de contexte, jamais de preuve principale sur un sujet sensible.',
+  },
+  {
+    title: 'Vérification et mise à jour',
+    body: 'Les pages sont relues lors de leur création et lorsqu’un changement important est identifié. Le sitemap indique une date de modification réelle. Une correction peut être demandée à contact@maisonfoebe.fr ; elle est examinée avant toute modification.',
+  },
+  {
+    title: 'Limites et prudence',
+    body: 'Foébé évite les promesses de guérison, les diagnostics à distance et les consignes universelles. Lorsqu’un symptôme dure, s’aggrave, inquiète ou altère fortement le fonctionnement, le site invite à consulter un professionnel adapté.',
+  },
+  {
+    title: 'Indépendance éditoriale',
+    body: 'Aucun contenu n’est actuellement commandé par une marque. Une future affiliation ou collaboration commerciale sera signalée clairement sur la page concernée et ne modifiera pas les critères de fond utilisés pour présenter une ressource.',
+  },
+  {
+    title: 'Une présence publique sobre',
+    body: 'La crédibilité de Maison Foébé repose sur un parcours vérifiable, des références consultables et une méthode explicite — pas sur l’exposition du visage, du corps ou de la vie privée de la fondatrice. Ce choix protège la personne sans rendre le projet opaque.',
+  },
+  {
+    title: 'Outils numériques',
+    body: 'Des outils numériques peuvent aider à structurer, relire, adapter ou mettre en forme certains contenus. La sélection des idées, leur vérification, leur cohérence avec le cadre Foébé et la responsabilité éditoriale restent humaines.',
+  },
+];
+
+const nextLinks = [
+  { href: '/a-propos/', kicker: 'Le parcours', label: 'Découvrir la fondatrice', description: 'Voir le socle scientifique et les références vérifiables derrière Maison Foébé.' },
+  { href: '/methode/', kicker: 'Le cadre', label: 'Comprendre la méthode Foébé', description: 'Voir comment les repères sont organisés pour guider sans réduire.' },
+  { href: '/faq/', kicker: 'Les limites', label: 'Lire les questions fréquentes', description: 'Vérifier ce que Foébé fait, ne fait pas et prépare pour la suite.' },
+];
+---
+
+<BaseLayout
+  title="Cadre éditorial et sources · Maison Foébé"
+  description="Comment Maison Foébé conçoit, vérifie et met à jour ses contenus : sources, limites, indépendance, corrections et engagement pour l’autonomie."
+  canonical="https://maisonfoebe.fr/cadre-editorial/"
+  ogTitle="Cadre éditorial et sources · Maison Foébé"
+  ogDesc="Les règles qui encadrent les contenus Foébé : preuves, prudence, indépendance, corrections et autonomie."
+  ogImage="https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg"
+  ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
+  schemaType="AboutPage"
+  pageName="Cadre éditorial et sources de Maison Foébé"
+  pageAbout="Méthode de création, vérification, correction et mise à jour des contenus Maison Foébé"
+>
+  <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
+    <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
+    <div class="fallback-links">
+      <a href="/comprendre/">Comprendre</a>
+      <a href="/a-propos/">À propos</a>
+      <a href="/cadre-editorial/" aria-current="page">Cadre éditorial</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/pratiquer/">Pratiquer</a>
+    </div>
+  </nav>
+
+  <main class="editorial-page" id="mainContent" tabindex="-1">
+    <section class="editorial-hero" aria-labelledby="editorial-title">
+      <div class="editorial-hero__inner">
+        <span class="editorial-eyebrow">Confiance · Sources · Responsabilité</span>
+        <h1 id="editorial-title">Cadre éditorial<br><em>Ce qui rend un contenu Foébé digne de confiance.</em></h1>
+        <p>Cette page explique comment les contenus sont construits, ce qui relève de connaissances documentées, ce qui appartient au cadre Foébé et comment une correction peut être demandée.</p>
+        <div class="editorial-hero__note"><strong>Lecture guidée :</strong> les trois engagements suffisent pour comprendre l’essentiel. Les détails restent disponibles plus bas, sans obligation de tout lire.</div>
+      </div>
+    </section>
+
+    <section class="editorial-principles" aria-labelledby="principles-title">
+      <div class="editorial-inner">
+        <header class="editorial-heading">
+          <span class="editorial-eyebrow">Les trois engagements</span>
+          <h2 id="principles-title">Un cadre utile avant d’être visible.</h2>
+        </header>
+        <div class="editorial-principles__grid">
+          {principles.map((item) => (
+            <article class="editorial-principle">
+              <span>{item.index}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial-method" aria-labelledby="method-title">
+      <div class="editorial-inner editorial-method__layout">
+        <header class="editorial-heading editorial-heading--sticky">
+          <span class="editorial-eyebrow">Dans la pratique</span>
+          <h2 id="method-title">Comment le cadre est appliqué.</h2>
+          <p>Les détails sont repliés pour préserver une lecture légère. Ouvre seulement le point qui t’intéresse.</p>
+        </header>
+        <div class="editorial-method__list">
+          {methodItems.map((item) => (
+            <details class="editorial-detail">
+              <summary><span>{item.title}</span><span aria-hidden="true">+</span></summary>
+              <p>{item.body}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial-proof" aria-labelledby="proof-title">
+      <div class="editorial-proof__inner">
+        <div>
+          <span class="editorial-eyebrow">Traçabilité</span>
+          <h2 id="proof-title">Les preuves sont séparées de la promesse.</h2>
+          <p>Le parcours et les travaux scientifiques vérifiables sont réunis sur la page À propos. Les limites pratiques et cliniques sont expliquées dans la FAQ. Les pages outils restent centrées sur l’expérience de lecture, sans transformer chaque écran en bibliographie.</p>
+        </div>
+        <div class="editorial-proof__actions">
+          <a href="/a-propos/">Voir le parcours et les références</a>
+          <a href="/faq/#cadre-et-securite">Vérifier le cadre et les limites</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial-contact" aria-labelledby="contact-title">
+      <div class="editorial-contact__inner">
+        <span class="editorial-eyebrow">Correction ou question</span>
+        <h2 id="contact-title">Un contenu peut être corrigé.</h2>
+        <p>Pour signaler une erreur factuelle, une source devenue obsolète ou une formulation ambiguë, écris à <a href="mailto:contact@maisonfoebe.fr">contact@maisonfoebe.fr</a> en indiquant la page concernée. Une remarque n’est pas publiée automatiquement : elle est vérifiée avant modification.</p>
+        <small>Dernière mise à jour éditoriale : 29 juin 2026.</small>
+      </div>
+    </section>
+
+    <GuidedNextSteps
+      id="editorial-next"
+      title="Vérifier le cadre à ton rythme."
+      intro="Le parcours, la méthode et les limites sont séparés pour que tu puisses ouvrir uniquement ce dont tu as besoin."
+      links={nextLinks}
+    />
+  </main>
+</BaseLayout>

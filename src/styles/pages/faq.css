@@ -60,7 +60,7 @@
 }
 .faq-jump{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:12px;
   margin-top:42px;
 }
@@ -99,6 +99,10 @@
 .faq-item[open] .faq-item__plus{transform:rotate(45deg);background:var(--faq-warm);color:#F0EAE7}
 .faq-item__answer{padding:0 clamp(18px,3vw,28px) 23px;max-width:780px;opacity:.82;font:400 15px/1.78 'Poppins',sans-serif}
 .faq-item__answer p{margin:0}
+.faq-item__next{display:inline-flex;align-items:center;gap:8px;margin-top:15px;color:var(--faq-warm);font:600 12.5px/1.5 'Poppins',sans-serif;text-decoration-thickness:1px;text-underline-offset:4px}
+.faq-item__next:hover,.faq-item__next:focus-visible{color:var(--faq-rose);outline:none}
+.faq-item__next span:last-child{font-size:16px;transition:transform .2s ease}
+.faq-item__next:hover span:last-child,.faq-item__next:focus-visible span:last-child{transform:translateX(3px)}
 .faq-item__answer a{color:var(--faq-warm);font-weight:600;text-underline-offset:3px}
 .faq-future{
   padding:clamp(70px,9vw,110px) clamp(20px,6vw,72px);
@@ -120,4 +124,4 @@
   .faq-list{margin-left:0}
   .faq-future__inner{grid-template-columns:1fr}
 }
-@media(prefers-reduced-motion:reduce){.faq-jump a,.faq-item__plus{transition:none}}
+@media(prefers-reduced-motion:reduce){.faq-jump a,.faq-item__plus,.faq-item__next span:last-child{transition:none}}

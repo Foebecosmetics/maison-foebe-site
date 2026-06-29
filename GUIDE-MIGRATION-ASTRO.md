@@ -1,40 +1,64 @@
-# Maison Foébé — migration Astro corrigée
+# Mettre la version Phases A + B sur `migration-astro`
 
-## État de cette livraison
+## 1. Sauvegarde
 
-- 20 pages Astro conservées.
-- Index actuel conservé sans refonte éditoriale.
-- Routes internes converties vers les URLs propres avec slash final.
-- Anciennes URLs `.html` et anciens alias redirigés en 301 grâce à `public/_redirects`.
-- Sitemap aligné sur les 20 routes réellement générées.
-- Appel à l’image de zone inexistante supprimé.
-- Appel à `foebe-breadcrumb.js` supprimé : le Shell fournit déjà la navigation contextuelle.
-- Umami devient facultatif : aucun placeholder n’est publié.
-- `npm run validate` construit puis audite les routes, les liens et les ressources locales.
-
-## Umami
-
-Dans Cloudflare Pages, ajouter une variable d’environnement seulement lorsque l’identifiant est disponible :
+Dans GitHub Desktop, sélectionne le dépôt Maison Foébé puis vérifie que la branche affichée est bien :
 
 ```text
-PUBLIC_UMAMI_WEBSITE_ID=f25f1f6a-c967-4466-a744-e78fa7f4932f
+migration-astro
 ```
 
-Sans cette variable, le site fonctionne normalement et aucun script Umami n’est chargé.
+Clique sur **Fetch origin** avant de modifier les fichiers.
 
-## Commandes avant envoi sur GitHub
+## 2. Remplacement
 
-```bash
-npm ci
-npm run validate
-```
+Décompresse le ZIP. Copie le **contenu** du dossier du projet à la racine du dépôt local.
 
-Le dossier publié par Cloudflare doit être :
+La racine doit contenir directement :
 
 ```text
-dist
+src/
+public/
+scripts/
+package.json
+package-lock.json
+astro.config.mjs
+wrangler.jsonc
 ```
 
-## Travail volontairement reporté
+Ne crée pas un sous-dossier supplémentaire autour de ces fichiers. Ne supprime jamais le dossier caché `.git` du dépôt local.
 
-L’accueil (`src/pages/index.astro`) n’a pas été redesigné. La future architecture éditoriale d’octobre et le hub Accompagnements seront travaillés séparément, afin de ne pas exposer prématurément Atelier, N1, N2 ou N3.
+## 3. Commit et push
+
+Dans GitHub Desktop :
+
+```text
+Commit : Phases A et B SEO complètes
+```
+
+Puis clique sur **Push origin**.
+
+## 4. Cloudflare
+
+Applique les réglages de `REGLAGES-CLOUDFLARE.md`. Le journal doit montrer qu’Astro construit `dist/`, puis que Wrangler lit les ressources depuis `dist`, et non des milliers de fichiers depuis la racine du dépôt.
+
+## 5. Preview à contrôler
+
+Utilise `CHECKLIST-PREVIEW-PHASE-B.md`. Les contrôles indispensables sont :
+
+- accueil et formulaire email ;
+- nouvelle FAQ et ses 16 questions ;
+- Dictionnaire avant et après « Charger le dictionnaire interactif » ;
+- Échelle jusqu’au résultat ;
+- mini-test complet d’une Zone ;
+- Boussole, Respiration et Lexique ;
+- menu du Shell et une seule flèche de retour en haut ;
+- redirections des anciennes URL `.html` ;
+- aperçus sociaux ;
+- PageSpeed des cinq pages critiques.
+
+## 6. Ne pas fusionner immédiatement
+
+La branche `main` reste inchangée tant que la preview n’a pas été validée sur smartphone et ordinateur. Une fois les tests terminés, la fusion vers `main` se fait en une seule bascule maîtrisée.
+
+La refonte éditoriale de l’accueil pour les accompagnements d’octobre n’est pas incluse. Elle reste un chantier séparé afin de ne pas mélanger la migration avec le futur lancement.

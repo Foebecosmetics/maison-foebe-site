@@ -1,0 +1,16 @@
+Comparaison avec maison-foebe-astro-phase-c-corrigee-2026-06-29
+Date : 29 juin 2026
+
+Fichiers moteurs identiques bit à bit :
+
+4b519bd7542f7e176dddd261081edd65bd2cad2702ddfdf47ba69a25878b0b6c  public/scripts/pages/echelle-foebe.js
+389341ee45767034ceb229bcbd434e82f0e530ce76dd1516f7098f70ad5373ca  public/scripts/foebe-zone.js
+00ad84d271121dbfcc821bd6d603216fdfece38b99b7dc722e1315e586afae76  public/scripts/pages/boussole.js
+f7e0baff5c17db29ec9fa56d675b0389c475907d12fa75b9561c28cd70fc44fc  public/scripts/pages/respiration.js
+5c5f6a5be917c2b84a741b70099aad079f834c4c7751c09798c99445bb5003bf  public/scripts/pages/lexique.js
+
+Modifications fonctionnelles de D1 limitées à :
+- src/pages/faq/index.astro
+- src/styles/pages/faq.css
+- garde-fous FAQ dans scripts/audit-built-site.mjs
+- documentation et version du paquet

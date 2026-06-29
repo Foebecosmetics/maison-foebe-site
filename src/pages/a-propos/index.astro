@@ -4,8 +4,45 @@ import GuidedNextSteps from '../../components/GuidedNextSteps.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/pages/a-propos.css';
 
+const researchWorks = [
+  {
+    '@type': 'CreativeWork',
+    '@id': 'https://maisonfoebe.fr/a-propos/#these-2019',
+    name: 'Quand l’automédication devient une conduite dopante chez les travailleurs',
+    genre: 'Thèse de doctorat en psychologie',
+    datePublished: '2019',
+    inLanguage: 'fr-FR',
+    url: 'https://theses.hal.science/tel-02860264',
+    sameAs: 'https://theses.fr/2019AZUR2027',
+    author: { '@id': 'https://maisonfoebe.fr/a-propos/#fondatrice' },
+  },
+  {
+    '@type': 'ScholarlyArticle',
+    '@id': 'https://maisonfoebe.fr/a-propos/#inpact-2021',
+    name: 'Working conditions: when the race for performance turns self-medication into doping behavior',
+    datePublished: '2021',
+    pagination: '444-446',
+    inLanguage: 'en',
+    url: 'https://inpact-psychologyconference.org/wp-content/uploads/2021/05/2021inpact098.pdf',
+    author: { '@id': 'https://maisonfoebe.fr/a-propos/#fondatrice' },
+    isPartOf: { '@type': 'CreativeWork', name: 'Psychological Applications and Trends 2021' },
+  },
+  {
+    '@type': 'CreativeWork',
+    '@id': 'https://maisonfoebe.fr/a-propos/#aiptlf-2018',
+    name: 'Quand l’automédication devient une conduite dopante chez les travailleurs',
+    genre: 'Poster scientifique',
+    datePublished: '2018',
+    inLanguage: 'fr-FR',
+    url: 'https://www.aiptlf.net/uploads/7/8/9/2/78921128/livre_des_r%C3%A9sum%C3%A9s_aiptlf_bordeaux_2018.pdf',
+    author: { '@id': 'https://maisonfoebe.fr/a-propos/#fondatrice' },
+    isPartOf: { '@type': 'Event', name: 'XXe Congrès de l’AIPTLF, Bordeaux' },
+  },
+];
+
 const aboutNextLinks = [
   { href: '/methode/', kicker: 'Le cadre', label: 'Comprendre la méthode', description: 'Voir comment psychologie, ergonomie et self-care sont reliés.' },
+  { href: '/cadre-editorial/', kicker: 'Confiance', label: 'Vérifier le cadre éditorial', description: 'Sources, corrections, indépendance et engagement pour l’autonomie.' },
   { href: '/faq/', kicker: 'Questions fréquentes', label: 'Vérifier ce qu’est Foébé', description: 'Le cadre, les limites, les ressources gratuites et la suite du projet.' },
   { href: '/#portes', kicker: 'Prochaines ouvertures', label: 'Être tenu·e informé·e', description: 'Laisser ton email pour recevoir les informations lorsque les accompagnements seront prêts.' },
 ];
@@ -23,7 +60,8 @@ const aboutNextLinks = [
 
   schemaType="ProfilePage"
   pageName="À propos de Maison Foébé et de sa fondatrice"
-  pageAbout="Psychologie du travail, ergonomie, facteurs humains et santé au travail">
+  pageAbout="Psychologie du travail, ergonomie, facteurs humains et santé au travail"
+  extraStructuredData={researchWorks}>
 <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
 <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
 <div class="fallback-links">
@@ -114,29 +152,47 @@ const aboutNextLinks = [
 </header>
 <div class="research-shell reveal reveal-delay-1">
 <article class="research-row">
-<span class="research-type">Thèse de doctorat</span>
+<span class="research-type">Thèse de doctorat · 2019</span>
 <div>
 <h3 class="research-title">Quand l’automédication devient une conduite dopante chez les travailleurs</h3>
-<p class="research-desc">Un travail doctoral sur les mécanismes par lesquels une pratique de soin ordinaire peut devenir une conduite de performance dans le contexte du travail.</p>
+<p class="research-desc">Un travail doctoral consacré au passage d’une pratique de soin ordinaire vers une conduite de performance dans le contexte professionnel.</p>
+<p class="research-note">Université Côte d’Azur (ComUE) · psychologie.</p>
 </div>
-<a class="research-link" href="https://theses.hal.science/tel-02860264" rel="noopener noreferrer" target="_blank">Lire sur HAL →</a>
+<div class="research-links"><a class="research-link" href="https://theses.hal.science/tel-02860264" rel="noopener noreferrer" target="_blank">Lire sur HAL →</a><a class="research-link research-link--secondary" href="https://theses.fr/2019AZUR2027" rel="noopener noreferrer" target="_blank">Voir la notice theses.fr</a></div>
 </article>
 <article class="research-row research-row--rose">
-<span class="research-type">Communication scientifique</span>
+<span class="research-type">Article de conférence · 2021</span>
 <div>
-<h3 class="research-title">Working conditions and self-medication</h3>
-<p class="research-desc">Une communication internationale prolongeant les résultats doctoraux autour des conditions de travail et de la recherche de performance.</p>
+<h3 class="research-title">Working conditions: when the race for performance turns self-medication into doping behavior</h3>
+<p class="research-desc">Une communication internationale sur les conditions de travail, la recherche de performance et les conduites d’automédication.</p>
+<p class="research-note">InPACT 2021 · <em>Psychological Applications and Trends</em> · p. 444–446.</p>
 </div>
-<a class="research-link" href="https://inpact-psychologyconference.org/wp-content/uploads/2021/04/1_P_142.pdf" rel="noopener noreferrer" target="_blank">Consulter →</a>
+<a class="research-link" href="https://inpact-psychologyconference.org/wp-content/uploads/2021/05/2021inpact098.pdf" rel="noopener noreferrer" target="_blank">Consulter le texte →</a>
 </article>
 <article class="research-row research-row--red">
-<span class="research-type">Publications</span>
+<span class="research-type">Poster scientifique · 2018</span>
 <div>
-<h3 class="research-title">Psychologie du travail, santé au travail et conduite dopante</h3>
-<p class="research-desc">Publications issues des travaux doctoraux autour du lien entre travail, automédication, adaptation et épuisement silencieux.</p>
-<p class="research-note">Revue PTO · chapitre d’ouvrage L’Harmattan · revue AFNOR. Références complètes et liens à venir.</p>
+<h3 class="research-title">Quand l’automédication devient une conduite dopante chez les travailleurs</h3>
+<p class="research-desc">Présentation des premiers résultats sur l’automédication, la performance et les mécanismes d’adaptation au travail.</p>
+<p class="research-note">XXe Congrès de l’AIPTLF · Bordeaux · livre officiel des résumés.</p>
 </div>
+<a class="research-link" href="https://www.aiptlf.net/uploads/7/8/9/2/78921128/livre_des_r%C3%A9sum%C3%A9s_aiptlf_bordeaux_2018.pdf" rel="noopener noreferrer" target="_blank">Voir le recueil officiel →</a>
 </article>
+</div>
+<p class="research-verification reveal reveal-delay-2">Chaque référence ci-dessus renvoie vers une archive institutionnelle ou le support officiel de l’événement. Les références qui ne disposent pas encore d’une notice vérifiable ne sont pas affichées comme preuve publique.</p>
+</div>
+</section>
+
+<section aria-labelledby="presence-title" class="about-section about-section--presence">
+<div class="section-inner presence-layout">
+<header class="section-heading reveal">
+<span class="section-eyebrow">Une présence sobre, par choix</span>
+<h2 class="section-title" id="presence-title">L’autorité du projet ne dépend pas de <span class="foebe-rose">l’exposition de la personne.</span></h2>
+</header>
+<div class="presence-copy reveal reveal-delay-1">
+<p>Maison Foébé privilégie une visibilité fondée sur le travail, les sources et la qualité du cadre. Le visage, le corps ou la vie privée de la fondatrice n’ont pas besoin de devenir le produit.</p>
+<p>Ce choix protège la personne et soutient aussi l’intention de Foébé : donner des repères qui restent utilisables sans relation de dépendance, sans présence permanente et sans injonction à suivre une figure publique.</p>
+<a class="presence-link" href="/cadre-editorial/">Lire le cadre éditorial et la politique de sources →</a>
 </div>
 </div>
 </section>
