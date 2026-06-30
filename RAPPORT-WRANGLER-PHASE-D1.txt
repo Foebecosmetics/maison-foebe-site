@@ -1,7 +1,0 @@
-
- ⛅️ wrangler 4.105.0
-────────────────────
-✨ Read 126 files from the assets directory /mnt/data/phaseD1_work/maison-foebe-astro-phase-c/dist
-Total Upload: 0.31 KiB / gzip: 0.22 KiB
-No bindings found.
---dry-run: exiting now.
