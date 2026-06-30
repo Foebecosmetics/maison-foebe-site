@@ -1,0 +1,67 @@
+
+> maison-foebe-site-public@1.1.0 validate
+> npm run build && npm run audit
+
+
+> maison-foebe-site-public@1.1.0 prebuild
+> node scripts/build-shell.mjs && node scripts/generate-sitemap.mjs
+
+Shell optimisé : JS 31804 octets, CSS 34492 octets.
+Sitemap généré : 28 URL indexables avec lastmod explicite.
+
+> maison-foebe-site-public@1.1.0 build
+> astro build
+
+[2m13:16:27[22m [34m[types][39m Generated [2m38ms[22m
+[2m13:16:27[22m [34m[build][39m output: [34m"static"[39m
+[2m13:16:27[22m [34m[build][39m mode: [34m"static"[39m
+[2m13:16:27[22m [34m[build][39m directory: [34m/mnt/data/phaseB_patch/dist/[39m
+[2m13:16:27[22m [34m[build][39m Collecting build info...
+[2m13:16:27[22m [34m[build][39m [32m✓ Completed in 61ms.[39m
+[2m13:16:27[22m [34m[build][39m Building static entrypoints...
+[2m13:16:30[22m [34m[vite][39m [32m✓ built in 2.91s[39m
+[2m13:16:30[22m [34m[vite][39m [32m✓ built in 17ms[39m
+[2m13:16:30[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m13:16:30[22m   [34m├─[39m [2m/404.html[22m [2m(+15ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/a-propos/index.html[22m [2m(+4ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/boussole/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/boussole-scenarios/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/comprendre/index.html[22m [2m(+5ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/bodycare/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/guides/index.html[22m [2m(+5ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/haircare/index.html[22m [2m(+6ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/mode-emploi/index.html[22m [2m(+8ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/self-care/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/skincare/actifs-routines/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/skincare/fondamentaux/index.html[22m [2m(+4ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/skincare/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/dictionnaire/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/echelle-foebe/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/faq/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/lexique/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/mentions-legales/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/methode/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/pratiquer/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/respiration/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-corps/index.html[22m [2m(+5ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-emotions/index.html[22m [2m(+4ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-energie/index.html[22m [2m(+5ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-environnement/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-mental/index.html[22m [2m(+3ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-relations/index.html[22m [2m(+6ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zone-sens/index.html[22m [2m(+4ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/zones/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m   [34m├─[39m [2m/index.html[22m [2m(+2ms)[22m 
+[2m13:16:30[22m [32m✓ Completed in 132ms.
+[39m
+[2m13:16:30[22m [34m[build][39m [32m✓ Completed in 3.12s.[39m
+[2m13:16:30[22m [34m[build][39m 30 page(s) built in [1m3.19s[22m
+[2m13:16:30[22m [34m[build][39m [1mComplete![22m
+
+> maison-foebe-site-public@1.1.0 audit
+> node scripts/audit-built-site.mjs
+
+
+✅ Audit Phase B réussi : 30 pages HTML, 28 pages indexables, zéro incohérence bloquante.

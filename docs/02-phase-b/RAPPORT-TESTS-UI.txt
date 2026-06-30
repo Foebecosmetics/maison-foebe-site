@@ -1,0 +1,46 @@
+PASS Accueil formulaire: champ e-mail présent
+PASS Accueil flèche: une seule flèche Shell
+PASS Accueil mobile: aucun débordement horizontal
+PASS Accueil JS: aucune erreur ([])
+PASS FAQ questions: 16 questions visibles
+PASS FAQ accordéon: accordéon fonctionnel
+PASS FAQ schema: FAQPage présent
+PASS FAQ mobile: aucun débordement horizontal
+PASS FAQ JS: aucune erreur ([])
+PASS Dictionnaire différé: aucune fiche montée au départ
+PASS Dictionnaire corpus: 131 fiches chargées à la demande
+PASS Dictionnaire recherche: recherche disponible
+PASS Dictionnaire mobile: aucun débordement horizontal
+PASS Dictionnaire JS: aucune erreur ([])
+PASS Échelle moteur: moteur disponible
+PASS Échelle résultat: écran final atteint (screenResults)
+PASS Échelle mobile: aucun débordement horizontal
+PASS Échelle JS: aucune erreur ([])
+PASS Zone Corps mini-test: résultat visible (obs-result-panel visible)
+PASS Zone Corps maillage: lien Échelle présent
+PASS Zone Corps mobile: aucun débordement horizontal
+PASS Zone Corps JS: aucune erreur ([])
+PASS Boussole contenu: .state-card présent
+PASS Boussole mobile: aucun débordement horizontal
+PASS Boussole JS: aucune erreur ([])
+PASS Respiration contenu: .tech-card présent
+PASS Respiration mobile: aucun débordement horizontal
+PASS Respiration JS: aucune erreur ([])
+PASS Lexique contenu: #storyContent présent
+PASS Lexique mobile: aucun débordement horizontal
+PASS Lexique JS: aucune erreur ([])
+PASS À propos contenu: main présent
+PASS À propos mobile: aucun débordement horizontal
+PASS À propos JS: aucune erreur ([])
+PASS Comprendre contenu: main présent
+PASS Comprendre mobile: aucun débordement horizontal
+PASS Comprendre JS: aucune erreur ([])
+
+TOTAL: 37 contrôles réussis
+
+CONTRÔLE DE NON-RÉGRESSION DES MOTEURS
+Échelle Foébé — SHA-256 inchangé depuis la Phase A :
+4b519bd7542f7e176dddd261081edd65bd2cad2702ddfdf47ba69a25878b0b6c
+
+Moteur partagé des 7 Zones — SHA-256 inchangé depuis la Phase A :
+389341ee45767034ceb229bcbd434e82f0e530ce76dd1516f7098f70ad5373ca

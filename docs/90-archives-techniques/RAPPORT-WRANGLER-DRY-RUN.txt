@@ -1,0 +1,7 @@
+
+ ⛅️ wrangler 4.105.0
+────────────────────
+✨ Read 123 files from the assets directory /mnt/data/phaseB_patch/dist
+Total Upload: 0.31 KiB / gzip: 0.22 KiB
+No bindings found.
+--dry-run: exiting now.

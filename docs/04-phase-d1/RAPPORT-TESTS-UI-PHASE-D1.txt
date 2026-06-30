@@ -1,0 +1,46 @@
+Maison Foébé — Tests UI Phase D1
+Date : 29 juin 2026
+
+41 contrôles exécutés : 41 réussis, 0 échoués.
+
+OK  mobile: 29 questions — 29
+OK  mobile: 6 sections — 6
+OK  mobile: 4 portes — 4
+OK  mobile: 29 sorties guidées — 29
+OK  mobile: une flèche shell — 1
+OK  mobile: FAQ dans menu
+OK  mobile: FAQ dans footer
+OK  mobile: aucun débordement horizontal
+OK  mobile: question récupération trouvée — 1
+OK  mobile: question récupération ouverte
+OK  mobile: sortie Zone Énergie
+OK  mobile: lien données
+OK  mobile: aucune erreur JavaScript
+OK  desktop: 29 questions — 29
+OK  desktop: 6 sections — 6
+OK  desktop: 4 portes — 4
+OK  desktop: 29 sorties guidées — 29
+OK  desktop: une flèche shell — 1
+OK  desktop: FAQ dans menu
+OK  desktop: FAQ dans footer
+OK  desktop: aucun débordement horizontal
+OK  desktop: question récupération trouvée — 1
+OK  desktop: question récupération ouverte
+OK  desktop: sortie Zone Énergie
+OK  desktop: lien données
+OK  desktop: aucune erreur JavaScript
+OK  smoke /echelle-foebe/: contenu
+OK  smoke /echelle-foebe/: une flèche shell
+OK  smoke /echelle-foebe/: pas overflow
+OK  smoke /zone-corps/: contenu
+OK  smoke /zone-corps/: une flèche shell
+OK  smoke /zone-corps/: pas overflow
+OK  smoke /boussole/: contenu
+OK  smoke /boussole/: une flèche shell
+OK  smoke /boussole/: pas overflow
+OK  smoke /dictionnaire/: contenu
+OK  smoke /dictionnaire/: une flèche shell
+OK  smoke /dictionnaire/: pas overflow
+OK  smoke /respiration/: contenu
+OK  smoke /respiration/: une flèche shell
+OK  smoke /respiration/: pas overflow
