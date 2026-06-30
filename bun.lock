@@ -1,9 +1,0 @@
-{
-  "lockfileVersion": 1,
-  "workspaces": {
-    "": {
-      "name": "maison-foebe-site-public"
-    }
-  },
-  "packages": {}
-}
