@@ -215,20 +215,6 @@ const faqItems = faqGroups.flatMap((group) => group.items.map(({ question, answe
   pageAbout="Self-care structuré, épuisement fonctionnel, récupération, outils gratuits et futurs accompagnements"
   faqItems={faqItems}
 >
-  <nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
-    <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-    <div class="fallback-links">
-      <a href="/comprendre/">Comprendre</a>
-      <a href="/methode/">Méthode</a>
-      <a href="/faq/" aria-current="page">FAQ</a>
-      <a href="/zones/">7 zones</a>
-      <a href="/dictionnaire/">Dictionnaire</a>
-    </div>
-  </nav>
-  <div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
-    <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
-  </div>
-
   <main class="faq-page" id="mainContent" tabindex="-1">
     <section class="faq-hero" aria-labelledby="faq-title">
       <div class="faq-hero__inner">

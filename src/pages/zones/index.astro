@@ -8,6 +8,7 @@ const zonesFaq = [
   { question: 'Puis-je me reconnaître dans plusieurs zones ?', answer: 'Oui. Les sept zones se répondent. L’objectif n’est pas de te ranger dans une case, mais de repérer celle qui mérite le plus d’attention aujourd’hui.' },
   { question: 'Comment choisir la zone prioritaire ?', answer: 'Commence par le signal le plus présent, le plus coûteux ou celui qui limite le plus ta récupération. Tu peux aussi faire l’Échelle Foébé pour obtenir une vue d’ensemble.' },
   { question: 'Une zone déséquilibrée indique-t-elle un trouble ?', answer: 'Non. Les zones sont des repères de self-care, pas des catégories médicales. Un symptôme persistant, intense ou inquiétant mérite un avis professionnel.' },
+  { question: 'Les produits cosmétiques ont-ils leur place dans Foébé ?', answer: 'Oui. La skincare, la haircare et la bodycare peuvent faire partie du self-care lorsqu’elles répondent à un besoin réel, sans devenir une obligation de performance. Le Dictionnaire Foébé aide à comprendre les produits, les actifs et leurs usages pour choisir plus clairement.' },
 ];
 ---
 
@@ -24,28 +25,13 @@ const zonesFaq = [
   schemaType="CollectionPage"
   pageName="Les 7 zones du self-care"
   pageAbout="Corps, mental, énergie, émotions, environnement, relations et sens">
-<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
-<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-<div aria-label="Liens rapides" class="fallback-links">
-<a href="/comprendre/">Comprendre</a>
-<a href="/methode/">Méthode</a>
-<a href="/echelle-foebe/">Échelle Foébé</a>
-<a aria-current="page" href="/zones/">7 zones</a>
-<a href="/dictionnaire/">Dictionnaire</a>
-</div>
-</nav><div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
-<span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
-</div><noscript><style>
-.foebe-scroll-progress--fallback{display:block!important}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}
-</style></noscript>
+
 <main id="mainContent" tabindex="-1">
 <section aria-labelledby="hero-heading" class="hero">
 <h1 class="hero-title" id="hero-heading"><span class="line">Comprendre les</span><span class="line"><em>7 zones</em> du self-care</span></h1>
 <p class="hero-sub">Une zone est une <mark class="foebe-highlight foebe-highlight--warm">porte d'entrée</mark> dans une partie de ton self-care.</p>
 </section>
-<section aria-label="Positionnement Foébé" class="phrase-section"><p class="phrase-text reveal">Ce n'est pas une case.<br/>Elle permet de repérer <mark class="foebe-highlight foebe-highlight--rose">ce qui tire le plus fort</mark>, comprendre <mark class="foebe-highlight foebe-highlight--red">ce qui se dérègle</mark>, puis choisir un <mark class="foebe-highlight foebe-highlight--warm">geste concret</mark>.</p><div aria-hidden="true" class="foebe-wave reveal reveal-delay-1"><svg preserveaspectratio="none" viewbox="0 0 680 52"><path d="M8 30 C72 8, 122 8, 186 30 S300 52, 364 30 S478 8, 542 30 S626 52, 672 30"></path></svg></div></section>
-<section aria-labelledby="zone-concept-heading" class="section"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">Comprendre le système</span><h2 class="section-title" id="zone-concept-heading">Pourquoi <em>7 zones</em> ?</h2><p class="section-sub">Foébé découpe le self-care en 7 dimensions lisibles. Chacune avec ses propres signaux, mécanismes et gestes de récupération.</p></div><div class="triptyque"><article class="triptyque-card reveal reveal-delay-1"><span class="triptyque-num">01</span><h3 class="triptyque-title">Chaque zone = <em>une compétence précise.</em></h3><p class="triptyque-body">Tu observes, comprends, structures et stabilises.</p></article><article class="triptyque-card reveal reveal-delay-2"><span class="triptyque-num">02</span><h3 class="triptyque-title">Un signal = <em>un repère</em></h3><p class="triptyque-body">Les signes décrits dans chaque zone correspondent à des manifestations réelles et vécues du self-care au quotidien.</p></article><article class="triptyque-card reveal reveal-delay-3"><span class="triptyque-num">03</span><h3 class="triptyque-title">Un geste = <em>une réponse</em></h3><p class="triptyque-body">Chaque zone propose une lecture, une explication des mécanismes et des gestes adaptés à ce que tu peux observer de ton propre self-care.</p></article></div></div></section>
+<section aria-label="Positionnement Foébé" class="phrase-section"><p class="phrase-text reveal">Ce n'est pas une case.<br/>Elle t’aide à repérer <mark class="foebe-highlight foebe-highlight--rose">ce qui tire le plus fort</mark>, comprendre <mark class="foebe-highlight foebe-highlight--red">ce qui se dérègle</mark>, puis choisir un <mark class="foebe-highlight foebe-highlight--warm">geste concret</mark>.</p><div aria-hidden="true" class="foebe-wave reveal reveal-delay-1"><svg preserveaspectratio="none" viewbox="0 0 680 52"><path d="M8 30 C72 8, 122 8, 186 30 S300 52, 364 30 S478 8, 542 30 S626 52, 672 30"></path></svg></div></section>
 <section aria-labelledby="lire-heading" class="section"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">Mode d'emploi</span><h2 class="section-title" id="lire-heading">Comment lire <em>une zone</em></h2><p class="section-sub">Chaque page zone suit la même structure. Voici comment s'y repérer.</p></div><div class="steps-grid reveal"><article class="step"><span class="step-badge">01</span><h3 class="step-title">Comprendre le mécanisme</h3><p class="step-body">Chaque zone explique ce qui se passe vraiment dans ton self-care. Elle ne nomme pas juste un problème, elle montre comment il s'installe.</p></article><article class="step"><span class="step-badge">02</span><h3 class="step-title">Te situer</h3><p class="step-body">Un mini-test de 5 questions pour identifier si cette zone est prioritaire pour toi en ce moment.</p></article><article class="step"><span class="step-badge">03</span><h3 class="step-title">Voir les effets en cascade</h3><p class="step-body">Quand une zone est sous pression, elle agit sur les autres. Chaque page cartographie ces liens.</p></article><article class="step"><span class="step-badge">04</span><h3 class="step-title">Choisir un geste</h3><p class="step-body">Trois gestes concrets, classés par effort. Pas une liste générique, mais une réponse à ce que tu viens d'observer.</p></article></div></div></section>
 <section aria-labelledby="zones-heading" class="section zones-section" id="les-zones"><div class="section-inner"><div class="section-center narrow reveal"><span class="section-eyebrow">L'observatoire</span><h2 class="section-title" id="zones-heading">Les 7 zones à explorer</h2><p class="section-sub">Chacune t'aide à décrypter ce qui se joue dans ton self-care, à reconnaître les <mark class="foebe-highlight foebe-highlight--rose">signaux faibles</mark> et à commencer par un geste concret, tenable.</p></div><nav aria-label="Cartographie des 7 zones Foébé" class="zone-flow reveal reveal-delay-1">
 <div aria-hidden="true" class="zone-flow__canvas zone-flow__canvas--desktop">

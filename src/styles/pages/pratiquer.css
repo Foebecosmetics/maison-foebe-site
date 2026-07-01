@@ -74,34 +74,9 @@
       }
 
       /* Navigation fallback : visible seulement si le Shell échoue. */
-      html.foebe-shell-loading:not(.foebe-shell-failed) .fallback-nav,
-      html.foebe-shell-ready .fallback-nav {
-        display: none !important;
-      }
-      .fallback-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 99988;
-        min-height: 60px;
-        height: 60px;
-        padding: 0 clamp(14px, 3vw, 28px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-        background: rgba(78, 41, 31, 0.95);
-        border-bottom: 1px solid rgba(187, 126, 96, 0.3);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.16);
-      }
-      [data-theme="day"] .fallback-nav {
-        background: rgba(240, 234, 231, 0.95);
-        border-bottom-color: rgba(78, 41, 31, 0.14);
-        box-shadow: 0 2px 14px rgba(78, 41, 31, 0.08);
-      }
+      
+      
+      
       .fallback-logo {
         min-height: 44px;
         display: inline-flex;
@@ -171,39 +146,11 @@
       }
 
       /* Barre locale : secours uniquement lorsque le Shell échoue. */
-      .foebe-scroll-progress--fallback {
-        display: none;
-        position: fixed;
-        top: var(--foebe-nav-height);
-        left: 0;
-        right: 0;
-        height: 3px;
-        z-index: 99987;
-        overflow: hidden;
-        pointer-events: none;
-        background: rgba(187, 126, 96, 0.12);
-      }
-      .foebe-scroll-progress--fallback .foebe-scroll-progress__bar {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: var(--foebe-progress-gradient);
-        transform: scaleX(0);
-        transform-origin: left center;
-        will-change: transform;
-        box-shadow: 0 1px 7px rgba(187, 126, 96, 0.28);
-      }
-      html.foebe-shell-loading .foebe-scroll-progress--fallback,
-      html.foebe-shell-ready .foebe-scroll-progress--fallback {
-        display: none !important;
-      }
-      html.foebe-shell-failed .foebe-scroll-progress--fallback {
-        display: block;
-      }
-      html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
-      body[data-foebe-progress="off"] .foebe-scroll-progress--fallback {
-        display: none !important;
-      }
+      
+      
+      
+      
+      
 
       /* Typographie éditoriale et variations Foébé. */
       .foebe-text {
@@ -896,12 +843,7 @@
         :root {
           --foebe-nav-height: 58px;
         }
-        .fallback-nav {
-          height: 58px;
-          min-height: 58px;
-          padding: 0 10px;
-          gap: 10px;
-        }
+        
         .fallback-logo {
           font-size: 16px;
           max-width: 36vw;
@@ -914,9 +856,7 @@
           font-size: 11.5px;
           padding: 0 9px;
         }
-        .foebe-scroll-progress--fallback {
-          height: 2px;
-        }
+        
 
         .practice-hero {
           padding: calc(var(--foebe-nav-height) + 38px) 18px 52px;
@@ -1066,13 +1006,49 @@
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
         }
-        .foebe-scroll-progress--fallback .foebe-scroll-progress__bar {
-          transition: none !important;
-        }
+        
       }
     
 
 
-        .foebe-scroll-progress--fallback {
-          display: block !important;
-        }
+        
+
+
+/* Phase B — avertissement doux : informatif, jamais alarmiste. */
+.practice-soft-warning{
+  max-width:760px;
+  margin-top:clamp(22px,3vw,30px);
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr);
+  gap:14px;
+  padding:18px 20px;
+  border:1px solid rgba(187,126,96,.38);
+  border-left:3px solid #BB7E60;
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(187,126,96,.12),rgba(196,82,121,.045));
+  color:var(--read);
+}
+.practice-soft-warning__mark{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:#BB7E60;
+  color:#F0EAE7;
+  font:700 15px/1 "Poppins",sans-serif;
+}
+.practice-soft-warning strong{
+  display:block;
+  margin:1px 0 5px;
+  color:var(--text);
+  font:700 12px/1.3 "Poppins",sans-serif;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.practice-soft-warning p{margin:0;font:400 14px/1.68 "Poppins",sans-serif;color:var(--read);}
+[data-theme="day"] .practice-soft-warning{background:linear-gradient(135deg,rgba(187,126,96,.11),rgba(196,82,121,.035));}
+@media(max-width:560px){
+  .practice-soft-warning{grid-template-columns:32px minmax(0,1fr);gap:11px;padding:16px;}
+  .practice-soft-warning__mark{width:30px;height:30px;font-size:13px;}
+}

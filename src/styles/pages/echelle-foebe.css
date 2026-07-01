@@ -5,58 +5,23 @@
 
 /* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
    Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
-html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
-html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
-  display:none!important;
-}
+
 
 /* FALLBACK NAV CRITIQUE — Maison Foébé */
-body > nav#fallbackNav.fallback-nav{
-  position:fixed;top:0;left:0;right:0;z-index:950;
-  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:rgba(78,41,31,.94);border-bottom:1px solid rgba(187,126,96,.34);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 2px 14px rgba(0,0,0,.16);font-family:"Poppins",sans-serif;box-sizing:border-box;
-}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav{
-  background:rgba(240,234,231,.94);border-bottom-color:rgba(78,41,31,.16);box-shadow:0 2px 14px rgba(78,41,31,.08);
-}
-body > nav#fallbackNav.fallback-nav .fallback-logo{
-  font-family:"Montserrat",sans-serif;font-weight:700;font-size:18px;letter-spacing:-.06em;line-height:1;
-  text-decoration:none;display:inline-flex;align-items:center;min-height:44px;flex:0 0 auto;max-width:42vw;white-space:nowrap;
-}
-[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{color:#F0EAE7;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){color:#4E291F;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2){color:#BB7E60;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3){color:#C45279;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4){color:#C34234;}
-body > nav#fallbackNav.fallback-nav .fallback-links{
-  display:flex;flex:1 1 auto;align-items:center;justify-content:flex-end;gap:6px;min-width:0;overflow-x:auto;overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;
-}
-body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar{display:none;}
-body > nav#fallbackNav.fallback-nav .fallback-links>a{
-  min-height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0 11px;border-radius:999px;
-  color:var(--text,#F0EAE7);font-family:"Poppins",sans-serif;font-size:12px;font-weight:600;white-space:nowrap;
-  flex:0 0 auto;text-decoration:none;border:1px solid transparent;opacity:.92;background:transparent;box-sizing:border-box;
-}
-body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
-body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
-  color:#F0EAE7;background:#BB7E60;border-color:#BB7E60;opacity:1;outline:none;
-}
-@media(max-width:720px){
-  body > nav#fallbackNav.fallback-nav{padding:0 12px;gap:12px;}
-  body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px;}
-  body > nav#fallbackNav.fallback-nav .fallback-links{justify-content:flex-start;}
-  body > nav#fallbackNav.fallback-nav .fallback-links>a{font-size:12px;padding:0 10px;}
-}
-@media(max-width:420px){
-  body > nav#fallbackNav.fallback-nav{gap:10px;padding:0 10px;}
-  body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px;max-width:36vw;}
-  body > nav#fallbackNav.fallback-nav .fallback-links>a{min-height:38px;font-size:12px;padding:0 10px;}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ==================================================
@@ -256,46 +221,25 @@ html.foebe-tablet .likert-mobile-feedback,html.foebe-desktop .likert-mobile-feed
   outline:2px solid #BB7E60;
   outline-offset:2px;
 }
-.foebe-scroll-progress--fallback{
-  display:none;
-  position:fixed;
-  top:var(--foebe-nav-height);
-  left:0;
-  right:0;
-  z-index:940;
-  height:3px;
-  background:rgba(187,126,96,.16);
-  pointer-events:none;
-}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
-  display:block;
-  width:100%;
-  height:100%;
-  transform:scaleX(0);
-  transform-origin:left center;
-  background:var(--foebe-progress-gradient);
-  box-shadow:0 0 12px rgba(187,126,96,.28);
-  will-change:transform;
-}
-html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block;}
-html.foebe-shell-loading:not(.foebe-shell-failed) .foebe-scroll-progress--fallback,
-html.foebe-shell-ready .foebe-scroll-progress--fallback,
-body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
-[data-theme="day"] .foebe-scroll-progress--fallback{background:rgba(78,41,31,.10);}
+
+
+
+
+
 @media(max-width:640px){
   :root{--foebe-nav-height:58px;}
-  body > nav#fallbackNav.fallback-nav{height:58px!important;min-height:58px!important;}
-  .foebe-scroll-progress--fallback{height:2px;}
+  
+  
 }
 @media(prefers-reduced-motion:reduce){
   .foebe-skip-link{transition:none!important;}
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important;}
+  
 }
 
 
 
 
-    .foebe-scroll-progress--fallback{display:block!important;opacity:.42!important;}
-    body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
-    #foebeScrollProgressFallbackBar{transform:scaleX(1)!important;}
+    
+    
+    
     .btn-start{display:none!important;}

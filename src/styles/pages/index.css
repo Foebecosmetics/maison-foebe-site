@@ -59,17 +59,9 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible{outline:2px solid var(--warm);outline-offset:4px}
 #mainContent:focus{outline:none}
-html.foebe-shell-loading:not(.foebe-shell-failed) body>nav#fallbackNav,
-html.foebe-shell-ready body>nav#fallbackNav{display:none!important}
-html.foebe-shell-failed body>nav#fallbackNav{display:flex!important}
-body>nav#fallbackNav{
-  position:fixed;inset:0 0 auto 0;z-index:99988;
-  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:var(--nav-fallback);border-bottom:1px solid var(--border);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 2px 14px rgba(0,0,0,.14)
-}
+
+
+
 .fallback-logo{
   min-height:44px;display:inline-flex;align-items:center;flex:0 0 auto;
   max-width:42vw;white-space:nowrap;text-decoration:none;
@@ -98,20 +90,11 @@ body>nav#fallbackNav{
 .fallback-links a:focus-visible{
   background:#BB7E60;border-color:#BB7E60;color:#F0EAE7;outline:none
 }
-.foebe-scroll-progress--fallback{
-  display:none;position:fixed;top:var(--foebe-nav-height);left:0;right:0;
-  height:2px;z-index:99987;overflow:hidden;pointer-events:none;background:transparent
-}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
-  display:block;width:100%;height:100%;background:var(--foebe-progress-gradient);
-  transform:scaleX(0);transform-origin:left center;will-change:transform;
-  box-shadow:0 1px 4px rgba(187,126,96,.18)
-}
-html.foebe-shell-loading .foebe-scroll-progress--fallback,
-html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
-html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block!important}
-html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
-body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
+
+
+
+
+
 .foebe-word,
 .foebe-color{font-style:inherit;text-decoration:none}
 .foebe-word--warm,
@@ -588,7 +571,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 }
 @media(max-width:680px){
   :root{--foebe-nav-height:58px}
-  body>nav#fallbackNav{height:58px;min-height:58px;padding:0 10px;gap:10px}
+  
   .fallback-logo{font-size:16px;max-width:36vw}
   .fallback-links{justify-content:flex-start}.fallback-links a{min-height:36px;font-size:11.5px;padding:0 9px}
 
@@ -656,7 +639,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
   *,
 *::before,
 *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
+  
 }
 
 /* ==================================================
@@ -2260,8 +2243,8 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 
 
 
-.foebe-scroll-progress--fallback{display:block!important}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transform:scaleX(1)!important}
+
+
 .home-vocab-panel{
   max-height:none!important;
   overflow:visible!important;
@@ -2278,6 +2261,14 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 .home-vocab-link a:hover,.home-vocab-link a:focus-visible{text-decoration-thickness:2px;}
 
 /* Phase B — accès discret vers la FAQ générale. */
-.accompagnement-faq-link{margin:16px 0 0;font:500 13px/1.6 'Poppins',sans-serif;}
+.accompagnement-faq-link{margin:16px 0 0;font:500 13px/1.6 "Poppins",sans-serif;}
 .accompagnement-faq-link a{color:#BB7E60;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;}
 .accompagnement-faq-link a:hover,.accompagnement-faq-link a:focus-visible{color:#C45279;outline:none;}
+
+/* Phase B — la signature guide la lecture sans devenir un bandeau continu. */
+[data-theme="night"] .home-start-signature .foebe-highlight--warm{--hl:rgba(187,126,96,.34);}
+[data-theme="night"] .home-start-signature .foebe-highlight--rose{--hl:rgba(196,82,121,.30);}
+[data-theme="night"] .home-start-signature .foebe-highlight--red{--hl:rgba(195,66,52,.30);}
+[data-theme="day"] .home-start-signature .foebe-highlight--warm{--hl:rgba(187,126,96,.20);}
+[data-theme="day"] .home-start-signature .foebe-highlight--rose{--hl:rgba(196,82,121,.14);}
+[data-theme="day"] .home-start-signature .foebe-highlight--red{--hl:rgba(195,66,52,.14);}

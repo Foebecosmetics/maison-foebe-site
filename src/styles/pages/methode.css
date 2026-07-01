@@ -51,23 +51,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--warm);outline-offse
 #mainContent:focus{outline:none}
 
 /* Navigation locale : secours uniquement si le Shell échoue. */
-html.foebe-shell-loading:not(.foebe-shell-failed) body>nav#fallbackNav,
-html.foebe-shell-ready body>nav#fallbackNav{display:none!important}
-html.foebe-shell-failed body>nav#fallbackNav{display:flex!important}
 
-body>nav#fallbackNav{
-  position:fixed;inset:0 0 auto 0;z-index:99988;
-  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:rgba(78,41,31,.95);
-  border-bottom:1px solid rgba(187,126,96,.30);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 2px 14px rgba(0,0,0,.16)
-}
-[data-theme="day"] body>nav#fallbackNav{
-  background:rgba(240,234,231,.95);
-  border-bottom-color:rgba(78,41,31,.14)
-}
+
+
+
+
 .fallback-logo{
   min-height:44px;display:inline-flex;align-items:center;flex:0 0 auto;
   max-width:42vw;white-space:nowrap;text-decoration:none;
@@ -98,22 +86,11 @@ body>nav#fallbackNav{
 }
 
 /* Barre locale : secours uniquement si le Shell échoue. */
-.foebe-scroll-progress--fallback{
-  display:none;position:fixed;top:var(--foebe-nav-height);
-  left:0;right:0;height:3px;z-index:99987;
-  overflow:hidden;pointer-events:none;background:rgba(187,126,96,.12)
-}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
-  display:block;width:100%;height:100%;
-  background:var(--foebe-progress-gradient);
-  transform:scaleX(0);transform-origin:left center;
-  will-change:transform;box-shadow:0 1px 7px rgba(187,126,96,.28)
-}
-html.foebe-shell-loading .foebe-scroll-progress--fallback,
-html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
-html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block}
-html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
-body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
+
+
+
+
+
 
 /* TYPOGRAPHIE ÉDITORIALE */
 .hero-title,.section-title,.modele-name,.etape-title,
@@ -553,7 +530,7 @@ body.chip-modal-open{overflow:hidden}
 
 /* Mobile portrait : animation conservée et réellement visible. */
 @media(max-width:680px){
-  body>nav#fallbackNav{padding:0 10px;gap:10px}
+  
   .fallback-logo{font-size:16px;max-width:36vw}
   .fallback-links{justify-content:flex-start}
   .fallback-links a{min-height:36px;font-size:11.5px;padding:0 9px}
@@ -640,13 +617,11 @@ body.chip-modal-open{overflow:hidden}
 /* Barre fallback officielle Maison Foébé. */
 @media(max-width:640px){
   :root{--foebe-nav-height:58px}
-  body>nav#fallbackNav{height:58px;min-height:58px}
-  .foebe-scroll-progress--fallback{height:2px}
+  
+  
 }
 
-@media(prefers-reduced-motion:reduce){
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
-}
+
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -658,11 +633,9 @@ body.chip-modal-open{overflow:hidden}
   .method-stage::before,.method-flow,.method-orbit-dot,.method-node{
     animation:none!important
   }
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
-    transition:none!important
-  }
+  
 }
 
 
 
-    .foebe-scroll-progress--fallback{display:block!important}
+    

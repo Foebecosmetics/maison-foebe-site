@@ -6,9 +6,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/pages/comprendre.css';
 
 const comprendreFaq = [
-  { question: 'Dois-je déjà savoir ce qui ne va pas ?', answer: 'Non. Foébé sert justement à transformer un ressenti diffus en repères plus lisibles. Tu peux commencer avec une fatigue, une surcharge ou l’impression de ne plus récupérer sans avoir d’explication complète.' },
-  { question: 'Que signifie « épuisement fonctionnel » ?', answer: 'C’est une manière de décrire le décalage entre le fait de continuer à fonctionner et l’érosion progressive des ressources. Ce terme aide à observer une expérience, mais ne constitue pas un diagnostic médical.' },
-  { question: 'Foébé pose-t-elle un diagnostic ?', answer: 'Non. Le cadre Foébé soutient la compréhension et l’auto-observation. Une fatigue persistante, une détresse importante ou une perte de fonctionnement nécessite un avis professionnel adapté.' },
+  { question: 'Dois-je déjà savoir ce qui ne va pas ?', answer: 'Non. Foébé sert justement à rendre plus lisible un ressenti diffus. Tu peux commencer avec une fatigue, une surcharge ou l’impression de ne plus récupérer, sans avoir encore d’explication complète.' },
+  { question: 'Que signifie « épuisement fonctionnel » ?', answer: 'C’est une manière de décrire le décalage entre le fait de continuer à fonctionner et l’érosion progressive des ressources. Ce terme aide à lire une expérience de fatigue ou de surcharge, mais ne constitue pas un diagnostic médical.' },
+  { question: 'Foébé pose-t-elle un diagnostic ?', answer: 'Non. Foébé soutient la compréhension et l’auto-observation. Une fatigue persistante, une détresse importante ou une perte de fonctionnement demande un avis professionnel adapté.' },
 ];
 ---
 
@@ -22,18 +22,7 @@ const comprendreFaq = [
 
   ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
 >
-<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
-<a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a>
-<div class="fallback-links">
-<a href="/comprendre/" aria-current="page">Comprendre</a>
-<a href="/methode/">Méthode</a>
-<a href="/echelle-foebe/">Échelle Foébé</a>
-<a href="/zones/">7 zones</a>
-<a href="/dictionnaire/">Dictionnaire</a>
-</div>
-</nav><div class="foebe-scroll-progress foebe-scroll-progress--fallback" aria-hidden="true">
-<span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
-</div><main id="mainContent" tabindex="-1"><!-- HERO --><section class="hero">
+<main id="mainContent" tabindex="-1"><!-- HERO --><section class="hero">
 <div class="hero-inner">
 <span class="hero-eyebrow reveal d1">Comprendre avant d’agir</span>
 <h1 class="hero-title reveal d1">
@@ -44,13 +33,13 @@ const comprendreFaq = [
   </span>
 </h1>
 <span class="hero-rule reveal d2"></span>
-<p class="hero-body reveal d2">Foébé t’aide à repérer ce qui s’épuise, à comprendre comment les dimensions de ton self-care se répondent, puis à choisir un premier point d’attention.</p>
+<p class="hero-body reveal d2">Foébé t’aide à repérer ce qui fatigue, épuise ou surcharge, à comprendre comment les dimensions de ton self-care se répondent, puis à choisir un premier point d’attention.</p>
 <p class="hero-reassurance reveal d2">Tu n’as rien à diagnostiquer ici. Le but est simplement de retrouver des repères assez clairs pour ne plus avancer dans le flou.</p>
 <div class="comprendre-frame-motion reveal d3" role="list" aria-label="Les trois repères du cadre Foébé">
 <span class="frame-link" aria-hidden="true"></span>
-<span class="frame-step frame-step--warm" role="listitem"><span class="frame-index">01</span><span class="frame-copy"><strong>Cadre</strong><small>Ce que l’on observe</small></span></span>
-<span class="frame-step frame-step--red" role="listitem"><span class="frame-index">02</span><span class="frame-copy"><strong>Fondements</strong><small>Sur quoi l’on s’appuie</small></span></span>
-<span class="frame-step frame-step--rose" role="listitem"><span class="frame-index">03</span><span class="frame-copy"><strong>Posture</strong><small>Comment l’on accompagne</small></span></span>
+<span class="frame-step frame-step--warm" role="listitem"><span class="frame-index">01</span><span class="frame-copy"><strong>Cadre</strong><small>Ce que Foébé observe</small></span></span>
+<span class="frame-step frame-step--red" role="listitem"><span class="frame-index">02</span><span class="frame-copy"><strong>Fondements</strong><small>Sur quoi Foébé s’appuie</small></span></span>
+<span class="frame-step frame-step--rose" role="listitem"><span class="frame-index">03</span><span class="frame-copy"><strong>Posture</strong><small>Comment Foébé accompagne</small></span></span>
 </div>
 
 </div>
@@ -58,7 +47,7 @@ const comprendreFaq = [
 <div class="section-inner">
 <div class="reveal section-intro-block">
 <span class="eyebrow">Deux repères pour avancer</span>
-<h2 class="s-title">Ce que fait la <span class="foebe-text foebe-text--red">méthode</span> Foébé.<br/>Et ce qui garantit sa <span class="foebe-text foebe-text--rose">posture</span>.</h2>
+<h2 class="s-title">Comprendre la <span class="foebe-text foebe-text--red">méthode</span>.<br/>Comprendre la <span class="foebe-text foebe-text--rose">posture</span>.</h2>
 <p class="s-body">Commence par la porte qui répond le mieux à ta question du moment.</p>
 </div>
 <div class="entrees-list">
@@ -91,7 +80,7 @@ const comprendreFaq = [
 </div>
 <div>
 <h4 class="entree-sous-titre">Ce qui tient le cadre</h4>
-<div class="entree-corps"><p>Derrière Foébé, il y a un parcours, une exigence, et une intention claire.</p><p>Construire un dispositif qui relie psychologie, ergonomie cognitive et expérience vécue, sans glisser vers le coaching ni la thérapie.</p></div>
+<div class="entree-corps"><p>Derrière Foébé, il y a un parcours, une exigence, et une intention claire.</p><p>Foébé relie psychologie, ergonomie et expérience vécue pour proposer un cadre de lecture clair, sans se présenter comme du coaching ni comme une thérapie.</p></div>
 <a class="btn-primary" href="/a-propos/">Lire la page À propos →</a>
 </div>
 </div>

@@ -1,0 +1,115 @@
+---
+import {
+  NAVIGATION_SECTIONS,
+  getShellPageContext,
+  isBranchActive,
+  isCurrentPath,
+  normalizeSitePath,
+} from '../data/site-navigation';
+
+interface Props {
+  currentPath: string;
+  showThemeToggle?: boolean;
+  skipTarget?: string;
+}
+
+const currentPath = normalizeSitePath(Astro.props.currentPath);
+const showThemeToggle = Astro.props.showThemeToggle ?? true;
+const skipTarget = Astro.props.skipTarget ?? '#mainContent';
+const pageContext = getShellPageContext(currentPath);
+const currentLabel = pageContext?.currentLabel ?? 'Accueil';
+---
+
+<a class="foebe-skip-link" href={skipTarget} id="foebeSkipLink">Aller au contenu</a>
+
+<nav aria-label="Navigation principale" data-foebe-shell-nav id="mainNav">
+  <div class="nav-left">
+    <a aria-label="Maison Foébé — accueil" class="nav-logo" href="/">
+      <span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>
+    </a>
+    {pageContext && (
+      <a class="shell-context-back" href={pageContext.href} aria-label={pageContext.aria}>
+        <span class="shell-context-back__arrow" aria-hidden="true">←</span>
+        <span class="shell-context-back__label">{pageContext.backLabel}</span>
+      </a>
+    )}
+  </div>
+
+  <span
+    aria-current="page"
+    class:list={['shell-page-current', { 'shell-page-current--home': !pageContext }]}
+    title={currentLabel}
+  >
+    {currentLabel}
+  </span>
+
+  <div class="nav-right">
+    {showThemeToggle && (
+      <button aria-label="Changer le thème" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">☀️</button>
+    )}
+    <button aria-controls="navMenu" aria-expanded="false" aria-label="Ouvrir le menu" id="menuToggle" type="button">☰</button>
+  </div>
+
+  <div aria-hidden="true" id="foebeReadingProgress">
+    <span id="foebeReadingProgressBar"></span>
+  </div>
+</nav>
+
+<nav aria-hidden="true" aria-label="Menu principal" data-foebe-shell-menu id="navMenu">
+  <div class="nav-panel-inner">
+    {NAVIGATION_SECTIONS.map((section, sectionIndex) => (
+      <div class="nav-pole">
+        <span class="nav-pole-label">{section.pole}</span>
+        {section.links.map((link, linkIndex) => {
+          const current = isCurrentPath(currentPath, link.href);
+          const hasChildren = Boolean(link.children?.length);
+          const branchActive = isBranchActive(currentPath, link);
+          const branchId = `foebeNavChildren-${sectionIndex}-${linkIndex}`;
+
+          if (!hasChildren) {
+            return (
+              <a class="nav-link" href={link.href} aria-current={current ? 'page' : undefined}>
+                {link.label}
+              </a>
+            );
+          }
+
+          return (
+            <div class:list={['nav-branch', { 'is-open': branchActive }]} data-nav-branch>
+              <div class="nav-branch-head">
+                <a
+                  class:list={['nav-link', 'nav-parent-link', { 'is-branch-current': !current && branchActive }]}
+                  href={link.href}
+                  aria-current={current ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+                <button
+                  aria-controls={branchId}
+                  aria-expanded={branchActive ? 'true' : 'false'}
+                  aria-label={`${branchActive ? 'Masquer' : 'Afficher'} les sous-pages de ${link.label}`}
+                  class="nav-branch-toggle"
+                  type="button"
+                >
+                  <span aria-hidden="true" class="nav-branch-toggle__icon">⌄</span>
+                </button>
+              </div>
+              <div class="nav-children" id={branchId}>
+                {link.children?.map((child) => {
+                  const childCurrent = isCurrentPath(currentPath, child.href);
+                  return (
+                    <a class="nav-child-link" href={child.href} aria-current={childCurrent ? 'page' : undefined}>
+                      {child.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    ))}
+  </div>
+</nav>
+
+<div aria-hidden="true" data-foebe-shell-overlay id="navOverlay"></div>

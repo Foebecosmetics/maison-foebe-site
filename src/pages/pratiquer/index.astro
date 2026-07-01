@@ -1,14 +1,7 @@
 ---
-import GuidedFaq from '../../components/GuidedFaq.astro';
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/pages/pratiquer.css';
 
-const pratiquerFaq = [
-  { question: 'Quel outil choisir en premier ?', answer: 'L’Échelle pour te situer, les Zones pour comprendre un déséquilibre, la Respiration pour revenir au calme, et la Boussole pour lire une situation concrète.' },
-  { question: 'Dois-je utiliser les quatre outils ?', answer: 'Non. Choisis seulement la porte qui répond à ton besoin du moment. Revenir plus tard est toujours possible.' },
-  { question: 'Que faire si un outil augmente mon inconfort ?', answer: 'Arrête, reviens à quelque chose de familier et ne force pas. Si l’inconfort persiste ou t’inquiète, demande un avis médical ou psychologique adapté.' },
-];
 ---
 
 <BaseLayout
@@ -21,28 +14,7 @@ const pratiquerFaq = [
 
   ogImageAlt="Logo coloré de Maison Foébé sur fond clair"
 >
-<nav aria-label="Navigation de secours Maison Foébé" class="fallback-nav" id="fallbackNav">
-      <a aria-label="Maison Foébé — accueil" class="fallback-logo" href="/"
-        ><span>F</span><span>o</span><span>é</span><span>b</span><span>é</span></a
-      >
-      <div class="fallback-links">
-        <a href="/comprendre/">Comprendre</a>
-        <a href="/methode/">Méthode</a>
-        <a href="/echelle-foebe/">Échelle Foébé</a>
-        <a href="/zones/">7 zones</a>
-        <a href="/dictionnaire/">Dictionnaire</a>
-      </div>
-    </nav>
-    <div aria-hidden="true" class="foebe-scroll-progress foebe-scroll-progress--fallback">
-      <span class="foebe-scroll-progress__bar" id="foebeScrollProgressFallbackBar"></span>
-    </div>
-    <noscript>
-      <style>
-        .foebe-scroll-progress--fallback {
-          display: block !important;
-        }
-      </style>
-    </noscript>
+
     <main id="mainContent" tabindex="-1">
       <section aria-labelledby="pratiquer-title" class="practice-hero">
         <div class="practice-hero-grid">
@@ -59,9 +31,13 @@ const pratiquerFaq = [
               <span class="foebe-highlight foebe-highlight--rose">retrouver</span> un peu de calme ou
               <span class="foebe-highlight foebe-highlight--red">approfondir</span> ta lecture.
             </p>
-            <p class="hero-reassurance">
-              Le bon outil est celui qui réduit le flou sans ajouter une nouvelle obligation.
-            </p>
+            <aside class="practice-soft-warning" aria-labelledby="practice-warning-title">
+              <span aria-hidden="true" class="practice-soft-warning__mark">!</span>
+              <div>
+                <strong id="practice-warning-title">Avant de commencer</strong>
+                <p>Ces outils sont des portes d’entrée, pas une routine à réussir. Choisis celle qui répond à ton besoin du moment. Si quelque chose augmente ton inconfort, arrête et reviens à du familier.</p>
+              </div>
+            </aside>
           </div>
           <aside aria-labelledby="need-map-title" class="need-map reveal reveal-delay-1">
             <span class="need-map-kicker">Ton besoin maintenant</span>
@@ -179,13 +155,6 @@ const pratiquerFaq = [
         </div>
       </section>
     
-<GuidedFaq
-  id="pratiquer-faq"
-  compact
-  title="Tu peux choisir sans chercher le parcours parfait."
-  intro="Ces outils sont des portes d’entrée, pas une nouvelle routine à réussir."
-  items={pratiquerFaq}
-/>
 </main>
     
     

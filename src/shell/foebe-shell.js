@@ -15,6 +15,11 @@
      Le thème sauvegardé est appliqué dès l'exécution du Shell, sans loader.
   ═══════════════════════════════════════════════════════════════════════════ */
   (function () {
+    var lockedTheme = document.documentElement.getAttribute("data-foebe-theme-locked");
+    if (lockedTheme === "day" || lockedTheme === "night") {
+      document.documentElement.setAttribute("data-theme", lockedTheme);
+      return;
+    }
     try {
       var saved = localStorage.getItem("foebeTheme");
       if (saved === "day" || saved === "night") {
@@ -88,201 +93,26 @@
   currentFile = normalizeCurrentFile(currentFile);
 
   if (document.body) {
-    document.body.classList.add(
-      "foebe-page-" + String(currentFile || "page")
-        .replace(/\.html?$/i, "")
-        .replace(/[^a-z0-9]+/gi, "-")
-        .replace(/^-+|-+$/g, "")
-    );
+    var pageSlug = String(currentFile || "page")
+      .replace(/\.html?$/i, "")
+      .replace(/[^a-z0-9]+/gi, "-")
+      .replace(/^-+|-+$/g, "");
+    document.body.classList.add("foebe-page-" + pageSlug, "page-" + pageSlug);
   }
 
-  var zonesFiles = {
-    "zone-energie.html": true,
-    "zone-corps.html": true,
-    "zone-mental.html": true,
-    "zone-emotions.html": true,
-    "zone-environnement.html": true,
-    "zone-relations.html": true,
-    "zone-sens.html": true
-  };
-
-
-  function shellEscapeHtml(value) {
-    return String(value == null ? "" : value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
-
-  function shellPageLabelFallback() {
-    var h1 = document.querySelector("main h1,.hero h1,.zone-hero h1,.dict-hero h1,h1");
-    if (h1 && h1.textContent) {
-      var fromH1 = h1.textContent.replace(/\s+/g, " ").trim();
-      if (fromH1) return fromH1;
-    }
-    var fromTitle = String(document.title || "").split(/[|–—]/)[0].trim();
-    return fromTitle || "Page actuelle";
-  }
-
-  function getShellPageContext() {
-    var path = String(currentPath || window.location.pathname || "/").toLowerCase();
-    try { path = decodeURIComponent(path); } catch (e) {}
-
-    if (currentFile === "index.html") return null;
-
-    var exact = {
-      "comprendre.html": { href: "/", backLabel: "Accueil", currentLabel: "Comprendre", aria: "Retour à l’accueil" },
-      "a-propos.html": { href: "/", backLabel: "Accueil", currentLabel: "À propos", aria: "Retour à l’accueil" },
-      "faq.html": { href: "/", backLabel: "Accueil", currentLabel: "Questions fréquentes", aria: "Retour à l’accueil" },
-      "cadre-editorial.html": { href: "/a-propos/", backLabel: "À propos", currentLabel: "Cadre éditorial", aria: "Retour à la page À propos" },
-      "methode.html": { href: "/", backLabel: "Accueil", currentLabel: "La méthode Foébé", aria: "Retour à l’accueil" },
-      "pratiquer.html": { href: "/", backLabel: "Accueil", currentLabel: "4 outils", aria: "Retour à l’accueil" },
-      "echelle-foebe.html": { href: "/pratiquer/", backLabel: "4 outils", currentLabel: "Échelle Foébé", aria: "Retour aux 4 outils" },
-      "zones.html": { href: "/pratiquer/", backLabel: "4 outils", currentLabel: "7 zones", aria: "Retour aux 4 outils" },
-      "respiration.html": { href: "/pratiquer/", backLabel: "4 outils", currentLabel: "Respiration guidée", aria: "Retour aux 4 outils" },
-      "boussole.html": { href: "/pratiquer/", backLabel: "4 outils", currentLabel: "Boussole", aria: "Retour aux 4 outils" },
-      "boussole-scenarios.html": { href: "/boussole/", backLabel: "Boussole", currentLabel: "Scénarios", aria: "Retour à la Boussole Foébé" },
-      "lexique.html": { href: "/", backLabel: "Accueil", currentLabel: "Lexique Foébé", aria: "Retour à l’accueil" },
-      "dictionnaire.html": { href: "/", backLabel: "Accueil", currentLabel: "Dictionnaire", aria: "Retour à l’accueil" },
-      "mentions-legales.html": { href: "/", backLabel: "Accueil", currentLabel: "Mentions légales", aria: "Retour à l’accueil" }
-    };
-
-    if (exact[currentFile]) return exact[currentFile];
-
-    var zoneLabels = {
-      "zone-corps.html": "Corps",
-      "zone-mental.html": "Mental",
-      "zone-energie.html": "Énergie",
-      "zone-emotions.html": "Émotions",
-      "zone-environnement.html": "Environnement",
-      "zone-relations.html": "Relations",
-      "zone-sens.html": "Sens"
-    };
-    if (zoneLabels[currentFile]) {
-      return { href: "/zones/", backLabel: "7 zones", currentLabel: zoneLabels[currentFile], aria: "Retour à la page des 7 zones" };
-    }
-
-    if (
-      path.indexOf("/stories/") !== -1 ||
-      path.indexOf("/lexique/") !== -1 ||
-      path.indexOf("/dictionnaire/") !== -1 ||
-      currentFile === "stories.html" ||
-      /^(story-|fiche-|lexique-|dictionnaire-)/.test(currentFile)
-    ) {
-      return { href: "/dictionnaire/", backLabel: "Dictionnaire", currentLabel: shellPageLabelFallback(), aria: "Retour au Dictionnaire Foébé" };
-    }
-
-    return { href: "/", backLabel: "Accueil", currentLabel: shellPageLabelFallback(), aria: "Retour à l’accueil" };
-  }
-
-  var shellPageContext = getShellPageContext();
-  if (shellPageContext) document.documentElement.classList.add("foebe-has-shell-context");
-
+  /* ═══════════════════════════════════════════════════════════════════════════
+     3. SHELL RENDU PAR ASTRO — le JavaScript enrichit, il ne remplace plus
+  ═══════════════════════════════════════════════════════════════════════════ */
   var shellPathForMode = String(currentPath || window.location.pathname || "/").toLowerCase();
   var shellIsStoryImmersive = (
     currentFile === "lexique.html" ||
     currentFile === "stories.html" ||
     shellPathForMode.indexOf("/stories/") !== -1 ||
-    shellPathForMode.indexOf("/lexique/") !== -1 ||
-    shellPathForMode.indexOf("/dictionnaire/") !== -1 ||
-    /^(story-|fiche-|lexique-|dictionnaire-)/.test(currentFile)
+    /^(story-|fiche-|lexique-)/.test(currentFile)
   );
+
   if (shellIsStoryImmersive) {
     document.documentElement.classList.add("foebe-story-immersive");
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════════
-     3. INJECTION DU NAV
-  ═══════════════════════════════════════════════════════════════════════════ */
-  var NAV_STRUCTURE = [
-    { pole: "Maison Foébé", links: [
-      { href: "/", label: "Accueil" }
-    ]},
-    { pole: "Découvrir", links: [
-      { href: "/comprendre/", label: "Comprendre Maison Foébé" },
-      { href: "/a-propos/",   label: "À propos"   },
-      { href: "/cadre-editorial/", label: "Cadre éditorial & sources" },
-      { href: "/methode/",    label: "La méthode Foébé" },
-      { href: "/faq/",        label: "Questions fréquentes" }
-    ]},
-    { pole: "Pratiquer", links: [
-      { href: "/pratiquer/",     label: "4 outils" },
-      { href: "/echelle-foebe/", label: "Échelle Foébé" },
-      {
-        href: "/zones/",
-        label: "7 zones",
-        activeWhenZones: true,
-        children: [
-          { href: "/zone-corps/",        label: "Corps" },
-          { href: "/zone-mental/",       label: "Mental" },
-          { href: "/zone-energie/",      label: "Énergie" },
-          { href: "/zone-emotions/",     label: "Émotions" },
-          { href: "/zone-environnement/",label: "Environnement" },
-          { href: "/zone-relations/",    label: "Relations" },
-          { href: "/zone-sens/",         label: "Sens" }
-        ]
-      },
-      { href: "/respiration/", label: "Respiration guidée" },
-      {
-        href: "/boussole/",
-        label: "Boussole",
-        children: [
-          { href: "/boussole-scenarios/", label: "Scénarios" }
-        ]
-      }
-    ]},
-    { pole: "Ressources", links: [
-      { href: "/lexique/",      label: "Lexique Foébé" },
-      { href: "/dictionnaire/", label: "Dictionnaire" }
-    ]}
-  ];
-
-  function isCurrentLink(link) {
-    return normalizeCurrentFile(link.href) === currentFile;
-  }
-
-  function isBranchActive(link) {
-    if (isCurrentLink(link)) return true;
-    if (link.activeWhenZones && zonesFiles[currentFile]) return true;
-    return Array.isArray(link.children) && link.children.some(function (child) {
-      return isCurrentLink(child);
-    });
-  }
-
-  function buildNavHTML() {
-    return NAV_STRUCTURE.map(function (pole, poleIndex) {
-      var links = pole.links.map(function (link, linkIndex) {
-        var parentCurrent = isCurrentLink(link);
-        var hasChildren = Array.isArray(link.children) && link.children.length > 0;
-
-        if (!hasChildren) {
-          return '<a class="nav-link" href="' + shellEscapeHtml(link.href) + '"' +
-            (parentCurrent ? ' aria-current="page"' : '') + '>' + shellEscapeHtml(link.label) + '</a>';
-        }
-
-        var branchActive = isBranchActive(link);
-        var branchId = 'foebeNavChildren-' + poleIndex + '-' + linkIndex;
-        var childLinks = link.children.map(function (child) {
-          return '<a class="nav-child-link" href="' + shellEscapeHtml(child.href) + '"' +
-            (isCurrentLink(child) ? ' aria-current="page"' : '') + '>' + shellEscapeHtml(child.label) + '</a>';
-        }).join("");
-
-        return '<div class="nav-branch' + (branchActive ? ' is-open' : '') + '" data-nav-branch>' +
-          '<div class="nav-branch-head">' +
-            '<a class="nav-link nav-parent-link' + (!parentCurrent && branchActive ? ' is-branch-current' : '') + '" href="' + shellEscapeHtml(link.href) + '"' +
-              (parentCurrent ? ' aria-current="page"' : '') + '>' + shellEscapeHtml(link.label) + '</a>' +
-            '<button class="nav-branch-toggle" type="button" aria-controls="' + branchId + '" aria-expanded="' + (branchActive ? 'true' : 'false') + '" aria-label="' +
-              (branchActive ? 'Masquer' : 'Afficher') + ' les sous-pages de ' + shellEscapeHtml(link.label) + '">' +
-              '<span class="nav-branch-toggle__icon" aria-hidden="true">⌄</span>' +
-            '</button>' +
-          '</div>' +
-          '<div class="nav-children" id="' + branchId + '">' + childLinks + '</div>' +
-        '</div>';
-      }).join("");
-      return '<div class="nav-pole"><span class="nav-pole-label">' + shellEscapeHtml(pole.pole) + '</span>' + links + '</div>';
-    }).join("");
   }
 
   var pageMain = document.querySelector("main");
@@ -290,45 +120,22 @@
   if (pageMain && !pageMain.hasAttribute("tabindex")) pageMain.setAttribute("tabindex", "-1");
 
   var mainNav = document.getElementById("mainNav");
-  if (!mainNav) {
-    mainNav = document.createElement("nav");
-    mainNav.id = "mainNav";
-    document.body.insertBefore(mainNav, document.body.firstChild);
-  }
-  mainNav.setAttribute("aria-label", "Navigation principale");
-
-  var shellBackHtml = shellPageContext
-    ? '<a class="shell-context-back" href="' + shellEscapeHtml(shellPageContext.href) + '" aria-label="' + shellEscapeHtml(shellPageContext.aria) + '">' +
-        '<span class="shell-context-back__arrow" aria-hidden="true">←</span>' +
-        '<span class="shell-context-back__label">' + shellEscapeHtml(shellPageContext.backLabel) + '</span>' +
-      '</a>'
-    : '';
-  var shellCurrentLabel = shellPageContext ? shellPageContext.currentLabel : "Accueil";
-
-  mainNav.innerHTML =
-    '<div class="nav-left">' +
-      '<a aria-label="Maison Foébé — accueil" class="nav-logo" href="/">' +
-        '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
-      '</a>' + shellBackHtml +
-    '</div>' +
-    '<span class="shell-page-current' + (shellPageContext ? '' : ' shell-page-current--home') + '" aria-current="page" title="' + shellEscapeHtml(shellCurrentLabel) + '">' + shellEscapeHtml(shellCurrentLabel) + '</span>' +
-    '<div class="nav-right">' +
-      '<button aria-label="Changer le thème" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">☀️</button>' +
-      '<button aria-controls="navMenu" aria-expanded="false" aria-label="Ouvrir le menu" id="menuToggle" type="button">☰</button>' +
-    '</div>' +
-    '<div id="foebeReadingProgress" aria-hidden="true"><span id="foebeReadingProgressBar"></span></div>';
-
   var navMenu = document.getElementById("navMenu");
-  if (!navMenu) {
-    navMenu = document.createElement("nav");
-    navMenu.id = "navMenu";
-    mainNav.insertAdjacentElement("afterend", navMenu);
+
+  if (!mainNav || !navMenu) {
+    document.documentElement.classList.remove("foebe-shell-loading");
+    document.documentElement.classList.add("foebe-shell-failed");
+    return;
   }
 
+  mainNav.setAttribute("aria-label", "Navigation principale");
   navMenu.setAttribute("aria-label", "Menu principal");
-  navMenu.setAttribute("aria-hidden", "true");
-  navMenu.className = "";
-  navMenu.innerHTML = '<div class="nav-panel-inner">' + buildNavHTML() + '</div>';
+  navMenu.setAttribute("aria-hidden", navMenu.classList.contains("open") ? "false" : "true");
+
+  if (mainNav.querySelector(".shell-context-back")) {
+    document.documentElement.classList.add("foebe-has-shell-context");
+  }
+
 
   /* Sous-navigation : boutons visibles sur desktop, accordéons accessibles sur mobile. */
   (function initNavBranches() {
@@ -410,16 +217,6 @@
     if (!bar) return;
 
     var ticking = false;
-    var legacySelector = ".foebe-scroll-progress,#scrollProgress,.scroll-progress,[data-scroll-progress],.reading-progress,.page-reading-progress";
-
-    function removeLegacyReadingBars() {
-      document.querySelectorAll(legacySelector).forEach(function (el) {
-        if (!el || el.id === "foebeReadingProgress" || el.id === "foebeReadingProgressBar") return;
-        if (el.classList && el.classList.contains("foebe-scroll-progress--fallback")) return;
-        if (el.closest && el.closest("#mainNav")) return;
-        if (el.parentNode) el.parentNode.removeChild(el);
-      });
-    }
 
     function updateReadingProgress() {
       ticking = false;
@@ -438,8 +235,7 @@
         currentFile === "lexique.html" ||
         currentFile === "stories.html" ||
         path.indexOf("/stories/") !== -1 ||
-        path.indexOf("/lexique/") !== -1 ||
-        path.indexOf("/dictionnaire/") !== -1
+        path.indexOf("/lexique/") !== -1
       );
 
       var progressMode = String(
@@ -470,7 +266,6 @@
       window.requestAnimationFrame(updateReadingProgress);
     }
 
-    removeLegacyReadingBars();
     updateReadingProgress();
 
     window.addEventListener("scroll", requestUpdate, { passive: true });
@@ -487,16 +282,7 @@
       }
     } catch (e) {}
 
-    try {
-      var progressObserver = new MutationObserver(function () {
-        removeLegacyReadingBars();
-        requestUpdate();
-      });
-      progressObserver.observe(document.documentElement, { childList: true, subtree: true });
-      window.setTimeout(function () {
-        try { progressObserver.disconnect(); } catch (e) {}
-      }, 3000);
-    } catch (e) {}
+
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -536,7 +322,7 @@
         '<a aria-label="Retour accueil Maison Foébé" class="footer-logo" href="/">' +
           '<span>F</span><span>o</span><span>é</span><span>b</span><span>é</span>' +
         '</a>' +
-        '<p class="footer-description">Un espace structuré du self-care pour apprendre à se lire, se réguler et avancer avec un peu plus de douceur.</p>' +
+        '<p class="footer-description">Un espace structuré du self-care pour comprendre ce qui fatigue, ce qui épuise et ce qui empêche de récupérer, puis choisir un geste concret.</p>' +
         '<div class="footer-social" aria-label="Réseaux sociaux Maison Foébé">' +
           '<a aria-label="Pinterest Maison Foébé" class="social-icon" href="https://fr.pinterest.com/maisonfoebe/" rel="noopener noreferrer" target="_blank">' + PINTEREST_SVG + '</a>' +
           '<a aria-label="Instagram Maison Foébé" class="social-icon" href="https://www.instagram.com/maisonfoebe/" rel="noopener noreferrer" target="_blank">' + INSTA_SVG + '</a>' +
@@ -605,126 +391,214 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     6. MENU HAMBURGER + HOVER DESKTOP
+     6. MENU HAMBURGER — effort minimal et comportement prévisible
+     Desktop : le survol ouvre, quitter la zone referme. Un clic épingle le menu.
+     Mobile / clavier : le clic ou la touche Entrée garde la commande principale.
   ═══════════════════════════════════════════════════════════════════════════ */
 
   var menuToggle = document.getElementById("menuToggle");
-  var hoverCloseTimer = null;
-  var canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
   var focusTrapHandler = null;
+  var scrollLockState = null;
+  var menuOpenMode = null;
+  var menuPinned = false;
+  var hoverCloseTimer = null;
+  var mobileMenuQuery = window.matchMedia ? window.matchMedia("(max-width: 767px)") : null;
+  var desktopHoverQuery = window.matchMedia ? window.matchMedia("(min-width: 768px) and (hover: hover) and (pointer: fine)") : null;
+
+  function isMobileMenuViewport() {
+    return mobileMenuQuery ? mobileMenuQuery.matches : window.innerWidth <= 767;
+  }
+
+  function supportsDesktopHover() {
+    return desktopHoverQuery ? desktopHoverQuery.matches : (window.innerWidth >= 768);
+  }
+
+  function cancelHoverClose() {
+    if (!hoverCloseTimer) return;
+    window.clearTimeout(hoverCloseTimer);
+    hoverCloseTimer = null;
+  }
+
+  function scheduleHoverClose() {
+    cancelHoverClose();
+    if (!supportsDesktopHover() || menuPinned || menuOpenMode !== "hover") return;
+    hoverCloseTimer = window.setTimeout(function () {
+      hoverCloseTimer = null;
+      if (!menuPinned && menuOpenMode === "hover") closeMenu();
+    }, 180);
+  }
+
   function getFocusables(root) {
     if (!root) return [];
     return Array.prototype.slice.call(
       root.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])')
     ).filter(function(el){ return el.offsetParent !== null || el === document.activeElement; });
   }
+
   function activateFocusTrap() {
     if (focusTrapHandler) return;
     focusTrapHandler = function(e) {
-      if (e.key === "Escape") { e.preventDefault(); closeMenu({ returnFocus: true }); return; }
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMenu({ returnFocus: true });
+        return;
+      }
       if (e.key !== "Tab") return;
       var focusables = getFocusables(navMenu);
       if (!focusables.length) return;
-      var first = focusables[0], last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", focusTrapHandler);
   }
+
   function deactivateFocusTrap() {
     if (!focusTrapHandler) return;
     document.removeEventListener("keydown", focusTrapHandler);
     focusTrapHandler = null;
   }
 
+  function lockBackgroundScroll() {
+    var root = document.documentElement;
+    root.classList.add("foebe-nav-menu-open");
+    if (!isMobileMenuViewport() || scrollLockState || !document.body) return;
+
+    var body = document.body;
+    var y = window.pageYOffset || root.scrollTop || 0;
+    scrollLockState = {
+      y: y,
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: body.style.overflow
+    };
+
+    root.classList.add("foebe-menu-scroll-locked");
+    body.style.position = "fixed";
+    body.style.top = (-y) + "px";
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+  }
+
+  function unlockBackgroundScroll(options) {
+    options = options || {};
+    var root = document.documentElement;
+    root.classList.remove("foebe-nav-menu-open", "foebe-menu-scroll-locked");
+    if (!scrollLockState || !document.body) return;
+
+    var body = document.body;
+    var state = scrollLockState;
+    scrollLockState = null;
+    body.style.position = state.position;
+    body.style.top = state.top;
+    body.style.left = state.left;
+    body.style.right = state.right;
+    body.style.width = state.width;
+    body.style.overflow = state.overflow;
+
+    if (options.restoreScroll !== false) {
+      window.scrollTo(0, state.y);
+    }
+  }
+
   function openMenu(options) {
     options = options || {};
-    if (hoverCloseTimer) {
-      clearTimeout(hoverCloseTimer);
-      hoverCloseTimer = null;
+    cancelHoverClose();
+
+    var requestedMode = options.mode || "click";
+    if (requestedMode === "hover" && !supportsDesktopHover()) return;
+
+    menuOpenMode = requestedMode;
+    if (typeof options.pinned === "boolean") menuPinned = options.pinned;
+    else menuPinned = requestedMode !== "hover";
+
+    if (!navMenu.classList.contains("open")) {
+      navMenu.classList.add("open");
+      navMenu.setAttribute("aria-hidden", "false");
+      navOverlay.classList.add("open");
+      navOverlay.setAttribute("aria-hidden", "false");
+      lockBackgroundScroll();
+
+      if (menuToggle) {
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.textContent = "×";
+        menuToggle.setAttribute("aria-label", menuPinned ? "Fermer le menu" : "Menu ouvert — cliquer pour le maintenir");
+      }
     }
 
-    navMenu.classList.add("open");
-    navMenu.setAttribute("aria-hidden", "false");
-
-    navOverlay.classList.add("open");
-    navOverlay.setAttribute("aria-hidden", "false");
-
-    if (menuToggle) {
-      menuToggle.setAttribute("aria-expanded", "true");
-      menuToggle.textContent = "×";
-      menuToggle.setAttribute("aria-label", "Fermer le menu");
-    }
-
-    /* Focus trap uniquement lors d’une ouverture volontaire (clic ou clavier).
-       Une ouverture au survol desktop ne déplace jamais le focus. */
-    if (options.trapFocus) {
-      activateFocusTrap();
+    if (options.trapFocus !== false) activateFocusTrap();
+    if (options.focusFirst !== false) {
       var first = getFocusables(navMenu)[0];
-      if (first) { try { first.focus({ preventScroll: true }); } catch(e) { first.focus(); } }
-    } else {
-      deactivateFocusTrap();
+      if (first) {
+        try { first.focus({ preventScroll: true }); } catch(e) { first.focus(); }
+      }
     }
   }
 
   function closeMenu(options) {
     options = options || {};
-    if (hoverCloseTimer) {
-      clearTimeout(hoverCloseTimer);
-      hoverCloseTimer = null;
-    }
+    var wasOpen = navMenu.classList.contains("open");
+    cancelHoverClose();
 
     navMenu.classList.remove("open");
     navMenu.setAttribute("aria-hidden", "true");
-
     navOverlay.classList.remove("open");
     navOverlay.setAttribute("aria-hidden", "true");
-
     deactivateFocusTrap();
+    unlockBackgroundScroll();
+    menuOpenMode = null;
+    menuPinned = false;
+
     if (menuToggle) {
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.textContent = "☰";
       menuToggle.setAttribute("aria-label", "Ouvrir le menu");
-      if (options.returnFocus) menuToggle.focus();
+      if (wasOpen && options.returnFocus) menuToggle.focus();
     }
   }
 
-  function scheduleCloseMenu() {
-    if (!canHover) return;
-    if (hoverCloseTimer) clearTimeout(hoverCloseTimer);
-
-    hoverCloseTimer = setTimeout(function () {
-      var navHovered = mainNav.matches(":hover");
-      var menuHovered = navMenu.matches(":hover");
-
-      if (!navHovered && !menuHovered) {
-        closeMenu();
-      }
-    }, 180);
-  }
   if (menuToggle) {
+    menuToggle.addEventListener("pointerenter", function () {
+      if (!supportsDesktopHover() || menuPinned) return;
+      openMenu({ mode: "hover", pinned: false, focusFirst: false, trapFocus: false });
+    });
+
     menuToggle.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
 
-      if (navMenu.classList.contains("open")) {
+      if (navMenu.classList.contains("open") && menuOpenMode === "hover" && !menuPinned) {
+        menuPinned = true;
+        menuOpenMode = "click";
+        activateFocusTrap();
+        menuToggle.setAttribute("aria-label", "Fermer le menu");
+        return;
+      }
+
+      if (navMenu.classList.contains("open") && menuPinned) {
         closeMenu({ returnFocus: true });
       } else {
-        openMenu({ trapFocus: true });
+        openMenu({ mode: "click", pinned: true, focusFirst: true, trapFocus: true });
       }
     });
-
-    if (canHover) {
-      menuToggle.addEventListener("mouseenter", function () { openMenu({ trapFocus: false }); });
-    }
   }
 
-  if (canHover) {
-    mainNav.addEventListener("mouseleave", scheduleCloseMenu);
-    navMenu.addEventListener("mouseenter", function () { openMenu({ trapFocus: false }); });
-    navMenu.addEventListener("mouseleave", scheduleCloseMenu);
-  }
+  [mainNav, navMenu].forEach(function (surface) {
+    if (!surface) return;
+    surface.addEventListener("pointerenter", cancelHoverClose);
+    surface.addEventListener("pointerleave", scheduleHoverClose);
+  });
 
   navOverlay.addEventListener("click", function () {
     closeMenu();
@@ -738,24 +612,20 @@
 
   document.addEventListener("click", function (e) {
     if (!navMenu.classList.contains("open")) return;
-
-    var clickedInsideMenu = navMenu.contains(e.target);
-    var clickedInsideNav = mainNav.contains(e.target);
-
-    if (!clickedInsideMenu && !clickedInsideNav) {
-      closeMenu();
-    }
+    if (!navMenu.contains(e.target) && !mainNav.contains(e.target)) closeMenu();
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && navMenu.classList.contains("open")) {
       closeMenu({ returnFocus: true });
     }
   });
 
   window.addEventListener("resize", function () {
-    canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  });
+    if (!navMenu.classList.contains("open")) return;
+    if (isMobileMenuViewport()) lockBackgroundScroll();
+    else unlockBackgroundScroll({ restoreScroll: true });
+  }, { passive: true });
 
   /* ═══════════════════════════════════════════════════════════════════════════
      7. ANIMATIONS REVEAL AU SCROLL
@@ -782,16 +652,6 @@
     });
   }
   /* ═══════════════════════════════════════════════════════════════════════════
-     8. FALLBACK NAV — masquer seulement si le Shell a bien chargé
-  ═══════════════════════════════════════════════════════════════════════════ */
- var fallbackNav = document.getElementById("fallbackNav");
-
-if (fallbackNav) {
-  fallbackNav.setAttribute("aria-hidden", "true");
-  fallbackNav.style.display = "none";
-}
-
-  /* ═══════════════════════════════════════════════════════════════════════════
      9. ÉTAT SHELL
   ═══════════════════════════════════════════════════════════════════════════ */
   try {
@@ -810,93 +670,7 @@ if (fallbackNav) {
       window.dispatchEvent(new CustomEvent("foebe:shell-ready"));
     } catch (eventError) {}
   } catch (e) {}
-/* FOEBE CLEANUP UNIFIÉ — START
-     Compatibilité après suppression du fil d’Ariane global.
-     - masque/supprime les anciens breadcrumbs éventuellement présents dans les pages ;
-     - préserve le mode immersif Lexique/Stories ;
-     - retire les anciennes barres de progression de lecture devenues redondantes ;
-     - un seul MutationObserver, borné à 3 secondes. */
-  (function () {
-    function normalizedPath() {
-      var path = String(window.location.pathname || "/").toLowerCase();
-      try { path = decodeURIComponent(path); } catch (e) {}
-      return path.split("?")[0].split("#")[0].replace(/\/+/g, "/");
-    }
 
-    function isImmersivePage() {
-      var path = normalizedPath();
-      var parts = path.split("/").filter(Boolean);
-      var file = parts.length ? parts[parts.length - 1] : "index.html";
-      return (
-        file === "lexique.html" ||
-        file === "stories.html" ||
-        path.indexOf("/stories/") !== -1 ||
-        path.indexOf("/lexique/") !== -1 ||
-        path.indexOf("/dictionnaire/") !== -1
-      );
-    }
-
-    var immersive = isImmersivePage();
-
-    function injectCleanupCss(){ /* CSS externalisé */ }
-
-    function cleanLegacyUi() {
-      document.documentElement.classList.add("foebe-no-breadcrumb");
-      if (document.body) document.body.classList.add("foebe-no-breadcrumb");
-
-      document.querySelectorAll(".foebe-breadcrumb").forEach(function (el) {
-        if (el && el.parentNode) el.parentNode.removeChild(el);
-      });
-
-      document.querySelectorAll(
-        ".foebe-scroll-progress,#scrollProgress,.scroll-progress,[data-scroll-progress],.reading-progress,.page-reading-progress"
-      ).forEach(function (el) {
-        if (!el || el.id === "foebeReadingProgress" || el.id === "foebeReadingProgressBar") return;
-        if (el.classList && el.classList.contains("foebe-scroll-progress--fallback")) return;
-        if (el.closest && el.closest("#mainNav")) return;
-        if (el.parentNode) el.parentNode.removeChild(el);
-      });
-
-      if (!immersive) return;
-
-      document.documentElement.classList.add("foebe-immersive-page", "foebe-lexique-immersive");
-      if (document.body) document.body.classList.add("foebe-immersive-page", "foebe-lexique-immersive");
-
-      document.querySelectorAll(
-        ".foebe-scroll-progress," +
-        ".story-topbar,.stories-topbar,.story-fixed-bar,.stories-fixed-bar," +
-        ".story-progress,.stories-progress,.lexique-topbar,.dictionnaire-topbar," +
-        ".lexique-fixed-bar,.dictionnaire-fixed-bar," +
-        "[data-story-topbar],[data-stories-topbar],[data-lexique-topbar]"
-      ).forEach(function (el) {
-        if (el && el.classList && el.classList.contains("foebe-scroll-progress--fallback")) return;
-        if (el && el.parentNode) el.parentNode.removeChild(el);
-      });
-    }
-
-    injectCleanupCss();
-
-    function startCleanup() {
-      cleanLegacyUi();
-
-      try {
-        var observer = new MutationObserver(cleanLegacyUi);
-        observer.observe(document.documentElement, { childList: true, subtree: true });
-        window.setTimeout(function () {
-          try { observer.disconnect(); } catch (e) {}
-        }, 3000);
-      } catch (e) {
-        window.setTimeout(cleanLegacyUi, 900);
-      }
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", startCleanup, { once: true });
-    } else {
-      startCleanup();
-    }
-  })();
-  /* FOEBE CLEANUP UNIFIÉ — END */
 
   /* FOEBE NAV IMMERSIVE MOBILE — START
      Toutes les pages mobiles : la navigation s'efface après une courte inactivité
@@ -936,8 +710,7 @@ if (fallbackNav) {
         file === "stories.html" ||
         path.indexOf("/stories/") !== -1 ||
         path.indexOf("/lexique/") !== -1 ||
-        path.indexOf("/dictionnaire/") !== -1 ||
-        /^(story-|fiche-|lexique-|dictionnaire-)/.test(file)
+        /^(story-|fiche-|lexique-)/.test(file)
       );
     }
 
@@ -955,7 +728,6 @@ if (fallbackNav) {
     }
 
     function focusNeedsNav() {
-      if (!keyboardMode) return false;
       var active = document.activeElement;
       var nav = document.getElementById("mainNav");
       var menu = document.getElementById("navMenu");
@@ -1180,45 +952,6 @@ if (fallbackNav) {
   /* FOEBE NAV IMMERSIVE MOBILE — END */
 
 
-
-  /* ═══════════════════════════════════════════════════════════════════════════
-     V4 — SKIP-LINK ACCESSIBILITÉ + SAFE-AREA iPhone
-  ═══════════════════════════════════════════════════════════════════════════ */
-  (function () {
-    /* CSS skip-link + safe-area menu mobile */
-    /* CSS V4 externalisé */
-
-    function ensureMainTarget() {
-      var main = document.querySelector("main");
-      if (main && !main.id) main.id = "mainContent";
-      return main ? main.id : null;
-    }
-
-    function injectSkipLink() {
-      if (document.getElementById("foebeSkipLink")) return;
-      var targetId = ensureMainTarget();
-      if (!targetId) return;
-      var link = document.createElement("a");
-      link.id = "foebeSkipLink";
-      link.className = "foebe-skip-link";
-      link.href = "#" + targetId;
-      link.textContent = "Aller au contenu";
-      link.addEventListener("click", function () {
-        var main = document.getElementById(targetId);
-        if (!main) return;
-        window.setTimeout(function () {
-          try { main.focus({ preventScroll: true }); } catch (e) { main.focus(); }
-        }, 0);
-      });
-      (document.body || document.documentElement).insertBefore(link, (document.body || document.documentElement).firstChild);
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", injectSkipLink, { once: true });
-    } else {
-      injectSkipLink();
-    }
-  })();
 
   /* ═══════════════════════════════════════════════════════════════════════════
      10. RETOUR EN HAUT — composant global Shell

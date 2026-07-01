@@ -1,65 +1,25 @@
 /* CSS de production restauré depuis la version main, externalisé pour Astro. */
 /* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
    Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
-html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
-html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
-  display:none!important;
-}
+
 
 /* FALLBACK NAV CRITIQUE — Maison Foébé */
-body > nav#fallbackNav.fallback-nav{
-  position:fixed;top:0;left:0;right:0;z-index:950;
-  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:rgba(78,41,31,.94);border-bottom:1px solid rgba(187,126,96,.34);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 2px 14px rgba(0,0,0,.16);font-family:"Poppins",sans-serif;box-sizing:border-box;
-}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav{
-  background:rgba(240,234,231,.94);border-bottom-color:rgba(78,41,31,.16);box-shadow:0 2px 14px rgba(78,41,31,.08);
-}
-body > nav#fallbackNav.fallback-nav .fallback-logo{
-  font-family:"Montserrat",sans-serif;font-weight:700;font-size:18px;letter-spacing:-.06em;line-height:1;
-  text-decoration:none;display:inline-flex;align-items:center;min-height:44px;flex:0 0 auto;max-width:42vw;white-space:nowrap;
-}
-[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{color:#F0EAE7;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){color:#4E291F;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2){color:#BB7E60;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3){color:#C45279;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4){color:#C34234;}
-body > nav#fallbackNav.fallback-nav .fallback-links{
-  display:flex;flex:1 1 auto;align-items:center;justify-content:flex-end;gap:6px;min-width:0;overflow-x:auto;overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;
-}
-body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar{display:none;}
-body > nav#fallbackNav.fallback-nav .fallback-links>a{
-  min-height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0 11px;border-radius:999px;
-  color:var(--text,#F0EAE7);font-family:"Poppins",sans-serif;font-size:12.5px;font-weight:600;white-space:nowrap;
-  flex:0 0 auto;text-decoration:none;border:1px solid transparent;opacity:.92;background:transparent;box-sizing:border-box;
-}
-body > nav#fallbackNav.fallback-nav .fallback-links>a:hover,
-body > nav#fallbackNav.fallback-nav .fallback-links>a:focus-visible{
-  color:#F0EAE7;background:#BB7E60;border-color:#BB7E60;opacity:1;outline:none;
-}
-body > nav#fallbackNav.fallback-nav .fallback-links>a[aria-current="page"]{
-  color:#F0EAE7!important;
-  background:#BB7E60!important;
-  border-color:#BB7E60!important;
-  opacity:1!important;
-}
 
-@media(max-width:720px){
-  body > nav#fallbackNav.fallback-nav{padding:0 12px;gap:12px;}
-  body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px;}
-  body > nav#fallbackNav.fallback-nav .fallback-links{justify-content:flex-start;}
-  body > nav#fallbackNav.fallback-nav .fallback-links>a{font-size:12px;padding:0 10px;}
-}
-@media(max-width:420px){
-  body > nav#fallbackNav.fallback-nav{gap:10px;padding:0 10px;}
-  body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px;max-width:36vw;}
-  body > nav#fallbackNav.fallback-nav .fallback-links>a{min-height:38px;font-size:12px;padding:0 10px;}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -262,13 +222,7 @@ main{display:block;}
 
 
 /* Corrections finales Foébé — lisibilité, CTA, hero plein écran */
-@media(max-width:420px){
-  body > nav#fallbackNav.fallback-nav .fallback-links>a{
-    min-height:38px !important;
-    font-size:12px !important;
-    padding:0 10px !important;
-  }
-}
+
 
 .btn-cta,
 .btn-outline,
@@ -649,59 +603,25 @@ main{display:block;}
   --foebe-nav-height: 60px;
 }
 
-.foebe-scroll-progress--fallback {
-  display: none;
-  position: fixed;
-  top: var(--foebe-nav-height);
-  left: 0;
-  right: 0;
-  height: 3px;
-  z-index: 99987;
-  overflow: hidden;
-  pointer-events: none;
-  background: rgba(187, 126, 96, 0.12);
-}
 
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: var(--foebe-progress-gradient);
-  transform: scaleX(0);
-  transform-origin: left center;
-  will-change: transform;
-  box-shadow: 0 1px 7px rgba(187, 126, 96, 0.28);
-}
 
-html.foebe-shell-loading .foebe-scroll-progress--fallback,
-html.foebe-shell-ready .foebe-scroll-progress--fallback {
-  display: none !important;
-}
 
-html.foebe-shell-failed .foebe-scroll-progress--fallback {
-  display: block;
-}
 
-html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
-body[data-foebe-progress="off"] .foebe-scroll-progress--fallback {
-  display: none !important;
-}
+
+
+
+
+
 
 @media (max-width: 640px) {
   :root {
     --foebe-nav-height: 58px;
   }
 
-  .foebe-scroll-progress--fallback {
-    height: 2px;
-  }
+  
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar {
-    transition: none !important;
-  }
-}
+
 
 /* Ambiance générale : plus enveloppante, sans surcharge. */
 .page-comprendre{
@@ -1238,6 +1158,23 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback {
 
 
 
-    .foebe-scroll-progress--fallback {
-      display: block !important;
-    }
+    
+
+
+/* Phase B — repères chromatiques demandés, lisibles sans surligner toute la ligne. */
+.page-comprendre .frame-step--warm .frame-index{background:#BB7E60!important;color:#F0EAE7!important;border-color:#BB7E60!important;}
+.page-comprendre .frame-step--red .frame-index{background:#C34234!important;color:#F0EAE7!important;border-color:#C34234!important;}
+.page-comprendre .frame-step--rose .frame-index{background:#C45279!important;color:#F0EAE7!important;border-color:#C45279!important;}
+[data-theme="night"] .page-comprendre .frame-step .frame-copy strong{
+  width:max-content;
+  padding:2px 7px;
+  border-radius:6px;
+  color:#F0EAE7!important;
+}
+[data-theme="night"] .page-comprendre .frame-step--warm .frame-copy strong{background:#BB7E60!important;}
+[data-theme="night"] .page-comprendre .frame-step--red .frame-copy strong{background:#C34234!important;}
+[data-theme="night"] .page-comprendre .frame-step--rose .frame-copy strong{background:#C45279!important;}
+[data-theme="day"] .page-comprendre .frame-step .frame-copy strong{padding:0;background:transparent!important;}
+[data-theme="day"] .page-comprendre .frame-step--warm .frame-copy strong{color:#BB7E60!important;}
+[data-theme="day"] .page-comprendre .frame-step--red .frame-copy strong{color:#C34234!important;}
+[data-theme="day"] .page-comprendre .frame-step--rose .frame-copy strong{color:#C45279!important;}

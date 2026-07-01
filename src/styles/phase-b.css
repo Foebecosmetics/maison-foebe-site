@@ -6,14 +6,14 @@
   color:var(--text,#F0EAE7);
   background:var(--bg,#2C1A12);
 }
-[data-theme='day'] .foebe-guided-faq,
-[data-theme='day'] .foebe-next-steps{
+[data-theme="day"] .foebe-guided-faq,
+[data-theme="day"] .foebe-next-steps{
   color:#4E291F;
   background:#F0EAE7;
 }
 .foebe-guided-faq::before,
 .foebe-next-steps::before{
-  content:'';
+  content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
@@ -37,7 +37,7 @@
   display:block;
   margin-bottom:10px;
   color:#BB7E60;
-  font:700 10px/1.4 'Poppins',sans-serif;
+  font:700 10px/1.4 "Poppins",sans-serif;
   letter-spacing:2.1px;
   text-transform:uppercase;
 }
@@ -45,7 +45,7 @@
 .foebe-next-steps__title{
   margin:0;
   color:inherit;
-  font:600 clamp(30px,5vw,54px)/1.08 'Lora',serif;
+  font:600 clamp(30px,5vw,54px)/1.08 "Lora",serif;
   letter-spacing:-.03em;
 }
 .foebe-guided-faq__intro,
@@ -54,7 +54,7 @@
   margin:18px 0 0;
   color:inherit;
   opacity:.78;
-  font:400 clamp(15px,1.8vw,18px)/1.75 'Poppins',sans-serif;
+  font:400 clamp(15px,1.8vw,18px)/1.75 "Poppins",sans-serif;
 }
 .foebe-guided-faq__list{
   display:grid;
@@ -68,7 +68,7 @@
   background:rgba(240,234,231,.035);
   box-shadow:0 14px 34px rgba(0,0,0,.08);
 }
-[data-theme='day'] .foebe-guided-faq__item{
+[data-theme="day"] .foebe-guided-faq__item{
   background:rgba(255,255,255,.54);
   box-shadow:0 14px 34px rgba(78,41,31,.07);
 }
@@ -82,7 +82,7 @@
   color:inherit;
   cursor:pointer;
   list-style:none;
-  font:600 clamp(15px,1.8vw,17px)/1.45 'Poppins',sans-serif;
+  font:600 clamp(15px,1.8vw,17px)/1.45 "Poppins",sans-serif;
 }
 .foebe-guided-faq__question::-webkit-details-marker{display:none}
 .foebe-guided-faq__question:focus-visible{
@@ -97,7 +97,7 @@
   border:1px solid rgba(187,126,96,.38);
   border-radius:999px;
   color:#BB7E60;
-  font:500 20px/1 'Poppins',sans-serif;
+  font:500 20px/1 "Poppins",sans-serif;
   transition:transform .2s ease,background .2s ease,color .2s ease;
 }
 .foebe-guided-faq__item[open] .foebe-guided-faq__icon{
@@ -109,7 +109,7 @@
   padding:0 clamp(18px,3vw,28px) 22px;
   color:inherit;
   opacity:.8;
-  font:400 15px/1.75 'Poppins',sans-serif;
+  font:400 15px/1.75 "Poppins",sans-serif;
 }
 .foebe-guided-faq__answer p{margin:0;max-width:760px}
 .foebe-guided-faq--compact{padding-block:clamp(48px,7vw,76px)}
@@ -133,7 +133,7 @@
   text-decoration:none;
   transition:transform .2s ease,border-color .2s ease,background .2s ease;
 }
-[data-theme='day'] .foebe-next-steps__card{background:rgba(255,255,255,.54)}
+[data-theme="day"] .foebe-next-steps__card{background:rgba(255,255,255,.54)}
 .foebe-next-steps__card:hover,
 .foebe-next-steps__card:focus-visible{
   transform:translateY(-3px);
@@ -145,11 +145,11 @@
 .foebe-next-steps__card strong{
   display:block;
   margin-bottom:10px;
-  font:600 19px/1.3 'Lora',serif;
+  font:600 19px/1.3 "Lora",serif;
 }
 .foebe-next-steps__card > span:not(.foebe-next-steps__kicker):not(.foebe-next-steps__arrow){
   opacity:.75;
-  font:400 13.5px/1.65 'Poppins',sans-serif;
+  font:400 13.5px/1.65 "Poppins",sans-serif;
 }
 .foebe-next-steps__arrow{
   position:absolute;

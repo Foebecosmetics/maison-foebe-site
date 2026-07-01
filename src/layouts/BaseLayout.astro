@@ -7,6 +7,8 @@
 import '../styles/base.css';
 import '../styles/phase-b.css';
 import pageLastmod from '../data/page-lastmod.json';
+import SiteShell from '../components/SiteShell.astro';
+import { ROUTE_LABELS, getPageBodyClasses, isImmersiveShellPage, usesDarkNavigation } from '../data/site-navigation';
 
 interface Props {
   title: string;
@@ -35,7 +37,7 @@ const {
   ogTitle,
   ogDesc,
   ogImage = 'https://maisonfoebe.fr/images/og-maison-foebe-self-care.jpg',
-  ogImageAlt = 'Maison Foébé — le self-care comme compétence',
+  ogImageAlt = 'Maison Foébé — comprendre ce qui fatigue, épuise ou surcharge',
   ogType = 'website',
   twitterTitle,
   twitterDesc,
@@ -55,40 +57,22 @@ const SITE_ID = `${SITE_URL}/#website`;
 const PERSON_ID = `${SITE_URL}/a-propos/#fondatrice`;
 const normalizedCanonical = canonical.endsWith('/') || canonical === `${SITE_URL}` ? canonical : `${canonical}/`;
 const pathname = new URL(normalizedCanonical).pathname;
+const navigationTone = usesDarkNavigation(pathname) ? 'dark' : undefined;
+const shellIsImmersive = isImmersiveShellPage(pathname);
+const lockedTheme = pathname === '/lexique/' ? 'night' : undefined;
+const pageBodyClasses = getPageBodyClasses(pathname);
+const skipTarget = pathname === '/lexique/'
+  ? '#viewer'
+  : pathname === '/respiration/'
+    ? '#stateIntro'
+    : pathname.startsWith('/zone-')
+      ? '#main-content'
+      : pathname === '/dictionnaire/skincare/'
+        ? '#skincare-repertoires'
+        : pathname.startsWith('/dictionnaire/') && pathname !== '/dictionnaire/'
+          ? '#dictionary-category-content'
+          : '#mainContent';
 const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID?.trim() || 'f25f1f6a-c967-4466-a744-e78fa7f4932f';
-
-const routeLabels: Record<string, string> = {
-  '/': 'Accueil',
-  '/comprendre/': 'Comprendre',
-  '/methode/': 'La méthode Foébé',
-  '/pratiquer/': 'Pratiquer',
-  '/zones/': 'Les 7 zones',
-  '/echelle-foebe/': 'Échelle Foébé',
-  '/respiration/': 'Respiration guidée',
-  '/boussole/': 'Boussole Foébé',
-  '/boussole-scenarios/': 'Scénarios de la Boussole',
-  '/lexique/': 'Lexique Foébé',
-  '/dictionnaire/': 'Dictionnaire Foébé',
-  '/dictionnaire/mode-emploi/': 'Mode d’emploi du Dictionnaire',
-  '/dictionnaire/guides/': 'Guides experts',
-  '/dictionnaire/skincare/': 'Skincare',
-  '/dictionnaire/skincare/fondamentaux/': 'Fondamentaux et états de peau',
-  '/dictionnaire/skincare/actifs-routines/': 'Repères, actifs et gestes skincare',
-  '/dictionnaire/haircare/': 'Haircare',
-  '/dictionnaire/bodycare/': 'Bodycare',
-  '/dictionnaire/self-care/': 'Self-care',
-  '/a-propos/': 'À propos',
-  '/faq/': 'Questions fréquentes',
-  '/cadre-editorial/': 'Cadre éditorial et sources',
-  '/mentions-legales/': 'Informations légales',
-  '/zone-energie/': 'Zone Énergie',
-  '/zone-corps/': 'Zone Corps',
-  '/zone-mental/': 'Zone Mental',
-  '/zone-emotions/': 'Zone Émotions',
-  '/zone-environnement/': 'Zone Environnement',
-  '/zone-relations/': 'Zone Relations',
-  '/zone-sens/': 'Zone Sens',
-};
 
 function breadcrumbPaths(currentPath: string): string[] {
   if (currentPath === '/') return ['/'];
@@ -107,7 +91,7 @@ const crumbs = breadcrumbPaths(pathname)
   .map((path, index) => ({
     '@type': 'ListItem',
     position: index + 1,
-    name: routeLabels[path] ?? pageName ?? title,
+    name: ROUTE_LABELS[path] ?? pageName ?? title,
     item: `${SITE_URL}${path === '/' ? '/' : path}`,
   }));
 
@@ -166,7 +150,7 @@ const website = {
   '@id': SITE_ID,
   url: `${SITE_URL}/`,
   name: SITE_NAME,
-  description: 'Un espace structuré du self-care pour apprendre à se lire, se réguler et retrouver une capacité d’action.',
+  description: 'Maison Foébé est un espace structuré pour comprendre ce qui fatigue, ce qui épuise et ce qui empêche de récupérer, puis choisir un geste concret.',
   inLanguage: 'fr-FR',
   publisher: { '@id': ORG_ID },
   publishingPrinciples: `${SITE_URL}/cadre-editorial/`,
@@ -232,13 +216,24 @@ const structuredData = {
 ---
 
 <!DOCTYPE html>
-<html data-theme="night" lang="fr">
+<html
+  data-theme="night"
+  data-foebe-nav={navigationTone}
+  data-foebe-theme-locked={lockedTheme}
+  class:list={{ 'foebe-has-shell-context': pathname !== '/', 'foebe-story-immersive': shellIsImmersive }}
+  lang="fr"
+>
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport" />
 
   <script is:inline>
   (function(){
+    var locked = document.documentElement.getAttribute('data-foebe-theme-locked');
+    if (locked === 'day' || locked === 'night') {
+      document.documentElement.setAttribute('data-theme', locked);
+      return;
+    }
     try {
       var saved = localStorage.getItem('foebeTheme');
       if (saved === 'day' || saved === 'night') {
@@ -312,7 +307,8 @@ const structuredData = {
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
   <slot name="head" />
 </head>
-<body>
+<body class:list={pageBodyClasses}>
+  <SiteShell currentPath={pathname} showThemeToggle={!lockedTheme} skipTarget={skipTarget} />
   <div id="stateOverlay"></div>
   <slot />
 

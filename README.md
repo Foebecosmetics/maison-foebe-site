@@ -1,13 +1,28 @@
-# Maison Foébé — migration Astro
+# Maison Foébé — Migration Astro · Phases A + B + C
 
-Le code du site est organisé dans :
+Cette version cumule :
 
-- `src/` : pages et composants Astro
-- `public/` : ressources publiques
-- `scripts/` : scripts de build et de validation
+- **Phase A** : fondations du shell, menu, thèmes et navigation partagée ;
+- **Phase B** : corrections éditoriales, surlignages et pages ciblées ;
+- **Phase C** : harmonisation, récupération des CSS historiques — y compris les états cachés du Lexique, du Dictionnaire et des zones —, nettoyage des correctifs obsolètes et audit de régression renforcé.
 
-Pour les étapes de déploiement et les rapports, ouvre :
+## Où se trouve quoi ?
 
-**`docs/COMMENCER-ICI.md`**
+- `src/` : pages, composants, styles et shell Astro ;
+- `public/` : ressources publiques ;
+- `scripts/` : génération et contrôles automatiques ;
+- `docs/PHASE-A-FONDATIONS-SHELL.md` : fondations du shell et du menu ;
+- `docs/PHASE-B.md` : corrections éditoriales et visuelles ;
+- `docs/PHASE-C.md` : récupération CSS et harmonisation ;
+- `docs/PHASE-C-VALIDATION.md` : résultats du build, de l’audit et de la double vérification visuelle.
 
-Les documents rangés dans `docs/` ne sont pas nécessaires au fonctionnement du site.
+## Contrôle local
+
+```bash
+npm run build
+npm run audit
+```
+
+Le projet doit générer **31 pages HTML**, dont **29 indexables**, sans incohérence bloquante.
+
+La future route `/accompagnements/` reste réservée dans l’architecture, mais n’est pas encore exposée dans le menu ni créée comme page publique.

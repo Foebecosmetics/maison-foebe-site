@@ -1,29 +1,5 @@
 /* CSS de production restauré depuis la version main, externalisé pour Astro. */
-/* Le fallback ne s'affiche pas pendant le chargement normal du Shell.
-   Il apparaît seulement si le Shell échoue vraiment (classe foebe-shell-failed). */
-html.foebe-shell-loading:not(.foebe-shell-failed) body > nav#fallbackNav.fallback-nav,
-html.foebe-shell-ready body > nav#fallbackNav.fallback-nav{
-  display:none!important;
-}
-
-/* Fallback nav critique — affichée seulement si le Shell ne charge pas */
-body > nav#fallbackNav.fallback-nav{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:950!important;min-height:60px!important;height:60px!important;padding:0 clamp(14px,3vw,28px)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;background:rgba(78,41,31,.94)!important;border-bottom:1px solid rgba(187,126,96,.34)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;box-shadow:0 2px 14px rgba(0,0,0,.16)!important;font-family:"Poppins",sans-serif!important;box-sizing:border-box!important;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav{background:rgba(240,234,231,.94)!important;border-bottom-color:rgba(78,41,31,.16)!important;box-shadow:0 2px 14px rgba(78,41,31,.08)!important;}
-body > nav#fallbackNav.fallback-nav .fallback-logo{font-family:"Montserrat",sans-serif!important;font-weight:700!important;font-size:18px!important;letter-spacing:-.06em!important;line-height:1!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;min-height:44px!important;flex:0 0 auto!important;max-width:42vw!important;white-space:nowrap!important;}
-[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{color:#F0EAE7!important;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){color:#4E291F!important;}
-[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2){color:#BB7E60!important;}[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3){color:#C45279!important;}[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4){color:#C34234!important;}
-body > nav#fallbackNav.fallback-nav .fallback-links{display:flex!important;flex:1 1 auto!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;white-space:nowrap!important;}
-body > nav#fallbackNav.fallback-nav .fallback-links::-webkit-scrollbar{display:none!important;}
-body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0 11px!important;border-radius:999px!important;color:var(--text,#F0EAE7)!important;font-family:"Poppins",sans-serif!important;font-size:12.5px!important;font-weight:600!important;white-space:nowrap!important;flex:0 0 auto!important;text-decoration:none!important;border:1px solid transparent!important;opacity:.92!important;background:transparent!important;box-sizing:border-box!important;}
-body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{color:#F0EAE7!important;background:#BB7E60!important;border-color:#BB7E60!important;opacity:1!important;outline:none!important;}
-@media(max-width:720px){body > nav#fallbackNav.fallback-nav{padding:0 12px!important;gap:12px!important;}body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:17px!important;}body > nav#fallbackNav.fallback-nav .fallback-links{justify-content:flex-start!important;}body > nav#fallbackNav.fallback-nav .fallback-links > a{font-size:12px!important;padding:0 10px!important;}}
-@media(max-width:420px){body > nav#fallbackNav.fallback-nav{gap:10px!important;padding:0 10px!important;}body > nav#fallbackNav.fallback-nav .fallback-logo{font-size:16px!important;max-width:36vw!important;}body > nav#fallbackNav.fallback-nav .fallback-links > a{min-height:38px!important;font-size:12px!important;padding:0 10px!important;}}
-
-
-
-
-
+/* La navigation est désormais rendue et pilotée par le layout Astro global. */
 
 :root{
   --foebe-progress-gradient:
@@ -38,34 +14,14 @@ body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,body > nav#fallbac
     );
   --foebe-nav-height:60px;
 }
-.foebe-scroll-progress--fallback{
-  display:none;
-  position:fixed;
-  top:var(--foebe-nav-height);
-  left:0;right:0;
-  height:3px;
-  z-index:99987;
-  overflow:hidden;
-  pointer-events:none;
-  background:rgba(187,126,96,.12);
-}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
-  display:block;
-  width:100%;height:100%;
-  background:var(--foebe-progress-gradient);
-  transform:scaleX(0);
-  transform-origin:left center;
-  will-change:transform;
-  box-shadow:0 1px 4px rgba(187,126,96,.18);
-}
-html.foebe-shell-loading .foebe-scroll-progress--fallback,
-html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important;}
-html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block;}
-html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
-body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important;}
+
+
+
+
+
 @media(max-width:640px){
   :root{--foebe-nav-height:58px;}
-  .foebe-scroll-progress--fallback{height:2px;}
+  
 }
 
 
@@ -411,14 +367,8 @@ body { background: var(--bg); }
 .end-social-link:hover { color:#BB7E60; transform:translateY(-1px); }
 
 
-body.fallback-nav-visible #storyContent{
-  padding-top:76px;
-}
-@media(min-width:600px){
-  body.fallback-nav-visible #storyContent{
-    padding-top:82px;
-  }
-}
+
+
 .story-disclaimer{
   max-width:310px!important;
   margin:0 auto 24px!important;
@@ -443,190 +393,7 @@ a:focus-visible,button:focus-visible,[role="button"]:focus-visible{
 
 
 
-/* Page Stories — navigation sombre permanente pour immersion */
-html[data-theme="day"] body > nav#fallbackNav.fallback-nav,
-html[data-theme="night"] body > nav#fallbackNav.fallback-nav{
-  background:rgba(44,26,18,.96)!important;
-  border-bottom-color:rgba(187,126,96,.34)!important;
-  box-shadow:0 2px 14px rgba(0,0,0,.18)!important;
-}
-html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span,
-html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{
-  color:#F0EAE7!important;
-}
-html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a,
-html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a{
-  color:#F0EAE7!important;
-}
-html[data-theme="day"] body nav#mainNav#mainNav,
-html[data-theme="night"] body nav#mainNav#mainNav{
-  background:rgba(44,26,18,.94)!important;
-  border-bottom:1px solid rgba(187,126,96,.34)!important;
-  box-shadow:0 10px 32px rgba(0,0,0,.20)!important;
-}
-html[data-theme="day"] body nav#mainNav#mainNav .nav-logo span,
-html[data-theme="night"] body nav#mainNav#mainNav .nav-logo span{
-  color:#F0EAE7!important;
-}
-html[data-theme="day"] body nav#mainNav#mainNav #menuToggle,
-html[data-theme="night"] body nav#mainNav#mainNav #menuToggle,
-html[data-theme="day"] body nav#mainNav#mainNav .theme-toggle,
-html[data-theme="night"] body nav#mainNav#mainNav .theme-toggle{
-  color:#F0EAE7!important;
-  background:rgba(240,234,231,.10)!important;
-  border-color:rgba(240,234,231,.18)!important;
-}
-html[data-theme="day"] body div#navMenu#navMenu,
-html[data-theme="night"] body div#navMenu#navMenu{
-  background:linear-gradient(180deg,rgba(78,41,31,.98),rgba(44,26,18,.98))!important;
-  border-bottom-color:rgba(187,126,96,.30)!important;
-  box-shadow:0 30px 76px rgba(0,0,0,.42)!important;
-}
-html[data-theme="day"] body #navMenu .nav-link,
-html[data-theme="night"] body #navMenu .nav-link{
-  color:#F0EAE7!important;
-}
-html[data-theme="day"] body #navOverlay,
-html[data-theme="night"] body #navOverlay{
-  background:rgba(0,0,0,.24)!important;
-}
-
-/* ══ SEO caché ════════════════════════════════════════════════ */
-.seo-hidden { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-
-
-/* Correctif V7 — nav immersive sombre permanente + logo crème
-   Cette page reste en expérience story sombre, même si le thème global passe en jour. */
-html[data-theme] body > nav#fallbackNav.fallback-nav,
-html[data-theme="day"] body > nav#fallbackNav.fallback-nav,
-html[data-theme="night"] body > nav#fallbackNav.fallback-nav{
-  background:rgba(44,26,18,.96)!important;
-  border-bottom-color:rgba(187,126,96,.34)!important;
-  box-shadow:0 2px 14px rgba(0,0,0,.22)!important;
-}
-html[data-theme] body > nav#fallbackNav.fallback-nav .fallback-logo span,
-html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-logo span,
-html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-logo span{
-  color:#F0EAE7!important;
-}
-html[data-theme] body > nav#fallbackNav.fallback-nav .fallback-links > a,
-html[data-theme="day"] body > nav#fallbackNav.fallback-nav .fallback-links > a,
-html[data-theme="night"] body > nav#fallbackNav.fallback-nav .fallback-links > a{
-  color:#F0EAE7!important;
-}
-html[data-theme] body #mainNav,
-html[data-theme="day"] body #mainNav,
-html[data-theme="night"] body #mainNav{
-  background:rgba(44,26,18,.94)!important;
-  border-bottom:1px solid rgba(187,126,96,.34)!important;
-  box-shadow:0 8px 28px rgba(0,0,0,.18)!important;
-}
-html[data-theme] body .nav-logo span,
-html[data-theme="day"] body .nav-logo span,
-html[data-theme="night"] body .nav-logo span,
-html[data-theme] body .nav-logo span:nth-child(1),
-html[data-theme] body .nav-logo span:nth-child(2),
-html[data-theme] body .nav-logo span:nth-child(3),
-html[data-theme] body .nav-logo span:nth-child(4),
-html[data-theme] body .nav-logo span:nth-child(5){
-  color:#F0EAE7!important;
-}
-html[data-theme] body #menuToggle,
-html[data-theme="day"] body #menuToggle,
-html[data-theme="night"] body #menuToggle{
-  color:#F0EAE7!important;
-  background:rgba(240,234,231,.08)!important;
-  border-color:rgba(187,126,96,.34)!important;
-}
-html[data-theme] body #navMenu,
-html[data-theme="day"] body #navMenu,
-html[data-theme="night"] body #navMenu{
-  background:linear-gradient(180deg,rgba(78,41,31,.98),rgba(44,26,18,.98))!important;
-  border-bottom-color:rgba(187,126,96,.30)!important;
-  box-shadow:0 30px 76px rgba(0,0,0,.42)!important;
-}
-html[data-theme] body .nav-link,
-html[data-theme="day"] body .nav-link,
-html[data-theme="night"] body .nav-link{
-  color:#F0EAE7!important;
-}
-html[data-theme] body #navOverlay,
-html[data-theme="day"] body #navOverlay,
-html[data-theme="night"] body #navOverlay{
-  background:rgba(0,0,0,.28)!important;
-}
-
-
-/* Stories — verrou nav immersive sombre permanente
-   Le thème de la page peut rester jour/nuit, mais la navigation de cette page reste sombre. */
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav,
-html[data-foebe-nav="dark"][data-theme="day"] body > nav#fallbackNav.fallback-nav,
-html[data-foebe-nav="dark"][data-theme="night"] body > nav#fallbackNav.fallback-nav{
-  background:rgba(44,26,18,.97)!important;
-  border-bottom-color:rgba(187,126,96,.38)!important;
-  box-shadow:0 2px 14px rgba(0,0,0,.24)!important;
-}
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo,
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span,
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(1),
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(2),
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(3),
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(4),
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-logo span:nth-child(5){
-  color:#F0EAE7!important;
-  -webkit-text-fill-color:#F0EAE7!important;
-  filter:none!important;
-}
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a{
-  color:#F0EAE7!important;
-}
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a:hover,
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a:focus-visible,
-html[data-foebe-nav="dark"] body > nav#fallbackNav.fallback-nav .fallback-links > a[aria-current="page"]{
-  color:#F0EAE7!important;
-  background:#BB7E60!important;
-  border-color:#BB7E60!important;
-}
-
-/* Même verrou pour la nav injectée par /foebe-shell.js sur GitHub. */
-html[data-foebe-nav="dark"] body #mainNav,
-html[data-foebe-nav="dark"][data-theme="day"] body #mainNav,
-html[data-foebe-nav="dark"][data-theme="night"] body #mainNav{
-  background:rgba(44,26,18,.96)!important;
-  border-bottom:1px solid rgba(187,126,96,.38)!important;
-  box-shadow:0 10px 32px rgba(0,0,0,.26)!important;
-}
-html[data-foebe-nav="dark"] body #mainNav .nav-logo,
-html[data-foebe-nav="dark"] body #mainNav .nav-logo span,
-html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(1),
-html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(2),
-html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(3),
-html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(4),
-html[data-foebe-nav="dark"] body #mainNav .nav-logo span:nth-child(5){
-  color:#F0EAE7!important;
-  -webkit-text-fill-color:#F0EAE7!important;
-  filter:none!important;
-}
-html[data-foebe-nav="dark"] body #mainNav #menuToggle,
-html[data-foebe-nav="dark"] body #mainNav .theme-toggle{
-  color:#F0EAE7!important;
-  background:rgba(240,234,231,.08)!important;
-  border-color:rgba(187,126,96,.38)!important;
-}
-html[data-foebe-nav="dark"] body #navMenu{
-  background:linear-gradient(180deg,rgba(78,41,31,.985),rgba(44,26,18,.985))!important;
-  border-color:rgba(187,126,96,.34)!important;
-  box-shadow:0 30px 76px rgba(0,0,0,.46)!important;
-}
-html[data-foebe-nav="dark"] body #navMenu a,
-html[data-foebe-nav="dark"] body #navMenu button,
-html[data-foebe-nav="dark"] body #navMenu .nav-link{
-  color:#F0EAE7!important;
-}
-html[data-foebe-nav="dark"] body #navOverlay{
-  background:rgba(0,0,0,.30)!important;
-}
-
+/* Navigation globale pilotée par data-foebe-nav="dark" dans BaseLayout. */
 
 /* Page Stories — pas de footer global Shell sur l'expérience immersive.
    La sortie/footer de cette page est intégrée directement dans l'écran final des stories. */
@@ -735,7 +502,6 @@ html[data-foebe-footer="none"] footer:not(#storyFooter){
 @media(orientation:landscape) and (max-width:920px) and (max-height:540px){
   #portraitLock{display:flex!important;}
   #viewer{pointer-events:none!important;filter:blur(2px);}
-  body > nav#fallbackNav.fallback-nav{display:none!important;}
 }
 
 
@@ -830,9 +596,7 @@ html[data-foebe-footer="none"] footer:not(#storyFooter){
     max-height:860px!important;
     margin:0 auto!important;
   }
-  body.fallback-nav-visible #storyContent{
-    padding-top:20px!important;
-  }
+  
 }
 @media(min-width:600px) and (max-height:820px){
   #storyWrap{height:calc(100dvh - 90px)!important;}
@@ -853,15 +617,11 @@ html[data-foebe-footer="none"] footer:not(#storyFooter){
 @media (orientation:landscape) and (max-width:920px) and (max-height:540px){
   #portraitLock{display:flex!important;}
   #viewer{pointer-events:none!important;filter:blur(2px)!important;}
-  body > nav#fallbackNav.fallback-nav,
-  body #mainNav{display:none!important;}
 }
 
 @media (orientation:landscape) and (hover:none) and (pointer:coarse) and (max-height:620px){
   #portraitLock{display:flex!important;}
   #viewer{pointer-events:none!important;filter:blur(2px)!important;}
-  body > nav#fallbackNav.fallback-nav,
-  body #mainNav{display:none!important;}
 }
 
 @media(min-width:600px) and (orientation:portrait){
@@ -888,9 +648,7 @@ html[data-foebe-footer="none"] footer:not(#storyFooter){
   #storyContent{
     min-height:100%!important;
   }
-  body.fallback-nav-visible #storyContent{
-    padding-top:20px!important;
-  }
+  
 }
 
 @media(min-width:600px) and (orientation:portrait) and (max-height:900px){
@@ -1024,4 +782,15 @@ html[data-foebe-footer="none"] footer:not(#storyFooter){
 }
 
 
-.foebe-scroll-progress--fallback{display:block!important}
+
+
+
+/* Phase C — contenu sémantique accessible aux moteurs, hors flux visuel. */
+.seo-hidden{
+  position:absolute;
+  left:-9999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}

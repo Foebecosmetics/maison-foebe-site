@@ -54,18 +54,10 @@ a:focus-visible{outline:2px solid var(--warm);outline-offset:4px}
 #mainContent:focus{outline:none}
 
 /* Navigation locale : secours uniquement. */
-html.foebe-shell-loading:not(.foebe-shell-failed) body>nav#fallbackNav,
-html.foebe-shell-ready body>nav#fallbackNav{display:none!important}
-html.foebe-shell-failed body>nav#fallbackNav{display:flex!important}
-body>nav#fallbackNav{
-  position:fixed;inset:0 0 auto 0;z-index:99988;
-  min-height:60px;height:60px;padding:0 clamp(14px,3vw,28px);
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:rgba(78,41,31,.95);border-bottom:1px solid rgba(187,126,96,.30);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 2px 14px rgba(0,0,0,.16)
-}
-[data-theme="day"] body>nav#fallbackNav{background:rgba(240,234,231,.95);border-bottom-color:rgba(78,41,31,.14)}
+
+
+
+
 .fallback-logo{
   min-height:44px;display:inline-flex;align-items:center;flex:0 0 auto;max-width:42vw;
   white-space:nowrap;text-decoration:none;font-family:"Montserrat",sans-serif;font-size:18px;font-weight:700;
@@ -85,20 +77,11 @@ body>nav#fallbackNav{
 .fallback-links a:hover,.fallback-links a:focus-visible,.fallback-links a[aria-current="page"]{background:#BB7E60;border-color:#BB7E60;color:#F0EAE7;outline:none}
 
 /* Barre locale : fallback si le Shell échoue. */
-.foebe-scroll-progress--fallback{
-  display:none;position:fixed;top:var(--foebe-nav-height);left:0;right:0;height:3px;z-index:99987;
-  overflow:hidden;pointer-events:none;background:rgba(187,126,96,.12)
-}
-.foebe-scroll-progress--fallback .foebe-scroll-progress__bar{
-  display:block;width:100%;height:100%;background:var(--foebe-progress-gradient);
-  transform:scaleX(0);transform-origin:left center;will-change:transform;
-  box-shadow:0 1px 7px rgba(187,126,96,.28)
-}
-html.foebe-shell-loading .foebe-scroll-progress--fallback,
-html.foebe-shell-ready .foebe-scroll-progress--fallback{display:none!important}
-html.foebe-shell-failed .foebe-scroll-progress--fallback{display:block}
-html[data-foebe-progress="off"] .foebe-scroll-progress--fallback,
-body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!important}
+
+
+
+
+
 
 /* Typographie éditoriale. */
 .hero-eyebrow,.section-eyebrow,.research-type,.identity-role,.detail-label,.audience-label{
@@ -269,7 +252,7 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 }
 
 @media(max-width:680px){
-  body>nav#fallbackNav{padding:0 10px;gap:10px}
+  
   .fallback-logo{font-size:16px;max-width:36vw}
   .fallback-links{justify-content:flex-start}.fallback-links a{min-height:36px;font-size:11.5px;padding:0 9px}
   .about-hero{padding:calc(var(--foebe-nav-height) + 38px) 18px 50px}
@@ -313,19 +296,17 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 /* Barre fallback officielle Maison Foébé. */
 @media(max-width:640px){
   :root{--foebe-nav-height:58px}
-  body>nav#fallbackNav{height:58px;min-height:58px}
-  .foebe-scroll-progress--fallback{height:2px}
+  
+  
 }
 
-@media(prefers-reduced-motion:reduce){
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
-}
+
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .orbit-ring,.orbit-stage::before,.orbit-node{animation:none!important}
-  .foebe-scroll-progress--fallback .foebe-scroll-progress__bar{transition:none!important}
+  
 }
 
 
@@ -522,15 +503,15 @@ body[data-foebe-progress="off"] .foebe-scroll-progress--fallback{display:none!im
 
 
 
-    .foebe-scroll-progress--fallback{display:block!important}
+    
 
 
 /* Phase C — références vérifiables et présence publique sobre. */
 .research-links{display:flex;flex-direction:column;align-items:flex-end;gap:9px}
 .research-link--secondary{font-size:11px!important;opacity:.72}
-.research-verification{max-width:860px;margin:22px 0 0;padding:15px 18px;border-left:3px solid #BB7E60;border-radius:0 14px 14px 0;background:rgba(187,126,96,.07);font:400 12.5px/1.7 'Poppins',sans-serif;opacity:.78}
+.research-verification{max-width:860px;margin:22px 0 0;padding:15px 18px;border-left:3px solid #BB7E60;border-radius:0 14px 14px 0;background:rgba(187,126,96,.07);font:400 12.5px/1.7 "Poppins",sans-serif;opacity:.78}
 .about-section--presence{background:linear-gradient(145deg,rgba(196,82,121,.09),rgba(187,126,96,.055));border-block:1px solid rgba(187,126,96,.18)}
 .presence-layout{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:clamp(36px,7vw,92px);align-items:start}
-.presence-copy p{margin:0 0 18px;max-width:720px;font:400 15.5px/1.82 'Poppins',sans-serif;opacity:.82}
-.presence-link{display:inline-flex;margin-top:8px;color:#BB7E60;font:700 12.5px/1.4 'Poppins',sans-serif;text-decoration-thickness:1px;text-underline-offset:5px}
+.presence-copy p{margin:0 0 18px;max-width:720px;font:400 15.5px/1.82 "Poppins",sans-serif;opacity:.82}
+.presence-link{display:inline-flex;margin-top:8px;color:#BB7E60;font:700 12.5px/1.4 "Poppins",sans-serif;text-decoration-thickness:1px;text-underline-offset:5px}
 @media(max-width:820px){.presence-layout{grid-template-columns:1fr}.research-links{align-items:flex-start}}
